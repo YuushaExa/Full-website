@@ -8,9 +8,9 @@
             <a href="{{ .Permalink }}">{{ .Title }}</a>
             {{ end }}
         </div>
-         <div class="columns is-multiline">
+      <div class="columns is-multiline">
     {{ range .Pages }}
-  div class="column is-half">
+    <div class="column is-half">
         {{ partial "widgets/post-card.html" . }}
     </div>
     {{ end }}
