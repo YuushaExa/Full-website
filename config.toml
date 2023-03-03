@@ -6,7 +6,13 @@ theme = "bloggeri"
     description = "My site description"
     author = "Janne"
     authorImage = "https://howlongtobeat.com/games/Twinbee_flyer.png?width=250"
+[markup]
+    defaultMarkdownHandler = "goldmark"
 
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+            
  [[menu.main]]
   name = "About"
   url = "/about"
