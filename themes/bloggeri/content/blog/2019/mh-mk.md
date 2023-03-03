@@ -5,6 +5,7 @@ status: publish
 permalink: /famicom/all-night-nippon-super-mario-bros/index.html
 author: spectrum_admin
 excerpt: ''
+images: ["https://wsrv.nl/?url=https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg&output=webp&maxage=1d"]
 type: post
 id: 13078
 category:
