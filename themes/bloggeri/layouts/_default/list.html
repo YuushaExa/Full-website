@@ -3,7 +3,7 @@
     <div class="section">
         <div class="content">
  <div class="columns is-multiline">
-    {{ range .Pages }}
+       {{ range .Paginator.Pages }}
     <div class="column is-half">
         {{ partial "widgets/post-card.html" . }}
     </div>
