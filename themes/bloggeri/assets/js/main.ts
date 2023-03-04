@@ -1,8 +1,6 @@
 /**
  * TEMPLATE_TODO: Required. Remove this import and all usages of stats.
  */
-import stats from './stats';
-
 import Fuse from './fuse.js';
 import {Hit, Page} from './types.js';
 
