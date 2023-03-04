@@ -11,7 +11,7 @@ const QUERY_URL_PARAM = 'query';
 /**
  * TEMPLATE_TODO: Optioal. Change how many hits are shown.
  */
-const MAX_HITS_SHOWN = 10;
+const MAX_HITS_SHOWN = 100;
 
 /**
  * TEMPLATE_TODO: Optioal. Change the style of a highlighted match.
@@ -26,7 +26,7 @@ const FUSE_OPTIONS = {
   keys: ['title', 'category', 'tag'],
   ignoreLocation: true,
   includeMatches: true,
-  minMatchCharLength: 3
+  minMatchCharLength: 2
 };
 
 let fuse: any;
