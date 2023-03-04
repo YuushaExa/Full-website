@@ -41,12 +41,6 @@ const enableInputEl = (): void => {
   getInputEl().disabled = false;
 };
 
-const initFuse = (pages: Page[]): void => {
-  const startTime = performance.now();
-  fuse = new Fuse(pages, FUSE_OPTIONS);
-  stats.setFusejsInstantiationTime(startTime, performance.now());
-};
-
 const doSearchIfUrlParamExists = (): void => {
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has(QUERY_URL_PARAM)) {
@@ -60,27 +54,6 @@ const setUrlParam = (query: string): void => {
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.set(QUERY_URL_PARAM, encodeURIComponent(query));
   window.history.replaceState({}, '', `${location.pathname}?${urlParams}`);
-};
-
-const fetchJsonIndex = (): void => {
-  const startTime = performance.now();
-  fetch(JSON_INDEX_URL)
-    .then(response => {
-      stats.setJsonIndexContentEncoding(response);
-      stats.setJsonIndexContentSize(response);
-      return response.json();
-    })
-    .then(data => {
-      const pages: Page[] = data;
-      initFuse(pages);
-      enableInputEl();
-      doSearchIfUrlParamExists();
-      stats.setJsonIndexFetchTime(startTime, performance.now());
-      stats.setJsonIndexArrayLength(pages.length);
-    })
-    .catch(error => {
-      console.error(`Failed to fetch JSON index: ${error.message}`);
-    });
 };
 
 const highlightMatches = (hit: Hit, key: string) => {
@@ -152,15 +125,6 @@ const getHits = (query: string): Hit[] => {
   return fuse.search(query);
 };
 
-const handleSearchEvent = (): void => {
-  const startTime = performance.now();
-  const query = getQuery();
-  const hits = getHits(query);
-  setUrlParam(query);
-  renderHits(hits);
-  stats.setHitCount(hits.length);
-  stats.setSearchEventTime(startTime, performance.now());
-};
 
 const handleDOMContentLoaded = (): void => {
   if (getInputEl()) {
