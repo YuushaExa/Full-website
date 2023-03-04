@@ -4,7 +4,7 @@
 import Fuse from './fuse.js';
 import {Hit, Page} from './types.js';
 
-const JSON_INDEX_URL = `${window.location.origin}`;
+const JSON_INDEX_URL = `${window.location.origin}/index.json`;
 const QUERY_URL_PARAM = 'query';
 
 /**
@@ -25,7 +25,7 @@ const FUSE_OPTIONS = {
   keys: ['title', 'category', 'tag'],
   ignoreLocation: true,
   includeMatches: true,
-  minMatchCharLength: 2
+  minMatchCharLength: 3
 };
 
 let fuse: any;
@@ -44,6 +44,7 @@ const enableInputEl = (): void => {
 const initFuse = (pages: Page[]): void => {
   const startTime = performance.now();
   fuse = new Fuse(pages, FUSE_OPTIONS);
+  stats.setFusejsInstantiationTime(startTime, performance.now());
 };
 
 const doSearchIfUrlParamExists = (): void => {
@@ -59,6 +60,27 @@ const setUrlParam = (query: string): void => {
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.set(QUERY_URL_PARAM, encodeURIComponent(query));
   window.history.replaceState({}, '', `${location.pathname}?${urlParams}`);
+};
+
+const fetchJsonIndex = (): void => {
+  const startTime = performance.now();
+  fetch(JSON_INDEX_URL)
+    .then(response => {
+      stats.setJsonIndexContentEncoding(response);
+      stats.setJsonIndexContentSize(response);
+      return response.json();
+    })
+    .then(data => {
+      const pages: Page[] = data;
+      initFuse(pages);
+      enableInputEl();
+      doSearchIfUrlParamExists();
+      stats.setJsonIndexFetchTime(startTime, performance.now());
+      stats.setJsonIndexArrayLength(pages.length);
+    })
+    .catch(error => {
+      console.error(`Failed to fetch JSON index: ${error.message}`);
+    });
 };
 
 const highlightMatches = (hit: Hit, key: string) => {
@@ -128,6 +150,16 @@ const getQuery = (): string => {
 
 const getHits = (query: string): Hit[] => {
   return fuse.search(query);
+};
+
+const handleSearchEvent = (): void => {
+  const startTime = performance.now();
+  const query = getQuery();
+  const hits = getHits(query);
+  setUrlParam(query);
+  renderHits(hits);
+  stats.setHitCount(hits.length);
+  stats.setSearchEventTime(startTime, performance.now());
 };
 
 const handleDOMContentLoaded = (): void => {
