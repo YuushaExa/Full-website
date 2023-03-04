@@ -50,7 +50,7 @@ img {
 }
 
 .fancybox-slide:before {
-	content: ;;;
+	content: '';
 	display: inline-block;
 	font-size: 0;
 	height: 100%;
@@ -63,7 +63,7 @@ img {
 .fancybox-thumbs__list a:before {
 	border: 6px solid #ff5268;
 	bottom: 0;
-	content: ;;;
+	content: '';
 	left: 0;
 	opacity: 0;
 	position: absolute;
