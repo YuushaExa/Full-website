@@ -26,7 +26,7 @@ const FUSE_OPTIONS = {
   keys: ['title', 'category', 'tag'],
   ignoreLocation: true,
   includeMatches: true,
-  minMatchCharLength: 2
+  minMatchCharLength: 3
 };
 
 let fuse: any;
