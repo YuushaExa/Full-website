@@ -13,6 +13,9 @@ theme = "bloggeri"
         [markup.goldmark.renderer]
             unsafe = true
             
+            [outputs]
+home = [ "HTML", "RSS", "JSON" ]
+            
  [[menu.main]]
   name = "About"
   url = "/about"
