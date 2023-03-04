@@ -22,10 +22,10 @@ const RIGHT_SIDE_MATCH_HTML = '</span>';
  * TEMPLATE_TODO: Required. Tell Fuse.js which keys to search on.
  */
 const FUSE_OPTIONS = {
-  keys: ['title', 'country', 'crew', 'vehicle', 'purpose'],
+  keys: ['title', 'category ', 'tag'],
   ignoreLocation: true,
   includeMatches: true,
-  minMatchCharLength: 3
+  minMatchCharLength: 2
 };
 
 let fuse: any;
