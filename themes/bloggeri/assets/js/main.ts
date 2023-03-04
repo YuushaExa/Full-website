@@ -26,7 +26,7 @@ const FUSE_OPTIONS = {
   keys: ['title', 'category', 'tag'],
   ignoreLocation: true,
   includeMatches: true,
-  minMatchCharLength: 3
+  minMatchCharLength: 2
 };
 
 let fuse: any;
@@ -77,33 +77,6 @@ const fetchJsonIndex = (): void => {
     .catch(error => {
       console.error(`Failed to fetch JSON index: ${error.message}`);
     });
-};
-
-const highlightMatches = (hit: Hit, key: string) => {
-  const text: string = hit.item[key];
-  const match = hit.matches.find(match => match.key === key);
-
-  if (!match) {
-    return text;
-  }
-
-  const charIndexToReplacementText = new Map<number, string>();
-
-  match.indices.forEach(indexPair => {
-    const startIndex = indexPair[0];
-    const endIndex = indexPair[1];
-
-    const startCharText = `${LEFT_SIDE_MATCH_HTML}${text[startIndex]}`;
-    const endCharText = `${text[endIndex]}${RIGHT_SIDE_MATCH_HTML}`;
-
-    charIndexToReplacementText.set(startIndex, startCharText);
-    charIndexToReplacementText.set(endIndex, endCharText);
-  });
-
-  return text
-    .split('')
-    .map((char, index) => charIndexToReplacementText.get(index) || char)
-    .join('');
 };
 
 /**
