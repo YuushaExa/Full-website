@@ -20,6 +20,19 @@ home = [ "HTML", "RSS", "JSON" ]
     tag = "tags"
     category = "categories"
 
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+
+  [[related.indices]]
+    name = "title"
+    weight = 100
+
+  [[related.indices]]
+    name = "tags"
+    weight = 30
+
  [[menu.main]]
   name = "About"
   url = "/about"
