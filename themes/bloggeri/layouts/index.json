@@ -1,0 +1,14 @@
+{{ $number := 0 -}}
+{{ $pages := len .Site.RegularPages }}
+[
+  {{- range.Site.RegularPages -}}
+    {{- $number = add $number 1 -}}
+    {
+      "title": "{{ .Title }}",
+      "url": "{{ .RelPermalink }}",
+      "plain": "{{ .PlainWords }}",
+      "parent": "{{ .Parent.Title }}"
+    }
+    {{- if and (ge $number 1) (lt $number $pages) }},{{ end -}}
+  {{- end }}
+]   
