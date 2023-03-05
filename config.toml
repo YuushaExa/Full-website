@@ -16,6 +16,19 @@ theme = "bloggeri"
             [outputs]
 home = [ "HTML", "RSS", "JSON" ]
             
+            [related]
+    threshold = 0 
+    includeNewer = true
+    toLower = false
+
+    [[related.indices]]
+        name = "categories"
+        weight = 100
+
+    [[related.indices]]
+        name = "date"
+        weight = 10
+        
  [[menu.main]]
   name = "About"
   url = "/about"
