@@ -18,7 +18,7 @@ home = [ "HTML", "RSS", "JSON" ]
             
             [taxonomies]
     tag                    = "tags"
-    category           = "categories"
+    category           = "category"
             
             [related]
     threshold = 0 
@@ -26,7 +26,7 @@ home = [ "HTML", "RSS", "JSON" ]
     toLower = false
 
     [[related.indices]]
-        name = "keywords"
+        name = "category"
         weight = 100
 
     [[related.indices]]
