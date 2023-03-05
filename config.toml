@@ -23,6 +23,10 @@ home = [ "HTML", "RSS", "JSON" ]
 [[menu.main]]
   name = "Blog"
   url = "/blog"
+  
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories"
 
   [[menu.footer]]
   name = "About"
