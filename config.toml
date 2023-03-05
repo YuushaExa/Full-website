@@ -28,10 +28,10 @@ home = [ "HTML", "RSS", "JSON" ]
   [[related.indices]]
     name = "title"
     weight = 100
-
+    
   [[related.indices]]
-    name = "tags"
-    weight = 30
+    name = "date"
+    weight = 10
 
  [[menu.main]]
   name = "About"
