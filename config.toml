@@ -22,7 +22,7 @@ home = [ "HTML", "RSS", "JSON" ]
     toLower = false
 
     [[related.indices]]
-        name = "categories"
+        name = "category"
         weight = 100
 
     [[related.indices]]
