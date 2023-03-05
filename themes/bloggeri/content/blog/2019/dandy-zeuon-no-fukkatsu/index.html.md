@@ -9,6 +9,9 @@ type: post
 id: 13036
 category:
     - '@famicom'
+    categories:
+  - Web development
+  - Blogging
 tag:
     - '#1 Atelier Double'
     - Action
