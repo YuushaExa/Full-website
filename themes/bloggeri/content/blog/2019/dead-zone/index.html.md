@@ -7,8 +7,6 @@ author: spectrum_admin
 excerpt: ''
 type: post
 id: 13034
-category:
-    - @famicom
 categories:
   - Web development
   - Blogging
