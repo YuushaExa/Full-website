@@ -14,7 +14,7 @@ theme = "bloggeri"
             unsafe = true
             
             [outputs]
-section = [ "HTML", "RSS", "JSON" ]
+home = [ "HTML", "RSS", "JSON" ]
             
  [[menu.main]]
   name = "About"
