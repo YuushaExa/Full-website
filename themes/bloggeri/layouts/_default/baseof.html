@@ -3,6 +3,7 @@
     {{- partial "head.html" . -}}
     <body>
         {{- partial "header.html" . -}}
+                {{ partial "widgets/pagination.html" . }}
         <main>
         {{- block "main" . }}{{- end }}
         </main>
