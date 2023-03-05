@@ -8,8 +8,8 @@ excerpt: ''
 type: post
 id: 13036
 category:
-    - '@famicom'
-    categories:
+  - '@famicom'
+categories:
   - Web development
   - Blogging
 tag:
