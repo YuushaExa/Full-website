@@ -17,8 +17,8 @@ theme = "bloggeri"
 home = [ "HTML", "RSS", "JSON" ]
             
             [taxonomies]
-    tag                    = "tags"
-    category           = "categories"
+    tag = "tags"
+    category = "categories"
             
             [related]
     threshold = 0 
