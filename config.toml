@@ -16,13 +16,17 @@ theme = "bloggeri"
             [outputs]
 home = [ "HTML", "RSS", "JSON" ]
             
+            [taxonomies]
+    tag                    = "tags"
+    category           = "categories"
+            
             [related]
     threshold = 0 
     includeNewer = true
     toLower = false
 
     [[related.indices]]
-        name = "title"
+        name = "categories"
         weight = 100
 
     [[related.indices]]
