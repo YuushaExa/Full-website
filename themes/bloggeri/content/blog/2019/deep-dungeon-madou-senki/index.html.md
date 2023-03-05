@@ -7,8 +7,9 @@ author: spectrum_admin
 excerpt: ''
 type: post
 id: 13032
-category:
-    - '@famicom'
+categories:
+  - Web development
+  - Blogging
 tag:
     - '#1 Humming Bird Soft'
     - RPG
