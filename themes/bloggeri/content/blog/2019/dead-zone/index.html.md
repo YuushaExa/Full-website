@@ -8,7 +8,10 @@ excerpt: ''
 type: post
 id: 13034
 category:
-    - '@famicom'
+    - @famicom
+categories:
+  - Web development
+  - Blogging
 tag:
     - '#1 Sunsoft'
     - Adventure
