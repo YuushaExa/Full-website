@@ -1,4 +1,3 @@
-# config.yaml
 disableKinds:
 - sitemap
 - taxonomy
@@ -6,9 +5,8 @@ disableKinds:
 outputs:
   home:
   - html
-module:
-  mounts:
-  - source: content
-    target: content
-  - source: prebuild/public/monster
-    target: content/monster
+caches:
+  getresource:
+    maxAge: 5h
+params:
+  file_format: json
