@@ -1,0 +1,4 @@
+{{/* prebuild/layouts/index.html */}}
+{{ with resources.GetRemote "https://monsters-api.netlify.app/" }}
+  {{ $monsters := . }}
+{{ end }}
