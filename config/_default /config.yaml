@@ -1,0 +1,7 @@
+baseURL: https://yuushaexa.github.io/
+languageCode: en-us
+title: Monsterspotting
+paginate: 10
+caches:
+  getresource:
+    maxAge: 6h
