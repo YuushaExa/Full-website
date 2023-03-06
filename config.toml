@@ -29,9 +29,11 @@ home = [ "HTML", "RSS", "JSON" ]
     name = "title"
     weight = 100
     
-  [[related.indices]]
-    name = "date"
-    weight = 10
+[[related.indices]]
+name        = "fragmentrefs"
+type        = "fragments"
+applyFilter = false
+weight      = 200
 
  [[menu.main]]
   name = "About"
