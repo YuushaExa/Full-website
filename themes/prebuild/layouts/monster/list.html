@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ range .Pages }}
+    <a href="{{ .RelPermalink }}" title="{{ .Title }}">
+      <img src="{{ .Params.img }}" title="Portrait of {{ .Title }}" />
+      <strong>{{ .Title }}</strong>
+      <p>Last spotted in {{ .Params.spotted }}</p>
+    </a>
+  {{ end }}
+{{ end }}
