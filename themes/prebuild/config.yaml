@@ -6,3 +6,9 @@ disableKinds:
 outputs:
   home:
   - html
+module:
+  mounts:
+  - source: content
+    target: content
+  - source: prebuild/public/monster
+    target: content/monster
