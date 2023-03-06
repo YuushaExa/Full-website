@@ -44,11 +44,15 @@
       </div>
     </div>
   </div>
-    <div class="pagination__title">
-      <span class="pagination__title-h">{{ .Site.Params.relatedTitle | default "Related"}}</span>
-      <hr />
-    </div>
-    {{ partial "partials/related.html" . }}
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<h3>Related Posts</h3>
+<ul>
+	{{ range . }}
+	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{ end }}
+</ul>
+{{ end }}
  <script src="/js/posts.js"></script>
 </section>
 {{ end }}
