@@ -1,4 +1,7 @@
 {{/* prebuild/layouts/index.html */}}
 {{ with resources.GetRemote "https://monsters-api.netlify.app/" }}
-  {{ $monsters := . }}
+  {{ $monsters := unmarshal .Content }}
+  {{ range $monsters }}
+    I love {{ .title }}
+  {{ end }}
 {{ end }}
