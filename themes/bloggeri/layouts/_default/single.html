@@ -44,14 +44,11 @@
       </div>
     </div>
   </div>
-      <!-- Related -->
     <div class="pagination__title">
       <span class="pagination__title-h">{{ .Site.Params.relatedTitle | default "Related"}}</span>
       <hr />
     </div>
-
-    {{ partial "related.html" . }}
-    <!-- /Related -->
+    {{ partial "partials/related.html" . }}
  <script src="/js/posts.js"></script>
 </section>
 {{ end }}
