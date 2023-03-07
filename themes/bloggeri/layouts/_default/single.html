@@ -23,6 +23,13 @@
         </div>
       </div>
     </div>
+              <div class="columns is-vcentered">
+        <div class="column">
+          {{ range $idx, $tags := .Params.tags }}
+          {{- if ne $idx 0 }}, {{ end }}<a href="{{ "tags/" | relURL }}{{ $category | urlize }}">{{ $tags }}</a>
+          {{- end }}
+        </div>
+      </div>
      <h1>{{ .Title }}</h1>
 </section>
 <section class="section">
