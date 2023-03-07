@@ -6,7 +6,6 @@ permalink: /famicom/a-train/index.html
 author: spectrum_admin
 excerpt: ''
 type: post
-id: 13074
 categories = [
     "Test"
 ]
