@@ -4,7 +4,6 @@ date: '2021-12-11T03:01:59+03:00'
 status: publish
 permalink: /famicom/a-train/index.html
 author: spectrum_admin
-excerpt: ''
 type: post
 categories = "Test"
 tags = "emoji"
