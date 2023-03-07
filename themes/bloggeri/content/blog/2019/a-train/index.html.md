@@ -9,8 +9,8 @@ categories:
   - Web development
   - Blogging
 tags:
-  - Web development
-  - Blogging
+  - Web development1
+  - Blogging1
 post_format: []
 ---
 The first game in the A-Ressha de Ikou («Let’s Take the A-Train») series, which would eventually become known overseas as A-Train. The goal of the game is to build a prosperous railroad company. Unlike the second (Railroad Empire) and third (A-Train) games in the series, the original A-Ressha de Ikou never saw an international release.
