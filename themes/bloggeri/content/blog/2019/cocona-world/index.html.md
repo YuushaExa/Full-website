@@ -5,6 +5,7 @@ status: publish
 permalink: /famicom/cocona-world/index.html
 author: spectrum_admin
 excerpt: ''
+images: ["https://wsrv.nl/?url=https://images.launchbox-app.com/89904be1-eac3-4c73-b96d-f02ebd38568c.jpg&output=webp&maxage=1d"]
 type: post
 id: 13042
 category:
