@@ -24,7 +24,7 @@ main {
     padding-bottom: 2em;
 }
 
-img {
+.title-image img {
 	animation: fadein .3s both
 }
 
