@@ -18,4 +18,9 @@
     <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
+       <div class="tags is-pulled-left">
+    {{ range .Params.tags }}
+    <a class="tag is-primary is-radiusless" href="/tags/{{ . | urlize}}">{{ . }}</a>
+    {{ end }}
+</div>
 </div>
