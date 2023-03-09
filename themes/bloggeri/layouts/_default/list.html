@@ -2,12 +2,10 @@
 <div class="container">
     <div class="section">
         <div class="content">
-            <h1>{{ .Title }}</h1>
-            {{ .Content }}
  <div class="columns is-multiline">
        {{ range .Paginator.Pages }}
     <div class="column is-half">
-   {{ partial "widgets/post-card.html" . }}
+  {{ partial "widgets/post-card.html" . }}
     </div>
     {{ end }}
 </div>
