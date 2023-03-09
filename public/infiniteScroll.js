@@ -24,10 +24,6 @@ async function loadNextListPage() {
       /* console.log("pagination: Data parsed into temporary DOM!"); */
       let newPaginatorItems = nextPageDom.querySelector("main").children;
       newPaginatorItems[0].removeAttribute("open");
-      for (i = 0; i < newPaginatorItems.length; i++) {
-        currentPagePaginationContainer.append(newPaginatorItems[i].cloneNode(true));
-      }
-      /* console.log("pagination: New items added!"); */
 
       /* Update the history to the last page loaded */
       let state = { 
