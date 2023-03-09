@@ -3,7 +3,7 @@
   {{ $range := .Pages }}
   {{ $paginator := .Paginate $range }}
   {{ range $paginator.Pages }}
-    {{ partial "post.html" . }}
+    {{ partial "widgets/post-card.html" . }}
   {{- end }}
   </main>
 {{- if .Paginator.HasNext -}}
