@@ -8,7 +8,6 @@ if (npl !== null) {
 await fetch(npl.getAttribute("href")).then((response) => response.text()).then((text) => {
 let parserh = new DOMParser();
 let doch = parserh.parseFromString(text, "text/html");
-let bpNode = document.adoptNode(pst);
 npl = doch.querySelector(".paginator-next-page"); mnp.appendChild(bpNode);
 });})(); 
 }});},
