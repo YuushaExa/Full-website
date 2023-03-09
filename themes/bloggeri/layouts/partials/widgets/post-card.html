@@ -3,6 +3,7 @@
     <div class="card-image">
         <figure class="image is-3by2">     
 {{ range findRE `<img.+?>` .Content }}
+              {{ replaceRE `.*src="(.+?)".*` "$1" . m}}
 {{ end }}
         </figure> 
     </div>
