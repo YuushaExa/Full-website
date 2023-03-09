@@ -9,7 +9,6 @@
     {{ if not (in (string .Site.BaseURL) "localhost") }}
     {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
-            <script defer src="/js/infiniteScroll.js"></script>
       <link defer rel="stylesheet" href="{{ "css/bulma.css" | relURL }}" />
     <link defer rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
