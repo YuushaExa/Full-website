@@ -1,12 +1,20 @@
 {{ define "main" }}
-<main>
-  {{ $range := .Pages }}
-  {{ $paginator := .Paginate $range }}
-  {{ range $paginator.Pages }}
-    {{ partial "widgets/post-card.html" . }}
-  {{- end }}
-  </main>
+<div class="container">
+    <div class="section">
+        <div class="content">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+ <div class="columns is-multiline">
+       {{ range .Paginator.Pages }}
+    <div class="column is-half">
+        {{ partial "widgets/post-card.html" . }}
+    </div>
+    {{ end }}
+</div>
 {{- if .Paginator.HasNext -}}
   <a class="paginator-next-page hidden" href="{{ .Paginator.Next.URL | absURL}}">Next</a>
 {{- end -}}
+        </div>     
+    </div>
+</div>
 {{ end }}
