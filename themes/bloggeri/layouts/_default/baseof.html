@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     {{- partial "head.html" . -}}
-        <script src="static/js/infiniteScroll.js"></script>
+{{ partial "js" . }}
     <body>
         {{- partial "header.html" . -}}
                 {{ partial "widgets/search.html" . }}
