@@ -1,4 +1,5 @@
 <div class="image-post">
-  {{ if .Ordinal }} loading="lazy"{{ end}}
-<img src="{{ .Destination | safeURL }}" alt="{{ $.Page.Title }}"/>
+ {{ if .Ordinal }} 
+<img data-src="{{ .Destination | safeURL }}" alt="{{ $.Page.Title }}"/>
+  {{ end}}
 </div>
