@@ -1,4 +1,4 @@
 source: themes/bloggeri/content
-/blog/2019
+/blog/
 glob: index.html
 bundle_dir: pagefind
