@@ -1,3 +1,4 @@
-source: content
+source: themes/bloggeri/content
+/blog/2019
 glob: index.html
 bundle_dir: pagefind
