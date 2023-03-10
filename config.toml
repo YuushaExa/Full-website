@@ -40,3 +40,8 @@ home = [ "HTML", "RSS", "JSON" ]
 [[menu.footer]]
   name = "Privacy"
   url = "/privacy"
+
+[[menu.main]]
+  name = "Search"
+  identifier = "search"
+  url = "/search"
