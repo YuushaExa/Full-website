@@ -1,4 +1,3 @@
-source: themes/bloggeri/content
-/blog/
+source: themes/bloggeri/
 glob: index.html
 bundle_dir: pagefind
