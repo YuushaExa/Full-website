@@ -1,3 +1,4 @@
 <div class="image-post">
 <img src="{{ .Destination | safeURL }}" alt="{{ $.Page.Title }}"/>
 </div>
+{{ if .Ordinal }} loading="lazy"{{ end}}
