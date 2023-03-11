@@ -20,8 +20,8 @@
     </div>
           {{ with .Params.images }}
   <figure class="title-image">
-    <img src="https://wsrv.nl/?url={{ index . 1 }}&output=webp&maxage=1&w=550" alt="">
-  </figure>
+<img src="{{ index . 0 }}" alt="">
+ </figure>
 {{ end }}
         <div class="content">
           {{ .Content }}
