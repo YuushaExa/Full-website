@@ -1,5 +1,4 @@
-<div class="mb-3">
-  <input type="text" id="search_input" class="form-control" placeholder="Search..." disabled>
-</div>
-
-<div id="search_results_container"></div>
+---
+title: "Find something~"
+layout: search
+---
