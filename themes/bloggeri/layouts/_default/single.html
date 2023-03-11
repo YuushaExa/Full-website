@@ -18,8 +18,8 @@
         </div>
       </div>
     </div>
-        {{ range findRE `<img.+?>` .Content 1 }}
-              <img src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200"/>
+  {{ if eq .Ordinal 0 }}
+<img src="{{ index . 1 }}&w=200" alt="">
 {{ end }}
         <div class="content">
           {{ .Content }}
