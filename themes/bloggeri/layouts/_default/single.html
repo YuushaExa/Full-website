@@ -51,10 +51,12 @@
   </div>
   
   <script>
-    $('article img').each(function(){
-  var $this = $(this); 
-  $this.attr('src',$this.attr('src') + "&w=550");
-})
+    var a = document.querySelector('image-post').getElementsByTagName('img'),
+    length = a.length;
+
+for(var i=0; i< length; i++){
+    a[i].href += '&w=550';
+}
   </script>
   
  <script defer src="/js/posts.js"></script>
