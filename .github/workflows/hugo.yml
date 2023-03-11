@@ -60,9 +60,8 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
-      - name: create search index
-        run: tar -xf pagefind_extended.tar.gz && chmod u+x pagefind_extended && ./pagefind_extended && rm -f pagefind_extended
-
+      - run: npm i pagefind
+      - run: npm_config_yes=true npx pagefind --source "public" --bundle-dir mysearch
   # Deployment job
   deploy:
     environment:
