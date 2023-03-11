@@ -1,3 +1,2 @@
 source: public
-glob: blog/*/*.{html}
 bundle_dir: pagefind
