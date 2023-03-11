@@ -18,7 +18,10 @@
         </div>
       </div>
     </div>
-<img src="{{ index . 1 }}&w=200" alt="">
+        {{ range first 1 (.Resources.ByType "image") }} 
+ <img src="{{ .Permalink }}&w=200" />
+{{ end }}
+
         <div class="content">
           {{ .Content }}
         </div>
