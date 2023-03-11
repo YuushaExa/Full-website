@@ -1,6 +1,6 @@
 {{ if eq .Ordinal 0 }}
 <div class="image-post">
-<img src="{{ .Destination | safeURL }}" alt="{{ $.Page.Title }}"/>
+<img src="https://wsrv.nl/?url={{ .Destination | safeURL }}" alt="{{ $.Page.Title }}&output=webp&maxage=1d"/>
 </div>
 {{ end}}
 {{ if .Ordinal }}
