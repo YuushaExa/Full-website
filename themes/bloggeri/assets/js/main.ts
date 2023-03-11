@@ -1,5 +1,5 @@
 /**
- * TEMPLATE_TODO: Required. Remove this import and all usages of.
+ * TEMPLATE_TODO: Required. Remove this import and all usages of stats.
  */
 import Fuse from './fuse.js';
 import {Hit, Page} from './types.js';
@@ -22,7 +22,7 @@ const RIGHT_SIDE_MATCH_HTML = '</span>';
  * TEMPLATE_TODO: Required. Tell Fuse.js which keys to search on.
  */
 const FUSE_OPTIONS = {
-  keys: ['title'],
+  keys: ['title', 'country', 'crew', 'vehicle', 'purpose'],
   ignoreLocation: true,
   includeMatches: true,
   minMatchCharLength: 3
@@ -44,7 +44,7 @@ const enableInputEl = (): void => {
 const initFuse = (pages: Page[]): void => {
   const startTime = performance.now();
   fuse = new Fuse(pages, FUSE_OPTIONS);
-  setFusejsInstantiationTime(startTime, performance.now());
+  stats.setFusejsInstantiationTime(startTime, performance.now());
 };
 
 const doSearchIfUrlParamExists = (): void => {
@@ -66,8 +66,8 @@ const fetchJsonIndex = (): void => {
   const startTime = performance.now();
   fetch(JSON_INDEX_URL)
     .then(response => {
-      setJsonIndexContentEncoding(response);
-      setJsonIndexContentSize(response);
+      stats.setJsonIndexContentEncoding(response);
+      stats.setJsonIndexContentSize(response);
       return response.json();
     })
     .then(data => {
@@ -75,8 +75,8 @@ const fetchJsonIndex = (): void => {
       initFuse(pages);
       enableInputEl();
       doSearchIfUrlParamExists();
-      setJsonIndexFetchTime(startTime, performance.now());
-      setJsonIndexArrayLength(pages.length);
+      stats.setJsonIndexFetchTime(startTime, performance.now());
+      stats.setJsonIndexArrayLength(pages.length);
     })
     .catch(error => {
       console.error(`Failed to fetch JSON index: ${error.message}`);
@@ -158,8 +158,8 @@ const handleSearchEvent = (): void => {
   const hits = getHits(query);
   setUrlParam(query);
   renderHits(hits);
-  setHitCount(hits.length);
-  setSearchEventTime(startTime, performance.now());
+  stats.setHitCount(hits.length);
+  stats.setSearchEventTime(startTime, performance.now());
 };
 
 const handleDOMContentLoaded = (): void => {
