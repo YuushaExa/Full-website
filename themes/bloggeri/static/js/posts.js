@@ -24,7 +24,7 @@ function preloadImage(img) {
   img.src = src;
 }
 
-    $('#image-post img').each(function(){
+    $('article img').each(function(){
      this.href += '&w=550';
   });
 
