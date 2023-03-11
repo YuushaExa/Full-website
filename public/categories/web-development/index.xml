@@ -6,7 +6,17 @@
     <description>Recent content in Web development on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2019 18:42:38 +0200</lastBuildDate><atom:link href="https://yuushaexa.github.io/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Dec 2021 03:01:59 +0300</lastBuildDate><atom:link href="https://yuushaexa.github.io/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A-Train</title>
+      <link>https://yuushaexa.github.io/blog/2019/a-train/</link>
+      <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/blog/2019/a-train/</guid>
+      <description>The first game in the A-Ressha de Ikou («Let’s Take the A-Train») series, which would eventually become known overseas as A-Train. The goal of the game is to build a prosperous railroad company. Unlike the second (Railroad Empire) and third (A-Train) games in the series, the original A-Ressha de Ikou never saw an international release.
+Some of the games influenced by later entries in this series include the SimCity series (and in turn the wider Sim/Sims franchise) and the Railroad Tycoon series (and in turn, the wider Sid Meier franchise).</description>
+    </item>
+    
     <item>
       <title>This Post is Full of Lorem Ipsum</title>
       <link>https://yuushaexa.github.io/blog/2019/lorem-ipsum/</link>
@@ -17,8 +27,46 @@
 What is Lorem Ipsum? In mollis cursus ligula, et venenatis neque maximus ut&amp;hellip;
 Vivamus ut tincidunt urna. Nam eu mollis dolor&amp;hellip;
 In mollis cursus ligula Etiam et ligula sit amet urna aliquam suscipit&amp;hellip;
- Cras dui nulla, ornare eget fermentum quis, accumsan vitae purus.  Nam eget pharetra arcu. Cras dui nulla, ornare eget&amp;hellip;
-Nullam a risus maximus Fusce facilisis non ante quis blandit&amp;hellip;</description>
+Cras dui nulla, ornare eget fermentum quis, accumsan vitae purus. Nam eget pharetra arcu. Cras dui nulla, ornare eget&amp;hellip;
+Nullam a risus maximus Fusce facilisis non ante quis blandit&amp;hellip;
+Donec vel accumsan justo Maecenas eu libero ac justo tempor pellentesque&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Dead Zone</title>
+      <link>https://yuushaexa.github.io/blog/2019/dead-zone/</link>
+      <pubDate>Sat, 08 Oct 2016 12:17:42 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/blog/2019/dead-zone/</guid>
+      <description>Dead Zone is a futuristic digital comic and text adventure game by Sunsoft. In the space calendar 0385, the Earth suffers from overpopulation and humans started to build space colonies. Kirk, Dead Zone’s protagonist, works for the Earth federation’s space development office. He is a brilliant engineer in space physics and he works for Sirius’ third planet colony. He also got engaged with his beloved girlfriend Marry but had to postpone their wedding because of work obligations.</description>
+    </item>
+    
+    <item>
+      <title>All Night Nippon Super Mario Bros.</title>
+      <link>https://yuushaexa.github.io/blog/2019/mh-mk/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/blog/2019/mh-mk/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros., released in 1986 for the Famicom Disk System. This version is based on the Japanese radio program All Night Nippon, and it was given out as a raffle prize on the show itself. The game was published by Fuji Television. Essentially, this game is a mishmash of levels from Super Mario Bros 1 and 2 except with the sprites of the Toads and various enemies replaced with Japanese celebrities for a humorous effect as well as item placements are different.</description>
+    </item>
+    
+    <item>
+      <title>Deep Dungeon: Madou Senki</title>
+      <link>https://yuushaexa.github.io/blog/2019/deep-dungeon-madou-senki/</link>
+      <pubDate>Mon, 09 Jun 2014 20:25:19 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/blog/2019/deep-dungeon-madou-senki/</guid>
+      <description>The town of Dorl has an infestation of demons who currently reside in the castles dungeon after a portal to the underworld was opened. The emperor of the underworld, Emperor Ruu, commanded his demons to raid the town to steal its treasure and during this ransacking the demons also managed to take Princess Etna’s soul away too, leaving her in a comatose state. Many brave adventurers have entered the underground dungeon to try and reclaim her soul from this demon king, but none have returned successfully yet.</description>
+    </item>
+    
+    <item>
+      <title>Dandy: Zeuon no Fukkatsu</title>
+      <link>https://yuushaexa.github.io/blog/2019/dandy-zeuon-no-fukkatsu/</link>
+      <pubDate>Wed, 03 Aug 2011 22:47:11 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/blog/2019/dandy-zeuon-no-fukkatsu/</guid>
+      <description>A conversion port of the Atari 8-Bit computer game Dandy. Though it has been changed quite a bit for it’s Japanese audience and doesn’t resemble the original game very much at all.
+The view is overhead and much like Zelda you walk around and explore while using your sword to defeat various enemies. There are various dungeons and villages you can visit and the game even has a day/night cycle.</description>
     </item>
     
   </channel>

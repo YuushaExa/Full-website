@@ -5,6 +5,25 @@
     <link>https://yuushaexa.github.io/categories/</link>
     <description>Recent content in Categories on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://yuushaexa.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Dec 2021 03:01:59 +0300</lastBuildDate><atom:link href="https://yuushaexa.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blogging</title>
+      <link>https://yuushaexa.github.io/categories/blogging/</link>
+      <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/categories/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web development</title>
+      <link>https://yuushaexa.github.io/categories/web-development/</link>
+      <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/categories/web-development/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
