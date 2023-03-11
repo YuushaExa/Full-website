@@ -20,7 +20,7 @@
     </div>
           {{ with .Params.images }}
   <figure class="title-image">
-<img src="{{ index . 0 }}" alt="">
+<img src="{{ index . 0 }}&w=550" alt="">
  </figure>
 {{ end }}
         <div class="content">
@@ -48,17 +48,7 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <script>
-var a = document.getElementsByClassName('image-post img'),
-    length = a.length;
-
-for(var i=0; i< length; i++){
-    a[i].src += '&w=550';
-}
-  </script>
-  
+  </div>  
  <script defer src="/js/posts.js"></script>
    <script defer src="/js/test.js"></script>
 </section>
