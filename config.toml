@@ -15,7 +15,7 @@ paginate = 10
             unsafe = true
             
             [outputs]
-home = [ "HTML", "RSS", "JSON" ]
+search = [ "HTML", "RSS", "JSON" ]
             
             [taxonomies]
     tag = "tags"
