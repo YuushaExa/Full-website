@@ -22,7 +22,7 @@ const RIGHT_SIDE_MATCH_HTML = '</span>';
  * TEMPLATE_TODO: Required. Tell Fuse.js which keys to search on.
  */
 const FUSE_OPTIONS = {
-  keys: ['title', 'url'],
+  keys: ['title'],
   ignoreLocation: true,
   includeMatches: true,
   minMatchCharLength: 3
