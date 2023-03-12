@@ -1,6 +1,5 @@
 export interface Page {
   title: string; // == eva_number
-  url: string;
 }
 
 interface Match {
