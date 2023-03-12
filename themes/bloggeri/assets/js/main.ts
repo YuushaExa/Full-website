@@ -1,6 +1,7 @@
 /**
  * TEMPLATE_TODO: Required. Remove this import and all usages of stats.
  */
+
 import Fuse from './fuse.js';
 import {Hit, Page} from './types.js';
 
@@ -44,7 +45,7 @@ const enableInputEl = (): void => {
 const initFuse = (pages: Page[]): void => {
   const startTime = performance.now();
   fuse = new Fuse(pages, FUSE_OPTIONS);
-  setFusejsInstantiationTime(startTime, performance.now());
+  .setFusejsInstantiationTime(startTime, performance.now());
 };
 
 const doSearchIfUrlParamExists = (): void => {
@@ -66,8 +67,8 @@ const fetchJsonIndex = (): void => {
   const startTime = performance.now();
   fetch(JSON_INDEX_URL)
     .then(response => {
-      setJsonIndexContentEncoding(response);
-      setJsonIndexContentSize(response);
+      .setJsonIndexContentEncoding(response);
+      .setJsonIndexContentSize(response);
       return response.json();
     })
     .then(data => {
@@ -75,8 +76,8 @@ const fetchJsonIndex = (): void => {
       initFuse(pages);
       enableInputEl();
       doSearchIfUrlParamExists();
-      setJsonIndexFetchTime(startTime, performance.now());
-      setJsonIndexArrayLength(pages.length);
+      .setJsonIndexFetchTime(startTime, performance.now());
+      .setJsonIndexArrayLength(pages.length);
     })
     .catch(error => {
       console.error(`Failed to fetch JSON index: ${error.message}`);
@@ -158,8 +159,8 @@ const handleSearchEvent = (): void => {
   const hits = getHits(query);
   setUrlParam(query);
   renderHits(hits);
-  setHitCount(hits.length);
-  setSearchEventTime(startTime, performance.now());
+  .setHitCount(hits.length);
+  .setSearchEventTime(startTime, performance.now());
 };
 
 const handleDOMContentLoaded = (): void => {
