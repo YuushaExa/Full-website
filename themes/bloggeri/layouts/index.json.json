@@ -2,8 +2,7 @@
 
 {{- range site.RegularPages.ByPublishDate.Reverse -}}
   {{- $item := dict
-  "title" .Title
-  "url" .RelPermalink -}}
+  "title" .Title -}}
 
   {{- $list = $list | append $item -}}
 {{- end -}}
