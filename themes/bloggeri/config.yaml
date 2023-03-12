@@ -1,0 +1,13 @@
+baseURL: http://example.org
+languageCode: en-us
+title: Hugo client-side search template
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+disableKinds:
+  - taxonomy
+  - term
