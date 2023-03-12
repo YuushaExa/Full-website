@@ -3,6 +3,7 @@
     {{- partial "head.html" . -}}
     <body>
         {{- partial "header.html" . -}}
+          {{ partial "widget/search.html" . }}
           {{ partial "search.html" . }}
         <main>
         {{- block "main" . }}{{- end }}
