@@ -2,7 +2,14 @@
 
 {{- range site.RegularPages.ByPublishDate.Reverse -}}
   {{- $item := dict
-  "title" .Title -}}
+  "title" .Title
+  "country" .Params.country
+  "crew" .Params.crew
+  "vehicle" .Params.vehicle
+  "param_date" .Params.param_date
+  "duration" .Params.duration
+  "purpose" .Params.purpose
+  "url" .RelPermalink -}}
 
   {{- $list = $list | append $item -}}
 {{- end -}}
