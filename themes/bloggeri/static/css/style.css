@@ -37,6 +37,12 @@ img {
     padding: 0;
 }
 
+#search {
+	position: relative;
+    width: 500px;
+    margin: 0 auto;
+}
+
 .post-title {
     color: #fff!important;
     text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
