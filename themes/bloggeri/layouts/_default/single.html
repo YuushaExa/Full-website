@@ -1,11 +1,10 @@
 {{ define "main" }}
 <section class="section">
   <article>      
-    <div class="columns is-centered">
+    <div class="container">
       <div class="column max-800px">
         <h1 data-pagefind-meta="title" class="post-title">{{ .Title }}</h1>
         <div class="title subtitle heading is-6">
-          <div class="container">
         <div class="column">
           {{ range $idx, $category := .Params.categories }}
           {{- if ne $idx 0 }}, {{ end }}<a href="{{ "categories/" | relURL }}{{ $category | urlize }}">{{ $category }}</a>
@@ -16,7 +15,6 @@
           {{- end }}
                       </div>
         </div>
-      </div>
     </div>
   <div class="content">
           {{ .Content }}
