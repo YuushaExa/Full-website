@@ -49,6 +49,7 @@ img {
     font-size: 40px;
     font-weight: 600;
     transition: 0.3s ease;
+    text-decoration:none;
 }
 .post-title a:hover {
     text-shadow: #17a6f9 1px 0 10px;
