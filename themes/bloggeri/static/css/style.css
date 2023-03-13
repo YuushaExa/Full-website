@@ -3,6 +3,9 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     font-size: 15px;
     color: #fff;
     line-height: 1.625;
+    display: flex;
+    flex-direction: column;
+    height: 100vh
 }
 .post-title {
     color: #fff!important;
