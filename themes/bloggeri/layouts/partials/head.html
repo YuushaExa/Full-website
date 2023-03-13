@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8">
-    <meta content='width=device-width, maximum-scale=2' name='viewport'/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <title>{{ if not .IsHome }}{{ with .Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{end }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}" />
