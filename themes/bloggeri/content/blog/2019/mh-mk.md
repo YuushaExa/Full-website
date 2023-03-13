@@ -11,8 +11,8 @@ id: 13078
 categories:
   - Web development
   - Blogging
-tag:
-    - '#1 Nintendo EAD'
+tags:
+    - #1 Nintendo EAD
     - Platform
 post_format: []
 ---
