@@ -43,14 +43,14 @@ img {
     margin: 0 auto;
 }
 
-.post-title {
+.post-title a {
     color: #fff!important;
     text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
     font-size: 40px;
     font-weight: 600;
     transition: 0.3s ease;
 }
-.post-title:hover {
+.post-title a:hover {
     text-shadow: #17a6f9 1px 0 10px;
 	transition: 0.3s ease;
 }
