@@ -12,7 +12,7 @@ categories:
   - Web development
   - Blogging
 tags:
-    - #1 Nintendo EAD
+    - Nintendo EAD
     - Platform
 post_format: []
 ---
