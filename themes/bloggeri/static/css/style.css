@@ -37,7 +37,7 @@ li {
     text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
     font-size: 40px;
     font-weight: 600;
-	transition: 0.3s ease;
+    transition: 0.3s ease;
 }
 .post-title:hover {
     text-shadow: #17a6f9 1px 0 10px;
@@ -49,6 +49,7 @@ background: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 30%,rg
 }
 .image-first img {
     height: auto;
+    width: 90%;
     border-radius: 4px;
     display: flex;
     margin: 5px auto;
