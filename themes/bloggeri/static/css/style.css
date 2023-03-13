@@ -18,11 +18,15 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     text-shadow: #17a6f9 1px 0 10px;
 	transition: 0.3s ease;
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+
 
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 main {
