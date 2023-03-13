@@ -7,6 +7,31 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     flex-direction: column;
     height: 100vh
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    flex: 1;
+}
+
+ul,
+li {
+	list-style-type: none
+}
+   body {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 25%;
+	   max-width: 1040px;
+    margin: 0 auto;
+    padding: 0;
+	    display: flex;
+    flex-direction: column;
+    }
+
 .post-title {
     color: #fff!important;
     text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
@@ -17,23 +42,6 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
 .post-title:hover {
     text-shadow: #17a6f9 1px 0 10px;
 	transition: 0.3s ease;
-}
-* {
-    margin: 0;
-    padding: 0;
-}
-
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-.max-800px {
-    max-width: 800px;
 }
 
 .image-post img,.image-first img  {
@@ -65,13 +73,3 @@ background: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 30%,rg
 	}
 }
 
-ul,
-li {
-	list-style-type: none
-}
-
-   body {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center 25%;
-    }
