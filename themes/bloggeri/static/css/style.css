@@ -3,9 +3,6 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     font-size: 15px;
     color: #fff;
     line-height: 1.625;
-    display: flex;
-    flex-direction: column;
-    height: 100vh
 }
 
 * {
@@ -25,12 +22,15 @@ li {
     background-attachment: fixed;
     background-size: cover;
     background-position: center 25%;
-	   max-width: 1040px;
-    margin: 0 auto;
-    padding: 0;
-	    display: flex;
+    display: flex;
     flex-direction: column;
     }
+
+.container {
+	max-width: 1040px;
+    margin: 0 auto;
+    padding: 0;
+}
 
 .post-title {
     color: #fff!important;
