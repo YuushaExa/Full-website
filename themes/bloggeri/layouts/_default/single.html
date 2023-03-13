@@ -3,7 +3,7 @@
   <article>      
     <div class="container">
       <div class="post">
-        <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}<a/></h1>
+        <h1 data-pagefind-meta="title" class="post-title">{{ .Title }}</h1>
         <div class="category">
           {{ range $idx, $category := .Params.categories }}
           {{- if ne $idx 0 }}, {{ end }}<a href="{{ "categories/" | relURL }}{{ $category | urlize }}">{{ $category }}</a>
