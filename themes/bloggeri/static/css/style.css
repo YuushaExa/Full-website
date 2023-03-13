@@ -1,7 +1,19 @@
-.logo h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1.5em;
+html{overflow-y:scroll;
+font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,helvetica neue,sans-serif;
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.625;
 }
+.post-title {
+    color: #fff!important;
+    text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
+    font-size: 40px;
+    font-weight: 600;
+}
+.post-title:hover {
+    text-shadow: #17a6f9 1px 0 10px;
+}
+
 body {
     display: flex;
     flex-direction: column;
