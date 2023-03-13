@@ -36,10 +36,10 @@ main {
     max-width: 800px;
 }
 
-.image-post img {
+.image-post img,.image-first img  {
 background: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 30%,rgba(0,0,0,0.15) 70%,rgba(0,0,0,0.5) 100%);
 }
-.image-post img:nth-child(1) {
+.image-first img {
     height: auto;
     border-radius: 4px;
     display: flex;
@@ -47,7 +47,7 @@ background: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 30%,rg
     box-shadow: 0 0 15px #000;
 }
 	
-.image-post img {
+.image-post img,.image-first img  {
 	animation: fadein .3s both
 }
 
