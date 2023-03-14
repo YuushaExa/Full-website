@@ -24,7 +24,7 @@ function preloadImage(img) {
   img.src = src;
 }
 
-  $('.pagefind-ui__result-image').each(function(){
+  $('.pagefind-ui__result-thumb img').each(function(){
   var $this = $(this); 
   $this.attr('src',$this.attr('src') + "&w=100");
 });
