@@ -24,7 +24,7 @@ function preloadImage(img) {
   img.src = src;
 }
 
-  $('image-first img').each(function(){
+  $('.image-first img').each(function(){
   var $this = $(this); 
   $this.attr('src',$this.attr('src') + "&w=100");
 });
