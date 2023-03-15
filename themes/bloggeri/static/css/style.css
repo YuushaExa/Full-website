@@ -44,6 +44,7 @@ img {
 	position: relative;
     max-width: 500px;
     margin: 0 auto;
+	    height: 42px;
 }
 .post-title a {
     color: #fff!important;
