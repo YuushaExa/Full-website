@@ -54,6 +54,10 @@ a {
     box-shadow: none;
     color: #7a7a7a;
     opacity: .5;
-        cursor: not-allowed;
         pointer-events: none;
 }
+li.pagination-previous[disabled], li.pagination-next[disabled], li.pagination-link[disabled]
+{
+              cursor: not-allowed;
+}
+
