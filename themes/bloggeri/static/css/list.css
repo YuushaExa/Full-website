@@ -12,7 +12,7 @@
     opacity: .5;
 }
 .pagination-link.is-current {
-border-color: #404246!important;
+      background-color: #3273dc;
     border-color: #3273dc;
     color: #fff;
 }
