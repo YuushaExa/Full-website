@@ -53,3 +53,5 @@ a {
         cursor: not-allowed;
         pointer-events: none;
 }
+[disabled].pagination-previous, [disabled].pagination-next, [disabled].pagination-link, [disabled].pagination-ellipsis, [disabled].button, [disabled].input, [disabled].textarea, .select select[disabled], [disabled].file-cta, [disabled].file-name, fieldset[disabled] .pagination-previous, fieldset[disabled] .pagination-next, fieldset[disabled] .pagination-link, fieldset[disabled] .pagination-ellipsis, fieldset[disabled] .button, fieldset[disabled] .input, fieldset[disabled] .textarea, fieldset[disabled] .select select, .select fieldset[disabled] select, fieldset[disabled] .file-cta, fieldset[disabled] .file-name {
+      cursor: not-allowed;}
