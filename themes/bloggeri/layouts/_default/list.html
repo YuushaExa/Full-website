@@ -17,10 +17,6 @@
         </div>     
     </div>
 </div>
-
-{{ $css := resources.Get "css/list.css" }}
-{{ $style := $css | resources.Minify }}
-
  <script>
 const images = document.querySelectorAll('[data-src]');
 const config = {
@@ -48,5 +44,6 @@ function preloadImage(img) {
   img.src = src;
 }
 </script>
-
 {{ end }}
+{{ $css := resources.Get "css/list.css" }}
+{{ $style := $css | resources.Minify }}
