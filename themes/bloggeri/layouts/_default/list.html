@@ -44,6 +44,5 @@ function preloadImage(img) {
   img.src = src;
 }
 </script>
-{{ $css := resources.Get "css/list.css" }}
-{{ $style := $css | resources.Minify }}
+        <link rel="stylesheet" href="{{ "css/list.css" | relURL }}" /> 
 {{ end }}
