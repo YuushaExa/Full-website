@@ -1,0 +1,18 @@
+.pagination-list {
+      align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.pagination-previous[disabled], .pagination-next[disabled], .pagination-link[disabled] {
+    background-color: #dbdbdb;
+    border-color: #dbdbdb;
+    box-shadow: none;
+    color: #7a7a7a;
+    opacity: .5;
+}
+.pagination-link.is-current {
+    background-color: #3273dc;
+    border-color: #3273dc;
+    color: #fff;
+}
