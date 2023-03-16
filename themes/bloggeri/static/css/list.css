@@ -56,8 +56,3 @@ a {
     opacity: .5;
         pointer-events: none;
 }
-li .pagination-previous[disabled], li .pagination-next[disabled], li .pagination-link[disabled]
-{
-              cursor: not-allowed;
-}
-
