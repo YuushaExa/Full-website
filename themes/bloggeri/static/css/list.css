@@ -16,6 +16,9 @@
     border-color: #3273dc;
     color: #fff;
 }
+.pagination-link {
+border-color: #b5b5b5!important;
+}
 .pagination-previous, .pagination-next, .pagination-link {
 border-color: #404246!important;
     color: #000;
