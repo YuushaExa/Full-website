@@ -15,6 +15,7 @@
       background-color: #3273dc;
     border-color: #3273dc;
     color: #fff;
+      pointer-events: none;
 }
 .pagination-link:hover {
 border-color: #b5b5b5!important;
