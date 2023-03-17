@@ -26,8 +26,8 @@ home = [ "HTML", "RSS", "JSON" ]
   url = "/about"
 
 [[menu.main]]
-  name = "Blog"
-  url = "/blog"
+  name = "Famicom"
+  url = "/famicom"
   
   [[menu.main]]
     name = "Categories"
