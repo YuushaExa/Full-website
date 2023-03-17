@@ -4,9 +4,8 @@ title = "GameLibrary"
 theme = "bloggeri"
 paginate = 10
 [params]
-    description = "My site description"
-    author = "Janne"
-    authorImage = "https://howlongtobeat.com/games/Twinbee_flyer.png?width=250"
+    description = "Games Library"
+    author = "Yuusha"
 [markup]
     defaultMarkdownHandler = "goldmark"
 
@@ -28,6 +27,10 @@ home = [ "HTML", "RSS", "JSON" ]
 [[menu.main]]
   name = "Famicom"
   url = "/famicom"
+  
+  [[menu.main]]
+  name = "SNES"
+  url = "/snes"
   
   [[menu.main]]
     name = "Categories"
