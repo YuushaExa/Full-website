@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en-us"><head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Find something~ | My New Hugo Site</title>
-    <meta name="description" content="My site description">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Search | GameLibrary</title>
+    <meta name="description" content="Games Library">
     <link rel="canonical" href="https://yuushaexa.github.io/search/" />
-    <meta property="og:title" content="Find something~" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://yuushaexa.github.io/search/" /><meta property="article:section" content="" />
-
-
+    <meta property="og:title" content="Search" />
+<meta property="og:description" content="Games Library" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yuushaexa.github.io/search/" />
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Find something~"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Search"/>
+<meta name="twitter:description" content="Games Library"/>
 
     
     
     
-      <link defer rel="stylesheet" href="/css/bulma.css" />
-    <link defer rel="stylesheet" href="/css/style.css" />
-     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css" /> 
+    <link href="https://wsrv.nl/" rel="preconnect" crossorigin>
 </head>
 <body><header>
     <nav class="navbar" role="navigation">
         <div class="container">
             <div class="navbar-brand">
                 <a href="/" title="home" class="navbar-item">
-                    <span class="logo"><h1>My New Hugo Site</h1></span>
+                    <span class="logo"><h1>GameLibrary</h1></span>
                 </a>
                 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -42,18 +39,191 @@
                     
                     <a href="/about" class="navbar-item">About</a>
                     
-                    <a href="/blog" class="navbar-item">Blog</a>
-                    
                     <a href="/categories" class="navbar-item">Categories</a>
                     
+                    <a href="/famicom" class="navbar-item">Famicom</a>
+                    
                     <a href="/search" class="navbar-item">Search</a>
+                    
+                    <a href="/snes" class="navbar-item">SNES</a>
                     
                 </div>
             </div>
         </div>
     </nav>
 </header>
+<div id="search"></div>
+
+
+        <main>
 <main>
+    
+    <form action="/search" method="GET">
+    <input type="search" name="q" id="search-query" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+    
+    <div id="search-results"></div>
+    <div class="search-loading">Loading...</div>
+
+    <script id="search-result-template" type="text/x-js-template">
+    <div id="summary-${key}">
+        <h3><a href="${link}">${title}</a></h3>
+        <p>${snippet}</p>
+        <p>
+            <small>
+                ${ isset tags }Tags: ${tags}<br>${ end }
+            </small>
+        </p>
+    </div>
+    </script>
+
+    <script>
+        var summaryInclude = 180;
+var fuseOptions = {
+    shouldSort: true,
+    includeMatches: true,
+    includeScore: true,
+    tokenize: true,
+    location: 0,
+    distance: 100,
+    minMatchCharLength: 1,
+    keys: [
+        {name: "title", weight: 0.45},
+        {name: "contents", weight: 0.4},
+        {name: "tags", weight: 0.1},
+        {name: "categories", weight: 0.05}
+    ]
+};
+
+
+
+
+
+var inputBox = document.getElementById('search-query');
+if (inputBox !== null) {
+    var searchQuery = param("q");
+    if (searchQuery) {
+        inputBox.value = searchQuery || "";
+        executeSearch(searchQuery, false);
+    } else {
+        document.getElementById('search-results').innerHTML = '<p class="search-results-empty">Please enter a word or phrase above, or see <a href="/tags/">all tags</a>.</p>';
+    }
+}
+
+function executeSearch(searchQuery) {
+
+    show(document.querySelector('.search-loading'));
+
+    fetch('/index.json').then(function (response) {
+        if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            return;
+        }
+        
+        response.json().then(function (pages) {
+            var fuse = new Fuse(pages, fuseOptions);
+            var result = fuse.search(searchQuery);
+            if (result.length > 0) {
+                populateResults(result);
+            } else {
+                document.getElementById('search-results').innerHTML = '<p class=\"search-results-empty\">No matches found</p>';
+            }
+            hide(document.querySelector('.search-loading'));
+        })
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+        });
+    });
+}
+
+function populateResults(results) {
+
+    var searchQuery = document.getElementById("search-query").value;
+    var searchResults = document.getElementById("search-results");
+
+    
+    var templateDefinition = document.getElementById("search-result-template").innerHTML;
+
+    results.forEach(function (value, key) {
+
+        var contents = value.item.contents;
+        var snippet = "";
+        var snippetHighlights = [];
+
+        snippetHighlights.push(searchQuery);
+        snippet = contents.substring(0, summaryInclude * 2) + '&hellip;';
+
+        
+        var tags = ""
+        if (value.item.tags) {
+            value.item.tags.forEach(function (element) {
+                tags = tags + "<a href='/tags/" + element + "'>" + "#" + element + "</a> "
+            });
+        }
+
+        var output = render(templateDefinition, {
+            key: key,
+            title: value.item.title,
+            link: value.item.permalink,
+            tags: tags,
+            categories: value.item.categories,
+            snippet: snippet
+        });
+        searchResults.innerHTML += output;
+
+        snippetHighlights.forEach(function (snipvalue, snipkey) {
+            var instance = new Mark(document.getElementById('summary-' + key));
+            instance.mark(snipvalue);
+        });
+
+    });
+}
+
+function render(templateString, data) {
+    var conditionalMatches, conditionalPattern, copy;
+    conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
+    
+    copy = templateString;
+    while ((conditionalMatches = conditionalPattern.exec(templateString)) !== null) {
+        if (data[conditionalMatches[1]]) {
+            
+            copy = copy.replace(conditionalMatches[0], conditionalMatches[2]);
+        } else {
+            
+            copy = copy.replace(conditionalMatches[0], '');
+        }
+    }
+    templateString = copy;
+    
+    var key, find, re;
+    for (key in data) {
+        find = '\\$\\{\\s*' + key + '\\s*\\}';
+        re = new RegExp(find, 'g');
+        templateString = templateString.replace(re, data[key]);
+    }
+    return templateString;
+}
+
+
+function show(elem) {
+    elem.style.display = 'block';
+}
+function hide(elem) {
+    elem.style.display = 'none';
+}
+function param(name) {
+    return decodeURIComponent((location.search.split(name + '=')[1] || '').split('&')[0]).replace(/\+/g, ' ');
+}
+
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</main>
+
+
         </main><footer class="footer">
     <div class="container">
         <div class="columns has-text-centered">
@@ -68,6 +238,16 @@
             
         </div>
     </div>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+           <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+        <script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
+        <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search" });
+    });
+</script>
+        <link rel="stylesheet" href="/css/fancybox.css" /> 
+    <script defer src="/js/all.js"></script>
 </footer>
 </body>
 </html>

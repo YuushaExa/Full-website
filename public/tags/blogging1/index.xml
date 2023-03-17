@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogging1 on My New Hugo Site</title>
+    <title>Blogging1 on GameLibrary</title>
     <link>https://yuushaexa.github.io/tags/blogging1/</link>
-    <description>Recent content in Blogging1 on My New Hugo Site</description>
+    <description>Recent content in Blogging1 on GameLibrary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Dec 2021 03:01:59 +0300</lastBuildDate><atom:link href="https://yuushaexa.github.io/tags/blogging1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A-Train</title>
-      <link>https://yuushaexa.github.io/blog/2019/a-train/</link>
+      <link>https://yuushaexa.github.io/famicom/a-train/</link>
       <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
       
-      <guid>https://yuushaexa.github.io/blog/2019/a-train/</guid>
+      <guid>https://yuushaexa.github.io/famicom/a-train/</guid>
       <description>The first game in the A-Ressha de Ikou («Let’s Take the A-Train») series, which would eventually become known overseas as A-Train. The goal of the game is to build a prosperous railroad company. Unlike the second (Railroad Empire) and third (A-Train) games in the series, the original A-Ressha de Ikou never saw an international release.
 Some of the games influenced by later entries in this series include the SimCity series (and in turn the wider Sim/Sims franchise) and the Railroad Tycoon series (and in turn, the wider Sid Meier franchise).</description>
     </item>

@@ -2,25 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yuushaexa.github.io/blog/</loc>
-    <lastmod>2023-03-02T19:20:24+00:00</lastmod>
-  </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/my-first-post/</loc>
+    <loc>https://yuushaexa.github.io/famicom/</loc>
     <lastmod>2023-03-02T19:20:24+00:00</lastmod>
   </url><url>
     <loc>https://yuushaexa.github.io/</loc>
     <lastmod>2023-03-02T19:20:24+00:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/big-challenge-gun-fighter/</loc>
+    <loc>https://yuushaexa.github.io/famicom/my-first-post/</loc>
+    <lastmod>2023-03-02T19:20:24+00:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/big-challenge-gun-fighter/</loc>
     <lastmod>2022-10-19T12:46:15+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/baseball/</loc>
+    <loc>https://yuushaexa.github.io/snes/family-computer-golf-japan-course/</loc>
+    <lastmod>2022-10-18T17:03:40+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/</loc>
+    <lastmod>2022-10-18T17:03:40+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/family-computer-golf-japan-course-prize-cart/</loc>
+    <lastmod>2022-08-30T20:48:13+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-4-clox/</loc>
+    <lastmod>2022-08-05T17:51:41+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/baseball/</loc>
     <lastmod>2022-06-29T16:05:25+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/akuu-senki-raijin/</loc>
+    <loc>https://yuushaexa.github.io/snes/baseball/</loc>
+    <lastmod>2022-06-29T16:05:25+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/akuu-senki-raijin/</loc>
     <lastmod>2022-03-14T10:34:14+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/a-train/</loc>
+    <loc>https://yuushaexa.github.io/snes/akuu-senki-raijin/</loc>
+    <lastmod>2022-03-14T10:34:14+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/a-train/</loc>
+    <lastmod>2021-12-11T03:01:59+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/a-train/</loc>
     <lastmod>2021-12-11T03:01:59+03:00</lastmod>
   </url><url>
     <loc>https://yuushaexa.github.io/categories/blogging/</loc>
@@ -41,84 +62,172 @@
     <loc>https://yuushaexa.github.io/tags/web-development1/</loc>
     <lastmod>2021-12-11T03:01:59+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/akumajou-dracula/</loc>
+    <loc>https://yuushaexa.github.io/snes/family-computer-golf-u-s-course/</loc>
+    <lastmod>2021-06-03T02:39:29+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famicom-tantei-club-part-ii-ushiro-ni-tatsu-shoujo-zenpen/</loc>
+    <lastmod>2021-05-10T03:11:57+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/akumajou-dracula/</loc>
     <lastmod>2020-09-19T12:04:33+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/cocona-world/</loc>
+    <loc>https://yuushaexa.github.io/snes/akumajou-dracula/</loc>
+    <lastmod>2020-09-19T12:04:33+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/cocona-world/</loc>
     <lastmod>2020-04-02T14:01:34+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/backgammon/</loc>
+    <loc>https://yuushaexa.github.io/snes/adian-no-tsue/</loc>
+    <lastmod>2020-03-06T16:34:35+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/backgammon/</loc>
     <lastmod>2019-12-14T02:43:43+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/burgertime/</loc>
+    <loc>https://yuushaexa.github.io/snes/backgammon/</loc>
+    <lastmod>2019-12-14T02:43:43+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/burgertime/</loc>
     <lastmod>2019-09-20T20:43:43+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/bubble-bobble/</loc>
+    <loc>https://yuushaexa.github.io/famicom/bubble-bobble/</loc>
     <lastmod>2019-08-04T20:31:22+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/lorem-ipsum/</loc>
+    <loc>https://yuushaexa.github.io/snes/ai-senshi-nicol/</loc>
+    <lastmod>2019-05-10T05:26:08+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/lorem-ipsum/</loc>
     <lastmod>2019-03-20T18:42:38+02:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/cleopatra-no-mahou/</loc>
+    <loc>https://yuushaexa.github.io/snes/final-fantasy/</loc>
+    <lastmod>2018-11-19T14:35:26+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-3-all-1/</loc>
+    <lastmod>2018-09-22T01:29:39+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/cleopatra-no-mahou/</loc>
     <lastmod>2018-09-16T05:48:01+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/arumana-no-kiseki/</loc>
+    <loc>https://yuushaexa.github.io/snes/fire-bam/</loc>
+    <lastmod>2018-07-22T19:04:14+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/final-commando-akai-yousai/</loc>
+    <lastmod>2018-06-25T23:01:39+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/arumana-no-kiseki/</loc>
     <lastmod>2018-05-10T17:12:25+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/apple-town-monogatari-little-computer-people/</loc>
+    <loc>https://yuushaexa.github.io/snes/arumana-no-kiseki/</loc>
+    <lastmod>2018-05-10T17:12:25+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/apple-town-monogatari-little-computer-people/</loc>
     <lastmod>2018-01-20T14:41:09+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/bakutoushi-patton-kun/</loc>
+    <loc>https://yuushaexa.github.io/snes/apple-town-monogatari-little-computer-people/</loc>
+    <lastmod>2018-01-20T14:41:09+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/bakutoushi-patton-kun/</loc>
     <lastmod>2017-09-01T02:42:24+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/dead-zone/</loc>
+    <loc>https://yuushaexa.github.io/snes/bakutoushi-patton-kun/</loc>
+    <lastmod>2017-09-01T02:42:24+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-5-puyo-puyo/</loc>
+    <lastmod>2017-05-22T12:35:17+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/family-composer/</loc>
+    <lastmod>2016-12-25T02:45:06+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-6-janken-disk-jou/</loc>
+    <lastmod>2016-10-11T11:22:55+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/dead-zone/</loc>
     <lastmod>2016-10-08T12:17:42+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/clu-clu-land-welcome-to-new-cluclu-land/</loc>
+    <loc>https://yuushaexa.github.io/famicom/clu-clu-land-welcome-to-new-cluclu-land/</loc>
     <lastmod>2016-09-09T16:35:49+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/all-night-nippon-super-mario-bros/</loc>
+    <loc>https://yuushaexa.github.io/famicom/all-night-nippon-super-mario-bros/</loc>
     <lastmod>2016-08-16T06:18:21+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/mh-mk/</loc>
+    <loc>https://yuushaexa.github.io/famicom/mh-mk/</loc>
     <lastmod>2016-08-16T06:18:21+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/deep-dungeon-ii-yuushi-no-monshou/</loc>
+    <loc>https://yuushaexa.github.io/snes/all-night-nippon-super-mario-bros/</loc>
+    <lastmod>2016-08-16T06:18:21+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/tags/nintendo-ead/</loc>
+    <lastmod>2016-08-16T06:18:21+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/tags/platform/</loc>
+    <lastmod>2016-08-16T06:18:21+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/fuuun-shourin-ken/</loc>
+    <lastmod>2016-03-18T20:21:02+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/deep-dungeon-ii-yuushi-no-monshou/</loc>
     <lastmod>2015-11-01T20:40:19+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/bio-miracle-bokutte-upa/</loc>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-2-panic-space/</loc>
+    <lastmod>2015-10-12T18:45:29+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/bio-miracle-bokutte-upa/</loc>
     <lastmod>2014-12-30T02:44:48+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/deep-dungeon-madou-senki/</loc>
+    <loc>https://yuushaexa.github.io/famicom/deep-dungeon-madou-senki/</loc>
     <lastmod>2014-06-09T20:25:19+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/big-challenge-juudou-senshuken/</loc>
+    <loc>https://yuushaexa.github.io/famicom/big-challenge-juudou-senshuken/</loc>
     <lastmod>2014-06-05T05:32:03+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/big-challenge-dogfight-spirit/</loc>
+    <loc>https://yuushaexa.github.io/famicom/big-challenge-dogfight-spirit/</loc>
     <lastmod>2014-04-17T14:50:53+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/big-challenge-go-go-bowling/</loc>
+    <loc>https://yuushaexa.github.io/snes/big-challenge-dogfight-spirit/</loc>
+    <lastmod>2014-04-17T14:50:53+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/big-challenge-go-go-bowling/</loc>
     <lastmod>2013-02-03T16:46:26+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/aspic-majaou-no-noroi/</loc>
+    <loc>https://yuushaexa.github.io/snes/big-challenge-go-go-bowling/</loc>
+    <lastmod>2013-02-03T16:46:26+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/aspic-majaou-no-noroi/</loc>
     <lastmod>2012-09-25T11:16:57+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/breeder/</loc>
+    <loc>https://yuushaexa.github.io/snes/aspic-majaou-no-noroi/</loc>
+    <lastmod>2012-09-25T11:16:57+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/breeder/</loc>
     <lastmod>2012-07-15T15:51:40+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/bomberman/</loc>
+    <loc>https://yuushaexa.github.io/snes/fire-rock/</loc>
+    <lastmod>2012-04-16T21:47:57+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/bomberman/</loc>
     <lastmod>2011-11-17T14:13:43+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/dandy-zeuon-no-fukkatsu/</loc>
+    <loc>https://yuushaexa.github.io/famicom/dandy-zeuon-no-fukkatsu/</loc>
     <lastmod>2011-08-03T22:47:11+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/chitei-tairiku-ordola/</loc>
+    <loc>https://yuushaexa.github.io/snes/19-neunzehn/</loc>
+    <lastmod>2010-12-05T04:17:10+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famimaga-disk-vol-1-hong-kong/</loc>
+    <lastmod>2010-12-01T10:49:30+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/famicom/chitei-tairiku-ordola/</loc>
     <lastmod>2010-06-28T17:51:51+03:00</lastmod>
   </url><url>
-    <loc>https://yuushaexa.github.io/blog/2019/akumajou-dracula-ii-noroi-no-fuuin/</loc>
+    <loc>https://yuushaexa.github.io/famicom/akumajou-dracula-ii-noroi-no-fuuin/</loc>
     <lastmod>2010-04-24T03:20:06+03:00</lastmod>
   </url><url>
+    <loc>https://yuushaexa.github.io/snes/akumajou-dracula-ii-noroi-no-fuuin/</loc>
+    <lastmod>2010-04-24T03:20:06+03:00</lastmod>
+  </url><url>
+    <loc>https://yuushaexa.github.io/snes/famicom-tantei-club-part-ii-ushiro-ni-tatsu-shoujo-kouhen/</loc>
+    <lastmod>2010-03-05T03:46:48+03:00</lastmod>
+  </url><url>
     <loc>https://yuushaexa.github.io/search/</loc>
+    <priority>0.1</priority>
   </url>
 </urlset>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
+    <title>Tags on GameLibrary</title>
     <link>https://yuushaexa.github.io/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <description>Recent content in Tags on GameLibrary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Dec 2021 03:01:59 +0300</lastBuildDate><atom:link href="https://yuushaexa.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -22,6 +22,24 @@
       <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
       
       <guid>https://yuushaexa.github.io/tags/web-development1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nintendo EAD</title>
+      <link>https://yuushaexa.github.io/tags/nintendo-ead/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/tags/nintendo-ead/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Platform</title>
+      <link>https://yuushaexa.github.io/tags/platform/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/tags/platform/</guid>
       <description></description>
     </item>
     
