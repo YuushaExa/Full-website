@@ -1,0 +1,48 @@
+{{ range .Site.Pages }} 
+<div class="container">
+    <div class="section">
+        <div class="content">
+ <div class="columns is-multiline">
+       {{ range .Paginator.Pages }}
+    <div class="column is-half">
+  {{ partial "widgets/post-card.html" . }}
+    </div>
+    {{ end }}
+</div>
+<div class="columns is-centered">
+    <div class="column is-narrow">
+        {{ partial "widgets/pagination.html" . }}
+    </div>
+</div>
+        </div>     
+    </div>
+</div>
+ <script>
+const images = document.querySelectorAll('[data-src]');
+const config = {
+  rootMargin: '0px 0px 50px 0px',
+  threshold: 0
+};
+let loaded = 0;
+
+let observer = new IntersectionObserver(function (entries, self) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadImage(entry.target);
+      self.unobserve(entry.target);
+    }
+  });
+}, config);
+
+images.forEach(image => {
+  observer.observe(image);
+});
+
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}
+</script>
+        <link rel="stylesheet" href="{{ "css/list.css" | relURL }}" /> 
+{{ end }}
