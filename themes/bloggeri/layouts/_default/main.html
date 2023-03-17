@@ -1,9 +1,9 @@
-{{ range .Site.RegularPages }} 
+{{ define "main" }}
 <div class="container">
     <div class="section">
         <div class="content">
  <div class="columns is-multiline">
-       {{ range .Paginator.Pages }}
+       {{ range .Site.Pages }}
     <div class="column is-half">
   {{ partial "widgets/post-card.html" . }}
     </div>
