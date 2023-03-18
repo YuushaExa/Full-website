@@ -31,20 +31,6 @@ img {
     padding: 0;
 }
 
-#search {
-	position: relative;
-    max-width: 500px;
-    margin: 0 auto;
-	    height: 42px;
-}
-.post-title a {
-    color: #fff!important;
-    text-shadow: -1px -1px 5px #2a8dc6, 1px -1px 0 #2a8dc6, -1px 1px 0 #2a8dc6, 1px 1px 0 #2a8dc6;
-    font-size: 40px;
-    font-weight: 600;
-    transition: 0.3s ease;
-    text-decoration:none;
-}
 .post-title a:hover {
     text-shadow: #17a6f9 1px 0 10px;
 	transition: 0.3s ease;
@@ -90,4 +76,5 @@ background-color: #fff;
 	  .container {
     padding: 0 10px;
 	  }
+	  .cover {  background-size: contain;}
 }
