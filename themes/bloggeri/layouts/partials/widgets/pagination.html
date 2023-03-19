@@ -27,12 +27,6 @@
     <input type="text" oninput="changeLink(this.value);" placeholder="..." />
     <a id="buttonLink"><button>Go</button></a>
 </form>
-    <script>
-        function changeLink(value) {
-    link = document.getElementById("buttonLink");
-    link.href = "https://yuushaexa.github.io/page/" + value
-}
-    </script>
     {{ end }}
     {{ end }}
     {{ with $pag.Last }}
