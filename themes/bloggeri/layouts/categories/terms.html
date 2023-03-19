@@ -13,7 +13,7 @@
                         <a href="{{ .Page.Permalink }}">
                             <figure class="image is-3by2">
                                                                 {{ $firstChild := index .Pages 0 }}
-   {{ range findRE `<img.+?>` $firstChild.Content }}
+   {{ range findRE `<img.+?>` $firstChild.Content 1 }}
               <img src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200"/>
 {{ end }}
                             </figure>
