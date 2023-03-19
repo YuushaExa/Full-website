@@ -4,7 +4,7 @@
      <figure class="image is-3by2">     
             <a href="{{ $permalink }}">
             {{ range findRE `<img.+?>` .Content 1 }}
-           {{ replaceRE `` "$1" . }} 
+           {{ . }} 
                  {{ end }}
 </a>
         </figure> 
