@@ -18,10 +18,9 @@
     </div>
 </div>
     <script>
-        function changeLink(value) {
-    link = document.getElementById("buttonLink");
-    link.href = "https://yuushaexa.github.io/page/" + value
-}
+   document.getElementById('buttonId').addEventListener('click', function() {
+     window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
+});
     </script>
         <link rel="stylesheet" href="{{ "css/list.css" | relURL }}" /> 
 {{ end }}
