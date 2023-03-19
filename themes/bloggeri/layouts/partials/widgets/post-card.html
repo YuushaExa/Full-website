@@ -3,7 +3,7 @@
     <div class="card-image">
         <figure class="image is-3by2">     
             <a href="{{ $permalink }}">
-            {{ range findRE `<img.+?>` .Content 1 .Data.Pages}}
+            {{ range findRE `<img.+?>` .Content 1 .Data.Pages }}
             <img data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="{{ .Title }}">
                  {{ end }}
 </a>
