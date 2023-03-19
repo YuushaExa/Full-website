@@ -4,9 +4,9 @@
         <figure class="image is-3by2">     
             <a href="{{ $permalink }}">
             {{ range findRE `<img.+?>` .Content }}
-            <img data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200"
+            <img data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200">
                  {{ end }}
- alt="{{ .Title }}"  ></a>
+ alt="{{ .Title }}"</a>
         </figure> 
     </div>
     <div class="card-content">
