@@ -5,6 +5,7 @@
             <a href="{{ $permalink }}">
             {{ range findRE `<img.+?>` .Content }}
             <img data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200"
+                 {{ end }}
  alt="{{ .Title }}"  ></a>
         </figure> 
     </div>
