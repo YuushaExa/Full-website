@@ -3,7 +3,7 @@
     <div class="card-image">
      <figure class="image is-3by2">     
             <a href="{{ $permalink }}">
-            {{ with range findRE `<img.+?>` .Content 1 }}
+            {{ range with findRE `<img.+?>` .Content 1 }}
            {{ . }} 
                  {{ end }}
 </a>
