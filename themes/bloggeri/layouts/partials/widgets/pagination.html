@@ -43,10 +43,10 @@
 <script>
     function pagego() {
   var x = document.getElementById("Go");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
+  if (x.style.display === "block") {
     x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 </script>
@@ -57,7 +57,4 @@
     margin: 0.25rem;
     width: 2.5em;
         text-align: center;}
-    #Go {
-        display:none;
-    }
 </style>
