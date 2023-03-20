@@ -23,7 +23,7 @@
     {{ if $showNumber }}
     <li><a class="pagination-link {{ if eq . $pag }}is-current{{ end }}" href="{{ .URL }}">{{ .PageNumber }}</a></li>
     {{ else if $shouldEllipse }}
-<input id="inputId" placeholder="..." type="number">
+<input id="inputId" placeholder="..." type="number" onclick="pagego()">
 <button type="button" id="Go">Go</button>
     {{ end }}
     {{ end }}
@@ -36,10 +36,20 @@
 </nav>
 {{ end }}
    <script>
-   document.getElementById('buttonId').addEventListener('click', function() {
+   document.getElementById('Go').addEventListener('click', function() {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
 });
     </script>
+<script>
+    function pagego() {
+  var x = document.getElementById("Go");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <style>
     #inputId {
     border: 1px solid transparent;
@@ -48,4 +58,7 @@
     width: 2.5em;
             border-radius: 4px;
         text-align: center;}
+     #Go {
+        display:none;
+    }
 </style>
