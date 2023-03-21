@@ -1,6 +1,6 @@
 <div class="translate">
 <input id="LinkId" placeholder="Link to image..." type="text">
-<button type="button" id="Trs">Translate</button>
+<button type="button" rel="noopener noreferrer" id="Trs">Translate</button>
   <script>
    document.getElementById('Trs').addEventListener('click', function() {
      window.location.href = "https://lens.google.com/uploadbyurl?url=" + document.getElementById('LinkId').value;
