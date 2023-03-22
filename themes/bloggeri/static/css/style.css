@@ -5,10 +5,11 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     line-height: 1.625;
 	background-color: #1f1e23;
 } 
-
+:root {
     --banner-overlay-gradient: linear-gradient(to bottom,var(--md-background-translucent) 0%,var(--md-background) 100%);
     --md-background: #fff;
     --md-background-translucent: hsla(0,0%,100%,.6);
+}
 
 * {
     margin: 0;
