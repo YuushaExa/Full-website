@@ -1,5 +1,5 @@
 <div class="translate">
-<input id="LinkId" placeholder="Link to image..." type="text">
+<input class='paste' id="LinkId" placeholder="Link to image..." type="text">
 <button type="button" rel="noopener noreferrer" id="Trs">Translate</button>
   <script>
    document.getElementById('Trs').addEventListener('click', function() {
@@ -7,3 +7,10 @@
 });
     </script>
   </div>  
+<script>
+    $('.copy').on('click', function(e){
+          var att = $(this).find('a').attr('href');  
+     e.preventDefault();
+    $('.paste').val(att);
+});
+</script>
