@@ -8,8 +8,8 @@
     </script>
   </div>  
 <script>
-    $('.copy').on('mouseover', function(e){
-          var att = $(this).find('a').attr('img');  
+    $('.image-post').on('click', function(e){
+          var att = $(this).find('a').attr('href');  
      e.preventDefault();
     $('.paste').val(att);
 });
