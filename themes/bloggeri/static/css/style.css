@@ -91,7 +91,6 @@ width: 72px;
   background-color: black;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
   padding: 5px 0;
   position: absolute;
   z-index: 1;
@@ -99,7 +98,10 @@ width: 72px;
   left: 50%;
   margin-left: -60px;
   opacity: 0;
-  transition: opacity 1s;
+    transition: opacity 0.5s;
+    background-color: #333;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .tooltip:hover .tooltiptext {
