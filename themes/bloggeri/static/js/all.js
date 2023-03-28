@@ -10,7 +10,7 @@ $('.image-post').on('mouseover', function(e){
 $(document).ready(function(){
     $("a").click(function() {
     var page = $(this).attr("href");
-    $(".content").load(page);
+    $(".post-title").load(page);
     return false;
     });
 });
