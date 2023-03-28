@@ -12,7 +12,6 @@
     <div class="card-content">
             <div class="card-title">
         <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a></div>
-                    <div class="card-content">
     <div class="tags is-pulled-right">
     {{ range .Params.categories }}
     <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
@@ -22,7 +21,6 @@
     {{ range .Params.tags }}
     <a class="tag is-primary is-radiusless" href="/tags/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
-</div>
 </div>
 <style>
     
