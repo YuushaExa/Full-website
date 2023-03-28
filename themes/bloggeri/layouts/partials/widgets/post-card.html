@@ -11,9 +11,8 @@
     </div>
     <div class="card-content">
             <div class="card-title">
-        <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a>
+        <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a></div>
                     <div class="card-content">
-    </div>
     <div class="tags is-pulled-right">
     {{ range .Params.categories }}
     <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
