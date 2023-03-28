@@ -10,7 +10,9 @@
         </figure> 
     </div>
     <div class="card-content">
+            <div class="card-title">
         <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a>
+                    <div class="card-content">
     </div>
     <div class="tags is-pulled-right">
     {{ range .Params.categories }}
@@ -39,7 +41,7 @@
     background-color: #2a2c31;
     box-shadow: 0 2px 6px 0 #00000080;
     }
-    .title.is-4 {
+    .card-title {
         font-size: 14px;
     font-weight: 400;
     position: absolute;
