@@ -6,11 +6,3 @@ $('.image-post').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
-
-$(document).ready(function(){
-    $("a").click(function() {
-    var page = $(this).attr("href");
-    $(".columns-float").load(page);
-    return false;
-    });
-});
