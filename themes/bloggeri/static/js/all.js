@@ -7,9 +7,10 @@ $('.image-post').on('mouseover', function(e){
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
 
-$(document).ready(function(){
-  $(".card-content a").click(function(e){
-    e.preventDefault(); // will not follow link
-    $(".content").load($(this).attr('href'));
-  });
+$(".card-content").click(function() {
+    $("a").each(function() {
+        $.get(this.href, function(response) {
+            $(".content").append(response);
+        });
+    });
 });
