@@ -13,7 +13,7 @@ $(document).ready(function(){
 
     e.preventDefault();
 
-    $(".content").load($(this).attr('href'));
+    $(".content").load($(this).attr('href').content);
 
   });
 
