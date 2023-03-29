@@ -8,13 +8,9 @@ $('.image-post').on('mouseover', function(e){
 });
 
 $(document).ready(function(){
-
-  $(".card-content a").click(function(e){
-
-    e.preventDefault();
-
-    $(".content").load($(this).attr('href'.content));
-
-  });
-
+    $("a").click(function() {
+    var page = $(this).attr("href");
+    $(".content").load(page .content);
+    return false;
+    });
 });
