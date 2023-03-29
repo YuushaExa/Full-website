@@ -6,3 +6,15 @@ $('.image-post').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
+
+$(document).ready(function(){
+
+  $(".card-content a").click(function(e){
+
+    e.preventDefault();
+
+    $(".content").load($(this).attr('href'));
+
+  });
+
+});
