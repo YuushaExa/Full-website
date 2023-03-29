@@ -145,6 +145,7 @@ visibility: hidden;
     color: #fff;
     display: inline-block;
     margin-bottom: 3px;
+	    width: 100%;
     }
     .image.is-3by2 a img{
     border-radius: 6px;
