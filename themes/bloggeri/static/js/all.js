@@ -6,11 +6,3 @@ $('.image-post').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
-
-$(".card-content").click(function() {
-    $("a").each(function() {
-        $.get(this.href, function(response) {
-            $(".content").append(response);
-        });
-    });
-});
