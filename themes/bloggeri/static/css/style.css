@@ -178,7 +178,7 @@ visibility: hidden;
     margin-bottom: 3px;
 	    width: 90%;
     }
-    .image.is-3by2 a img{
+    .image.is-3by2 img{
     border-radius: 6px;
     box-shadow: 0 2px 6px 0 #00000080; 
 }
