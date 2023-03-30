@@ -17,7 +17,7 @@
       <p>{{ .Summary }}</p>
           {{ range last 3 findRE `<img.+?>` .Content }}
        <figure class="title-image">
-     {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+     {{ replaceRE `.*src="(.+?)".*` "$1" . }}   {{ end }}
  </figure>
            {{ end }}
         </span>
