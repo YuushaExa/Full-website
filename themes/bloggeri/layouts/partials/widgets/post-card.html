@@ -2,7 +2,7 @@
 <div class="card">
     <div class="card-image">
    <figure class="image is-3by2">     
-            <a href="{{ $permalink }}"> <img data-src="
+            <a><img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="{{ .Title }}">
@@ -12,7 +12,7 @@
     <div class="card-content">
         <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a>
     </div> 
-    <div class="tooltip-card">
+    <div class="tooltip-card" href="{{ .Permalink }}">
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
       <p>{{ .Summary }}</p>
