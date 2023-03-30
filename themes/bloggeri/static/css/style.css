@@ -115,11 +115,9 @@ visibility: hidden;
 .tooltip-card {
     display: inline-block;
     position: absolute;
-    left: 32%;
-    border-radius: 15px;
-    padding: 5px;
-    top: 44%;
-    transition: all 0.3s;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
 }
 .tooltip-card .tooltiptext {
 visibility: hidden;
