@@ -17,7 +17,7 @@
       <p>{{ .Summary }}</p>
             <figure class="image is-3by2">     
         <img data-src="
-            {{ range findRE `<img.+?>` .Content 1 }}
+            {{ range findRE last 3 `<img.+?>` .Content }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="{{ .Title }}">
         </figure> 
