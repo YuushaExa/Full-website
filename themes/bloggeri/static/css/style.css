@@ -127,15 +127,12 @@ visibility: hidden;
     transition: all 0.3s;
     }
 .card-content {
-	    position: absolute;
-    margin: 0;
-    width: 100%;
-    height: auto;
+    position: absolute;
+    text-shadow: 0 0 3px #000;
     bottom: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(6, 6, 6, 0.45) 40%, rgba(0, 0, 0, 0.7) 100%);
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
-    overflow: hidden;
 }
     a.title.is-4 {
        position: relative;
@@ -145,7 +142,7 @@ visibility: hidden;
     color: #fff;
     display: inline-block;
     margin-bottom: 3px;
-	    width: 100%;
+	    width: 90%;
     }
     .image.is-3by2 a img{
     border-radius: 6px;
