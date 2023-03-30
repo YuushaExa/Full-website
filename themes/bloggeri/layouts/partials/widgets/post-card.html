@@ -12,12 +12,12 @@
     <div class="card-content">
         <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a>
     </div> 
-    <div class="tooltip-card" href="{{ .Permalink }}">
+    <a class="tooltip-card" href="{{ .Permalink }}">
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
       <p>{{ .Summary }}</p>
         </span>
-</div>
+</a>
     <div class="tags is-pulled-right">
     {{ range .Params.categories }}
     <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
