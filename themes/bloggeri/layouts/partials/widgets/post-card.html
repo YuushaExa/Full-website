@@ -4,7 +4,7 @@
         <img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-                 {{ end }}" alt="{{ .Title }}">
+                 {{ end }}" alt="{{ .Title }}" onerror="this.style.display='none'">
     </div>
     <div class="card-content">
         <a class="title is-4" href="{{ .Permalink }}">{{ .Title }}</a>
