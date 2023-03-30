@@ -2,11 +2,10 @@
 <div class="card">
     <div class="card-image">
    <figure class="image is-3by2">     
-            <a><img data-src="
+        <img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="{{ .Title }}">
-</a>
         </figure> 
     </div>
     <div class="card-content">
