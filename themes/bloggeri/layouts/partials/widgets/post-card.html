@@ -15,11 +15,12 @@
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
       <p>{{ .Summary }}</p>
-          {{ range last 3 findRE `<img.+?>` .Content }}
-       <figure class="title-image">
-     {{ replaceRE `.*src="(.+?)".*` "$1" . }}   {{ end }}
- </figure>
-           {{ end }}
+  <figure class="image is-3by2">     
+        <img data-src="
+            {{ range findRE `<img.+?>` .Content 1 }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+                 {{ end }}" alt="{{ .Title }}">
+        </figure> 
         </span>
 </a>
     <div class="tags is-pulled-right">
