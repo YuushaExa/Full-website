@@ -143,10 +143,11 @@ visibility: hidden;
     margin: 5px;
     position: relative;
     transition: all 0.3s;
+	   background: linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 30%,rgba(0,0,0,0.15) 70%,rgba(0,0,0,0.5) 100%);
     }
 .card-content {
     position: absolute;
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 6px #000;
     bottom: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(6, 6, 6, 0.45) 40%, rgba(0, 0, 0, 0.7) 100%);
     border-bottom-right-radius: 6px;
@@ -163,20 +164,23 @@ visibility: hidden;
     margin-bottom: 3px;
 	    width: 90%;
     }
-    .image.is-3by2 a img{
+    .card-image img {
     border-radius: 6px;
     box-shadow: 0 2px 6px 0 #00000080; 
 }
 
-    
-          
-            
-    
-
-          
-    
-    
-  
+.categories .category {
+	display: inline-block;
+    float: left;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    background: #005b9f;
+    position: absolute;
+    margin: 5px;
+    top: 0;
+}
  @media only screen and (min-width:320px) and (max-width:479px)
   {
 	  .container {
