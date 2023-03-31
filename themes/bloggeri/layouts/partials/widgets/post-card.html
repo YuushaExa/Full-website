@@ -1,11 +1,11 @@
 {{ $permalink := .Permalink }}
 <div class="card">
-    <a class="card-image" href="{{ .Permalink }}">
+    <div class="card-image" href="{{ .Permalink }}">
         <img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="">
-    </a>
+    </div>
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a>
     </div> 
@@ -15,14 +15,14 @@
       <p>{{ .Summary }}</p>
         </span>
 </a>
-    <div class="categories">
-    {{ range .Params.categories}}
-    <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
+    <div class="tags is-pulled-right">
+    {{ range .Params.categories }}
+    <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
-       <div class="tags">
+       <div class="tags is-pulled-left">
     {{ range .Params.tags }}
-    <a class="tag" href="/tags/{{ . | urlize}}">{{ . }}</a>
+    <a class="tag is-primary is-radiusless" href="/tags/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
 </div>
