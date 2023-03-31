@@ -13,6 +13,10 @@
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
       <p>{{ .Summary }}</p>
+           <img data-src="
+            {{ range findRE `<img.+?>` .Content }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+                 {{ end }}" alt="">
         </span>
 </a>
     <div class="tags is-pulled-right">
