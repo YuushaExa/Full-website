@@ -16,7 +16,7 @@
         </span>
 </a>
     <div class="categories">
-    {{ range .Params.categories 1 }}
+    {{ range .Params.categories}}
     <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
