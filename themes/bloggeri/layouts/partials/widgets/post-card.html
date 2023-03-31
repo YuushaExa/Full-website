@@ -15,14 +15,14 @@
       <p>{{ .Summary }}</p>
         </span>
 </a>
-    <div class="tags is-pulled-right">
-    {{ range .Params.categories }}
-    <a class="tag is-primary is-radiusless" href="/categories/{{ . | urlize}}">{{ . }}</a>
+       <div class="categories">
+    {{ range .Params.categories}}
+    <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
-       <div class="tags is-pulled-left">
+       <div class="tags">
     {{ range .Params.tags }}
-    <a class="tag is-primary is-radiusless" href="/tags/{{ . | urlize}}">{{ . }}</a>
+    <a class="tag" href="/tags/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
 </div>
