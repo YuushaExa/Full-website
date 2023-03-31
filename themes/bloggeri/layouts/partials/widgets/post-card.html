@@ -14,7 +14,7 @@
       <h3>{{ .Title }}</h3>
       <p>{{ .Summary }}</p>
            <img data-src="
-            {{ range findRE `<img.+?>` .Content }}
+            {{ range findRE `<img.+?>` .Content 3 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="">
         </span>
