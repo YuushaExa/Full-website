@@ -185,6 +185,20 @@ visibility: hidden;
     box-shadow: 0 2px 6px 0 #00000080; 
 }
 
+tag.is-primary.is-radiusless {
+	display: inline-block;
+    float: left;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    background: #005b9f;
+    position: absolute;
+    margin: 5px;
+    top: 0;
+}
+
+
  @media only screen and (min-width:320px) and (max-width:479px)
   {
 	  .container {
