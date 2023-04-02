@@ -10,7 +10,7 @@
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a>
     </div> 
-    <a class="tooltip-card" href="{{ .Permalink }}">
+    <div class="tooltip-card" href="{{ .Permalink }}">
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
     <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
@@ -21,7 +21,7 @@
     {{ end }}
 </div>
         </span>
-</a>
+</div>
        <div class="categories">
     <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
 </div>
