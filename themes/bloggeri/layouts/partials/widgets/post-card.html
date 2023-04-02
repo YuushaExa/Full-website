@@ -17,7 +17,7 @@
         </span>
 </a>
        <div class="categories">
-    <a class="category" href="/categories/{{ index .Params.categories 1 }}">{{ index .Params.categories 1 }}</a>
+    <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
 </div>
        <div class="tags">
     {{ range .Params.tags }}
