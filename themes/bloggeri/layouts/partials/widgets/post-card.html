@@ -13,7 +13,7 @@
     <div class="tooltip-card">
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
-    <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
+      Console <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
       <p>{{ .Summary }}</p>
             <div class="tags">
     {{ range .Params.tags }}
