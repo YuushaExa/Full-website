@@ -11,7 +11,6 @@
         <a class="title is-4">{{ .Title }}</a>
     </div> 
     <div class="tooltip-card">
-          <a href="{{ $permalink }}"> 
       <span class="tooltiptext">
       <h3>{{ .Title }}</h3>
     <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
@@ -22,7 +21,6 @@
     {{ end }}
 </div>
         </span>
-                 </a>
 </div>
        <div class="categories">
     <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
