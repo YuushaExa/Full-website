@@ -17,7 +17,12 @@
         </span>
 </a>
        <div class="categories">
-    {{ range .Params.categories}}
+    {{ index .Params.categories 0 }}
+    <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
+    {{ end }}
+</div>
+        <div class="categories-1">
+    {{ index .Params.categories 1 }}
     <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
