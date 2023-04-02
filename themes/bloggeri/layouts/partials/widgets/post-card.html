@@ -21,11 +21,6 @@
     <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
     {{ end }}
 </div>
-        <div class="categories-1">
-    {{ index .Params.categories 1 }}
-    <a class="category" href="/categories/{{ . | urlize}}">{{ . }}</a>
-    {{ end }}
-</div>
        <div class="tags">
     {{ range .Params.tags }}
     <a class="tag" href="/tags/{{ . | urlize}}">{{ . }}</a>
