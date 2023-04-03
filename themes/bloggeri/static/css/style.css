@@ -168,6 +168,15 @@ visibility: hidden;
     border-radius: 6px;
     box-shadow: 0 2px 6px 0 #00000080; 
 }
+.card-image img::after {
+    filter: blur(20px);
+    opacity: .35;
+    transform: scale(1.2);
+	content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+}
 
 .categories .category {
 	display: inline-block;
