@@ -10,7 +10,7 @@ $('.image-post').on('mouseover', function(e){
 $(document).ready(function(){
     $(".card-image a").click(function() {
     var page = $(this).attr("href");
-    $("#content-front").load("page, main");
+    $("#content-front").load(page, main);
     return false;
     });
 });
