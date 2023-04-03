@@ -11,6 +11,7 @@ $(document).ready(function(){
     $(".card-image a").click(function() {
     var page = $(this).attr("href");
     $("#content-front").load(page);
+     $('.container').remove(page);
     return false;
     });
 });
