@@ -12,7 +12,6 @@ $(document).ready(function(){
     var page = $(this).attr("href");
     $("#content-front").load(page);
     return false;
-     $('.container').remove();
     });
 });
 $(".container").click(function() {
