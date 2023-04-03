@@ -26,12 +26,13 @@ width: 500px;
     border-radius: 4px;
     font-size: 13px;	
 }
-#back-bg {	
+#content-front::after {	
 	width: 100vw;
     height: 100vh;
     top: 0px;
     left: 0px;
-    position: fixed;
+content: " ";
+	position: fixed;
     background: rgba(0, 0, 0, 0.5);
     overflow: auto;
 }
