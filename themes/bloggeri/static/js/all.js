@@ -14,6 +14,6 @@ $(document).ready(function(){
     return false;
     });
 });
-$(".container").click(function() {
+$("body").click(function() {
   $("#content-front").empty();
 });
