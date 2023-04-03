@@ -26,7 +26,7 @@ width: 500px;
     border-radius: 4px;
     font-size: 13px;	
 }
-#content-front::before {	
+#content-front #back-bg {	
 	width: 100vw;
     height: 100vh;
     top: 0px;
