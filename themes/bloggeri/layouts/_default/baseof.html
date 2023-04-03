@@ -4,10 +4,10 @@
     <body>
         {{- partial "header.html" . -}}
           {{ partial "widgets/search.html" . }}
-              <div id="content-front"/>
         <main>
         {{- block "main" . }}{{- end }}
         </main>
         {{- partial "footer.html" . -}}
+                      <div id="content-front"/>
     </body>  
 </html>
