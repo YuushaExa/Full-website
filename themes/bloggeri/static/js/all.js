@@ -6,14 +6,3 @@ $('.image-post').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
-
-$(document).ready(function(){
-    $(".card-image a").click(function() {
-    var page = $(this).attr("href");
-    $("#content-front").load(page).attr("main");
-    return false;
-    });
-});
-$("#content-remove #back-bg").click(function() {
-  $("#content-front").empty();
-});
