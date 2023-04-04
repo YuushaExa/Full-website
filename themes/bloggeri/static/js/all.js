@@ -14,6 +14,6 @@ $(document).ready(function(){
     return false;
     });
 });
-$("#back-bg").click(function() {
+$("#content-remove #back-bg").click(function() {
   $("#content-front").empty();
 });
