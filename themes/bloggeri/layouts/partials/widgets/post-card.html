@@ -1,7 +1,7 @@
 {{ $permalink := .Permalink }}
 <div class="card">
     <div class="card-image">
-         <div class="carousel" data-flickity='{ "wrapAround": true }'>
+         <div class="carousel" data-flickity='{ "wrapAround": true, "fade": true, "prevNextButtons": false}'>
           {{ range findRE `<img.+?>` .Content }}
              <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}" alt="">
                  {{ end }}
