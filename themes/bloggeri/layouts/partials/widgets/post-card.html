@@ -16,7 +16,7 @@
       <h3>{{ .Title }}</h3>
       Console <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
       <p>{{ .Summary }}</p>
-          <div class="carousel" data-flickity>
+          <div class="carousel" data-flickity='{  "wrapAround": true }'>
           {{ range findRE `<img.+?>` .Content }}
              <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="">
                  {{ end }}
