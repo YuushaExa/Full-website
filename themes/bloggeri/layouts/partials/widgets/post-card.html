@@ -1,15 +1,32 @@
 {{ $permalink := .Permalink }}
 <div class="card">
     <div class="card-image">
-         <div class="carousel" data-flickity='{}'>
-          {{ range findRE `<img.+?>` .Content }}
-             <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}" alt="">
-                 {{ end }}
-              </div>
+     <a href="{{ $permalink }}">   <img data-src="
+            {{ range findRE `<img.+?>` .Content 1 }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+                 {{ end }}" alt="">
+         </a>
     </div>
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
     </div> 
+    <div class="tooltip-card">
+      <span class="tooltiptext">
+      <h3>{{ .Title }}</h3>
+      Console <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
+      <p>{{ .Summary }}</p>
+          <div class="carousel" data-flickity>
+          {{ range findRE `<img.+?>` .Content }}
+             <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="">
+                 {{ end }}
+              </div>
+            <div class="tags">
+    {{ range .Params.tags }}
+    <a class="tag" href="/tags/{{ . | urlize}}">{{ . }}</a>
+ {{ end }}
+</div>
+        </span>
+</div>
        <div class="categories">
     <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
 </div>
