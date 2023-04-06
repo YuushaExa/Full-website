@@ -16,7 +16,7 @@
       Console <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
       <p>{{ .Summary }}</p>
             {{ range findRE `<img.+?>` .Content }}
-           {{ replaceRE `<img data-src=""(.+?)"">` "$1" . }} 
+           {{ replaceRE `<img src=""(.+?)"">` "$1" . }} 
                  {{ end }}
             <div class="tags">
     {{ range .Params.tags }}
