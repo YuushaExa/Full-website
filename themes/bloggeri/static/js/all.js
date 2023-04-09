@@ -6,3 +6,9 @@ $('.image-post').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
+
+    $('.card-image').qtip({ // Grab some elements to apply the tooltip to
+    content: {
+        text: 'My common piece of text here'
+    }
+})
