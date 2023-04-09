@@ -7,8 +7,21 @@ $('.image-post').on('mouseover', function(e){
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
 
-    $('.card-image').qtip({ // Grab some elements to apply the tooltip to
+$('[data-id]').qtip({
     content: {
-        text: 'My common piece of text here'
+        text: function(event, api) {
+            $.ajax({
+                url: element.data('id') // Use data-url attribute for the URL
+            })
+            .then(function(content) {
+                // Set the tooltip content upon successful retrieval
+                api.set('content.text', content);
+            }, function(xhr, status, error) {
+                // Upon failure... set the tooltip content to the status and error value
+                api.set('content.text', status + ': ' + error);
+            });
+
+            return 'Loading...'; // Set some initial text
+        }
     }
-})
+});
