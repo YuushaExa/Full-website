@@ -41,6 +41,9 @@ All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mar
 ![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
 
 Info: <a href="/famicom/big-challenge-gun-fighter/">Title</a>
+
 Console: <a href="/famicom/">Title</a>
+
 Series: <a href="https://yuushaexa.github.io/categories/blogging/">Nope</a>
+
 Platform: <a href="/categories/blogging/">Wow</a>
