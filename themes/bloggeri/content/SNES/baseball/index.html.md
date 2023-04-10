@@ -8,9 +8,9 @@ excerpt: ''
 type: post
 id: 13070
 category:
-    - '@famicom'
+    - 'Famicom'
 tag:
-    - '#1 Nintendo'
+    - 'Nintendo'
     - Sports
 post_format: []
 ---
