@@ -26,8 +26,13 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
 }
 	      
 .content-front-text .image-first {
-	    position: absolute;
+position: absolute;
     top: 0;
+    z-index: -1;
+    width: 380px!important;
+    left: 0;
+    right: 0;
+    height: 50px;
 	      }
 	      
 .content-front {
@@ -38,14 +43,13 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
 }
 .content-front .content-front-text {
 visibility: hidden;
-    width: 170px;
+    width: 350px;
     color: #fff;
     padding: 10px;
     position: absolute;
     z-index: 1;
     top: 50%;
     left: 50%;
-    margin-left: -96px;
     opacity: 0;
     transition: opacity 0.3s;
     background-color: #333;
