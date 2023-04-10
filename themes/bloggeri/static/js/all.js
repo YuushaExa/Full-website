@@ -14,5 +14,5 @@ $('.card-image a').mouseover(function (event) {
     });
 });
 $(".card-image a").mouseout(function() {
-  $("#content-front").hide();
+  $("#content-front").empty();
 });
