@@ -13,6 +13,3 @@ $('.card-image a').mouseover(function (event) {
     $('#content-front').load(this.href + ' .image-first, .post-title, .content p:first-of-type, .game-info ', function (data) {
     });
 });
-$(".card-image a").mouseout(function() {
-  $("#content-front").empty();
-});
