@@ -10,14 +10,25 @@
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
     </div> 
-     <div id="content-front">
+    <div class="tooltip-card">
         <div class="tool-show">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path fill="#fff" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
         </div>
- <span class="content-front-text">
+      <span class="tooltiptext">
+      <h3>{{ .Title }}</h3>
+      Console <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
+      <p>{{ .Summary }}</p>
+          <div class="carousel" data-flickity='{  "freeScroll": true,"wrapAround": true }'>
+          {{ range findRE `<img.+?>` .Content }}
+             <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="">
+                 {{ end }}
+              </div>
+            <div class="tags">
+    {{ range .Params.tags }}
+    <a class="tag" href="/tags/{{ . | urlize}}">{{ . }}</a>
+ {{ end }}
+</div>
         </span>
-   </div>
-      
 </div>
        <div class="categories">
     <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
