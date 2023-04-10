@@ -7,7 +7,7 @@ $('.image-post').on('mouseover', function(e){
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
 
-$('.card-image a').click(function (event) {
+$('.card-image a').mouseover(function (event) {
     event.preventDefault();
 
     $('#content-front').load(this.href + ' .image-first, .post-title, .content p:first-of-type, .game-info ', function (data) {
