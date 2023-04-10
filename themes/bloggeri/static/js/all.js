@@ -10,6 +10,6 @@ $('.image-post').on('mouseover', function(e){
 $('.card-image a').mouseover(function (event) {
     event.preventDefault();
 
-    $('#content-front').load(this.href + ' .image-first, .post-title, .content p:first-of-type, .game-info ', function (data) {
+    $('.content-front-text').load(this.href + ' .image-first, .post-title, .content p:first-of-type, .game-info ', function (data) {
     });
 });
