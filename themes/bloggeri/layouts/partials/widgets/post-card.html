@@ -8,7 +8,7 @@
          </a>
     </div>
     <div class="card-content">
-        <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
+        <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
     </div> 
  <div class="content-front">
         <div class="tool-show">
@@ -20,7 +20,4 @@
        <div class="categories">
   <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
 </div>
-    <div class="categories-1">
-    <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
-</div>   
 </div>
