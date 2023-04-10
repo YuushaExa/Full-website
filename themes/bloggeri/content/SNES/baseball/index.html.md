@@ -18,7 +18,7 @@ Baseball is a game where the player can pitch, hit, field, and run just like in 
 
 ![](https://wsrv.nl/?url=https://images.launchbox-app.com/62c40bd1-fad4-4578-b96b-79e547d2bd86.jpg&output=webp&maxage=1d)
 
-<div class="game-info">Developed by [Nintendo](/search?q=Nintendo?&max-results=12)  
+<div class="game-info">Developed by [Nintendo](https://yuushaexa.github.io/snes/baseball/)  
 Published by [Nintendo](/search?q=Nintendo?&max-results=12)  
 Genre: [Sports](/search?q=Sports?&max-results=12)  
 Platform: [Famicom Disk System](/search/label/%40famicom?&amp;max-results=12)  
