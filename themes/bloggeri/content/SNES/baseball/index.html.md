@@ -22,5 +22,5 @@ Baseball is a game where the player can pitch, hit, field, and run just like in 
 Published by [Nintendo](/search?q=Nintendo?&max-results=12)  
 Genre: [Sports](/search?q=Sports?&max-results=12)  
 Platform: [Famicom Disk System](/search/label/%40famicom?&amp;max-results=12)  
-Release Date: [February](https://yuushaexa.github.io/snes/baseball/) 21, 1986  
+Release Date: [February](/snes/baseball/) 21, 1986  
 YouTube: [Baseball Gameplay](https://www.youtube.com/watch?v=G8DzhmEle5A)</div><div class="game-media">![]() ![]() ![]() ![]() ![]() ![]() ![]()</div>
