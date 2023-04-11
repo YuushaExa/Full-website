@@ -3,7 +3,7 @@
     <div class="card-image">
     <div class="carousel" data-flickity='{  "freeScroll": true,"wrapAround": true }'>
           {{ range findRE `<img.+?>` .Content }}
-             <img class="carousel-cell" data-src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="">
+             <img class="carousel-cell" src="{{ replaceRE `.*src="(.+?)".*` "$1" . }}&w=200" alt="">
                  {{ end }}
               </div>
     </div>
