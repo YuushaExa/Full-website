@@ -13,8 +13,6 @@ summarylength = 10
     [markup.goldmark]
         [markup.goldmark.renderer]
             unsafe = true
-        [markup.goldmark.parser]
-             block = true
 
             [outputs]
 home = [ "HTML", "RSS", "JSON" ]
