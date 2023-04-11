@@ -33,7 +33,7 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     padding: 0px 10px 5px 10px;
 	      }
 	      
-#content-front-text .image-first {
+.content-front-text .image-first {
 position: absolute;
     top: 0;
     width: 50px!important;
@@ -46,7 +46,7 @@ position: absolute;
     top: 45%;
     left: 38%;
 }
-.content-front #content-front-text {
+.content-front .content-front-text {
 visibility: hidden;
     width: 350px;
     color: #fff;
@@ -61,7 +61,7 @@ visibility: hidden;
     border-radius: 4px;
     font-size: 13px;
 }
-.content-front #content-front-text::after {
+.content-front .content-front-text::after {
   content: " ";
   position: absolute;
   top: 100%;
@@ -71,7 +71,7 @@ visibility: hidden;
   border-style: solid;
   border-color: #333 transparent transparent transparent;
 }
-.content-front:hover #content-front-text {
+.content-front:hover .content-front-text {
   visibility: visible;
   opacity: 1;
 }
