@@ -25,6 +25,35 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     padding: 0;
 }
 	 
+	      #content-front {
+		      display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+		      	        opacity: 0;
+    transition: opacity 0.3s;
+	      }
+	      #content-front-text {
+		      padding: 10px;
+    position: relative;
+    top: 10%;
+    width: 500px;
+    background-color: #333;
+    font-size: 13px;
+    z-index: 1;
+    border-radius: 10px;
+	      }
+	      .tool-show  #content-front {
+	        visibility: visible;
+  opacity: 1;transition: opacity 0.3s;
+	      }
+	      
 	   .tool-show {
     position: absolute;
     display: inline-block;
