@@ -13,3 +13,6 @@ $('.tool-show a').mouseover(function (event) {
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p:first-of-type, .game-info, .game-media ', function (data) {
     });
 });
+$("#content-front").click(function() {
+  $("#content-front-text").empty();
+});
