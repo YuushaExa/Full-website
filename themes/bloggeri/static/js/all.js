@@ -13,8 +13,10 @@ $('.tool-show a').mouseover(function (event) {
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p:first-of-type, .game-info, .game-media ', function (data) {
     });
           $("#content-front").css("z-index", "1");
+          $("#content-front-text").css("opacity", "1");
 });
 $("#content-front").click(function() {
   $("#content-front-text").empty();
                     $("#content-front").css("z-index", "-1");
+           $("#content-front-text").css("opacity", "0");
 });
