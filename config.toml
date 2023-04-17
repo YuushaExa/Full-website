@@ -19,9 +19,8 @@ home = [ "HTML", "RSS", "JSON" ]
             
             [taxonomies]
     tag = "tags"
-    category = "categories"
-    category = "categories-data"
-
+    category = "categories", "categories-data"
+    
  [[menu.main]]
   name = "About"
   url = "/about"
