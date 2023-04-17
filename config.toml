@@ -19,7 +19,7 @@ home = [ "HTML", "RSS", "JSON" ]
             
             [taxonomies]
     tag = "tags"
-    category = [ "categories", "categories-data" ]
+    category = "categories"
     
  [[menu.main]]
   name = "About"
