@@ -7,7 +7,7 @@
             {{ .Content }}
         </div>
         <div class="columns is-multiline">
-            {{ range .Paginator.Pages.ByTitle }}
+            {{ range .Paginator.Pages.ByPublishDate }}
             <div class="column is-half">
                 {{ partial "widgets/post-card.html" . }}
             </div>
