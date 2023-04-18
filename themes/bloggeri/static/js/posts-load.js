@@ -16,4 +16,4 @@ tpl:'<div class="fancybox-share"><h1>{{SHARE}}</h1><p><a class="fancybox-share__
   const src = img.getAttribute('data-src');
   if (!src) { return; }
   img.src = src;
-}          
+});          
