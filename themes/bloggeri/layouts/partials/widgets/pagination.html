@@ -36,16 +36,16 @@
 </nav>
 {{ end }}
    <script>
-   document.getElementById('Go').addEventListener('click', function() {
+   document.getElementById('Go').onclick = function () {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
-});
+};
     </script>
 <script>
-document.getElementById("inputId").addEventListener("click", function(event){
+document.getElementById("inputId").onclick = function () {
         event.preventDefault();
            var y = document.getElementById("Go");
         y.style.display = ((y.style.display!='block') ? 'block' : 'none')    
-    })
+    };
 </script>
 <style>
     #inputId {
