@@ -13,6 +13,7 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
+            $.getScript("/js/posts.js");
 });
 $("#content-front").click(function() {
   $("#content-front-text").empty();
