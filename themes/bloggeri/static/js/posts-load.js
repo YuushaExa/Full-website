@@ -14,5 +14,5 @@ tpl:'<div class="fancybox-share"><h1>{{SHARE}}</h1><p><a class="fancybox-share__
 
  $('.image-post img').each(function() {
  var source = $(this).attr("data-src");
-$(this).attr("src", data-src).removeAttr("data-src");
+$(this).attr("src", source).removeAttr("data-src");
 });          
