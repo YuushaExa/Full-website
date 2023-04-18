@@ -13,7 +13,16 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
-            $.getScript("/js/posts-load.js");
+            $('.image-post img').slice(1).each(function(){
+  var $this = $(this); 
+  $this.attr('data-src',$this.attr('data-src') + "&w=260");
+})
+
+ $('.image-post img').slice(1).each(function() {
+      var img_link =  $(this).attr('data-src').split('&w')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+    })
+
 });
 $("#content-front").click(function() {
   $("#content-front-text").empty();
