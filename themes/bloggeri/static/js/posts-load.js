@@ -14,7 +14,7 @@ tpl:'<div class="fancybox-share"><h1>{{SHARE}}</h1><p><a class="fancybox-share__
 
 const images = document.querySelectorAll('[data-src]');
 const config = {
-  rootMargin: '0px 0px 50px 0px',
+  rootMargin: '0px 0px 0px 0px',
   threshold: 0
 };
 let loaded = 0;
