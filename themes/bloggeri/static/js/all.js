@@ -9,13 +9,13 @@ $('.image-post').on('mouseover', function(e){
 
 $('.tool-show a').mouseover(function (event) {
     event.preventDefault();
-
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p:first-of-type, .game-info, .game-media ', function (data) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
+});
 $("#content-front").click(function() {
   $("#content-front-text").empty();
            $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1");   
+                              $("#content-front").css("z-index", "-1");
 });
