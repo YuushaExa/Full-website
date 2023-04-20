@@ -48,7 +48,7 @@ class Lightbox{
 const lightbox = new Lightbox()
 
 $('.game-media').on('mouseover', function(e){
-          var att = $(this).find('src').attr('href');  
+          var att = $(this).attr('src');  
      e.preventDefault();
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
