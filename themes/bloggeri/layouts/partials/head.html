@@ -25,7 +25,40 @@ font-family: system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Ubuntu,h
     padding: 0;
 }
 	 
-	  
+	  .game-media{
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 15px;
+ justify-content: center;
+ align-items: center;
+ padding: 20px;
+}
+
+.game-media img{
+ cursor: pointer;
+ height: 400px;
+}
+
+#lightbox{
+ position: fixed;
+ display: none;
+ z-index: 100;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ background-color: rgba(0, 0, 0, .6);
+}
+
+#lightbox.active{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+#lightbox img{
+  height: 90%;
+}
 	      
 	     .image-post img:hover {
     transform: scale(1.3);
