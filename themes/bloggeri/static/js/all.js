@@ -14,6 +14,18 @@ $("#content-front").click(function() {
                               $("#content-front").css("z-index", "-1");
 });
 
+$("#content-front").click(function(e){
+    $("#content-front-text").show();
+     e.stopPropagation();
+});
+
+$("#content-front-text").click(function(e){
+    e.stopPropagation();
+});
+
+$(document).click(function(){
+    $("#content-front-text").hide();
+});
 
 class Lightbox{
   constructor(){
