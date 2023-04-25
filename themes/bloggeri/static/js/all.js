@@ -14,5 +14,7 @@ var modal = document.getElementById("content-front");
 window.onclick = function(event) {
   if (event.target == modal) {
   $("#content-front-text").empty();
+       $("#content-front-text").css("opacity", "0");
+                              $("#content-front").css("z-index", "-1");
 }
 }
