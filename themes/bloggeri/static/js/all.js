@@ -8,12 +8,6 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front-text").css("opacity", "1");
             $.getScript("/js/posts-load.js");
 });
-$("#content-front").click(function() {
-  $("#content-front-text").empty();
-           $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1");
-});
-
 
 var modal = document.getElementById("content-front");
 
