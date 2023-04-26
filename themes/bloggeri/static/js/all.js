@@ -20,7 +20,7 @@ window.onclick = function(event) {
 }
 
 $('.category a').unbind().mouseover(function (event) {
-      event.preventDefault();
+      event.preventDefault(); 
     $('.category').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
