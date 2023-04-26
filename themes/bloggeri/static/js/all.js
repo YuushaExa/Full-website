@@ -24,6 +24,7 @@ $('.category a').mouseover(function (event) {
     $('.category').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .container ', function (data) {
     });
+                $.getScript("/js/posts-load.js");
 });
 
 $('.category a').mouseout(function (event) {
