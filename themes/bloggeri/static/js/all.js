@@ -21,5 +21,7 @@ window.onclick = function(event) {
 
 $('.category').mouseover(function (event) {
       event.preventDefault();
-    $('.category').append('<div>').addClass('listing listing_ad job');
+    $('.category').append('<div>').addClass('link-pre');
+    $('.link-pre').load(this.href + ' .content ', function (data) {
+    });
 });
