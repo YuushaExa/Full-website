@@ -25,3 +25,8 @@ $('.category a').mouseover(function (event) {
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
+
+$('.category a').mouseout(function (event) {
+  event.preventDefault(); 
+  $(".link-pre").empty();
+});
