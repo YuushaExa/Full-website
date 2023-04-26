@@ -19,7 +19,7 @@ window.onclick = function(event) {
 }
 }
 
-$('.category').mouseover(function (event) {
+$('.category a').mouseover(function (event) {
       event.preventDefault();
     $('.category').append('<div>').addClass('link-pre');
     $('.link-pre').load(this.href + ' .content ', function (data) {
