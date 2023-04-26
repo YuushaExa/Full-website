@@ -19,7 +19,7 @@ window.onclick = function(event) {
 }
 }
 
-$('.category a').unbind().mouseover(function (event) {
+$('.category a').mouseover(function (event) {
       event.preventDefault(); 
     $('.category').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .content ', function (data) {
