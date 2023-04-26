@@ -18,3 +18,8 @@ window.onclick = function(event) {
                               $("#content-front").css("z-index", "-1");
 }
 }
+
+$('.category').mouseover(function (event) {
+      event.preventDefault();
+    $('.category').append('<div>').addClass('listing listing_ad job');
+});
