@@ -28,5 +28,5 @@ $('.category a').mouseover(function (event) {
 
 $('.category a').mouseout(function (event) {
   event.preventDefault(); 
-  $(".link-pre").empty();
+  $(".link-pre").remove();
 });
