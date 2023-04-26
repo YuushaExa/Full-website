@@ -21,7 +21,8 @@ window.onclick = function(event) {
 
 $('.category a').mouseover(function (event) {
       event.preventDefault();
-    $(".category").after( "<div class="inner"></div>" );
+var d1 = document.getElementsByClassName('category');
+d1.insertAdjacentHTML('afterend', '<div class="inner"></div>');
     $('.inner').append('<div>').addClass('link-pre');
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
