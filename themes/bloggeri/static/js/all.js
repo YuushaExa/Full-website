@@ -23,8 +23,8 @@ $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
     $('.link-pre').css('top',event.pageY).css('left',event.pageX);
-    $('.link-pre').hide().load(this.href + ' .content ', function (data) {
-    }).fadeIn(300);
+    $('.link-pre').load(this.href + ' .content ', function (data) {
+    });
 });
 
 $('.game-info').mouseout(function (event) {
