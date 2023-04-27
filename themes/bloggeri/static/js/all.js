@@ -19,14 +19,14 @@ window.onclick = function(event) {
 }
 }
 
-$('.category a').mouseover(function (event) {
+$('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.category').append('<div class="link-pre"></div>');
+    $('.game-info').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
 
-$('.category a').mouseout(function (event) {
+$('.game-info a').mouseout(function (event) {
   event.preventDefault(); 
   $(".link-pre").remove();
 });
