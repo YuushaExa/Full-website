@@ -21,12 +21,12 @@ window.onclick = function(event) {
 
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.category a').append('<div id="link-pre"></div>');
-    $('#link-pre').load(this.href + ' .content ', function (data) {
+    $('.category').append('<div class="link-pre"></div>');
+    $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
 
 $('.category a').mouseout(function (event) {
   event.preventDefault(); 
-  $("#link-pre").remove();
+  $(".link-pre").remove();
 });
