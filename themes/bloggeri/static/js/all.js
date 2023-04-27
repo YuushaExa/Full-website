@@ -22,9 +22,9 @@ window.onclick = function(event) {
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
-    $('.link-pre').css('top',event.pageY + 10 ).css('left',event.pageX + 10 );
+    $('.link-pre').css('top',event.pageY + 20 ).css('left',event.pageX + 10 );
     $('.link-pre').hide().load(this.href + ' .content ', function (data) {
-    }).fadeIn(300);
+    }).fadeIn(300).css('transform', 'translate(0, -10px)');
 });
 
 $('.game-info').mouseout(function (event) {
