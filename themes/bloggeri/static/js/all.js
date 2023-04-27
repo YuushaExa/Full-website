@@ -19,15 +19,15 @@ window.onclick = function(event) {
 }
 }
 
-$('.game-info a').fadeIn().mouseover(function (event) {
+$('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
-    $('.link-pre').css('top',event.pageY).css('left',event.pageX);
+    $('.link-pre').fadeIn().css('top',event.pageY).css('left',event.pageX);
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
 
-$('.game-info').fadeOut().mouseout(function (event) {
+$('.game-info').mouseout(function (event) {
   event.preventDefault(); 
-  $(".link-pre").remove();
+  $(".link-pre").fadeOut().remove();
 });
