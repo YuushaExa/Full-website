@@ -21,7 +21,7 @@ window.onclick = function(event) {
 
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.category').append('<div class="link-pre"></div>');
+    $('.category a').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .container ', function (data) {
     });
 });
