@@ -22,7 +22,7 @@ window.onclick = function(event) {
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
     $('.category a').append('<div id="link-pre"></div>');
-    $('#link-pre').load(this.href + ' .container ', function (data) {
+    $('#link-pre').load(this.href + ' .content ', function (data) {
     });
 });
 
