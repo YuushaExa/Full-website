@@ -22,12 +22,14 @@ window.onclick = function(event) {
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
-    $('.link-pre').fadeIn().css('top',event.pageY).css('left',event.pageX);
+    $('.link-pre').fadeIn();
+    $('.link-pre').css('top',event.pageY).css('left',event.pageX);
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
 
 $('.game-info').mouseout(function (event) {
   event.preventDefault(); 
-  $(".link-pre").fadeOut().remove();
+    $(".link-pre").fadeOut();
+  $(".link-pre").remove();
 });
