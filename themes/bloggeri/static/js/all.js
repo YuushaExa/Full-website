@@ -21,7 +21,7 @@ window.onclick = function(event) {
 
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.game-info a').append('<div class="link-pre"></div>');
+    $('.game-info').append('<div class="link-pre"></div>');
     $('.link-pre').load(this.href + ' .content ', function (data) {
     });
 });
