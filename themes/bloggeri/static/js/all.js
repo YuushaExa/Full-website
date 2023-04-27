@@ -19,7 +19,7 @@ window.onclick = function(event) {
 }
 }
 
-$('.game-info a').mouseover(function (event) {
+$('.game-info a').fadeIn().mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
     $('.link-pre').css('top',event.pageY).css('left',event.pageX);
@@ -27,7 +27,7 @@ $('.game-info a').mouseover(function (event) {
     });
 });
 
-$('.game-info').mouseout(function (event) {
+$('.game-info').fadeOut().mouseout(function (event) {
   event.preventDefault(); 
   $(".link-pre").remove();
 });
