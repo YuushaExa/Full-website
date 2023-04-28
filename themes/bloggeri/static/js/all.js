@@ -33,3 +33,15 @@ $('.game-info').mouseout(function (event) {
               $(this).remove();
           });
 });
+
+
+const topDiv = document.getElementsByClassName("card-image > img");
+const topImg = document.getElementById("topImg");
+const colorThief = new ColorThief();
+if (topImg.complete) {
+    topDiv.setAttribute("style", `background: rgb(${colorThief.getColor(topImg)})`);
+  } else {
+    topImg.addEventListener('load', function() {
+      topDiv.setAttribute("style", `background: rgb(${colorThief.getColor(topImg)})`);
+    });
+}
