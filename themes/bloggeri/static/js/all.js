@@ -36,7 +36,7 @@ $('.game-info').mouseout(function (event) {
 
 
 const topDiv = document.getElementsByClassName("card-content");
-const topImg = document.querySelectorAll("card-image img");
+const topImg = document.querySelectorAll(".card-image img");
 const colorThief = new ColorThief();
 if (topImg.complete) {
     topDiv.setAttribute("style", `background: rgb(${colorThief.getColor(topImg)})`);
