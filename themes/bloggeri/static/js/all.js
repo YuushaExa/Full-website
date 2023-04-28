@@ -38,7 +38,7 @@ $('.card-image').each(function() {
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
         thumb.parent().find('.card-content').css({
-            borderTop: '30px solid rgb('+ thisColor +')'
+            background: 'rgb('+ thisColor +')'
         })
     });
 });
