@@ -32,7 +32,7 @@ $('.game-info').mouseout(function (event) {
 });
 
 var colorThief = new ColorThief();
-
+img.crossOrigin = "Anonymous";
 $('.image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
