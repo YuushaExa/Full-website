@@ -33,11 +33,11 @@ $('.game-info').mouseout(function (event) {
 
 var colorThief = new ColorThief();
 img.crossOrigin = "Anonymous";
-$('.image-first').each(function() {
+$('.card-image').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
-        thumb.parent().find('.game-info').css({
+        thumb.parent().find('.card-content').css({
             borderTop: '30px solid rgb('+ thisColor +')'
         })
     });
