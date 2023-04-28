@@ -33,11 +33,11 @@ $('.game-info').mouseout(function (event) {
 
 var colorThief = new ColorThief();
 
-$('image-first').each(function() {
+$('.image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
-        thumb.parent().find('content').css({
+        thumb.parent().find('.game-info').css({
             borderTop: '30px solid rgb('+ thisColor +')'
         })
     });
