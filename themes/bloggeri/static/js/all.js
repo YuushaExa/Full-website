@@ -35,7 +35,7 @@ $('.game-info').mouseout(function (event) {
 });
 
 
-const topDiv = document.querySelectorAll("card-image > img");
+const topDiv = document.querySelectorAll("card-image img");
 const topImg = document.getElementsByClassName("card-content");
 const colorThief = new ColorThief();
 if (topImg.complete) {
