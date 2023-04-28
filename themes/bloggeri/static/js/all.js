@@ -29,7 +29,7 @@ $('.game-info a').mouseover(function (event) {
 
 $('.game-info').mouseout(function (event) {
   event.preventDefault(); 
-  $('.link-pre').fadeOut(300, function() {
+  $('.link-pre').css('transform', 'translate(0, +10px)').fadeOut(300, function() {
               $(this).remove();
           });
 });
