@@ -40,5 +40,8 @@ $('.card-image').each(function() {
         thumb.parent().find('.card-content').css({
             background: 'rgb('+ thisColor +')'
         })
+        thumb.parent().find('.category').css({
+        background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba('+ thisColor +') 100%)'
+         })
     });
 });
