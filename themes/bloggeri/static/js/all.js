@@ -34,23 +34,13 @@ $('.game-info').mouseout(function (event) {
 var colorThief = new ColorThief();
 
 $('.card-image').each(function() {
-
     var thumb = $(this);
-
     thumb.find('img').each(function() {
-
         thisColor = colorThief.getColor(this);
-
         thumb.parent().find('.card-content').css({
-
             background: 'rgb('+ thisColor +')'
-
         })
-
         thumb.parent().find('.category').css({
-
         background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba('+ thisColor +') 100%)'
-
          })
-
     });
