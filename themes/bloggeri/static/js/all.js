@@ -44,3 +44,4 @@ $('.card-image').each(function() {
         background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba('+ thisColor +') 100%)'
          })
     });
+});
