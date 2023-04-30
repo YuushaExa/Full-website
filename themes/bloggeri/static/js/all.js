@@ -45,7 +45,7 @@ $('.card-imal').each(function() {
     });
 });
 
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".title.is-4");
 const colorThief = new ColorThief();
 
 cards.forEach((card) => {
