@@ -33,15 +33,49 @@ $('.game-info').mouseout(function (event) {
 
 var colorThief = new ColorThief();
 
-$('.card-image').each(function() {
+$('.card-imal').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
-        thumb.parent().find('.card-content').css({
+        thumb.parent().find('.card-conte').css({
             background: 'rgb('+ thisColor +')'
         })
-        thumb.parent().find('.category').css({
+        thumb.parent().find('.catego').css({
         background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba('+ thisColor +') 100%)'
          })
     });
 });
+
+const cards = document.querySelectorAll(".card");
+const colorThief = new ColorThief();
+
+cards.forEach((card) => {
+  const wrapper = card.querySelectorAll(".card-image")[0];
+  const img = wrapper.querySelectorAll("img")[0];
+
+  wrapper.style.cssText += `background-image: url(${img.src})`;
+});
+
+window.onload = () => {
+  detectColors();
+};
+
+function detectColors() {
+  cards.forEach((card) => {
+    const wrapper = card.querySelectorAll(".card-image")[0];
+    const cta = card.querySelectorAll(".card-content")[0];
+    const img = wrapper.querySelectorAll("img")[0];
+    const rgb = getColorData(img);
+    let lum = tinycolor(rgb).getLuminance();
+
+    card.style.cssText += `background-color: ${rgb}`;
+    cta.style.cssText += `background-color: ${rgb}; color: ${
+      lum <= 0.4 ? `#FFFFFF` : `#000000`
+    }`;
+  });
+}
+
+function getColorData(img) {
+  let rgbArray = colorThief.getColor(img);
+  return `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;
+}
