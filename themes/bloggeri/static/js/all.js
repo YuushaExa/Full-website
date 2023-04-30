@@ -31,7 +31,6 @@ $('.game-info').mouseout(function (event) {
           });
 });
 
-var colorThief = new ColorThief();
 
 $('.card-imal').each(function() {
     var thumb = $(this);
