@@ -24,7 +24,7 @@ $('.game-info a').mouseover(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
-$('.link-pre').mouseout(function (event) {
+$('.game-info').mouseout(function (event) {
   event.preventDefault(); 
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
