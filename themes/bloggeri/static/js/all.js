@@ -67,7 +67,6 @@ function detectColors() {
     const rgb = getColorData(img);
     let lum = tinycolor(rgb).getLuminance();
 
-    card.style.cssText += `background-color: ${rgb}`;
     cta.style.cssText += `background-color: ${rgb}; color: ${
       lum <= 0.4 ? `#FFFFFF` : `#000000`
     }`;
