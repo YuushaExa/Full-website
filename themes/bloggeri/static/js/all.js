@@ -68,9 +68,9 @@ function detectColors() {
     let lum = tinycolor(rgb).getLuminance();
 
     cta.style.cssText += `background-color: ${rgb}; color: ${
-      lum <= 0.4 ? `#FFFFFF` : `#000000`
+      lum <= 0.4 ? `#FFF` : `#000`
     }; text-shadow: 0px 0px 3px ${
-      lum <= 0.4 ? `#FFFFFF` : `#000000`
+      lum <= 0.4 ? `#000` : `#FFF`
     }`;
   });
 }
