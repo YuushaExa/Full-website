@@ -69,6 +69,8 @@ function detectColors() {
 
     cta.style.cssText += `background-color: ${rgb}; color: ${
       lum <= 0.4 ? `#FFFFFF` : `#000000`
+    }; text-shadow: 0px 0px 3px ${
+      lum <= 0.4 ? `#FFFFFF` : `#000000`
     }`;
   });
 }
