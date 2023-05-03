@@ -1,3 +1,16 @@
+$(document).ready(function() {
+// Swiper: Slider
+    new Swiper('.swiper-container', {
+        loop: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 20,
+       
+    });
+});
+
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p:first-of-type, .game-info, .game-media ', function (data) {
