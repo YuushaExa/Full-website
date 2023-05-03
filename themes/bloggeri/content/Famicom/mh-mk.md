@@ -58,6 +58,11 @@ Platform: <a href="/categories/blogging/">Wow</a>
 ![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
 
   </div>
-
+<div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- !next / prev arrows -->
+    
+    <!-- pagination dots -->
+    <div class="swiper-pagination"></div>
   
 </div>
