@@ -43,6 +43,8 @@ Platform: <a href="/categories/blogging/">Wow</a>
   
 </div>
 <div class="game-media">
+   <div class="swiper-container">
+        <div class="swiper-wrapper"> 
 
 ![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg)
   
@@ -56,4 +58,4 @@ Platform: <a href="/categories/blogging/">Wow</a>
   
 ![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
 
- </div>
+ </div> </div> </div>
