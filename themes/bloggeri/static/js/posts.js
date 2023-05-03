@@ -1,7 +1,20 @@
   $('article img').slice(1).each(function(){
   var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&w=260");
+  $this.attr('data-src',$this.attr('data-src') + "&w=250");
 })
+
+$(document).ready(function() {
+// Swiper: Slider
+    new Swiper('.swiper-container', {
+        loop: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 20,
+       
+    });
+});
 
 class Lightbox{
   constructor(){
