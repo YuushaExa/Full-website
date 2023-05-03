@@ -16,6 +16,14 @@
     </div>
         <div class="cover-wrap"></div>
         <div class="cover"></div>
+  <div class="swiper-container">
+        <div class="swiper-wrapper">  
+             <a href="{{ $permalink }}">   <img src="
+            {{ range findRE `<img.+?>` .Content 1 }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+                 {{ end }}" alt="" crossorigin="anonymous" class="swiper-slide">
+         </a>
+          </div></div>
   <div class="content">
           {{ .Content }}
         </div>
