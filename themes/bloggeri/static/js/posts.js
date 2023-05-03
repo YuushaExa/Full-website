@@ -6,7 +6,9 @@
 $('.main-carousel').flickity({
   // options
   cellAlign: 'left',
-  contain: true
+  contain: true,
+  freeScroll: true,
+  wrapAround: true
 });
 
 class Lightbox{
