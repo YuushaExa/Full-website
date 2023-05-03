@@ -3,17 +3,6 @@
   $this.attr('data-src',$this.attr('data-src') + "&w=260");
 })
 
-var Swipes = new Swiper('.swiper-container', {
-    loop: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-    },
-});
-
 class Lightbox{
   constructor(){
    this.init()
