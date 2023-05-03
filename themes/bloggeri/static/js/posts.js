@@ -3,6 +3,12 @@
   $this.attr('data-src',$this.attr('data-src') + "&w=260");
 })
 
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+
 class Lightbox{
   constructor(){
    this.init()
