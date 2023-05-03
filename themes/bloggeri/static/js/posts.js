@@ -1,19 +1,17 @@
   $('article img').slice(1).each(function(){
   var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&w=250");
+  $this.attr('data-src',$this.attr('data-src') + "&w=260");
 })
 
-$(document).ready(function() {
-// Swiper: Slider
-    new Swiper('.swiper-container', {
-        loop: true,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        slidesPerView: 1,
-        paginationClickable: true,
-        spaceBetween: 20,
-       
-    });
+var Swipes = new Swiper('.swiper-container', {
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
 });
 
 class Lightbox{
