@@ -42,7 +42,6 @@ Series: <a href="https://yuushaexa.github.io/categories/blogging/">Nope</a>
 Platform: <a href="/categories/blogging/">Wow</a>
   
 </div>
-<div class="game-media">
    <div class="swiper-container">
         <div class="swiper-wrapper"> 
 
@@ -58,4 +57,4 @@ Platform: <a href="/categories/blogging/">Wow</a>
   
 ![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
 
- </div> </div> </div>
+</div> </div>
