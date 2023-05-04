@@ -1,6 +1,6 @@
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
-    $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p:first-child, .game-info, .game-media ', function (data) {
+    $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .content p, .game-info, .game-media ', function (data) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
