@@ -2,7 +2,7 @@ Fancybox.bind("[data-fancybox]", {
   // Your custom options
 });
 
- $('.game-media img').each(function() {
+ $('.game-media p img').each(function() {
       var img_link =  $(this).attr('data-src').split('&w')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     })
