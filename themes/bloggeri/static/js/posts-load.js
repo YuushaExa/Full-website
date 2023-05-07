@@ -6,6 +6,6 @@ $(this).attr("src", source).removeAttr("data-src");
   })
 
  $('.game-media img').each(function() {
-      var img_link =  $(this).attr('data-src').split('&w')[0];
+      var img_link =  $(this).attr('data-src');
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     })
