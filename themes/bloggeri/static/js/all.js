@@ -2,6 +2,12 @@ Fancybox.bind("[data-fancybox]", {
   // Your custom options
 });
 
+ $('.game-media img').each(function() {
+      var img_link =  $(this).attr('data-src').split('&w')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+    })
+
+
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
