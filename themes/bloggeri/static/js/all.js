@@ -1,3 +1,7 @@
+Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
+
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
