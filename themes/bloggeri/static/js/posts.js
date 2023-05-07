@@ -5,7 +5,7 @@
 
  $('article img').slice(1).each(function() {
       var img_link =  $(this).attr('data-src').split('&w')[0];
-      $(this).wrap('<a href='+ img_link +'&w=1920 data-fancybox="gallery"></a>')
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     })
 
 $('.game-media img').on('mouseover', function(e){
