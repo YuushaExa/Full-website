@@ -5,7 +5,7 @@
 
  $('.game-media img').each(function() {
       var img_link =  $(this).attr('data-src').split('&w')[0];
-      $(this).wrap('<a href='+ img_link +' class="lightbox"></a>')
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     })
 
 $('.game-media img').on('mouseover', function(e){
