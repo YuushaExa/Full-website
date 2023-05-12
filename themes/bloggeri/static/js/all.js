@@ -1,7 +1,5 @@
 Fancybox.bind("[data-fancybox]", {
-  Thumbs: {
-    type: "classic",
-  },
+  MouseEvent: slide,
 });
 
 $('.tool-show a').mouseover(function (event) { 
