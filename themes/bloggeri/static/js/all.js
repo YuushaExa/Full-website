@@ -1,5 +1,5 @@
 Fancybox.bind("[data-fancybox]", {
-  MouseEvent: slide,
+  wheel: slide,
 });
 
 $('.tool-show a').mouseover(function (event) { 
