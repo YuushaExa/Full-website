@@ -1,5 +1,12 @@
 Fancybox.bind("[data-fancybox]", {
-  wheel: slide,
+   on: {
+    'Carousel.ready Carousel.change': (fancybox) => {
+      fancybox.container.style.setProperty(
+        '--bg-image',
+        `url("${fancybox.getSlide().thumbSrc}")`
+      );
+    },
+  },
 });
 
 $('.tool-show a').mouseover(function (event) { 
