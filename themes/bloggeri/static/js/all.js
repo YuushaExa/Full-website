@@ -1,3 +1,6 @@
+Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
 
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
