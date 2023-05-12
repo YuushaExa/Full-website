@@ -1,13 +1,15 @@
 Fancybox.bind("[data-fancybox]", {
-   on: {
-    'Carousel.ready Carousel.change': (fancybox) => {
-      fancybox.container.style.setProperty(
-        '--bg-image',
-        `url("${fancybox.getSlide().thumbSrc}")`
-      );
-    },
-  },
 });
+
+     const container = document.getElementById("myCarousel");
+      const options = {
+        Dots: false,
+        Thumbs: {
+          type: "classic",
+        },
+      };
+
+      new Carousel(container, options, { Thumbs });
 
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
