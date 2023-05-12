@@ -1,5 +1,7 @@
 Fancybox.bind("[data-fancybox]", {
-  // Your custom options
+  Thumbs: {
+    type: "classic",
+  },
 });
 
 $('.tool-show a').mouseover(function (event) { 
