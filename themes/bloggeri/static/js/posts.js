@@ -12,6 +12,6 @@ $('.game-media img').on('mouseover', function(e){
           var att = $(this).attr('src');  
      e.preventDefault();
     $('.paste').val(att);
-    $('.game-info').append('<div id="link-pre"></div>');
+    $('.game-info').append('<div id="image-pre"></div>');
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
