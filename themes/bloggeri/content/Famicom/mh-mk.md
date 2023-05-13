@@ -46,7 +46,6 @@ Platform: <a href="/categories/blogging/">Wow</a>
   <div class="f-carousel" id="myCarousel">
   
 ![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg) 
-  
 ![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg)
   
 ![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg) 
