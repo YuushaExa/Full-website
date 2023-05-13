@@ -16,12 +16,13 @@
     </div>
         <div class="cover-wrap"></div>
         <div class="cover"></div>
-                  <div class="ai">
-                {{ partial "widgets/ai.html" . }}
-                </div> 
+        <div id="image-pre"></div>    
   <div class="content">
           {{ .Content }}
         </div>
+            <div class="ai">
+                {{ partial "widgets/ai.html" . }}
+                </div> 
       </div>
     </div>
      <h1>{{ .Title }}</h1>
