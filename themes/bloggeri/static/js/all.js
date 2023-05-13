@@ -1,16 +1,6 @@
 Fancybox.bind("[data-fancybox]", {
 });
 
-     const container = document.getElementById("myCarousel");
-      const options = {
-        Dots: false,
-        Thumbs: {
-          type: "classic",
-        },
-      };
-
-      new Carousel(container, options, { Thumbs });
-
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
