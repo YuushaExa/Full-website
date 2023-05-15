@@ -15,3 +15,9 @@ $('.game-media img').on('mouseover', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
+$('.game-media img').on('load', function(e){
+          var att = $(this).attr('src');  
+     e.preventDefault();
+    $('.paste').val(att);
+ document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
+});
