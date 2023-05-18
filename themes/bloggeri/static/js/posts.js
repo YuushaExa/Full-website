@@ -9,6 +9,7 @@
     })
 
 $('.game-info').append('<div id="image-pre"></div>');
+$('.game-media').append('<div id="left-button">Left</div>');
 $('.game-media').append('<div id="right-button">Right</div>');
 $('.game-media img').on('mouseover', function(e){
           var att = $(this).attr('src');  
