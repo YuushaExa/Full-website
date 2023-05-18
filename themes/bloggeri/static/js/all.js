@@ -1,15 +1,3 @@
-document.getElementById( "left-button" ).onclick = () => {
-
-    document.querySelectorAll( "game-media p" ).scrollLeft += 30;
-
-}
-
-document.getElementById( "right-button" ).onclick = () => {
-
-    document.querySelectorAll( "game-media p" ).scrollLeft -= 30;
-
-}
-
 Fancybox.bind("[data-fancybox]", {
 });
 
