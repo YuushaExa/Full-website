@@ -30,8 +30,8 @@ button.onclick = () => {
   document.getElementById("game-media p").scrollLeft += 30;
 };
 
-const button = document.getElementById("right-button");
+const button1 = document.getElementById("right-button");
 
-button.onclick = () => {
+button1.onclick = () => {
   document.getElementById("game-media p").scrollLeft -= 30;
 };
