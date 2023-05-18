@@ -9,8 +9,8 @@
     })
 
 $('.game-info').append('<div id="image-pre"></div>');
-$('.game-media').append('<div id="left-button">Left</div>');
-$('.game-media').append('<div id="right-button">Right</div>');
+$('.game-media').append('<button id="left-button" type="button">Left</button>');
+$('.game-media').append('<button id="right-button" type="button">Right</button>');
 $('.game-media img').on('mouseover', function(e){
           var att = $(this).attr('src');  
      e.preventDefault();
@@ -24,14 +24,14 @@ $('.game-media img:first').on('load', function(e){
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
 
-document.getElementById( "left-button" ).onclick = () => {
+const button = document.getElementById("left-button");
 
-    document.querySelectorAll( "game-media p" ).scrollLeft += 30;
+button.onclick = () => {
+  document.getElementById("game-media p").scrollLeft += 30;
+};
 
-}
+const button = document.getElementById("left-button");
 
-document.getElementById( "right-button" ).onclick = () => {
-
-    document.querySelectorAll( "game-media p" ).scrollLeft -= 30;
-
-}
+button.onclick = () => {
+  document.getElementById("game-media p").scrollLeft -= 30;
+};
