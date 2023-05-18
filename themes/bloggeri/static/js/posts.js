@@ -9,8 +9,8 @@
     })
 
 $('.game-info').append('<div id="image-pre"></div>');
-$('.game-media').append('<button id="left-button" type="button">Left</button>');
-$('.game-media').append('<button id="right-button" type="button">Right</button>');
+$('.game-media').append('<button id="left-button">Left</button>');
+$('.game-media').append('<button id="right-button">Right</button>');
 $('.game-media img').on('mouseover', function(e){
           var att = $(this).attr('src');  
      e.preventDefault();
