@@ -22,3 +22,15 @@ $('.game-media img:first').on('load', function(e){
     $('.paste').val(att);
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
+
+document.getElementById( "left-button" ).onclick = () => {
+
+    document.querySelectorAll( "game-media p" ).scrollLeft += 30;
+
+}
+
+document.getElementById( "right-button" ).onclick = () => {
+
+    document.querySelectorAll( "game-media p" ).scrollLeft -= 30;
+
+}
