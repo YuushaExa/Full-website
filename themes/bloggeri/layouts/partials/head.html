@@ -20,6 +20,27 @@ html{overflow-y:scroll;
     line-height: 1.625;
 	background-color: #fff;
 } 
+	    
+	      
+	      html {
+  --scrollbarBG: #CFD8DC;
+  --thumbBG: #90A4AE;
+}
+.game-media p::-webkit-scrollbar {
+  width: 11px;
+}
+.game-media p {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.game-media p::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.game-media p::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
 	      
 	      .game-media p {
 	          display: flex;
