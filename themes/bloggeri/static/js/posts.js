@@ -27,11 +27,11 @@ $('.game-media img:first').on('load', function(e){
 const button = document.getElementById("left-button");
 
 button.onclick = () => {
-  $('.game-media p').animate({scrollLeft: + 1 },200);
+  $('.game-media p').scrollLeft($('.game-media p').scrollLeft() + 20);
 };
 
 const button1 = document.getElementById("right-button");
 
 button1.onclick = () => {
-  $('.game-media').animate({scrollLeft: + 30 },200);
+  $('.game-media').scrollLeft($('.game-media p').scrollLeft() - 20);
 };
