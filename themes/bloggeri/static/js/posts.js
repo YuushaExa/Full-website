@@ -27,11 +27,11 @@ $('.game-media img:first').on('load', function(e){
 const button = document.getElementById("left-button");
 
 button.onclick = () => {
-  document.getElementById("game-media").scrollLeft += 30;
+  $('.game-media p').scrollLeft += 30;
 };
 
 const button1 = document.getElementById("right-button");
 
 button1.onclick = () => {
-  document.getElementById("game-media").scrollLeft -= 30;
+  $('.game-media').scrollLeft -= 30;
 };
