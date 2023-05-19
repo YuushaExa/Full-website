@@ -24,14 +24,18 @@ $('.game-media img:first').on('load', function(e){
  document.getElementById('image-pre').innerHTML = '<img src="'+ document.getElementById('LinkId').value +'" alt="Image" />';
 });
 
-const button = document.getElementById("left-button");
 
-button.onclick = () => {
-  $('.game-media p').scrollLeft($('.game-media p').scrollLeft() + 20);
-};
+const rightBtn = document.querySelector('#right-button');
+const leftBtn = document.querySelector('#left-button');
 
-const button1 = document.getElementById("right-button");
+rightBtn.addEventListener("click", function(event) {
+  const conent = document.querySelector('.game-media p');
+  conent.scrollLeft += 300;
+  event.preventDefault();
+});
 
-button1.onclick = () => {
-  $('.game-media').scrollLeft($('.game-media p').scrollLeft() - 20);
-};
+leftBtn.addEventListener("click", function(event) {
+  const conent = document.querySelector('.game-media p');
+  conent.scrollLeft -= 300;
+  event.preventDefault();
+});
