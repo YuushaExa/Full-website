@@ -18,7 +18,7 @@ $('.game-info').mouseout(function (event) {
 
 $('.tool-show a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.body').append('<div class="link-pre"></div>');
+    $('body').append('<div class="link-pre"></div>');
  $('.link-pre').css('top',event.pageY + 25 ).css('left',event.pageX + 10 ).hide().load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
