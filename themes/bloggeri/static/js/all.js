@@ -23,7 +23,7 @@ window.onclick = function(event) {
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
-    $('.link-pre').css('top',event.pageY + 5 ).css('left',event.pageX + 10 ).hide().load(this.href + ' .content ', function (data) {
+    $('.link-pre').css('top',event.pageY + 0 ).css('left',event.pageX + 0 ).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
