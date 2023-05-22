@@ -27,12 +27,15 @@ $('.game-info a').mouseover(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
-$('.content').mouseout(function (event) {
-  event.preventDefault(); 
+var modal = document.getElementsByClass("game-info");
+
+window.onclick = function(event) {
+  if (event.target == modal) {
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
           });
-});
+}
+}
 
 
 $('.card-imal').each(function() {
