@@ -22,7 +22,7 @@ $('.tool-show a').mouseover(function (event) {
  $('.link-pre1').css('top',event.pageY + 25 ).css('left',event.pageX + 10 ).hide().load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
-$('.card').mouseout(function (event) {
+$('.tool-show a').mouseout(function (event) {
   event.preventDefault(); 
   $('.link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
