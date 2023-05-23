@@ -23,7 +23,7 @@ $('.tool-show a').click(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
 
-var modal = document.getElementsByClassName("link-pre");
+var modal = document.getElementsByClassName("card");
 
 window.onclick = function(event) {
   if (event.target == modal) {
