@@ -25,5 +25,5 @@ $('.tool-show a').click(function (event) {
 $('.tool-show a').click(function (event) {
       event.preventDefault(); 
    if(!$(event.target).closest('#link-pre').length && !$(event.target).is('#link-pre')) {
-     $(".link-pre").hide();    
+     $(".link-pre").hide();  }  
 });
