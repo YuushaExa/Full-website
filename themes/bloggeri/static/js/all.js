@@ -22,7 +22,7 @@ $('.tool-show a').on("click",function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
 
-$('.link-pre').on('mouseout',function (event) {
+$('.link-pre').on('mouseout',"body",function (event) {
       event.preventDefault(); 
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
