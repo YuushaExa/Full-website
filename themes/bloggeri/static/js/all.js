@@ -31,3 +31,20 @@ $('#search').click(function (event) {
       event.preventDefault(); 
 
 });
+
+document.addEventListener(
+	"click",
+	function (event) {
+		if (
+			event.target.matches(".button-close-modal") ||
+			!event.target.closest(".link-pre")
+		) {
+			closeModal();
+		}
+	},
+	false
+);
+
+function closeModal() {
+	document.querySelector(".link-pre").style.display = "none";
+}
