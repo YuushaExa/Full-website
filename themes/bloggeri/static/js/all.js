@@ -34,6 +34,7 @@ $('#search').click(function (event) {
 
 $("body").click(function() {
    if ($(".link-pre").is(":visible")) {
-       $(".link-pre").hide();
+       $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
+              $(this).remove();
    }
 });
