@@ -19,7 +19,7 @@ $('.tool-show a').click(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
 
-var modal = document.getElementsByClassName('footer');
+var modal = document.getElementsByTagName('footer');
 window.onclick = function(event) {
     if (event.target == modal) {
          $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
