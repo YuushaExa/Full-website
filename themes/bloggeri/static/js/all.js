@@ -32,19 +32,8 @@ $('#search').click(function (event) {
 
 });
 
-document.addEventListener(
-	"click",
-	function (event) {
-		if (
-			event.target.matches(".button-close-modal") ||
-			!event.target.closest(".link-pre")
-		) {
-			closeModal();
-		}
-	},
-	false
-);
-
-function closeModal() {
-	document.querySelector(".link-pre").style.display = "none";
-}
+$("body").click(function() {
+   if ($(".link-pre").is(":visible")) {
+       $(".link-pre").hide();
+   }
+});
