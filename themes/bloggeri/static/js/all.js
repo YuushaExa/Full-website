@@ -24,4 +24,4 @@ $('#search').click(function (event) {
  $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
 });
-
+});
