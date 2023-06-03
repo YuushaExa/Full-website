@@ -20,7 +20,7 @@ $('.tool-show a').click(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
 
-$('#link-pre1').mouseleave (function (event) {
+$('#link-pre1').on('mouseleave', function (event) {
       event.preventDefault(); 
  $('#link-pre2').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
