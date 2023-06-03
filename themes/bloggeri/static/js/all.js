@@ -12,7 +12,7 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').click(function (event) {
+$('.tool-show a').on('click', function (event) {
       event.preventDefault(); 
     $('body').append('<div id="link-pre1"></div>');
       $('#link-pre1').append('<div id="link-pre2"></div>');
