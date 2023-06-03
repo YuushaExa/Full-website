@@ -25,5 +25,4 @@ $('#link-pre1').on('click', '#link-pre1', 'function (event) {
  $('#link-pre2').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
 });
- $(this).remove();
 });
