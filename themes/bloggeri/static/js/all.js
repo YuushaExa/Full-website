@@ -14,16 +14,17 @@ $('.game-info').mouseleave (function (event) {
 });
 $('.tool-show a').on('click', function (event) {
       event.preventDefault(); 
+      $("#content-front").css("z-index", "1");
     $('body').append('<div id="link-pre1"></div>');
       $('#link-pre1').append('<div id="link-pre2"></div>');
  $('#link-pre2').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
       });
 
-$("body").on("click", "#link-pre1", function (event) {
+$("#content-front").on("click", "#link-pre1", function (event) {
       event.preventDefault(); 
  $("#link-pre2").css('transform', 'translate(0, +5px)').fadeOut(200, function() {
-              $(this).remove(); $("#link-pre1").remove();
+              $(this).remove(); $("#content-front").remove();
 });
 });
  
