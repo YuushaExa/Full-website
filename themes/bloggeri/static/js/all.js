@@ -26,3 +26,4 @@ $('#link-pre1').on('click', 'function (event) {
               $(this).remove();
 });
 });
+ 
