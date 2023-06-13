@@ -25,4 +25,4 @@ $(document).click(function(event) {
   if (!$(event.target).closest("#link-pre2,#content-front").length) {
     $("body").find("#link-pre2").remove();
   }
-});
+});});
