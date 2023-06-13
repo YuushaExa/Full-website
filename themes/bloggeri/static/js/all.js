@@ -12,17 +12,20 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').on('click', function (event) {
-      event.preventDefault(); 
-      $("#content-front").css("z-index", "1");
-    $('body').append('<div id="link-pre1"></div>');
-      $('#link-pre1').append('<div id="link-pre2"></div>');
- $('#link-pre2').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
-    }).fadeIn(300).css('transform', 'translate(0, -15px)');
-      });
 
-$(document).click(function(event) {
-  if (!$(event.target).closest("#link-pre2,#content-front").length) {
-    $("body").find("#link-pre2").remove();
-  }
-});});
+$('.tool-show a').mouseover(function (event) { 
+    event.preventDefault();
+    $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
+    });
+          $("#content-front").css("z-index", "1");
+          $("#content-front-text").css("opacity", "1");
+            $.getScript("/js/posts-load.js");
+});
+var modal = document.getElementById("content-front");
+window.onclick = function(event) {
+  if (event.target == modal) {
+  $("#content-front-text").empty();
+       $("#content-front-text").css("opacity", "0");
+                              $("#content-front").css("z-index", "-1");
+}
+}
