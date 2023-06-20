@@ -21,7 +21,7 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
-            $.getScript("/js/posts-load.js"); 
+            $.getScript("/js/posts.js"); 
 });
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
