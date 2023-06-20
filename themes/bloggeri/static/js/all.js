@@ -19,15 +19,7 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1");
           $("#content-front-text").css("opacity", "1");
-            $.getScript("/js/posts-load.js");
-      
-        var $this = $('.game-media img'); 
-  $this.attr('data-src',$this.attr('data-src') + "&w=260"); 
- var source = $('.game-media img').attr("data-src");
-$('.game-media img').attr("src", source).removeAttr("data-src");
- var img_link = $('.game-media img').attr('src').split('&w')[0];
-$('.game-media img').wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-      
+            $.getScript("/js/posts-load.js");   
 });
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
