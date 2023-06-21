@@ -17,17 +17,17 @@ $('.game-info').mouseleave (function (event) {
 
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
-      $('body').append('<div class="content-front1"></div>');
-      $('.content-front1').append('<div class="content-front-text1"></div>');
-    $('.content-front-text1').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
+      $('body').append('<div id="content-front1"></div>');
+      $('#content-front1').append('<div id="content-front-text1"></div>');
+    $('#content-front-text1').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
     });
    
             $.getScript("/js/posts-load.js"); 
 });
-var modal = document.getElementById("content-front");
+var modal = document.getElementById("content-front1");
 window.onclick = function(event) {
   if (event.target == modal) {
-  $(".content-front-text1").remove();
-                              $(".content-front1").remove();
+  $("#content-front-text1").remove();
+                              $("#content-front1").remove();
 }
 }
