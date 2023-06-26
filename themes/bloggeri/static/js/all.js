@@ -1,6 +1,7 @@
 $(document).ready(function() {
 var mouseX;
 var mouseY;
+ }); 
 $(document).mousemove( function(e) {
  mouseX = e.clientX; 
  mouseY = e.clientY;
