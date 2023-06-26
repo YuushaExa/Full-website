@@ -17,7 +17,7 @@ $('.tool-show a').mouseover(function (event) {
     $('#content-front-text').load(this.href + ' .image-first, .post-title, .category, .game-info, .game-media ', function (data) {
     });
           $("#content-front").css("z-index", "1");
-          $("#content-front-text").css("opacity", "1").css('top',event.pageY).css('left',event.pageX);
+          $("#content-front-text").css("opacity", "1").css('top',event.pageY - 25 ).css('left',event.pageX - 10);
             $.getScript("/js/posts-load.js"); 
 });
 var modal = document.getElementById("content-front");
