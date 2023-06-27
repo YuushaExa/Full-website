@@ -21,7 +21,7 @@ $('.tool-show a').mouseover(function (event) {
             $.getScript("/js/posts-load.js"); 
 });
 var modal = document.getElementById("content-front");
-window.onmouseover = function(event) {
+window.onclick = function(event) {
 if (event.target == modal) {
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
