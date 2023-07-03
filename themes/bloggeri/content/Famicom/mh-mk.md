@@ -18,7 +18,7 @@ post_format: []
 ---
 All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros., released in 1986 for the Famicom Disk System. This version is based on the Japanese radio program All Night Nippon, and it was given out as a raffle prize on the show itself. The game was published by Fuji Television. Essentially, this game is a mishmash of levels from Super Mario Bros 1 and 2 except with the sprites of the Toads and various enemies replaced with Japanese celebrities for a humorous effect as well as item placements are different.
 
-![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg)
+![](https://images.launchbox-app.com/133dd9d0-2e30-476a-835e-6bbc915b02e4.jpg)
 
 <div class="game-info">
 Developed by [Nintendo EAD](/search?q=Nintendo%20EAD?&max-results=12)  
@@ -44,11 +44,11 @@ Platform: <a href="/categories/blogging/">Wow</a>
 </div>
 <div class="game-media">
     
-![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg) 
-![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg)
-![](https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg) 
-![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
-![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
-![](https://images.launchbox-app.com/165d9691-4653-42bb-9fe2-6a8bc46d9b0f.jpg)
+![](https://images.launchbox-app.com/d5bb49cc-f739-4ff0-b3e0-fe2da3a3e693.png) 
+![](https://images.launchbox-app.com/071f7d9b-4719-4e09-93f9-e84c82732bd3.jpg)
+![](https://images.launchbox-app.com/30873e2e-7b41-45aa-92a5-2e6fbe2fe618.jpg) 
+![](https://images.launchbox-app.com/83411588-bf9a-4a5f-b95e-233f7bdf8482.png)
+![](https://images.launchbox-app.com/b01af08e-c05e-4ab9-b610-d67b2db2a096.png)
+![](https://images.launchbox-app.com/4e24ee90-383e-4386-ba09-fd90cc25a590.png)
     
 </div>
