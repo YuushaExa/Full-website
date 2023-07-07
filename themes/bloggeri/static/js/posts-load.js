@@ -1,5 +1,5 @@
-const images = document.querySelectorAll('[data-src]');
-const config = {
+const images1 = document.querySelectorAll('[data-src]');
+const config1 = {
   rootMargin: '0px 0px 50px 0px',
   threshold: 0
 };
@@ -14,7 +14,7 @@ let observer = new IntersectionObserver(function (entries, self) {
   });
 }, config);
 
-images.forEach(image => {
+images1.forEach(image => {
   observer.observe(image);
 });
 
