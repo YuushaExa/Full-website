@@ -19,9 +19,6 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
                   $.getScript("/js/posts-load.js"); 
- $('.game-media img').attr('data-src',$('.game-media img').attr('data-src') + "&w=260"); 
- var source = $('.game-media img').attr("data-src");
-$('.game-media img').attr("src", source).removeAttr("data-src");
 });
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
