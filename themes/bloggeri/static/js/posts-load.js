@@ -1,4 +1,3 @@
-  <script>
 const images = document.querySelectorAll('[data-src]');
 const config = {
   rootMargin: '0px 0px 50px 0px',
@@ -24,4 +23,3 @@ function preloadImage(img) {
   if (!src) { return; }
   img.src = src;
 }               
-</script>
