@@ -39,6 +39,12 @@ const mSection = document.querySelector(".card"),
         intObsAllElem.forEach(function (elem) {
           intObserver.observe(elem);
         });
+
+          function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}       
       }
     }
   }
