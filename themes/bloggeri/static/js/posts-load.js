@@ -3,19 +3,19 @@ const config1 = {
   rootMargin: '0px 0px 50px 0px',
   threshold: 0
 };
-let loaded = 0;
+let loaded1 = 0;
 
-let observer = new IntersectionObserver(function (entries, self) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      preloadImage(entry.target);
-      self.unobserve(entry.target);
+let observer1 = new IntersectionObserver(function (entries1, self1) {
+  entries1.forEach(entry1 => {
+    if (entry1.isIntersecting) {
+      preloadImage(entry1.target);
+      self1.unobserve(entry1.target);
     }
   });
-}, config);
+}, config1);
 
-images1.forEach(image => {
-  observer.observe(image);
+images1.forEach(image1 => {
+  observer1.observe(image1);
 });
 
 function preloadImage(img) {
