@@ -1,7 +1,3 @@
-$('.game-media img').attr("src", $(this).data('src'));
-$('.game-media img').removeAttr('data-src');
-
-
 Fancybox.bind("[data-fancybox]", {
 });
 $('.game-info a').mouseover(function (event) {
@@ -32,3 +28,8 @@ if (event.target == modal) {
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
 }
+
+$('.tool-show a').on("mouseover", ".game-media", function () {
+$('.game-media img').attr("src", $(this).data('src'));
+$('.game-media img').removeAttr('data-src');
+});
