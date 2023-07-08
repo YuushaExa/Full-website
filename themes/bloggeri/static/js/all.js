@@ -1,6 +1,5 @@
 $('.game-media img').attr("src", $(this).data('src'));
 $('.game-media img').removeAttr('data-src');
-\
 
 
 Fancybox.bind("[data-fancybox]", {
