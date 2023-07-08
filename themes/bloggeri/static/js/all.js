@@ -29,7 +29,7 @@ if (event.target == modal) {
 }
 }
 
-$('.tool-show a').on("mouseover", ".game-media", function () {
+$('.tool-show a').on("mouseover", "#content-front", function () {
 $('.game-media img').attr("src", $(this).data('src'));
 $('.game-media img').removeAttr('data-src');
 });
