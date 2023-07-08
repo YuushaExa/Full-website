@@ -1,4 +1,3 @@
-                $('.game-media').append('<div class="loadimg"></div>');
 $('.loadimg').click(function (event) {
 $('.game-media img').each(function(){
   var $this = $(this); 
