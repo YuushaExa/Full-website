@@ -30,6 +30,13 @@ if (event.target == modal) {
 }
 
 $('.tool-show a').on("mouseover", "#content-front-text", function () {
-$('.game-media img').attr("src", $('.game-media img').data('src'));
-$('.game-media img').removeAttr('data-src');
+$('.game-media img').each(function(){
+  var $this = $(this); 
+  $this.attr('data-src',$this.attr('data-src') + "&w=260"); 
+ var source = $(this).attr("data-src");
+$(this).attr("src", source).removeAttr("data-src");
+ var img_link = $(this).attr('src').split('&w')[0];
+$(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+  })
+
 });
