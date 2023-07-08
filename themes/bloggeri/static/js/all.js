@@ -16,10 +16,10 @@ $('.tool-show a').mouseover(function (event) {
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .post-title, .game-media, .game-info ', function (data) {
     });
-          $('#content-front-text').append('<div class="loadimg"></div>');
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-                  $.getScript("/js/posts-load.js"); 
+                  $.getScript("/js/posts-load.js");
+                $('.game-media').append('<div class="loadimg"></div>');
 });
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
