@@ -1,6 +1,6 @@
   $('.game-media img').each(function(){
   var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&w=260");
+  $this.attr('data-src',$this.attr('data-src') + "&h=200&fit=cover&a=attention");
 })
 
  $('.game-media img').each(function() {
