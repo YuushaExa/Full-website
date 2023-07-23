@@ -7,7 +7,7 @@
             <a href="{{ $permalink }}">   <img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-                 {{ end }}" alt="" crossorigin="anonymous" onload="document.img.style.opacity='1'" >
+                 {{ end }}" alt="" crossorigin="anonymous">
          </a>
     </div>
     <div class="card-content">
