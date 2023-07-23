@@ -47,6 +47,7 @@ function preloadImage(img) {
   const src = img.getAttribute('data-src');
   if (!src) { return; }
   img.src = src;
+  entry.lazyImage.classList.add("visible");
 }               
 </script>
     <script defer src="/js/all.js"></script>
