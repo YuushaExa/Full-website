@@ -32,7 +32,7 @@
     entries.forEach(entry => {
       if (entry.isIntersecting &&
         entry.target.className === 'lazyImage') {
-        let imageUrl = entry.target.getAttribute('data-img');
+        let imageUrl = entry.target.getAttribute('data-src');
         if (imageUrl) {
           entry.target.src = imageUrl;
           observer.unobserve(entry.target);
