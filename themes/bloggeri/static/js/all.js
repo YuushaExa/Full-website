@@ -1,4 +1,4 @@
-var splash = document.querySelector("img");
+var splash = document.querySelectorAll("img");
 window.addEventListener('load', function(event) {
       for (var i = 0; i < splash.length; i++) {
   splash[i].classList.add('lazyloaded');
