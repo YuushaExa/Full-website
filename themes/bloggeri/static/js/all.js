@@ -1,10 +1,3 @@
-[].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
-	img.setAttribute('src', img.getAttribute('data-src'));
-	img.onload = function() {
-		img.removeAttribute('data-src');
-	};
-});
-
 Fancybox.bind("[data-fancybox]", {
 });
 $('.game-info a').mouseover(function (event) {
