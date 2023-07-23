@@ -1,4 +1,7 @@
-
+var splash = document.querySelector("img");
+window.addEventListener('load', function(event) {
+      splash.classList.add("lazyloaded");
+});
 
 Fancybox.bind("[data-fancybox]", {
 });
