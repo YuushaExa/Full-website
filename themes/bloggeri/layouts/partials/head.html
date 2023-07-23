@@ -21,22 +21,15 @@ html{overflow-y:scroll;
 	background-color: #fff;
 } 
 
-.lazyImage {
+img[src=""],
+img:not([src]) {
+  visibility: hidden;
   opacity: 0;
 }
 
-.lazyImage.visible {
-  animation: fadeIn .5s ease forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+img:not([src=""]) {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 	      
