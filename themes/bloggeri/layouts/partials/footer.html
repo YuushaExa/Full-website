@@ -35,6 +35,7 @@ let observer = new IntersectionObserver(function (entries, self) {
     if (entry.isIntersecting) {
       preloadImage(entry.target);
       self.unobserve(entry.target);
+        entry.target.classList.add("visible");
     }
   });
 }, config);
