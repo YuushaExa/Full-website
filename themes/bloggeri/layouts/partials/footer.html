@@ -48,7 +48,7 @@
     });
   }
   let observer = new IntersectionObserver(callback, options)
-  observer.observe(document.querySelector('#lazyImageId'))
+  observer.observe(document.querySelector('[data-src]'))
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
