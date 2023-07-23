@@ -1,3 +1,7 @@
+ $('img').on('load', function(){
+    $(this).addClass('lazyloaded ');
+ });
+
 Fancybox.bind("[data-fancybox]", {
 });
 $('.game-info a').mouseover(function (event) {
