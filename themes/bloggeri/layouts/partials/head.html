@@ -28,14 +28,7 @@ html{overflow-y:scroll;
 .lazyImage.visible {
   animation: fadeIn 0.5s ease forwards;
 }
-.game-description {
-	          background-color: #e5edff;
-    border-radius: 16px;
-    padding: 15px;
-    margin: 15px;
-    color: #0f0f0f;
-    font-size: 14px;
-}
+
 
 @keyframes fadeIn {
   0% {
@@ -68,13 +61,16 @@ font-size: unset;
 	      }
 
 	      #content-front-text .game-media {
-    display: flex;
+display: flex;
     gap: 5px;
     align-items: center;
     justify-content: left;
     flex-wrap: wrap;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 5px;
+    position: absolute;
+    width: 100%;
+    top: 50px;
 	      }
 	       #content-front-text .game-media img {
     left: 15px;
@@ -89,13 +85,36 @@ font-size: unset;
     border-bottom-right-radius: 16px;
 	      }
 	       #content-front-text .game-info {
-        background-color: #e5edff;
+background-color: #e5edff;
     border-radius: 16px;
     padding: 15px;
     margin: 15px;
     color: #0f0f0f;
-		           font-size: 14px;
+    font-size: 14px;
+    display: inline-block;
+    float: left;
+    width: 40%;
+    position: relative;
+    bottom: -220px;
 }
+	      #content-front-text .game-description {
+    background-color: #e5edff;
+    border-radius: 16px;
+    padding: 15px;
+    margin: 15px;
+    color: #0f0f0f;
+    font-size: 14px;
+    bottom: 0;
+    position: absolute;
+	      }
+	        #content-front-text .image-first {
+    display: inline-block;
+    float: right;
+    position: relative;
+    padding: 15px;
+    margin: 15px;
+    bottom: -226px;
+	      }
 	      
 	      #link-pre1 {
 	          display: flex;
@@ -282,14 +301,14 @@ filter: drop-shadow(0 0 8px rgba(0, 0, 0, .6))
 	      }
 	      
 	     #content-front #content-front-text {  
-    position: relative;
+position: relative;
     top: 10%;
-    width:50%;
-		         height: fit-content;
+    width: 550px;
+    height: 840px;
     font-size: 13px;
     border-radius: 10px;
-		     transition: opacity 0.3s;
-		     background-color: #fff;
+    transition: opacity .3s;
+    background-color: #fff;
 	      }
 
 	      
