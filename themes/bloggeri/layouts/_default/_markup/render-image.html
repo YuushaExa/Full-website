@@ -1,8 +1,8 @@
 {{ if eq .Ordinal 0 }}
 <div class="image-first">
 <img src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="{{ $.Page.Title }}" crossorigin="anonymous"/>
-<a class='YTfront' href='https://www.youtube.com/results?search_query={{ $.Page.Title }}' target='_blank'>Watch {{ $.Page.Title }} Gameplay on YouTube!</a>
-</div>
+<a class="tooltip" href='https://www.youtube.com/results?search_query={{ $.Page.Title }}' target='_blank'><span class="tooltiptext">Watch {{ $.Page.Title }} Gameplay on YouTube!</span></a>
+</div> 
 {{ end}}
 {{ if .Ordinal }}
 <img data-src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d" alt="{{ $.Page.Title }}">
