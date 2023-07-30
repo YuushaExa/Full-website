@@ -19,6 +19,7 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
                   $.getScript("/js/posts-load.js");
+      lazy();
 });
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
