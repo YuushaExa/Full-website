@@ -12,13 +12,24 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').mouseover(function (event1) { 
+$('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .post-title, .game-media, .image-first, .game-info, .game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
       $.getScript("/js/posts-load.js");
+        $('.game-media img').each(function(){
+  var $this = $(this); 
+  $this.attr('data-src',$this.attr('data-src') + "&h=200");
+
+      var img_link =  $(this).attr('data-src').split('&h')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+
+ var source = $(this).attr("data-src");
+$(this).attr("src", source).removeAttr("data-src");
+
+  })
 });
 $(function() {
   $.event1();
