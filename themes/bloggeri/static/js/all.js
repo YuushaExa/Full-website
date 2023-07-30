@@ -31,9 +31,6 @@ $(this).attr("src", source).removeAttr("data-src");
 
   })
 });
-$(function() {
-  $.event1();
-});
 
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
