@@ -12,16 +12,18 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').mouseover(function (event) { 
+$('.tool-show a').mouseover(function (event1) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .post-title, .game-media, .image-first, .game-info, .game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-      $.getScript("/js/posts-load.js", function() {
-    lazy();
+      $.getScript("/js/posts-load.js");
 });
+$(function() {
+  $.event1();
 });
+
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
