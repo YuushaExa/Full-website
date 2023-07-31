@@ -22,37 +22,38 @@
         new PagefindUI({ element: "#search" });
     });
 </script>
-         <script>         
-const io = new IntersectionObserver((entries, observer) => {
-  // console.log(entries)
-  entries.forEach(entry => {
-    console.log('😍');
+   <script>         
+function lazyLoad(){
+// Lazy load
+const images = document.querySelectorAll("[data-src]");
+console.log(images)
+const imgOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px 300px 0px"
+};
 
-    if (entry.isIntersecting) {
-
-      console.log('intersecting');
-
-      const img = entry.target;
-      const src = img.getAttribute('data-src');
-
-     if (!src) { return; }
+function preloadImage(img) {
+  const src = img.getAttribute("data-src");
+  if (!src) {
+    return;
+  }
   img.src = src;
+}
 
-      observer.disconnect();
+const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      preloadImage(entry.target);
+      imgObserver.unobserve(entry.target);
     }
   });
+}, imgOptions);
+
+images.forEach(image => {
+  imgObserver.observe(image);
 });
-
-io.observe(document.querySelectorAll('data-src'));
-
-const fethNewData = () => {
-  // any ajax call
-  window.fetch().then((html) => {
-    //update DOM
-    document.querySelector('body').innerHTML = html;
-    //call observe again
-    io.observe(document.querySelectorAll('data-src'));
-  })
 };
 </script>
     <script defer src="/js/all.js"></script>
