@@ -1,5 +1,4 @@
-$('.image-reload').click(function(event){
-$('.game-media img').each(function(lazy){
+$('.game-media img').each(function lazy(){
   var $this = $(this); 
   $this.attr('data-src',$this.attr('data-src') + "&h=200");
 
@@ -10,4 +9,6 @@ $('.game-media img').each(function(lazy){
 $(this).attr("src", source).removeAttr("data-src");
 
   });
+
+$('.image-reload').click(function(event){
    });
