@@ -1,4 +1,4 @@
-$('.game-media img').each(function lazy(){
+$('.game-media img').each(function(){
   var $this = $(this); 
   $this.attr('data-src',$this.attr('data-src') + "&h=200");
 
