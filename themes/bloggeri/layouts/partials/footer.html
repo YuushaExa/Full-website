@@ -49,7 +49,17 @@ function preloadImage(img) {
   const src = img.getAttribute('data-src');
   if (!src) { return; }
   img.src = src;
-}               
+}        
+
+ let observe(document.querySelectorAll('[data-src]'));
+
+const fethNewData = () => {
+  window.fetch().then((html) => {
+    document.querySelector('body').innerHTML = html;
+    let observe(document.querySelectorAll('[data-src]'));
+  })
+};
+             
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
