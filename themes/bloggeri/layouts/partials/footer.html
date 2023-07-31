@@ -22,39 +22,35 @@
         new PagefindUI({ element: "#search" });
     });
 </script>
-   <script>         
-function lazyLoad(){
-// Lazy load
-const images = document.querySelectorAll("[data-src]");
-console.log(images)
-const imgOptions = {
-  threshold: 0,
-  rootMargin: "0px 0px 50px 0px"
+    <script>         
+const images = document.querySelectorAll('[data-src]');
+const config = {
+      root: null,
+    rootMargin: '0px',
+    threshold: 0.25
 };
-
-function preloadImage(img) {
-  const src = img.getAttribute("data-src");
-  if (!src) {
-    return;
-  }
-  img.src = src;
-}
-
-const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+let loaded = 0;
+             
+let observer = new IntersectionObserver(function (entries, self) {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) {
-      return;
-    } else {
+    if (entry.isIntersecting) {
       preloadImage(entry.target);
-      imgObserver.unobserve(entry.target);
+      self.unobserve(entry.target);
+        entry.target.classList.add("visible");
     }
   });
-}, imgOptions);
+}, config);
 
 images.forEach(image => {
-  imgObserver.observe(image);
+  observer.observe(image);
 });
-};
+
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}        
+
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
