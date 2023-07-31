@@ -1,6 +1,3 @@
-const observer = lozad();
-observer.observe();
-
 Fancybox.bind("[data-fancybox]", {
 });
 $('.game-info a').mouseover(function (event) {
