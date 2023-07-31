@@ -19,7 +19,25 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
       $.getScript("/js/posts-load.js");
-      IntersectionObserver();
+let observer = new IntersectionObserver(function (entries, self) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadImage(entry.target);
+      self.unobserve(entry.target);
+        entry.target.classList.add("visible");
+    }
+  });
+}, config);
+
+images.forEach(image => {
+  observer.observe(image);
+});
+
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}               
 });
 
 var modal = document.getElementById("content-front");
