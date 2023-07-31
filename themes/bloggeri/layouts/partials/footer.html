@@ -43,13 +43,13 @@ let observer = new IntersectionObserver(function (entries, self) {
 
 images.forEach(image => {
   observer.observe(image);
+        observer.disconnect();
 });
 
 function preloadImage(img) {
   const src = img.getAttribute('data-src');
   if (!src) { return; }
   img.src = src;
-    observer.disconnect();
 }        
 
 </script>
