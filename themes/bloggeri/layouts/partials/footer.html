@@ -51,8 +51,6 @@ function preloadImage(img) {
   img.src = src;
 }        
 
- let observe(document.querySelectorAll('[data-src]'));
-
 const fethNewData = () => {
   window.fetch().then((html) => {
     document.querySelector('body').innerHTML = html;
