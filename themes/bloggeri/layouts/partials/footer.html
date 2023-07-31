@@ -23,41 +23,35 @@
     });
 </script>
          <script>         
-const images = document.querySelectorAll('[data-src]');
-const config = {
-      root: null,
-    rootMargin: '0px',
-    threshold: 0.25
-};
-let loaded = 0;
-             
-let observer = new IntersectionObserver(function (entries, self) {
+const io = new IntersectionObserver((entries, observer) => {
+  // console.log(entries)
   entries.forEach(entry => {
+    console.log('😍');
+
     if (entry.isIntersecting) {
-      preloadImage(entry.target);
-      self.unobserve(entry.target);
-        entry.target.classList.add("visible");
+
+      console.log('intersecting');
+
+      const img = entry.target;
+      const src = img.getAttribute('data-src');
+
+      img.setAttribute('src', src);
+      img.classList.add('fade');
+
+      observer.disconnect();
     }
   });
-}, config);
-
-images.forEach(image => {
-  observer.observe(image);
 });
 
-function preloadImage(img) {
-  const src = img.getAttribute('data-src');
-  if (!src) { return; }
-  img.src = src;
-}        
-             
-             const fethNewData = () => {
+io.observe(document.querySelectorAll('data-src'));
+
+const fethNewData = () => {
   // any ajax call
   window.fetch().then((html) => {
     //update DOM
     document.querySelector('body').innerHTML = html;
     //call observe again
-    observer.observe(document.querySelectorAll('data-src'));
+    io.observe(document.querySelectorAll('data-src'));
   })
 };
 </script>
