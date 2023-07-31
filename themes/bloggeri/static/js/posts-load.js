@@ -9,6 +9,3 @@ $('.game-media img').each(function(){
 $(this).attr("src", source).removeAttr("data-src");
 
   });
-
-$('.image-reload').click(function(event){
-   });
