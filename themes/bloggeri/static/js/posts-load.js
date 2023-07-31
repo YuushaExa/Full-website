@@ -1,11 +1,20 @@
-$('.game-media img').each(function(){
-  var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&h=200");
 
-      var img_link =  $(this).attr('data-src').split('&h')[0];
-      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-
- var source = $(this).attr("data-src");
-$(this).attr("src", source).removeAttr("data-src");
-
+let observer = new IntersectionObserver(function (entries, self) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadImage(entry.target);
+      self.unobserve(entry.target);
+        entry.target.classList.add("visible");
+    }
   });
+}, config);
+
+images.forEach(image => {
+  observer.observe(image);
+});
+
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}               
