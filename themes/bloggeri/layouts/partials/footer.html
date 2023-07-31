@@ -42,7 +42,7 @@ let observer = new IntersectionObserver(function (entries, self) {
 }, config);
 
 images.forEach(image => {
-  observer.observe(img);
+  observer.observe(image);
 });
       
 function preloadImage(img) {
