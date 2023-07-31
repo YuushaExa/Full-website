@@ -1,5 +1,9 @@
-function preloadImage(img) {
-  const src = img.getAttribute('data-src');
-  if (!src) { return; }
-  img.src = src;
-}               
+const callback = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log('Элемент пересёк границу области и всё ещё соприкасается с ней!')
+
+      observer.unobserve(entry.target)
+    }
+  })
+}
