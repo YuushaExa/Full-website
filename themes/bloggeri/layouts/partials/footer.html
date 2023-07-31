@@ -42,11 +42,9 @@ let observer = new IntersectionObserver(function (entries, self) {
 }, config);
 
 images.forEach(image => {
-  observer.observe(image);
+  observer.observe(img);
 });
-
-                observer.observe('#content-front-text .game-media img');
-
+      
 function preloadImage(img) {
   const src = img.getAttribute('data-src');
   if (!src) { return; }
