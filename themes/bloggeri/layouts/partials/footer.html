@@ -51,6 +51,11 @@ function preloadImage(img) {
   img.src = src;
 }        
 
+       function callback(entries, opts){
+    entries.forEach(entry =>
+        entry.target.classList.toggle('make-interactive', entry.isIntersecting)
+    );
+ }
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
