@@ -31,6 +31,8 @@ const config = {
 };
 let loaded = 0;
 
+                          let observer = new IntersectionObserver(callback, options);
+             
 let observer = new IntersectionObserver(function (entries, self) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
