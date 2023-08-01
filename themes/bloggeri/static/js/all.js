@@ -1,6 +1,6 @@
 Fancybox.bind('[data-fancybox="gallery"]', {
   compact: true,
-
+closeClickOutside : true,
   wheel: "slide",
 
   Images: {
