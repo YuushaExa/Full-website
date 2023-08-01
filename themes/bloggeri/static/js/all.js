@@ -1,5 +1,5 @@
 new Carousel(
-  document.getElementById('productCarousel'),
+  document.getElementsByClassName('game-media img'),
   {
     infinite: false,
     Dots: false,
