@@ -18,7 +18,6 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
       $.getScriptCached('/js/posts-load.js', function(){
-  console.log(moment);
 });
 });
 
