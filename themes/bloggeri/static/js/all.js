@@ -18,14 +18,6 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
       $.getScript("/js/posts-load.js");
-      $('.game-media img').each(function(){
-  var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&h=200");
-
-      var img_link =  $(this).attr('data-src').split('&h')[0];
-      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-  });
-
 });
 
 var modal = document.getElementById("content-front");
@@ -36,3 +28,17 @@ if (event.target == modal) {
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
 }
+
+function calculateItemTotals() {
+   $('.game-media img').each(function(){
+  var $this = $(this); 
+  $this.attr('data-src',$this.attr('data-src') + "&h=200");
+
+      var img_link =  $(this).attr('data-src').split('&h')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+  });
+}
+$('.tool-show a').on('mouseover', '.game-media img', function()
+{
+    calculateItemTotals();  
+});
