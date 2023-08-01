@@ -1,6 +1,6 @@
   $('article img').slice(1).each(function(){
   var $this = $(this); 
-  $this.attr('data-src',$this.attr('data-src') + "&h=260");
+  $this.attr('data-src',$this.attr('data-src') + "&w=260");
 })
 
  $('.game-media img').each(function() {
