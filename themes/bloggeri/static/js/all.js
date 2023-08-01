@@ -1,17 +1,7 @@
 Fancybox.bind('[data-fancybox="gallery"]', {
-  idle: false,
-  compact: false,
-  dragToClose: false,
-
-  animated: false,
-  showClass: 'f-fadeSlowIn',
-  hideClass: false,
+  compact: true,
 
   wheel: "slide",
-
-  Carousel: {
-    infinite: false,
-  },
 
   Images: {
     zoom: false,
@@ -19,8 +9,6 @@ Fancybox.bind('[data-fancybox="gallery"]', {
       maxScale: 1.5,
     },
   },
-
-
 
   Toolbar: {
     absolute: true,
@@ -31,24 +19,6 @@ Fancybox.bind('[data-fancybox="gallery"]', {
     },
   },
 
-  Thumbs: {
-    type: 'classic',
-    Carousel: {
-      axis: 'x',
-
-      slidesPerPage: 1,
-      Navigation: true,
-      center: true,
-      fill: true,
-      dragFree: true,
-
-      breakpoints: {
-        '(min-width: 640px)': {
-          axis: 'y',
-        },
-      },
-    },
-  },
 });
 
 $('.game-info a').mouseover(function (event) {
