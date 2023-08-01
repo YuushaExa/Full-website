@@ -10,7 +10,7 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').click(function (event) { 
+$('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .post-title, .game-media, .image-first, .game-info, .game-description, .game-links ', function (data) {
     });
@@ -29,7 +29,7 @@ if (event.target == modal) {
 
 
 
-$("#content-front-text").on("click", ".tool-show a", function() {
+$("body").on("load", "#content-front-text", function() {
   $('.game-media img').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
