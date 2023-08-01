@@ -1,22 +1,3 @@
-new Carousel(
-  document.getElementsByClassName('game-media'),
-  {
-    infinite: false,
-    Dots: false,
-    Thumbs: {
-      type: 'classic',
-      Carousel: {
-        slidesPerPage: 1,
-        Navigation: true,
-        center: true,
-        fill: true,
-        dragFree: true,
-      },
-    },
-  },
-  { Thumbs }
-);
-
 Fancybox.bind('[data-fancybox="gallery"]', {
   idle: false,
   compact: false,
