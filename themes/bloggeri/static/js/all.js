@@ -16,10 +16,6 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-$('.game-media img').each(function(){
-      var img_link =  $(this).attr('data-src').split('&h')[0];
-      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-  });
 });
 
 var modal = document.getElementById("content-front");
@@ -31,3 +27,7 @@ if (event.target == modal) {
 }
 }
 
+$('.game-media img').each(function(){
+      var img_link =  $(this).attr('data-src').split('&h')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+  });
