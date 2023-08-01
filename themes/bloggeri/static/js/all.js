@@ -29,7 +29,7 @@ if (event.target == modal) {
 
 
 
-$(".game-media img").on("mouseover", "#content-front-text", function() {
+$("#content-front-text").on("mouseover", ".game-media img", function() {
   $('.game-media img').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
