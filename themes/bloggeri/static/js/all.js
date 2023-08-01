@@ -27,7 +27,9 @@ if (event.target == modal) {
 }
 }
 
-$('.game-media img').each(function(){
-      var img_link =  $(this).attr('data-src').split('&h')[0];
+
+
+$("#content-front-text .game-media img").on( "click", function() {
+    var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-  });
+});
