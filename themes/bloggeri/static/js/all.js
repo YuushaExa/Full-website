@@ -14,7 +14,11 @@ Fancybox.bind('[data-fancybox="gallery"]', {
     absolute: true,
     display: {
       left: [],
-      middle: [],
+         middle: [
+        "zoomIn",
+        "zoomOut",
+        "toggle1to1",
+      ],
       right: ['close'],
     },
   },
