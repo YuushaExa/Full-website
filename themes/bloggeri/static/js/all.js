@@ -1,4 +1,5 @@
 Fancybox.bind("[data-fancybox]", {
+       wheel: "slide",
 });
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
