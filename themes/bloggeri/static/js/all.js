@@ -1,28 +1,3 @@
-Fancybox.bind('[data-fancybox="gallery"]', {
-  compact: true,
-
-
-  Images: {
-    zoom: false,
-    Panzoom: {
-      maxScale: 1.5,
-    },
-  },
-
-  Toolbar: {
-    absolute: true,
-    display: {
-      left: [],
-         middle: [
-        "zoomIn",
-        "zoomOut",
-        "toggle1to1",
-      ],
-      right: ['close'],
-    },
-  },
-
-});
 
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
