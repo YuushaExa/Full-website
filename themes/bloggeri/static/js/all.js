@@ -1,4 +1,4 @@
-
+(function($){$.getScriptCached=function(url,callback){return $.ajax({url:url,dataType:"script",cache:true}).done(callback)}})(jQuery)
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
@@ -17,7 +17,9 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-      $.getScript("/js/posts-load.js");
+      $.getScriptCached('/js/posts-load.js', function(){
+  console.log(moment);
+});
 });
 
 var modal = document.getElementById("content-front");
