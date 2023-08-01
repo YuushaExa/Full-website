@@ -1,6 +1,56 @@
-Fancybox.bind("[data-fancybox]", {
-       wheel: "slide",
+Fancybox.bind('[data-fancybox="gallery"]', {
+  idle: false,
+  compact: false,
+  dragToClose: false,
+
+  animated: false,
+  showClass: 'f-fadeSlowIn',
+  hideClass: false,
+
+  wheel: "slide",
+
+  Carousel: {
+    infinite: false,
+  },
+
+  Images: {
+    zoom: false,
+    Panzoom: {
+      maxScale: 1.5,
+    },
+  },
+
+
+
+  Toolbar: {
+    absolute: true,
+    display: {
+      left: [],
+      middle: [],
+      right: ['close'],
+    },
+  },
+
+  Thumbs: {
+    type: 'classic',
+    Carousel: {
+      axis: 'x',
+
+      slidesPerPage: 1,
+      Navigation: true,
+      center: true,
+      fill: true,
+      dragFree: true,
+
+      breakpoints: {
+        '(min-width: 640px)': {
+          axis: 'y',
+        },
+      },
+    },
+  },
 });
+
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
