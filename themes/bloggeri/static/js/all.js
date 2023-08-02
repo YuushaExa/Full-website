@@ -30,11 +30,11 @@ if (event.target == modal) {
 
 
 $("body").on("mouseover", "#content-front-text", function() {
-        if($('.game-media img').hasClass('gallery'))
+  $('.game-media img').each(function(){
+                if($(this).hasClass('gallery'))
     {
         return;
     }
-  $('.game-media img').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' class="gallery" data-fancybox="gallery"></a>')
   });
