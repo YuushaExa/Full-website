@@ -27,11 +27,11 @@ if (event.target == modal) {
 }
 }
 
-$("body:not(.gallery)").on("mouseover", "#content-front-text", function() {
- $('.game-media img').each(function(){
+$("body").on("mouseover", "#content-front-text", function() {
+ $('.game-media img:not(.gallery)').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-       $('body').addClass('gallery');
+       $('.game-media img').addClass('gallery');
   });
 });
  
