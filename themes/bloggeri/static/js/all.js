@@ -33,7 +33,8 @@ $("body").on("mouseover", "#content-front-text", function() {
   $('.game-media img').each(function(){
 if ($(this).not('.gallery')) {
       var img_link =  $(this).attr('data-src').split('&h')[0];
-      $(this).wrap('<a href='+ img_link +' class="gallery" data-fancybox="gallery"></a>')
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+       $('.game-media img').addClass('gallery');
 }
   });
 });
