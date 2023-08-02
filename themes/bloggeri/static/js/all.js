@@ -34,3 +34,4 @@ $("body:not(.gallery)").on("mouseover", "#content-front-text", function() {
        $('body').addClass('gallery');
   });
 });
+ 
