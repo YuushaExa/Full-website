@@ -30,7 +30,7 @@ if (event.target == modal) {
 
 
 $("body").on("mouseover", "#content-front-text", function() {
-        if($(this).hasClass('gallery'))
+        if($('.game-media img').hasClass('gallery'))
     {
         return;
     }
