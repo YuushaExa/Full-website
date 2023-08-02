@@ -27,4 +27,15 @@ if (event.target == modal) {
 }
 }
 
-
+$("body").on("mouseover", "#content-front-text", function() {
+	if ($(this).hasClass("gallery")) {
+	console.log("the tab is already active");
+	}	
+	else {
+ $('.game-media img').each(function(){
+      var img_link =  $(this).attr('data-src').split('&h')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+       $('body').addClass('gallery');
+  });
+	}
+});
