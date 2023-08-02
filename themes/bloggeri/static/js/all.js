@@ -27,8 +27,6 @@ if (event.target == modal) {
 }
 }
 
-
-
 $("body").on("mouseover", "#content-front-text", function() {
 	if ($(this).hasClass("active")) {
 	console.log("the tab is already active");
