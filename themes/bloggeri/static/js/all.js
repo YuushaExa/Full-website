@@ -31,11 +31,9 @@ if (event.target == modal) {
 
 $("body").on("mouseover", "#content-front-text", function() {
   $('.game-media img').each(function(){
-                if($('.game-media img').hasClass('gallery'))
-    {
-        return;
-    }
+if ($(this).not('.gallery')) {
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' class="gallery" data-fancybox="gallery"></a>')
+}
   });
 });
