@@ -34,4 +34,3 @@ $("body").on("mouseover", "#content-front-text", function() {
        $('.game-media img').addClass('gallery');
   });
 });
- 
