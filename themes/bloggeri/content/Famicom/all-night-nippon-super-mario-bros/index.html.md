@@ -18,6 +18,17 @@ All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mar
 
 ![](https://wsrv.nl/?url=https://images.launchbox-app.com/dd6916ee-1687-4ba6-9abf-291643d729ae.jpg&output=webp&maxage=1d)
 
+<div class="game-media">
+
+![](https://images.launchbox-app.com/01bc03e1-b149-4314-a2ed-61632e35beff.jpg) 
+![](https://images.launchbox-app.com/5e304cc2-4e4e-4742-a43b-66339ad30294.png)
+![](https://images.launchbox-app.com/37da80b3-8c47-46fe-9dd7-9b991638d4ea.jpg) 
+![](https://images.launchbox-app.com/5de0b885-0eb5-4856-a885-bc8ea1ca14fe.png)
+![](https://images.launchbox-app.com/7098dc64-10e8-4332-a787-82856ae35989.png)
+![](https://images.launchbox-app.com/3d84d1d0-bc8a-4499-8049-193aa82a298b.png)
+    
+</div>
+
 <div class="game-info">Developed by [Nintendo EAD](/search?q=Nintendo%20EAD?&max-results=12)  
 Published by [Nintendo](/search?q=Nintendo?&max-results=12)  
 Genre: [Platform](/search?q=Platform?&max-results=12)  
