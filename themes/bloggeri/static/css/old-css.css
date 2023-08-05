@@ -1,1 +1,10 @@
 background-image: linear-gradient(-180deg,#52798c8c 0,#3452ad,#3b16d0 100%), url(https://wsrv.nl/?url=https://images.launchbox-app.com/35f4ba56-bd56-4928-a4dc-531d3b7091f4.jpg&output=webp&maxage=1d);
+
+.description {
+    border-radius: 6px;
+    display: block;
+    color: #fff;
+    background-color: rgb(192 31 31 / 70%);
+    /* backdrop-filter: blur(50px); */
+    padding: 5px;
+    text-shadow: 0px 2px 2px #a02e4a;
