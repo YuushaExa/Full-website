@@ -1,5 +1,3 @@
-      $('<style>.game-media { display: none; }</style>').appendTo('head');
-
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
@@ -30,6 +28,7 @@ if (event.target == modal) {
 }
 
 $("body").on("click", "#load-img", function() {
+            $('<style>.game-media { display: none; }</style>').appendTo('head');
  $('#content-front-text .game-media img:not(.gallery)').each(function(){
        $('#content-front-text .game-media').css('display', 'block');
       var img_link =  $(this).attr('data-src').split('&h')[0];
