@@ -29,7 +29,7 @@ if (event.target == modal) {
 
 $("body").on("click", "#load-img", function() {
  $('.game-media img:not(.gallery)').each(function(){
-       $('.game-media').removeClass('display', 'block');
+       $('#content-front-text" .game-media').removeClass('#content-front-text" .game-media');
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
        $('.game-media img').addClass('gallery');
