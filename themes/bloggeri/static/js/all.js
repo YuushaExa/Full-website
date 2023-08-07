@@ -11,12 +11,12 @@ $('.game-info').mouseleave (function (event) {
           });
 });
 $('.tool-show a').mouseover(function (event) { 
-                $('#content-front-text').append('<div id="load-img"></div>');
     event.preventDefault();
     $('#content-front-text').load(this.href + ' .post-title, .image-first, .game-info, .game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
+                      $('#content-front-text').append('<div id="load-img"></div>');
 });
 
 var modal = document.getElementById("content-front");
