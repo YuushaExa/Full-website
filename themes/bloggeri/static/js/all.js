@@ -27,7 +27,7 @@ if (event.target == modal) {
 }
 }
 
-$("body").on("mouseover", "#content-front-text", function() {
+$("#content-front-text").on("click", "#load-img", function() {
  $('.game-media img:not(.gallery)').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
