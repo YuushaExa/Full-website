@@ -1,3 +1,5 @@
+      $('<style>.game-media { display: none; }</style>').appendTo('head');
+
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
@@ -16,7 +18,6 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-      $('<style>.game-media { display: none; }</style>').appendTo('head');
 });
 
 var modal = document.getElementById("content-front");
