@@ -28,7 +28,7 @@ if (event.target == modal) {
 }
 
 $("body").on("click", "#load-img", function() {
-            $('<style>.game-media { display: none; }</style>').appendTo('head');
+            $('<style>#content-front-text .game-media { display: none; }</style>').appendTo('head');
  $('#content-front-text .game-media img:not(.gallery)').each(function(){
        $('#content-front-text .game-media').css('display', 'block');
       var img_link =  $(this).attr('data-src').split('&h')[0];
