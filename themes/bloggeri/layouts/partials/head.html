@@ -437,7 +437,10 @@ visibility: hidden;
 	      
 	      .cover {
     background-size: cover;
-    background-image:linear-gradient(-180deg,#1b1d1e8c 0,#1a1b1e,#201f24 100%);
+    background-image:linear-gradient(-180deg,#1b1d1e8c 0,#1a1b1e,#201f24 100%),url(<img src="
+            {{ range findRE `<img.+?>` .Content 1 }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
+                 {{ end }});
     position: absolute;
     top: 0;
     left: 0;
