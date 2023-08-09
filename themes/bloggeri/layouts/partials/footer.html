@@ -43,7 +43,6 @@ let observer = new IntersectionObserver(function (entries, self) {
 
 images.forEach(image => {
   observer.observe(image);
-              observer.observe('#content-front-text .game-media img');
 });
 
 function preloadImage(img) {
