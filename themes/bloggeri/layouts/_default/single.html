@@ -16,10 +16,14 @@
     </div>
         <div class="cover-wrap"></div>
         <div class="cover"></div>
-        <div id="load-img">Images</div>
   <div class="content">
           {{ .Content }}
         </div>
+        <div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'game-description')" id="defaultOpen">Description</button>
+  <button class="tablinks" onclick="openCity(event, 'game-info')">Information</button>
+  <button class="tablinks" onclick="openCity(event, 'game-media')">Images</button>
+</div>
               <div class="game-links">
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
