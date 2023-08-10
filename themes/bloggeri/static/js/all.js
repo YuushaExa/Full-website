@@ -16,6 +16,7 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
+            document.getElementById("defaultOpen").click();
 });
 
 var modal = document.getElementById("content-front");
@@ -52,6 +53,3 @@ function openCity(evt, cityName) {
 }
 
 document.getElementById("defaultOpen").click();
-$("body").on("mouseover", ".tool-show a", function() {
-      document.getElementById("defaultOpen").click();
-});
