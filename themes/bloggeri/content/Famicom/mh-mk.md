@@ -16,6 +16,7 @@ tags:
     - Platform
 post_format: []
 ---
+
 ![](https://images.launchbox-app.com/133dd9d0-2e30-476a-835e-6bbc915b02e4.jpg)
 
 <div id="game-description" class="tabcontent">
