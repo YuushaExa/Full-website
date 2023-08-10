@@ -54,4 +54,4 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 $("body").on("click", ".tool-show a", function() {
       document.getElementById("defaultOpen").click();
-});/
+});
