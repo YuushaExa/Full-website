@@ -16,8 +16,8 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-var bg_url = $(".card-image img").src;
-document.querySelector("#content-front-text").style.backgroundImage = "background-image:url('" + bg_url + "');"; 
+var bg_url = document.querySelector(".card-image > a > img").src.split('&w')[0];
+document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(-180deg,#1b1d1e8c 0,#1a1b1e,#201f24 100%),url('" + bg_url + "')";
 });
 
 var modal = document.getElementById("content-front");
