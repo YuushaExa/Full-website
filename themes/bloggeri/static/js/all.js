@@ -19,7 +19,7 @@ $('.tool-show a').mouseover(function (event) {
 });
 
 $('.card-image img').mouseover(function (event) { 
-var bg_url = $(this).attr('src');
+var bg_url = $(this).prop('src');
 document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(-180deg,#1b1d1e8c 0,#1a1b1e,#201f24 100%),url('" + bg_url + "')";
 });
       
