@@ -16,7 +16,7 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
-      var bg_url = document.querySelector(".card-image > img").src.split('&w')[0];
+      var bg_url = document.querySelector(".image-first > img").src.split('&w')[0];
 document.querySelector("#content-front-text").style.backgroundImage = "background-image:url('" + bg_url + "');";
 });
 
