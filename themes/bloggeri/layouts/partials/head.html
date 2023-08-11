@@ -27,18 +27,16 @@ html{overflow-y:scroll;
 
  #content-front-text  {
 background-size: cover;
-	 &:after {
+ }
+
+	       #content-front-text:after  {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
     backdrop-filter: blur(20px);
-    mask: linear-gradient(transparent, black 60%);
-    transition: 1s;
-  }
  }
 	      
 	      
