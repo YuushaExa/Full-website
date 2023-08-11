@@ -12,7 +12,7 @@ $('.game-info').mouseleave (function (event) {
 });
 $('.tool-show a').mouseover(function (event) { 
     event.preventDefault();
-       $('#content-front-text').load(this.href + ' .post-title, .image-first, .tab, #game-media, #game-info, #game-description, .game-links ', function (data) {
+       $('#content-front-text').load(this.href + ' .post-title, .tab, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
