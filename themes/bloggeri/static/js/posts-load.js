@@ -15,7 +15,7 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 
 
-$('.card-image img').load(function (event) { 
+$('.card-image img').ready(function (event) { 
 var bg_url = $(this).prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
 });
