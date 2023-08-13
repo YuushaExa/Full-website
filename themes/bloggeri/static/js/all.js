@@ -20,7 +20,7 @@ $('.tool-show a').mouseover(function (event) {
 });
 
 $('.card-image img').mouseover(function (event) { 
-var bg_url = $(this).prop('src').replace(/\.200.+/gi, ".aspx");
+var bg_url = $(this).prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
 });
       
