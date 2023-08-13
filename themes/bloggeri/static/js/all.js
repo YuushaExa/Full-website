@@ -14,15 +14,14 @@ $('.tool-show a').mouseover(function (event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
+      var bg_url = $('.card-image img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
+document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
+
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");
     $.getScript("/js/posts-load.js");
 });
 
-$('.card-image img').mouseover(function (event) { 
-var bg_url = $(this).prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
-document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
-});
       
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
