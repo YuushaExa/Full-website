@@ -20,7 +20,8 @@ $('.tool-show a').mouseover(function (event) {
 });
 
 $('.card-image img').mouseover(function (event) { 
-var bg_url = $(this).prop('src').split('&w')[0];;
+var bg_url = $(this).prop('src').split('&w')[0];
+bg_url.attr('src',bg_url.attr('src') + "&w=260");
 document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
 });
       
