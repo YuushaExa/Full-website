@@ -15,7 +15,5 @@ function openCity(evt, cityName) {
 
 document.getElementById("defaultOpen").click();
 
-setTimeout(() => {
 var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
-}, "1 second");
