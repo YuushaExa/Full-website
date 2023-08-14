@@ -1,6 +1,8 @@
 {{ if eq .Ordinal 0 }}
 <div class="image-first">
 <img src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="{{ $.Page.Title }}" crossorigin="anonymous"/>
+  <div class="image-first-css">
+</div> 
 </div> 
 {{ end}}
 {{ if .Ordinal }}
