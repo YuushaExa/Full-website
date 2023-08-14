@@ -16,10 +16,12 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1"); 
-      $.get({
-  url: "/js/posts-load.js",
-  timeout: 5000, 
-  dataType: "script"
+      $.ajax({
+   url: '/js/posts-load.js',
+   success: function(data){
+        //...
+   },
+   timeout: 1000 //in milliseconds
 });
 });
 
