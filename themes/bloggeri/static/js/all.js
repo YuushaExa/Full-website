@@ -21,7 +21,7 @@ $('.tool-show a').mouseover(function (event) {
    $('.tool-show a').mouseover(function ()
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
-}, 500);
+}, 100);
 
 });
 
