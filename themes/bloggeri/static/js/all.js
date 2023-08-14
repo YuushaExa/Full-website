@@ -16,13 +16,13 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1"); 
-      $.ajax({
-   url: '/js/posts-load.js',
-   success: function(data){
-        //...
-   },
-   timeout: 1000 //in milliseconds
 });
+
+   $('.tool-show a').mouseover(function ()
+{setTimeout(function(){
+    jQuery.getScript("/js/posts-load.js");
+}, 5000);
+
 });
 
 var modal = document.getElementById("content-front");
