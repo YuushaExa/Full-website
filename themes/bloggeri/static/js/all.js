@@ -15,8 +15,12 @@ $('.tool-show a').mouseover(function (event) {
        $('#content-front-text').load(this.href + ' .post-title, .tab, #game-media, .image-first, #game-info, #game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css("opacity", "1");
-    $.getScript("/js/posts-load.js");
+          $("#content-front-text").css("opacity", "1"); 
+      $.get({
+  url: a + "/js/posts-load.js",
+  timeout: 5000, // 5 seconds
+  dataType: "script"
+});
 });
 
 var modal = document.getElementById("content-front");
