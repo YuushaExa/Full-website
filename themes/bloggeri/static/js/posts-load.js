@@ -21,9 +21,6 @@ $('.image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
-        thumb.parent().find('#game-description').css({
-            background: 'rgb('+ thisColor +')'
-         })
       thumb.parent().find('#content-front-text').css({
             background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
          })
