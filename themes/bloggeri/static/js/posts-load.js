@@ -17,7 +17,7 @@ document.getElementById("defaultOpen").click();
    var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 
 var colorThief = new ColorThief();
-$('.card-image').each(function() {
+$('.image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
