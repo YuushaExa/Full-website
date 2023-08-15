@@ -44,7 +44,6 @@ let observer = new IntersectionObserver(function (entries, self) {
 
 images.forEach(image => {
   observer.observe(image);
-    detectColors();
 });
 
 function preloadImage(img) {
