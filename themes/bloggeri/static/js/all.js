@@ -21,17 +21,17 @@ $('.tool-show a').mouseover(function (event) {
    $('.tool-show a').mouseover(function ()
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
-      var bg_url = $('.image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
+      var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 
 var colorThief = new ColorThief();
-$('.image-first').each(function() {
+$('#content-front-text .image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
         thumb.parent().find('#game-description').css({
             background: 'rgb('+ thisColor +')'
          })
-        thumb.parent().find('#content-front #content-front-text').css({
+        thumb.parent().find('#content-front-text').css({
             background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
          })
     });
