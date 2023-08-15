@@ -25,7 +25,7 @@ $('.image-first').each(function() {
             background: 'rgb('+ thisColor +')'
          })
       thumb.parent().find('#content-front-text').css({
-            background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
+            background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url('" + bg_url + "')'
          })
     });
 });
