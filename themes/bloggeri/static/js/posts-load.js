@@ -19,7 +19,7 @@ $('.image-first').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
-      thumb.parent().find('#content-front-text').css({
+      thumb.parent().find('#content-front').css({
             background: 'rgb('+ thisColor +')'
          })
     });
