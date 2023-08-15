@@ -43,14 +43,3 @@ $("body").on("click", ".tool-show a", function() {
 $(this).attr("src", source).removeAttr("data-src");
   });
 });
-
-var colorThief = new ColorThief();
-$('.image-first').each(function() {
-    var thumb = $(this);
-    thumb.find('img').each(function() {
-        thisColor = colorThief.getColor(this);
-        thumb.parent().find('#game-description').css({
-            background: 'rgb('+ thisColor +')'
-         })
-    });
-});
