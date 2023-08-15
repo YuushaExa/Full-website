@@ -31,7 +31,7 @@ $('#content-front-text .image-first').each(function() {
         thumb.parent().find('#game-description').css({
             background: 'rgb('+ thisColor +')'
          })
-        thumb.parent().find('#content-front-text').css({
+        thumb.parent().find('.post-title').css({
             background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
          })
     });
