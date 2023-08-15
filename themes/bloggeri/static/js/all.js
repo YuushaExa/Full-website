@@ -24,14 +24,14 @@ $('.tool-show a').mouseover(function (event) {
       var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 
 var colorThief = new ColorThief();
-$('#content-front-text .image-first').each(function() {
+$('.card-image').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
         thumb.parent().find('#game-description').css({
             background: 'rgb('+ thisColor +')'
          })
-        thumb.parent().find('.post-title').css({
+        thumb.parent().find('#content-front-text').css({
             background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
          })
     });
