@@ -43,6 +43,7 @@ let observer = new IntersectionObserver(function (entries, self) {
 
 images.forEach(image => {
   observer.observe(image);
+                 observer.detectColors();
 });
 
 function preloadImage(img) {
