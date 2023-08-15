@@ -1,5 +1,3 @@
-var bg_url = $('.image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
-
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -15,6 +13,8 @@ function openCity(evt, cityName) {
 }
 
 document.getElementById("defaultOpen").click();
+
+var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 
 var colorThief = new ColorThief();
 $('.image-first').each(function() {
