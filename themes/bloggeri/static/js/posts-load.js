@@ -15,7 +15,7 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 
    var bg_url = $('#content-front-text .image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
- document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),url('" + bg_url + "')";
+ document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url + "')";
 
 var colorThief = new ColorThief();
 $('.image-first').each(function() {
