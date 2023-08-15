@@ -24,7 +24,7 @@ $('.image-first').each(function() {
         thumb.parent().find('#game-description').css({
             background: 'rgb('+ thisColor +')'
          })
-        thumb.parent().find('.image-first-css').css({
+        thumb.parent().find('#content-front #content-front-text').css({
             background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
          })
     });
