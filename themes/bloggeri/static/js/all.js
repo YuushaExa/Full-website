@@ -16,6 +16,23 @@ $('.tool-show a').mouseover(function (event) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1"); 
+
+      var bg_url = $('.image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
+
+var colorThief = new ColorThief();
+$('.image-first').each(function() {
+    var thumb = $(this);
+    thumb.find('img').each(function() {
+        thisColor = colorThief.getColor(this);
+        thumb.parent().find('#game-description').css({
+            background: 'rgb('+ thisColor +')'
+         })
+        thumb.parent().find('#content-front #content-front-text').css({
+            background: 'linear-gradient(0deg, rgba('+ thisColor +', 0.3), rgba('+ thisColor +', 0.3)),url(' + bg_url + ')'
+         })
+    });
+});
+      
 });
 
    $('.tool-show a').mouseover(function ()
