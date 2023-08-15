@@ -15,8 +15,12 @@ $('.tool-show a').mouseover(function (event) {
        $('#content-front-text').load(this.href + ' .post-title, .tab, #game-media, .image-first, #game-info, #game-description, .game-links ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css("opacity", "1"); 
+          $("#content-front-text").css("opacity", "1");       
+});
 
+   $('.tool-show a').mouseover(function ()
+{setTimeout(function(){
+    jQuery.getScript("/js/posts-load.js");
       var bg_url = $('.image-first img').prop('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 
 var colorThief = new ColorThief();
@@ -32,12 +36,6 @@ $('.image-first').each(function() {
          })
     });
 });
-      
-});
-
-   $('.tool-show a').mouseover(function ()
-{setTimeout(function(){
-    jQuery.getScript("/js/posts-load.js");
 }, 900);
 
 });
