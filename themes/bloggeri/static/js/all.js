@@ -44,6 +44,7 @@ $(this).attr("src", source).removeAttr("data-src");
   });
 });
 
+var colorThief = new ColorThief();
 $('.card-image').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
