@@ -28,6 +28,13 @@ $('.image-first').each(function() {
     });
 });
 
-        var source = $('#content-front-text #game-media img:first').attr("data-src");
- var source1 = $('#content-front-text #game-media img:first').attr("src", source).removeAttr("data-src");
-    document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + source1 + "')";
+$("body").on("click", ".tool-show a", function() {
+ $('#content-front-text #game-media img:first').each(function(){
+      var img_link =  $(this).attr('data-src').split('&h')[0];
+      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
+        var source = $(this).attr("data-src");
+ var source1 =  $(this).attr("src", source).removeAttr("data-src");
+       document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + source1 + "')";
+
+  });
+});
