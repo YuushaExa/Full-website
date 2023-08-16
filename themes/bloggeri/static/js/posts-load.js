@@ -29,4 +29,4 @@ $('.image-first').each(function() {
 });
 
    var bg_url1 = $('#content-front-text #game-media img').prop('data-src');
- document.querySelector("#content-front-text").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url1 + "')";
+ document.querySelector("#content-front").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url1 + "')";
