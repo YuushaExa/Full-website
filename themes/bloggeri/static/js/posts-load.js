@@ -28,13 +28,5 @@ $('.image-first').each(function() {
     });
 });
 
-$("body").on("click", ".tool-show a", function() {
- $('#content-front-text #game-media img:first').each(function(){
-      var img_link =  $(this).attr('data-src').split('&h')[0];
-      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-        var source = $(this).attr("data-src");
- var source1 =  $(this).attr("src", source).removeAttr("data-src");
-       document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + source1 + "')";
-
-  });
-});
+  var bg_url = $('#content-front-text #game-media img').prop('src')[0].replace(/&w=200&h=300/i, "&w=300&h=175");
+ document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url + "')";
