@@ -28,7 +28,7 @@ $('.image-first').each(function() {
     });
 });
 
- $('#content-front-text .game-media img:not(.gallery)').each(function(){
+ $('#content-front-text .game-media.tabcontent').find('img').each(function(){
       var img_link =  $(this).attr('data-src');
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
        $('#content-front-text .game-media img').addClass('gallery');
