@@ -28,10 +28,7 @@ $('.image-first').each(function() {
     });
 });
 
- $('#content-front-text .game-media.tabcontent').find('img').each(function(){
-      var img_link =  $(this).attr('data-src');
-      $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
-       $('#content-front-text .game-media img').addClass('gallery');
-        var source = $(this).attr("data-src");
+ $('#content-front-text .game-media.tabcontent img').each(function(){
+var source = $(this).attr("data-src");
 $(this).attr("src", source).removeAttr("data-src");
   });
