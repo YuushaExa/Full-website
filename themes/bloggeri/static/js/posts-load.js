@@ -33,5 +33,5 @@ var source = $(this).attr("data-src");
 $(this).attr("src", source).removeAttr("data-src");
   });
 
-var bg_url1 = $('#content-front-text #game-media img').prop('data-src').replace(/data-src/i, "src");
+var bg_url1 = $('#content-front-text #game-media img').prop('data-src');
  document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url1 + "')";
