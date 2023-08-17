@@ -34,7 +34,7 @@ if (event.target == modal) {
 }
 }
 
-$("body").on("click", "#game-media", function() {
+$("body").on("click", ".tablinks:eq(1)", function() {
  $('#content-front-text #game-media img:not(.gallery)').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
       $(this).wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
