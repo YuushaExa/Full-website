@@ -33,7 +33,7 @@ const io = new IntersectionObserver((entries, observer) => {
       console.log('intersecting');
 
       const img = entry.target;
-      const src = img.getAttribute('data-lazy');
+      const src = img.getAttribute('lazyload');
 
       img.setAttribute('src', src);
       img.classList.add('fade');
