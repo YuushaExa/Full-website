@@ -25,7 +25,7 @@ html{overflow-y:scroll;
 		margin-right: auto !important
 	}
 
-:root {
+body {
   counter-reset: img;
 }
 
@@ -33,7 +33,7 @@ html{overflow-y:scroll;
   counter-increment: img;
 }
 
-#content-front-text #game-media:after {
+.tablinks:nth-child(3):after {
   content: counter(img);
 }
 	      
