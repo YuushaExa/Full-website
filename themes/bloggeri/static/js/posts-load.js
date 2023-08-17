@@ -28,7 +28,7 @@ $('.image-first').each(function() {
     });
 });
 
-var bg_url1 = $('#content-front-text #game-media img').prop('data-src').replace(/&w=200&h=300/i, "&w=300&h=175");
+var bg_url1 = $('#content-front-text #game-media img').prop('data-src').replace(/data-src/i, "src");
  document.querySelector("#game-info").style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 40%), rgb(109 109 109 / 40%)),url('" + bg_url1 + "')";
 
 
