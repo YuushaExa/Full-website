@@ -23,6 +23,8 @@
     });
 </script>
  <script>         
+     document.addEventListener("DOMContentLoaded", function(){
+
 const io = new IntersectionObserver((entries, observer) => {
     // console.log(entries)
     entries.forEach(entry => {
@@ -41,6 +43,7 @@ const io = new IntersectionObserver((entries, observer) => {
         observer.disconnect();
       }
     });
+      });
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
