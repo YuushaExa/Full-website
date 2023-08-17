@@ -28,7 +28,7 @@ $('.image-first').each(function() {
     });
 });
 
- $('img#game-media').each(function(){
+ $('#content-front-text #game-media img').each(function(){
 var source = $(this).attr("data-src");
 $(this).attr("src", source).removeAttr("data-src");
   });
