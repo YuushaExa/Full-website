@@ -25,6 +25,18 @@ html{overflow-y:scroll;
 		margin-right: auto !important
 	}
 
+:root {
+  counter-reset: img;
+}
+
+#content-front-text #game-media img {
+  counter-increment: img;
+}
+
+#content-front-text #game-media:after {
+  content: counter(img);
+}
+	      
 .image-first-css{
 backdrop-filter: blur(4px);
     background: linear-gradient(67.81deg,rgba(0,0,0,.64) 35.51%,transparent);
