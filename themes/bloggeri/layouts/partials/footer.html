@@ -22,28 +22,6 @@
         new PagefindUI({ element: "#search" });
     });
 </script>
- <script>         
-     document.addEventListener("DOMContentLoaded", function(){
-
-const io = new IntersectionObserver((entries, observer) => {
-    // console.log(entries)
-    entries.forEach(entry => {
-      console.log('k');
-
-      if (entry.isIntersecting) {
-
-        console.log('intersecting');
-
-        const img = entry.target;
-        const src = img.getAttribute('data-src');
-
-        img.setAttribute('src', src);
-        img.classList.add('fade');
-
-        observer.disconnect();
-      }
-    });
-      });
-</script>
+     <script  src="/js/lazysizes.min.js"></script>
     <script defer src="/js/all.js"></script>
 </footer>
