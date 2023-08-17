@@ -24,35 +24,23 @@
 </script>
  <script>         
 const io = new IntersectionObserver((entries, observer) => {
-  // console.log(entries)
-  entries.forEach(entry => {
-    console.log('😍');
+    // console.log(entries)
+    entries.forEach(entry => {
+      console.log('😍');
 
-    if (entry.isIntersecting) {
+      if (entry.isIntersecting) {
 
-      console.log('intersecting');
+        console.log('intersecting');
 
-      const img = entry.target;
-   const src = img.getAttribute('data-src');
-  if (!src) { return; }
-  img.src = src;
+        const img = entry.target;
+        const src = img.getAttribute('data-src');
 
-      observer.disconnect();
-    }
-  });
-});
+        img.setAttribute('src', src);
+        img.classList.add('fade');
 
-io.observe(document.querySelectorAll('ímg'));
-
-const fethNewData = () => {
-  // any ajax call
-  window.fetch().then((html) => {
-    //update DOM
-    document.querySelector('body').innerHTML = html;
-    //call observe again
-    io.observe(document.querySelectorAll('ímg'));
-  })
-};
+        observer.disconnect();
+      }
+    });
 </script>
     <script defer src="/js/all.js"></script>
 </footer>
