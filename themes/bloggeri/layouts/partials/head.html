@@ -28,7 +28,8 @@ html{overflow-y:scroll;
 body {
   counter-reset: img;
 }
-
+#content-front-text #game-media img {counter-increment:img};
+	      
 #content-front-text .game-links:after {
   content: counter(img);
 }
