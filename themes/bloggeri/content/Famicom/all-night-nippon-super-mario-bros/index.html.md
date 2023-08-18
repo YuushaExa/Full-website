@@ -31,6 +31,8 @@ All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mar
 ![](https://images.launchbox-app.com/5de0b885-0eb5-4856-a885-bc8ea1ca14fe.png)
 ![](https://images.launchbox-app.com/7098dc64-10e8-4332-a787-82856ae35989.png)
 ![](https://images.launchbox-app.com/3d84d1d0-bc8a-4499-8049-193aa82a298b.png)
+![](https://images.launchbox-app.com/37da80b3-8c47-46fe-9dd7-9b991638d4ea.jpg) 
+![](https://images.launchbox-app.com/37da80b3-8c47-46fe-9dd7-9b991638d4ea.jpg) 
     
 </div>
 
