@@ -31,10 +31,10 @@ $('.image-first').each(function() {
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
-var img = [ ];
-$("#content-front-text #game-media img:nth-last-child(-n + 2)").each(function (i){
-    img[i]=$(this).data('src');
+
+$('#content-front-text #game-media img:nth-last-child(-n + 2)').each((index, item) => {  
+    var img = $('.tablinks:nth-child(3)').html(); 
+    $('.tablinks:nth-child(3)').html('<img class="hello_img" src="' + img + '">'); 
 });
 
-$(".tablinks:nth-child(3)").html('<img class="hello_img" src="' + img + '">');
 
