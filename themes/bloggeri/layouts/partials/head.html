@@ -26,16 +26,17 @@ html{overflow-y:scroll;
 	}
 
 
-	      
-.image-first-css{
-backdrop-filter: blur(4px);
-    background: linear-gradient(67.81deg,rgba(0,0,0,.64) 35.51%,transparent);
-    top: 0;
-    position: absolute;
-    height: 175px;
-    width: 300px;
-}
-	      
+	#content-front #content-front-text::after {
+ -webkit-backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
+
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0;
+	}
+	           
      	      
  #content-front-text  {
 background-size: cover;
