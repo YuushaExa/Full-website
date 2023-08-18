@@ -15,9 +15,9 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 
 var colorThief = new ColorThief();
-$('#content-front-text #game-media img:nth-child(3)').each(function() {
+$('#content-front-text #game-media img').each(function() {
     var thumb = $(this);
-    thumb.find('img').each(function() {
+    thumb.find('img:nth-child(3)').each(function() {
         thisColor = colorThief.getColor(this);
         thumb.parent().find('#game-description').css({
             background: 'rgb('+ thisColor +')'
