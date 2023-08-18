@@ -19,3 +19,14 @@ background-image: linear-gradient(-180deg,#52798c8c 0,#3452ad,#3b16d0 100%), url
     color: #ffffff;
     font-size: 14px;
     border: solid 1px rgb(0 153 255);
+
+	body {
+  counter-reset: img;
+}
+#content-front-text #game-media img {
+	counter-increment:img;
+}
+	      
+.tablinks:nth-child(3)::after {
+  content: counter(img);
+}
