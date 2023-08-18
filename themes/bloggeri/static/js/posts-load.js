@@ -31,6 +31,9 @@ $('.image-first').each(function() {
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
+var arrayVariable = [ ];
+$("#content-front-text #game-media img:nth-last-child(-n + 2)").each(function (i){
+    arrayVariable[i]=$(this).data('src');
+});
 
-var bg_url = $('#content-front-text #game-media img:nth-last-child(-n + 2)').data('src').replace(/&w=200&h=300/i, "&w=300&h=175");
-$(".tablinks:nth-child(3)").html(bg_url);
+$(".tablinks:nth-child(3)").html(arrayVariable + "");
