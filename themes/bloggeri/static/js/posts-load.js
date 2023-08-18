@@ -37,4 +37,3 @@ $('#content-front-text #game-media img:nth-last-child(-n + 2)').each((index, ite
     $('.tablinks:nth-child(3)').html('<img class="hello_img" src="' + img + '">'); 
 });
 
-
