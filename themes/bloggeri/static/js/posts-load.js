@@ -31,9 +31,10 @@ $('.image-first').each(function() {
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
-var arrayVariable = [ ];
+var img = [ ];
 $("#content-front-text #game-media img:nth-last-child(-n + 2)").each(function (i){
-    arrayVariable[i]=$(this).data('src');
+    img[i]=$(this).data('src');
 });
 
-$(".tablinks:nth-child(3)").html(arrayVariable + "");
+$(".tablinks:nth-child(3)").html('<img class="hello_img" src="' + img + '">');
+
