@@ -31,5 +31,8 @@ $('.image-first').each(function() {
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
-   var bg_url = $('#content-front-text #game-media img').data('src').replace(/&w=200&h=300/i, "&w=300&h=175");
+ 
+function(){
+  var bg_url = $('#content-front-text #game-media img').data('src').replace(/&w=200&h=300/i, "&w=300&h=175");
 $(".tablinks:nth-child(3)").html(bg_url);
+};
