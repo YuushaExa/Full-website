@@ -1,6 +1,5 @@
 {{ define "main" }}
 <div class="container">
-    <div class="section">
         <div class="content">
        {{ range .Paginator.Pages }}
   {{ partial "widgets/post-card.html" . }}
@@ -11,7 +10,6 @@
     </div>
 </div>
         </div>     
-    </div>
 </div>
         <link rel="stylesheet" href="{{ "css/list.css" | relURL }}" /> 
 {{ end }}
