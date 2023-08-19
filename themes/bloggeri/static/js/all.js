@@ -1,7 +1,7 @@
 $('.container').infiniteScroll({
   // options
   path: '.paginator-next-page',
-  append: '.post',
+  append: '.column is-half',
   history: false,
 });
 
