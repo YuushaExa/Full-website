@@ -1,10 +1,3 @@
-$('.columns is-multiline').infiniteScroll({
-  // options
-  path: '.paginator-next-page',
-  append: '.card',
-  history: false,
-});
-
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('<div class="link-pre"></div>');
