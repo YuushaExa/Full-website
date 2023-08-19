@@ -35,9 +35,6 @@
 </ul>
 </nav>
 {{ end }}
-{{- if .Paginator.HasNext -}}
-  <a class="paginator-next-page" href="{{ .Paginator.Next.URL }}">Next</a>
-{{- end -}}
    <script>
    document.getElementById('Go').onclick = function () {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
