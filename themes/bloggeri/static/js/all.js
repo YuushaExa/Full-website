@@ -1,4 +1,4 @@
-$('.container').infiniteScroll({
+$('.columns is-multiline').infiniteScroll({
   // options
   path: '.paginator-next-page',
   append: '.column is-half',
