@@ -22,6 +22,28 @@
         new PagefindUI({ element: "#search" });
     });
 </script>
-<script src="/js/lazysizes.min.js"></script>
+    <script>      
+function observeForInfiniteScroll() {
+  let nextPageObserver = new IntersectionObserver((entries, observer) => {
+    /* This is the callback function */
+    let firstEntry = entries[0]; // I'm not using multiple thresholds, so 0 suffices
+    if (firstEntry.isIntersecting) { // Basically if the footer is in view, run
+      if (!document.querySelector(".paginator-next-page")) {
+        observer.disconnect(); // Stop the observer when there's no more pages
+        console.log("pagination: IntersectionObserver disconnected!");
+      }
+      else loadNextListPage();
+    }
+  }, {
+    rootMargin: "0px 0px 80px 0px"
+  });
+  nextPageObserver.observe(document.querySelector(".icon-attribution"));
+}
+if (("IntersectionObserver" in window) && ("fetch" in window)) {
+  console.log("pagination: IntersectionObserver and Fetch API available")
+  addLoadEvent(observeForInfiniteScroll);
+}
+   </script> 
+
     <script defer src="/js/all.js"></script>
 </footer>
