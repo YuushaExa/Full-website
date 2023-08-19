@@ -1,61 +1,19 @@
-{{ $pag := $.Paginator }}
-{{ if gt $pag.TotalPages 1 }}
-<nav class="pagination">
-<ul class="pagination-list">
-    {{ with $pag.First }}
-    <li>
-        <a href="{{ .URL }}" class="pagination-link" {{ if not $pag.HasPrev }} disabled{{ end }} aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    {{ end }}
-    {{ $ellipsed := false }}
-    {{ $shouldEllipse := false }}
-    {{ range $pag.Pagers }}
-    {{ $right := sub .TotalPages .PageNumber }}
-    {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }} 
-    {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
-    {{ if $showNumber }}
-        {{ $ellipsed = false }}
-        {{ $shouldEllipse = false }}
-    {{ else }}
-        {{ $shouldEllipse = not $ellipsed }}
-        {{ $ellipsed = true }}
-    {{ end }}
-    {{ if $showNumber }}
-    <li><a class="pagination-link {{ if eq . $pag }}is-current{{ end }}" href="{{ .URL }}">{{ .PageNumber }}</a></li>
-    {{ else if $shouldEllipse }}
-<input id="inputId" placeholder="..." type="number">
-<button type="button" id="Go">Go</button>
-    {{ end }}
-    {{ end }}
-    {{ with $pag.Last }}
-    <li>
-        <a href="{{ .URL }}" class="pagination-link" {{ if not $pag.HasNext }}disabled{{ end }} aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    {{ end }}
-</ul>
-</nav>
-{{ end }}
-   <script>
-   document.getElementById('Go').onclick = function () {
-     window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
-};
-    </script>
-<script>
-document.getElementById("inputId").onclick = function () {
-        event.preventDefault();
-           var y = document.getElementById("Go");
-        y.style.display = ((y.style.display!='block') ? 'block' : 'none')    
-    };
-</script>
-<style>
-    #inputId {
-    border: 1px solid transparent;
-    height: 2.5em;
-    margin: 0.25rem;
-    width: 2.5em;
-            border-radius: 4px;
-        text-align: center;}
-     #Go {
-        display:none;
-    }
-</style>
+<!-- Create the paginator before it's used -->
+{{- $paginator := .Paginate .Site.RegularPages -}}
+
+<!-- Previous page link; hide if there is no previous page -->
+{{- if .Paginator.HasPrev -}}
+  <a class="paginator-previous-page" href="{{ .Paginator.Prev.URL }}">Previous</a>
+{{- end -}}
+
+<!-- Iterate over all pages -->
+<div class="all-entries">
+  {{- range $paginator.Pages -}}
+    <!-- Do however you wish to display individual pages -->
+  {{ end }}
+</div>
+
+<!-- Next page link; hide if there is no next page -->
+{{- if .Paginator.HasNext -}}
+  <a class="paginator-next-page" href="{{ .Paginator.Next.URL }}">Next</a>
+{{- end -}}
