@@ -10,7 +10,7 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.tool-show a').mouseover(function (event) { 
+$('.card-image a').mouseover(function (event) { 
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
@@ -18,7 +18,7 @@ $('.tool-show a').mouseover(function (event) {
           $("#content-front-text").css("opacity", "1");       
 });
 
-   $('.tool-show a').mouseover(function ()
+   $('.card-image a').mouseover(function ()
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
 }, 300);
