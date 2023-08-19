@@ -23,7 +23,7 @@
     {{ if $showNumber }}
     <li><a class="pagination-link {{ if eq . $pag }}is-current{{ end }}" href="{{ .URL }}">{{ .PageNumber }}</a></li>
     {{ else if $shouldEllipse }}
-<input id="inputId" placeholder="..." max="{{ $paginator.TotalPages }}" min="1" type="number">
+<input id="inputId" placeholder="..." type="number">
 <button type="button" id="Go">Go</button>
     {{ end }}
     {{ end }}
