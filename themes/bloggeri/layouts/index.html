@@ -4,9 +4,7 @@
         <div class="content">
  <div class="columns is-multiline">
        {{ range .Paginator.Pages }}
-    <div class="column is-half">
   {{ partial "widgets/post-card.html" . }}
-    </div>
     {{ end }}
 </div>
 <div class="columns is-centered">
