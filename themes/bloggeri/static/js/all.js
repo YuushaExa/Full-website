@@ -1,4 +1,4 @@
-$('.card-image').hover(function (event) { 
+$('.card-image a').hover(function (event) { 
     event.preventDefault(); 
   var link1 =  $(this).attr('href');
     $(this).append('<div id="game-preview"><a href="'+ link1 +'"></a></div>');
