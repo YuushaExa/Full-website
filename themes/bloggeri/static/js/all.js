@@ -1,7 +1,7 @@
 $('.card-image').hover(function (event) { 
     event.preventDefault(); 
-    $(this).append('<div id="game-preview">X</div>');
-    $('#game-preview').insertBefore('.card-image a');
+  var link1 =  $(this).attr('href');
+    $(this).append('<div id="game-preview"><a href="'+ link1 +'"></a></div>');
     }, function() {
     $('#game-preview').remove();
 });
