@@ -1,6 +1,6 @@
 $('.card-image').hover(function (event) { 
     event.preventDefault(); 
-    $(this).append('<div id="game-preview">X</div>');
+    $('.card-image').append('<div id="game-preview">X</div>');
     }, function() {
     $('#game-preview').remove();
 });
