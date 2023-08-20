@@ -18,7 +18,7 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('#game-preview').mouseover(function (event) { 
+$('#game-preview a').mouseover(function (event) { 
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
@@ -26,7 +26,7 @@ $('#game-preview').mouseover(function (event) {
           $("#content-front-text").css("opacity", "1");       
 });
 
-   $('#game-preview').mouseover(function ()
+   $('#game-preview a').mouseover(function ()
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
 }, 300);
