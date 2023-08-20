@@ -27,7 +27,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
           $("#content-front-text").css("opacity", "1");       
 });
 
-   $('#game-preview a').mouseover(function ()
+$("body").on("mouseover", "#game-preview a", function(event) {
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
 }, 300);
