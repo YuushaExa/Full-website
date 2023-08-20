@@ -1,5 +1,5 @@
 $('.card-image a').mouseover(function (event) { 
-    $('.card-image').append('<div class="game-preview">X</div>');
+    $('.card-image').append('<div id="game-preview">X</div>');
 }); 
 
 $('.game-info a').mouseover(function (event) {
@@ -14,7 +14,7 @@ $('.game-info').mouseleave (function (event) {
               $(this).remove();
           });
 });
-$('.game-preview').mouseover(function (event) { 
+$('#game-preview').mouseover(function (event) { 
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
@@ -22,7 +22,7 @@ $('.game-preview').mouseover(function (event) {
           $("#content-front-text").css("opacity", "1");       
 });
 
-   $('.game-preview').mouseover(function ()
+   $('#game-preview').mouseover(function ()
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
 }, 300);
