@@ -2,7 +2,7 @@ $('.card-image a').mouseover(function (event) {
     event.preventDefault(); 
     $(this).append('<div id="game-preview">X</div>');
     }, function() {
-    $(this).remove();
+    $('#game-preview').remove();
 });
 
 $('.game-info a').mouseover(function (event) {
