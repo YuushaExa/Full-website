@@ -1,5 +1,6 @@
 $('.card-image a').mouseover(function (event) { 
-    $('.card-image').append('<div id="game-preview">X</div>');
+    event.preventDefault(); 
+    $('.card-image a').append('<div id="game-preview">X</div>');
 }); 
 
 $('.game-info a').mouseover(function (event) {
