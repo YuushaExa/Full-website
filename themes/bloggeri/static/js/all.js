@@ -19,7 +19,7 @@ $('.game-info').mouseleave (function (event) {
           });
 });
 
-$('body').on("click", "#game-preview a", function (event) { 
+$('#game-preview a').mouseover(function (event) { 
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links ', function (data) {
     });
