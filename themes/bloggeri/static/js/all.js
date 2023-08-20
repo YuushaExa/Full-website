@@ -30,8 +30,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 $("body").on("mouseover", "#game-preview a", function(event) {
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
-}, 300);
-
+}, 300)};
 });
 
 var modal = document.getElementById("content-front");
