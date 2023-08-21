@@ -1,15 +1,3 @@
-observer.observe(document.querySelectorAll('[data-src]'));
-
-const fethNewData = () => {
-  // any ajax call
-  window.fetch().then((html) => {
-    //update DOM
-    document.querySelector('body').innerHTML = html;
-    //call observe again
-    observer.observe(document.querySelectorAll('[data-src]'));
-  })
-};
-
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
