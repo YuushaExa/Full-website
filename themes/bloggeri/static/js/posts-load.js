@@ -1,3 +1,5 @@
+observer.observe(image);
+
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
 
