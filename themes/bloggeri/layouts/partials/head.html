@@ -25,7 +25,26 @@ html{overflow-y:scroll;
 		margin-right: auto !important
 	}
 
+#game-preview {
+  width: 60px;
+  height: 60px;
+  
+  background-color: #ff6699;
+  animation: 1s fadeIn5;
+  animation-fill-mode: forwards;
+  
+  visibility: hidden;
+}
 
+@keyframes fadeIn5 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
 svg.Preview {
     display: block;
     fill: white;
