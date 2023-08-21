@@ -26,7 +26,7 @@ html{overflow-y:scroll;
 	}
 
 #game-preview {
-  animation: 1s linear forwards fadeIn5;
+  animation: 0.3s linear forwards fadeIn5;
   animation-fill-mode: both;
   
   visibility: hidden;
@@ -42,22 +42,6 @@ html{overflow-y:scroll;
   }
 }
 
-#game-preview.wasHovered {
-  animation: 1s linear forwards fadeIn6;
-  animation-fill-mode: both;
-  
-  visibility: visible;
-}
-
-@keyframes fadeIn6 {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: hidden;
-    opacity: 1;
-  }
-}
 	      
 svg.Preview {
     display: block;
