@@ -1,3 +1,5 @@
+observer.observe(document.querySelectorAll('[data-src]'));
+
 const fethNewData = () => {
   // any ajax call
   window.fetch().then((html) => {
