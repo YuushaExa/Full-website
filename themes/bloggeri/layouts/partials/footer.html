@@ -23,26 +23,31 @@
     });
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    let images = document.querySelectorAll("img[data-src]");
-    function loadImagesLazily(e) {
-      for (let i = 0; i < images.length; i++) {
-        let rect = images[i].getBoundingClientRect();
-        if (images[i].hasAttribute("data-src")
-          && rect.bottom > 0 && rect.top < window.innerHeight
-          && rect.right > 0 && rect.left < window.innerWidth) {
-          images[i].setAttribute("src", images[i].getAttribute("data-src"));
-          images[i].removeAttribute("data-src");
-        }
-      }
-    };
-
-    window.addEventListener('scroll', loadImagesLazily);
-    window.addEventListener('resize', loadImagesLazily);
-    loadImagesLazily();
+ <script>         
+const images = document.querySelectorAll('[data-src]');
+const config = {
+      root: null,
+    rootMargin: '0px',
+    threshold: 0.25
+};
+let loaded = 0;
+let observer = new IntersectionObserver(function (entries, self) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadImage(entry.target);
+      self.unobserve(entry.target);
+        entry.target.classList.add("visible");
+    }
   });
-</script>
-    
+}, config);
+images.forEach(image => {
+  observer.observe(image);
+});
+function preloadImage(img) {
+  const src = img.getAttribute('data-src');
+  if (!src) { return; }
+  img.src = src;
+}        
+</script> 
     <script defer src="/js/all.js"></script>
 </footer>
