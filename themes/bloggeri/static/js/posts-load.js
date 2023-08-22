@@ -1,4 +1,3 @@
-<script>
   document.addEventListener("DOMContentLoaded", function () {
     let images = document.querySelectorAll("img[data-src]");
     function loadImagesLazily(e) {
@@ -17,7 +16,6 @@
     window.addEventListener('resize', loadImagesLazily);
     loadImagesLazily();
   });
-</script>
 
 var numItems = $('#content-front-text #game-media img').length
 $('.tablinks:nth-child(3)').text(numItems);
