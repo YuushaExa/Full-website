@@ -19,11 +19,11 @@ post_format: []
 
 ![](https://images.launchbox-app.com/133dd9d0-2e30-476a-835e-6bbc915b02e4.jpg)
 
-<div id="game-description">
+<div id="game-description" class="tabcontent">
 All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros., released in 1986 for the Famicom Disk System. This version is based on the Japanese radio program All Night Nippon, and it was given out as a raffle prize on the show itself. The game was published by Fuji Television. Essentially, this game is a mishmash of levels from Super Mario Bros 1 and 2 except with the sprites of the Toads and various enemies replaced with Japanese celebrities for a humorous effect as well as item placements are different.
 </div>
 
-<div id="game-media">
+<div id="game-media" class="tabcontent">
 
 ![](https://images.launchbox-app.com/d5bb49cc-f739-4ff0-b3e0-fe2da3a3e693.png) 
 ![](https://images.launchbox-app.com/071f7d9b-4719-4e09-93f9-e84c82732bd3.jpg)
@@ -34,7 +34,7 @@ All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mar
     
 </div>
 
-<div id="game-info">
+<div id="game-info" class="tabcontent">
 Developed by [Nintendo EAD](/search?q=Nintendo%20EAD?&max-results=12)  
   
 Published by [Nintendo](/search?q=Nintendo?&max-results=12)  
