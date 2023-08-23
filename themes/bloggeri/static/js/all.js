@@ -1,4 +1,4 @@
-$(".fancybox"){
+$(".fancybox")
 							image: {
 								fitToView: true,
 								width: '100%'
@@ -8,8 +8,7 @@ $(".fancybox"){
 							slideShow: {
 								speed: 5000
 
-						}
-};
+						};
 
 $('.card-image a').hover(function (event) { 
     event.preventDefault(); 
