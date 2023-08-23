@@ -2,7 +2,7 @@
             .attr('rel', 'gallery')
             .fancybox({
                 padding: 2,
-                'loop': false
+                'loop': true
             });
 
 $('.card-image a').hover(function (event) { 
