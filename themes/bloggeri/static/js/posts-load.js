@@ -1,7 +1,7 @@
 $('#content-front-text').append('<div class="tab"></div>');
-$('.tab').append('<div class="tablinks" onclick="openCity(event, game-description)" id="defaultOpen">Description</div>');
-$('.tab').append('<div class="tablinks" onclick="openCity(event, game-info)">Information</div>');
-$('.tab').append('<div class="tablinks" onclick="openCity(event, game-media)">Images</div>');
+$('.tab').append('<div class="tablinks" onclick="openCity(event, "game-description")" id="defaultOpen">Description</div>');
+$('.tab').append('<div class="tablinks" onclick="openCity(event, "game-info")">Information</div>');
+$('.tab').append('<div class="tablinks" onclick="openCity(event, "game-media")">Images</div>');
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
