@@ -1,4 +1,4 @@
-fancybox({
+.fancybox({
 							image: {
 								fitToView: true,
 								width: '100%'
