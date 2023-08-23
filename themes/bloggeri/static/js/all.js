@@ -1,4 +1,4 @@
-.fancybox({
+$(".fancybox"){
 							image: {
 								fitToView: true,
 								width: '100%'
@@ -7,21 +7,9 @@
 							loop: true,
 							slideShow: {
 								speed: 5000
-							},
-							buttons: [
-								"slideShow",
-								"fullScreen",
-								"zoom",
-								"share",
-								"close"
-							],
-							afterShow: function (i, s) {
-								var pt = $(s.opts.$orig).closest('.list-gallery');
-								if (pt.hasClass('has-data')) {
-									$(document.getElementsByClassName('fancybox-slide--image')).addClass('has-title').append('<span class="title"><span>Brought by</span> <a href="' + pt.data('url') + '" rel="nofollow">' + pt.data('title') + '</a></span>');
-								}
-							}
-						});
+
+						}
+};
 
 $('.card-image a').hover(function (event) { 
     event.preventDefault(); 
