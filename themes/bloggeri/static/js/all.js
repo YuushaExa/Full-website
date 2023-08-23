@@ -1,14 +1,7 @@
-$(".fancybox")
-							image: {
-								fitToView: true,
-								width: '100%'
-							},
-							animationEffect: false,
-							loop: true,
-							slideShow: {
-								speed: 5000
-
-						};
+ $(".fancybox")
+            .fancybox({
+                'loop': true
+            });
 
 $('.card-image a').hover(function (event) { 
     event.preventDefault(); 
