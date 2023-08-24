@@ -22,7 +22,7 @@ $('.game-info').mouseleave (function (event) {
 
 $("body").on("mouseover", "#game-preview a", function(event) {
     event.preventDefault();
-       $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, .GBinfo ', function (data) {
+       $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
