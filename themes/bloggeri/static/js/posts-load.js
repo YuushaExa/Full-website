@@ -31,3 +31,8 @@ $('#content-front-text').each(function() {
          })
     });
 });
+
+$("button").click(function(){
+    var iframe = $("#myiFrame");
+    iframe.attr("src", iframe.data("src")); 
+});
