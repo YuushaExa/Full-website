@@ -20,6 +20,7 @@
   <button class="tablinks" onclick="openCity(event, 'game-description')" id="defaultOpen">Description</button>
   <button class="tablinks" onclick="openCity(event, 'game-info')">Information</button>
   <button class="tablinks" onclick="openCity(event, 'game-media')">Images</button>
+  <button class="tablinks" onclick="openCity(event, 'GBinfo')">Images</button>
 </div>
   <div class="content">
           {{ .Content }}
@@ -28,6 +29,9 @@
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
             <div class="ai">
+                {{ partial "widgets/ai.html" . }}
+                </div> 
+            <div class="GBinfo">
                 {{ partial "widgets/ai.html" . }}
                 </div> 
       </div>
