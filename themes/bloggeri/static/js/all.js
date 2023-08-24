@@ -53,3 +53,9 @@ $("body").on("click", ".tablinks:nth-child(3)", function() {
 $(this).attr("src", source).removeAttr("data-src");
   });
 });
+
+$("buttonGB").on("click", ".tablinks:nth-child(4)", function() {
+    var iframe = $("#GBframe");
+    iframe.attr("src", iframe.data("src")); 
+});
+
