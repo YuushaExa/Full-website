@@ -1,2 +1,12 @@
-<iframe src="https://www.giantbomb.com/search/?q=soul" width="300px" height="500 " style="border:none;    margin-top: -115px;">
-</iframe>
+<script type="text/javascript">
+$(function(){
+    $('#button').click(function(){ 
+        if(!$('#iframe').length) {
+                $('#iframeHolder').html('<iframe id="iframe" src="https://www.giantbomb.com/search/?q=soul" width="300px" height="500 " style="border:none; margin-top: -115px;"></iframe>');
+        }
+    });   
+});
+</script>
+ 
+<button id="button">Button</button>
+<div id="iframeHolder"></div>
