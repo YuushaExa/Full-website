@@ -54,7 +54,7 @@ $(this).attr("src", source).removeAttr("data-src");
   });
 });
 
-$("body").on("click", "button1", function() {
+$("body").on("click", ".button1", function() {
     var iframe = $("#GBframe");
     iframe.attr("src", iframe.data("src")); 
 });
