@@ -1,4 +1,12 @@
 
+    fetch("http://www.reddit.com/r/pics/.json")
+  .then(r => r.json()).then((r) => {
+     r.data.children.forEach((i) => {
+       try{
+         document.body.appendChild(Object.assign(document.createElement("img"),{src: i.data.thumbnail}))
+       } catch (error){console.log(error.message)}
+ })})
+
 $('.card-image a').hover(function (event) { 
     event.preventDefault(); 
   var link1 =  $(this).attr('href');
