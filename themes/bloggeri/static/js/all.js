@@ -57,13 +57,5 @@ $(this).attr("src", source).removeAttr("data-src");
 $("body").on("click", "#button1", function() {
     var iframe = $("#GBframe");
     iframe.attr("src", iframe.data("src")); 
-
-    fetch("http://www.reddit.com/r/pics/.json")
-  .then(r => r.json()).then((r) => {
-     r.data.children.forEach((i) => {
-       try{
-         document.body.appendChild(Object.assign(document.createElement("img"),{src: i.data.thumbnail}))
-       } catch (error){console.log(error.message)}
- })})
 });
 
