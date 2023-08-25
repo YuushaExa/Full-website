@@ -1,5 +1,5 @@
 <button type="button" class="btn5">Load Reviews from Reddit</button>
-<div class="text"></div>
+<div class="text5"></div>
 
 <script>
 $('.btn5').click(function () { 
@@ -16,7 +16,7 @@ $('.btn5').click(function () {
         "<a href='"+results.data.children[i].data["permalink"]+"'>'"+results.data.children[i].data["title"]+"'</a>";
       }
       
-      $('.text').html(currText);
+      $('.text5').html(currText);
     }
   });
 });
