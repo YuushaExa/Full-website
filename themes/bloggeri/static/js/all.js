@@ -1,3 +1,22 @@
+$('.btn5').click(function () { 
+  $.ajax({
+    type: "GET",
+    url: "https://www.reddit.com/r/jrpg/search.json?q=Breath of Fire II&restrict_sr=true",
+    success: function (results) {
+      currText = '';
+      for (i=0;i<results.data.children.length;i++) {
+        currText = currText+ 
+        "<img src='"+results.data.children[i].data["thumbnail"]+"'></img>";
+            currText = currText+ 
+
+        "<a href='"+results.data.children[i].data["permalink"]+"'>'"+results.data.children[i].data["title"]+"'</a>";
+      }
+      
+      $('.text5').html(currText);
+    }
+  });
+});
+
 $('.card-image a').hover(function (event) { 
     event.preventDefault(); 
   var link1 =  $(this).attr('href');
