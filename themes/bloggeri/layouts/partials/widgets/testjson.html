@@ -1,6 +1,6 @@
 {{ $productlist := site.Data.productlist }}
 {{ range $productlist.products }}
-  {{ if eq .title }}
+  {{ if eq .title "{{ .Title }}"}}
     {{ range .variants }}
       {{ .price }}
     {{ end }}
