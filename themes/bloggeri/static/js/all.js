@@ -1,7 +1,7 @@
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
-    url: "https://www.reddit.com/r/jrpg/search.json?q=Breath of Fire II&restrict_sr=true&f=flair_name%3A"Question"",
+    url: "https://www.reddit.com/r/jrpg/search.json?q=Breath of Fire II&restrict_sr=true",
     success: function (results) {
       currText = '';
       for (i=0;i<results.data.children.length;i++) {
