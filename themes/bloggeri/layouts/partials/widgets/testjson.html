@@ -1,4 +1,4 @@
-{{ ($t | urlize) := .Title }}
+{{ $t := .Title }}
 
 {{ $productlist := site.Data.productlist }}
 {{ range $productlist.products }}
