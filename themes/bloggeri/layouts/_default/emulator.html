@@ -7,14 +7,52 @@
         <div class="cover-wrap"></div>
         <div class="cover"></div>
   <div class="content">
-         nbbnbbnbnbnbnnb
+<div id="MyCodeDiv">
+   <div style="width:500px;height:500px;max-width:100%">
+            <div id="game"></div>
         </div>
+        <script>
+            EJS_player = "#game";
+            EJS_core = "snes";
+            EJS_gameName = "Secret of Mana";
+            EJS_color = "#0097c4";
+            EJS_pathtodata = "https://demo.emulatorjs.org/data/";
+            EJS_gameUrl = "https://allancoding-website-files.on.drv.tw/files/ROMS/Secret of Mana (U) [!].zip";
+        </script>
+        <script src="https://demo.emulatorjs.org/data/loader.js"></script>
+                 </div>
+  
+
+  <button onclick="convert()">Screenshot</button>
+<hr>
+<img title="Output" id="MyOutput" style="border: 3px solid green;"/>        </div>
             <div class="ai">
                 {{ partial "widgets/ai.html" . }}
                 </div> 
     </div>
 </section>
 <section class="section">
+  <script>
+    //Onclick
+function convert() {
+const GetDiv = document.querySelector('#MyCodeDiv')
+
+html2canvas(GetDiv, {
+  width:500,
+   useCORS: true,
+ }).then(canvas => {
+
+
+// Start
+var ImageUrlb64 = canvas.toDataURL("image/png");
+document.getElementById("MyOutput").src = ImageUrlb64;
+
+//End
+
+})
+}
+  </script>
+   <script defer src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
  <script defer src="/js/posts.js"></script>
    <script defer src="/js/test.js"></script>
 </section>
