@@ -6,7 +6,7 @@
 </div>
   <script>
    document.getElementById('Trs').addEventListener('click', function() {
-     window.open("https://lens.google.com/uploadbyurl?url=" + document.getElementById('LinkId').value, "Window", "popup");
+     window.open("https://lens.google.com/uploadbyurl?url=" + document.getElementById('LinkId').value, "Window", "popup").replace(/\s/g, '');
 });
     </script> 
   </div>  
