@@ -7,6 +7,7 @@
         <div class="cover-wrap"></div>
         <div class="cover"></div>
   <div class="content">
+    <div id="MyCodeDiv">
    <div style="width:500px;height:500px;max-width:100%">
             <div id="game"></div>
         </div>
@@ -19,8 +20,10 @@
             EJS_gameUrl = "https://allancoding-website-files.on.drv.tw/files/ROMS/Secret of Mana (U) [!].zip";
         </script>
         <script src="https://demo.emulatorjs.org/data/loader.js"></script>
-                 </div>
-<button class="Screenshot1">Screenshot</button>
+  </div>
+<button onclick="convert()">Screenshot</button>
+<hr>
+<img title="Output" id="MyOutput" style="border: 3px solid green;"/>        </div>
             <div class="ai">
                 {{ partial "widgets/ai.html" . }}
                 </div> 
@@ -28,10 +31,18 @@
 </section>
 <section class="section">
   <script>
-$(".Screenshot1").on( "click", function() {
-  $(".ejs_canvas").triggerHandler("click");
-} );
+function convert() {
+const GetDiv = document.querySelector('#MyCodeDiv')
+html2canvas(GetDiv, {
+  width:500,
+   useCORS: true,
+ }).then(canvas => {
+var ImageUrlb64 = canvas.toDataURL("image/png");
+document.getElementById("MyOutput").src = ImageUrlb64;
+})
+}
   </script>
+   <script defer src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
  <script defer src="/js/posts.js"></script>
    <script defer src="/js/test.js"></script>
 </section>
