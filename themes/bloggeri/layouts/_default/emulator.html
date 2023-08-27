@@ -7,7 +7,7 @@
         <div class="cover-wrap"></div>
         <div class="cover"></div>
   <div class="content">
-<div id="MyCodeDiv">
+<div id="capture-area">
    <div style="width:500px;height:500px;max-width:100%">
             <div id="game"></div>
         </div>
@@ -21,11 +21,16 @@
         </script>
         <script src="https://demo.emulatorjs.org/data/loader.js"></script>
                  </div>
-  
+ </div>
+        <div id="control-area">
+  <input id="btn-preview-image" class="btn" type="button" value="Step 1 : Capture ↑" disabled />
+  <a id="btn-download" class="btn" href="">Step 2 : Download ↓</a>
+</div>
 
-  <button onclick="convert()">Screenshot</button>
-<hr>
-<img title="Output" id="MyOutput" style="border: 3px solid green;"/>        </div>
+<section id="preview-area">
+  <h2>Captured Image :</h2>
+  <div id="previewImage"></div>
+</section>
             <div class="ai">
                 {{ partial "widgets/ai.html" . }}
                 </div> 
@@ -33,23 +38,34 @@
 </section>
 <section class="section">
   <script>
-    //Onclick
-function convert() {
-const GetDiv = document.querySelector('#MyCodeDiv')
+window.onload = function(){
+  html2canvas(document.getElementById('capture-area'), {
+    allowTaint: true,
+    backgroundColor: 'transparent',
+    useCORS: true,
+    // scale: window.devicePixelRatio,
+  } ).then(
+    function(canvas) {
+      let previewButton = document.getElementById('btn-preview-image'),
+          downloadButton = document.getElementById('btn-download'),
+          imgageData = canvas.toDataURL("image/png");
+          // Now browser starts downloading it instead of just showing it
+          imgageData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+      previewButton.removeAttribute('disabled');
+      downloadButton.setAttribute('download', 'screenshot.png');
+      downloadButton.setAttribute('href', imgageData);
 
-html2canvas(GetDiv, {
-  width:500,
-   useCORS: true,
- }).then(canvas => {
-
-
-// Start
-var ImageUrlb64 = canvas.toDataURL("image/png");
-document.getElementById("MyOutput").src = ImageUrlb64;
-
-//End
-
-})
+      previewButton.addEventListener('click', function(){
+        document.getElementById('previewImage').appendChild(canvas);
+      });
+      
+      downloadButton.addEventListener('click', function(){
+        if (capturedData === void 0) {
+          alert("Please preview before downloading.");
+        }
+      });
+    }
+  );
 }
   </script>
    <script defer src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
