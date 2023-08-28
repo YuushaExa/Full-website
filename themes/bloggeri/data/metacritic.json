@@ -1,5 +1,4 @@
-{
- "products": [
+[
  {
   "links": "Super Famicom Wars",
   "Release Date": "Apr 1, 1998"
@@ -17,8 +16,8 @@
   "Release Date": "Aug 15, 1994"
  },
  {
-  "links": "Hugo Hula Hoop",
-  "Date": "Apr 19, 1996"
+  "title": "Hugo Hula Hoop",
+  "date": "Apr 19, 1996"
  },
  {
   "links": "Yuu Yuu Hakusho 2: Kakutou no Sho",
@@ -49,4 +48,4 @@
   "links": "Sydney Hunter and the Caverns of Death",
   "Release Date": "Jan 1, 2017"
  }
-]}
+]
