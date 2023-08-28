@@ -8,10 +8,3 @@
     {{ end }}
   {{ end }}
 {{ end }}
-
-{{ $metacritics := site.Data.metacritics }}
-{{ range $metacritics }}
-  {{ if eq .links $t}}
-      {{ .Date }}
-{{ end }}
-{{ end }}
