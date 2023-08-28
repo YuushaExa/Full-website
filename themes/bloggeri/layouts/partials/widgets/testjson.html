@@ -9,9 +9,10 @@
   {{ end }}
 {{ end }}
 
+
 {{ $metacritics := site.Data.metacritics }}
 {{ range $metacritics }}
-  {{ if eq .links $t}}
-      {{ .Date }}
-{{ end }}
-{{ end }}
+  {{ if eq .links $t }}
+    {{ .Date | append . }}
+  {{ end }}
+  {{ end }}
