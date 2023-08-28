@@ -11,7 +11,5 @@
 
 {{ $metacritics := site.Data.metacritics }}
 {{ range $metacritics }}
-  {{ if eq .title $t}}
     {{ .date }}
-  {{ end }}
   {{ end }}
