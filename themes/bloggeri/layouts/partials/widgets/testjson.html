@@ -8,10 +8,3 @@
     {{ end }}
   {{ end }}
 {{ end }}
-
-{{ $tableConvert := site.Data.tableConvert }}
-{{ range $tableConvert.data }}
-  {{ if eq .title $t}}
-      {{ .Date }}
-{{ end }}
-{{ end }}
