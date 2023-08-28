@@ -12,6 +12,6 @@
 {{ $metacritics := site.Data.metacritics }}
 {{ range $metacritics }}
   {{ if eq .links $t}}
-      {{ .Data }}
+      {{ .Date }}
 {{ end }}
 {{ end }}
