@@ -1,9 +1,17 @@
 {{ $t := .Title }}
 
+{{ $productlist := site.Data.productlist }}
+{{ range $productlist.products }}
+  {{ if eq .title $t}}
+    {{ range .variants }}
+      {{ .price }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 {{ $metacritics := site.Data.metacritics }}
-{{ range $metacritics }}
   {{ if eq .links $t }}
-    {{ .Date | append . }}
+    {{ .Date }}
   {{ end }}
   {{ end }}
 
