@@ -9,7 +9,7 @@
   {{ end }}
 {{ end }}
 
-{{ $tableConvert.com_oiu09l := site.Data.tableConvert.com_oiu09l }}
+{{ $tableConvert := site.Data.tableConvert }}
 {{ range $tableConvert.com_oiu09l.data }}
   {{ if eq .title $t}}
       {{ .Date }}
