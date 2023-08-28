@@ -10,6 +10,9 @@
 {{ end }}
 
 {{ $metacritics := site.Data.metacritics }}
+{{ range $metacritics.products }}
   {{ if eq .links $t }}
     {{ .Date }}
   {{ end }}
+  {{ end }}
+
