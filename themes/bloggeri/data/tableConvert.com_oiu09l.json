@@ -1,4 +1,4 @@
-﻿[
+{﻿[
     {
         "Title": "Super Famicom Wars",
         "Release Date": "Apr 1, 1998",
@@ -56,6 +56,8 @@
     },
     {
         "Title": "Sydney Hunter and the Caverns of Death",
-        "Release Date": "Jan 1, 2017"
+        "Release Date": "Jan 1, 2017",
+        "Metascore": ""
     }
 ]
+}
