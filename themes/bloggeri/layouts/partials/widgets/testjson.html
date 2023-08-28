@@ -10,9 +10,7 @@
 {{ end }}
 
 {{ $metacritics := site.Data.metacritics }}
-{{ range $metacritics.products }}
   {{ if eq .title $t}}
     {{ .date }}
-  {{ end }}
   {{ end }}
 
