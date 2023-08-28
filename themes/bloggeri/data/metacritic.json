@@ -1,4 +1,5 @@
-[
+{
+ "products": [
  {
   "links": "Super Famicom Wars",
   "Release Date": "Apr 1, 1998"
@@ -48,4 +49,4 @@
   "links": "Sydney Hunter and the Caverns of Death",
   "Release Date": "Jan 1, 2017"
  }
-]
+]}
