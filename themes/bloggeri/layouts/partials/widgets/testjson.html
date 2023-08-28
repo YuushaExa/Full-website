@@ -11,8 +11,8 @@
 
 {{ $metacritics := site.Data.metacritics }}
 {{ range $metacritics.products }}
-  {{ if eq .links $t }}
-    {{ .Date }}
+  {{ if eq .title $t}}
+    {{ .date }}
   {{ end }}
   {{ end }}
 
