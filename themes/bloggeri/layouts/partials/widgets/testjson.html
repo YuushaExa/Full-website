@@ -10,6 +10,8 @@
 {{ end }}
 
 {{ $metacritic := site.Data.metacritic }}
+{{ range $metacritic }}
  {{ if eq .title $t}}
     {{ .date }}
+  {{ end }}
   {{ end }}
