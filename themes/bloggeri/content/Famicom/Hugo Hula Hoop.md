@@ -1,5 +1,5 @@
 ---
-title: 'Hugo Hula Hoop'
+title: 'Legend'
 date: '2016-08-16T06:18:21+03:00'
 status: publish
 permalink: /famicom/Hugo-Hula-Hoop/index.html
