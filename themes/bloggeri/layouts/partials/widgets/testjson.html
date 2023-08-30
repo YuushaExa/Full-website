@@ -9,9 +9,9 @@
   {{ end }}
 {{ end }}
 
-{{ $metacritic := site.Data.metacritic }}
-{{ range $metacritic }}
- {{ if eq .title $t}}
-    {{ .date }}
+{{ $raw1 := site.Data.raw1 }}
+{{ range $raw1 }}
+ {{ if eq .Name $t}}
+    {{ . }}
   {{ end }}
   {{ end }}
