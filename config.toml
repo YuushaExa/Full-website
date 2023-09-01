@@ -49,3 +49,9 @@ home = [ "HTML", "RSS", "JSON" ]
   name = "Search"
   identifier = "search"
   url = "/search"
+
+[build]
+command = """\
+  hugo -s prebuild && \
+  hugo --gc --minify \
+  """
