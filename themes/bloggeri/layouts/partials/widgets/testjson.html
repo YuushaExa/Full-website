@@ -1,14 +1,5 @@
 {{ $t := .Title }}
 
-{{ $productlist := site.Data.productlist }}
-{{ range $productlist.products }}
-  {{ if eq .title $t}}
-    {{ range .variants }}
-      {{ .price }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
 {{ $raw1 := site.Data.raw1 }}
 {{ range $raw1 }}
  {{ if eq .Name $t}}
