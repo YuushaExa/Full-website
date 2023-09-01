@@ -12,6 +12,6 @@
 {{ $raw1 := site.Data.raw1 }}
 {{ range $raw1 }}
  {{ if eq .Name $t}}
-    {{ . }}
+    {{ . | len }}
   {{ end }}
   {{ end }}
