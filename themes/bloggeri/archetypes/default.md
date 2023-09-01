@@ -2,5 +2,5 @@
 date = '{{ .Date }}'
 draft = true
 title = '{{ replace .File.ContentBaseName `-` ` ` | title }}'
-tag = trueercr
+tags = trueercr
 +++
