@@ -13,7 +13,7 @@
 {{ range $raw1 }}
  {{ if eq .Name $t}}
  {{ .Platforms }}
-    {{ .Date | len }}
-    {{ .Name | len }}
+ {{ .Date }}
+ {{ .Images }}
   {{ end }}
   {{ end }}
