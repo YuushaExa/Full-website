@@ -1,5 +1,5 @@
 ---
-title: 'terranigma'
+title: 'Terranigma'
 date: '2020-03-06T16:34:35+03:00'
 status: publish
 permalink: /snes/terranigma/index.html
