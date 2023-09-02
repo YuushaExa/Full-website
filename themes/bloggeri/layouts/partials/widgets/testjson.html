@@ -8,7 +8,7 @@
   {{ end }}
   {{ end }}
 
-{{ $q := unmarshal site.Data.snraw }}
+{{ $q := site.Data.snraw }}
 {{ range $q }}
  {{ if eq .Name $t}}
         <img src="{{ .Images }}"/>                                                     
