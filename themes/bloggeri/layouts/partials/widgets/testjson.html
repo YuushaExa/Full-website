@@ -5,8 +5,7 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
- {{ $monsters := unmarshal .Images }}
-  {{ range $monsters }}
+  {{ range .Images }}
    {{ . }}
   {{ end }}
   {{ end }}
