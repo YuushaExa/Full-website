@@ -5,10 +5,10 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
-  {{ range .Images }}
+  {{ end }}
+  {{ end }}
+ {{ range .Images }}
    {{ . }}
-  {{ end }}
-  {{ end }}
   {{ end }}
 
 {{ $sngdb := site.Data.sngdb }}
