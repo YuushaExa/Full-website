@@ -5,11 +5,15 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
+{{ $q := index site.Data.snraw }}
+{{ with $q }}                                                       
+    {{ range .Images }}                                              
+        {{ . }}                                                     
+    {{ end }}                                                       
+{{ end }}
   {{ end }}
   {{ end }}
- {{ range .Images }}
-   {{ . }}
-  {{ end }}
+
 
 {{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
