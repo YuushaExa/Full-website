@@ -1,7 +1,7 @@
 {{ $t := .Title }}
 
-{{ $raw1 := site.Data.raw1 }}
-{{ range $raw1 }}
+{{ $sn-raw := site.Data.sn-raw }}
+{{ range $sn-raw }}
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
@@ -9,10 +9,10 @@
   {{ end }}
   {{ end }}
  
-{{ $snesdb := getJSON "https://d-cy5.pages.dev/r/data/snesdb.json" }}
-{{ range $snesdb }}
+{{ $sn-gdb := site.Data.sn-gdb }}
+{{ range $sn-gdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-<p>{{ .Images }}</p>
+{{ .Images }}
   {{ end }}
   {{ end }}
