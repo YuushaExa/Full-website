@@ -13,8 +13,8 @@
 {{ range $sngdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
+  {{ end }}
 {{ range .Images }}
   <li>{{ . }}</li>
 {{ end }}
-  {{ end }}
   {{ end }}
