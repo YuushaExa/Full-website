@@ -5,7 +5,9 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
- {{ .Images }}
+{{ range .Images }}
+  <img src="{{ . }}.png">
+{{ end }}
   {{ end }}
   {{ end }}
 
