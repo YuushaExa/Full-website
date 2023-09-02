@@ -4,16 +4,10 @@
 {{ range $snraw }}
  {{ if eq .Name $t}}
  {{ .Platforms }}
- {{ .Date }}
-{{ $q := index $snraw }}
-{{ with $q }}                                                       
-    {{ range .Images }}                                              
-        {{ . }}                                                     
-    {{ end }}                                                       
-{{ end }}
+ {{ .Date }}                                                      
+ {{ .Images }}                                                                                                   
   {{ end }}
   {{ end }}
-
 
 {{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
