@@ -9,10 +9,10 @@
   {{ end }}
   {{ end }}
  
-{{ $sngdb := site.Data.sngdb | transform.Unmarshal}}
+{{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
- <p>{{ .Images }}</p>
+ {{ .Images }}
   {{ end }}
   {{ end }}
