@@ -9,10 +9,10 @@
   {{ end }}
 
 {{ $q := index site.Data.snraw }}
-{{ with $q }}                                                       
-    {{ range .Images }}                                              
-        {{ . }}                                                     
-    {{ end }}                                                       
+{{ range $q }}
+ {{ if eq .Name $t}}
+        {{ .Images }}                                                     
+{{ end }}
 {{ end }}
 
 {{ $sngdb := site.Data.sngdb }}
