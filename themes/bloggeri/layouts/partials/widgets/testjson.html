@@ -9,7 +9,7 @@
   {{ end }}
   {{ end }}
  
-{{ $snesdb := getJSON "https://8e161958.d-cy5.pages.dev/r/data/snesdb.json" }}
+{{ $snesdb := getJSON "https://d-cy5.pages.dev/r/data/snesdb.json" }}
 {{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
