@@ -8,11 +8,3 @@
  {{ .Images }}
   {{ end }}
   {{ end }}
- 
-{{ $sngdb := site.Data.sngdb }}
-{{ range $sngdb }}
- {{ if eq .Name $t}}
- {{ .Description }}
- {{ .Images }}
-  {{ end }}
-  {{ end }}
