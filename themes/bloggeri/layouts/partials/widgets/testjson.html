@@ -5,7 +5,7 @@
  {{ if eq .Name $t }}
 {{ .Platforms }}
  {{ .Date }}     
-{{ .Images }}
+{{ .Images | markdownify }}
   {{ end }}
   {{ end }}
 
