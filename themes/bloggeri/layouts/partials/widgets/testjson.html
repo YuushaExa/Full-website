@@ -2,7 +2,7 @@
 
 {{ $snraw := site.Data.snraw }}
 {{ range $snraw }}
- {{ if eq .Name $t | unmarshal }}
+ {{ if eq .Name $t }}
  {{ .Platforms }}
  {{ .Date }}     
 {{ .Images }}
