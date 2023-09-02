@@ -9,6 +9,13 @@
   {{ end }}
   {{ end }}
 
+{{ $q := index site.Data.snraw }}
+{{ with $q }}                                                       
+    {{ range .Images }}                                              
+        {{ . }}                                                     
+    {{ end }}                                                       
+{{ end }}
+
 {{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
  {{ if eq .Name $t}}
