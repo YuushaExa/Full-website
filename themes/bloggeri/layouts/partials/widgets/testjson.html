@@ -1,7 +1,7 @@
 {{ $t := .Title }}
 
-{{ $sn-raw := site.Data.sn-raw }}
-{{ range $sn-raw }}
+{{ $snraw := site.Data.snraw }}
+{{ range $snraw }}
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
@@ -9,8 +9,8 @@
   {{ end }}
   {{ end }}
  
-{{ $sn-gdb := site.Data.sn-gdb }}
-{{ range $sn-gdb }}
+{{ $sngdb := site.Data.sngdb }}
+{{ range $sngdb | transform.Unmarshal }}
  {{ if eq .Name $t}}
  {{ .Description }}
 {{ .Images }}
