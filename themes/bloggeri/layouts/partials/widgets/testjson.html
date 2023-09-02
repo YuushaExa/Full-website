@@ -11,7 +11,7 @@
 {{ $q := index site.Data.snraw }}
 {{ range $q }}
  {{ if eq .Name $t}}
-        {{ .Images }}                                                     
+        <img src="{{ .Images }}"/>                                                     
 {{ end }}
 {{ end }}
 
