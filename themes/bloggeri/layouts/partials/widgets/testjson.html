@@ -8,12 +8,13 @@
   {{ end }}
   {{ end }}
 
-{{ $q := index site.Data.snraw }}
+{{ $q := unmarshal site.Data.snraw }}
 {{ range $q }}
  {{ if eq .Name $t}}
         <img src="{{ .Images }}"/>                                                     
 {{ end }}
 {{ end }}
+
 
 {{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
