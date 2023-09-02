@@ -13,6 +13,6 @@
 {{ range $sngdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ .Images }}
+{{ .Images | markdownify }}
   {{ end }}
   {{ end }}
