@@ -5,11 +5,9 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
- {{ $data := . | unmarshal }}
-  {{ range $data.Images }}
+  {{ range $snraw.Images }}
     <img src="{{ . }}">
   {{ end }}
-{{ end }}
   {{ end }}
   {{ end }}
 
