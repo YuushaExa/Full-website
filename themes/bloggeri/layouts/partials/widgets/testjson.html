@@ -5,7 +5,7 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
-{{ $q := index site.Data.snraw }}
+{{ $q := index site.Data $snraw }}
 {{ with $q }}                                                       
     {{ range .Images }}                                              
         {{ . }}                                                     
