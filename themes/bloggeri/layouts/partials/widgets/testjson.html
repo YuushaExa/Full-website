@@ -11,10 +11,11 @@
 {{ $q := site.Data.snraw }}
 {{ range $q }}
  {{ if eq .Name $t}}
-        <img src="{{ .Images }}"/>                                                     
+{{ range .Images }}
+        <img src="{{ . }}"/>                                                     
 {{ end }}
 {{ end }}
-
+{{ end }}
 
 {{ $sngdb := site.Data.sngdb }}
 {{ range $sngdb }}
