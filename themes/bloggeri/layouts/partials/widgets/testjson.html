@@ -7,7 +7,7 @@
  {{ .Date }}
  {{ $monsters := unmarshal .Images }}
   {{ range $monsters }}
-   {{ .Images }}
+   {{ . }}
   {{ end }}
   {{ end }}
   {{ end }}
