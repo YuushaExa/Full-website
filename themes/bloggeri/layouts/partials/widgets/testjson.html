@@ -5,7 +5,7 @@
  {{ if eq .Name $t}}
  {{ .Platforms }}
  {{ .Date }}
-{{ range .Images }}
+{{ range .Site.Data.Images $snraw }}
   <img src="{{ . }}">
 {{ end }}
   {{ end }}
