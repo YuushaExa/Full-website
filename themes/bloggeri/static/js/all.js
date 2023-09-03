@@ -1,14 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
-    pagefind = new PagefindUI({
-        element: "#search",
-        baseUrl: "/",
-        debounceTimeoutMs: 500,
-        showImages: false,
-        mergeIndex: [
-            {bundlePath: "/static/myindex"}
-        ]
-    });
+    new PagefindUI({ element: "#search" });
 
     const urlParams = new URLSearchParams(window.location.search);
     const q = urlParams.get('q');
