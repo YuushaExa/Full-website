@@ -4,8 +4,8 @@
 {{ range $snraw }}
  {{ if eq .Name $t }}
 <p class="sub">Platforms:
-{{ range .Platforms }}
-  {{- if .Platforms -}}, {{ end -}}
+{{ range $k, .Platforms }}
+{{ if $k }},{{ end }}
 <a href="https://yuushaexa.github.io/search/?q={{ . }}">{{ . }}</a>
  {{ end }}
 </p>
