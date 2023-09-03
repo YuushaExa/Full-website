@@ -1,8 +1,8 @@
 {{ if eq .Ordinal 0 }}
 <div class="image-first">
-<img data-pagefind-meta="image[src]" src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="{{ $.Page.Title }}" crossorigin="anonymous"/>
+<img src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="{{ $.Page.Title }}" crossorigin="anonymous"/>
 </div> 
 {{ end}}
 {{ if .Ordinal }}
-<img data-src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&h=200" alt="{{ $.Page.Title }}" class="lazyload">
+<img data-pagefind-meta="image[src]" data-src="https://wsrv.nl/?url={{ .Destination | safeURL }}&output=webp&maxage=1d&h=200" alt="{{ $.Page.Title }}" class="lazyload">
 {{ end}}
