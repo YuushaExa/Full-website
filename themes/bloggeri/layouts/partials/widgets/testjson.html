@@ -5,7 +5,8 @@
  {{ if eq .Name $t }}
 <p class="sub">Platforms:
 {{ range .Platforms }}
-{{- if ne .Platforms, 0 }}, {{ end }}<a href="https://yuushaexa.github.io/search/?q={{ . }}">{{ . }}</a>
+  {{- if .Platforms -}}, {{ end -}}
+<a href="https://yuushaexa.github.io/search/?q={{ . }}">{{ . }}</a>
  {{ end }}
 </p>
  Date: {{ .Date }}     
