@@ -3726,7 +3726,7 @@
  {
   "Name": "Obitus",
   "Date": "Jan 1, 1991",
-  "Platforms": "Commodore / Amiga, Atari ST, SNES, PC",
+  "Platforms": ["Commodore / Amiga", "Atari ST", "SNES", "PC"],
   "Images": "https://media.rawg.io/media/resize/200/-/screenshots/802/8022875c91cf4b16dafc79c8ccda0201.jpg https://media.rawg.io/media/resize/200/-/screenshots/af1/af1d640b40d2e8c83c0df0f4060e5613.jpg https://media.rawg.io/media/resize/200/-/screenshots/4db/4dbc04dc355a02bc0b9a150937ec06f9.jpg https://media.rawg.io/media/resize/200/-/screenshots/035/0356e72d66b0821666bd54015bb6a604_AERzMcq.jpg https://media.rawg.io/media/resize/200/-/screenshots/96b/96b330f9c92ad01cc10ebae42249fe35.jpg https://media.rawg.io/media/resize/200/-/screenshots/e0b/e0b23b1786955159ff6af2647816d3ef.jpg https://media.rawg.io/media/resize/200/-/screenshots/323/32330f9577d19ccc98f069d1d9577970.jpg"
  },
  {
