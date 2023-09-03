@@ -3,7 +3,9 @@
 {{ $snraw := site.Data.snraw }}
 {{ range $snraw }}
  {{ if eq .Name $t }}
-Platforms: {{ .Platforms }}
+{{ range .Platforms }}
+Platforms: {{ . }}
+  {{ end }}
  Date: {{ .Date }}     
 {{ .Images | markdownify }}
   {{ end }}
