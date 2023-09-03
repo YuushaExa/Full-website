@@ -3,8 +3,13 @@
 {{ $snraw := site.Data.snraw }}
 {{ range $snraw }}
  {{ if eq .Name $t }}
+<p class="sub">Platforms:
+{{ range .Platforms }}
+<a href="https://yuushaexa.github.io/search/?q={{ . }}">{{ . }}</a>
+ {{ end }}
+</p>
  Date: {{ .Date }}     
-{{ .Images }}
+{{ .Images | markdownify }}
   {{ end }}
   {{ end }}
 
