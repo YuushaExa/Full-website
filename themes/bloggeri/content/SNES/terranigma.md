@@ -1,29 +1,24 @@
 ---
 title: 'Terranigma'
-date: '2020-03-06T16:34:35+03:00'
+date: '2016-88-16T06:18:21+03:00'
 status: publish
-permalink: /snes/terranigma/index.html
+permalink: /famicom/terranigma/index.html
 author: spectrum_admin
 excerpt: ''
+images: 
 type: post
-id: 137887
-category:
-    - '@snes'
-tag:
-    - '#1 ASK Kodansha'
-    - Action
+id: 130788
+categories:
+  - Web development
+  - Blogging
+tags:
+    - Nintendo EAD
+    - Platform
 post_format: []
 ---
 
-![](https://wsrv.nl/?url=https://images.launchbox-app.com/b0477edb-08ac-4d39-a962-6f5ece5f7dc9.jpg&output=webp&maxage=1d)
+![](https://images.launchbox-app.com/133dd9d0-2e30-476a-835e-6bbc915b02e4.jpg)
 
-Adian No Tsue is not a traditional adventure game — It is most and foremost an educational game designed to appeal to a young audience. It is also the first installment of a series of games released in Japan by SunSoft. The player takes control of a courageous knight and the game follows a traditional overhead display which somehow bears some resemblance to Nintendo’s Zelda. Each room is usually filled up with monsters and four doors lead to other surrounding rooms, different locations or just hide special items. However, the only way for our hero to pass these doors is to solve simple arithmetic equations. Numbers from 0 to 9 appear on two sides of the room and the knight must run around the room and touch them to display the right answer. Yet, these expressions are very simple and only use simple additions, subtractions, multiplications and divisions. Nonetheless, solving them while running around the rooms and hitting crazy skeletons with a sword can be a challenging task. The other side of the disk contains a simple marathon game also based on arithmetic challenges.
-
-![](https://wsrv.nl/?url=https://images.launchbox-app.com/899993d7-0195-405e-865e-5d9b5dfc218d.jpg&output=webp&maxage=1d)
-
-<div class="game-info">Developed by [ASK Kodansha](/search?q=ASK%20Kodansha?&max-results=12)  
-Published by [Sunsoft](/search?q=Sunsoft?&max-results=12)  
-Genre: [Action](/search?q=Action?&max-results=12)  
-Platform: [Famicom Disk System](/search/label/%40famicom?&amp;max-results=12)  
-Release Date: December 12, 1986  
-YouTube: [Adian No Tsue Gameplay](https://www.youtube.com/watch?v=ObahVqBE6R0)</div><div class="game-media">![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]() ![]()</div>
+<div id="game-description" class="tabcontent">
+All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros., released in 1986 for the Famicom Disk System. This version is based on the Japanese radio program All Night Nippon, and it was given out as a raffle prize on the show itself. The game was published by Fuji Television. Essentially, this game is a mishmash of levels from Super Mario Bros 1 and 2 except with the sprites of the Toads and various enemies replaced with Japanese celebrities for a humorous effect as well as item placements are different.
+</div>
