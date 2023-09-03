@@ -1,17 +1,3 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-
-    new PagefindUI({ element: "#search" });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const q = urlParams.get('q');
-    if(q){
-        setTimeout(function(){
-            console.log('Searching:'+q);
-            pagefind.triggerSearch(q);
-        }, 1000);
-    }
-
-});
 
 $('.btn5').click(function () { 
   $.ajax({
