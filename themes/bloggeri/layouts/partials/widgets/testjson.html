@@ -3,9 +3,11 @@
 {{ $snraw := site.Data.snraw }}
 {{ range $snraw }}
  {{ if eq .Name $t }}
+<p class="sub">Nintendo Famicom Disk System - Released - March 4, 1988>
 {{ range .Platforms }}
-Platforms: {{ . }}
+https://yuushaexa.github.io/search/?q={{ . }}
   {{ end }}
+</p>
  Date: {{ .Date }}     
 {{ .Images | markdownify }}
   {{ end }}
