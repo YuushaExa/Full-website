@@ -4,7 +4,7 @@
 {{ range $snraw }}
  {{ if eq .Name $t }}
 <p class="sub">Platforms:
-{{ range delimit .Platforms ", " }}
+{{ delimit range .Platforms ", " }}
 <a href="https://yuushaexa.github.io/search/?q={{ . }}">{{ . }}</a>
  {{ end }}
 </p>
