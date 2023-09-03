@@ -23,11 +23,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     pagefind = new PagefindUI({
         element: "#search",
         baseUrl: "/",
-        debounceTimeoutMs: 500,
-        showImages: false,
-        mergeIndex: [
-            {bundlePath: "/static/myindex"}
-        ]
     });
 
     const urlParams = new URLSearchParams(window.location.search);
