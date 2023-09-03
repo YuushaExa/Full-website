@@ -1,5 +1,25 @@
-let pagefind = new PagefindUI({ element: "#search" });
-pagefind.triggerSearch("some search terms");
+window.addEventListener('DOMContentLoaded', (event) => {
+
+    pagefind = new PagefindUI({
+        element: "#search",
+        baseUrl: "/",
+        debounceTimeoutMs: 500,
+        showImages: false,
+        mergeIndex: [
+            {bundlePath: "/static/myindex"}
+        ]
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if(q){
+        setTimeout(function(){
+            console.log('Searching:'+q);
+            pagefind.triggerSearch(q);
+        }, 1000);
+    }
+
+});
 
 $('.btn5').click(function () { 
   $.ajax({
