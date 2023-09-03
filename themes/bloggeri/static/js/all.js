@@ -1,3 +1,6 @@
+let pagefind = new PagefindUI({ element: "#search" });
+pagefind.triggerSearch("some search terms");
+
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
