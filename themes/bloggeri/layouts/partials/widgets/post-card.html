@@ -4,7 +4,7 @@
                    <a href="{{ $permalink }}">   <img data-src="
             {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-                 {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
+                 {{ end }}" alt="" crossorigin="anonymous" class="lazyload" onerror="this.onerror=null;this.src='https://images.launchbox-app.com/b356df25-b682-4c3c-8d90-502986557b7f.jpg';" >
          </a>
     </div>
     <div class="card-content">
