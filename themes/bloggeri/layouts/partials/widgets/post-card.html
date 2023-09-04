@@ -9,6 +9,20 @@
     </div>
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
+        {{ $t := .Title }}
+
+{{ $snraw := site.Data.snraw }}
+{{ range $snraw }}
+ {{ if eq .Name $t }}
+<p class="sub">Platforms:
+{{ range .Platforms }}
+<a href="?q={{ . }}">{{ . }}</a>
+ {{ end }}
+</p>
+ Date: {{ .Date }}     
+{{ .Images | markdownify }}
+  {{ end }}
+  {{ end }}
     </div> 
        <div class="categories">
   <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
