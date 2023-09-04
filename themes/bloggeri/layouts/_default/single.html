@@ -25,16 +25,16 @@
   <div class="content">
           {{ .Content }}
         </div>
-              <div class="game-links">
+              <div class="game-links" data-pagefind-ignore>
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
-            <div class="ai">
+            <div class="ai" data-pagefind-ignore>
                 {{ partial "widgets/ai.html" . }}
                 </div> 
-            <div id="GBinfo" class="tabcontent">
+            <div id="GBinfo" data-pagefind-ignore class="tabcontent">
                 {{ partial "widgets/gameinfo.html" . }}
                 </div> 
-         <div id="ReviewsReddit" >
+         <div id="ReviewsReddit" data-pagefind-ignore>
                 {{ partial "widgets/reviews.html" . }}
                 </div> 
       </div>
