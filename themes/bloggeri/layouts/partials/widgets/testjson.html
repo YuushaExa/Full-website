@@ -13,10 +13,10 @@
   {{ end }}
   {{ end }}
 
-{{ $sngdb := site.Data.sngdb }}
-{{ range $sngdb }}
+{{ $snesdb := site.Data.snesdb }}
+{{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ .Images | markdownify }}
+{{ .Images }}
   {{ end }}
   {{ end }}
