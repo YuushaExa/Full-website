@@ -3,6 +3,6 @@
 {{ $snesdb := site.Data.snesdb }}
 {{ range $snesdb }}
  {{ if eq .Name $t}}
- {{ .main-img }}
+ {{ . "main-img" }}
   {{ end }}
   {{ end }}
