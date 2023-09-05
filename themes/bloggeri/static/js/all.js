@@ -78,3 +78,15 @@ $("body").on("click", "#button1", function() {
     iframe.attr("src", iframe.data("src")); 
 });
 
+$('.Platforms a').mouseover(function (event) {
+      event.preventDefault(); 
+    $('.Platforms').append('<div class="link-pre"></div>');
+    $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load("/search" + ' .PC ', function (data) {
+    }).fadeIn(300).css('transform', 'translate(0, -15px)');
+});
+$('.Platforms a').mouseleave (function (event) {
+  event.preventDefault(); 
+  $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
+              $(this).remove();
+          });
+});
