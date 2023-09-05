@@ -17,6 +17,8 @@
 {{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ .Images }}
+{{ range .Images }}
+<img src="{{ . }}">
+ {{ end }}
   {{ end }}
   {{ end }}
