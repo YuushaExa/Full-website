@@ -3,7 +3,7 @@
 {{ $snesdb := site.Data.snesdb }}
 {{ range $snesdb }}
  {{ if eq .Name $t}}
-{{ range .Images[0] }}
+{{ range .Images 1 }}
 <img src="{{ . }}">
  {{ end }}
   {{ end }}
