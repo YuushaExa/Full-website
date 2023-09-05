@@ -3,11 +3,11 @@
 {{ $snraw := site.Data.snraw }}
 {{ range $snraw }}
  {{ if eq .Name $t }}
-<p class="sub">Platforms:
+<div class="Platforms">Platforms:
 {{ range .Platforms }}
 <a href="?q={{ . }}">{{ . }}</a>
  {{ end }}
-</p>
+</div>
  Date: {{ .Date }}     
 <p data-pagefind-ignore>{{ .Images | markdownify }}</p>
   {{ end }}
