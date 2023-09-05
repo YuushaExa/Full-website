@@ -1,7 +1,14 @@
 {{ $permalink := .Permalink }}
 <div class="card">
     <div class="card-image">  
-        {{ partial "widgets/mainimg.html" . }}              
+        {{ $t := .Title }}
+
+{{ $snesdb := site.Data.snesdb }}
+{{ range $snesdb }}
+ {{ if eq .Name $t}}
+  <a href="{{ $permalink }}"><img data-src="{{ . "main-img" }}" alt="" crossorigin="anonymous" class="lazyload"></a>
+  {{ end }}
+  {{ end }}           
     </div>
     <div class="card-content">
         <a class="title is-4">{{ .Title }}</a> <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
