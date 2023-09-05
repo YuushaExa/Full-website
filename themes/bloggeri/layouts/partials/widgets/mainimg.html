@@ -3,6 +3,6 @@
 {{ $snesdb := site.Data.snesdb }}
 {{ range $snesdb }}
  {{ if eq .Name $t}}
-  <img data-src="https://wsrv.nl/?url={{ .img }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload">
+  <img data-src="https://wsrv.nl/?url={{ .Images 1 }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload">
   {{ end }}
   {{ end }}
