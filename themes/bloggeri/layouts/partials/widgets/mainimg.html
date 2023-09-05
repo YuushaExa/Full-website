@@ -4,7 +4,7 @@
 {{ range $snesdb }}
  {{ if eq .Name $t}}
 {{ range first 1 .Images }}
-{{ . }}
+ <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}
   {{ end }}
   {{ end }}
