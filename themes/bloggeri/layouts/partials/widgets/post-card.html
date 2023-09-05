@@ -6,7 +6,7 @@
 {{ $snesdb := site.Data.snesdb }}
 {{ range $snesdb }}
  {{ if eq .Name $t}}
-  <img data-src="{{ .img }}" alt="" crossorigin="anonymous" class="lazyload">
+   <a href="{{ $permalink }}"><img data-src="{{ .img }}" alt="" crossorigin="anonymous" class="lazyload"></a>
   {{ end }}
   {{ end }}           
     </div>
