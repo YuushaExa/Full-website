@@ -28,7 +28,7 @@ $('.card-image a').hover(function (event) {
 
 $('.game-info a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.game-info').append('<div class="link-pre1"></div><div class="link-pre"></div>');
+    $('.game-info').append('</div><div class="link-pre"></div>');
     $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
@@ -80,7 +80,7 @@ $("body").on("click", "#button1", function() {
 
 $('.Platforms a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.Platforms').append('<div class="link-pre"></div>');
+    $('.Platforms').append('<div class="link-pre1"></div><div class="link-pre"></div>');
     $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load("/search" + ' .PC ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
