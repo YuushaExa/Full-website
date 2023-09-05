@@ -1,0 +1,8 @@
+{{ $t := .Title }}
+
+{{ $snesdb := site.Data.snesdb }}
+{{ range $snesdb }}
+ {{ if eq .Name $t}}
+ {{ .main-img }}
+  {{ end }}
+  {{ end }}
