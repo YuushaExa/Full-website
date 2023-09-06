@@ -87,7 +87,7 @@ $('.Platforms a').mouseover(function (event) {
 });
 $('.link-pre1').mouseleave (function (event) {
   event.preventDefault(); 
-  $('.link-pre, .link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
+  $('.link-pre', '.link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
           });
 });
