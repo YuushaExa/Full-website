@@ -85,7 +85,8 @@ $('.Platforms a').mouseover(function (event) {
     $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load('/search' + ' .PC ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
-$('.link-pre1').mouseleave (function (event) {
+
+$("body").on("mouseleave", ".link-pre1", function(event) {
   event.preventDefault(); 
   $('.link-pre', '.link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $('.link-pre', '.link-pre1').remove();
