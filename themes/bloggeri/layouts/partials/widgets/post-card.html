@@ -1,7 +1,7 @@
 {{ $permalink := .Permalink }}
 <div class="card">
-  <a class="card-image" href="{{ $permalink }}"> 
+  <a class="card-image" href="{{ $permalink }}"><a class="title is-4">{{ .Title }}</a>
       {{ partial "widgets/mainimg.html" . }}
- <a class="title is-4">{{ .Title }}</a>
+  </a>
       <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
      </div>
