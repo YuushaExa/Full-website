@@ -82,7 +82,7 @@ $('.Platforms a').mouseover(function (event) {
       event.preventDefault(); 
     $('.Platforms').append('<div class="link-pre"></div>'); 
      var k = $('.Platforms a').text;
-    $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load('this.href + ' .columns ', function (data) {
+    $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load(this.href + ' .columns ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
