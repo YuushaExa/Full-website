@@ -1,14 +1,14 @@
 {{ define "main" }}
 <div class="container">
-        <div class="content">
+        <div class="content"> 
+                <div class="PC">
+A personal computer is a multi-purpose microcomputer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. 
+                 </div>
        </div>
        {{ range .Paginator.Pages }}
   {{ partial "widgets/post-card.html" . }}
     {{ end }}
 <div class="columns is-centered">   
-        <div class="PC">
-A personal computer is a multi-purpose microcomputer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. 
-                 </div>
     <div class="column is-narrow">
         {{ partial "widgets/pagination.html" . }}
     </div>
