@@ -81,7 +81,7 @@ $("body").on("click", "#button1", function() {
 $('.Platforms a').mouseover(function (event) {
       event.preventDefault(); 
     $('.Platforms').append('<div class="link-pre"></div>'); 
-    $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load('/search' + ' this.text ', function (data) {
+    $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load('/search' + ' .$('.Platforms a').text ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
