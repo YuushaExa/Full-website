@@ -31,10 +31,40 @@ html{overflow-y:scroll;
     gap: 5px;
 }
 
+.card {
+    margin: 5px;
+    position: relative;
+    transition: all .3s;
+    float: left;
+    display: flex;
+}
+	      
+	      
 	      .card-image {
+    height: 300px;
+    width: 200px;
+    border-radius: 6px;
     color: black;
-		          display: inline-block;
+	 display: inline-block;
 	      }
+
+.card-content {
+    position: absolute;
+    bottom: 0px;
+    background: #00000045;
+    text-shadow: 0 0 3px #000;
+    border-radius: 6px;
+    width: 200px;
+}
+	      a.title.is-4 {
+    position: absolute;
+    padding: 10px;
+    bottom: 0px;
+    font-size: 13px!important;
+    display: inline-block;
+    width: 90%;
+	      }
+	      
 	      .card-image img {
     box-shadow: unset!important;
 }
