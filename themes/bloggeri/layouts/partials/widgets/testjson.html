@@ -5,7 +5,7 @@
  {{ if eq .Name $t }}
 <div class="Platforms">Platforms:
 {{ range .Platforms }}
-<a href="/search#{{ . }}">{{ . }}</a>
+<a href="?q={{ . }}">{{ . }}</a>
  {{ end }}
 </div>
  Date: {{ .Date }}     
