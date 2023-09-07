@@ -1,8 +1,8 @@
 {{ $permalink := .Permalink }}
-<div class="card">
+<div class="card"> 
+  <a class="title is-4">{{ .Title }}</a>
   <a class="card-image" href="{{ $permalink }}">
       {{ partial "widgets/mainimg.html" . }}
   </a>
-  {{ .Title }}
       <a class="category" href="/categories/{{ index .Params.categories 1 | urlize}}">{{ index .Params.categories 1 }}</a>
      </div>
