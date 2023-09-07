@@ -44,7 +44,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css('top',event.pageY - 25 ).css('right',event.pageX - 10 ).css("opacity", "1");   
+          $("#content-front-text").css("opacity", "1");   
 });
 
 $("body").on("mouseover", "#game-preview a", function(event) {
@@ -80,15 +80,14 @@ $("body").on("click", "#button1", function() {
 
 $('.Platforms a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.Platforms').append('<div class="link-pre1"></div><div class="link-pre"></div>'); 
-   $('.link-pre1').css('top',event.pageY - 25 ).css('left',event.pageX - 10 );
+    $('.Platforms').append('<div class="link-pre"></div>'); 
     $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load('/search' + ' .PC ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 
-$("body").on("mouseleave", ".link-pre1", function(event) {
+$("body").on("mouseleave", ".link-pre", function(event) {
   event.preventDefault(); 
-  $('.link-pre', '.link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
-              $('.link-pre', '.link-pre1').remove();
+  $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
+              $('.link-pre').remove();
           });
 });
