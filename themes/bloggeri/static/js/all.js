@@ -87,7 +87,7 @@ $('.Platforms a').hover(function (event) {
     $('#game-preview1').remove();
 });
 
-$("body").on("mouseover", "#game-preview1", function(event) {
+$("body").on("mouseover", "#game-preview1 a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .content ', function (data) {
     });
