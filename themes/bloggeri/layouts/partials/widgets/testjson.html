@@ -5,7 +5,7 @@
  {{ if eq .Name $t }}
 <div class="Platforms">Platforms:
 {{ range .Platforms }}
-<a href="/tag/{{ . | lower }}?q=">{{ . }}</a>
+<a href="/tag/{{ . | lower }}?q={{ . }}">{{ . }}</a>
  {{ end }}
 </div>
  Date: {{ .Date }}     
