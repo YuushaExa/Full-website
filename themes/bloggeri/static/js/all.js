@@ -29,7 +29,7 @@ $('.card a').hover(function (event) {
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
     $('body').append('<div class="link-pre"></div>');
-    $('.link-pre').css('top',event.pageY - 250 ).css('left',event.pageX - 100 ).hide().load(this.href + ' .content ', function (data) {
+    $('.link-pre').css('top',event.pageY + 25 ).css('left',event.pageX + 10 ).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 $('.category').mouseleave (function (event) {
