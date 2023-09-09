@@ -34,7 +34,7 @@ $('.category a').mouseover(function (event) {
 $('.category').mouseleave (function (event) {
   event.preventDefault(); 
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
-              $(this).remove();
+              $(this).empty();
           });
 });
 
