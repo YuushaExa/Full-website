@@ -91,8 +91,8 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .content ', function (data) {
     });
-          var X = event.pageX - $(".Platforms a").offset().left;
-          var Y = event.pageY - $(".Platforms a").offset().top;
+          var X = event.pageX - $("#content-front-text").offset().left;
+          var Y = event.pageY - $("#content-front-text").offset().top;
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css('top',Y).css('left',X).css("opacity", "1");   
 });
