@@ -26,13 +26,13 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
-$('.game-info a').mouseover(function (event) {
+$('.category a').mouseover(function (event) {
       event.preventDefault(); 
     $('.game-info').append('</div><div class="link-pre"></div>');
     $('.link-pre').css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
-$('.game-info').mouseleave (function (event) {
+$('.category').mouseleave (function (event) {
   event.preventDefault(); 
   $('.link-pre, .link-pre1').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).remove();
