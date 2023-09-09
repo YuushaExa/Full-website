@@ -92,7 +92,7 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
        $('#content-front-text').load(this.href + ' .content ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css('top',event.pageY - 25 ).css('left',event.pageX - 10 ).css("opacity", "1");   
+          $("#content-front-text").css('top',event.clientY - 25 ).css('left',event.clientX - 10 ).css("opacity", "1");   
 });
 
 var modal = document.getElementById("content-front");
