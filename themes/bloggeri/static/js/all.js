@@ -91,10 +91,10 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .content ', function (data) {
     });
-   var X = event.pageX - $(this).offset().left;
-          var Y = event.pageY - $(this).offset().top;
+          var X = event.pageX - $("#game-preview1 a").offset().left;
+          var Y = event.pageY - $("#game-preview1 a").offset().top;
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css('top',Y - 25 ).css('left',X - 10 ).css("opacity", "1");   
+          $("#content-front-text").css(" + X + ").css(" + Y + ").css("opacity", "1");   
 });
 
 var modal = document.getElementById("content-front");
