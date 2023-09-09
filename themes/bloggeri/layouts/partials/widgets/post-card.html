@@ -10,3 +10,7 @@
   <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
 </div>
 </div>
+{{ range findRE `/PC/gm` .Content 1 }}
+                 {{ end }}
+
+       
