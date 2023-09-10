@@ -39,7 +39,7 @@ $('.link-pre').mouseleave (function (event) {
 });
 
 
-var modal = $("body");
+var modal = $(".container");
 window.onclick = function(event) {
 if (event.target == modal) {
   $(".link-pre").empty();
