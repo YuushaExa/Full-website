@@ -25,20 +25,12 @@ html{overflow-y:scroll;
 		margin-right: auto !important
 	}
 
-
-.descimg {
-    margin: -5px;
-}
-
 #previewtag {
-  margin: 2rem auto;
-  width: 320px;
-  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+width: 320px;
 }
 
 #previewtag img {
   width: 320px;
-  -o-object-fit: cover;
      object-fit: cover;
 }
 	      
@@ -69,10 +61,11 @@ html{overflow-y:scroll;
 }
 
 	      #previewtag p {
-  position: relative;
-  line-height: 1.5;
-  font-size: 14px;
-  margin: 0 1rem 1rem;
+    position: relative;
+    line-height: 1.5;
+    font-size: 14px;
+    margin: 0 1rem 1rem;
+    color: black;
 }
 #previewtag p::after {
   content: " ";
@@ -86,18 +79,14 @@ html{overflow-y:scroll;
 }
 	      
 	       .link-pre {
-	position: absolute;
-    display: inline-block;
-    float: left;
+	    position: absolute;
     color: #000;
     font-size: 14px;
-    padding: 5px;
-    width: 300px;
-    background-color: white;
+    background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 30px 90px -20px rgb(0 0 0 / 30%), 0 0 1px 1px rgb(0 0 0 / 5%);
-		        transition: transform ease 300ms;
-		       display: none;
+    transition: transform ease 300ms;
+    display: none;
 	      }
 
 	      
