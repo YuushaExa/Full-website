@@ -38,6 +38,17 @@ $('.link-pre').mouseleave (function (event) {
           });
 });
 
+
+var modal = document.getElementsByClassName(".link-pre");
+window.onclick = function(event) {
+if (event.target == modal) {
+  $(".link-pre").empty();
+}
+}
+
+
+
+
 $("body").on("mouseover", "#game-preview a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
