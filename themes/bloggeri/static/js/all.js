@@ -28,7 +28,7 @@ $('.card a').hover(function (event) {
 
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.link-pre').css('top',event.pageY + 20 ).css('left',event.pageX - 20 ).hide().load(this.href + ' #previewtag ', function (data) {
+    $('.link-pre').css('top',event.pageY + 18 ).css('left',event.pageX - 23 ).hide().load(this.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 $('.link-pre').mouseleave (function (event) {
