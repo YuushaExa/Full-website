@@ -30,7 +30,7 @@ $('.category a').mouseover(function (event) {
       event.preventDefault(); 
    var left = offset.left - $('body').offset().left;
         var top = offset.top - $('body').offset().top;
-    $('.link-pre').css('top': 'top', 'left': 'left').hide().load(this.href + ' .content ', function (data) {
+    $('.link-pre').css('top':top, 'left':left).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
 $('.category').mouseleave (function (event) {
