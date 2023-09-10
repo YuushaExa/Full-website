@@ -28,8 +28,8 @@ $('.card a').hover(function (event) {
 
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-   var left = offset.left - $('body').offset().left;
-        var top = offset.top - $('body').offset().top;
+   var left = offset.left - $('.post').offset().left;
+        var top = offset.top - $('.post').offset().top;
     $('.link-pre').css('top',top).css('left',left).hide().load(this.href + ' .content ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
