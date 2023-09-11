@@ -25,15 +25,15 @@ $('.card a').hover(function (event) {
  }, function() {
     $('#game-preview').remove();
 });
-
+ var timer;
+ timer = setTimeout(function () {
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-  var timer;
- timer = setTimeout(function () {
+ 
     $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
-    }  , 1000 );
-});                        
+  
+});     }  , 1000 );                     
 
 $('.link-pre').mouseleave (function (event) {
   clearTimeout(timer);
