@@ -39,14 +39,11 @@ $('.link-pre').mouseleave (function (event) {
 });
 
 
-var modal1 = document.getElementById("#link-pre1");
-window.onclick = function(event) {
-if (event.target == modal1) {
-    $("#link-pre1").empty();
-  $(".link-pre").empty();
-}
-}
-
+$(document).on('click', function (e) {
+    if ($(e.target).closest(".link-pre").length === 0) {
+        $(".link-pre").empty();
+    }
+});
 
 
 
