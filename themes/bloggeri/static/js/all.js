@@ -35,8 +35,7 @@ $('.category a').mouseover(function (event) {
     }  , 1000 );
 },'mouseout' : function () {
         clearTimeout(timer);
-    }                        
-);
+    });                        
 
 $('.link-pre').mouseleave (function (event) {
   event.preventDefault(); 
