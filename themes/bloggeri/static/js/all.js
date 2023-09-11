@@ -41,7 +41,7 @@ $('.link-pre').mouseleave (function (event) {
 
 $(document).on('click', function (e) {
     if ($(e.target).closest(".link-pre").length === 0) {
-        $(".link-pre").empty();
+        $(".link-pre").hide();
     }
 });
 
