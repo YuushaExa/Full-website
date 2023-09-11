@@ -26,7 +26,7 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
-$('.category a').mouseover(function (event) {
+$('.category a').hover(function (event) {
       event.preventDefault(); 
   var self = this;
   var timer;
@@ -34,17 +34,12 @@ $('.category a').mouseover(function (event) {
     $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(self.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
    }  , 1000 );  
-}),  'mouseout' function() {
+}), function() {
     clearTimeout(timer);
     $('.link-pre').remove();
 };                       
 
-$('.link-pre').mouseleave (function (event) {
-  event.preventDefault(); 
-  $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
-              $(this).empty();
-          });
-});
+
 
 $('body').on('mouseleave', function(e) {
   var pop_container = $(".link-pre");
