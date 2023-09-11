@@ -35,11 +35,11 @@ $('.category a').mouseover(function (event) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
    }  , 1000 );  
 }), function() {
+    clearTimeout(timer);
     $('.link-pre').remove();
 };                       
 
 $('.link-pre').mouseleave (function (event) {
-  clearTimeout(timer);
   event.preventDefault(); 
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
               $(this).empty();
