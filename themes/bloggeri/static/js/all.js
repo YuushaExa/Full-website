@@ -26,16 +26,15 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
-$('.category a').hover(function (event) {
+$('.category a').mouseover(function (event) {
       event.preventDefault(); 
-    $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
+    $('.link-pre').css('top',event.pageY - 35 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
 });
-
 $('.link-pre').mouseleave (function (event) {
   event.preventDefault(); 
-  $('.link-pre').css('transform', 'translate(0, +15px)').fadeOut(200, function() {
-              $(this).empty();
+  $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
+  $(this).empty();
           });
 });
 
