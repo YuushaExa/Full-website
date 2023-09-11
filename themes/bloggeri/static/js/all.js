@@ -54,7 +54,15 @@ $(document).mouseup(function(e)
         container.hide();
     }
 });
+$('body').on('click', function(e) {
+  var pop_container = $(".link-pre");
 
+  // if the target of the click isn't the pop_container nor a descendant of the pop_container
+  if (!pop_container.is(e.target) && pop_container.has(e.target).length === 0) {
+      //you action here 
+      pop_container.hide();
+  }
+});
 
 $("body").on("mouseover", "#game-preview a", function(event) {
     event.preventDefault();
