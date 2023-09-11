@@ -26,9 +26,9 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
-var timer;
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
+  var timer;
  timer = setTimeout(function () {
     $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
