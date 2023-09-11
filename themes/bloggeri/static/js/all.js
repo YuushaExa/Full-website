@@ -38,7 +38,7 @@ $('.link-pre').mouseleave (function (event) {
           });
 });
 
-$('body').on('mouseleave', function(e) {
+$('body').on('click', function(e) {
   var pop_container = $(".link-pre");
 
   if (!pop_container.is(e.target) && pop_container.has(e.target).length === 0) {
