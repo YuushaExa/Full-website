@@ -26,13 +26,17 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
+var timer;
 $('.category a').mouseover(function (event) {
       event.preventDefault(); 
-  setTimeout( function(){ 
+ timer = setTimeout(function () {
     $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
     }  , 1000 );
-});
+},'mouseout' : function () {
+        clearTimeout(timer);
+    }                        
+);
 
 $('.link-pre').mouseleave (function (event) {
   event.preventDefault(); 
