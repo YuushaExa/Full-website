@@ -38,8 +38,6 @@ $('.link-pre').mouseleave (function (event) {
           });
 });
 
-.fadeIn(300).css('transform', 'translate(0, -15px)')
-
 $('body').on('mouseleave', function(e) {
   var pop_container = $(".link-pre");
 
