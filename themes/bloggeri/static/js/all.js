@@ -36,7 +36,7 @@ $('.category a').mouseover(function (event) {
    }  , 1000 );  
 }), function() {
     $('.link-pre').remove();
-});                       
+};                       
 
 $('.link-pre').mouseleave (function (event) {
   clearTimeout(timer);
