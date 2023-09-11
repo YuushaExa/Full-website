@@ -34,7 +34,7 @@ $('.category a').mouseover(function (event) {
     $('.link-pre').css('top',event.pageY + 15 ).css('left',event.pageX - 25 ).hide().load(self.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
    }  , 1000 );  
-}), function() {
+}),  'mouseout' function() {
     clearTimeout(timer);
     $('.link-pre').remove();
 };                       
