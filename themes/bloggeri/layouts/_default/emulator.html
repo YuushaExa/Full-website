@@ -28,6 +28,11 @@
                 {{ partial "widgets/ai.html" . }}
                 </div> 
     </div>
+      {{ range (where .Site.Pages "Tags" "Blogging") }}
+   {{ range .Pages }}
+      {{ .Title }}
+   {{ end }}
+{{ end }}
 </section>
 <section class="section">
   <script>
