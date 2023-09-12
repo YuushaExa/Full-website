@@ -5,7 +5,7 @@
 A personal computer is a multi-purpose microcomputer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician. 
                  </div>
        </div>
-         {{ range findRE `Zan` .Content }}
+         {{ range findRE `/ zen /gm` .Content }}
   {{ partial "widgets/post-card.html" . }}
 {{ end }}
                  
