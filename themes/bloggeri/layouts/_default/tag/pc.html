@@ -8,7 +8,7 @@ A personal computer is a multi-purpose microcomputer whose size, capabilities, a
        {{ range .Paginator.Pages }}
   {{ partial "widgets/post-card.html" . }}
     {{ end }}
-           {{ range (where .Site.Pages "Categories" "Blogging") }}
+           {{ range (where .Site.Pages "categories" "Blogging") }}
    {{ range .Pages }}
       {{ .Title }}
    {{ end }}
