@@ -60,12 +60,6 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 }, 300)};
 });
 
-$("body").on("mouseover", ".category a", function(event) {
-{setTimeout(function(){
-    jQuery.getScript("/js/posts-load1.js");
-}, 300)};
-});
-
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
