@@ -26,8 +26,8 @@ $('.card a').hover(function (event) {
     $('#game-preview').remove();
 });
 
-$('.category a').mouseover(function (event) {
   let time = 0;
+$('.category a').mouseover(function (event) {
   var that = this;
   time = setTimeout(() => {
       event.preventDefault(); 
