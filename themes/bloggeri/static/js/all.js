@@ -28,7 +28,7 @@ $('.card a').hover(function (event) {
 
 $('.category a').mouseover(function (event) {
   let time = 0;
-  var = that = this
+  var that = this;
   time = setTimeout(() => {
       event.preventDefault(); 
     $('.link-pre').css('top',event.pageY - 15 ).css('left',event.pageX - 25 ).hide().load(that.href + ' #previewtag ', function (data) {
