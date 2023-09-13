@@ -27,10 +27,14 @@ $('.card a').hover(function (event) {
 });
 
 $('.category a').mouseover(function (event) {
+  let time = 0;
+  var = that = this
+  time = setTimeout(() => {
       event.preventDefault(); 
-    $('.link-pre').css('top',event.pageY - 15 ).css('left',event.pageX - 25 ).hide().load(this.href + ' #previewtag ', function (data) {
+    $('.link-pre').css('top',event.pageY - 15 ).css('left',event.pageX - 25 ).hide().load(that.href + ' #previewtag ', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
-});
+    }, 1000);
+}).mouseleave(() => { clearTimeout(time); });
 $('.link-pre').mouseleave (function (event) {
   event.preventDefault(); 
   $('.link-pre').css('transform', 'translate(0, +5px)').fadeOut(200, function() {
