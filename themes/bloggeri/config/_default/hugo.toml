@@ -1,5 +1,0 @@
-baseURL = 'https://hugo-pages-from-data.netlify.app/'
-languageCode = 'en-US'
-title = 'Hugo Pages from Data'
-defaultContentLanguage = 'en'
-defaultContentLanguageInSubdir = true
