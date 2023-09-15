@@ -7,7 +7,6 @@
   {{- with .Description }}
   <meta name="description" content="{{ . }}">
   {{- end }}
-  {{- partialCached "css.html" . }}
 </head>
 <body>
 {{ partial "language-switcher.html" . }}
