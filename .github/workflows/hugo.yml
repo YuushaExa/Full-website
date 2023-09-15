@@ -54,10 +54,11 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo \
-            -s /home/runner/work/yuushaexa.github.io/yuushaexa.github.io/themes/bloggeri/prebuild && \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Run Pagefind
+        run: npm_config_yes=true npx pagefind --source "public"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
