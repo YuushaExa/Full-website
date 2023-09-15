@@ -54,7 +54,7 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo \
-            -s /themes/bloggeri/prebuild && \
+            -s /home/runner/work/yuushaexa.github.io/yuushaexa.github.io/themes/bloggeri/prebuild && \
           hugo \
             --gc \
             --minify \
