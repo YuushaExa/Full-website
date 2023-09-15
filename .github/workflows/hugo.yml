@@ -55,6 +55,7 @@ jobs:
         run: |
          hugo \
             -s prebuild && \
+         hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
