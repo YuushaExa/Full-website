@@ -54,7 +54,7 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo \
-            -s prebuild && \
+            -s /themes/bloggeri/prebuild && \
           hugo \
             --gc \
             --minify \
