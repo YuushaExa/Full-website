@@ -15,6 +15,8 @@
 {{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-<p data-pagefind-ignore>{{ .Images | markdownify }}</p>
+{{ range .Images }}
+<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
+ {{ end }}
   {{ end }}
   {{ end }}
