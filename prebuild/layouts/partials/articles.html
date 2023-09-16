@@ -13,7 +13,7 @@
     "description" .Description
     "title" .Name
     "cover" .img
-    "tags" .Name
+    "tags" .Images
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
