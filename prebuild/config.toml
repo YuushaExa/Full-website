@@ -6,3 +6,8 @@ defaultContentLanguageInSubdir = true
 languageCode = 'en-US'
 languageName = 'English'
 weight = 1
+
+[languages.de]
+languageCode = 'de-DE'
+languageName = 'Deutsch'
+weight = 2
