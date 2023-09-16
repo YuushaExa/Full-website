@@ -6,7 +6,7 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := ".Description", ".Images" }}
+  {{- $content := .Description .Images }}
   {{- $title := .Name }}
   {{- $frontMatter := dict
     "date" .Date
