@@ -1,7 +1,7 @@
 {{ $t := .Title }}
 
 {{ $snraw := site.Data.snraw }}
-{{ range $snraw }}
+{{ range $snraw | uniq }}
  {{ if eq .Name $t }}
 <div class="Platforms">Platforms:
 {{ .Platforms }}
@@ -9,7 +9,6 @@
 Date: {{ .Date }} 
 {{ range .Images }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
-  {{ end }}
   {{ end }}
   {{ end }}
 {{ end }}
