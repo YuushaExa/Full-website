@@ -18,4 +18,4 @@
   {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
-{{- end -}}
+{{- end -}} 
