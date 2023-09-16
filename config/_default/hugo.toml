@@ -1,5 +1,0 @@
-baseURL = 'https://yuushaexa.github.io/'
-languageCode = 'en-US'
-title = 'Hugo Pages from Data'
-defaultContentLanguage = 'en'
-defaultContentLanguageInSubdir = true
