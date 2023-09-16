@@ -14,7 +14,7 @@ Date: {{ .Date }}
 {{ end }}
 
 {{ $snesdb := site.Data.snesdb }}
-{{ range $snesdb }}
+{{ range $snesdb | uniq }}
  {{ if eq .Name $t}}
  {{ .Description }}
 {{ if ( gt ( len .Images ) 3 ) }}
