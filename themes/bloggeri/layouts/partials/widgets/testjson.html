@@ -5,8 +5,7 @@
  {{ if eq .Name $t }}
 <div class="Platforms">Platforms:
 {{ .Platforms }}
-</div>
- Date: {{ .Date }}     
+</div>    
 {{ range .Images }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}  {{ end }}
