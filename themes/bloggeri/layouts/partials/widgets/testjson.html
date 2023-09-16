@@ -15,7 +15,7 @@
 {{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ if ( gt ( len .Images ) 0 ) }}
+{{ if ( gt ( len .Images ) 3 ) }}
 {{ range .Images }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}
