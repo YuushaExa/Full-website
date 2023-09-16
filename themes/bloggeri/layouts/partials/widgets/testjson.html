@@ -4,8 +4,7 @@
 {{ range $snraw }}
  {{ if eq .Name $t }}
 <div class="Platforms">Platforms:
-{{ range .Platforms }}
-<a href="/tag/{{ . | lower }}?q={{ . }}">{{ . }}</a>
+{{ .Platforms }}
  {{ end }}
 </div>
  Date: {{ .Date }}     
