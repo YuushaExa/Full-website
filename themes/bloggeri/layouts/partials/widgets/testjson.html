@@ -10,13 +10,3 @@
 <p data-pagefind-ignore>{{ .Images | markdownify }}</p>
   {{ end }}
   {{ end }}
-
-{{ $snesdb := site.Data.snesdb }}
-{{ range $snesdb }}
- {{ if eq .Name $t}}
- {{ .Description }}
-{{ range .Images }}
-<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
- {{ end }}
-  {{ end }}
-  {{ end }}
