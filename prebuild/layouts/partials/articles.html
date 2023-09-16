@@ -2,18 +2,17 @@
 {{- $section := . }}
 
 {{- /* Get data. */}}
-{{- $data := site.Data.articles }}
+{{- $data := site.Data.snesdbt }}
 
 {{- /* Write content page. */}}
 {{- range $data }}
   {{- $content := .content }}
   {{- $title := .title }}
   {{- $frontMatter := dict
-    "date" .date
-    "description" .description
-    "foo" .foo
-    "tags" .tags
-    "title" .title
+    "date" .Date
+    "description" .Description
+    "tags" .Genres
+    "title" .Name
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
