@@ -15,6 +15,6 @@
 {{ range $snesdb }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ .Images }}
+<p data-pagefind-ignore>{{ .Images | markdownify }}</p>
   {{ end }}
   {{ end }}
