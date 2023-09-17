@@ -20,7 +20,6 @@ Date: {{ .Date }}
 {{ if ( gt ( len .img ) 3 ) }}
 {{ .img }}
 <img src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
- {{ end }}
 {{ else }}
 {{ .Images }}
  {{ end }}
