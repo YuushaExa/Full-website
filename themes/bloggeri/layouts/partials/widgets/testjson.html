@@ -18,7 +18,7 @@ Date: {{ .Date }}
  {{ if eq .Name $t}}
  {{ .Description }}
 {{ if ( gt ( len .img ) 3 ) }}
-{{ range .img }}
+{{ .img }}
 <img src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
  {{ end }}
 {{ else }}
