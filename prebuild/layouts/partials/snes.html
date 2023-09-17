@@ -6,12 +6,13 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := .Description .img }}
+  {{- $content := .Description }}
   {{- $title := .Name }}
   {{- $frontMatter := dict
     "date" .Date
     "description" .Description
     "title" .Name
+    "cover" .img 
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
