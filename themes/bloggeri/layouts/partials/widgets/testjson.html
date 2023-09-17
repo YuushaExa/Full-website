@@ -26,8 +26,3 @@ Date: {{ .Date }}
  {{ end }}
   {{ end }}
   {{ end }}
-
- {{ with .Resources.GetMatch "cover.*" }}
-    {{ with .Fill "300x200 webp" }}
-      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-    {{ end }}
