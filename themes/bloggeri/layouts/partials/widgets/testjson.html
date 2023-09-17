@@ -17,11 +17,8 @@ Date: {{ .Date }}
 {{ range $snesdb | uniq }}
  {{ if eq .Name $t}}
  {{ .Description }}
-{{ if ( gt ( len .img ) 3 ) }}
 {{ .img }}
 <img src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
-{{ else }}
-{{ .Images }}
  {{ end }}
 {{ if ( gt ( len .Images ) 3 ) }}
 {{ range .Images }}
