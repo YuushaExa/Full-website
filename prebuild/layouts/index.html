@@ -5,7 +5,6 @@
 {{- range $sections }}
   {{- $t := printf "partials/%s.html" .  }}
     {{- partial $t . }}
-  {{- else }}
-    {{- errorf "Unable to find %s or %s" $t $tLang }}
   {{- end }}
 {{- end }}
+
