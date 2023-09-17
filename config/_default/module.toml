@@ -1,11 +1,9 @@
 # Default mount.
 [[mounts]]
-source = 'content/en'
+source = 'content/'
 target = 'content'
-lang = 'en'
 
 # Required to create pages from data.
 [[mounts]]
-source = 'prebuild/public/en'
+source = 'prebuild/public/'
 target = 'content'
-lang = 'en'
