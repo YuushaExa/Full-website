@@ -5,7 +5,7 @@
  {{ if eq .Name $t}}
 {{ if ( gt ( len .Images ) 3 ) }}
 {{ range first 1 .Images }}
- <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+ <img src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}
 {{ else }}
  Rom Hack, No image
