@@ -1,1 +1,8 @@
 disableKinds = ['RSS', 'sitemap', 'taxonomy', 'term']
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = true
+
+[languages.en]
+languageCode = 'en-US'
+languageName = 'English'
+weight = 1
