@@ -17,6 +17,10 @@
         <div class="cover-wrap"></div>
         <div class="cover"></div>
   <div class="content">
+     {{ with .Resources.GetMatch "cover.*" }}
+    {{ with .Fill "300x200 webp" }}
+      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
+    {{ end }}
           {{ .Content }}               
         </div>
               <div class="game-links" data-pagefind-ignore>
