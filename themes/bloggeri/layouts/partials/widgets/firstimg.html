@@ -1,0 +1,9 @@
+{{ $t := .Title }}
+
+{{ $snesdb := site.Data.snesdb }}
+{{ range $snesdb | uniq }}
+ {{ if eq .Name $t}}
+<img src="https://wsrv.nl/?url={{ .img }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
+ {{ end }}
+  {{ end }}
+  {{ end }}
