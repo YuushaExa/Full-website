@@ -18,10 +18,9 @@
         <div class="cover"></div>
   <div class="content">
           {{ .Content }} 
-      <div>Date added - {{ .Date }}</div>
         </div>
         <div id="firstimg">
-                <img src="https://wsrv.nl/?url={{ partial "widgets/firstimg.html" . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
+               {{ partial "widgets/firstimg.html" . }}
                 </div> 
               <div class="game-links" data-pagefind-ignore>
                 {{ partial "widgets/game-links.html" . }}
