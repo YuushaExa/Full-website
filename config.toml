@@ -21,6 +21,9 @@ home = [ "HTML", "RSS", "JSON" ]
     tag = "tags"
     category = "categories"
     genres = "genres"
+    publisher = "publisher"
+    developer = "developer"
+    date = "date"
     
  [[menu.main]]
   name = "About"
