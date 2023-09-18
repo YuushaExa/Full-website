@@ -1,11 +1,7 @@
 {{ $permalink := .Permalink }}
 <div class="card">
        <a class="card-image" href="{{ $permalink }}">  
-        {{ with .Resources.GetMatch "cover.*" }}
-    {{ with .Fill "300x200 webp" }}
-      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-    {{ end }}
-  {{ end }}
+                {{ partial "widgets/firstimg.html" . }}
        </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
