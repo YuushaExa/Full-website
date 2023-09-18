@@ -12,6 +12,7 @@
     "date" .Date
     "description" .Description
     "title" .Name
+"categories" .Platform
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
