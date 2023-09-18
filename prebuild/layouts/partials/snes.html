@@ -6,7 +6,7 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := .content }}
+  {{- $content := .Description }}
   {{- $title := .Name }}
   {{- $frontMatter := dict
     "date" .Date
@@ -14,6 +14,9 @@
     "title" .Name
 "categories" .Platform
 "image" .img
+"developer" .Developer
+"publisher" .Publisher
+"gametype" .Game Type
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
