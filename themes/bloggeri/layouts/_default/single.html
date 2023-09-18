@@ -35,7 +35,7 @@
                 {{ partial "widgets/reviews.html" . }}
                 </div> 
 <div id="Revit">
-                {{ partial "widgets/testjson.html" . }}
+                {{ partialCached "widgets/testjson.html" . }}
                 </div> 
     </div>      </div>
      <h1>{{ .Title }}</h1>
