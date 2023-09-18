@@ -23,7 +23,6 @@ home = [ "HTML", "RSS", "JSON" ]
     genres = "genres"
     publisher = "publisher"
     developer = "developer"
-    dater = "dater"
     gametype = "gametype"
     
  [[menu.main]]
