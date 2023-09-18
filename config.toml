@@ -20,6 +20,7 @@ home = [ "HTML", "RSS", "JSON" ]
             [taxonomies]
     tag = "tags"
     category = "categories"
+    genres = "genres"
     
  [[menu.main]]
   name = "About"
