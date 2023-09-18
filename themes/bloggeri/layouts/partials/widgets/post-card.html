@@ -2,11 +2,6 @@
 <div class="card">
        <a class="card-image" href="{{ $permalink }}">  
                 {{ partial "widgets/firstimg.html" . }}
-                {{ else }}
-                 <img data-src="
-            {{ range findRE `<img.+?>` .Content 1 }}
-           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-                 {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
        </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
