@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-    {{- partial "head.html" . -}}
+    {{- partialCached "head.html" . -}}
     <body>
-        {{- partial "header.html" . -}}
+        {{- partialCached "header.html" . -}}
                        <div id="search"></div>
         <main>
         {{- block "main" . }}{{- end }}
