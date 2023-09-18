@@ -3,6 +3,6 @@
 {{ $snesdb := site.Data.snesdb }}
 {{ range $snesdb | uniq }}
  {{ if eq .Name $t}}
-{{ .img }}
+https://wsrv.nl/?url={{ .img }}
  {{ end }}
   {{ end }}
