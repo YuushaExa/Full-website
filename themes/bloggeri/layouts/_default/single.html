@@ -26,7 +26,7 @@
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
             <div class="ai" data-pagefind-ignore>
-                {{ partial "widgets/ai.html" . }}
+                {{ partialCached "widgets/ai.html" . }}
                 </div> 
             <div id="GBinfo" data-pagefind-ignore class="tabcontent">
                 {{ partial "widgets/gameinfo.html" . }}
