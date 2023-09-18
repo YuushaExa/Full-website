@@ -18,9 +18,8 @@
         <div class="cover"></div>
   <div class="content">
           {{ .Content }} 
-    {{ .Params.image }}
+         <img data-src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
         </div>
-        
               <div class="game-links" data-pagefind-ignore>
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
