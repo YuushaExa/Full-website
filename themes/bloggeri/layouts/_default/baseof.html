@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
     {{- partialCached "head.html" . -}}
     <body>
-        {{- partialCached "header.html" . -}}
+        {{- partial "header.html" . -}}
                        <div id="search"></div>
         <main>
         {{- block "main" . }}{{- end }}
