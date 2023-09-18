@@ -21,7 +21,7 @@
       <div>Date added - {{ .Date }}</div>
         </div>
         <div id="firstimg">
-                {{ partial "widgets/firstimg.html" . }}
+                <img src="https://wsrv.nl/?url={{ partial "widgets/firstimg.html" . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" >
                 </div> 
               <div class="game-links" data-pagefind-ignore>
                 {{ partial "widgets/game-links.html" . }}
