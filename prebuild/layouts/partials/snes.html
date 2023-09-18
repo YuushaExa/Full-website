@@ -5,7 +5,7 @@
 {{- $data := site.Data.snesdbt }}
 
 {{- /* Write content page. */}}
-{{- $data }}
+{{- range $data }}
   {{- $content := .Description }}
   {{- $title := .Name }}
   {{- $frontMatter := dict
@@ -19,3 +19,4 @@
   {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
+{{- end -}} 
