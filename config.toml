@@ -24,7 +24,7 @@ home = [ "HTML", "RSS", "JSON" ]
     publisher = "publisher"
     developer = "developer"
     gametype = "gametype"
-date = "date"
+    year = "year"
     
  [[menu.main]]
   name = "About"
