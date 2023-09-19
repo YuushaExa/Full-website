@@ -26,4 +26,9 @@
                     {{ range $idx, $tag := .Params.gametype }}
           {{- if ne $idx 0 }}, {{ end }}<a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">#{{ $tag }}</a>
           {{- end }}
-                      </div>
+  </div>
+              <div class="tags">
+                    {{ range $idx, $tag := .Params.dater }}
+          {{- if ne $idx 0 }}, {{ end }}<a href="{{ "dater/" | relURL }}{{ $tag | urlize }}">#{{ $tag }}</a>
+          {{- end }}
+              </div>
