@@ -26,3 +26,15 @@ Date: {{ .Date }}
  {{ end }}
   {{ end }}
   {{ end }}
+
+{{ $SNES := site.Data.SNES }}
+{{ range $SNES | uniq }}
+ {{ if eq .Title $t}}
+{{ .Genres }}
+{{ .Theme }}
+{{ .Similar }}
+{{ .Franchises }}
+{{ .Release1 }}
+  {{ end }}
+  {{ end }}
+{{ end }}
