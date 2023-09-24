@@ -37,3 +37,14 @@ Date: {{ .Date }}
 {{ .Release1 }}
   {{ end }}
   {{ end }}
+
+{{ $igdb := site.Data.igdb }}
+{{ range $igdb | uniq }}
+ {{ if eq .Title $t}}
+{{ .Date }}
+{{ .Links }}
+{{ .Titles }}
+{{ .Rating }}
+  {{ end }}
+  {{ end }}
+  
