@@ -33,11 +33,11 @@
     </li>
     {{ end }}
 </ul>
-    <a href="{{ $paginator.Next.URL }}" class="pagination__link pagination__link--next">
-      »
-    </a>
 </nav>
 {{ end }}
+{{- if .Paginator.HasNext -}}
+  <a class="paginator-next-page" href="{{ .Paginator.Next.URL }}">Next</a>
+{{- end -}}
    <script>
    document.getElementById('Go').onclick = function () {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
