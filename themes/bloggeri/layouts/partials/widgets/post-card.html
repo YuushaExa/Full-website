@@ -1,9 +1,8 @@
 {{ $permalink := .Permalink }}
 <div class="card">
-       <a class="card-image" href="{{ $permalink }}">  
-        {{ $img := resources.GetRemote {{ .Params.image }} }}
-  {{ $img := $img.Content | resources.FromString "images/FILENAME.EXT" }}
-  <img src="{{ $img.RelPermalink }}"></a>  
+            <a class="card-image" href="{{ $permalink }}">  
+               <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+       </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
     </div> 
