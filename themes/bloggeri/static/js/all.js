@@ -8,6 +8,9 @@ $('.cover-front').each(function() {
          })
     });
 });
+$('html').css({
+            background: 'rgb('+ thisColor +')'
+         });
 
 $('.btn5').click(function () { 
   $.ajax({
