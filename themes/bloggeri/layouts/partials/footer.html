@@ -37,31 +37,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 </script>
 
- <script>         
-const images = document.querySelectorAll('[data-src]');
-const config = {
-      root: null,
-    rootMargin: '0px',
-    threshold: 0.25
-};
-let loaded = 0;
-let observer = new IntersectionObserver(function (entries, self) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      preloadImage(entry.target);
-      self.unobserve(entry.target);
-        entry.target.classList.add("visible");
-    }
-  });
-}, config);
-images.forEach(image => {
-  observer.observe(image);
-});
-function preloadImage(img) {
-  const src = img.getAttribute('data-src');
-  if (!src) { return; }
-  img.src = src;
-}        
-</script> 
+<script src="
+https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js
+"></script>
     <script defer src="/js/all.js"></script>
 </footer>
