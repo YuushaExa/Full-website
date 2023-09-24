@@ -33,13 +33,9 @@
     </li>
     {{ end }}
 </ul>
-    {{ if $paginator.HasNext }}
-  <li class="pagination__item pagination__item--next">
     <a href="{{ $paginator.Next.URL }}" class="pagination__link pagination__link--next">
       »
     </a>
-  </li>
-{{ end }}
 </nav>
 {{ end }}
    <script>
