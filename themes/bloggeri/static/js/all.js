@@ -1,9 +1,4 @@
-$('.columns.is-multiline').infiniteScroll({
-  // options
-  path: '.paginator-next-page',
-  append: '.card',
-  history: false,
-});
+
 
 $('.btn5').click(function () { 
   $.ajax({
