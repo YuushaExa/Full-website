@@ -1,7 +1,7 @@
 {{ $permalink := .Permalink }}
 <div class="card">
        <a class="card-image" href="{{ $permalink }}">  
-        {{ $img := resources.GetRemote "{{ .Params.image }}" }}
+        {{ $img := resources.GetRemote {{ .Params.image }} }}
   {{ $img := $img.Content | resources.FromString "images/FILENAME.EXT" }}
   <img src="{{ $img.RelPermalink }}"></a>  
     <div class="card-content">
