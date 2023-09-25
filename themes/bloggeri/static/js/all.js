@@ -74,6 +74,16 @@ if (event.target == modal) {
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
 }
+var span1 = document.getElementsByClassName("close-pv")[0];
+span1.onclick = function() {
+ $("#content-front-text").empty();
+    var url = "https://yuushaexa.github.io/";
+  history.pushState({}, "", url);
+       $("#content-front-text").css("opacity", "0");
+                              $("#content-front").css("z-index", "-1").css('background','unset');
+}
+
+
 
 $("body").on("click", ".tablinks:nth-child(3)", function() {
  $('#content-front-text #game-media img:not(.gallery)').each(function(){
