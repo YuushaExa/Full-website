@@ -30,6 +30,7 @@
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
        {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
         #{{ $tag }}</a>
+          {{- end }}
   </div>
               <div class="tags">
                     {{ range $idx, $tag := .Params.year }}
