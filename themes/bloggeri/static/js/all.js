@@ -58,10 +58,10 @@ $("body").on("mouseover", "#game-preview a", function(event) {
           $("#content-front-text").css("opacity", "1");   
 });
 
-window.addEventListener("popstate", (event) => {
-  alert(
-    `location: ${document.location}`,
-  );
+$(document).ready(function() {
+    $(window).on("popstate", function (e) {
+        location.reload();
+    });
 });
 
 $("body").on("mouseover", "#game-preview a", function(event) {
