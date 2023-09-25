@@ -53,13 +53,15 @@ $("body").on("mouseover", "#game-preview a", function(event) {
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
   var url = this;
-  history.pushState({}, "", url);
+  history.pushState(state, "", url);
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
 });
 
-$(window).on("popstate", e => {
-    state.html(e.originalEvent.state);
+window.addEventListener("popstate", (event) => {
+  alert(
+    `location: ${document.location}`,
+  );
 });
 
 $("body").on("mouseover", "#game-preview a", function(event) {
@@ -71,8 +73,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
- var url = "https://yuushaexa.github.io/";
-  history.pushState({}, "", url);
+history.back();
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
