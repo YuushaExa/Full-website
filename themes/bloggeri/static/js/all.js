@@ -71,7 +71,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
- var url = /;
+ var url = "/";
   history.pushState({}, "", url);
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
