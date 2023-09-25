@@ -52,9 +52,8 @@ $("body").on("mouseover", "#game-preview a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
-  var state = window.location.href;
   var url = this;
-  history.pushState(state, "", url);
+  history.pushState({}, "", url);
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
 });
@@ -72,6 +71,8 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
+ var url = /;
+  history.pushState({}, "", url);
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
