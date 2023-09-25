@@ -26,7 +26,7 @@
                     {{ range $idx, $tag := .Params.gametype }}
           {{- if ne $idx 0 }}, {{ end }} 
         <a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">   <img data-src="
-          {{ $image = .Page.Resources.GetMatch .Content -}}" alt="" crossorigin="anonymous" class="lazyload" >
+          {{ $image = resources.GetRemote .Content -}}" alt="" crossorigin="anonymous" class="lazyload" >
         #{{ $tag }}</a>
           {{- end }}
   </div>
