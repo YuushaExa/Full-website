@@ -29,9 +29,6 @@
                 {{ partial "widgets/reviews.html" . }}
                 </div> 
     </div>      
-     <h1>{{ .Title }}</h1>
-</section>
-<section class="section">
   <div class="columns is-centered">
     <div class="column max-800px">
       <div class="columns is-mobile">
@@ -50,9 +47,7 @@
       </div>
     </div>
   </div>   
- <script defer src="/js/posts.js"></script>
-   <script defer src="/js/test.js"></script>
-</section>
+
      <!-- Related -->
     <div class="pagination__title">
       <span class="pagination__title-h">{{ .Site.Params.relatedTitle | default "Related"}}</span>
@@ -61,4 +56,8 @@
 
     {{ partial "related.html" . }}
     <!-- /Related -->
+
+ <script defer src="/js/posts.js"></script>
+   <script defer src="/js/test.js"></script>
+</section>
 {{ end }}
