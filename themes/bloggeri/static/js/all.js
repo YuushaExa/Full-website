@@ -59,6 +59,14 @@ $("body").on("mouseover", "#game-preview a", function(event) {
           $("#content-front-text").css("opacity", "1");   
 });
 
+$(window).on("popstate", e => {
+    alert("Back/Forward button was pressed.");
+
+    // "e.originalEvent.state" contains the data passed in the first argument
+    console.log(e.originalEvent.state);
+    state.html(e.originalEvent.state);
+});
+
 $("body").on("mouseover", "#game-preview a", function(event) {
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
