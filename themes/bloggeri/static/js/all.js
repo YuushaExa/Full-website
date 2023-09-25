@@ -60,10 +60,6 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 });
 
 $(window).on("popstate", e => {
-    alert("Back/Forward button was pressed.");
-
-    // "e.originalEvent.state" contains the data passed in the first argument
-    console.log(e.originalEvent.state);
     state.html(e.originalEvent.state);
 });
 
