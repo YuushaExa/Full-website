@@ -25,10 +25,10 @@
   <div class="tags">
                     {{ range $idx, $tag := .Params.gametype }}
           {{- if ne $idx 0 }}, {{ end }} 
- <a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">   <img src="
-            {{ range findRE `<img.+?>` .Content }}
-           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-       {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
+        <a href="{{ "gametype/" | absURL }}{{ $tag | urlize }}">   <img data-src="
+            {{ range findRE `<img.+?>` . }}
+           {{ replaceRE `.*src="(.+?)".*` "$1" .Content 1 }} 
+                 {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
         #{{ $tag }}</a>
           {{- end }}
   </div>
