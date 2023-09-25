@@ -67,9 +67,9 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
-  var url = "https://yuushaexa.github.io/";
-  history.pushState({}, "", url);
   $("#content-front-text").empty();
+    var url = "https://yuushaexa.github.io/";
+  history.pushState({}, "", url);
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
