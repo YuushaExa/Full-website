@@ -43,7 +43,6 @@ $('.link-pre').mouseleave (function (event) {
 
 $('body').on('click', function(e) {
   var pop_container = $(".link-pre");
-
   if (!pop_container.is(e.target) && pop_container.has(e.target).length === 0) {
       pop_container.empty();
   }
@@ -69,7 +68,6 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
-  window.history.back();
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
