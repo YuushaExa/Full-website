@@ -52,7 +52,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
     event.preventDefault();
        $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
-  var state = this;
+  var state = window.location.href;
   var url = this;
   history.pushState(state, "", url);
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
