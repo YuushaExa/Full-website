@@ -19,10 +19,6 @@
 "gametype" .GameType
 "genres" .Genres
 "year" .Date
-{{- if ( gt ( len .Images ) 3 ) }}
-"images" .Images
-{{- else }}
-{{- end -}} 
 
   }}
   {{- $filename := printf "%s.md" (urlize $title) }}
