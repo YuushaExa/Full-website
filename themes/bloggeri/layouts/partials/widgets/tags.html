@@ -27,7 +27,7 @@
           {{- if ne $idx 0 }}, {{ end }} 
         <a href="{{ "gametype/" | absURL }}{{ $tag | urlize }}">   <img data-src="
             {{ range findRE `<img.+?>` . }}
-           {{ replaceRE `.*src="(.+?)".*` "$1" .Content 1 }} 
+           {{ replaceRE `.*src="(.+?)".*` "$1" .Content . }} 
                  {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
         #{{ $tag }}</a>
           {{- end }}
