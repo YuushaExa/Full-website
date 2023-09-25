@@ -58,12 +58,6 @@ $("body").on("mouseover", "#game-preview a", function(event) {
           $("#content-front-text").css("opacity", "1");   
 });
 
-$(document).ready(function() {
-    $(window).on("popstate", function (e) {
-        location.reload();
-    });
-});
-
 $("body").on("mouseover", "#game-preview a", function(event) {
 {setTimeout(function(){
     jQuery.getScript("/js/posts-load.js");
@@ -73,7 +67,8 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
-history.back();
+  var url = "https://yuushaexa.github.io/";
+  history.pushState({}, "", url);
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
@@ -115,6 +110,8 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
 
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
+    var url = "https://yuushaexa.github.io/";
+  history.pushState({}, "", url);
 if (event.target == modal) {
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
