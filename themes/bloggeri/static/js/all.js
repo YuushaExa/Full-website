@@ -55,7 +55,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
     });
   var state = this;
   var url = this;
-  history.pushState(stats, "", url);
+  history.pushState(state, "", url);
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
 });
