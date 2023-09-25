@@ -75,7 +75,6 @@ if (event.target == modal) {
 }
 }
 
-
 $("body").on("click", ".tablinks:nth-child(3)", function() {
  $('#content-front-text #game-media img:not(.gallery)').each(function(){
       var img_link =  $(this).attr('data-src').split('&h')[0];
@@ -107,14 +106,3 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
 });
-
-var modal = document.getElementById("content-front");
-window.onclick = function(event) {
-    var url = "https://yuushaexa.github.io/";
-  history.pushState({}, "", url);
-if (event.target == modal) {
-  $("#content-front-text").empty();
-       $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1").css('background','unset');
-}
-}
