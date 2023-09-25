@@ -1,6 +1,6 @@
 ---
-title: "PC"
+title: "Released"
 sitemap:
   priority : 0.1
-layout: "tag/pc"
+layout: "tag/released"
 ---
