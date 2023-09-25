@@ -71,6 +71,7 @@ if (event.target == modal) {
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
+  	history.back();
 }
 }
 
