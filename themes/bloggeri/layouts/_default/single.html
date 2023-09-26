@@ -30,7 +30,7 @@
                 </div> 
         <div class="media" data-pagefind-ignore>
 
-{{ range .Params.imagez }}{{ len . }}{{ else }}0{{ end }}
+{{ with .Params.imagez }}{{ . }}{{ else }}0{{ end }}
 
           
                 </div> 
