@@ -29,16 +29,11 @@
                 {{ partial "widgets/reviews.html" . }}
                 </div> 
         <div class="media" data-pagefind-ignore>
-          {{ with .Params.imagez }}
-          {{ if ( gt ( len .Params.imagez ) 6 ) }}
+
 {{ range .Params.imagez }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}
-          {{ else }}
-{{ .Params.imagez }}
- {{ end }}
-           {{ else }}
-          0{{ end }}
+   
                 </div> 
         <div id="screenshots" data-pagefind-ignore>
                 {{ partial "widgets/screenshots.html" . }}
