@@ -30,7 +30,11 @@
                 </div> 
         <div class="media" data-pagefind-ignore>
 
-{{ with .Params.imagez }}{{ . }}{{ else }}0{{ end }}
+{{ with .Params.imagez }}
+<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
+          {{ else }}
+          0
+          {{ end }}
 
           
                 </div> 
