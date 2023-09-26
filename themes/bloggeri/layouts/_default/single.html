@@ -30,7 +30,7 @@
                 </div> 
         <div class="media" data-pagefind-ignore>
           {{ with .Params.imagez }}
-          {{ if ( gt ( len . ) 6 ) }}
+          {{ if ( gt ( len .Params.imagez ) 6 ) }}
 {{ range .Params.imagez }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}
