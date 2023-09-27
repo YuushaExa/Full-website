@@ -5,12 +5,7 @@
       <div class="post">
         <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     <div id="tags">
-         <figure class="image is-3by2">
- {{ range .Pages | shuffle | first 1 }}
                            {{ partial "widgets/tags.html" . }}
- <img data-src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
-    {{ end }}                      
-                        </figure>
                 </div> 
     </div>
         <div class="cover-wrap">
