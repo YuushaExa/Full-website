@@ -26,7 +26,7 @@ $('.card a').hover(function (event) {
 });
 
   let time = 0;
-$('.tags a').mouseover(function (event) {
+$('.category a').mouseover(function (event) {
   var that = this;
   time = setTimeout(() => {
       event.preventDefault(); 
