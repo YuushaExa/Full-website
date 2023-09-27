@@ -2,10 +2,9 @@
 
 <div class="card">
             <a class="card-image" href="{{ $permalink }}">  
- <img src="
-            {{ range findRE `<img.+?>` {{ .Params.image }} }}
-           {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
-                 {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
+{{- range first 1 (.Resources.ByType "image") }}
+{{- $src := . }}
+{{ end }}
             </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
