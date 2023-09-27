@@ -12,7 +12,10 @@
                     <div class="card-image">
                         <a href="{{ .Page.Permalink }}">
                         <figure class="image is-3by2">
-<img data-src="https://wsrv.nl/?url={{ index .Page.Params.image 0 }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+                            {{ range first 1 .Pages.ByDate }}
+{{ with .Params.image }}...{{ end }}
+{{ end }}
+<img data-src="https://wsrv.nl/?url={{ index .Page.Params.image 1 }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                         </figure>
                         </a>
                     </div>
