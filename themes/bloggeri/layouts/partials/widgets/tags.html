@@ -26,9 +26,8 @@
                     {{ range $idx, $tag := .Params.gametype }}
           {{- if ne $idx 0 }}, {{ end }} 
         <a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">
-{{ with .Params.images }}
-         <img src="{{ . }}" alt="">
-            {{ end }}              #{{ $tag }}</a>
+               Gametype
+               #{{ $tag }}</a>
           {{- end }}
   </div>
               <div class="tags">
