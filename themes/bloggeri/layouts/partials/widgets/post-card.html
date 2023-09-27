@@ -1,10 +1,8 @@
 {{ $permalink := .Permalink }}
 
-{{ $path := .Params.image }}
-{{ $thumb := resources.Get $path  }}
 <div class="card">
             <a class="card-image" href="{{ $permalink }}">  
-<img src="{{ $thumb.Permalink }}"/>
+{{ index .Site.Params.image 0 }}
             </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
