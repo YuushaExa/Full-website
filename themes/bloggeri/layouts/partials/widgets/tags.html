@@ -27,7 +27,7 @@
           {{- if ne $idx 0 }}, {{ end }} 
         <a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">
 {{ with .Params.images }}
-         <img src="{{ index . 0 }}" alt="">
+         <img src="{{ . }}" alt="">
             {{ end }}              #{{ $tag }}</a>
           {{- end }}
   </div>
