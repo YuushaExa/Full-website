@@ -30,7 +30,7 @@ $('.category a').mouseover(function (event) {
   var that = this;
   time = setTimeout(() => {
       event.preventDefault(); 
-    $('.link-pre').css('top',event.pageY).css('left',event.pageX - 25 ).hide().load(that.href + ' #previewtag ', function (data) {
+    $('.link-pre').css('top',event.pageY).css('left',event.pageX - 25 ).hide().load(that.href + ' #previewtag', function (data) {
     }).fadeIn(300).css('transform', 'translate(0, -15px)');
     }, 500);
 }).mouseleave(() => { clearTimeout(time); });
