@@ -28,7 +28,7 @@
         <a href="{{ "gametype/" | relURL }}{{ $tag | urlize }}">
    <figure class="image is-3by2">
  {{ range first 1 .gametype }}
- <img data-src="https://wsrv.nl/?url={{ .gametype }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+ <img data-src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
     {{ end }}                      
                         </figure>               #{{ $tag }}</a>
           {{- end }}
