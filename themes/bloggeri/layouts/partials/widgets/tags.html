@@ -26,7 +26,7 @@
                     {{ range $idx, $tag := .Params.gametype }}
           {{- if ne $idx 0 }}, {{ end }} 
                <figure class="image is-3by2">
- {{ range .Pages | shuffle | first 1 }}
+ {{ range .Page | shuffle | first 1 }}
  <img data-src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
     {{ end }}                      
                         </figure>
