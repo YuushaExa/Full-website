@@ -2,7 +2,7 @@
 
 <div class="card">
             <a class="card-image" href="{{ $permalink }}">  
-     {{ range findRE `<img.+?>` .Content }}
+     {{ range findRE `<img.+?>` .Content 1 }}
            {{ replaceRE `.*src="(.+?)".*` "$1" . }} 
                  {{ end }}" alt="" crossorigin="anonymous" class="lazyload" >
             </a>  
