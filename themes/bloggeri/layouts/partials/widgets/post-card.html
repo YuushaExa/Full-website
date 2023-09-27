@@ -2,7 +2,7 @@
 
 <div class="card">
             <a class="card-image" href="{{ $permalink }}">  
-                         <img data-src="https://wsrv.nl/?url={{ index .Site.Params.image 0 }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+                         <img data-src="https://wsrv.nl/?url={{ .Params.cover_image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
             </a>  
     <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a><a class="title is-4">{{ .Title }}</a>
