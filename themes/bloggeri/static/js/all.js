@@ -1,17 +1,43 @@
 document.querySelectorAll("card a").forEach(function (element) {
   element.addEventListener("click", function (event) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", this.href);
-    xhr.onreadystatechange = function () {
-          if (xhr.status === 200) {
-        var responseHTML = document.createElement("html");
-        responseHTML.innerHTML = xhr.responseText;
-        var loadedContent = responseHTML.querySelector(".post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest");
+    event.preventDefault();
 
-        document.querySelector("#content-front-text").innerHTML = loadedContent.innerHTML;
-      }
-    };
-    xhr.send();
+    fetch(this.href)
+      .then(function (response) {
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .then(function (html) {
+        var parser = new DOMParser();
+        var parsedHTML = parser.parseFromString(html, "text/html");
+        var postTitle = parsedHTML.querySelector(".post-title");
+        var content = parsedHTML.querySelector(".content");
+        var imageFirst = parsedHTML.querySelector(".image-first");
+        var gameMedia = parsedHTML.querySelector("#game-media");
+        var gameInfo = parsedHTML.querySelector("#game-info");
+        var gameDescription = parsedHTML.querySelector("#game-description");
+        var gameLinks = parsedHTML.querySelector(".game-links");
+        var GBinfo = parsedHTML.querySelector("#GBinfo");
+        var Jsontest = parsedHTML.querySelector("#Jsontest");
+
+        var contentFrontText = document.querySelector("#content-front-text");
+        contentFrontText.innerHTML = "";
+        contentFrontText.appendChild(postTitle);
+        contentFrontText.appendChild(content);
+        contentFrontText.appendChild(imageFirst);
+        contentFrontText.appendChild(gameMedia);
+        contentFrontText.appendChild(gameInfo);
+        contentFrontText.appendChild(gameDescription);
+        contentFrontText.appendChild(gameLinks);
+        contentFrontText.appendChild(GBinfo);
+        contentFrontText.appendChild(Jsontest);
+      })
+      .catch(function (error) {
+        console.log("Error: " + error.message);
+      });
   });
 });
 
