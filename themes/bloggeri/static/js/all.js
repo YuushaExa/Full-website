@@ -1,8 +1,13 @@
-  var url = document.querySelectorAll("card a").href;
-   const response = await fetch('url');
+var cardLinks = document.querySelectorAll(".card a");
+cardLinks.forEach(function(link) {
+  link.addEventListener("click", function(event) {
+    event.preventDefault(); 
+    var href = this.getAttribute("href");
+   const response = await fetch('href');
 const body = await response.text();
 document.querySelector('#content-front-text').innerHTML = body;
-
+});
+});
 
 $('.btn5').click(function () { 
   $.ajax({
