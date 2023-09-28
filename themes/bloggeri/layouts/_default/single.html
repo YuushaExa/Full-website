@@ -67,7 +67,7 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
                 {{ range $related }}
                 <div class="column is-one-third">
-                    {{ partial "widgets/post-card-small.html" . }}
+                    {{ partial "widgets/post-card.html" . }}
                 </div>
                 {{ end }}
             </div>
