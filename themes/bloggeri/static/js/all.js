@@ -1,10 +1,21 @@
-$(".card a").click(function(event) {
+document.querySelectorAll('.card a').forEach(link => {
+  link.addEventListener('click', function(event) {
     event.preventDefault();
-       $('#content-front-text').load($(".card a").href + ' .post-title ', function (data) {
-    });
+
+    fetch(link.href)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const postTitle = doc.querySelector('.post-title').innerHTML;
+        
+        document.getElementById('content-front-text').innerHTML = postTitle;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
 });
-
-
 
 $('.btn5').click(function () { 
   $.ajax({
