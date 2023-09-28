@@ -14,10 +14,10 @@ document.querySelectorAll('.card a').forEach(link => {
       .catch(error => {
         console.error('Error:', error);
       });
-  });
-  document.getElementById('content-front').style.zIndex = '1';
+    document.getElementById('content-front').style.zIndex = '1';
 document.getElementById('content-front').style.background = 'rgba(0, 0, 0, .5)';
 document.getElementById('content-front-text').style.opacity = '1';
+  });
 });
 
 $('.btn5').click(function () { 
