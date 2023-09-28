@@ -79,7 +79,6 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
-  window.history.back();
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
