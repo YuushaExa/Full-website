@@ -34,18 +34,18 @@ document.querySelector("body").addEventListener("click", function(event) {
         document.querySelector("#content-front-text").appendChild(gbInfo);
         document.querySelector("#content-front-text").appendChild(jsonTest);
         
-        window.history.pushState({}, "", url);
+
+      })
+      .catch(function(error) {
+        console.log("Fetch error:", error);
+      });
+  }        window.history.pushState({}, "", url);
         window.history.pushState({}, "", url);
         window.history.back();
         
         document.querySelector("#content-front").style.zIndex = "1";
         document.querySelector("#content-front").style.background = "rgba(0,0,0,.5)";
         document.querySelector("#content-front-text").style.opacity = "1";
-      })
-      .catch(function(error) {
-        console.log("Fetch error:", error);
-      });
-  }
 });
 
 
