@@ -7,7 +7,7 @@ document.querySelectorAll('.card a').forEach(link => {
       .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        const postTitle = doc.querySelector('.post-title','.content').innerHTML;
+        const postTitle = doc.querySelector('.content').innerHTML;
         
         document.getElementById('content-front-text').innerHTML = postTitle;
       })
