@@ -1,51 +1,22 @@
 document.querySelector("body").addEventListener("click", function(event) {
-  if (event.target.classList.contains("card") && event.target.tagName === "A") {
-    event.preventDefault();
-    var url = event.target.href;
-    fetch(url)
-      .then(function(response) {
-        if (response.ok) {
-          return response.text();
-        } else {
-          throw new Error("Network response was not ok.");
-        }
-      })
-      .then(function(html) {
-        var parser = new DOMParser();
-        var responseHTML = parser.parseFromString(html, "text/html");
-        var postTitle = responseHTML.querySelector(".post-title");
-        var content = responseHTML.querySelector(".content");
-        var imageFirst = responseHTML.querySelector(".image-first");
-        var gameMedia = responseHTML.querySelector("#game-media");
-        var gameInfo = responseHTML.querySelector("#game-info");
-        var gameDescription = responseHTML.querySelector("#game-description");
-        var gameLinks = responseHTML.querySelector(".game-links");
-        var gbInfo = responseHTML.querySelector("#GBinfo");
-        var jsonTest = responseHTML.querySelector("#Jsontest");
-        
-        document.querySelector("#content-front-text").innerHTML = "";
-        document.querySelector("#content-front-text").appendChild(postTitle);
-        document.querySelector("#content-front-text").appendChild(content);
-        document.querySelector("#content-front-text").appendChild(imageFirst);
-        document.querySelector("#content-front-text").appendChild(gameMedia);
-        document.querySelector("#content-front-text").appendChild(gameInfo);
-        document.querySelector("#content-front-text").appendChild(gameDescription);
-        document.querySelector("#content-front-text").appendChild(gameLinks);
-        document.querySelector("#content-front-text").appendChild(gbInfo);
-        document.querySelector("#content-front-text").appendChild(jsonTest);
-        
-
-      })
-      .catch(function(error) {
-        console.log("Fetch error:", error);
-      });
-  }        window.history.pushState({}, "", url);
-        window.history.pushState({}, "", url);
-        window.history.back();
-        
-        document.querySelector("#content-front").style.zIndex = "1";
-        document.querySelector("#content-front").style.background = "rgba(0,0,0,.5)";
-        document.querySelector("#content-front-text").style.opacity = "1";
+  if (event.target.closest(".card a")) {
+   var url = event.target.href;
+fetch(url)
+  .then(function(response) {
+    if (response.ok) {
+      return response.text();
+    } else {
+      throw new Error("Network response was not ok.");
+    }
+  })
+  .then(function(html) {
+    document.querySelector("#content-front-text").innerHTML = html;
+  })
+  .catch(function(error) {
+    console.log("Fetch error:", error);
+  });
+}
+  
 });
 
 
