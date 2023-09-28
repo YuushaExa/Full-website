@@ -64,3 +64,6 @@ home = [ "HTML", "RSS", "JSON" ]
         name = "genres"
         weight = 100
 
+[[related.indices]]
+        name = "publisher"
+        weight = 100
