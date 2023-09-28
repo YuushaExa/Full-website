@@ -1,22 +1,21 @@
 document.querySelector("body").addEventListener("click", function(event) {
   if (event.target.closest(".card a")) {
-   var url = event.target.href;
-fetch(url)
-  .then(function(response) {
-    if (response.ok) {
-      return response.text();
-    } else {
-      throw new Error("Network response was not ok.");
-    }
-  })
-  .then(function(html) {
-    document.querySelector("#content-front-text").innerHTML = html;
-  })
-  .catch(function(error) {
-    console.log("Fetch error:", error);
-  });
-}
-  
+    event.preventDefault();
+    var url = event.target.href;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var responseHTML = document.createElement("html");
+        responseHTML.innerHTML = xhr.responseText;
+        var loadedContent = responseHTML.querySelector(".post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest");
+
+        document.querySelector("#content-front-text").innerHTML = loadedContent.innerHTML;
+      }
+    };
+    xhr.send();
+  }
 });
 
 
