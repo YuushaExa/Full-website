@@ -50,7 +50,7 @@ $('body').on('click', function(e) {
 
 $("body").on("click", ".card a", function(event) {
     event.preventDefault();
-       $('#content-front-text').load(this.href + ' .post-title, .tab, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
+       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
   var url = this;
 window.history.pushState({}, "", url);
