@@ -65,5 +65,5 @@ home = [ "HTML", "RSS", "JSON" ]
         weight = 100
 
             [[related.indices]]
-        name = "date"
-        weight = 10
+        name = "developer"
+        weight = 30
