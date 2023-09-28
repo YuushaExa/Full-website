@@ -61,5 +61,9 @@ home = [ "HTML", "RSS", "JSON" ]
     toLower = false
         
 [[related.indices]]
-        name = "publishvr"
-        weight = 100
+        name = "publisher"
+        weight = 80
+
+        [[related.indices]]
+        name = "genres"
+        weight = 20
