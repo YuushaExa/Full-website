@@ -1,40 +1,8 @@
   var url = document.querySelectorAll("card a").href;
-    fetch(url)
-      .then(function (response) {
-        if (response.ok) {
-          return response.text();
-        } else {
-          throw new Error("Network response was not ok.");
-        }
-      })
-      .then(function (html) {
-        var parser = new DOMParser();
-        var parsedHTML = parser.parseFromString(html, "text/html");
-        var postTitle = parsedHTML.querySelector(".post-title");
-        var content = parsedHTML.querySelector(".content");
-        var imageFirst = parsedHTML.querySelector(".image-first");
-        var gameMedia = parsedHTML.querySelector("#game-media");
-        var gameInfo = parsedHTML.querySelector("#game-info");
-        var gameDescription = parsedHTML.querySelector("#game-description");
-        var gameLinks = parsedHTML.querySelector(".game-links");
-        var GBinfo = parsedHTML.querySelector("#GBinfo");
-        var Jsontest = parsedHTML.querySelector("#Jsontest");
+   const response = await fetch('url');
+const body = await response.text();
+document.querySelector('#content-front-text').innerHTML = body;
 
-        var contentFrontText = document.querySelector("#content-front-text");
-        contentFrontText.innerHTML = "";
-        contentFrontText.appendChild(postTitle);
-        contentFrontText.appendChild(content);
-        contentFrontText.appendChild(imageFirst);
-        contentFrontText.appendChild(gameMedia);
-        contentFrontText.appendChild(gameInfo);
-        contentFrontText.appendChild(gameDescription);
-        contentFrontText.appendChild(gameLinks);
-        contentFrontText.appendChild(GBinfo);
-        contentFrontText.appendChild(Jsontest);
-      })
-      .catch(function (error) {
-        console.log("Error: " + error.message);
-      });
 
 $('.btn5').click(function () { 
   $.ajax({
