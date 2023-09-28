@@ -59,8 +59,7 @@ home = [ "HTML", "RSS", "JSON" ]
     threshold = 100 
     includeNewer = true
     toLower = false
-
-    [[related.indices]]
-        name = "titles"
+        
+[[related.indices]]
+        name = "publisher"
         weight = 100
-
