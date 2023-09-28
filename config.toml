@@ -63,8 +63,4 @@ home = [ "HTML", "RSS", "JSON" ]
     [[related.indices]]
         name = "developer"
         weight = 50
-        
-    [[related.indices]]
-        name = "genres"
-        weight = 30
 
