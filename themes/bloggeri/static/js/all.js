@@ -17,8 +17,8 @@ document.querySelectorAll('.card a').forEach(link => {
     document.getElementById('content-front').style.zIndex = '1';
 document.getElementById('content-front').style.background = 'rgba(0, 0, 0, .5)';
 document.getElementById('content-front-text').style.opacity = '1';
-    window.history.pushState({}, "", url);
-window.history.pushState({}, "", url);
+    window.history.pushState({}, "", link.href);
+window.history.pushState({}, "", link.href);
 window.history.back();
   });
 });
