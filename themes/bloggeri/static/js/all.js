@@ -1,8 +1,5 @@
-document.querySelectorAll("card a").forEach(function (element) {
-  element.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    fetch(this.href)
+  var url = document.querySelectorAll("card a").href;
+    fetch(url)
       .then(function (response) {
         if (response.ok) {
           return response.text();
@@ -38,8 +35,6 @@ document.querySelectorAll("card a").forEach(function (element) {
       .catch(function (error) {
         console.log("Error: " + error.message);
       });
-  });
-});
 
 $('.btn5').click(function () { 
   $.ajax({
