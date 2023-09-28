@@ -1,13 +1,27 @@
-var cardLinks = document.querySelectorAll(".card a");
-cardLinks.forEach(function(link) {
-  link.addEventListener("click", function(event) {
-    event.preventDefault(); 
-    var href = this.getAttribute("href");
-   const response = await fetch('href');
-const body = await response.text();
-document.querySelector('#content-front-text').innerHTML = body;
+document.addEventListener("DOMContentLoaded", function() {
+  var cardLinks = document.querySelectorAll(".card a");
+
+  cardLinks.forEach(function(link) {
+    link.addEventListener("click", function(event) {
+      event.preventDefault();
+      
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", this.href);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var tempElement = document.createElement("div");
+          tempElement.innerHTML = xhr.responseText;
+          var postTitle = tempElement.querySelector(".post-title");
+
+          var contentFrontText = document.getElementById("content-front-text");
+          contentFrontText.innerHTML = postTitle.innerHTML;
+        }
+      };
+      xhr.send();
+    });
+  });
 });
-});
+
 
 $('.btn5').click(function () { 
   $.ajax({
