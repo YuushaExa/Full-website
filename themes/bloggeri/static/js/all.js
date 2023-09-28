@@ -1,22 +1,15 @@
-document.body.addEventListener('click', function(event) {
-  if (event.target.matches('.card a')) {
+$(".card a").click(function(event) {
     event.preventDefault();
-    
-    fetch(event.target.href)
-      .then(response => response.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(data, 'text/html');
-        const postTitleElement = htmlDoc.querySelector('.post-title');
-        const postTitle = postTitleElement.innerText;
-        
-        document.getElementById('content-front-text').innerText = postTitle;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
+       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
+    });
+  var url = this;
+window.history.pushState({}, "", url);
+window.history.pushState({}, "", url);
+window.history.back();
+          $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
+          $("#content-front-text").css("opacity", "1");   
 });
+
 
 
 $('.btn5').click(function () { 
