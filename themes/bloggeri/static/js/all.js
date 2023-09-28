@@ -1,33 +1,14 @@
 document.querySelectorAll("card a").forEach(function (element) {
   element.addEventListener("click", function (event) {
-    event.preventDefault();
     var xhr = new XMLHttpRequest();
     xhr.open("GET", this.href);
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var responseText = xhr.responseText;
-        var parser = new DOMParser();
-        var parsedHTML = parser.parseFromString(responseText, "text/html");
-        var postTitle = parsedHTML.querySelector(".post-title");
-        var content = parsedHTML.querySelector(".content");
-        var imageFirst = parsedHTML.querySelector(".image-first");
-        var gameMedia = parsedHTML.querySelector("#game-media");
-        var gameInfo = parsedHTML.querySelector("#game-info");
-        var gameDescription = parsedHTML.querySelector("#game-description");
-        var gameLinks = parsedHTML.querySelector(".game-links");
-        var GBinfo = parsedHTML.querySelector("#GBinfo");
-        var Jsontest = parsedHTML.querySelector("#Jsontest");
+          if (xhr.status === 200) {
+        var responseHTML = document.createElement("html");
+        responseHTML.innerHTML = xhr.responseText;
+        var loadedContent = responseHTML.querySelector(".post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest");
 
-        document.querySelector("#content-front-text").innerHTML = "";
-        document.querySelector("#content-front-text").appendChild(postTitle);
-        document.querySelector("#content-front-text").appendChild(content);
-        document.querySelector("#content-front-text").appendChild(imageFirst);
-        document.querySelector("#content-front-text").appendChild(gameMedia);
-        document.querySelector("#content-front-text").appendChild(gameInfo);
-        document.querySelector("#content-front-text").appendChild(gameDescription);
-        document.querySelector("#content-front-text").appendChild(gameLinks);
-        document.querySelector("#content-front-text").appendChild(GBinfo);
-        document.querySelector("#content-front-text").appendChild(Jsontest);
+        document.querySelector("#content-front-text").innerHTML = loadedContent.innerHTML;
       }
     };
     xhr.send();
