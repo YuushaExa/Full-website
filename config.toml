@@ -62,8 +62,4 @@ home = [ "HTML", "RSS", "JSON" ]
 
     [[related.indices]]
         name = "genres"
-        weight = 50
-
-    [[related.indices]]
-    name = "title"
-    weight = 100
+        weight = 100
