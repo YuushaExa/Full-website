@@ -1,3 +1,16 @@
+$("body").on("click", ".card a", function(event) {
+    event.preventDefault();
+       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
+    });
+  var url = this;
+window.history.pushState({}, "", url);
+window.history.pushState({}, "", url);
+window.history.back();
+          $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
+          $("#content-front-text").css("opacity", "1");   
+});
+
+
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
@@ -46,18 +59,6 @@ $('body').on('click', function(e) {
   if (!pop_container.is(e.target) && pop_container.has(e.target).length === 0) {
       pop_container.empty();
   }
-});
-
-$("body").on("click", ".card a", function(event) {
-    event.preventDefault();
-       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
-    });
-  var url = this;
-window.history.pushState({}, "", url);
-window.history.pushState({}, "", url);
-window.history.back();
-          $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css("opacity", "1");   
 });
 
 $("body").on("mouseover", "#game-preview a", function(event) {
