@@ -1,25 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var cardLinks = document.querySelectorAll(".card a");
-
-  cardLinks.forEach(function(link) {
-    link.addEventListener("click", function(event) {
-      event.preventDefault();
-      
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", this.href);
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          var tempElement = document.createElement("div");
-          tempElement.innerHTML = xhr.responseText;
-          var postTitle = tempElement.querySelector(".post-title");
-
-          var contentFrontText = document.getElementById("content-front-text");
-          contentFrontText.innerHTML = postTitle.innerHTML;
-        }
-      };
-      xhr.send();
-    });
-  });
+document.body.addEventListener('click', function(event) {
+  if (event.target.matches('.card a')) {
+    event.preventDefault();
+    
+    fetch(event.target.href)
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(data, 'text/html');
+        const postTitleElement = htmlDoc.querySelector('.post-title');
+        const postTitle = postTitleElement.innerText;
+        
+        document.getElementById('content-front-text').innerText = postTitle;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 });
 
 
