@@ -61,5 +61,5 @@ home = [ "HTML", "RSS", "JSON" ]
     toLower = false
         
 [[related.indices]]
-        name = "publisher"
+        name = "publishvr"
         weight = 100
