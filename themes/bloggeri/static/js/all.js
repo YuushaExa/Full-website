@@ -1,13 +1,26 @@
-$("body").on("click", ".card a", function(event) {
+document.querySelectorAll('.card a').forEach(link => {
+  link.addEventListener('click', function(event) {
     event.preventDefault();
-       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
-    });
-  var url = this;
-window.history.pushState({}, "", url);
-window.history.pushState({}, "", url);
+
+    fetch(link.href)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const postTitle = doc.querySelector('.content').innerHTML;
+        
+        document.getElementById('content-front-text').innerHTML = postTitle;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    document.getElementById('content-front').style.zIndex = '1';
+document.getElementById('content-front').style.background = 'rgba(0, 0, 0, .5)';
+document.getElementById('content-front-text').style.opacity = '1';
+    window.history.pushState({}, "", link.href);
+window.history.pushState({}, "", link.href);
 window.history.back();
-          $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css("opacity", "1");   
+  });
 });
 
 $('.btn5').click(function () { 
