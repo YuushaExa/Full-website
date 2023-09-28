@@ -56,7 +56,7 @@ home = [ "HTML", "RSS", "JSON" ]
   url = "/search"
 
 [related]
-    threshold = 0 
+    threshold = 100 
     includeNewer = true
     toLower = false
 
@@ -67,3 +67,7 @@ home = [ "HTML", "RSS", "JSON" ]
             [[related.indices]]
         name = "developer"
         weight = 50
+
+[[related.indices]]
+    name = "title"
+    weight = 100
