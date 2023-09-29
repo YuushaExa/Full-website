@@ -7,6 +7,8 @@ $("body").on("click", ".card a", function(loadPage) {
     });
   var url = this;
 window.history.pushState({}, "", url);
+window.history.pushState({}, "", url);
+window.history.back();
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");   
 });
@@ -70,6 +72,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 var modal = document.getElementById("content-front");
 window.onclick = function(event) {
 if (event.target == modal) {
+  window.history.back();
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
