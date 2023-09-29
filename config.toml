@@ -28,32 +28,32 @@ home = [ "HTML", "RSS", "JSON" ]
     
  [[menu.main]]
   name = "About"
-  url = "/about"
+  url = "/about/"
 
 [[menu.main]]
   name = "Famicom"
-  url = "/famicom"
+  url = "/famicom/"
   
   [[menu.main]]
   name = "SNES"
-  url = "/snes"
+  url = "/snes/"
   
   [[menu.main]]
     name = "Categories"
-    url = "/categories"
+    url = "/categories/"
 
   [[menu.footer]]
   name = "About"
-  url = "/about"
+  url = "/about/"
 
 [[menu.footer]]
   name = "Privacy"
-  url = "/privacy"
+  url = "/privacy/"
 
 [[menu.main]]
   name = "Search"
   identifier = "search"
-  url = "/search"
+  url = "/search/"
 
 [related]
     threshold = 100 
