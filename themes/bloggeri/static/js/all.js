@@ -8,9 +8,7 @@ window.history.pushState({}, "", url);
           $("#content-front-text").css("opacity", "1");   
 });
 
-window.onpopstate = function(event) {
-  loadPage(window.location);
-}
+
 
 $('.btn5').click(function () { 
   $.ajax({
