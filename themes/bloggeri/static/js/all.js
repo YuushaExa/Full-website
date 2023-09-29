@@ -11,18 +11,6 @@ window.history.pushState({}, "", url);
           $("#content-front-text").css("opacity", "1");   
 });
 
-window.onpopstate = function(event) {
-  loadPage(window.location);
-    var modal = document.getElementById("content-front");
-window.onclick = function(event) {
-if (event.target == modal) {
-  $("#content-front-text").empty();
-       $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1").css('background','unset');
-}
-}
-}
-
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
