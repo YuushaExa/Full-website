@@ -13,7 +13,6 @@ window.history.back();
           $("#content-front-text").css("opacity", "1");   
 });
 
-
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
