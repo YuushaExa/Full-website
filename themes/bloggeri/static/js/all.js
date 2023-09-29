@@ -9,7 +9,7 @@ $("body").on("click", ".card a", function(event) {
           $("#content-front-text").css("opacity", "1");  
 });
 
-$("body").on("click", ".navbar-brand a", function(event) {
+$("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
       event.preventDefault();
        $('main').load(this.href + ' main ', function (data) {
     });
