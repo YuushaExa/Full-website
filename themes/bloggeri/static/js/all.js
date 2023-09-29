@@ -3,7 +3,7 @@
 
 $("body").on("click", ".card a", function(event) {
       event.preventDefault();
-       $('#content-front-text').load(this.href"/" + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
+       $('#content-front-text').load(this.href + ' .post-title, .content, .image-first, #game-media, #game-info, #game-description, .game-links, #GBinfo, #Jsontest ', function (data) {
     });
           $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
           $("#content-front-text").css("opacity", "1");  
