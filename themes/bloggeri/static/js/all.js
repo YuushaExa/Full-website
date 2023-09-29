@@ -7,10 +7,7 @@ $("body").on("click", ".card a", function(event) {
     });
   var url = this;
 window.history.pushState({}, "", url);
-window.history.pushState({}, "", url);
-window.history.back();
-          $("#content-front").css("z-index", "1").css('background','rgba(0,0,0,.5)');
-          $("#content-front-text").css("opacity", "1");   
+
 });
 
 $('.btn5').click(function () { 
