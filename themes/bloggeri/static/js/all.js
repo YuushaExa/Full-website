@@ -33,7 +33,7 @@ contentFrontTextElement.style.opacity = "1";
 
 document.body.addEventListener("click", async function(event) {
   const target = event.target;
-  if (target.matches(".navbar-brand a")) {
+  if (target.matches(".navbar-brand")) {
     event.preventDefault();
 
     try {
