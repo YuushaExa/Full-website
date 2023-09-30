@@ -11,7 +11,7 @@ $("body").on("click", ".card a", function(event) {
 
 $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
       event.preventDefault();
-       $('main').load(this.href + ' .container ', function (data) {
+       $('main').load(this.href + ' .content ', function (data) {
     });
 });
 
