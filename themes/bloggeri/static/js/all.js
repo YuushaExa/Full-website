@@ -24,9 +24,6 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
         console.error('Error:', error);
       });
 
-  
-  var url = this;
-window.history.pushState({}, "", url);
 });
 $('.btn5').click(function () { 
   $.ajax({
