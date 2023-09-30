@@ -13,6 +13,7 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
       event.preventDefault();
        $('main').load(this.href + ' main ', function (data) {
     });
+  history.pushState(null, null, 'this.href');
 });
 
 $('.btn5').click(function () { 
