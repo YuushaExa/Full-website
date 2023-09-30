@@ -18,6 +18,10 @@ document.body.addEventListener("click", async function(event) {
       mainElement.innerHTML = postTitle;
 
       window.history.pushState({}, "", target.href);
+
+      var contentFrontElement = document.querySelector("#content-front");
+var contentFrontTextElement = document.querySelector("#content-front-text");
+   
       contentFrontElement.style.zIndex = "1";
 contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
 contentFrontTextElement.style.opacity = "1";
@@ -29,7 +33,7 @@ contentFrontTextElement.style.opacity = "1";
 
 document.body.addEventListener("click", async function(event) {
   const target = event.target;
-  if (target.matches(".navbar-brand a")) {
+  if (target.matches(".navbar-start a")) {
     event.preventDefault();
 
     try {
