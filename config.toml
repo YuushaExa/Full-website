@@ -2,7 +2,7 @@ baseURL = 'https://yuushaexa.github.io/'
 languageCode = 'en-us'
 title = "GameLibrary"
 theme = "bloggeri"
-paginate = 2000
+paginate = 500
 summarylength = 10
 [params]
     description = "Games Library"
