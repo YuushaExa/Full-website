@@ -13,8 +13,8 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
       event.preventDefault();
        $('main').load(this.href + ' main ', function (data) {
     });
-  var url = this.href;
-  history.pushState(null, null, '"'+ url +'"');
+  var url = this;
+window.history.pushState({}, "", url);
 });
 
 $('.btn5').click(function () { 
