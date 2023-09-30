@@ -9,24 +9,27 @@ $("body").on("click", ".card a", function(event) {
           $("#content-front-text").css("opacity", "1");  
 });
 
-$("body").on("click", ".navbar-brand a, .navbar-start a", async function(event) {
-  event.preventDefault();
+document.body.addEventListener("click", async function(event) {
+  const target = event.target;
+  if (target.matches(".navbar-brand a, .navbar-start a")) {
+    event.preventDefault();
 
-  try {
-    const response = await fetch(this.href);
-    const html = await response.text();
+    try {
+      const response = await fetch(target.href);
+      const html = await response.text();
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
 
-    const { innerHTML: postTitle } = doc.querySelector('main');
+      const postTitle = doc.querySelector('main').innerHTML;
 
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML = postTitle;
+      const mainElement = document.querySelector('main');
+      mainElement.innerHTML = postTitle;
 
-    window.history.pushState({}, "", this.href);
-  } catch (error) {
-    console.error('Error:', error);
+      window.history.pushState({}, "", target.href);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 });
 
