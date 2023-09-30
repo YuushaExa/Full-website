@@ -14,6 +14,8 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
   fetch(this.href)
       .then(response => response.text())
       .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
         const postTitle = doc.querySelector('main').innerHTML;
 
         document.querySelector('main').innerHTML = postTitle;
@@ -26,7 +28,6 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
   var url = this;
 window.history.pushState({}, "", url);
 });
-
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
