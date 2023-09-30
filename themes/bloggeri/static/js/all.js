@@ -32,12 +32,13 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 document.body.addEventListener("click", async function(event) {
-  const target = event.target;
-  if (target.matches("a")) {
+  var target = event.target;
+ var closestLink = target.closest("a");
+  if (closestLink) {
     event.preventDefault();
 
     try {
-      const response = await fetch(target.href);
+      const response = await fetch(closestLink.href);
       const html = await response.text();
 
       const parser = new DOMParser();
@@ -48,7 +49,7 @@ document.body.addEventListener("click", async function(event) {
       const mainElement = document.querySelector('main');
       mainElement.innerHTML = postTitle;
 
-      window.history.pushState({}, "", target.href);
+      window.history.pushState({}, "", closestLink.href);
     } catch (error) {
       console.error('Error:', error);
     }
