@@ -18,11 +18,16 @@ document.body.addEventListener("click", async function(event) {
       mainElement.innerHTML = postTitle;
 
       window.history.pushState({}, "", target.href);
+      contentFrontElement.style.zIndex = "1";
+contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+contentFrontTextElement.style.opacity = "1";
     } catch (error) {
       console.error('Error:', error);
     }
   }
 });
+
+
 
 document.body.addEventListener("click", async function(event) {
   const target = event.target;
