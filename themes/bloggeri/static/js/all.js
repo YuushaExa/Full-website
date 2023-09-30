@@ -33,7 +33,7 @@ contentFrontTextElement.style.opacity = "1";
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
- var closestLink = target.closest(".navbar-brand a, navbar-start a");
+ var closestLink = target.closest("navbar-start a");
   if (closestLink) {
     event.preventDefault();
 
