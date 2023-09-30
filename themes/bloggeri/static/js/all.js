@@ -14,7 +14,7 @@ $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
        $('main').load(this.href + ' main ', function (data) {
     });
   var url = this.href;
-  history.pushState(null, null, 'url');
+  history.pushState(null, null, '"'+ url +'"');
 });
 
 $('.btn5').click(function () { 
