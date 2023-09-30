@@ -11,8 +11,20 @@ $("body").on("click", ".card a", function(event) {
 
 $("body").on("click", ".navbar-brand a, .navbar-start a", function(event) {
       event.preventDefault();
-       $('main').load(this.href + ' main ', function (data) {
-    });
+  fetch(this.href)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const postTitle = doc.querySelector('main').innerHTML;
+
+        document.querySelector('main').innerHTML = postTitle;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  
   var url = this;
 window.history.pushState({}, "", url);
 });
