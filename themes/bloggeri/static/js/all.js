@@ -33,8 +33,8 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 window.addEventListener("popstate", function(event) {
-history.back();
-});
+ state: state;
+   });
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
