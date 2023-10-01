@@ -6,6 +6,8 @@
     image.addEventListener('click', function() {
       currentIndex = index;
       openLightbox(image.src);
+       $('.gallery img').attr("src", $(this).data('src'));
+$('.gallery img').removeAttr('data-src');
     });
   });
 
