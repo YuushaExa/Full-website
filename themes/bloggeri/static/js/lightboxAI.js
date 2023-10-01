@@ -24,13 +24,13 @@
   function nextSlide() {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = galleryImages[currentIndex].href;
+    lightboxImg.href = galleryImages[currentIndex].src;
   }
 
    function prevSlide() {
  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = galleryImages[currentIndex].href;
+    lightboxImg.href = galleryImages[currentIndex].src;
   }
   
   function closeLightbox() {
