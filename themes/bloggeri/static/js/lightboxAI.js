@@ -31,3 +31,15 @@ function closeLightbox() {
     document.documentElement.style.overflow = 'auto';
 
 };
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  var lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.src = images[currentIndex];
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % images.length;
+  var lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.src = images[currentIndex];
+}
