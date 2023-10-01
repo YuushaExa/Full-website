@@ -1,3 +1,6 @@
+        var img_link =  $('.gallery img').attr('data-src').split('&w')[0];
+      $('.gallery img').wrap('<a href='+ img_link +' data-fancybox="gallery"></a>') 
+        
   var galleryImages = document.querySelectorAll('.gallery img');
   var currentIndex = 0;
 
@@ -6,8 +9,6 @@
     image.addEventListener('click', function() {
       currentIndex = index;
       openLightbox(image.src);
-       var img_link =  $('.gallery img').attr('data-src').split('&w')[0];
-      $('.gallery img').wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     });
   });
 
