@@ -32,16 +32,9 @@ function closeLightbox() {
 
 }
 
-function openLightbox(imageSrc) {
-  // ...
-
-  // Add click event listener to the lightbox background
-  var lightboxBackground = document.getElementById('lightbox');
-  lightboxBackground.addEventListener('click', handleBackgroundClick);
+var modal = document.getElementById("lightbox");
+window.onclick = function(event) {
+if (event.target == modal) {
+ closeLightbox();
 }
-
-function handleBackgroundClick(event) {
-  // Close the lightbox when the background is clicked
-  closeLightbox();
-  event.stopPropagation();
 }
