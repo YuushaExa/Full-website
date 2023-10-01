@@ -16,7 +16,7 @@
   function openLightbox(imageSrc) {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = imageSrc;
+    lightboxImg.href = imageSrc;
     lightbox.classList.remove('hidden');
     document.documentElement.style.overflow = 'hidden';
   }
