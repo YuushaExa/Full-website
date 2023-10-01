@@ -1,30 +1,24 @@
-var galleryImages = document.querySelectorAll('.gallery img');
-var currentIndex = 0;
+var gallery = document.querySelector('.gallery');
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightbox-img');
 var lightboxImages = [];
 
-// Wrap each image with an <a> tag and set the data-fancybox attribute
-galleryImages.forEach(function(image) {
-  var imgLink = image.getAttribute('data-src').split('&w')[0];
-  var link = document.createElement('a');
-  link.href = imgLink;
-  link.setAttribute('data-fancybox', 'gallery');
-  image.parentNode.insertBefore(link, image);
-  link.appendChild(image);
-  lightboxImages.push(link);
-});
+gallery.addEventListener('click', function(event) {
+  if (event.target.matches('img')) {
+    var imgLink = event.target.getAttribute('data-src').split('&w')[0];
+    var link = document.createElement('a');
+    link.href = imgLink;
+    link.setAttribute('data-fancybox', 'gallery');
+    link.appendChild(event.target.cloneNode());
 
-// Attach click event listener to each image
-lightboxImages.forEach(function(image, index) {
-  image.addEventListener('click', function(event) {
+    lightboxImages.push(link);
+    currentIndex = lightboxImages.length - 1;
+    openLightbox(link.href);
     event.preventDefault();
-    currentIndex = index;
-    openLightbox(image.href);
-  });
+  }
 });
 
 function openLightbox(imageSrc) {
-  var lightbox = document.getElementById('lightbox');
-  var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
   document.documentElement.style.overflow = 'hidden';
@@ -45,20 +39,17 @@ function preloadNextPrevImages() {
 
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
 }
 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
 }
 
 function closeLightbox() {
-  var lightbox = document.getElementById('lightbox');
   lightbox.classList.add('hidden');
   document.documentElement.style.overflow = 'auto';
 }
