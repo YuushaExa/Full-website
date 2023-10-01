@@ -20,12 +20,22 @@ function openLightbox(imageSrc) {
   lightbox.classList.remove('hidden');
 }
 
+
 function closeLightbox() {
+  // Perform any necessary cleanup tasks here
+  // For example, you can remove event listeners, reset variables, or hide elements
+
   var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+
+  // Reset the transform style property to its initial state
+  lightboxImg.style.transform = '';
 
   // Hide the lightbox
-  lightbox.classList.add('hidden');
+  lightbox.style.display = 'none';
 }
+
+// ...
 
 var startY = 0;
 
