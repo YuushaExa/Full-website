@@ -13,8 +13,8 @@ var modal = document.getElementById("lightbox");
 window.onclick = function(event) {
 if (event.target == modal) {
 closeLightbox();
-}
-}
+};
+};
 
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
@@ -28,7 +28,7 @@ function openLightbox(imageSrc) {
 
     document.documentElement.style.overflow = 'hidden';
 
-}
+};
 
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
@@ -37,4 +37,4 @@ function closeLightbox() {
   lightbox.classList.add('hidden');
     document.documentElement.style.overflow = 'auto';
 
-}
+};
