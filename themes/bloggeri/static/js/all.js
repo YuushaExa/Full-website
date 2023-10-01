@@ -164,9 +164,4 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
           $("#content-front-text").css("opacity", "1");   
 });
 
-var modal = document.getElementById("lightbox");
-window.onclick = function(event) {
-if (event.target == modal) {
-closeLightbox();
-}
-}
+
