@@ -18,6 +18,9 @@ function openLightbox(imageSrc) {
 
   // Show the lightbox
   lightbox.classList.remove('hidden');
+
+    document.body.style.overflow = 'hidden';
+
 }
 
 function closeLightbox() {
@@ -25,4 +28,6 @@ function closeLightbox() {
 
   // Hide the lightbox
   lightbox.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+
 }
