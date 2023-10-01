@@ -33,9 +33,7 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 window.addEventListener("popstate", function(event) {
-  const url = document.location.href;
-
-  console.log("Navigated to: " + url);
+history.back();
 });
 
 document.body.addEventListener("click", async function(event) {
