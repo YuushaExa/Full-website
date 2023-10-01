@@ -25,6 +25,7 @@ function openLightbox(imageSrc) {
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
+   document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
   preloadNextPrevImages();
 }
