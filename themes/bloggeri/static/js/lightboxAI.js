@@ -35,21 +35,4 @@ window.onload = function() {
     lightbox.classList.add('hidden');
     document.documentElement.style.overflow = 'auto';
   }
-
-  // Attach click event listener to the next button
-  var nextButton = document.querySelector('.next');
-  nextButton.addEventListener('click', function() {
-    nextSlide();
-  });
-
-    var nextButton = document.querySelector('.prev');
-  prevButton.addEventListener('click', function() {
-    prevSlide();
-  });
-
-  // Attach click event listener to the close button
-  var closeButton = document.querySelector('.close');
-  closeButton.addEventListener('click', function() {
-    closeLightbox();
-  });
 };
