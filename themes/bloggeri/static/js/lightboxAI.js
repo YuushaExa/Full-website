@@ -58,3 +58,11 @@ function closeLightbox() {
   document.documentElement.style.overflow = 'auto';
   document.body.classList.remove('lightbox-open');
 }
+
+window.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    nextSlide();
+  } else if (event.key === 'ArrowLeft') {
+    prevSlide();
+  }
+});
