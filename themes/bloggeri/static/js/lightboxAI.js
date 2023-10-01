@@ -7,6 +7,7 @@
   // Attach click event listener to each image
   galleryImages.forEach(function(image, index) {
     image.addEventListener('click', function() {
+            event.preventDefault();
       currentIndex = index;
       openLightbox(image.src);
     });
