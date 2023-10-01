@@ -52,17 +52,20 @@ function prevSlide() {
   preloadNextPrevImages();
 }
 
+window.addEventListener('keydown', function(event) {
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox && lightbox.classList.contains('hidden') === false) {
+    if (event.key === 'ArrowRight') {
+      nextSlide();
+    } else if (event.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  }
+});
+
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
   lightbox.classList.add('hidden');
   document.documentElement.style.overflow = 'auto';
   document.body.classList.remove('lightbox-open');
 }
-
-window.addEventListener('keydown', function(event) {
-  if (event.key === 'ArrowRight') {
-    nextSlide();
-  } else if (event.key === 'ArrowLeft') {
-    prevSlide();
-  }
-});
