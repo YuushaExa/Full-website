@@ -59,6 +59,7 @@ var startY = 0;
 var currentX = 0;
 var currentY = 0;
 var isDragging = false;
+var isDragEnabled = true; // Boolean flag to control dragging
 
 window.onload = function() {
   var galleryImages = document.querySelectorAll('.gallery img');
@@ -81,6 +82,8 @@ window.onload = function() {
 };
 
 function handleStart(event) {
+  if (!isDragEnabled) return;
+
   if (event.type === 'touchstart') {
     startX = event.touches[0].clientX;
     startY = event.touches[0].clientY;
@@ -110,6 +113,12 @@ function handleMove(event) {
   var deltaX = currentX - startX;
   var deltaY = currentY - startY;
 
+  // Check if dragging distance exceeds a threshold to close the image
+  var dragThreshold = 10; // Adjust this value as needed
+  if (Math.abs(deltaX) > dragThreshold || Math.abs(deltaY) > dragThreshold) {
+    closeLightbox();
+  }
+
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.style.transform = 'translate(' + deltaX + 'px, ' + deltaY + 'px)';
 }
@@ -124,4 +133,3 @@ function handleEnd() {
 }
 
 // Rest of the code remains the same...
-
