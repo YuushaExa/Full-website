@@ -9,7 +9,7 @@ window.onload = function() {
       openLightbox(image.src);
     });
   });
-
+}
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
