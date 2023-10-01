@@ -1,15 +1,28 @@
-   var galleryImages = document.querySelectorAll('.gallery img');
+
+  var galleryImages = document.querySelectorAll('.gallery img');
   var currentIndex = 0;
+  var preloadedImages = [];
 
   // Attach click event listener to each image
   galleryImages.forEach(function(image, index) {
     image.addEventListener('click', function() {
       currentIndex = index;
       openLightbox(image.src);
-       $('.gallery img').attr("src", $(this).data('src'));
-$('.gallery img').removeAttr('data-src');
     });
   });
+
+  function preloadImage(index, callback) {
+    var image = new Image();
+    image.onload = function() {
+      callback();
+    };
+    image.onerror = function() {
+      console.error('Failed to load image:', image.src);
+      callback();
+    };
+    image.src = galleryImages[index].getAttribute('data-src');
+    preloadedImages.push(image);
+  }
 
   function openLightbox(imageSrc) {
     var lightbox = document.getElementById('lightbox');
@@ -17,26 +30,29 @@ $('.gallery img').removeAttr('data-src');
     lightboxImg.src = imageSrc;
     lightbox.classList.remove('hidden');
     document.documentElement.style.overflow = 'hidden';
+
+    var nextIndex = (currentIndex + 1) % galleryImages.length;
+    var prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+
+    preloadImage(nextIndex, function() {
+      preloadImage(prevIndex, function() {
+        // Both next and previous images are preloaded
+      });
+    });
   }
 
   function nextSlide() {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
-lightboxImg.src = img.getAttribute("data-src");
- $('.gallery img').attr("src", $(this).data('src'));
-$('.gallery img').removeAttr('data-src');
   }
 
   function prevSlide() {
     currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
-$('.gallery img').attr("src", $(this).data('src'));
-$('.gallery img').removeAttr('data-src');
   }
 
-  
   function closeLightbox() {
     var lightbox = document.getElementById('lightbox');
     lightbox.classList.add('hidden');
