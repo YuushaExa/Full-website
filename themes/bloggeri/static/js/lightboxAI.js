@@ -1,5 +1,6 @@
 var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
+var lightboxImages = [];
 
 // Wrap each image with an <a> tag and set the data-fancybox attribute
 galleryImages.forEach(function(image) {
@@ -9,9 +10,8 @@ galleryImages.forEach(function(image) {
   link.setAttribute('data-fancybox', 'gallery');
   image.parentNode.insertBefore(link, image);
   link.appendChild(image);
+  lightboxImages.push(link);
 });
-
-var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
@@ -28,18 +28,33 @@ function openLightbox(imageSrc) {
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
   document.documentElement.style.overflow = 'hidden';
+
+  preloadNextPrevImages();
+}
+
+function preloadNextPrevImages() {
+  var nextIndex = (currentIndex + 1) % lightboxImages.length;
+  var prevIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+
+  var nextImg = new Image();
+  nextImg.src = lightboxImages[nextIndex].href;
+
+  var prevImg = new Image();
+  prevImg.src = lightboxImages[prevIndex].href;
 }
 
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
+  preloadNextPrevImages();
 }
 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
+  preloadNextPrevImages();
 }
 
 function closeLightbox() {
