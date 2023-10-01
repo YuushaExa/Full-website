@@ -9,7 +9,7 @@
     image.addEventListener('click', function() {
             event.preventDefault();
       currentIndex = index;
-      openLightbox(image.src);
+      openLightbox(image.href);
     });
   });
 
