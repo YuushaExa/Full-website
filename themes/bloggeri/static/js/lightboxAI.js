@@ -35,6 +35,6 @@ function closeLightbox() {
 var modal = document.getElementById("lightbox");
 window.onclick = function(event) {
 if (event.target == modal) {
-  lightbox.classList.add('hidden');
+closeLightbox();
 }
 }
