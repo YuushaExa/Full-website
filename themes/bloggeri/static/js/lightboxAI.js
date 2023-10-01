@@ -14,7 +14,10 @@
     var image = new Image();
     image.src = galleryImages[index].src;
     preloadedImages.push(image);
-     image.removeAttribute('data-src');
+
+     var image = document.getElementById('lightbox-img');
+image.src = image.getAttribute('data-src');
+image.removeAttribute('data-src');
   }
 
   function openLightbox(imageSrc) {
