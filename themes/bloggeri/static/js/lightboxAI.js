@@ -6,6 +6,8 @@
     image.addEventListener('click', function() {
       currentIndex = index;
       openLightbox(image.src);
+       var img_link =  $('.gallery img').attr('data-src').split('&h')[0];
+      $('.gallery img').wrap('<a href='+ img_link +' data-fancybox="gallery"></a>')
     });
   });
 
