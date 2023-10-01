@@ -32,7 +32,6 @@ function closeLightbox() {
 
 };
 
-var lightbox = document.getElementById("lightbox");
 window.onclick = function(event) {
 if (event.target == lightbox) {
 closeLightbox();
