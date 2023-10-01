@@ -31,12 +31,14 @@
     currentIndex = (currentIndex + 1) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
+          lightboxImg.setAttribute('src', dataSrc);
   }
 
   function prevSlide() {
     currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
+     lightboxImg.setAttribute('src', dataSrc);
   }
 
   
