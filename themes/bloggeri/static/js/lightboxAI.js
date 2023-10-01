@@ -31,14 +31,20 @@
     currentIndex = (currentIndex + 1) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
-          lightboxImg.setAttribute('src', dataSrc);
+        var image = document.getElementById('lightbox-img');
+var dataSrc = image.getAttribute('data-src');
+image.setAttribute('src', dataSrc);
+image.removeAttribute('data-src');
   }
 
   function prevSlide() {
     currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
-     lightboxImg.setAttribute('src', dataSrc);
+    var image = document.getElementById('lightbox-img');
+var dataSrc = image.getAttribute('data-src');
+image.setAttribute('src', dataSrc);
+image.removeAttribute('data-src');
   }
 
   
