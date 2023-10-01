@@ -72,17 +72,23 @@ window.onload = function() {
   });
 
   // Attach touchstart, touchmove, touchend, mousedown, mousemove, and mouseup event listeners to the lightbox image
-  lightboxImg.addEventListener('touchstart', handleStart);
+  lightboxImg.addEventListener('touchstart', handleStart, { passive: true });
   lightboxImg.addEventListener('touchmove', handleMove, { passive: true });
-  lightboxImg.addEventListener('touchend', handleEnd);
+  lightboxImg.addEventListener('touchend', handleEnd, { passive: true });
   lightboxImg.addEventListener('mousedown', handleStart);
   lightboxImg.addEventListener('mousemove', handleMove);
   lightboxImg.addEventListener('mouseup', handleEnd);
 };
 
 function handleStart(event) {
-  startX = event.clientX || event.touches[0].clientX;
-  startY = event.clientY || event.touches[0].clientY;
+  if (event.type === 'touchstart') {
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  } else {
+    startX = event.clientX;
+    startY = event.clientY;
+  }
+
   currentX = startX;
   currentY = startY;
   isDragging = true;
@@ -91,17 +97,21 @@ function handleStart(event) {
 function handleMove(event) {
   if (!isDragging) return;
 
-  var newX = event.clientX || event.touches[0].clientX;
-  var newY = event.clientY || event.touches[0].clientY;
+  event.preventDefault();
 
-  var deltaX = newX - currentX;
-  var deltaY = newY - currentY;
+  if (event.type === 'touchmove') {
+    currentX = event.touches[0].clientX;
+    currentY = event.touches[0].clientY;
+  } else {
+    currentX = event.clientX;
+    currentY = event.clientY;
+  }
+
+  var deltaX = currentX - startX;
+  var deltaY = currentY - startY;
 
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.style.transform = 'translate(' + deltaX + 'px, ' + deltaY + 'px)';
-
-  currentX = newX;
-  currentY = newY;
 }
 
 function handleEnd() {
@@ -114,3 +124,4 @@ function handleEnd() {
 }
 
 // Rest of the code remains the same...
+
