@@ -9,6 +9,13 @@ window.onload = function() {
   });
 };
 
+var modal = document.getElementById("lightbox");
+window.onclick = function(event) {
+if (event.target == modal) {
+closeLightbox();
+}
+}
+
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
