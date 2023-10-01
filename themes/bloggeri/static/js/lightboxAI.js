@@ -31,3 +31,17 @@ function closeLightbox() {
     document.documentElement.style.overflow = 'auto';
 
 }
+
+function openLightbox(imageSrc) {
+  // ...
+
+  // Add click event listener to the lightbox background
+  var lightboxBackground = document.getElementById('lightbox');
+  lightboxBackground.addEventListener('click', handleBackgroundClick);
+}
+
+function handleBackgroundClick(event) {
+  // Close the lightbox when the background is clicked
+  closeLightbox();
+  event.stopPropagation();
+}
