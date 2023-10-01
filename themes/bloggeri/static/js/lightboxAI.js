@@ -24,6 +24,12 @@ window.onload = function() {
     lightboxImg.src = galleryImages[currentIndex].src;
   }
 
+   function prevSlide() {
+    currentIndex = (currentIndex - 1) % galleryImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+  
   function closeLightbox() {
     var lightbox = document.getElementById('lightbox');
     lightbox.classList.add('hidden');
@@ -34,6 +40,11 @@ window.onload = function() {
   var nextButton = document.querySelector('.next');
   nextButton.addEventListener('click', function() {
     nextSlide();
+  });
+
+    var nextButton = document.querySelector('.prev');
+  prevButton.addEventListener('click', function() {
+    prevSlide();
   });
 
   // Attach click event listener to the close button
