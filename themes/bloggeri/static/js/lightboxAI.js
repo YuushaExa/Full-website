@@ -22,9 +22,6 @@
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
 
-       var image = document.getElementById('lightbox-img');
-image.src = image.getAttribute('data-src');
-image.removeAttribute('data-src');
   }
 
   function prevSlide() {
@@ -32,9 +29,6 @@ image.removeAttribute('data-src');
     var lightboxImg = document.getElementById('lightbox-img');
     lightboxImg.src = galleryImages[currentIndex].src;
 
-       var image = document.getElementById('lightbox-img');
-image.src = image.getAttribute('data-src');
-image.removeAttribute('data-src');
   }
 
   
