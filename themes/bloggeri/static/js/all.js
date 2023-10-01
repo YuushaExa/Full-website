@@ -17,8 +17,7 @@ document.body.addEventListener("click", async function (event) {
       const mainElement = document.querySelector('#content-front-text');
       mainElement.innerHTML = postTitle;
 
-      var state = document.location.href
-      window.history.pushState({state}, "", target.href);
+      window.history.pushState({}, "", target.href);
 
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
@@ -32,9 +31,6 @@ contentFrontTextElement.style.opacity = "1";
   }
 });
 
-window.addEventListener("popstate", function(event) {
- state: state;
-   });
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
