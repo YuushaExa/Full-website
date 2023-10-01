@@ -16,7 +16,7 @@
   function openLightbox(imageSrc) {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = imageSrc;
+    lightboxImg.href = imageSrc;
     lightbox.classList.remove('hidden');
     document.documentElement.style.overflow = 'hidden';
   }
@@ -24,13 +24,13 @@
   function nextSlide() {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = galleryImages[currentIndex].src;
+    lightboxImg.href = galleryImages[currentIndex].href;
   }
 
    function prevSlide() {
  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = galleryImages[currentIndex].src;
+    lightboxImg.href = galleryImages[currentIndex].href;
   }
   
   function closeLightbox() {
