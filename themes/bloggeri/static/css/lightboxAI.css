@@ -41,3 +41,27 @@
 .hidden {
   display: none!important;
 }
+
+/* Styles for the previous and next slide buttons */
+.prev,
+.next {
+  background-color: #f2f2f2;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: #ddd;
+}
+
+.prev {
+  float: left;
+}
+
+.next {
+  float: right;
+}
