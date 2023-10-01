@@ -31,10 +31,3 @@ function closeLightbox() {
     document.documentElement.style.overflow = 'auto';
 
 }
-
-var modal = document.getElementById("lightbox");
-window.onclick = function(event) {
-if (event.target == modal) {
-closeLightbox();
-}
-}
