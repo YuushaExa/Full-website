@@ -36,13 +36,12 @@ function openLightbox(imageSrc) {
   // ...
 
   // Add click event listener to the lightbox background
-  var lightbox = document.getElementById('lightbox');
-  lightbox.addEventListener('click', handleBackgroundClick);
+  var lightboxBackground = document.getElementById('lightbox');
+  lightboxBackground.addEventListener('click', handleBackgroundClick);
 }
 
 function handleBackgroundClick(event) {
-  // Check if the clicked element is the background
-  if (event.target.id === 'lightbox') {
-    closeLightbox();
-  }
+  // Close the lightbox when the background is clicked
+  closeLightbox();
+  event.stopPropagation();
 }
