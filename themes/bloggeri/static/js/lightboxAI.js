@@ -31,9 +31,3 @@ function closeLightbox() {
     document.documentElement.style.overflow = 'auto';
 
 };
-
-window.onclick = function(event) {
-if (event.target == lightbox) {
-closeLightbox();
-};
-};
