@@ -3,7 +3,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.body.addEventListener("click", async function (event) {
   const target = event.target;
   if (target.matches(".card a")) {
-    event.preventDefault();
+    event.preventDefault(); 
 
     try {
       const response = await fetch(target.href);
