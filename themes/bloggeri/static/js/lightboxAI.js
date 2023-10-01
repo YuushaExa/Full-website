@@ -56,4 +56,5 @@ function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
   lightbox.classList.add('hidden');
   document.documentElement.style.overflow = 'auto';
+  document.body.classList.remove('lightbox-open');
 }
