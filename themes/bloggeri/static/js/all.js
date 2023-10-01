@@ -170,3 +170,21 @@ if (event.target == modal) {
 closeLightbox();
 };
 };
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+   function prevSlide() {
+    currentIndex = (currentIndex - 1) % galleryImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+  
+  function closeLightbox() {
+    var lightbox = document.getElementById('lightbox');
+    lightbox.classList.add('hidden');
+    document.documentElement.style.overflow = 'auto';
+  }
