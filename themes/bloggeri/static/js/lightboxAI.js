@@ -1,10 +1,3 @@
-var modal = document.getElementById("lightbox");
-window.onclick = function(event) {
-if (event.target == modal) {
-closeLightbox();
-};
-};
-
   var galleryImages = document.querySelectorAll('.gallery img');
   var currentIndex = 0;
 
@@ -41,3 +34,10 @@ closeLightbox();
     lightbox.classList.add('hidden');
     document.documentElement.style.overflow = 'auto';
   }
+
+var modal = document.getElementById("lightbox");
+window.onclick = function(event) {
+if (event.target == modal) {
+closeLightbox();
+};
+};
