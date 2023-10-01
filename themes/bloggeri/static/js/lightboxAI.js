@@ -26,3 +26,30 @@ function closeLightbox() {
   // Hide the lightbox
   lightbox.classList.add('hidden');
 }
+
+var startY = 0;
+
+window.onload = function() {
+  var galleryImages = document.querySelectorAll('.gallery img');
+  var lightboxImg = document.getElementById('lightbox-img');
+
+  // Attach click event listener to each image
+  galleryImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+      openLightbox(image.src);
+    });
+  });
+
+  // Attach touchstart and touchmove event listeners to the lightbox image
+  lightboxImg.addEventListener('touchstart', function(event) {
+    startY = event.touches[0].clientY;
+  });
+
+  lightboxImg.addEventListener('touchmove', function(event) {
+    var currentY = event.touches[0].clientY;
+
+    if (currentY - startY > 50) {
+      closeLightbox();
+    }
+  });
+};
