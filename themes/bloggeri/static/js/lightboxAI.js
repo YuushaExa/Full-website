@@ -32,9 +32,9 @@ function closeLightbox() {
 
 };
 
-var modal = document.getElementById("lightbox");
+var lightbox = document.getElementById("lightbox");
 window.onclick = function(event) {
-if (event.target == modal) {
+if (event.target == lightbox) {
 closeLightbox();
 };
 };
