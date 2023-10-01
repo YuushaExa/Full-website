@@ -16,9 +16,9 @@ document.body.addEventListener("click", async function (event) {
 
       const mainElement = document.querySelector('#content-front-text');
       mainElement.innerHTML = postTitle;
-      
-    fetchContentAndSetMainElement(target.href);
-      window.history.pushState({}, "", target.href);
+
+      var state = document.location.href
+      window.history.pushState({state}, "", target.href);
 
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
@@ -33,7 +33,9 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 window.addEventListener("popstate", function(event) {
-  fetchContentAndSetMainElement(location.href);
+  const url = document.location.href;
+
+  console.log("Navigated to: " + url);
 });
 
 document.body.addEventListener("click", async function(event) {
