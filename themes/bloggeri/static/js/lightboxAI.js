@@ -21,7 +21,6 @@ function openLightbox(imageSrc) {
   lightbox.classList.remove('hidden');
 
     document.documentElement.style.overflow = 'hidden';
-
 };
 
 function closeLightbox() {
