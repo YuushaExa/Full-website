@@ -1,13 +1,14 @@
 window.onload = function() {
   var galleryImages = document.querySelectorAll('.gallery img');
+  var currentIndex = 0;
 
   // Attach click event listener to each image
-  galleryImages.forEach(function(image) {
+  galleryImages.forEach(function(image, index) {
     image.addEventListener('click', function() {
+      currentIndex = index;
       openLightbox(image.src);
     });
   });
-};
 
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
@@ -33,13 +34,14 @@ function closeLightbox() {
 };
 
 function prevSlide() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  currentIndex = (currentIndex - 1 + images.length) % galleryImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
-  lightboxImg.src = images[currentIndex];
+  lightboxImg.src = galleryImages[currentIndex];
 }
 
+
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % images.length;
-  var lightboxImg = document.getElementById('lightbox-img');
-  lightboxImg.src = images[currentIndex];
-}
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
