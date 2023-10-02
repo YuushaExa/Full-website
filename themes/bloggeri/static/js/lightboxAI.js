@@ -1,6 +1,5 @@
 var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
-var currentImageIndex = 0;
 var lightboxImages = [];
 
 galleryImages.forEach(function(image) {
@@ -35,34 +34,6 @@ function openLightbox(imageSrc) {
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
   }
-  var totalImages = lightboxImages.length;
-
-  // Update the total number of images display
-  var totalImagesElement = document.getElementById('total-images');
-  totalImagesElement.textContent = totalImages;
-
-  // ...existing code...
-
-lightboxImages.forEach(function(image, index) {
-    image.setAttribute('data-image-number', index + 1);
-  });
-
-  // Show the image number of the initially displayed image
-  var initialImageIndex = lightboxImages.findIndex(function(image) {
-    return image.src === imageSrc;
-  });
-  if (initialImageIndex !== -1) {
-    var initialImageNumber = initialImageIndex + 1;
-    showImageNumber(initialImageNumber);
-  }
-
-  // Add event listeners to images
-  lightboxImages.forEach(function(image, index) {
-    image.addEventListener('click', function() {
-      showImageNumber(index + 1);
-    });
-  });
-
   
 }
 function preloadNextPrevImages() {
@@ -79,11 +50,6 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
-    currentImageIndex = (currentImageIndex + 1) % lightboxImages.length; // Update the current image index
-
-  // Call the updateImageNumber function
-  updateImageNumber(currentImageIndex);
-
 }
 
 function prevSlide() {
@@ -91,10 +57,6 @@ function prevSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
-    currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length; // Update the current image index
-
-  // Call the updateImageNumber function
-  updateImageNumber(currentImageIndex);
 }
 
 window.addEventListener('keydown', function(event) {
@@ -119,15 +81,6 @@ function handleMouseWheel(event) {
     }
     event.preventDefault();
   }
-}
-
-function showImageNumber(imageNumber) {
-  // Get the current image number element
-  var currentImageNumberElement = document.getElementById('current-image-number');
-
-  // Update the current image number display
-  currentImageNumberElement.textContent = imageNumber;
-  
 }
 
 function closeLightbox() {
