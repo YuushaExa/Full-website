@@ -86,7 +86,13 @@ var isImageLoaded = false; // Flag to track if the current image has finished lo
 
     // Show image
     lightboxImg.style.display = 'block';
+      document.querySelector('.next').disabled = false;
+    document.querySelector('.prev').disabled = false;
   };
+
+  // Disable next/prev buttons while loading
+  document.querySelector('.next').disabled = true;
+  document.querySelector('.prev').disabled = true;
 
   // Preload next/previous images
   setTimeout(function() {
@@ -119,7 +125,13 @@ function prevSlide() {
 
     // Show image
     lightboxImg.style.display = 'block';
+    document.querySelector('.next').disabled = false;
+    document.querySelector('.prev').disabled = false;
   };
+
+  // Disable next/prev buttons while loading
+  document.querySelector('.next').disabled = true;
+  document.querySelector('.prev').disabled = true;
 
   // Preload next/previous images
   setTimeout(function() {
