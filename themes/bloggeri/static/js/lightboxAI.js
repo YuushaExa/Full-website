@@ -49,15 +49,17 @@ function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
-  preloadNextPrevImages();
-}
+ setTimeout(function() {
+    preloadNextPrevImages();
+  }, 10000);}
 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
-  preloadNextPrevImages();
-}
+ setTimeout(function() {
+    preloadNextPrevImages();
+  }, 10000);}
 
 window.addEventListener('keydown', function(event) {
   var lightbox = document.getElementById('lightbox');
