@@ -30,9 +30,9 @@ function openLightbox(imageSrc) {
  setTimeout(function() {
     preloadNextPrevImages();
   }, 1000);
- var lightbox = document.getElementById('lightbox');
+  var lightbox = document.getElementById('lightbox');
   if (lightbox) {
-    lightbox.addEventListener('wheel', handleMouseWheel);
+    lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
   }
 
 }
