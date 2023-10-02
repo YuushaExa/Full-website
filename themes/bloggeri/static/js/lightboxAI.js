@@ -85,11 +85,11 @@ document.addEventListener('touchend', function(event) {
  
 function handleSwipe() {
   var swipeThreshold = 50; // Adjust this value as needed
-  var deltaX = touchEndX - touchStartX;
- 
-  if (deltaX > swipeThreshold) {
-    prevSlide();
-  } else if (deltaX < -swipeThreshold) {
-    nextSlide();
+  var deltaY = touchEndY - touchStartY;
+  var lightboxHeight = document.getElementById('lightbox').offsetHeight;
+  var windowHeight = window.innerHeight;
+  
+  if (deltaY > swipeThreshold && (lightboxHeight - touchEndY) < windowHeight * 0.1) {
+    closeLightbox();
   }
 }
