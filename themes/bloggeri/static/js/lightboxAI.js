@@ -28,6 +28,42 @@ function openLightbox(imageSrc) {
    document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
   preloadNextPrevImages();
+
+    var isDragging = false;
+  var startX;
+  var startY;
+  var imageOffsetX;
+  var imageOffsetY;
+  var dragThreshold = 10; // Adjust this value as needed
+
+  lightboxImg.addEventListener('mousedown', function(event) {
+    isDragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    imageOffsetX = lightboxImg.offsetLeft;
+    imageOffsetY = lightboxImg.offsetTop;
+  });
+
+  window.addEventListener('mousemove', function(event) {
+    if (isDragging) {
+      var offsetX = event.clientX - startX;
+      var offsetY = event.clientY - startY;
+      lightboxImg.style.left = imageOffsetX + offsetX + 'px';
+      lightboxImg.style.top = imageOffsetY + offsetY + 'px';
+
+      // Calculate distance dragged
+      var distance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
+
+      // Check if distance exceeds threshold to close the lightbox
+      if (distance > dragThreshold) {
+        closeLightbox();
+      }
+    }
+  });
+
+  window.addEventListener('mouseup', function(event) {
+    isDragging = false;
+  });
 }
 function preloadNextPrevImages() {
   var nextIndex = (currentIndex + 1) % lightboxImages.length;
