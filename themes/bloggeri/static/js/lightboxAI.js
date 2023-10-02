@@ -51,7 +51,6 @@ function closeLightbox() {
 }
 
 document.addEventListener('wheel', function(event) {
-   var lightbox = document.getElementById('lightbox');
   if (!lightbox.classList.contains('hidden')) {
     event.preventDefault();
     if (event.deltaY > 0) {
@@ -63,7 +62,6 @@ document.addEventListener('wheel', function(event) {
 });
 
 window.addEventListener('keydown', function(event) {
-  var lightbox = document.getElementById('lightbox');
   if (lightbox && !lightbox.classList.contains('hidden')) {
     if (event.key === 'ArrowRight') {
       nextSlide();
