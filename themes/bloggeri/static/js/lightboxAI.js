@@ -1,5 +1,6 @@
 var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
+var currentImageIndex = 0;
 var lightboxImages = [];
 
 galleryImages.forEach(function(image) {
@@ -55,6 +56,11 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
+    currentImageIndex = (currentImageIndex + 1) % lightboxImages.length; // Update the current image index
+
+  // Call the updateImageNumber function
+  updateImageNumber(currentImageIndex);
+
 }
 
 function prevSlide() {
@@ -62,6 +68,10 @@ function prevSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
   preloadNextPrevImages();
+    currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length; // Update the current image index
+
+  // Call the updateImageNumber function
+  updateImageNumber(currentImageIndex);
 }
 
 window.addEventListener('keydown', function(event) {
