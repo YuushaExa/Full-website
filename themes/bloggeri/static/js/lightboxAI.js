@@ -71,3 +71,25 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
+var touchStartX = 0;
+var touchEndX = 0;
+
+document.addEventListener('touchstart', function(event) {
+  touchStartX = event.touches[0].clientX;
+});
+
+document.addEventListener('touchend', function(event) {
+  touchEndX = event.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  var swipeThreshold = 50; // Adjust this value as needed
+  var deltaX = touchEndX - touchStartX;
+
+  if (deltaX > swipeThreshold) {
+    prevSlide();
+  } else if (deltaX < -swipeThreshold) {
+    nextSlide();
+  }
+}
