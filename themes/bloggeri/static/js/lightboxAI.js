@@ -49,3 +49,27 @@ function closeLightbox() {
   document.body.classList.remove('lightbox-open');
   document.documentElement.style.overflow = 'auto';
 }
+
+document.addEventListener('wheel', function(event) {
+   var lightbox = document.getElementById('lightbox');
+  if (!lightbox.classList.contains('hidden')) {
+    event.preventDefault();
+    if (event.deltaY > 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+  }
+});
+
+window.addEventListener('keydown', function(event) {
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox && !lightbox.classList.contains('hidden')) {
+    if (event.key === 'ArrowRight') {
+      nextSlide();
+    } else if (event.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  }
+});
+
