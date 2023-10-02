@@ -23,7 +23,24 @@ lightboxImages.forEach(function(image, index) {
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
+    var loadingText = document.getElementById('loading-text');
+
+ // Show loading text
+  loadingText.style.display = 'block';
+
+  // Hide image until loaded
+  lightboxImg.style.display = 'none';
+  
   lightboxImg.src = imageSrc;
+
+  lightboxImg.onload = function() {
+    // Hide loading text
+    loadingText.style.display = 'none';
+
+    // Show image
+    lightboxImg.style.display = 'block';
+  };
+  
   lightbox.classList.remove('hidden');
    document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
