@@ -93,7 +93,7 @@ function nextSlide() {
     setTimeout(function() {
       preloadNextPrevImages();
     }, 10000);
-  }, 100);
+  }, 1000);
 }
 
 function prevSlide() {
@@ -132,7 +132,7 @@ function prevSlide() {
     setTimeout(function() {
       preloadNextPrevImages();
     }, 10000);
-  }, 100);
+  }, 1000);
 }
 
 window.addEventListener('keydown', function(event) {
