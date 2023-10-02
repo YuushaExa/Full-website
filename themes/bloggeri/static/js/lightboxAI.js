@@ -26,6 +26,10 @@ function openLightbox(imageSrc) {
     var loadingText = document.getElementById('loading-text');
   var isImageLoaded = false;
 
+var spinner = document.createElement('div');
+  spinner.className = 'spinner';
+  lightbox.appendChild(spinner);
+  
  // Show loading text
   loadingText.style.display = 'block';
 
@@ -37,6 +41,9 @@ function openLightbox(imageSrc) {
     lightboxImg.onload = function() {
     isImageLoaded = true; // Set the flag to true when image has finished loading
 
+ // Remove loading spinner
+    lightbox.removeChild(spinner);
+      
     // Hide loading text
     loadingText.style.display = 'none';
 
