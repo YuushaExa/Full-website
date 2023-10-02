@@ -24,6 +24,7 @@ function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
     var loadingText = document.getElementById('loading-text');
+  var isImageLoaded = false;
 
  // Show loading text
   loadingText.style.display = 'block';
@@ -33,7 +34,9 @@ function openLightbox(imageSrc) {
   
   lightboxImg.src = imageSrc;
 
-  lightboxImg.onload = function() {
+    lightboxImg.onload = function() {
+    isImageLoaded = true; // Set the flag to true when image has finished loading
+
     // Hide loading text
     loadingText.style.display = 'none';
 
