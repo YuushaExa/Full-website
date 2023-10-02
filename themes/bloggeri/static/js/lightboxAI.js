@@ -34,14 +34,35 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.classList.add('transition-main'); // Add animation class
+
+  // Add 'is-animating' class to HTML element
+  document.documentElement.classList.add('is-animating');
+  document.documentElement.classList.remove('is-leaving');
+  document.documentElement.classList.remove('to-left');
+
   lightboxImg.src = lightboxImages[currentIndex].href;
 }
- 
+
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.classList.add('transition-main'); // Add animation class
+
+  // Add 'is-animating' class to HTML element
+  document.documentElement.classList.add('is-animating');
+  document.documentElement.classList.remove('is-leaving');
+  document.documentElement.classList.add('to-left');
+
   lightboxImg.src = lightboxImages[currentIndex].href;
 }
+
+lightboxImg.addEventListener('transitionend', function() {
+  lightboxImg.classList.remove('transition-main');
+  
+  // Remove 'is-animating' class from HTML element
+  document.documentElement.classList.remove('is-animating');
+});
  
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
