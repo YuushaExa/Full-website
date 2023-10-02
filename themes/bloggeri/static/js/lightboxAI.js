@@ -3,7 +3,7 @@ var currentIndex = 0;
 var lightboxImages = [];
 
 galleryImages.forEach(function(image) {
-  var imgLink = image.getAttribute('data-src').split('&w')[0];
+  var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=260";
   var link = document.createElement('a');
   link.href = imgLink;
   link.setAttribute('data-fancybox', 'gallery');
@@ -30,6 +30,10 @@ function openLightbox(imageSrc) {
  setTimeout(function() {
     preloadNextPrevImages();
   }, 1000);
+ var lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('wheel', handleMouseWheel);
+  }
 
 }
 function preloadNextPrevImages() {
@@ -65,6 +69,19 @@ window.addEventListener('keydown', function(event) {
     }
   }
 });
+
+function handleMouseWheel(event) {
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox && lightbox.classList.contains('hidden') === false) {
+    var delta = event.deltaY || event.detail || (-event.wheelDelta);
+    if (delta > 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+    event.preventDefault();
+  }
+}
 
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
