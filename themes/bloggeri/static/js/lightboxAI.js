@@ -2,6 +2,7 @@ var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
 var lightboxImages = [];
 var isLoadingImage = false;
+var loadingTimeout;
 
 galleryImages.forEach(function(image) {
   var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
@@ -33,12 +34,16 @@ function openLightbox(imageSrc) {
   }
 
   isLoadingImage = true;
-  loadingText.style.display = 'block';
+  loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block';
+  }, 300);
+
   lightboxImg.style.display = 'none';
 
   lightboxImg.src = imageSrc;
   lightboxImg.onload = function() {
     isImageLoaded = true;
+    clearTimeout(loadingTimeout);
     loadingText.style.display = 'none';
     lightboxImg.style.display = 'block';
     isLoadingImage = false;
@@ -72,11 +77,16 @@ function nextSlide() {
   }
 
   isLoadingImage = true;
-  loadingText.style.display = 'block';
+
+  loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block';
+  }, 300);
+
   lightboxImg.style.display = 'none';
   lightboxImg.src = lightboxImages[currentIndex].href;
   lightboxImg.onload = function() {
     isImageLoaded = true;
+    clearTimeout(loadingTimeout);
     loadingText.style.display = 'none';
     lightboxImg.style.display = 'block';
     document.querySelector('.next').disabled = false;
@@ -100,11 +110,16 @@ function prevSlide() {
   }
 
   isLoadingImage = true;
-  loadingText.style.display = 'block';
+
+  loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block';
+  }, 300);
+
   lightboxImg.style.display = 'none';
   lightboxImg.src = lightboxImages[currentIndex].href;
   lightboxImg.onload = function() {
     isImageLoaded = true;
+    clearTimeout(loadingTimeout);
     loadingText.style.display = 'none';
     lightboxImg.style.display = 'block';
     document.querySelector('.next').disabled = false;
@@ -126,3 +141,4 @@ window.addEventListener('keydown', function(event) {
       prevSlide();
     }
   }
+});
