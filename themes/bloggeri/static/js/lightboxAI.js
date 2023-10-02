@@ -27,9 +27,7 @@ function openLightbox(imageSrc) {
   lightbox.classList.remove('hidden');
    document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
- setTimeout(function() {
     preloadNextPrevImages();
-  }, 10000);
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
@@ -51,7 +49,8 @@ function nextSlide() {
   lightboxImg.src = lightboxImages[currentIndex].href;
  setTimeout(function() {
     preloadNextPrevImages();
-  }, 10000);}
+  }, 10000);
+}
 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
@@ -59,7 +58,8 @@ function prevSlide() {
   lightboxImg.src = lightboxImages[currentIndex].href;
  setTimeout(function() {
     preloadNextPrevImages();
-  }, 10000);}
+  }, 10000);
+}
 
 window.addEventListener('keydown', function(event) {
   var lightbox = document.getElementById('lightbox');
