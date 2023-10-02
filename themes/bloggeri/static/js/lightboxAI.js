@@ -46,11 +46,13 @@ function preloadNextPrevImages() {
   var nextIndex = (currentIndex + 1) % lightboxImages.length;
   var prevIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
 
-  var nextImg = new Image();
-  nextImg.src = lightboxImages[nextIndex].href;
+  setTimeout(function() {
+    var nextImg = new Image();
+    nextImg.src = lightboxImages[nextIndex].href;
 
-  var prevImg = new Image();
-  prevImg.src = lightboxImages[prevIndex].href;
+    var prevImg = new Image();
+    prevImg.src = lightboxImages[prevIndex].href;
+  }, 300);
 }
 
 function nextSlide() {
