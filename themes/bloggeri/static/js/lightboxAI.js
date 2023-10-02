@@ -17,7 +17,7 @@ lightboxImages.forEach(function(image, index) {
     openLightbox(image.href);
   });
 });
-
+ 
 function loadImage(imageSrc, callback) {
   var image = new Image();
   image.onload = function() {
