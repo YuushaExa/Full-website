@@ -27,7 +27,9 @@ function openLightbox(imageSrc) {
   lightbox.classList.remove('hidden');
    document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
+ setTimeout(function() {
     preloadNextPrevImages();
+  }, 10000);
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
@@ -36,11 +38,8 @@ function openLightbox(imageSrc) {
 }
 function preloadNextPrevImages() {
   var nextIndex = (currentIndex + 1) % lightboxImages.length;
-  var prevIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var nextImg = new Image();
   nextImg.src = lightboxImages[nextIndex].href;
-  var prevImg = new Image();
-  prevImg.src = lightboxImages[prevIndex].href;
 }
 
 function nextSlide() {
@@ -56,9 +55,6 @@ function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
- setTimeout(function() {
-    preloadNextPrevImages();
-  }, 10000);
 }
 
 window.addEventListener('keydown', function(event) {
