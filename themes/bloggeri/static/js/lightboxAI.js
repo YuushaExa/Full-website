@@ -1,4 +1,4 @@
-var galleryContainer = document.querySelector('.gallery');
+var galleryContainer = document.querySelector('.gallery img');
 var lightbox = document.getElementById('lightbox');
 var lightboxImg = document.getElementById('lightbox-img');
 var loadingText = document.getElementById('loading-text');
