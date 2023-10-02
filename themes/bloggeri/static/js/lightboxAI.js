@@ -1,4 +1,4 @@
-var galleryContainer = document.querySelector('.gallery img');
+var galleryContainer = document.querySelector('.gallery');
 var lightbox = document.getElementById('lightbox');
 var lightboxImg = document.getElementById('lightbox-img');
 var loadingText = document.getElementById('loading-text');
@@ -7,6 +7,12 @@ var prevButton = document.querySelector('.prev');
 var currentIndex = 0;
 var isLoadingImage = false;
 var loadingTimeout;
+var lightboxImages = [];
+
+var galleryImages = document.querySelectorAll('.gallery img');
+galleryImages.forEach(function(image) {
+  lightboxImages.push({ href: image.parentNode.href });
+});
 
 galleryContainer.addEventListener('click', function(event) {
   var target = event.target;
