@@ -35,11 +35,21 @@ function openLightbox(imageSrc) {
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
   }
- var totalImages = lightboxImages.length;
+  var totalImages = lightboxImages.length;
 
   // Update the total number of images display
   var totalImagesElement = document.getElementById('total-images');
   totalImagesElement.textContent = totalImages;
+
+  // ...existing code...
+
+  // Assign numbers to each image
+  lightboxImages.forEach(function(image, index) {
+    image.setAttribute('data-image-number', index + 1);
+    image.addEventListener('click', function() {
+      showImageNumber(index + 1);
+    });
+  });
   
 }
 function preloadNextPrevImages() {
@@ -98,12 +108,12 @@ function handleMouseWheel(event) {
   }
 }
 
-function updateImageNumber(currentImageIndex) {
+function showImageNumber(imageNumber) {
   // Get the current image number element
   var currentImageNumberElement = document.getElementById('current-image-number');
 
   // Update the current image number display
-  currentImageNumberElement.textContent = currentImageIndex + 1;
+  currentImageNumberElement.textContent = imageNumber;
 }
 
 function closeLightbox() {
