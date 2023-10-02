@@ -50,6 +50,16 @@ function openLightbox(imageSrc) {
       showImageNumber(index + 1);
     });
   });
+
+  // Show the image number of the initially displayed image
+  var initialImageIndex = lightboxImages.findIndex(function(image) {
+    return image.src === imageSrc;
+  });
+  if (initialImageIndex !== -1) {
+    var initialImageNumber = initialImageIndex + 1;
+    showImageNumber(initialImageNumber);
+  }
+
   
 }
 function preloadNextPrevImages() {
@@ -114,6 +124,7 @@ function showImageNumber(imageNumber) {
 
   // Update the current image number display
   currentImageNumberElement.textContent = imageNumber;
+  
 }
 
 function closeLightbox() {
