@@ -27,8 +27,7 @@ function loadImage(imageSrc, callback) {
     callback(new Error('Failed to load image'));
   };
   image.src = imageSrc;
-});
-
+}
 
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
