@@ -43,12 +43,8 @@ function openLightbox(imageSrc) {
 
   // ...existing code...
 
-  // Assign numbers to each image
-  lightboxImages.forEach(function(image, index) {
+lightboxImages.forEach(function(image, index) {
     image.setAttribute('data-image-number', index + 1);
-    image.addEventListener('click', function() {
-      showImageNumber(index + 1);
-    });
   });
 
   // Show the image number of the initially displayed image
@@ -59,6 +55,13 @@ function openLightbox(imageSrc) {
     var initialImageNumber = initialImageIndex + 1;
     showImageNumber(initialImageNumber);
   }
+
+  // Add event listeners to images
+  lightboxImages.forEach(function(image, index) {
+    image.addEventListener('click', function() {
+      showImageNumber(index + 1);
+    });
+  });
 
   
 }
