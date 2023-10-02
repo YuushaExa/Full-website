@@ -62,36 +62,38 @@ function nextSlide() {
   document.querySelector('.next').disabled = true;
   document.querySelector('.prev').disabled = true;
 
-  currentIndex = (currentIndex + 1) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
-  var loadingText = document.getElementById('loading-text');
-  var isImageLoaded = false; // Flag to track if the current image has finished loading
-
-  // Show loading text
-  loadingText.style.display = 'block';
-  // Hide image until loaded
-  lightboxImg.style.display = 'none';
-
-  // Set image source
-  lightboxImg.src = lightboxImages[currentIndex].href;
-  // Wait for image to load
-  lightboxImg.onload = function() {
-    isImageLoaded = true; // Set the flag to true when the image has finished loading
-
-    // Hide loading text
-    loadingText.style.display = 'none';
-    // Show image
-    lightboxImg.style.display = 'block';
-
-    // Enable next/prev buttons after loading
-    document.querySelector('.next').disabled = false;
-    document.querySelector('.prev').disabled = false;
-  };
-
-  // Preload next/previous images
   setTimeout(function() {
-    preloadNextPrevImages();
-  }, 10000);
+    currentIndex = (currentIndex + 1) % lightboxImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    var loadingText = document.getElementById('loading-text');
+    var isImageLoaded = false; // Flag to track if the current image has finished loading
+
+    // Show loading text
+    loadingText.style.display = 'block';
+    // Hide image until loaded
+    lightboxImg.style.display = 'none';
+
+    // Set image source
+    lightboxImg.src = lightboxImages[currentIndex].href;
+    // Wait for image to load
+    lightboxImg.onload = function() {
+      isImageLoaded = true; // Set the flag to true when the image has finished loading
+
+      // Hide loading text
+      loadingText.style.display = 'none';
+      // Show image
+      lightboxImg.style.display = 'block';
+
+      // Enable next/prev buttons after loading
+      document.querySelector('.next').disabled = false;
+      document.querySelector('.prev').disabled = false;
+    };
+
+    // Preload next/previous images
+    setTimeout(function() {
+      preloadNextPrevImages();
+    }, 10000);
+  }, 100);
 }
 
 function prevSlide() {
@@ -99,36 +101,38 @@ function prevSlide() {
   document.querySelector('.next').disabled = true;
   document.querySelector('.prev').disabled = true;
 
-  currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
-  var loadingText = document.getElementById('loading-text');
-  var isImageLoaded = false; // Flag to track if the current image has finished loading
-
-  // Show loading text
-  loadingText.style.display = 'block';
-  // Hide image until loaded
-  lightboxImg.style.display = 'none';
-
-  // Set image source
-  lightboxImg.src = lightboxImages[currentIndex].href;
-  // Wait for image to load
-  lightboxImg.onload = function() {
-    isImageLoaded = true; // Set the flag to true when the image has finished loading
-
-    // Hide loading text
-    loadingText.style.display = 'none';
-    // Show image
-    lightboxImg.style.display = 'block';
-
-    // Enable next/prev buttons after loading
-    document.querySelector('.next').disabled = false;
-    document.querySelector('.prev').disabled = false;
-  };
-
-  // Preload next/previous images
   setTimeout(function() {
-    preloadNextPrevImages();
-  }, 10000);
+    currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    var lightboxImg = document.getElementById('lightbox-img');
+    var loadingText = document.getElementById('loading-text');
+    var isImageLoaded = false; // Flag to track if the current image has finished loading
+
+    // Show loading text
+    loadingText.style.display = 'block';
+    // Hide image until loaded
+    lightboxImg.style.display = 'none';
+
+    // Set image source
+    lightboxImg.src = lightboxImages[currentIndex].href;
+    // Wait for image to load
+    lightboxImg.onload = function() {
+      isImageLoaded = true; // Set the flag to true when the image has finished loading
+
+      // Hide loading text
+      loadingText.style.display = 'none';
+      // Show image
+      lightboxImg.style.display = 'block';
+
+      // Enable next/prev buttons after loading
+      document.querySelector('.next').disabled = false;
+      document.querySelector('.prev').disabled = false;
+    };
+
+    // Preload next/previous images
+    setTimeout(function() {
+      preloadNextPrevImages();
+    }, 10000);
+  }, 100);
 }
 
 window.addEventListener('keydown', function(event) {
