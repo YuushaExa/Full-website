@@ -34,7 +34,12 @@ function openLightbox(imageSrc) {
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
   }
+ var totalImages = lightboxImages.length;
 
+  // Update the total number of images display
+  var totalImagesElement = document.getElementById('total-images');
+  totalImagesElement.textContent = totalImages;
+  
 }
 function preloadNextPrevImages() {
   var nextIndex = (currentIndex + 1) % lightboxImages.length;
@@ -81,6 +86,14 @@ function handleMouseWheel(event) {
     }
     event.preventDefault();
   }
+}
+
+function updateImageNumber(currentImageIndex) {
+  // Get the current image number element
+  var currentImageNumberElement = document.getElementById('current-image-number');
+
+  // Update the current image number display
+  currentImageNumberElement.textContent = currentImageIndex + 1;
 }
 
 function closeLightbox() {
