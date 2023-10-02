@@ -14,6 +14,18 @@ galleryImages.forEach(function(image) {
   lightboxImages.push({ href: image.parentNode.href });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var galleryImages = document.querySelectorAll('.gallery img');
+
+  galleryImages.forEach(function(image, index) {
+    var thumbnailImage = image.parentNode.href;
+    var largeImage = image.parentNode.getAttribute('href');
+
+    image.src = thumbnailImage;
+    image.dataset.largeImage = largeImage;
+  });
+});
+
 galleryContainer.addEventListener('click', function(event) {
   var target = event.target;
   if (target.tagName === 'IMG' && target.parentNode.classList.contains('gallery')) {
