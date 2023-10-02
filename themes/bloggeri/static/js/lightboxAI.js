@@ -33,38 +33,38 @@ function loadImage(imageSrc, callback) {
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
-    var loadingText = document.getElementById('loading-text');
-  var isImageLoaded = false;
+  var loadingText = document.getElementById('loading-text');
 
-// Show loading text
+  // Show loading text
   loadingText.style.display = 'block';
-
   // Hide image until loaded
   lightboxImg.style.display = 'none';
-  
- loadImage(imageSrc, function(error, image) {
+
+  loadImage(imageSrc, function(error, image) {
     if (error) {
       console.error(error);
       return;
     }
-       // Hide loading text
-    loadingText.style.display = 'none';
 
+    // Hide loading text
+    loadingText.style.display = 'none';
     // Show image
+    lightboxImg.src = image.src;
     lightboxImg.style.display = 'block';
-  };
-  
-  lightbox.classList.remove('hidden');
-   document.body.classList.add('lightbox-open');
-  document.documentElement.style.overflow = 'hidden';
- setTimeout(function() {
-    preloadNextPrevImages();
-  }, 10000);
-  var lightbox = document.getElementById('lightbox');
+
+    lightbox.classList.remove('hidden');
+    document.body.classList.add('lightbox-open');
+    document.documentElement.style.overflow = 'hidden';
+
+    setTimeout(function() {
+      preloadNextPrevImages();
+    }, 10000);
+
+      var lightbox = document.getElementById('lightbox');
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
   }
-  
+  });
 }
 function preloadNextPrevImages() {
   var nextIndex = (currentIndex + 1) % lightboxImages.length;
