@@ -62,7 +62,25 @@ function preloadNextPrevImages() {
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+ var loadingText = document.getElementById('loading-text');
+
+  // Show loading text
+  loadingText.style.display = 'block';
+
+  // Hide image until loaded
+  lightboxImg.style.display = 'none';
+
+  // Set image source
   lightboxImg.src = lightboxImages[currentIndex].href;
+
+  // Wait for image to load
+  lightboxImg.onload = function() {
+    // Hide loading text
+    loadingText.style.display = 'none';
+
+    // Show image
+    lightboxImg.style.display = 'block';
+  };
  setTimeout(function() {
     preloadNextPrevImages();
   }, 10000);
@@ -71,8 +89,25 @@ function nextSlide() {
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+ var loadingText = document.getElementById('loading-text');
+
+  // Show loading text
+  loadingText.style.display = 'block';
+
+  // Hide image until loaded
+  lightboxImg.style.display = 'none';
+
+  // Set image source
   lightboxImg.src = lightboxImages[currentIndex].href;
-}
+
+  // Wait for image to load
+  lightboxImg.onload = function() {
+    // Hide loading text
+    loadingText.style.display = 'none';
+
+    // Show image
+    lightboxImg.style.display = 'block';
+  };}
 
 window.addEventListener('keydown', function(event) {
   var lightbox = document.getElementById('lightbox');
