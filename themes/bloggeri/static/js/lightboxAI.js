@@ -17,6 +17,19 @@ lightboxImages.forEach(function(image, index) {
     openLightbox(image.href);
   });
 });
+
+function loadImage(imageSrc, callback) {
+  var image = new Image();
+  image.onload = function() {
+    callback(null, image);
+  };
+  image.onerror = function() {
+    callback(new Error('Failed to load image'));
+  };
+  image.src = imageSrc;
+}
+
+
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
@@ -29,10 +42,11 @@ function openLightbox(imageSrc) {
   // Hide image until loaded
   lightboxImg.style.display = 'none';
   
-  lightboxImg.src = imageSrc;
-    lightboxImg.onload = function() {
-    isImageLoaded = true; // Set the flag to true when image has finished loading
-
+ loadImage(imageSrc, function(error, image) {
+    if (error) {
+      console.error(error);
+      return;
+    }
        // Hide loading text
     loadingText.style.display = 'none';
 
@@ -58,10 +72,6 @@ function preloadNextPrevImages() {
   nextImg.src = lightboxImages[nextIndex].href;
 }
 function nextSlide() {
-  // Disable next/prev buttons while loading
-  document.querySelector('.next').disabled = true;
-  document.querySelector('.prev').disabled = true;
-
   setTimeout(function() {
     currentIndex = (currentIndex + 1) % lightboxImages.length;
     var lightboxImg = document.getElementById('lightbox-img');
@@ -76,19 +86,7 @@ function nextSlide() {
     // Set image source
     lightboxImg.src = lightboxImages[currentIndex].href;
     // Wait for image to load
-    lightboxImg.onload = function() {
-      isImageLoaded = true; // Set the flag to true when the image has finished loading
-
-      // Hide loading text
-      loadingText.style.display = 'none';
-      // Show image
-      lightboxImg.style.display = 'block';
-
-      // Enable next/prev buttons after loading
-      document.querySelector('.next').disabled = false;
-      document.querySelector('.prev').disabled = false;
-    };
-
+    openLightbox(imageSrc);
     // Preload next/previous images
     setTimeout(function() {
       preloadNextPrevImages();
@@ -115,18 +113,7 @@ function prevSlide() {
     // Set image source
     lightboxImg.src = lightboxImages[currentIndex].href;
     // Wait for image to load
-    lightboxImg.onload = function() {
-      isImageLoaded = true; // Set the flag to true when the image has finished loading
-
-      // Hide loading text
-      loadingText.style.display = 'none';
-      // Show image
-      lightboxImg.style.display = 'block';
-
-      // Enable next/prev buttons after loading
-      document.querySelector('.next').disabled = false;
-      document.querySelector('.prev').disabled = false;
-    };
+ openLightbox(imageSrc);
 
     // Preload next/previous images
     setTimeout(function() {
