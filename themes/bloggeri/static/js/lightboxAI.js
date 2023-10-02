@@ -1,7 +1,6 @@
 var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
 var lightboxImages = [];
-
 galleryImages.forEach(function(image) {
   var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
   var link = document.createElement('a');
@@ -24,11 +23,9 @@ function openLightbox(imageSrc) {
     var loadingText = document.getElementById('loading-text');
   var isImageLoaded = false;
 
- // Show loading text
+// Show loading text
   loadingText.style.display = 'block';
 
-function openLightbox(imageSrc) {
-  
   // Hide image until loaded
   lightboxImg.style.display = 'none';
   
@@ -36,7 +33,7 @@ function openLightbox(imageSrc) {
     lightboxImg.onload = function() {
     isImageLoaded = true; // Set the flag to true when image has finished loading
 
-    // Hide loading text
+       // Hide loading text
     loadingText.style.display = 'none';
 
     // Show image
