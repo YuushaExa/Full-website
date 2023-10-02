@@ -3,7 +3,7 @@ var currentIndex = 0;
 var lightboxImages = [];
 
 galleryImages.forEach(function(image) {
-  var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=260";
+  var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
   var link = document.createElement('a');
   link.href = imgLink;
   link.setAttribute('data-fancybox', 'gallery');
