@@ -34,35 +34,14 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
-  lightboxImg.classList.add('transition-main'); // Add animation class
-
-  // Add 'is-animating' class to HTML element
-  document.documentElement.classList.add('is-animating');
-  document.documentElement.classList.remove('is-leaving');
-  document.documentElement.classList.remove('to-left');
-
   lightboxImg.src = lightboxImages[currentIndex].href;
 }
-
+ 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
-  lightboxImg.classList.add('transition-main'); // Add animation class
-
-  // Add 'is-animating' class to HTML element
-  document.documentElement.classList.add('is-animating');
-  document.documentElement.classList.remove('is-leaving');
-  document.documentElement.classList.add('to-left');
-
   lightboxImg.src = lightboxImages[currentIndex].href;
 }
-
-lightboxImg.addEventListener('transitionend', function() {
-  lightboxImg.classList.remove('transition-main');
-  
-  // Remove 'is-animating' class from HTML element
-  document.documentElement.classList.remove('is-animating');
-});
  
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
@@ -70,7 +49,7 @@ function closeLightbox() {
   document.body.classList.remove('lightbox-open');
   document.documentElement.style.overflow = 'auto';
 }
-
+ 
 document.addEventListener('wheel', function(event) {
   if (!lightbox.classList.contains('hidden')) {
     event.preventDefault();
@@ -81,7 +60,7 @@ document.addEventListener('wheel', function(event) {
     }
   }
 });
-
+ 
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
     if (event.key === 'ArrowRight') {
@@ -91,23 +70,23 @@ window.addEventListener('keydown', function(event) {
     }
   }
 });
-
+ 
 var touchStartX = 0;
 var touchEndX = 0;
-
+ 
 document.addEventListener('touchstart', function(event) {
   touchStartX = event.touches[0].clientX;
 });
-
+ 
 document.addEventListener('touchend', function(event) {
   touchEndX = event.changedTouches[0].clientX;
   handleSwipe();
 });
-
+ 
 function handleSwipe() {
   var swipeThreshold = 50; // Adjust this value as needed
   var deltaX = touchEndX - touchStartX;
-
+ 
   if (deltaX > swipeThreshold) {
     prevSlide();
   } else if (deltaX < -swipeThreshold) {
