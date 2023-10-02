@@ -159,7 +159,6 @@ function handleMouseWheel(event) {
     } else {
       prevSlide();
     }
-    event.preventDefault();
   }
 }
 
