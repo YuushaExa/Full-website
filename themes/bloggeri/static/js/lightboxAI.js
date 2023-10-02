@@ -29,7 +29,7 @@ function openLightbox(imageSrc) {
   document.documentElement.style.overflow = 'hidden';
  setTimeout(function() {
     preloadNextPrevImages();
-  }, 1000);
+  }, 10000);
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
     lightbox.addEventListener('wheel', handleMouseWheel, { passive: true });
