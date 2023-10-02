@@ -58,63 +58,79 @@ function preloadNextPrevImages() {
   nextImg.src = lightboxImages[nextIndex].href;
 }
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
- var loadingText = document.getElementById('loading-text');
-var isImageLoaded = false; // Flag to track if the current image has finished loading
-  // Show loading text
-  loadingText.style.display = 'block';
-  // Hide image until loaded
-  lightboxImg.style.display = 'none';
-  // Set image source
-  lightboxImg.src = lightboxImages[currentIndex].href;
-  // Wait for image to load
-  lightboxImg.onload = function() {
-    isImageLoaded = true; // Set the flag to true when image has finished loading
-    // Hide loading text
-    loadingText.style.display = 'none';
-    // Show image
-    lightboxImg.style.display = 'block';
-      document.querySelector('.next').disabled = false;
-    document.querySelector('.prev').disabled = false;
-  };
   // Disable next/prev buttons while loading
   document.querySelector('.next').disabled = true;
   document.querySelector('.prev').disabled = true;
-  // Preload next/previous images
-  setTimeout(function() {
-    preloadNextPrevImages();
-  }, 10000);
-}
-function prevSlide() {
-  currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+
+  currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
- var loadingText = document.getElementById('loading-text');
+  var loadingText = document.getElementById('loading-text');
   var isImageLoaded = false; // Flag to track if the current image has finished loading
+
   // Show loading text
   loadingText.style.display = 'block';
   // Hide image until loaded
   lightboxImg.style.display = 'none';
+
   // Set image source
   lightboxImg.src = lightboxImages[currentIndex].href;
   // Wait for image to load
   lightboxImg.onload = function() {
-    isImageLoaded = true; // Set the flag to true when image has finished loading
+    isImageLoaded = true; // Set the flag to true when the image has finished loading
+
     // Hide loading text
     loadingText.style.display = 'none';
     // Show image
     lightboxImg.style.display = 'block';
+
+    // Enable next/prev buttons after loading
     document.querySelector('.next').disabled = false;
     document.querySelector('.prev').disabled = false;
   };
-  // Disable next/prev buttons while loading
-  document.querySelector('.next').disabled = true;
-  document.querySelector('.prev').disabled = true;
+
   // Preload next/previous images
   setTimeout(function() {
     preloadNextPrevImages();
   }, 10000);
 }
+
+function prevSlide() {
+  // Disable next/prev buttons while loading
+  document.querySelector('.next').disabled = true;
+  document.querySelector('.prev').disabled = true;
+
+  currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+  var lightboxImg = document.getElementById('lightbox-img');
+  var loadingText = document.getElementById('loading-text');
+  var isImageLoaded = false; // Flag to track if the current image has finished loading
+
+  // Show loading text
+  loadingText.style.display = 'block';
+  // Hide image until loaded
+  lightboxImg.style.display = 'none';
+
+  // Set image source
+  lightboxImg.src = lightboxImages[currentIndex].href;
+  // Wait for image to load
+  lightboxImg.onload = function() {
+    isImageLoaded = true; // Set the flag to true when the image has finished loading
+
+    // Hide loading text
+    loadingText.style.display = 'none';
+    // Show image
+    lightboxImg.style.display = 'block';
+
+    // Enable next/prev buttons after loading
+    document.querySelector('.next').disabled = false;
+    document.querySelector('.prev').disabled = false;
+  };
+
+  // Preload next/previous images
+  setTimeout(function() {
+    preloadNextPrevImages();
+  }, 10000);
+}
+
 window.addEventListener('keydown', function(event) {
   var lightbox = document.getElementById('lightbox');
   if (lightbox && lightbox.classList.contains('hidden') === false) {
