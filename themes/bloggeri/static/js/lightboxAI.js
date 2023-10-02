@@ -11,7 +11,6 @@ galleryImages.forEach(function(image) {
   link.appendChild(image);
   lightboxImages.push(link);
 });
-
 lightboxImages.forEach(function(image, index) {
   image.addEventListener('click', function(event) {
     event.preventDefault();
@@ -19,31 +18,24 @@ lightboxImages.forEach(function(image, index) {
     openLightbox(image.href);
   });
 });
-
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
     var loadingText = document.getElementById('loading-text');
   var isImageLoaded = false;
 
-var spinner = document.createElement('div');
-  spinner.className = 'spinner';
-  lightbox.appendChild(spinner);
-  
  // Show loading text
   loadingText.style.display = 'block';
 
+function openLightbox(imageSrc) {
+  
   // Hide image until loaded
   lightboxImg.style.display = 'none';
   
   lightboxImg.src = imageSrc;
-
     lightboxImg.onload = function() {
     isImageLoaded = true; // Set the flag to true when image has finished loading
 
- // Remove loading spinner
-    lightbox.removeChild(spinner);
-      
     // Hide loading text
     loadingText.style.display = 'none';
 
@@ -68,84 +60,64 @@ function preloadNextPrevImages() {
   var nextImg = new Image();
   nextImg.src = lightboxImages[nextIndex].href;
 }
-
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
  var loadingText = document.getElementById('loading-text');
 var isImageLoaded = false; // Flag to track if the current image has finished loading
-
   // Show loading text
   loadingText.style.display = 'block';
-
   // Hide image until loaded
   lightboxImg.style.display = 'none';
-
   // Set image source
   lightboxImg.src = lightboxImages[currentIndex].href;
-
   // Wait for image to load
   lightboxImg.onload = function() {
     isImageLoaded = true; // Set the flag to true when image has finished loading
-
     // Hide loading text
     loadingText.style.display = 'none';
-
     // Show image
     lightboxImg.style.display = 'block';
       document.querySelector('.next').disabled = false;
     document.querySelector('.prev').disabled = false;
   };
-
   // Disable next/prev buttons while loading
   document.querySelector('.next').disabled = true;
   document.querySelector('.prev').disabled = true;
-
   // Preload next/previous images
   setTimeout(function() {
     preloadNextPrevImages();
   }, 10000);
 }
-
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
  var loadingText = document.getElementById('loading-text');
-
   var isImageLoaded = false; // Flag to track if the current image has finished loading
-
   // Show loading text
   loadingText.style.display = 'block';
-
   // Hide image until loaded
   lightboxImg.style.display = 'none';
-
   // Set image source
   lightboxImg.src = lightboxImages[currentIndex].href;
-
   // Wait for image to load
   lightboxImg.onload = function() {
     isImageLoaded = true; // Set the flag to true when image has finished loading
-
     // Hide loading text
     loadingText.style.display = 'none';
-
     // Show image
     lightboxImg.style.display = 'block';
     document.querySelector('.next').disabled = false;
     document.querySelector('.prev').disabled = false;
   };
-
   // Disable next/prev buttons while loading
   document.querySelector('.next').disabled = true;
   document.querySelector('.prev').disabled = true;
-
   // Preload next/previous images
   setTimeout(function() {
     preloadNextPrevImages();
   }, 10000);
 }
-
 window.addEventListener('keydown', function(event) {
   var lightbox = document.getElementById('lightbox');
   if (lightbox && lightbox.classList.contains('hidden') === false) {
@@ -156,7 +128,6 @@ window.addEventListener('keydown', function(event) {
     }
   }
 });
-
 function handleMouseWheel(event) {
   var lightbox = document.getElementById('lightbox');
   if (lightbox && lightbox.classList.contains('hidden') === false) {
@@ -168,7 +139,6 @@ function handleMouseWheel(event) {
     }
   }
 }
-
 function closeLightbox() {
   var lightbox = document.getElementById('lightbox');
   lightbox.classList.add('hidden');
