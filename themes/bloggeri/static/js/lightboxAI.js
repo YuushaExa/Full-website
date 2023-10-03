@@ -1,5 +1,14 @@
 var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
+var totalImages = galleryImages.length;
+var openedImageCounter = document.getElementById('opened-image-counter');
+var totalImageCounter = document.getElementById('total-image-counter');
+updateCounters();
+
+function updateCounters() {
+  openedImageCounter.textContent = currentIndex + 1;
+  totalImageCounter.textContent = totalImages;
+}
  
 // Wrap each image with an <a> tag and set the data-fancybox attribute
 galleryImages.forEach(function(image) {
@@ -29,18 +38,21 @@ function openLightbox(imageSrc) {
   lightbox.classList.remove('hidden');
 document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
+  updateCounters();
 }
- 
+
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
+   updateCounters();
 }
  
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   lightboxImg.src = lightboxImages[currentIndex].href;
+   updateCounters();
 }
  
 function closeLightbox() {
