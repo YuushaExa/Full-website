@@ -202,6 +202,17 @@ function closeLightbox() {
  
 document.addEventListener('wheel', function(event) {
   if (!lightbox.classList.contains('hidden')) {
+
+       loadingBarC.style.display = 'none'; // Show the loading bar
+   loadingText.style.display = 'none'; // Hide the image initially
+ 
+  var loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  var loadingTimeout = setTimeout(function() {
+    loadingBarC.style.display = 'block'; // Show the loading bar after 1 second
+  }, 1000);
+    
     if (event.deltaY > 0) {
       nextSlide();
     } else {
@@ -212,6 +223,17 @@ document.addEventListener('wheel', function(event) {
  
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
+
+   loadingBarC.style.display = 'none'; // Show the loading bar
+   loadingText.style.display = 'none'; // Hide the image initially
+ 
+  var loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  var loadingTimeout = setTimeout(function() {
+    loadingBarC.style.display = 'block'; // Show the loading bar after 1 second
+  }, 1000);
+    
     if (event.key === 'ArrowRight') {
       nextSlide();
     } else if (event.key === 'ArrowLeft') {
