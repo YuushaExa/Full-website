@@ -1,28 +1,21 @@
-.transition-main {
-  transition-property: opacity, transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
-  transform: translateX(0);
-  opacity: 0; /* Start with opacity 0 */
+#image-counter {
+    color: #ccc;
+    font-size: 13px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    height: 44px;
+    line-height: 44px;
+    min-width: 44px;
+    mix-blend-mode: difference;
+    padding: 0 10px;
+    pointer-events: none;
+    user-select: none;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
-html.is-animating .transition-main {
-  opacity: 1; /* Fade in to opacity 1 */
-  transform: translateX(-1em);
-}
-
-html.is-leaving .transition-main {
-  transform: translateX(1em);
-}
-
-html.is-animating.to-left .transition-main {
-  opacity: 1; /* Fade in to opacity 1 */
-  transform: translateX(1em);
-}
-
-html.is-leaving.to-left .transition-main {
-  transform: translateX(-1em);
-}
 
 #lightbox-img {
   max-width: 90%;
