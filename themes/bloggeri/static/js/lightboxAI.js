@@ -5,7 +5,7 @@ var openedImageCounter = document.getElementById('opened-image-counter');
 var totalImageCounter = document.getElementById('total-image-counter');
 updateCounters();
   var loadingBarC = document.getElementById('loading-bar-container');
-
+var loadingText = document.getElementById('loading-text');
  
 function updateCounters() {
   openedImageCounter.textContent = currentIndex + 1;
