@@ -97,7 +97,8 @@ function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   var loadingText = document.getElementById('loading-text');
-  
+    loadingBar.style.width = '0%'; // Reset the loading bar width
+
   lightboxImg.style.display = 'none'; // Hide the image initially
   
   var loadingTimeout = setTimeout(function() {
@@ -120,7 +121,8 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
   
   lightboxImg.style.display = 'none'; // Hide the image initially
-  
+    loadingBar.style.width = '0%'; // Reset the loading bar width
+
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
