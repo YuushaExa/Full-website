@@ -22,7 +22,6 @@ galleryImages.forEach(function(image) {
  
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
  
-// Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
   image.addEventListener('click', function(event) {
     event.preventDefault();
