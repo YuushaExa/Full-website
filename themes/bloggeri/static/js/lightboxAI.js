@@ -158,7 +158,8 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     lightboxImg.style.display = 'block'; // Show the image
-    loadingText.style.display = 'none'; // Hide the loading text
+    loadingText.style.display = 'none!important'; // Hide the loading text
+     loadingBarC.style.display = 'none!important'; // Show the loading bar
   });
  
   loadLightboxImage(lightboxImages[currentIndex].href);
@@ -184,7 +185,8 @@ function prevSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     lightboxImg.style.display = 'block'; // Show the image
-    loadingText.style.display = 'none'; // Hide the loading text
+    loadingText.style.display = 'none!important'; // Hide the loading text
+     loadingBarC.style.display = 'none!important'; // Show the loading bar
   });
  
   loadLightboxImage(lightboxImages[currentIndex].href);
