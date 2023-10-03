@@ -111,7 +111,7 @@ function loadLightboxImage(imageSrc) {
     var loadingBarC = document.getElementById('loading-bar-container');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
-
+ loadingBar.style.width = '0%'; // Reset the loading bar width
  
   var xhr = new XMLHttpRequest();
   xhr.open('GET', imageSrc, true);
