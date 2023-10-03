@@ -137,7 +137,15 @@ document.addEventListener('wheel', function(event) {
     }
   }
 });
- 
+
+document.addEventListener('touchstart', function(event) {
+  if (event.target.classList.contains('lightbox-image')) {
+    event.preventDefault(); // Prevent the default behavior of the touchstart event
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+  }
+}, { passive: false });
+
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
     if (event.key === 'ArrowRight') {
