@@ -38,26 +38,24 @@ function openLightbox(imageSrc) {
   var loadingProgress = document.getElementById('loading-progress');
   
   loadingProgress.style.width = '0%'; // Reset the loading progress
-  
-  // Remove existing event listeners
-  lightboxImg.removeEventListener('load', onImageLoad);
-  lightboxImg.removeEventListener('progress', onImageProgress);
+  var isLoadingComplete = false; // Flag to track completion of image loading
   
   // Add a load event listener to the image
-  function onImageLoad() {
-    lightboxImg.style.display = 'block'; // Show the image
-    loadingBar.style.display = 'none'; // Hide the loading bar
-  }
-  lightboxImg.addEventListener('load', onImageLoad);
+  lightboxImg.addEventListener('load', function() {
+    if (!isLoadingComplete) {
+      lightboxImg.style.display = 'block'; // Show the image
+      loadingBar.style.display = 'none'; // Hide the loading bar
+      isLoadingComplete = true; // Set the flag to true to indicate loading completion
+    }
+  });
   
   // Add a progress event listener to track the loading progress
-  function onImageProgress(event) {
-    if (event.lengthComputable) {
+  lightboxImg.addEventListener('progress', function(event) {
+    if (!isLoadingComplete && event.lengthComputable) {
       var progress = (event.loaded / event.total) * 100;
       loadingProgress.style.width = progress + '%'; // Update the loading progress
     }
-  }
-  lightboxImg.addEventListener('progress', onImageProgress);
+  });
   
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
