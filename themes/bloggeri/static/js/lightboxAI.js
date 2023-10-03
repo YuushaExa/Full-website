@@ -41,6 +41,7 @@ var loadingText = document.getElementById('loading-text');
   lightboxImg.style.display = 'none'; // Hide the image initially
   loadingText.style.display = 'block'; // Show the loading text
   loadingBar.style.width = '0%'; // Reset the loading bar width
+  loadingBar.style.display = 'block'; // Show the loading bar
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -66,6 +67,7 @@ var loadingText = document.getElementById('loading-text');
       var imageUrl = URL.createObjectURL(xhr.response);
       lightboxImg.src = imageUrl;
       loadingProgress.textContent = ''; // Clear the loading progress text
+      loadingBar.style.display = 'none'; // Hide the loading bar
     }
   };
 
@@ -96,10 +98,14 @@ function updateLoadingBar(progress, loadedKB, totalKB) {
 function loadLightboxImage(imageSrc) {
   var lightboxImg = document.getElementById('lightbox-img');
   var loadingText = document.getElementById('loading-text');
+  var loadingBar = document.getElementById('loading-bar');
+  var loadingProgress = document.getElementById('loading-progress');
   
   lightboxImg.style.display = 'none'; // Hide the image initially
   loadingText.style.display = 'block'; // Show the loading text
-  
+ loadingBar.style.width = '0%'; // Reset the loading bar width
+  loadingBar.style.display = 'block'; // Show the loading bar
+ 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', imageSrc, true);
   xhr.responseType = 'blob';
@@ -117,7 +123,8 @@ function loadLightboxImage(imageSrc) {
     if (xhr.status === 200) {
       var imageUrl = URL.createObjectURL(xhr.response);
       lightboxImg.src = imageUrl;
-      loadingText.style.display = 'none'; // Hide the loading text
+           loadingText.style.display = 'none'; // Hide the loading text
+      loadingBar.style.display = 'none'; // Hide the loading bar
       updateLoadingBar(100, 0, 0); // Update loading bar to 100% when the image is fully loaded
     }
   };
