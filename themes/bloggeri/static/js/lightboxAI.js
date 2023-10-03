@@ -162,7 +162,7 @@ function handleSwipe() {
   if (deltaY > swipeThreshold) {
     closeLightbox();
   } else if (deltaY < -swipeThreshold) {
-    nextSlide();
+    closeLightbox()
   }
  
   if (deltaX > swipeThreshold) {
