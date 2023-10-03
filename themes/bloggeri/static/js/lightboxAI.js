@@ -70,62 +70,54 @@ function nextSlide() {
   var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
   
+  lightboxImg.style.display = 'none'; // Hide the image initially
+  loadingBar.style.display = 'block'; // Show the loading bar
   loadingProgress.style.width = '0%'; // Reset the loading progress
   
-  // Remove existing event listeners
-  lightboxImg.removeEventListener('load', onImageLoad);
-  lightboxImg.removeEventListener('progress', onImageProgress);
-  
   // Add a load event listener to the image
-  function onImageLoad() {
+  lightboxImg.addEventListener('load', function() {
     lightboxImg.style.display = 'block'; // Show the image
     loadingBar.style.display = 'none'; // Hide the loading bar
-  }
-  lightboxImg.addEventListener('load', onImageLoad);
+  });
   
   // Add a progress event listener to track the loading progress
-  function onImageProgress(event) {
+  lightboxImg.addEventListener('progress', function(event) {
     if (event.lengthComputable) {
       var progress = (event.loaded / event.total) * 100;
       loadingProgress.style.width = progress + '%'; // Update the loading progress
     }
-  }
-  lightboxImg.addEventListener('progress', onImageProgress);
+  });
   
   lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+  updateCounters();
 }
- 
+
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
   
+  lightboxImg.style.display = 'none'; // Hide the image initially
+  loadingBar.style.display = 'block'; // Show the loading bar
   loadingProgress.style.width = '0%'; // Reset the loading progress
   
-  // Remove existing event listeners
-  lightboxImg.removeEventListener('load', onImageLoad);
-  lightboxImg.removeEventListener('progress', onImageProgress);
-  
   // Add a load event listener to the image
-  function onImageLoad() {
+  lightboxImg.addEventListener('load', function() {
     lightboxImg.style.display = 'block'; // Show the image
     loadingBar.style.display = 'none'; // Hide the loading bar
-  }
-  lightboxImg.addEventListener('load', onImageLoad);
+  });
   
   // Add a progress event listener to track the loading progress
-  function onImageProgress(event) {
+  lightboxImg.addEventListener('progress', function(event) {
     if (event.lengthComputable) {
       var progress = (event.loaded / event.total) * 100;
       loadingProgress.style.width = progress + '%'; // Update the loading progress
     }
-  }
-  lightboxImg.addEventListener('progress', onImageProgress);
+  });
   
   lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+  updateCounters();
 }
  
 function closeLightbox() {
