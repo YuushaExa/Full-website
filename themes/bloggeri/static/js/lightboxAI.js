@@ -41,22 +41,28 @@ function openLightbox(imageSrc) {
     var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
   
+  
   loadingProgress.style.width = '0%'; // Reset the loading progress
   
+  // Remove existing event listeners
+  lightboxImg.removeEventListener('load', onImageLoad);
+  lightboxImg.removeEventListener('progress', onImageProgress);
+  
   // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
+  function onImageLoad() {
     lightboxImg.style.display = 'block'; // Show the image
     loadingBar.style.display = 'none'; // Hide the loading bar
-  });
+  }
+  lightboxImg.addEventListener('load', onImageLoad);
   
   // Add a progress event listener to track the loading progress
-  lightboxImg.addEventListener('progress', function(event) {
+  function onImageProgress(event) {
     if (event.lengthComputable) {
       var progress = (event.loaded / event.total) * 100;
       loadingProgress.style.width = progress + '%'; // Update the loading progress
     }
-  });
-
+  }
+  lightboxImg.addEventListener('progress', onImageProgress);
   
   lightboxImg.style.display = 'none'; // Hide the image initially
   
