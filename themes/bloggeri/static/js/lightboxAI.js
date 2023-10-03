@@ -37,11 +37,12 @@ var loadingText = document.getElementById('loading-text');
  
  var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
+  var loadingBarC = document.getElementById('loading-bar-container');
 
   lightboxImg.style.display = 'none'; // Hide the image initially
   loadingText.style.display = 'block'; // Show the loading text
   loadingBar.style.width = '0%'; // Reset the loading bar width
-  loadingBar.style.display = 'block'; // Show the loading bar
+  loadingBarC.style.display = 'block'; // Show the loading bar
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -67,7 +68,7 @@ var loadingText = document.getElementById('loading-text');
       var imageUrl = URL.createObjectURL(xhr.response);
       lightboxImg.src = imageUrl;
       loadingProgress.textContent = ''; // Clear the loading progress text
-      loadingBar.style.display = 'none'; // Hide the loading bar
+      loadingBarC.style.display = 'none'; // Hide the loading bar
     }
   };
 
@@ -90,7 +91,8 @@ document.body.classList.add('lightbox-open');
 function updateLoadingBar(progress, loadedKB, totalKB) {
   var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
-  
+    var loadingBarC = document.getElementById('loading-bar-container');
+
   loadingBar.style.width = progress + '%';
   loadingProgress.textContent = loadedKB + ' KB / ' + totalKB + ' KB';
 }
@@ -100,11 +102,12 @@ function loadLightboxImage(imageSrc) {
   var loadingText = document.getElementById('loading-text');
   var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
-  
+    var loadingBarC = document.getElementById('loading-bar-container');
+
   lightboxImg.style.display = 'none'; // Hide the image initially
   loadingText.style.display = 'block'; // Show the loading text
  loadingBar.style.width = '0%'; // Reset the loading bar width
-  loadingBar.style.display = 'block'; // Show the loading bar
+  loadingBarC.style.display = 'block'; // Show the loading bar
  
   var xhr = new XMLHttpRequest();
   xhr.open('GET', imageSrc, true);
@@ -124,7 +127,7 @@ function loadLightboxImage(imageSrc) {
       var imageUrl = URL.createObjectURL(xhr.response);
       lightboxImg.src = imageUrl;
            loadingText.style.display = 'none'; // Hide the loading text
-      loadingBar.style.display = 'none'; // Hide the loading bar
+      loadingBarC.style.display = 'none'; // Hide the loading bar
       updateLoadingBar(100, 0, 0); // Update loading bar to 100% when the image is fully loaded
     }
   };
