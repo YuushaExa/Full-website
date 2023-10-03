@@ -34,12 +34,8 @@ lightboxImages.forEach(function(image, index) {
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
-
- var loadingText = document.getElementById('loading-text');
-
-    var loadingBar = document.getElementById('loading-bar');
+  var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
-  
   
   loadingProgress.style.width = '0%'; // Reset the loading progress
   
@@ -62,10 +58,10 @@ function openLightbox(imageSrc) {
     }
   }
   lightboxImg.addEventListener('progress', onImageProgress);
-
+  
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
-document.body.classList.add('lightbox-open');
+  document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
   updateCounters();
 }
