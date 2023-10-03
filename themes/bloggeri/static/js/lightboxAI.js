@@ -37,7 +37,6 @@ function openLightbox(imageSrc) {
 
  var loadingText = document.getElementById('loading-text');
 
-
     var loadingBar = document.getElementById('loading-bar');
   var loadingProgress = document.getElementById('loading-progress');
   
@@ -63,20 +62,7 @@ function openLightbox(imageSrc) {
     }
   }
   lightboxImg.addEventListener('progress', onImageProgress);
-  
-  lightboxImg.style.display = 'none'; // Hide the image initially
-  
-  var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block'; // Show the loading text
-  }, 1000);
-  
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout); // Cancel the loading text timeout
-    lightboxImg.style.display = 'block'; // Show the image
-    loadingText.style.display = 'none'; // Hide the loading text
-  });
-  
+
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
 document.body.classList.add('lightbox-open');
