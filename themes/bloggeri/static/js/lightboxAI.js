@@ -202,7 +202,6 @@ function closeLightbox() {
  
 document.addEventListener('wheel', function(event) {
   if (!lightbox.classList.contains('hidden')) {
-    event.preventDefault();
     if (event.deltaY > 0) {
       nextSlide();
     } else {
