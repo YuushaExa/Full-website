@@ -140,7 +140,8 @@ function nextSlide() {
   var loadingText = document.getElementById('loading-text');
 
   lightboxImg.style.display = 'none'; // Hide the image initially
-  
+   loadingText.style.display = 'none'; 
+ 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
@@ -161,6 +162,7 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
   
   lightboxImg.style.display = 'none'; // Hide the image initially
+  loadingText.style.display = 'none'; 
 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
