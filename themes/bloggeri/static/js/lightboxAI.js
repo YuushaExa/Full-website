@@ -42,10 +42,15 @@ var loadingText = document.getElementById('loading-text');
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
+
+ lightboxImg.style.opacity = '0'; // Set initial opacity to 0
+  lightboxImg.style.transform = 'translateX(100%)'; // Move image to the right
  
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
+      lightboxImg.style.opacity = '1'; // Fade in the image
+    lightboxImg.style.transform = 'translateX(0)'; // Reset image position
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
   });
@@ -64,6 +69,17 @@ function nextSlide() {
   var loadingText = document.getElementById('loading-text');
  
     lightboxImg.style.display = 'none'; // Hide the image initially
+
+ lightboxImg.style.opacity = '0'; // Set initial opacity to 0
+  lightboxImg.style.transform = 'translateX(100%)'; // Move image to the right
+
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.style.opacity = '1'; // Fade in the image
+    lightboxImg.style.transform = 'translateX(0)'; // Reset image position
+    loadingText.style.display = 'none'; // Hide the loading text
+  });
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -87,6 +103,17 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
+
+  lightboxImg.style.opacity = '0'; // Set initial opacity to 0
+  lightboxImg.style.transform = 'translateX(-100%)'; // Move image to the left
+
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.style.opacity = '1'; // Fade in the image
+    lightboxImg.style.transform = 'translateX(0)'; // Reset image position
+    loadingText.style.display = 'none'; // Hide the loading text
+  });
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
