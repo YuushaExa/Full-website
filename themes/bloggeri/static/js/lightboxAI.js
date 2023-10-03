@@ -38,6 +38,7 @@ function openLightbox(imageSrc) {
 var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
+   lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -46,6 +47,8 @@ var loadingText = document.getElementById('loading-text');
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.classList.remove('loading');
+    lightboxImg.classList.add('loaded');
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
   });
@@ -63,7 +66,8 @@ function nextSlide() {
  
   var loadingText = document.getElementById('loading-text');
  
-    lightboxImg.style.display = 'none'; // Hide the image initially
+   lightboxImg.style.display = 'none'; // Hide the image initially
+   lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -72,6 +76,8 @@ function nextSlide() {
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.classList.remove('loading');
+    lightboxImg.classList.add('loaded');
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
   });
@@ -86,7 +92,8 @@ function prevSlide() {
  
   var loadingText = document.getElementById('loading-text');
  
-  lightboxImg.style.display = 'none'; // Hide the image initially
+    lightboxImg.style.display = 'none'; // Hide the image initially
+   lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -95,6 +102,8 @@ function prevSlide() {
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.classList.remove('loading');
+    lightboxImg.classList.add('loaded');
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
   });
