@@ -37,7 +37,6 @@ function openLightbox(imageSrc) {
  
 var loadingText = document.getElementById('loading-text');
  
-  lightboxImg.style.display = 'none'; // Hide the image initially
     lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
@@ -66,7 +65,6 @@ function nextSlide() {
  
   var loadingText = document.getElementById('loading-text');
  
-   lightboxImg.style.display = 'none'; // Hide the image initially
    lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
@@ -92,7 +90,6 @@ function prevSlide() {
  
   var loadingText = document.getElementById('loading-text');
  
-    lightboxImg.style.display = 'none'; // Hide the image initially
    lightboxImg.classList.add('loading');
  
   var loadingTimeout = setTimeout(function() {
