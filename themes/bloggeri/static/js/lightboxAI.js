@@ -41,11 +41,16 @@ var loadingText = document.getElementById('loading-text');
 
   lightboxImg.style.display = 'none'; // Hide the image initially
   loadingBar.style.width = '0%'; // Reset the loading bar width
-  loadingBarC.style.display = 'block'; // Show the loading bar
+  loadingBarC.style.display = 'none'; // Show the loading bar
+   loadingText.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
+ var loadingTimeout = setTimeout(function() {
+    loadingBarC.style.display = 'block'; // Show the loading bar after 1 second
+  }, 1000);
+
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', imageSrc, true);
@@ -140,10 +145,14 @@ function nextSlide() {
   var loadingText = document.getElementById('loading-text');
 
   lightboxImg.style.display = 'none'; // Hide the image initially
-   loadingText.style.display = 'none'; 
+   loadingBarC.style.display = 'none'; // Show the loading bar
+   loadingText.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  var loadingTimeout = setTimeout(function() {
+    loadingBarC.style.display = 'block'; // Show the loading bar after 1 second
   }, 1000);
   
   lightboxImg.addEventListener('load', function() {
@@ -162,10 +171,14 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
   
   lightboxImg.style.display = 'none'; // Hide the image initially
-  loadingText.style.display = 'none'; 
-
+   loadingBarC.style.display = 'none'; // Show the loading bar
+   loadingText.style.display = 'none'; // Hide the image initially
+ 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  var loadingTimeout = setTimeout(function() {
+    loadingBarC.style.display = 'block'; // Show the loading bar after 1 second
   }, 1000);
   
   lightboxImg.addEventListener('load', function() {
