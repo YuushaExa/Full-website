@@ -40,7 +40,6 @@ var loadingText = document.getElementById('loading-text');
   var loadingBarC = document.getElementById('loading-bar-container');
 
   lightboxImg.style.display = 'none'; // Hide the image initially
-  loadingText.style.display = 'block'; // Show the loading text
   loadingBar.style.width = '0%'; // Reset the loading bar width
   loadingBarC.style.display = 'block'; // Show the loading bar
  
