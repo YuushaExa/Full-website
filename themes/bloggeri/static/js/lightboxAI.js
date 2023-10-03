@@ -35,18 +35,6 @@ function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
 
-  var loadingText = document.getElementById('loading-text');
-  
-   lightboxImg.style.display = 'none'; // Hide the image initially
-  loadingText.style.display = 'block'; // Show the loading text
-  
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    lightboxImg.style.display = 'block'; // Show the image
-    loadingText.style.display = 'none'; // Hide the loading text
-  });
-  
-  
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
 document.body.classList.add('lightbox-open');
