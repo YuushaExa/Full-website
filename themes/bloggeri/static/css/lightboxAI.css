@@ -22,23 +22,16 @@
   max-width: 90%;
   max-height: 90%;
   position: relative;
-  transition: transform 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 #lightbox-img.loading {
-  animation: loadingAnimation 1s infinite linear;
+  opacity: 0;
 }
 
-@keyframes loadingAnimation {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(100%, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
+#lightbox-img.loaded {
+  opacity: 1;
 }
 
 .prev,
