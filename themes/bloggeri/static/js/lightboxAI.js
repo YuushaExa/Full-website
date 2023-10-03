@@ -36,7 +36,28 @@ function openLightbox(imageSrc) {
   var lightboxImg = document.getElementById('lightbox-img');
 
 var loadingText = document.getElementById('loading-text');
- 
+
+
+    var loadingBar = document.getElementById('loading-bar');
+  var loadingProgress = document.getElementById('loading-progress');
+  
+  loadingProgress.style.width = '0%'; // Reset the loading progress
+  
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    lightboxImg.style.display = 'block'; // Show the image
+    loadingBar.style.display = 'none'; // Hide the loading bar
+  });
+  
+  // Add a progress event listener to track the loading progress
+  lightboxImg.addEventListener('progress', function(event) {
+    if (event.lengthComputable) {
+      var progress = (event.loaded / event.total) * 100;
+      loadingProgress.style.width = progress + '%'; // Update the loading progress
+    }
+  });
+
+  
   lightboxImg.style.display = 'none'; // Hide the image initially
   
   var loadingTimeout = setTimeout(function() {
