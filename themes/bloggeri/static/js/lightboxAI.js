@@ -41,7 +41,7 @@ var loadingText = document.getElementById('loading-text');
   
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
-  }, 200);
+  }, 1000);
   
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
@@ -60,6 +60,22 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+
+  var loadingText = document.getElementById('loading-text');
+  
+    lightboxImg.style.display = 'none'; // Hide the image initially
+  
+  var loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.style.display = 'block'; // Show the image
+    loadingText.style.display = 'none'; // Hide the loading text
+  });
+  
   lightboxImg.src = lightboxImages[currentIndex].href;
    updateCounters();
 }
@@ -67,6 +83,22 @@ function nextSlide() {
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
+
+  var loadingText = document.getElementById('loading-text');
+  
+  lightboxImg.style.display = 'none'; // Hide the image initially
+  
+  var loadingTimeout = setTimeout(function() {
+    loadingText.style.display = 'block'; // Show the loading text
+  }, 1000);
+  
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.style.display = 'block'; // Show the image
+    loadingText.style.display = 'none'; // Hide the loading text
+  });
+  
   lightboxImg.src = lightboxImages[currentIndex].href;
    updateCounters();
 }
