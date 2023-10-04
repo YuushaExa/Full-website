@@ -150,6 +150,8 @@ scaleSlider.addEventListener('input', function() {
 });
 
 function toggleSlider() {
+   const openSliderButton = document.getElementById('openSliderButton');
+  openSliderButton.classList.toggle('active');
   sliderContainer.classList.toggle('hidden');
   
   if (sliderContainer.classList.contains('hidden')) {
@@ -162,10 +164,14 @@ function toggleSlider() {
 function togglePixelated() {
   pixelated = !pixelated;
   lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
+  const pixelatedButton = document.getElementById('pixelatedButton');
+  pixelatedButton.classList.toggle('active');
 }
 function toggleSaturated() {
   saturated = !saturated;
   lightboxImage.style.imageRendering = saturated ? 'saturated' : '(2.0)';
+  const saturatedButton = document.getElementById('saturatedButton');
+  saturatedButton.classList.toggle('active');
 }
  
 window.addEventListener('keydown', function(event) {
