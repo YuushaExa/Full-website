@@ -124,7 +124,7 @@ document.addEventListener('wheel', function(event) {
 window.addEventListener('DOMContentLoaded', () => {
   const scaleButton = document.getElementById('scaleButton');
   const resetButton = document.getElementById('resetButton');
-  const lightboxImage = document.querySelector('.lightbox-image');
+  const lightboxImage = document.getElementById('lightbox-image');
   let scale = 1.0;
 
   scaleButton.addEventListener('click', () => {
