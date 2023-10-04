@@ -120,6 +120,25 @@ document.addEventListener('wheel', function(event) {
     }
   }
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  const scaleButton = document.getElementById('scaleButton');
+  const resetButton = document.getElementById('resetButton');
+  const lightboxImage = document.querySelector('.lightbox-image');
+  let scale = 1.0;
+
+  scaleButton.addEventListener('click', () => {
+    if (scale <= 2.0) {
+      scale += 0.1;
+      lightboxImage.style.transform = `scale(${scale})`;
+    }
+  });
+
+  resetButton.addEventListener('click', () => {
+    scale = 1.0;
+    lightboxImage.style.transform = `scale(${scale})`;
+  });
+});
  
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
