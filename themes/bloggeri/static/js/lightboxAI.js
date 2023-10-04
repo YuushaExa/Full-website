@@ -120,23 +120,25 @@ document.addEventListener('wheel', function(event) {
   }
 });
 
+let scale = 1.0;
+let pixelated = false;
+const lightboxImage = document.getElementById('lightbox-img');
+
 function scaleUp() {
-  const lightboxImage = document.getElementById('lightbox-img');
-  let currentScale = parseFloat(lightboxImage.style.transform.replace('scale(', '').replace(')', ''));
-
-  if (isNaN(currentScale)) {
-    currentScale = 1.0;
-  }
-
-  if (currentScale < 2.0) {
-    const newScale = (currentScale + 0.1).toFixed(1);
-    lightboxImage.style.transform = `scale(${newScale})`;
+  if (scale < 2.0) {
+    scale += 0.1;
+    lightboxImage.style.transform = `scale(${scale})`;
   }
 }
 
 function resetScale() {
-  const lightboxImage = document.getElementById('lightbox-img');
-  lightboxImage.style.transform = 'scale(1.0)';
+  scale = 1.0;
+  lightboxImage.style.transform = `scale(${scale})`;
+}
+
+function togglePixelated() {
+  pixelated = !pixelated;
+  lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
 }
  
 window.addEventListener('keydown', function(event) {
