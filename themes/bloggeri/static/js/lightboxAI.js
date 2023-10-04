@@ -121,24 +121,24 @@ document.addEventListener('wheel', function(event) {
   }
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-  const scaleButton = document.getElementById('scaleButton');
-  const resetButton = document.getElementById('resetButton');
-  const lightboxImage = document.getElementById('lightbox-image');
-  let scale = 1.0;
+function scaleUp() {
+  const lightboxImage = document.getElementById('lightbox-img');
+  let currentScale = parseFloat(lightboxImage.style.transform.replace('scale(', '').replace(')', ''));
 
-  scaleButton.addEventListener('click', () => {
-    if (scale <= 2.0) {
-      scale += 0.1;
-      lightboxImage.style.transform = `scale(${scale})`;
-    }
-  });
+  if (isNaN(currentScale)) {
+    currentScale = 1.0;
+  }
 
-  resetButton.addEventListener('click', () => {
-    scale = 1.0;
-    lightboxImage.style.transform = `scale(${scale})`;
-  });
-});
+  if (currentScale < 2.0) {
+    const newScale = (currentScale + 0.1).toFixed(1);
+    lightboxImage.style.transform = `scale(${newScale})`;
+  }
+}
+
+function resetScale() {
+  const lightboxImage = document.getElementById('lightbox-img');
+  lightboxImage.style.transform = 'scale(1.0)';
+}
  
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
