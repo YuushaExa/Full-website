@@ -1,27 +1,3 @@
-#scaleSlider {
-  background: linear-gradient(to right, #ccc 0%, #ccc 50%, transparent 50%, transparent 100%);
-  background-size: 200% 100%;
-  background-position: right center;
-  padding-right: 5px;
-}
-#scaleSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#scaleSlider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 #sliderContainer {
     display: flex;
     align-items: center;
