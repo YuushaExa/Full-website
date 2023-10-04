@@ -10,7 +10,6 @@ function updateCounters() {
   totalImageCounter.textContent = totalImages;
 }
  
-// Wrap each image with an <a> tag and set the data-fancybox attribute
 galleryImages.forEach(function(image) {
   var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
   var link = document.createElement('a');
