@@ -134,9 +134,9 @@ function updateScale(value) {
 
 function resetScale() {
   scale = 1.0;
-  scaleSlider.value = 1;
+  scaleSlider.value = 5;
   lightboxImage.style.transform = `scale(${scale})`;
-  scaleLabel.textContent = scale.toFixed(5);
+  scaleLabel.textContent = scale.toFixed(1);
 }
 
 scaleSlider.addEventListener('input', function() {
