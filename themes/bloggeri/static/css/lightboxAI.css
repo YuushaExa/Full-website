@@ -25,7 +25,9 @@ padding-left: 5px;
 }
 #resetButton {
 margin: 0 5px;
-}
+    top: -30px;
+    position: absolute;
+    right: -47px;}
 
 #image-counter {
     color: #ccc;
