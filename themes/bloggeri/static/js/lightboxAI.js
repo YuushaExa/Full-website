@@ -120,19 +120,19 @@ document.addEventListener('wheel', function(event) {
   }
 });
 
-let scale = 1.0;
 let pixelated = false;
+let scale = 1.0;
 const lightboxImage = document.getElementById('lightbox-img');
+const scaleSlider = document.getElementById('scaleSlider');
 
-function scaleUp() {
-  if (scale < 2.0) {
-    scale += 0.1;
-    lightboxImage.style.transform = `scale(${scale})`;
-  }
+function updateScale(value) {
+  scale = value * 0.1;
+  lightboxImage.style.transform = `scale(${scale})`;
 }
 
 function resetScale() {
   scale = 1.0;
+  scaleSlider.value = 1;
   lightboxImage.style.transform = `scale(${scale})`;
 }
 
