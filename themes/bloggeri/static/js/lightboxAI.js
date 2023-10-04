@@ -109,39 +109,34 @@ var touchStartX = 0;
 var touchEndX = 0;
 var touchStartY = 0;
 var touchEndY = 0;
- 
+
 document.addEventListener('touchstart', function(event) {
-  touchStartY = event.touches[0].clientY;
+  var touch = event.touches[0];
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
 });
- 
+
 document.addEventListener('touchend', function(event) {
-  touchEndY = event.changedTouches[0].clientY;
+  var touch = event.changedTouches[0];
+  touchEndX = touch.clientX;
+  touchEndY = touch.clientY;
   handleSwipe();
 });
- 
-document.addEventListener('touchstart', function(event) {
-  touchStartX = event.touches[0].clientX;
-});
- 
-document.addEventListener('touchend', function(event) {
-  touchEndX = event.changedTouches[0].clientX;
-  handleSwipe();
-});
- 
+
 function handleSwipe() {
   var swipeThreshold = 50; // Adjust this value as needed
   var deltaX = touchEndX - touchStartX;
   var deltaY = touchEndY - touchStartY;
- 
-  if (deltaY > swipeThreshold) {
+
+  if (Math.abs(deltaY) > swipeThreshold) {
     closeLightbox();
-  } else if (deltaY < -swipeThreshold) {
-    closeLightbox()
-  };
- 
-  if (deltaX > swipeThreshold) {
-    prevSlide();
-  } else if (deltaX < -swipeThreshold) {
-    nextSlide();
-  };
-};
+  }
+
+  if (Math.abs(deltaX) > swipeThreshold) {
+    if (deltaX > 0) {
+      prevSlide();
+    } else {
+      nextSlide();
+    }
+  }
+}
