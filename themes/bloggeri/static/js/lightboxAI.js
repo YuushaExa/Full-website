@@ -162,6 +162,10 @@ function togglePixelated() {
   pixelated = !pixelated;
   lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
 }
+function toggleSaturate() {
+  saturated = !saturated;
+  lightboxImage.style.imageRendering = saturated ? 'saturated' : '(2.0)';
+}
  
 window.addEventListener('keydown', function(event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
