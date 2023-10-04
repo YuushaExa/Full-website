@@ -163,7 +163,7 @@ function togglePixelated() {
   pixelated = !pixelated;
   lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
 }
-function toggleSaturate() {
+function toggleSaturated() {
   saturated = !saturated;
   lightboxImage.style.imageRendering = saturated ? 'saturated' : '(2.0)';
 }
