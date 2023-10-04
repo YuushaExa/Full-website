@@ -121,6 +121,7 @@ document.addEventListener('wheel', function(event) {
 });
 
 let pixelated = false;
+let saturated = false;
 let scale = 1.0;
 const lightboxImage = document.getElementById('lightbox-img');
 const scaleSlider = document.getElementById('scaleSlider');
