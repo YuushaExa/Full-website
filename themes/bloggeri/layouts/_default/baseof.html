@@ -20,12 +20,13 @@
                                       <div id="image-counter">
             <span id="opened-image-counter"></span> / <span id="total-image-counter"></span> </div>   
               <div id="lightbox-info">
-      <button id="pixelatedButton" onclick="togglePixelated()">Toggle Pixelated</button>
-
-                   <input type="range" id="scaleSlider" min="1" max="10" step="1" value="5" onchange="updateScale(this.value)">
-                        <label for="scaleSlider" id="scaleLabel">1.0</label>
+      <button id="openSliderButton" onclick="openSlider()">Open Slider</button>
+      <div id="sliderContainer" class="hidden">
+        <input type="range" id="scaleSlider" min="1" max="10" step="1" value="1" onchange="updateScale(this.value)">
+        <label for="scaleSlider" id="scaleLabel">1.0</label>
+      </div>
       <button id="resetButton" onclick="resetScale()">Reset</button>
-              </div>
+    </div>
             <button class="prev" onclick="prevSlide()">&#8249;</button>
   <button class="next" onclick="nextSlide()">&#8250;</button>
              <div class="lightbox-content">
