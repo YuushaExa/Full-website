@@ -139,6 +139,10 @@ function resetScale() {
   scaleLabel.textContent = scale.toFixed(1);
 }
 
+scaleSlider.addEventListener('input', function() {
+  updateScale(scaleSlider.value);
+});
+
 function togglePixelated() {
   pixelated = !pixelated;
   lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
