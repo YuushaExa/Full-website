@@ -126,6 +126,7 @@ const lightboxImage = document.getElementById('lightbox-img');
 const scaleSlider = document.getElementById('scaleSlider');
 const scaleLabel = document.getElementById('scaleLabel');
 const sliderContainer = document.getElementById('sliderContainer');
+const openSliderButton = document.getElementById('openSliderButton');
 
 function updateScale(value) {
   scale = value * 0.2;
@@ -146,6 +147,16 @@ function openSlider() {
 scaleSlider.addEventListener('input', function() {
   updateScale(scaleSlider.value);
 });
+
+function toggleSlider() {
+  sliderContainer.classList.toggle('hidden');
+  
+  if (sliderContainer.classList.contains('hidden')) {
+    openSliderButton.textContent = 'Open Slider';
+  } else {
+    openSliderButton.textContent = 'Close Slider';
+  }
+}
 
 function togglePixelated() {
   pixelated = !pixelated;
