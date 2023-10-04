@@ -1,3 +1,13 @@
+button {
+  background-color: #ccc;
+  color: #000;
+}
+
+button.active {
+  background-color: #ff0000;
+  color: #fff;
+}
+
 #sliderContainer {
     display: flex;
     align-items: center;
