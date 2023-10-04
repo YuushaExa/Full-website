@@ -125,6 +125,7 @@ let scale = 1.0;
 const lightboxImage = document.getElementById('lightbox-img');
 const scaleSlider = document.getElementById('scaleSlider');
 const scaleLabel = document.getElementById('scaleLabel');
+const sliderContainer = document.getElementById('sliderContainer');
 
 function updateScale(value) {
   scale = value * 0.2;
@@ -137,6 +138,9 @@ function resetScale() {
   scaleSlider.value = 5;
   lightboxImage.style.transform = `scale(${scale})`;
   scaleLabel.textContent = scale.toFixed(1);
+}
+function openSlider() {
+  sliderContainer.classList.toggle('hidden');
 }
 
 scaleSlider.addEventListener('input', function() {
