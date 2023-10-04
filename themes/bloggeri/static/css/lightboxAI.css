@@ -1,3 +1,9 @@
+div#lightbox-info {
+    position: absolute;
+    top: 0px;
+    right: 50%;
+    line-height: 44px;
+}
 
 #image-counter {
     color: #ccc;
