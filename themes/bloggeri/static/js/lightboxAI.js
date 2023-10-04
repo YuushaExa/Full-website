@@ -127,9 +127,9 @@ const scaleSlider = document.getElementById('scaleSlider');
 const scaleLabel = document.getElementById('scaleLabel');
 
 function updateScale(value) {
-  scale = value * 0.1;
+  scale = value * 0.2;
   lightboxImage.style.transform = `scale(${scale})`;
-  scaleLabel.textContent = scale.toFixed(5);
+  scaleLabel.textContent = scale.toFixed(1);
 }
 
 function resetScale() {
