@@ -20,13 +20,12 @@ galleryImages.forEach(function (image) {
   link.appendChild(image);
 });
 
-// Attach click event listener to the parent container using event delegation
-document.addEventListener('click', function (event) {
-  if (event.target && event.target.matches('a[data-fancybox="gallery"]')) {
+lightboxImages.forEach(function(image, index) {
+  image.addEventListener('click', function(event) {
     event.preventDefault();
-    currentIndex = Array.prototype.indexOf.call(lightboxImages, event.target);
-    openLightbox(event.target.href);
-  }
+    currentIndex = index;
+    openLightbox(image.href);
+  });
 });
 
 function updateCounters() {
