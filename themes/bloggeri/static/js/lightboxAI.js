@@ -169,7 +169,7 @@ function togglePixelated() {
 }
 function toggleSaturated() {
   saturated = !saturated;
-  lightboxImage.style.imageRendering = saturated ? 'saturated' : '(2.0)';
+  lightboxImage.style.filter = saturated ? 'saturate(2)' : 'none';
   const saturatedButton = document.getElementById('saturatedButton');
   saturatedButton.classList.toggle('active');
 }
