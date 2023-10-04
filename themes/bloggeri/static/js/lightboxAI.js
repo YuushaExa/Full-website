@@ -3,114 +3,88 @@ var currentIndex = 0;
 var totalImages = galleryImages.length;
 var openedImageCounter = document.getElementById('opened-image-counter');
 var totalImageCounter = document.getElementById('total-image-counter');
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightbox-img');
+var loadingText = document.getElementById('loading-text');
+var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
+
 updateCounters();
- 
-function updateCounters() {
-  openedImageCounter.textContent = currentIndex + 1;
-  totalImageCounter.textContent = totalImages;
-}
- 
+
 // Wrap each image with an <a> tag and set the data-fancybox attribute
-galleryImages.forEach(function(image) {
-  var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
+galleryImages.forEach(function (image) {
+  var imgLink = image.getAttribute('data-src').split('&w')[0] + '&w=1920&fit=inside&we';
   var link = document.createElement('a');
   link.href = imgLink;
   link.setAttribute('data-fancybox', 'gallery');
   image.parentNode.insertBefore(link, image);
   link.appendChild(image);
 });
- 
-var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
- 
-// Attach click event listener to each image
-lightboxImages.forEach(function(image, index) {
-  image.addEventListener('click', function(event) {
+
+// Attach click event listener to the parent container using event delegation
+document.addEventListener('click', function (event) {
+  if (event.target && event.target.matches('a[data-fancybox="gallery"]')) {
     event.preventDefault();
-    currentIndex = index;
-    openLightbox(image.href);
-  });
+    currentIndex = Array.prototype.indexOf.call(lightboxImages, event.target);
+    openLightbox(event.target.href);
+  }
 });
- 
+
+function updateCounters() {
+  openedImageCounter.textContent = currentIndex + 1;
+  totalImageCounter.textContent = totalImages;
+}
+
 function openLightbox(imageSrc) {
-  var lightbox = document.getElementById('lightbox');
-  var lightboxImg = document.getElementById('lightbox-img');
- 
-var loadingText = document.getElementById('loading-text');
- 
   lightboxImg.style.display = 'none'; // Hide the image initially
- 
-  var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block'; // Show the loading text
-  }, 1000);
- 
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+  loadingText.style.display = 'block'; // Show the loading text
+
+  lightboxImg.onload = function () {
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
-  });
- 
+  };
+
   lightboxImg.src = imageSrc;
   lightbox.classList.remove('hidden');
-document.body.classList.add('lightbox-open');
+  document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
   updateCounters();
 }
- 
+
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
- 
-  var loadingText = document.getElementById('loading-text');
- 
-    lightboxImg.style.display = 'none'; // Hide the image initially
- 
-  var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block'; // Show the loading text
-  }, 1000);
- 
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+  lightboxImg.style.display = 'none'; // Hide the image initially
+  loadingText.style.display = 'block'; // Show the loading text
+
+  lightboxImg.onload = function () {
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
-  });
- 
+  };
+
   lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+  updateCounters();
 }
- 
+
 function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
- 
-  var loadingText = document.getElementById('loading-text');
- 
   lightboxImg.style.display = 'none'; // Hide the image initially
- 
-  var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block'; // Show the loading text
-  }, 1000);
- 
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+  loadingText.style.display = 'block'; // Show the loading text
+
+  lightboxImg.onload = function () {
     lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
-  });
- 
+  };
+
   lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+  updateCounters();
 }
- 
+
 function closeLightbox() {
-  var lightbox = document.getElementById('lightbox');
   lightbox.classList.add('hidden');
   document.body.classList.remove('lightbox-open');
   document.documentElement.style.overflow = 'auto';
 }
- 
-document.addEventListener('wheel', function(event) {
+
+document.addEventListener('wheel', function (event) {
   if (!lightbox.classList.contains('hidden')) {
     event.preventDefault();
     if (event.deltaY > 0) {
@@ -120,8 +94,8 @@ document.addEventListener('wheel', function(event) {
     }
   }
 });
- 
-window.addEventListener('keydown', function(event) {
+
+window.addEventListener('keydown', function (event) {
   if (lightbox && !lightbox.classList.contains('hidden')) {
     if (event.key === 'ArrowRight') {
       nextSlide();
@@ -163,11 +137,11 @@ function handleSwipe() {
     closeLightbox();
   } else if (deltaY < -swipeThreshold) {
     closeLightbox()
-  }
+  };
  
   if (deltaX > swipeThreshold) {
     prevSlide();
   } else if (deltaX < -swipeThreshold) {
     nextSlide();
-  }
-}
+  };
+};
