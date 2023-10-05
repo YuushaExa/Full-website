@@ -254,20 +254,21 @@ const start = (e) => {
   isDown = true;
   slider.classList.add('active');
   startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;  
+  scrollLeft = slider.scrollLeft;
 };
 
 const move = (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-  const dist = (x - startX);
+  const dist = x - startX;
   slider.scrollLeft = scrollLeft - dist;
 
   // Loop the scrolling horizontally
-  if (slider.scrollLeft === 0) {
-    slider.scrollLeft = slider.scrollWidth;
-  } else if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth) {
+  const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+  if (slider.scrollLeft <= 0) {
+    slider.scrollLeft = maxScrollLeft;
+  } else if (slider.scrollLeft >= maxScrollLeft) {
     slider.scrollLeft = 0;
   }
 };
