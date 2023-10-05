@@ -20,7 +20,6 @@ galleryImages.forEach(function(image) {
 });
  
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
-var thumbnailsContainers = document.querySelectorAll('.thumbnails-container a');
 
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
@@ -31,14 +30,6 @@ lightboxImages.forEach(function(image, index) {
   });
 });
 
-thumbnailsContainers.forEach(function(image, index) {
-  image.addEventListener('click', function(event) {
-    event.preventDefault();
-    currentIndex = index;
-    openLightbox(image.href);
-  });
-});
- 
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
