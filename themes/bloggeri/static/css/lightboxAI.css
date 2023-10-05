@@ -3,7 +3,16 @@
     overflow: hidden;
     background-color: #000000a8;
     bottom: 0;
-    position: absolute;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 0;
+	cursor: pointer;
+	
+	&.active {
+		cursor: grab;
+	}
 }
 .thumbnails-container img {
     width: 50px;
