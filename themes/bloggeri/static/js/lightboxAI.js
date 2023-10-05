@@ -240,6 +240,7 @@ function handleSwipe() {
   }
 }
 
+// Retrieve the .thumbnails-container element
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 
 // Variables to store the initial position and mouse/touch offsets
@@ -278,6 +279,35 @@ function handleDragEnd() {
   document.removeEventListener('touchmove', handleDragMove);
   document.removeEventListener('mouseup', handleDragEnd);
   document.removeEventListener('touchend', handleDragEnd);
+
+  // Start the loop animation
+  startLoopAnimation();
+}
+
+// Function to animate the loop movement
+function startLoopAnimation() {
+  const containerWidth = thumbnailsContainer.offsetWidth;
+  const loopDuration = 3000; // Duration of each loop in milliseconds
+  const distance = 100; // Distance to move in each loop
+
+  let currentPosition = 0;
+  let direction = 1; // 1 for moving to the right, -1 for moving to the left
+
+  function animateLoop() {
+    currentPosition += direction * distance;
+    thumbnailsContainer.style.transform = `translateX(${currentPosition}px)`;
+
+    if (currentPosition >= containerWidth - thumbnailsContainer.offsetWidth) {
+      direction = -1; // Change direction to move left
+    } else if (currentPosition <= 0) {
+      direction = 1; // Change direction to move right
+    }
+
+    setTimeout(animateLoop, loopDuration);
+  }
+
+  // Start the animation loop
+  animateLoop();
 }
 
 // Attach the drag event listener to .thumbnails-container
