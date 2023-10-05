@@ -241,66 +241,46 @@ function handleSwipe() {
   }
 }
 
-var thumbnailsContainer = document.querySelector('.thumbnails-container');
-var contentElement = thumbnailsContainer.querySelector('.thumbnails-container img');
-var isDragging = false;
-var startPosition = null;
-var startScrollLeft = null;
-var cloneOffset = 0;
+let isDown = false;
+let startX;
+let scrollLeft;
+const slider = document.querySelector('.thumbnails-container');
 
-thumbnailsContainer.addEventListener('mousedown', function(event) {
-  isDragging = true;
-  startPosition = event.clientX;
-  startScrollLeft = thumbnailsContainer.scrollLeft;
-  thumbnailsContainer.style.cursor = 'grabbing';
-  event.preventDefault(); // Prevent text selection during dragging
-});
+const end = () => {
+  isDown = false;
+  slider.classList.remove('active');
+};
 
-thumbnailsContainer.addEventListener('mousemove', function(event) {
-  if (isDragging) {
-    var distance = event.clientX - startPosition;
-    thumbnailsContainer.scrollLeft = startScrollLeft - distance;
-    updateClones();
+const start = (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;  
+};
+
+const move = (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+  const dist = (x - startX);
+  slider.scrollLeft = scrollLeft - dist;
+
+  // Loop the scrolling horizontally
+  if (slider.scrollLeft === 0) {
+    slider.scrollLeft = slider.scrollWidth;
+  } else if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth) {
+    slider.scrollLeft = 0;
   }
-});
+};
 
-window.addEventListener('mouseup', function() {
-  if (isDragging) {
-    isDragging = false;
-    thumbnailsContainer.style.cursor = 'grab';
-    cloneOffset = 0; // Reset the clone offset
-    updateClones();
-  }
-});
+(() => {
+  slider.addEventListener('mousedown', start);
+  slider.addEventListener('touchstart', start);
 
-function updateClones() {
-  var containerWidth = thumbnailsContainer.clientWidth;
-  var contentWidth = contentElement.offsetWidth;
-  var scrollLeft = thumbnailsContainer.scrollLeft;
-  var clones = thumbnailsContainer.querySelectorAll('.clone');
+  slider.addEventListener('mousemove', move);
+  slider.addEventListener('touchmove', move);
 
-  if (scrollLeft < 0) {
-    // Clone content and append to the left
-    var clone = contentElement.cloneNode(true);
-    clone.classList.add('clone');
-    thumbnailsContainer.insertBefore(clone, contentElement);
-    cloneOffset -= contentWidth;
-    thumbnailsContainer.scrollLeft = scrollLeft + contentWidth;
-  } else if (scrollLeft + containerWidth > contentWidth) {
-    // Clone content and append to the right
-    var clone = contentElement.cloneNode(true);
-    clone.classList.add('clone');
-    thumbnailsContainer.appendChild(clone);
-    cloneOffset += contentWidth;
-    thumbnailsContainer.scrollLeft = scrollLeft - contentWidth;
-  }
-
-  // Remove clones that are out of view
-  for (var i = 0; i < clones.length; i++) {
-    var clone = clones[i];
-    var clonePosition = clone.offsetLeft - cloneOffset;
-    if (clonePosition + clone.offsetWidth < 0 || clonePosition > containerWidth) {
-      clone.remove();
-    }
-  }
-}
+  slider.addEventListener('mouseleave', end);
+  slider.addEventListener('mouseup', end);
+  slider.addEventListener('touchend', end);
+})();
