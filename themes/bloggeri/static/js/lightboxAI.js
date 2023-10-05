@@ -249,15 +249,15 @@ let isDragging = false;
 let startX;
 let scrollLeft;
 
-container.addEventListener("mousedown", startDrag);
-container.addEventListener("touchstart", startDrag);
+container.addEventListener("mousedown", startDrag, { passive: true });
+container.addEventListener("touchstart", startDrag, { passive: true });
 
-container.addEventListener("mouseleave", stopDrag);
-container.addEventListener("mouseup", stopDrag);
-container.addEventListener("touchend", stopDrag);
+container.addEventListener("mouseleave", stopDrag, { passive: true });
+container.addEventListener("mouseup", stopDrag, { passive: true });
+container.addEventListener("touchend", stopDrag, { passive: true });
 
-container.addEventListener("mousemove", drag);
-container.addEventListener("touchmove", drag);
+container.addEventListener("mousemove", drag, { passive: true });
+container.addEventListener("touchmove", drag, { passive: true });
 
 function startDrag(event) {
   isDragging = true;
