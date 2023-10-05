@@ -225,47 +225,20 @@ function handleSwipe() {
   }
 }
 
-// Get the gallery container
-const gallery = document.querySelector('.gallery');
+// Get the gallery element
+var gallery = document.querySelector('.gallery');
 
-// Get the lightbox content image element
-const lightboxImage = document.querySelector('#lightbox-img');
+// Get the lightbox-content element
+var lightboxContent = document.querySelector('.thumbnails-container');
 
-// Get the thumbnails container
-const thumbnailsContainer = document.querySelector('.thumbnails-container');
+// Check if both elements exist
+if (gallery && lightboxContent) {
+  // Get all the child nodes of the gallery element
+  var galleryContent = gallery.innerHTML;
 
-// Get all the thumbnail images from the gallery
-const thumbnails = Array.from(gallery.querySelectorAll('img'));
+  // Append the gallery content to the lightbox-content element
+  lightboxContent.innerHTML += galleryContent;
 
-// Create an array to store the image sources and links
-const images = [];
-
-// Iterate over the thumbnails
-thumbnails.forEach(thumbnail => {
-  const src = thumbnail.getAttribute('src');
-  const link = thumbnail.parentNode.getAttribute('href');
-
-  // Add the image source and link to the array
-  images.push({ src, link });
-
-  // Append a click event listener to each thumbnail
-  thumbnail.addEventListener('click', () => {
-    // Update the lightbox content image source with the clicked thumbnail's source
-    lightboxImage.setAttribute('src', src);
-
-    // Clear the previous appended image, if any
-    const appendedImage = document.querySelector('.appended-image');
-    if (appendedImage) {
-      appendedImage.remove();
-    }
-
-    // Create a new image element from the link and append it below the lightbox content image
-    const appendedImg = document.createElement('img');
-    appendedImg.classList.add('appended-image');
-    appendedImg.setAttribute('src', link);
-    lightboxImage.parentNode.insertBefore(appendedImg, lightboxImage.nextSibling);
-  });
-});
-
-// Set the first thumbnail as active
-thumbnails[0].classList.add('active');
+  // Clear the content of the gallery element
+  gallery.innerHTML = '';
+}
