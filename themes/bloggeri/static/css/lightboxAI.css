@@ -10,12 +10,17 @@
   cursor: pointer;
 }
 
-.dragging {
-  opacity: 0.5;
+.thumbnails-container {
+  overflow: auto;
+  white-space: nowrap;
 }
 
-.drag-enter {
-  border: 2px dashed #000;
+.thumbnails-container.draggable {
+  cursor: grab;
+}
+
+.thumbnails-container.dragging {
+  cursor: grabbing;
 }
 
 .thumbnails-container img {
