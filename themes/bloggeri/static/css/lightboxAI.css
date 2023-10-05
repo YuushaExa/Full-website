@@ -3,7 +3,7 @@
     overflow: hidden;
     background-color: #000000a8;
     bottom: 0;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
