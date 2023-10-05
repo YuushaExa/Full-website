@@ -224,3 +224,33 @@ function handleSwipe() {
     nextSlide();
   }
 }
+
+
+// Get the gallery container
+const gallery = document.querySelector('.gallery');
+
+// Get the lightbox content container
+const lightboxContent = document.querySelector('.lightbox-content');
+
+// Get the thumbnails container
+const thumbnailsContainer = document.querySelector('.thumbnails-container');
+
+// Get all the image sources from the gallery
+const imageSources = Array.from(gallery.querySelectorAll('img')).map(img => img.getAttribute('src'));
+
+// Create thumbnail elements and append them to the thumbnails container
+imageSources.forEach(src => {
+  const thumbnail = document.createElement('img');
+  thumbnail.setAttribute('src', src);
+  thumbnail.classList.add('thumbnail');
+  thumbnailsContainer.appendChild(thumbnail);
+});
+
+// Attach a click event listener to each thumbnail
+const thumbnails = Array.from(thumbnailsContainer.querySelectorAll('.thumbnail'));
+thumbnails.forEach(thumbnail => {
+  thumbnail.addEventListener('click', () => {
+    // Update the lightbox content with the clicked thumbnail's image source
+    lightboxContent.innerHTML = `<img src="${thumbnail.getAttribute('src')}" alt="">`;
+  });
+});
