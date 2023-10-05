@@ -225,35 +225,5 @@ function handleSwipe() {
   }
 }
 
+const imageSources = Array.from(galleryImages.querySelectorAll('img')).map(img => img.getAttribute('data-src'));
 
-// Get the gallery container
-const gallery = document.querySelector('.gallery');
-
-// Get the lightbox content image element
-const lightboxImage = document.querySelector('#lightbox-img');
-
-// Get the thumbnails container
-const thumbnailsContainer = document.querySelector('.thumbnails-container');
-
-// Get all the image sources from the gallery
-const imageSources = Array.from(gallery.querySelectorAll('img')).map(img => img.getAttribute('data-src'));
-
-// Set the first image source as the lightbox content image source
-lightboxImage.setAttribute('src', imageSources[0]);
-
-// Create thumbnail elements and append them to the thumbnails container
-imageSources.forEach(src => {
-  const thumbnail = document.createElement('img');
-  thumbnail.setAttribute('src', src);
-  thumbnail.classList.add('thumbnail');
-  thumbnailsContainer.appendChild(thumbnail);
-
-  // Attach a click event listener to each thumbnail
-  thumbnail.addEventListener('click', () => {
-    // Update the lightbox content image source with the clicked thumbnail's source
-    lightboxImage.setAttribute('src', src);
-
-    // Change the data-src to src for the clicked thumbnail
-    thumbnail.setAttribute('src', src);
-  });
-});
