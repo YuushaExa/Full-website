@@ -10,14 +10,12 @@
   cursor: pointer;
 }
 
-.thumbnails-container.active {
-  cursor: grab;
+.dragging {
+  opacity: 0.5;
 }
-.thumbnails-container.grabbing {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-  border: 2px dashed #ccc;
-  opacity: 0.8;
+
+.drag-enter {
+  border: 2px dashed #000;
 }
 
 .thumbnails-container img {
