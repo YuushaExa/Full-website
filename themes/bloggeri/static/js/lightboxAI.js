@@ -18,7 +18,22 @@ galleryImages.forEach(function(image) {
   image.parentNode.insertBefore(link, image);
   link.appendChild(image);
 });
- 
+
+var gallery = document.querySelector('.gallery');
+
+// Get the lightbox-content element
+var lightboxContent = document.querySelector('.thumbnails-container');
+
+// Check if both elements exist
+if (gallery && lightboxContent) {
+  // Get all the child nodes of the gallery element
+  var galleryContent = gallery.innerHTML;
+
+  // Append the gallery content to the lightbox-content element
+  lightboxContent.innerHTML += galleryContent;
+
+}
+
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 
 // Attach click event listener to each image
@@ -223,20 +238,4 @@ function handleSwipe() {
   } else if (deltaX < -swipeThreshold) {
     nextSlide();
   }
-}
-
-// Get the gallery element
-var gallery = document.querySelector('.gallery');
-
-// Get the lightbox-content element
-var lightboxContent = document.querySelector('.thumbnails-container');
-
-// Check if both elements exist
-if (gallery && lightboxContent) {
-  // Get all the child nodes of the gallery element
-  var galleryContent = gallery.innerHTML;
-
-  // Append the gallery content to the lightbox-content element
-  lightboxContent.innerHTML += galleryContent;
-
 }
