@@ -240,76 +240,61 @@ function handleSwipe() {
   }
 }
 
-// Retrieve the .thumbnails-container element
+// Get the draggable element
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 
-// Variables to store the initial position and mouse/touch offsets
-let initialX = 0;
-let offsetX = 0;
+// Add event listeners for drag events
+thumbnailsContainer.addEventListener('dragstart', dragStart);
+thumbnailsContainer.addEventListener('dragover', dragOver);
+thumbnailsContainer.addEventListener('dragenter', dragEnter);
+thumbnailsContainer.addEventListener('dragleave', dragLeave);
+thumbnailsContainer.addEventListener('drop', dragDrop);
+thumbnailsContainer.addEventListener('dragend', dragEnd);
 
-// Function to handle the start of the dragging action
-function handleDragStart(event) {
+// Store the dragged element
+let draggedElement;
+
+// Drag events handlers
+function dragStart(event) {
+  // Store the dragged element reference
+  draggedElement = event.target;
+
+  // Set the data type and value to be transferred
+  event.dataTransfer.setData('text/plain', event.target.id);
+
+  // Add a class to the dragged element for styling
+  event.target.classList.add('dragging');
+}
+
+function dragOver(event) {
   event.preventDefault();
-  initialX = event.clientX || event.touches[0].clientX;
-  thumbnailsContainer.classList.add('grabbing');
-
-  // Attach event listeners for tracking movement
-  document.addEventListener('mousemove', handleDragMove);
-  document.addEventListener('touchmove', handleDragMove);
-  document.addEventListener('mouseup', handleDragEnd);
-  document.addEventListener('touchend', handleDragEnd);
 }
 
-// Function to handle the movement during dragging
-function handleDragMove(event) {
+function dragEnter(event) {
   event.preventDefault();
-  const currentX = event.clientX || event.touches[0].clientX;
-  offsetX = currentX - initialX;
-
-  // Update the position of .thumbnails-container
-  thumbnailsContainer.style.transform = `translateX(${offsetX}px)`;
+  // Add a class to the container to indicate the dragged element is hovering over it
+  event.target.classList.add('drag-enter');
 }
 
-// Function to handle the end of the dragging action
-function handleDragEnd() {
-  thumbnailsContainer.classList.remove('grabbing');
-
-  // Remove event listeners for tracking movement
-  document.removeEventListener('mousemove', handleDragMove);
-  document.removeEventListener('touchmove', handleDragMove);
-  document.removeEventListener('mouseup', handleDragEnd);
-  document.removeEventListener('touchend', handleDragEnd);
-
-  // Start the loop animation
-  startLoopAnimation();
+function dragLeave(event) {
+  // Remove the class from the container when the dragged element leaves it
+  event.target.classList.remove('drag-enter');
 }
 
-// Function to animate the loop movement
-function startLoopAnimation() {
-  const containerWidth = thumbnailsContainer.offsetWidth;
-  const loopDuration = 3000; // Duration of each loop in milliseconds
-  const distance = 100; // Distance to move in each loop
+function dragDrop(event) {
+  event.preventDefault();
 
-  let currentPosition = 0;
-  let direction = 1; // 1 for moving to the right, -1 for moving to the left
+  // Remove the class from the container when the dragged element is dropped
+  event.target.classList.remove('drag-enter');
 
-  function animateLoop() {
-    currentPosition += direction * distance;
-    thumbnailsContainer.style.transform = `translateX(${currentPosition}px)`;
+  // Get the data from the transferred item
+  const data = event.dataTransfer.getData('text/plain');
 
-    if (currentPosition >= containerWidth - thumbnailsContainer.offsetWidth) {
-      direction = -1; // Change direction to move left
-    } else if (currentPosition <= 0) {
-      direction = 1; // Change direction to move right
-    }
-
-    setTimeout(animateLoop, loopDuration);
-  }
-
-  // Start the animation loop
-  animateLoop();
+  // Append the dragged element to the container
+  event.target.appendChild(document.getElementById(data));
 }
 
-// Attach the drag event listener to .thumbnails-container
-thumbnailsContainer.addEventListener('mousedown', handleDragStart);
-thumbnailsContainer.addEventListener('touchstart', handleDragStart);
+function dragEnd(event) {
+  // Remove the class from the dragged element when dragging ends
+  event.target.classList.remove('dragging');
+}
