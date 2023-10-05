@@ -239,6 +239,4 @@ if (gallery && lightboxContent) {
   // Append the gallery content to the lightbox-content element
   lightboxContent.innerHTML += galleryContent;
 
-  // Clear the content of the gallery element
-  gallery.innerHTML = '';
 }
