@@ -11,8 +11,10 @@ button.active {
 #sliderContainer {
     display: flex;
     align-items: center;
-    z-index: 10;
-    position: relative;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 #scaleSlider {
@@ -37,8 +39,8 @@ padding-left: 10px;
     align-items: flex-start;
 }
 #resetButton {
-    position: relative;
-    right: -95px;
+       position: relative;
+    margin: 10px;
 }
 
 #image-counter {
