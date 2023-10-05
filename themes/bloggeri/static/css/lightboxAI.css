@@ -8,6 +8,7 @@
   white-space: nowrap;
   font-size: 0;
   cursor: pointer;
+  touch-action: pan-y;
 }
 
 .thumbnails-container.draggable {
