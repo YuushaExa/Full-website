@@ -244,16 +244,20 @@ function handleSwipe() {
   }
 }
 
+
 const container = document.querySelector(".thumbnails-container");
+const content = document.querySelector(".thumbnails-container img");
 let isMouseDown = false;
 let startX;
 let scrollLeft;
+let dragDistance = 0;
 
 container.addEventListener("mousedown", (e) => {
   isMouseDown = true;
   container.classList.add("dragging");
   startX = e.pageX - container.offsetLeft;
   scrollLeft = container.scrollLeft;
+  dragDistance = 0;
 });
 
 container.addEventListener("mouseleave", () => {
@@ -264,6 +268,7 @@ container.addEventListener("mouseleave", () => {
 container.addEventListener("mouseup", () => {
   isMouseDown = false;
   container.classList.remove("dragging");
+  dragDistance = 0;
 });
 
 container.addEventListener("mousemove", (e) => {
@@ -272,4 +277,15 @@ container.addEventListener("mousemove", (e) => {
   const x = e.pageX - container.offsetLeft;
   const walk = (x - startX) * 2; // Adjust dragging speed here
   container.scrollLeft = scrollLeft - walk;
+
+  // Calculate the total distance dragged
+  dragDistance += walk;
+
+  // Check if the drag distance is greater than the container width
+  if (Math.abs(dragDistance) >= container.offsetWidth) {
+    // Reset the drag distance based on the direction
+    dragDistance = walk > 0 ? container.offsetWidth - walk : container.offsetWidth + walk;
+    // Adjust the scroll position accordingly
+    container.scrollLeft = walk > 0 ? 0 : content.offsetWidth;
+  }
 });
