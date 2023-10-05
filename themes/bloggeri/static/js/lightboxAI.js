@@ -240,61 +240,32 @@ function handleSwipe() {
   }
 }
 
-// Get the draggable element
-const thumbnailsContainer = document.querySelector('.thumbnails-container');
+const container = document.querySelector(".thumbnails-container");
+let isMouseDown = false;
+let startX;
+let scrollLeft;
 
-// Add event listeners for drag events
-thumbnailsContainer.addEventListener('dragstart', dragStart);
-thumbnailsContainer.addEventListener('dragover', dragOver);
-thumbnailsContainer.addEventListener('dragenter', dragEnter);
-thumbnailsContainer.addEventListener('dragleave', dragLeave);
-thumbnailsContainer.addEventListener('drop', dragDrop);
-thumbnailsContainer.addEventListener('dragend', dragEnd);
+container.addEventListener("mousedown", (e) => {
+  isMouseDown = true;
+  container.classList.add("dragging");
+  startX = e.pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
 
-// Store the dragged element
-let draggedElement;
+container.addEventListener("mouseleave", () => {
+  isMouseDown = false;
+  container.classList.remove("dragging");
+});
 
-// Drag events handlers
-function dragStart(event) {
-  // Store the dragged element reference
-  draggedElement = event.target;
+container.addEventListener("mouseup", () => {
+  isMouseDown = false;
+  container.classList.remove("dragging");
+});
 
-  // Set the data type and value to be transferred
-  event.dataTransfer.setData('text/plain', event.target.id);
-
-  // Add a class to the dragged element for styling
-  event.target.classList.add('dragging');
-}
-
-function dragOver(event) {
-  event.preventDefault();
-}
-
-function dragEnter(event) {
-  event.preventDefault();
-  // Add a class to the container to indicate the dragged element is hovering over it
-  event.target.classList.add('drag-enter');
-}
-
-function dragLeave(event) {
-  // Remove the class from the container when the dragged element leaves it
-  event.target.classList.remove('drag-enter');
-}
-
-function dragDrop(event) {
-  event.preventDefault();
-
-  // Remove the class from the container when the dragged element is dropped
-  event.target.classList.remove('drag-enter');
-
-  // Get the data from the transferred item
-  const data = event.dataTransfer.getData('text/plain');
-
-  // Append the dragged element to the container
-  event.target.appendChild(document.getElementById(data));
-}
-
-function dragEnd(event) {
-  // Remove the class from the dragged element when dragging ends
-  event.target.classList.remove('dragging');
-}
+container.addEventListener("mousemove", (e) => {
+  if (!isMouseDown) return;
+  e.preventDefault();
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - startX) * 2; // Adjust dragging speed here
+  container.scrollLeft = scrollLeft - walk;
+});
