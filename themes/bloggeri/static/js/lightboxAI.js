@@ -245,31 +245,49 @@ function handleSwipe() {
 }
 
 const container = document.querySelector(".thumbnails-container");
-let isMouseDown = false;
+let isDragging = false;
 let startX;
 let scrollLeft;
 
-container.addEventListener("mousedown", (e) => {
-  isMouseDown = true;
+container.addEventListener("mousedown", startDrag);
+container.addEventListener("touchstart", startDrag);
+
+container.addEventListener("mouseleave", stopDrag);
+container.addEventListener("mouseup", stopDrag);
+container.addEventListener("touchend", stopDrag);
+
+container.addEventListener("mousemove", drag);
+container.addEventListener("touchmove", drag);
+
+function startDrag(event) {
+  isDragging = true;
   container.classList.add("dragging");
-  startX = e.pageX - container.offsetLeft;
+
+  if (event.type === "mousedown") {
+    startX = event.pageX - container.offsetLeft;
+  } else if (event.type === "touchstart") {
+    startX = event.touches[0].pageX - container.offsetLeft;
+  }
+
   scrollLeft = container.scrollLeft;
-});
+}
 
-container.addEventListener("mouseleave", () => {
-  isMouseDown = false;
+function stopDrag() {
+  isDragging = false;
   container.classList.remove("dragging");
-});
+}
 
-container.addEventListener("mouseup", () => {
-  isMouseDown = false;
-  container.classList.remove("dragging");
-});
+function drag(event) {
+  if (!isDragging) return;
+  event.preventDefault();
 
-container.addEventListener("mousemove", (e) => {
-  if (!isMouseDown) return;
-  e.preventDefault();
-  const x = e.pageX - container.offsetLeft;
+  let x;
+  if (event.type === "mousemove") {
+    x = event.pageX - container.offsetLeft;
+  } else if (event.type === "touchmove") {
+    x = event.touches[0].pageX - container.offsetLeft;
+  }
+
   const walk = (x - startX) * 2; // Adjust dragging speed here
   container.scrollLeft = scrollLeft - walk;
-});
+}
