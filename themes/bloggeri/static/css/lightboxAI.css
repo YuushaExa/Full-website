@@ -13,6 +13,12 @@
 .thumbnails-container.active {
   cursor: grab;
 }
+.thumbnails-container.grabbing {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  border: 2px dashed #ccc;
+  opacity: 0.8;
+}
 
 .thumbnails-container img {
     width: 50px;
