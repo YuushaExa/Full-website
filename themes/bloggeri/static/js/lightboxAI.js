@@ -239,3 +239,47 @@ function handleSwipe() {
     nextSlide();
   }
 }
+
+const thumbnailsContainer = document.querySelector('.thumbnails-container');
+
+// Variables to store the initial position and mouse/touch offsets
+let initialX = 0;
+let offsetX = 0;
+
+// Function to handle the start of the dragging action
+function handleDragStart(event) {
+  event.preventDefault();
+  initialX = event.clientX || event.touches[0].clientX;
+  thumbnailsContainer.classList.add('grabbing');
+
+  // Attach event listeners for tracking movement
+  document.addEventListener('mousemove', handleDragMove);
+  document.addEventListener('touchmove', handleDragMove);
+  document.addEventListener('mouseup', handleDragEnd);
+  document.addEventListener('touchend', handleDragEnd);
+}
+
+// Function to handle the movement during dragging
+function handleDragMove(event) {
+  event.preventDefault();
+  const currentX = event.clientX || event.touches[0].clientX;
+  offsetX = currentX - initialX;
+
+  // Update the position of .thumbnails-container
+  thumbnailsContainer.style.transform = `translateX(${offsetX}px)`;
+}
+
+// Function to handle the end of the dragging action
+function handleDragEnd() {
+  thumbnailsContainer.classList.remove('grabbing');
+
+  // Remove event listeners for tracking movement
+  document.removeEventListener('mousemove', handleDragMove);
+  document.removeEventListener('touchmove', handleDragMove);
+  document.removeEventListener('mouseup', handleDragEnd);
+  document.removeEventListener('touchend', handleDragEnd);
+}
+
+// Attach the drag event listener to .thumbnails-container
+thumbnailsContainer.addEventListener('mousedown', handleDragStart);
+thumbnailsContainer.addEventListener('touchstart', handleDragStart);
