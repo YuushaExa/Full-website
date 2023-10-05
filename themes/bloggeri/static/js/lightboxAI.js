@@ -242,34 +242,32 @@ function handleSwipe() {
 }
 
 var thumbnailsContainer = document.querySelector('.thumbnails-container');
-
 var isDragging = false;
-var startPosition = 0;
-var currentScrollPosition = 0;
+var startPosition = null;
+var startScrollLeft = null;
 
 thumbnailsContainer.addEventListener('mousedown', function(event) {
   isDragging = true;
   startPosition = event.clientX;
-  currentScrollPosition = thumbnailsContainer.scrollLeft;
+  startScrollLeft = thumbnailsContainer.scrollLeft;
+  thumbnailsContainer.style.cursor = 'grabbing';
 });
 
 thumbnailsContainer.addEventListener('mousemove', function(event) {
   if (isDragging) {
-    var moveX = startPosition - event.clientX;
-    var maxScrollPosition = thumbnailsContainer.scrollWidth - thumbnailsContainer.clientWidth;
-    var newScrollPosition = currentScrollPosition + moveX;
-    
-    // Restrict scrolling within the boundaries
-    newScrollPosition = Math.max(0, Math.min(newScrollPosition, maxScrollPosition));
-    
-    thumbnailsContainer.scrollLeft = newScrollPosition;
+    var distance = event.clientX - startPosition;
+    thumbnailsContainer.scrollLeft = startScrollLeft - distance;
   }
 });
 
 thumbnailsContainer.addEventListener('mouseup', function() {
   isDragging = false;
+  thumbnailsContainer.style.cursor = 'grab';
 });
 
 thumbnailsContainer.addEventListener('mouseleave', function() {
-  isDragging = false;
+  if (isDragging) {
+    isDragging = false;
+    thumbnailsContainer.style.cursor = 'grab';
+  }
 });
