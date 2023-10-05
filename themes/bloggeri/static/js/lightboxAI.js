@@ -251,6 +251,7 @@ thumbnailsContainer.addEventListener('mousedown', function(event) {
   startPosition = event.clientX;
   startScrollLeft = thumbnailsContainer.scrollLeft;
   thumbnailsContainer.style.cursor = 'grabbing';
+  event.preventDefault(); // Prevent text selection during dragging
 });
 
 thumbnailsContainer.addEventListener('mousemove', function(event) {
@@ -260,12 +261,7 @@ thumbnailsContainer.addEventListener('mousemove', function(event) {
   }
 });
 
-thumbnailsContainer.addEventListener('mouseup', function() {
-  isDragging = false;
-  thumbnailsContainer.style.cursor = 'grab';
-});
-
-thumbnailsContainer.addEventListener('mouseleave', function() {
+window.addEventListener('mouseup', function() {
   if (isDragging) {
     isDragging = false;
     thumbnailsContainer.style.cursor = 'grab';
