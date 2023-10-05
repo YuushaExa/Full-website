@@ -9,7 +9,9 @@
   font-size: 0;
 }
 
-
+.thumbnails-container.draggable {
+  cursor: grab;
+}
 
 .thumbnails-container.dragging {
   cursor: grabbing;
