@@ -30,6 +30,7 @@ if (gallery && lightboxContent) {
   var galleryContent = gallery.innerHTML;
 
   // Append the gallery content to the lightbox-content element
+ lightboxContent.classList.replace('lazyloading', 'lazyloaded');
   lightboxContent.innerHTML += galleryContent;
 
 }
