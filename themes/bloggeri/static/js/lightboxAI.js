@@ -20,7 +20,7 @@ galleryImages.forEach(function(image) {
 });
  
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
-var thumbnailsContainers = document.querySelectorAll('.thumbnails-container');
+var thumbnailsContainers = document.querySelectorAll('.thumbnails-container a');
 
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
