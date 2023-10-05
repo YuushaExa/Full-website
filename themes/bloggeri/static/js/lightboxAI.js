@@ -242,9 +242,11 @@ function handleSwipe() {
 }
 
 var thumbnailsContainer = document.querySelector('.thumbnails-container');
+var contentElement = thumbnailsContainer.querySelector('.thumbnails-container img');
 var isDragging = false;
 var startPosition = null;
 var startScrollLeft = null;
+var cloneOffset = 0;
 
 thumbnailsContainer.addEventListener('mousedown', function(event) {
   isDragging = true;
@@ -258,6 +260,7 @@ thumbnailsContainer.addEventListener('mousemove', function(event) {
   if (isDragging) {
     var distance = event.clientX - startPosition;
     thumbnailsContainer.scrollLeft = startScrollLeft - distance;
+    updateClones();
   }
 });
 
@@ -265,5 +268,39 @@ window.addEventListener('mouseup', function() {
   if (isDragging) {
     isDragging = false;
     thumbnailsContainer.style.cursor = 'grab';
+    cloneOffset = 0; // Reset the clone offset
+    updateClones();
   }
 });
+
+function updateClones() {
+  var containerWidth = thumbnailsContainer.clientWidth;
+  var contentWidth = contentElement.offsetWidth;
+  var scrollLeft = thumbnailsContainer.scrollLeft;
+  var clones = thumbnailsContainer.querySelectorAll('.clone');
+
+  if (scrollLeft < 0) {
+    // Clone content and append to the left
+    var clone = contentElement.cloneNode(true);
+    clone.classList.add('clone');
+    thumbnailsContainer.insertBefore(clone, contentElement);
+    cloneOffset -= contentWidth;
+    thumbnailsContainer.scrollLeft = scrollLeft + contentWidth;
+  } else if (scrollLeft + containerWidth > contentWidth) {
+    // Clone content and append to the right
+    var clone = contentElement.cloneNode(true);
+    clone.classList.add('clone');
+    thumbnailsContainer.appendChild(clone);
+    cloneOffset += contentWidth;
+    thumbnailsContainer.scrollLeft = scrollLeft - contentWidth;
+  }
+
+  // Remove clones that are out of view
+  for (var i = 0; i < clones.length; i++) {
+    var clone = clones[i];
+    var clonePosition = clone.offsetLeft - cloneOffset;
+    if (clonePosition + clone.offsetWidth < 0 || clonePosition > containerWidth) {
+      clone.remove();
+    }
+  }
+}
