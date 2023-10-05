@@ -1,7 +1,15 @@
+.thumbnails-container {
+    display: flex;
+    overflow: hidden;
+    background-color: #000000a8;
+    bottom: 0;
+    position: absolute;
+}
 .thumbnails-container img {
     width: 50px;
     display: inline-block;
     height: 50px;
+        padding: 7px;
 }
 
 button {
