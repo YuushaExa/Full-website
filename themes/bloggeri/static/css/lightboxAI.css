@@ -28,16 +28,18 @@ padding-left: 10px;
 }
 
 #lightbox-info {
-    position: absolute;
-    top: 0px;
+     position: absolute;
+    top: 15px;
     right: 50%;
     line-height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 #resetButton {
-margin: 0 5px;
-    top: -30px;
-    position: absolute;
-    right: -47px;}
+    position: relative;
+    right: -95px;
+}
 
 #image-counter {
     color: #ccc;
