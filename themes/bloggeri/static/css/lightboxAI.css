@@ -4,15 +4,10 @@
   bottom: 0;
   position: absolute;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
   white-space: nowrap;
   font-size: 0;
   cursor: pointer;
-}
-
-.thumbnails-container {
-  overflow: auto;
-  white-space: nowrap;
 }
 
 .thumbnails-container.draggable {
