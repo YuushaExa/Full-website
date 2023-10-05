@@ -30,10 +30,14 @@ if (gallery && lightboxContent) {
   var galleryContent = gallery.innerHTML;
 
   // Append the gallery content to the lightbox-content element
- lightboxContent.classList.replace('lazyloading', 'lazyloaded');
   lightboxContent.innerHTML += galleryContent;
 
 }
+
+const links = document.querySelectorAll('.thumbnails-container img');
+links.forEach((link) => {
+  link.classList.replace('lazyloading', 'lazyloaded');
+});
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 
