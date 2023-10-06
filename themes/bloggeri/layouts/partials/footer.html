@@ -16,7 +16,7 @@
 
 <script defer>
 $(document).ready(function() {
-  $('.gallery img').on('click', function(){
+  $('.gallery').on('click', 'img', function(){
     $(this).load('/js/lightboxAI.js');
   });
 });
