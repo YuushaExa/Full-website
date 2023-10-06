@@ -17,13 +17,14 @@
 
     <script defer>
 $(document).ready(function() {
-  $('.gallery img').hover(function() {
+  $('.gallery img').on('mouseenter touchstart', function(e) {
+    e.preventDefault(); // Prevents the default behavior of touchstart and mouseenter events
     var scriptElement = document.createElement('script');
     scriptElement.src = '/js/lightboxAI.js';
     document.head.appendChild(scriptElement);
   });
 });
-</script>
+    </script>
 
 <link defer rel="stylesheet" href="/css/lightboxAI.css"/> 
     
