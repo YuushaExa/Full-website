@@ -15,10 +15,12 @@
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
 
 <script defer>
-$('.gallery img').on('click', function(){
-   $(this).load('/js/lightboxAI.js');
- })
-    </script>
+$(document).ready(function() {
+  $('.gallery img').on('click', function(){
+    $(this).load('/js/lightboxAI.js');
+  });
+});
+</script>
   
     
 <link defer rel="stylesheet" href="/css/lightboxAI.css"/> 
