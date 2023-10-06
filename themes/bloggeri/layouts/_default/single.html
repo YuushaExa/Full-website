@@ -13,63 +13,6 @@
   <div class="content">
           {{ .Content }} 
         </div>
-
-<script>
-  const apiKey = 'l9szo7ch2wkr9ijs0kqhau4ldiward';
-const apiUrl = 'https://api.igdb.com/v4/games';
- 
-const perPage = 100;
- 
-async function fetchGames(page) {
-  const requestData = {
-    method: 'POST',
-    headers: {
-      'Client-ID': apiKey,
-      'Content-Type': 'application/json',
-    },
-    body: `fields name, summary, release_dates; limit ${perPage}; offset ${perPage * (page - 1)};`,
-  };
- 
-  const response = await fetch(apiUrl, requestData);
-  return await response.json();
-}
- 
-async function getAllGames() {
-  try {
-    let page = 1;
-    let games = [];
-    let hasMoreGames = true;
- 
-    while (hasMoreGames) {
-      const data = await fetchGames(page);
-      games = games.concat(data);
- 
-      if (data.length < perPage) {
-        hasMoreGames = false;
-      } else {
-        page++;
-      }
-    }
- 
-    const jsonOutput = JSON.stringify(games, null, 2);
-    const blob = new Blob([jsonOutput], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
- 
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'games.json';
-    link.click();
-    URL.revokeObjectURL(url);
- 
-    console.log('Games saved as JSON successfully!');
-  } catch (error) {
-    console.error('Error saving games as JSON:', error);
-  }
-}
- 
-getAllGames();
-  </script>
-      
            <div class="cover-front">
                     <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
        </div>
