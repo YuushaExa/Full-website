@@ -14,9 +14,10 @@
              <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
 
-        <script defer>
+
+    <script defer>
 $(document).ready(function() {
-  $('.gallery img').on('click', function() {
+  $('.gallery img').hover(function() {
     var scriptElement = document.createElement('script');
     scriptElement.src = '/js/lightboxAI.js';
     document.head.appendChild(scriptElement);
