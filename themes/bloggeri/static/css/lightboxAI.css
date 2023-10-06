@@ -63,6 +63,7 @@ padding-left: 10px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+      z-index: 2;
 }
 #resetButton {
        position: relative;
