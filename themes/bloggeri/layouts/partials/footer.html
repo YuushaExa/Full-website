@@ -24,7 +24,10 @@ $(document).ready(function() {
       var scriptElement = document.createElement('script');
       scriptElement.src = '/js/lightboxAI.js';
       scriptElement.onload = function() {
-          $('.gallery img').trigger('click');
+var galleryImage = document.querySelector('.gallery img');
+var clickEvent = new Event('click');
+
+galleryImage.dispatchEvent(clickEvent);
       };
       document.head.appendChild(scriptElement);
       scriptLoaded = true;
