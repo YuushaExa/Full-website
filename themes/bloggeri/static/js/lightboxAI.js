@@ -20,33 +20,19 @@ galleryImages.forEach(function(image) {
 });
 
 var gallery = document.querySelector('.gallery');
+
+// Get the lightbox-content element
 var lightboxContent = document.querySelector('.thumbnails-container');
-var lightboxOpen = false; // Flag to track if the lightbox is open
 
-// Function to handle click event on gallery images
-function handleImageClick(event) {
-  if (!lightboxOpen) {
-    var galleryContent = gallery.innerHTML;
-    lightboxContent.innerHTML += galleryContent;
-    lightboxOpen = true;
-  }
+// Check if both elements exist
+if (gallery && lightboxContent) {
+  // Get all the child nodes of the gallery element
+  var galleryContent = gallery.innerHTML;
+
+  // Append the gallery content to the lightbox-content element
+  lightboxContent.innerHTML += galleryContent;
+
 }
-
-// Function to handle click event on lightbox close button
-function handleCloseClick(event) {
-  lightboxContent.innerHTML = '';
-  lightboxOpen = false;
-}
-
-// Attach click event listener to gallery images
-var galleryImages = gallery.querySelectorAll('img');
-galleryImages.forEach(function(image) {
-  image.addEventListener('click', handleImageClick);
-});
-
-// Attach click event listener to lightbox close button
-var closeButton = document.querySelector('.lightbox-close');
-closeButton.addEventListener('click', handleCloseClick);
 
 const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
