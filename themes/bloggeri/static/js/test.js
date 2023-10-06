@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 var colorThief = new ColorThief();
 $('.cover-front').each(function() {
     var thumb = $(this);
@@ -14,3 +15,4 @@ $('html').css({
 var bg = 'rgb('+ thisColor +')'
 var bg_url = document.querySelector("img").src.split('&w')[0];
 document.querySelector(".cover").style.backgroundImage = "linear-gradient(-180deg,#1b1d1e8c 0," + bg + "," + bg + " 100%),url('" + bg_url + "')";
+});
