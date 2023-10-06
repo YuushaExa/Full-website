@@ -15,16 +15,20 @@
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
 
 
-    <script>
+    <script defer>
 $(document).ready(function() {
   $('.gallery img').click(function() {
     var scriptElement = document.createElement('script');
     scriptElement.src = '/js/lightboxAI.js';
+    scriptElement.onload = function() {
+      // Code to be executed after the script is loaded
+      // This can include triggering the click event
+      $('.gallery img').trigger('click');
+    };
     document.head.appendChild(scriptElement);
   });
 });
-</script>
-
+    </script>
 
 <link defer rel="stylesheet" href="/css/lightboxAI.css"/> 
     
