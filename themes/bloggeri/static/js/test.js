@@ -1,5 +1,4 @@
 var colorThief = new ColorThief();
-if (img.complete) {
 $('.cover-front').each(function() {
     var thumb = $(this);
     thumb.find('img').each(function() {
@@ -9,7 +8,6 @@ $('.cover-front').each(function() {
          })
     });
 });
-}
 $('html').css({
             background: 'rgb('+ thisColor +')'
          });
