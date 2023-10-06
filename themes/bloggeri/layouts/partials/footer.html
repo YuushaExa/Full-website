@@ -24,11 +24,10 @@ $(document).ready(function() {
       var scriptElement = document.createElement('script');
       scriptElement.src = '/js/lightboxAI.js';
       scriptElement.onload = function() {
-        // Code to be executed after the script is loaded
+          $('.gallery img').trigger('click');
       };
       document.head.appendChild(scriptElement);
       scriptLoaded = true;
-          $('.gallery img').trigger('click');
     }
   });
 });
