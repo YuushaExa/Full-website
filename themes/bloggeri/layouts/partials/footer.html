@@ -14,14 +14,7 @@
              <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
 
-<script>
-$(document).ready(function() {
-  $('body').on('click', '.gallery img', function(){
-    $(this).load('/js/lightboxAI.js');
-  });
-});
-</script>
-  
+<script> $('.gallery img').on('click', function(){ $(this).load('/js/lightboxAI.js'); }) </script>
     
 <link defer rel="stylesheet" href="/css/lightboxAI.css"/> 
     
