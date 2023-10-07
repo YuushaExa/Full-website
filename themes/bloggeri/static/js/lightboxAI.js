@@ -1,4 +1,4 @@
-var galleryImages = document.querySelectorAll('.gallery img:not(.thumbnails-container img)');
+var galleryImages = document.querySelectorAll('.gallery img');
 var currentIndex = 0;
 var totalImages = galleryImages.length;
 var openedImageCounter = document.getElementById('opened-image-counter');
@@ -37,6 +37,7 @@ if (gallery && lightboxContent) {
 const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
   link.classList.replace('lazyloading', 'lazyloaded');
+ link.removeAttribute('data-fancybox');
 });
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
