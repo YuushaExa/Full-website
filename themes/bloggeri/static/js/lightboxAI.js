@@ -37,7 +37,10 @@ if (gallery && lightboxContent) {
 const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
   link.classList.replace('lazyloading', 'lazyloaded');
- link.removeAttribute('data-fancybox');
+});
+const links = document.querySelectorAll('.thumbnails-container a');
+links.forEach((link) => {
+ link.removeAttribute('data-fancybox="gallery"');
 });
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
