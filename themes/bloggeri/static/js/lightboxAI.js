@@ -1,4 +1,4 @@
-var galleryImages = document.querySelectorAll('.gallery img:not(.thumbnail)');
+var galleryImages = document.querySelectorAll('.gallery img:not(.thumbnails-container)');
 var currentIndex = 0;
 var totalImages = galleryImages.length;
 var openedImageCounter = document.getElementById('opened-image-counter');
