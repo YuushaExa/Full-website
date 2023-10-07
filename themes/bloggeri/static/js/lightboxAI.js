@@ -22,7 +22,7 @@ galleryImages.forEach(function(image) {
 var gallery = document.querySelector('.gallery');
 
 // Get the lightbox-content element
-var lightboxContent = document.querySelector('.gallery');
+var lightboxContent = document.querySelector('.thumbnails-container');
 
 // Check if both elements exist
 if (gallery && lightboxContent) {
@@ -249,7 +249,7 @@ function handleSwipe() {
   }
 }
 
-const container = document.querySelector(".gallery");
+const container = document.querySelector(".thumbnails-container");
 let isDragging = false;
 let startX;
 let scrollLeft;
