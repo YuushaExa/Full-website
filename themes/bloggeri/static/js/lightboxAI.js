@@ -22,7 +22,7 @@ galleryImages.forEach(function(image) {
 var gallery = document.querySelector('.gallery');
 
 // Get the lightbox-content element
-var lightboxContent = document.querySelector('.thumbnails-container');
+var lightboxContent = document.querySelector('.gallery');
 
 // Check if both elements exist
 if (gallery && lightboxContent) {
