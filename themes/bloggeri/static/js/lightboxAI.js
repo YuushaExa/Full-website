@@ -18,35 +18,37 @@ galleryImages.forEach(function(image) {
   image.parentNode.insertBefore(link, image);
   link.appendChild(image);
 });
-
 var gallery = document.querySelector('.gallery');
-
 // Get the lightbox-content element
 var lightboxContent = document.querySelector('.thumbnails-container');
-
 // Check if both elements exist
 if (gallery && lightboxContent) {
   // Get all the child nodes of the gallery element
   var galleryContent = gallery.innerHTML;
-
   // Append the gallery content to the lightbox-content element
   lightboxContent.innerHTML += galleryContent;
-
 }
-
 const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
   link.classList.replace('lazyloading', 'lazyloaded');
 });
-
 const links1 = document.querySelectorAll('.thumbnails-container a');
 links1.forEach((link1) => {
  link1.removeAttribute('data-fancybox');
 });
 
-
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
   image.addEventListener('click', function(event) {
@@ -55,16 +57,6 @@ lightboxImages.forEach(function(image, index) {
     openLightbox(image.href);
   });
 });
-
-
-$(document).ready(function() {
-  $('.thumbnails-container img').click(function(event) {
-   event.preventDefault()
-    var thumbnailSrc = $(this).attr('src');
-    $('.lightbox-content img').attr('src', thumbnailSrc);
-  });
-});
-
 function openLightbox(imageSrc) {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
@@ -153,8 +145,6 @@ document.addEventListener('wheel', function(event) {
     }
   }
 });
-
-
 let pixelated = false;
 let saturated = false;
 let scale = 1.0;
@@ -163,13 +153,11 @@ const scaleSlider = document.getElementById('scaleSlider');
 const scaleLabel = document.getElementById('scaleLabel');
 const sliderContainer = document.getElementById('sliderContainer');
 const openSliderButton = document.getElementById('openSliderButton');
-
 function updateScale(value) {
   scale = value * 0.2;
   lightboxImage.style.transform = `scale(${scale})`;
   scaleLabel.textContent = scale.toFixed(1);
 }
-
 function resetScale() {
   scale = 1.0;
   scaleSlider.value = 5;
@@ -179,11 +167,9 @@ function resetScale() {
 function openSlider() {
   sliderContainer.classList.toggle('hidden');
 }
-
 scaleSlider.addEventListener('input', function() {
   updateScale(scaleSlider.value);
 });
-
 function toggleSlider() {
    const openSliderButton = document.getElementById('openSliderButton');
   openSliderButton.classList.toggle('active');
@@ -195,7 +181,6 @@ function toggleSlider() {
     openSliderButton.textContent = 'Close Slider';
   }
 }
-
 function togglePixelated() {
   pixelated = !pixelated;
   lightboxImage.style.imageRendering = pixelated ? 'pixelated' : 'auto';
@@ -259,59 +244,40 @@ function handleSwipe() {
     nextSlide();
   }
 }
-
 const container = document.querySelector(".thumbnails-container");
 let isDragging = false;
 let startX;
 let scrollLeft;
-
 container.addEventListener("mousedown", startDrag);
 container.addEventListener("touchstart", startDrag);
-
 container.addEventListener("mouseleave", stopDrag);
 container.addEventListener("mouseup", stopDrag);
 container.addEventListener("touchend", stopDrag);
-
 container.addEventListener("mousemove", drag);
 container.addEventListener("touchmove", drag);
-
 function startDrag(event) {
   isDragging = true;
   container.classList.add("dragging");
-
   if (event.type === "mousedown") {
     startX = event.pageX - container.offsetLeft;
   } else if (event.type === "touchstart") {
     startX = event.touches[0].pageX - container.offsetLeft;
   }
-
   scrollLeft = container.scrollLeft;
 }
-
 function stopDrag() {
   isDragging = false;
   container.classList.remove("dragging");
 }
-
 function drag(event) {
   if (!isDragging) return;
   event.preventDefault();
-
   let x;
   if (event.type === "mousemove") {
     x = event.pageX - container.offsetLeft;
   } else if (event.type === "touchmove") {
     x = event.touches[0].pageX - container.offsetLeft;
   }
-
   const walk = (x - startX) * 2; // Adjust dragging speed here
   container.scrollLeft = scrollLeft - walk;
 }
-
-// plugins
-
-  $('#fullimagebtn').click(function() {
-    var imageUrl = $('lightbox-content img').attr('src');
-    var newUrl = imageUrl.replace('#&w=1920&fit=inside&we', '');
-    $('.lightbox-content img').attr('src', newUrl);
-  });
