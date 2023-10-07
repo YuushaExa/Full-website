@@ -158,9 +158,9 @@ document.addEventListener('wheel', function(event) {
 
 $(document).ready(function() {
   $('#fullimagebtn').click(function() {
-    var imageUrl = $('.lightbox .lightbox-content img').attr('src');
+    var imageUrl = $('lightbox-content img').attr('src');
     var newUrl = imageUrl.replace('#&w=1920&fit=inside&we', '');
-    $('.lightbox .lightbox-content img').attr('src', newUrl);
+    $('.lightbox-content img').attr('src', newUrl);
   });
 });
 
