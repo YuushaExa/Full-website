@@ -154,15 +154,6 @@ document.addEventListener('wheel', function(event) {
   }
 });
 
-// plugins
-
-$(document).ready(function() {
-  $('#fullimagebtn').click(function() {
-    var imageUrl = $('lightbox-content img').attr('src');
-    var newUrl = imageUrl.replace('#&w=1920&fit=inside&we', '');
-    $('.lightbox-content img').attr('src', newUrl);
-  });
-});
 
 let pixelated = false;
 let saturated = false;
@@ -316,3 +307,11 @@ function drag(event) {
   const walk = (x - startX) * 2; // Adjust dragging speed here
   container.scrollLeft = scrollLeft - walk;
 }
+
+// plugins
+
+  $('#fullimagebtn').click(function() {
+    var imageUrl = $('lightbox-content img').attr('src');
+    var newUrl = imageUrl.replace('#&w=1920&fit=inside&we', '');
+    $('.lightbox-content img').attr('src', newUrl);
+  });
