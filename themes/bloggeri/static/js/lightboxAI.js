@@ -57,6 +57,18 @@ function openLightbox(imageSrc) {
 var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
+
+ lightboxImages.forEach(function (image) {
+    image.classList.remove('selected-image');
+  });
+  lightboxImages[currentIndex].classList.add('selected-image');
+
+  thumbnails.forEach(function (thumbnail) {
+    thumbnail.classList.remove('selected-image');
+    if (thumbnail.getAttribute('data-image-src') === imageSrc) {
+      thumbnail.classList.add('selected-image');
+    }
+  });
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
