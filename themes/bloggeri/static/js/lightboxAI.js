@@ -56,20 +56,10 @@ lightboxImages.forEach(function(image, index) {
 });
 
 
-
-// Attach click event listener to each image
-lightboxImages.forEach(function(image, index) {
-  image.addEventListener('click', function(event) {
-    event.preventDefault();
-    currentIndex = index;
-    openLightbox(image.href);
-    
-    // Add the clicked image source to the lightbox content
-    const clickedImageSrc = image.getAttribute('href');
-    const lightboxImage = document.createElement('img');
-    lightboxImage.src = clickedImageSrc;
-    lightboxContent.innerHTML = ''; // Clear previous content
-    lightboxContent.appendChild(lightboxImage);
+$(document).ready(function() {
+  $('.thumbnails-container img').click(function() {
+    var thumbnailSrc = $(this).attr('src');
+    $('.lightbox-content img').attr('src', thumbnailSrc);
   });
 });
 
