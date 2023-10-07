@@ -37,18 +37,7 @@ links1.forEach((link1) => {
  link1.removeAttribute('data-fancybox');
 });
 
-var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
+var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');    
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
   image.addEventListener('click', function(event) {
