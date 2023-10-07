@@ -38,9 +38,9 @@ const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
   link.classList.replace('lazyloading', 'lazyloaded');
 });
-const links = document.querySelectorAll('.thumbnails-container a');
-links.forEach((link) => {
- link.removeAttribute('data-fancybox="gallery"');
+const links1 = document.querySelectorAll('.thumbnails-container a');
+links1.forEach((link1) => {
+ link1.removeAttribute('data-fancybox="gallery"');
 });
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
