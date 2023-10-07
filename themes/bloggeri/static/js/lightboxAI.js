@@ -249,7 +249,7 @@ function handleSwipe() {
   }
 }
 
-const container = document.querySelector(".thumbnails-container");
+const container = document.querySelector(".gallery");
 let isDragging = false;
 let startX;
 let scrollLeft;
