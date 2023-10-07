@@ -56,7 +56,6 @@ lightboxImages.forEach(function(image, index) {
 });
 
 
-const lightboxContent = document.querySelector('.lightbox-content');
 
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
