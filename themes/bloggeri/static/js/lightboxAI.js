@@ -77,15 +77,13 @@ document.body.classList.add('lightbox-open');
 }
  
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % lightboxImages.length;
+  currentIndex = (currentIndex + 1) % (galleryImages.length - 1);
   var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
  
     lightboxImg.style.display = 'none'; // Hide the image initially
 
- currentIndex = (currentIndex + 1) % (galleryImages.length - 1); 
- openLightbox();
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -103,16 +101,13 @@ function nextSlide() {
 }
  
 function prevSlide() {
-  currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  var lightboxImg = document.getElementById('lightbox-img');
+currentIndex = (currentIndex - 1 + (galleryImages.length - 1)) % (galleryImages.length - 1);
+ var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
- 
-  currentIndex = (currentIndex - 1 + (galleryImages.length - 1)) % (galleryImages.length - 1); // Subtract 1 to exclude .thumbnails-container
-  openLightbox();
- 
+  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
