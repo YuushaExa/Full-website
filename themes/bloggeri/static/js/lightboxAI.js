@@ -64,9 +64,9 @@ var loadingText = document.getElementById('loading-text');
   lightboxImages[currentIndex].classList.add('selected-image');
 
   links.forEach(function (thumbnail) {
-    link.classList.remove('selected-image');
-    if (link.getAttribute('data-image-src') === imageSrc) {
-      link.classList.add('selected-image');
+    thumbnail.classList.remove('selected-image');
+    if (thumbnail.getAttribute('data-image-src') === imageSrc) {
+      thumbnail.classList.add('selected-image');
     }
   });
  
