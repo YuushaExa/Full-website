@@ -6,13 +6,10 @@ var totalImageCounter = document.getElementById('total-image-counter');
 updateCounters();
  
 function updateCounters() {
-  const opened = currentIndex + 1;
-  const total = galleryImages.length - 1; // Subtract 1 to exclude .thumbnails-container
-
-  const counterText = `${opened} / ${total}`;
-  totalImageCounter.textContent = counterText;
+  openedImageCounter.textContent = Math.min(currentIndex + 1, totalImages);
+  totalImageCounter.textContent = totalImages;
 }
-
+ 
 galleryImages.forEach(function(image) {
   var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
   var link = document.createElement('a');
@@ -86,6 +83,9 @@ function nextSlide() {
   var loadingText = document.getElementById('loading-text');
  
     lightboxImg.style.display = 'none'; // Hide the image initially
+
+ currentIndex = (currentIndex + 1) % (galleryImages.length - 1); 
+ openLightbox();
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -109,6 +109,9 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
+ 
+  currentIndex = (currentIndex - 1 + (galleryImages.length - 1)) % (galleryImages.length - 1); // Subtract 1 to exclude .thumbnails-container
+  openLightbox();
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
