@@ -39,6 +39,11 @@ links.forEach((link) => {
   link.classList.replace('lazyloading', 'lazyloaded');
 });
 
+const links1 = document.querySelectorAll('.thumbnails-container a');
+links1.forEach((link1) => {
+ link1.removeAttribute('data-fancybox');
+});
+
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 
 // Attach click event listener to each image
