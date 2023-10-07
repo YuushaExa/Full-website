@@ -40,7 +40,7 @@ links.forEach((link) => {
 });
 const links1 = document.querySelectorAll('.thumbnails-container a');
 links1.forEach((link1) => {
- link1.removeAttribute('data-fancybox="gallery"');
+ link1.removeAttribute('data-fancybox');
 });
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
