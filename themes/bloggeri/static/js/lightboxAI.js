@@ -19,7 +19,7 @@ galleryImages.forEach(function(image) {
   link.appendChild(image);
 });
 
-var gallery = document.querySelector('img');
+var gallery = document.querySelector('.gallery');
 
 // Get the lightbox-content element
 var lightboxContent = document.querySelector('.thumbnails-container');
