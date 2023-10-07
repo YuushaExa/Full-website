@@ -57,18 +57,6 @@ function openLightbox(imageSrc) {
 var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
-
-if (lightboxImages.length > 0 && links.length > 0) {
-    lightboxImages.forEach(function (image) {
-      image.classList.remove('selected-image');
-    });
-    lightboxImages[currentIndex].classList.add('selected-image');
-
-    links.forEach(function (link) {
-      link.classList.remove('selected-image');
-    });
-    links[currentIndex].classList.add('selected-image');
-  }
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -95,13 +83,7 @@ function nextSlide() {
   var loadingText = document.getElementById('loading-text');
  
     lightboxImg.style.display = 'none'; // Hide the image initially
-  if (lightboxImages.length > 0 && links.length > 0) {
-    lightboxImages[currentIndex].classList.remove('selected-image');
-    lightboxImages[(currentIndex + 1) % lightboxImages.length].classList.add('selected-image');
-
-    links[currentIndex].classList.remove('selected-image');
-    links[(currentIndex + 1) % links.length].classList.add('selected-image');
-  }
+ 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
@@ -124,13 +106,7 @@ function prevSlide() {
   var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
-  if (lightboxImages.length > 0 && links.length > 0) {
-    lightboxImages[currentIndex].classList.remove('selected-image');
-    lightboxImages[(currentIndex - 1 + lightboxImages.length) % lightboxImages.length].classList.add('selected-image');
-
-    links[currentIndex].classList.remove('selected-image');
-    links[(currentIndex - 1 + links.length) % links.length].classList.add('selected-image');
-  }
+ 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
