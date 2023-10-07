@@ -57,7 +57,8 @@ lightboxImages.forEach(function(image, index) {
 
 
 $(document).ready(function() {
-  $('.thumbnails-container img').click(function() {
+  $('.thumbnails-container img').click(function(event) {
+   event.preventDefault()
     var thumbnailSrc = $(this).attr('src');
     $('.lightbox-content img').attr('src', thumbnailSrc);
   });
