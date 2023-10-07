@@ -6,7 +6,7 @@ var totalImageCounter = document.getElementById('total-image-counter');
 updateCounters();
  
 function updateCounters() {
-  openedImageCounter.textContent = currentIndex + 1;
+  openedImageCounter.textContent = Math.min(currentIndex + 1, totalImages);
   totalImageCounter.textContent = totalImages;
 }
  
