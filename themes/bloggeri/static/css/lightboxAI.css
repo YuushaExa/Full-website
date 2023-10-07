@@ -1,3 +1,7 @@
+.selected-image {
+  border: 2px solid blue;
+}
+
 .thumbnails-container {
   display: flex;
   background-color: #000000a8;
