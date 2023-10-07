@@ -6,10 +6,13 @@ var totalImageCounter = document.getElementById('total-image-counter');
 updateCounters();
  
 function updateCounters() {
-  openedImageCounter.textContent = Math.min(currentIndex + 1, totalImages);
-  totalImageCounter.textContent = totalImages;
+  const opened = currentIndex + 1;
+  const total = galleryImages.length - 1; // Subtract 1 to exclude .thumbnails-container
+
+  const counterText = `${opened} / ${total}`;
+  counter.textContent = counterText;
 }
- 
+
 galleryImages.forEach(function(image) {
   var imgLink = image.getAttribute('data-src').split('&w')[0] + "&w=1920&fit=inside&we";
   var link = document.createElement('a');
