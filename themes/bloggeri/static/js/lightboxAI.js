@@ -10,7 +10,7 @@ function updateCounters() {
   const total = galleryImages.length - 1; // Subtract 1 to exclude .thumbnails-container
 
   const counterText = `${opened} / ${total}`;
-  counter.textContent = counterText;
+  totalImageCounter.textContent = counterText;
 }
 
 galleryImages.forEach(function(image) {
