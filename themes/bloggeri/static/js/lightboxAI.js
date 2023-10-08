@@ -310,7 +310,7 @@ function drag(event) {
 
 // plugins
 
-$('#Tab1').on('click', function (e) {
+$('#fullimagebtn').on('click', function (e) {
     $(".lightbox-content img").each(function () {
         var src = $(this).attr("src");
         var newLink = src.substring(0, src.indexOf("w=") + 2);
