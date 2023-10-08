@@ -312,7 +312,7 @@ function drag(event) {
 
 $('#fullimagebtn').on('click', function (e) {
     $( ".lightbox-content img" ).each(function( index ) {
-        var newLink=$(this).attr("src").replace("w=1920"," ");
+        var newLink=$(this).attr("src").replace("w=192"," ");
         $(this).attr("src", newLink);
     });
 });
