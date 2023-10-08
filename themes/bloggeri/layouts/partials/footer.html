@@ -14,17 +14,18 @@
              <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
 
-
-<script defer>
+    <script defer>
 $(document).ready(function() {
   var scriptLoaded = false;
 
   $('.gallery img').click(function() {
+    var clickedImage = $(this);
+
     if (!scriptLoaded) {
       var scriptElement = document.createElement('script');
       scriptElement.src = '/js/lightboxAI.js';
       scriptElement.onload = function() {
-          $('.gallery img').trigger('click');
+        clickedImage.trigger('click');
       };
       document.head.appendChild(scriptElement);
       scriptLoaded = true;
