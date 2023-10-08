@@ -310,8 +310,9 @@ function drag(event) {
 
 // plugins
 
-function changeUrl() {
-  var imageUrl = $('#lightbox-img').attr('src');
-  var newUrl = imageUrl.replace('&amp;w=1920&amp;fit=inside&amp;we', '');
-  $('#lightbox-img').attr('src', newUrl);
-}
+$('#fullimagebtn').on('click', function (e) {
+    $( ".lightbox-content img" ).each(function( index ) {
+        var newLink=$(this).attr("src").replace("w=1920"," ");
+        $(this).attr("src", newLink);
+    });
+});
