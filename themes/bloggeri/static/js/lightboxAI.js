@@ -59,9 +59,10 @@ lightboxImages.forEach(function(image, index) {
 
 $(document).ready(function() {
   $('.thumbnails-container img').click(function(event) {
-   event.preventDefault()
+    event.preventDefault();
     var thumbnailSrc = $(this).attr('src');
-    $('.lightbox-content img').attr('src', thumbnailSrc);
+    var newSrc = thumbnailSrc.replace('&w=200&h=150&fit=cover&a=attention', '&w=1920&fit=inside&we');
+    $('.lightbox-content img').attr('src', newSrc);
   });
 });
 
