@@ -57,24 +57,11 @@ lightboxImages.forEach(function(image, index) {
 });
 
 
-$(document).ready(function() {
-  var thumbnails = $('.thumbnails-container img');
-  var thumbnailsCount = thumbnails.length;
-  var openedImageCounter = $('#opened-image-counter');
-
-  thumbnails.each(function(index) {
-    $(this).attr('data-index', index + 1);
-  });
-
-  thumbnails.click(function(event) {
-    event.preventDefault();
-    var thumbnailSrc = $(this).attr('src');
-    var newSrc = thumbnailSrc.replace('&w=200&h=150&fit=cover&a=attention', '&w=1920&fit=inside&we');
-    $('.lightbox-content img').attr('src', newSrc);
-
-    var exactNumber = $(this).data('index');
-    openedImageCounter.text(exactNumber);
-  });
+$('.thumbnails-container img').click(function(event) {
+event.preventDefault();
+var thumbnailSrc = $(this).attr('src');
+var newSrc = thumbnailSrc.replace('&w=200&h=150&fit=cover&a=attention', '&w=1920&fit=inside&we');
+$('.lightbox-content img').attr('src', newSrc);
 });
 
 function openLightbox(imageSrc) {
