@@ -316,3 +316,12 @@ $('#fullimagebtn').on('click', function (e) {
         $(this).attr("src", newLink);
     });
 });
+
+function fullimage() {
+  var x = document.getElementById("fullimagebtn");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
