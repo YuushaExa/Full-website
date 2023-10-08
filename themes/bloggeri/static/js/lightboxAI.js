@@ -312,6 +312,6 @@ function drag(event) {
 
 function changeUrl() {
   var imageUrl = $('#lightbox-img').attr('src');
-  var newUrl = imageUrl.replace('#&w=1920&fit=inside&we', '');
+  var newUrl = imageUrl.replace('&amp;w=1920&amp;fit=inside&amp;we', '');
   $('#lightbox-img').attr('src', newUrl);
 }
