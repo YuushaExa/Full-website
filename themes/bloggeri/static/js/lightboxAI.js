@@ -310,9 +310,10 @@ function drag(event) {
 
 // plugins
 
-$('#fullimagebtn').on('click', function (e) {
-    $( ".lightbox-content img" ).each(function( index ) {
-        var newLink=$(this).attr("src").replace("w=192"," ");
+$('#Tab1').on('click', function (e) {
+    $(".lightbox-content img").each(function () {
+        var src = $(this).attr("src");
+        var newLink = src.substring(0, src.indexOf("w=") + 2);
         $(this).attr("src", newLink);
     });
 });
