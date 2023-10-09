@@ -4,7 +4,7 @@ document.body.addEventListener("click", async function (event) {
   const target = event.target;
   if (target.matches(".card a")) {
     event.preventDefault(); 
- 
+  async function fetchContentAndUpdatePage(url) {
     try {
       const response = await fetch(target.href);
       const html = await response.text();
@@ -29,6 +29,7 @@ contentFrontTextElement.style.opacity = "1";
       console.error('Error:', error);
     }
   }
+}
 });
 
 window.addEventListener('popstate', function(event) {
