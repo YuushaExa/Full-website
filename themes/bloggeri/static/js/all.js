@@ -130,12 +130,67 @@ if (event.target == modal) {
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
 }
+window.addEventListener('popstate', async function(event) {
+  try {
+    const response = await fetch(document.location.href);
+    const html = await response.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const postTitle = doc.querySelector('.content').innerHTML;
+
+    const mainElement = document.querySelector('#content-front-text');
+    mainElement.innerHTML = postTitle;
+
+    var contentFrontElement = document.querySelector("#content-front");
+    var contentFrontTextElement = document.querySelector("#content-front-text");
+
+    contentFrontElement.style.zIndex = "1";
+    contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+    contentFrontTextElement.style.opacity = "1";
+  } catch (error) {
+    console.error('Error:', error);
+  }
+});
+
+document.body.addEventListener("click", async function (event) {
+  const target = event.target;
+  if (target.matches(".card a")) {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(target.href);
+      const html = await response.text();
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const postTitle = doc.querySelector('.content').innerHTML;
+
+      const mainElement = document.querySelector('#content-front-text');
+      mainElement.innerHTML = postTitle;
+
+      window.history.pushState({}, "", target.href);
+
+      var contentFrontElement = document.querySelector("#content-front");
+      var contentFrontTextElement = document.querySelector("#content-front-text");
+
+      contentFrontElement.style.zIndex = "1";
+      contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+      contentFrontTextElement.style.opacity = "1";
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+});
+
 var span1 = document.getElementsByClassName("close-pv")[0];
 span1.onclick = function() {
- $("#content-front-text").empty();
-       $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1").css('background','unset');
-}
+  $("#content-front-text").empty();
+  $("#content-front-text").css("opacity", "0");
+  $("#content-front").css("z-index", "-1").css('background','unset');
+};
 
 
 
