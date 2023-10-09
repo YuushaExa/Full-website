@@ -317,19 +317,15 @@ $('#fullimagebtn').on('click', function (e) {
 
 
 function toggleButtons() {
-  var button1 = document.getElementById("fullimagebtn");
+  var button1 = document.getElementById("button1");
   var button2 = document.getElementById("button2");
   var toggleText = document.getElementById("toggleText");
 
   button1.classList.toggle("visible");
   button1.classList.toggle("hidden");
-  button1.classList.toggle("fade-in");
-  button1.classList.toggle("fade-out");
 
   button2.classList.toggle("visible");
   button2.classList.toggle("hidden");
-  button2.classList.toggle("fade-in");
-  button2.classList.toggle("fade-out");
 
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
