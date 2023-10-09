@@ -3,34 +3,36 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.body.addEventListener("click", async function (event) {
   const target = event.target;
   if (target.matches(".card a")) {
-    event.preventDefault(); 
-  async function fetchContentAndUpdatePage(url) {
-    try {
-      const response = await fetch(target.href);
-      const html = await response.text();
+    event.preventDefault();
+    await fetchContentAndUpdatePage(target.href);
+  }
+});
 
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
+async function fetchContentAndUpdatePage(url) {
+  try {
+    const response = await fetch(url);
+    const html = await response.text();
 
-      const postTitle = doc.querySelector('.content').innerHTML;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
 
-      const mainElement = document.querySelector('#content-front-text');
-      mainElement.innerHTML = postTitle;
+    const postTitle = doc.querySelector('.content').innerHTML;
 
-      window.history.pushState({}, "", target.href);
+    const mainElement = document.querySelector('#content-front-text');
+    mainElement.innerHTML = postTitle;
 
-      var contentFrontElement = document.querySelector("#content-front");
-var contentFrontTextElement = document.querySelector("#content-front-text");
-   
-      contentFrontElement.style.zIndex = "1";
-contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
-contentFrontTextElement.style.opacity = "1";
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    window.history.pushState({}, "", url);
+
+    var contentFrontElement = document.querySelector("#content-front");
+    var contentFrontTextElement = document.querySelector("#content-front-text");
+
+    contentFrontElement.style.zIndex = "1";
+    contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+    contentFrontTextElement.style.opacity = "1";
+  } catch (error) {
+    console.error('Error:', error);
   }
 }
-});
 
 window.addEventListener('popstate', function(event) {
   const newURL = document.location.href;
