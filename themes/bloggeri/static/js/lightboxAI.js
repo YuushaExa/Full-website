@@ -317,7 +317,7 @@ $('#fullimagebtn').on('click', function (e) {
 
 
 function toggleButtons() {
-  var button1 = document.getElementById("button1");
+  var button1 = document.getElementById("fullimagebtn");
   var button2 = document.getElementById("button2");
   var toggleText = document.getElementById("toggleText");
 
