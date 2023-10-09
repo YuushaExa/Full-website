@@ -315,11 +315,16 @@ $('#fullimagebtn').on('click', function (e) {
     });
 });
 
-function fullimage() {
-  var x = document.getElementById("fullimagebtn");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+function toggleButtons() {
+  var button1 = document.getElementById("fullimagebtn");
+  var button2 = document.getElementById("button2");
+  var toggleText = document.getElementById("toggleText");
+
+  button1.classList.toggle("visible");
+  button1.classList.toggle("hidden");
+
+  button2.classList.toggle("visible");
+  button2.classList.toggle("hidden");
+
+  toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
