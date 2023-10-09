@@ -32,7 +32,13 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 window.addEventListener('popstate', function(event) {
- history.back();
+  // Find the element with the class name "close-pv"
+  const closeElement = document.getElementsByClassName("close-pv")[0];
+
+  // Trigger a click event on the element
+  if (closeElement) {
+    closeElement.click();
+  }
 });
 
 document.body.addEventListener("click", async function(event) {
@@ -127,8 +133,6 @@ if (event.target == modal) {
 var span1 = document.getElementsByClassName("close-pv")[0];
 span1.onclick = function() {
  $("#content-front-text").empty();
-    var url = "https://yuushaexa.github.io/";
-  history.pushState({}, "", url);
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
