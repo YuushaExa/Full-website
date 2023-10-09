@@ -1,11 +1,12 @@
 .hidden {
   opacity: 0;
   transition: opacity 0.3s ease;
+  animation: fadeOut 0.3s ease forwards;
 }
 
 .visible {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -26,13 +27,6 @@
   }
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease;
-}
-
-.fade-out {
-  animation: fadeOut 0.3s ease;
-}
 .selected-image {
   border: 2px solid blue;
 }
