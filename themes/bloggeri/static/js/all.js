@@ -31,6 +31,11 @@ contentFrontTextElement.style.opacity = "1";
   }
 });
 
+window.addEventListener('popstate', function(event) {
+  const newURL = document.location.href;
+
+  fetchContentAndUpdatePage(newURL);
+});
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
