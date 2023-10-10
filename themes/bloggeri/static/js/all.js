@@ -121,7 +121,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 });
 
 var modal1 = document.getElementById("content-front");
-window.onclick = function(event) {
+modal1.onclick = function(event) {
 if (event.target == modal1) {
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
