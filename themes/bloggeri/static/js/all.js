@@ -20,6 +20,7 @@ const mainElement = document.querySelector('#content-front-text');
 mainElement.innerHTML = postTitle + postBody;
 
 window.history.pushState({}, "", target.href);
+      document.title = "'+ postTitle+ '";
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
    
