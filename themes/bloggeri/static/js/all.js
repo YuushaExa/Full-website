@@ -124,6 +124,9 @@ var modal1 = document.getElementById("content-front");
 modal1.onclick = function(event) {
 if (event.target == modal1) {
   $("#content-front-text").empty();
+     var url = "https://yuushaexa.github.io/";
+  history.pushState({}, "", url);
+  document.title = "Library";
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
