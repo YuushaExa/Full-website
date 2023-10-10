@@ -19,7 +19,7 @@ const postBody = doc.querySelector('.content').innerHTML;
 const mainElement = document.querySelector('#content-front-text');
 mainElement.innerHTML = postTitle + postBody;
 
-window.history.pushState({}, "'+ postTitle +'", target.href);
+window.history.pushState({}, title: postTitle, target.href);
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
    
