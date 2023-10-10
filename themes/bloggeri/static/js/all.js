@@ -3,7 +3,7 @@ const mainElement = document.querySelector('#content-front-text');
 
 document.body.addEventListener("click", async function (event) {
   const target = event.target;
-  if (target.matches(".card a")) {
+  if (target.matches(".card-image")) {
     event.preventDefault(); 
  
     try {
