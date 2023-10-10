@@ -120,9 +120,9 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 }, 300)};
 });
 
-var modal = document.getElementById("content-front");
-modal.onclick = function(event) {
-if (event.target == modal) {
+var modal1 = document.getElementById("content-front");
+window.onclick = function(event) {
+if (event.target == modal1) {
   $("#content-front-text").empty();
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
