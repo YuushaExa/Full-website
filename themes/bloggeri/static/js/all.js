@@ -37,8 +37,6 @@ window.addEventListener('popstate', function(event) {
   if (closeElement) {
     closeElement.click();
   }
-  var pageTitle = event.state.title;
-  mainElement.innerHTML = pageTitle;
 });
 
 document.body.addEventListener("click", async function(event) {
