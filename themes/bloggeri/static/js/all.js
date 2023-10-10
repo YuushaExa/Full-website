@@ -31,19 +31,14 @@ contentFrontTextElement.style.opacity = "1";
   }
 });
 
-function handlePopstate(event) {
+window.addEventListener('popstate', function(event) {
   const closeElement = document.getElementsByClassName("close-pv")[0];
-
   if (closeElement) {
     closeElement.click();
   }
-
   var pageTitle = event.state.title;
-  // Display the title in the appropriate element in the DOM
   mainElement.innerHTML = pageTitle;
-}
-
-window.addEventListener('popstate', handlePopstate);
+});
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
