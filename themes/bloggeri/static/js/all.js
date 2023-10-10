@@ -12,12 +12,11 @@ document.body.addEventListener("click", async function (event) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       
-       const postTitle = doc.querySelector('.post-title').innerHTML;
-      const postBody = doc.querySelector('.content').innerHTML;
+   const postTitle = doc.querySelector('.post-title').innerHTML;
+const postBody = doc.querySelector('.content').innerHTML;
 
-      const mainElement = document.querySelector('#content-front-text');
-      mainElement.innerHTML = postTitle;
-      mainElement.innerHTML = postBody;
+const mainElement = document.querySelector('#content-front-text');
+mainElement.innerHTML = postTitle + postBody;
 
 window.history.pushState({ title: postTitle }, "", target.href);
 
