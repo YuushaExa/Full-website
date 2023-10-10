@@ -134,7 +134,7 @@ span1.onclick = function() {
  $("#content-front-text").empty();
       var url = "https://yuushaexa.github.io/";
   history.pushState({}, "", url);
-  document.title = url;
+  document.title = "Library";
        $("#content-front-text").css("opacity", "0");
                               $("#content-front").css("z-index", "-1").css('background','unset');
 }
