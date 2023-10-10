@@ -7,9 +7,9 @@ document.body.addEventListener("click", async function (event) {
     event.preventDefault();
 
     // Create and append the loading spinner element
-    const spinner = document.createElement('div');
-    spinner.className = 'spinner';
-    document.body.appendChild(spinner);
+    const spinner1 = document.createElement('div');
+    spinner1.className = 'spinner1';
+    document.body.appendChild(spinner1);
 
     try {
       const response = await fetch(target.href);
@@ -35,11 +35,11 @@ document.body.addEventListener("click", async function (event) {
       contentFrontTextElement.style.opacity = "1";
 
       // Remove the loading spinner element
-      spinner.remove();
+      spinner1.remove();
     } catch (error) {
       console.error('Error:', error);
       // Remove the loading spinner element on error
-      spinner.remove();
+      spinner1.remove();
     }
   }
 });
