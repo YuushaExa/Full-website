@@ -4,35 +4,45 @@ const mainElement = document.querySelector('#content-front-text');
 document.body.addEventListener("click", async function (event) {
   const target = event.target;
   if (target.matches(".card a")) {
-    event.preventDefault(); 
- 
+    event.preventDefault();
+
+    // Create and append the loading spinner element
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    document.body.appendChild(spinner);
+
     try {
       const response = await fetch(target.href);
       const html = await response.text();
 
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
-      
-const postTitle = doc.querySelector('.post-title a').innerHTML;
-const postBody = doc.querySelector('.content').innerHTML;
 
-const mainElement = document.querySelector('#content-front-text');
-mainElement.innerHTML = postTitle + postBody;
+      const postTitle = doc.querySelector('.post-title a').innerHTML;
+      const postBody = doc.querySelector('.content').innerHTML;
 
-window.history.pushState({}, "", target.href);
+      const mainElement = document.querySelector('#content-front-text');
+      mainElement.innerHTML = postTitle + postBody;
+
+      window.history.pushState({}, "", target.href);
       document.title = postTitle;
+
       var contentFrontElement = document.querySelector("#content-front");
-var contentFrontTextElement = document.querySelector("#content-front-text");
-   
+      var contentFrontTextElement = document.querySelector("#content-front-text");
+
       contentFrontElement.style.zIndex = "1";
-contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
-contentFrontTextElement.style.opacity = "1";
+      contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+      contentFrontTextElement.style.opacity = "1";
+
+      // Remove the loading spinner element
+      spinner.remove();
     } catch (error) {
       console.error('Error:', error);
+      // Remove the loading spinner element on error
+      spinner.remove();
     }
   }
 });
-
 window.addEventListener('popstate', function(event) {
   const closeElement = document.getElementsByClassName("close-pv")[0];
   if (closeElement) {
