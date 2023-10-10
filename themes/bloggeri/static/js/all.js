@@ -19,7 +19,6 @@ const mainElement = document.querySelector('#content-front-text');
 mainElement.innerHTML = postTitle + postBody;
 
 window.history.pushState({ title: postTitle }, "", target.href);
-
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
    
@@ -32,7 +31,7 @@ contentFrontTextElement.style.opacity = "1";
   }
 });
 
-window.addEventListener('popstate', function(event) {
+function handlePopstate(event) {
   const closeElement = document.getElementsByClassName("close-pv")[0];
 
   if (closeElement) {
@@ -42,7 +41,9 @@ window.addEventListener('popstate', function(event) {
   var pageTitle = event.state.title;
   // Display the title in the appropriate element in the DOM
   mainElement.innerHTML = pageTitle;
-});
+}
+
+window.addEventListener('popstate', handlePopstate);
 
 document.body.addEventListener("click", async function(event) {
   var target = event.target;
