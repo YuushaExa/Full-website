@@ -12,7 +12,7 @@ document.body.addEventListener("click", async function (event) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       
-   const postTitle = doc.querySelector('.post-title').innerHTML;
+const postTitle = doc.querySelector('.post-title').innerHTML;
 const postBody = doc.querySelector('.content').innerHTML;
 
 const mainElement = document.querySelector('#content-front-text');
@@ -38,7 +38,10 @@ window.addEventListener('popstate', function(event) {
   if (closeElement) {
     closeElement.click();
   }
-    var pageTitle = event.state.title;
+
+  var pageTitle = event.state.title;
+  // Display the title in the appropriate element in the DOM
+  mainElement.innerHTML = pageTitle;
 });
 
 document.body.addEventListener("click", async function(event) {
