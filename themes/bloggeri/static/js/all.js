@@ -4,45 +4,35 @@ const mainElement = document.querySelector('#content-front-text');
 document.body.addEventListener("click", async function (event) {
   const target = event.target;
   if (target.matches(".card a")) {
-    event.preventDefault();
-
-    // Create and append the loading spinner element
-    const spinner1 = document.createElement('div');
-    spinner1.className = 'spinner1';
-    document.body.appendChild(spinner1);
-
+    event.preventDefault(); 
+ 
     try {
       const response = await fetch(target.href);
       const html = await response.text();
 
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
+      
+const postTitle = doc.querySelector('.post-title a').innerHTML;
+const postBody = doc.querySelector('.content').innerHTML;
 
-      const postTitle = doc.querySelector('.post-title a').innerHTML;
-      const postBody = doc.querySelector('.content').innerHTML;
+const mainElement = document.querySelector('#content-front-text');
+mainElement.innerHTML = postTitle + postBody;
 
-      const mainElement = document.querySelector('#content-front-text');
-      mainElement.innerHTML = postTitle + postBody;
-
-      window.history.pushState({}, "", target.href);
+window.history.pushState({}, "", target.href);
       document.title = postTitle;
-
       var contentFrontElement = document.querySelector("#content-front");
-      var contentFrontTextElement = document.querySelector("#content-front-text");
-
+var contentFrontTextElement = document.querySelector("#content-front-text");
+   
       contentFrontElement.style.zIndex = "1";
-      contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
-      contentFrontTextElement.style.opacity = "1";
-
-      // Remove the loading spinner element
-      spinner1.remove();
+contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+contentFrontTextElement.style.opacity = "1";
     } catch (error) {
       console.error('Error:', error);
-      // Remove the loading spinner element on error
-      spinner1.remove();
     }
   }
 });
+
 window.addEventListener('popstate', function(event) {
   const closeElement = document.getElementsByClassName("close-pv")[0];
   if (closeElement) {
