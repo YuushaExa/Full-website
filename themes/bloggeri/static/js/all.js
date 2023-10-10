@@ -13,14 +13,14 @@ document.body.addEventListener("click", async function (event) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       
-const postTitle = doc.querySelector('.post-title').innerHTML;
+const postTitle = doc.querySelector('.post-title a').innerHTML;
 const postBody = doc.querySelector('.content').innerHTML;
 
 const mainElement = document.querySelector('#content-front-text');
 mainElement.innerHTML = postTitle + postBody;
 
 window.history.pushState({}, "", target.href);
-      document.title = postTitle.text;
+      document.title = postTitle;
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
    
