@@ -17,7 +17,7 @@ document.body.addEventListener("click", async function (event) {
       const mainElement = document.querySelector('#content-front-text');
       mainElement.innerHTML = postTitle;
 
-      window.history.pushState({}, "", target.href);
+window.history.pushState({ title: postTitle }, "", target.href);
 
       var contentFrontElement = document.querySelector("#content-front");
 var contentFrontTextElement = document.querySelector("#content-front-text");
@@ -32,13 +32,12 @@ contentFrontTextElement.style.opacity = "1";
 });
 
 window.addEventListener('popstate', function(event) {
-  // Find the element with the class name "close-pv"
   const closeElement = document.getElementsByClassName("close-pv")[0];
 
-  // Trigger a click event on the element
   if (closeElement) {
     closeElement.click();
   }
+    var pageTitle = event.state.title;
 });
 
 document.body.addEventListener("click", async function(event) {
