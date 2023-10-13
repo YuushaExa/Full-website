@@ -71,6 +71,37 @@ function openLightbox(imageSrc) {
 var loadingText = document.getElementById('loading-text');
  
   lightboxImg.style.display = 'none'; // Hide the image initially
+
+  var posX = 0;
+  var posY = 0;
+  var isDragging = false;
+
+  function handleMouseDown(event) {
+    isDragging = true;
+    posX = event.clientX;
+    posY = event.clientY;
+  }
+
+  function handleMouseMove(event) {
+    if (isDragging) {
+      var deltaX = event.clientX - posX;
+      var deltaY = event.clientY - posY;
+      posX = event.clientX;
+      posY = event.clientY;
+
+      lightboxImg.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    }
+  }
+
+  function handleMouseUp() {
+    isDragging = false;
+  }
+
+  lightboxImg.src = imageSrc;
+  lightboxImg.classList.add('lightbox-img');
+  lightboxImg.addEventListener('mousedown', handleMouseDown);
+  lightboxImg.addEventListener('mousemove', handleMouseMove);
+  lightboxImg.addEventListener('mouseup', handleMouseUp);
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -96,6 +127,8 @@ function nextSlide() {
  
   var loadingText = document.getElementById('loading-text');
  
+    lightboxImg.style.transform = 'initial';
+
     lightboxImg.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
@@ -118,7 +151,8 @@ function prevSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
- 
+
+   lightboxImg.style.transform = 'initial';
   lightboxImg.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
