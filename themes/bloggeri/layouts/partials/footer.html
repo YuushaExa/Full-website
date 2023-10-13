@@ -71,14 +71,28 @@ const handleIntersection = (entries, observer) => {
     if (entry.isIntersecting) {
       const lazyImage = entry.target;
       lazyImage.src = lazyImage.dataset.src;
-      observer.unobserve(lazyImage); 
+      observer.unobserve(lazyImage);
+      lazyImage.removeAttribute('data-src'); // Remove the data-src attribute
     }
   });
 };
 
 const observer = new IntersectionObserver(handleIntersection, options);
 
-lazyImages.forEach(image => observer.observe(image));
+lazyImages.forEach(image => {
+  observer.observe(image);
+});
+
+// Function to handle dynamically added images
+const handleDynamicImages = (images) => {
+  images.forEach(image => {
+    observer.observe(image);
+  });
+};
+
+// Example usage: Call handleDynamicImages function passing the dynamically added images
+const dynamicallyAddedImages = document.querySelectorAll('.thumbnails-container img');
+handleDynamicImages(dynamicallyAddedImages);
 </script> 
     <script defer src="/js/all.js"></script>
 </footer>
