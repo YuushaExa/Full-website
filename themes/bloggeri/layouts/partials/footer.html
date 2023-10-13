@@ -58,30 +58,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
 </script>
 
  <script>         
-const images = document.querySelectorAll('[data-src]');
-const config = {
-      root: null,
-    rootMargin: '0px',
-    threshold: 0.25
+const lazyImages = document.querySelectorAll('[data-src]');
+
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1 
 };
-let loaded = 0;
-let observer = new IntersectionObserver(function (entries, self) {
+
+const handleIntersection = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      preloadImage(entry.target);
-      self.unobserve(entry.target);
-        entry.target.classList.add("visible");
+      const lazyImage = entry.target;
+      lazyImage.src = lazyImage.dataset.src;
+      observer.unobserve(lazyImage); 
     }
   });
-}, config);
-images.forEach(image => {
-  observer.observe(image);
-});
-function preloadImage(img) {
-  const src = img.getAttribute('data-src');
-  if (!src) { return; }
-  img.src = src;
-}        
+};
+
+const observer = new IntersectionObserver(handleIntersection, options);
+
+lazyImages.forEach(image => observer.observe(image));
 </script> 
     <script defer src="/js/all.js"></script>
 </footer>
