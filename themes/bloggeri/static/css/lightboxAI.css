@@ -110,6 +110,8 @@ padding-left: 10px;
   max-width: 90%;
   max-height: 90%;
   position: relative;
+    cursor: move;
+  user-select: none;
 }
 
 .prev,
