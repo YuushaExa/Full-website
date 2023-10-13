@@ -329,3 +329,14 @@ function toggleButtons() {
 
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
+
+window.addEventListener('load', function() {
+  var parentContainer = document.getElementById('lightbox-content');
+  var lightboxImg = document.getElementById('lightbox-img');
+
+  // Calculate the offset height of the parent container
+  var parentHeight = parentContainer.offsetHeight;
+
+  // Apply the calculated height to the lightbox image
+  lightboxImg.style.maxHeight = parentHeight + 'px';
+});
