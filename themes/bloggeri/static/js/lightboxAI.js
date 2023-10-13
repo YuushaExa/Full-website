@@ -353,7 +353,7 @@ function handleMouseMove(event) {
     translateX1 += deltaX;
     translateY1 += deltaY;
 
-    lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    lightboxImg.style.transform = `translate(${translateX1}px, ${translateY1}px)`;
   }
 }
 
