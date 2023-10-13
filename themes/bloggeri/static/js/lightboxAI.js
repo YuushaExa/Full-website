@@ -245,27 +245,15 @@ function handleSwipe(target) {
   }
 
   if (deltaY > swipeThreshold) {
-    // Swipe down
     closeLightbox();
-    target.style.transform = 'translateY(100%)';
-    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   } else if (deltaY < -swipeThreshold) {
-    // Swipe up
     closeLightbox();
-    target.style.transform = 'translateY(-100%)';
-    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   }
 
   if (deltaX > swipeThreshold) {
-    // Swipe right
     prevSlide();
-    target.style.transform = 'translateX(-100%)';
-    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   } else if (deltaX < -swipeThreshold) {
-    // Swipe left
     nextSlide();
-    target.style.transform = 'translateX(100%)';
-    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   }
 }
 
