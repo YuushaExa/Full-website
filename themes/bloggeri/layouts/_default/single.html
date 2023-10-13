@@ -14,9 +14,9 @@
           {{ .Content }} 
 
 <script>fetch(
-  "https://api.igdb.com/v4/age_ratings",
+  "https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/v4/age_ratings",
   {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Client-ID': 'dvriuy142a4swg67vsb42w1k97lcp9',
