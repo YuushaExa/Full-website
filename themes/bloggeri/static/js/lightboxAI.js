@@ -330,13 +330,37 @@ function toggleButtons() {
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
 
-window.addEventListener('load', function() {
-  var parentContainer = document.getElementById('lightbox-content');
-  var lightboxImg = document.getElementById('lightbox-img');
+var lightboxImg = document.getElementById('lightbox-img');
+var isDragging = false;
+var startX;
+var startY;
+var translateX = 0;
+var translateY = 0;
 
-  // Calculate the offset height of the parent container
-  var parentHeight = parentContainer.offsetHeight;
+function handleMouseDown(event) {
+  isDragging = true;
+  startX = event.clientX;
+  startY = event.clientY;
+}
 
-  // Apply the calculated height to the lightbox image
-  lightboxImg.style.maxHeight = parentHeight + 'px';
-});
+function handleMouseMove(event) {
+  if (isDragging) {
+    var deltaX = event.clientX - startX;
+    var deltaY = event.clientY - startY;
+    startX = event.clientX;
+    startY = event.clientY;
+
+    translateX += deltaX;
+    translateY += deltaY;
+
+    lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px)`;
+  }
+}
+
+function handleMouseUp() {
+  isDragging = false;
+}
+
+lightboxImg.addEventListener('mousedown', handleMouseDown);
+lightboxImg.addEventListener('mousemove', handleMouseMove);
+lightboxImg.addEventListener('mouseup', handleMouseUp);
