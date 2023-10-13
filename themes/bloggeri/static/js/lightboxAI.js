@@ -258,7 +258,7 @@ function handleSwipe(target) {
   }
 }
 function moveImage(direction) {
-  var image = document.getElementById('your-image-id'); // Replace 'your-image-id' with the actual ID of your image element
+  var image = document.getElementById('lightbox-img'); // Replace 'your-image-id' with the actual ID of your image element
   var step = 100; // Adjust this value as needed
 
   if (direction === 'left') {
