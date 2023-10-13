@@ -245,15 +245,27 @@ function handleSwipe(target) {
   }
 
   if (deltaY > swipeThreshold) {
+    // Swipe down
     closeLightbox();
+    target.style.transform = 'translateY(100%)';
+    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   } else if (deltaY < -swipeThreshold) {
+    // Swipe up
     closeLightbox();
+    target.style.transform = 'translateY(-100%)';
+    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   }
 
   if (deltaX > swipeThreshold) {
+    // Swipe right
     prevSlide();
+    target.style.transform = 'translateX(-100%)';
+    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   } else if (deltaX < -swipeThreshold) {
+    // Swipe left
     nextSlide();
+    target.style.transform = 'translateX(100%)';
+    target.style.transition = 'transform 0.3s ease'; // Apply desired transition
   }
 }
 
@@ -329,38 +341,3 @@ function toggleButtons() {
 
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
-
-var lightboxImg = document.getElementById('lightbox-img');
-var isDragging1 = false;
-var startX1;
-var startY1;
-var translateX1 = 0;
-var translateY1 = 0;
-
-function handleMouseDown(event) {
-  isDragging1 = true;
-  startX1 = event.clientX;
-  startY1 = event.clientY;
-}
-
-function handleMouseMove(event) {
-  if (isDragging1) {
-    var deltaX = event.clientX - startX1;
-    var deltaY = event.clientY - startY1;
-    startX1 = event.clientX;
-    startY1 = event.clientY;
-
-    translateX1 += deltaX;
-    translateY1 += deltaY;
-
-    lightboxImg.style.transform = `translate(${translateX1}px, ${translateY1}px)`;
-  }
-}
-
-function handleMouseUp() {
-  isDragging1 = false;
-}
-
-lightboxImg.addEventListener('mousedown', handleMouseDown);
-lightboxImg.addEventListener('mousemove', handleMouseMove);
-lightboxImg.addEventListener('mouseup', handleMouseUp);
