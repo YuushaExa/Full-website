@@ -235,7 +235,7 @@ document.addEventListener('touchend', function(event) {
 });
 
 function handleSwipe(target) {
-  var swipeThreshold = 500; // Adjust this value as needed
+  var swipeThreshold = 50; // Adjust this value as needed
   var deltaX = touchEndX - touchStartX;
   var deltaY = touchEndY - touchStartY;
 
