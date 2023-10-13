@@ -12,6 +12,27 @@
         <div class="cover"></div></div>
   <div class="content">
           {{ .Content }} 
+
+<scirpt>fetch(
+  "https://api.igdb.com/v4/age_ratings",
+  {
+    method: 'POST', 
+    headers: {
+      'Accept': 'application/json',
+      'Client-ID': 'dvriuy142a4swg67vsb42w1k97lcp9',
+      'Authorization': 'Bearer 1c7og5pok7d8pys6rli19i4lwp9beq',
+    },
+    body: "fields category,checksum,content_descriptions,rating,rating_cover_url,synopsis;"
+  }
+)
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+})
+.catch(err => {
+  console.error(err);
+});</scirpt>
+    
         </div>
            <div class="cover-front">
                     <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
