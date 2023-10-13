@@ -331,20 +331,20 @@ function toggleButtons() {
 }
 
 var lightboxImg = document.getElementById('lightbox-img');
-var isDragging = false;
+var isDragging1 = false;
 var startX;
 var startY;
 var translateX = 0;
 var translateY = 0;
 
 function handleMouseDown(event) {
-  isDragging = true;
+  isDragging1 = true;
   startX = event.clientX;
   startY = event.clientY;
 }
 
 function handleMouseMove(event) {
-  if (isDragging) {
+  if (isDragging1) {
     var deltaX = event.clientX - startX;
     var deltaY = event.clientY - startY;
     startX = event.clientX;
@@ -358,7 +358,7 @@ function handleMouseMove(event) {
 }
 
 function handleMouseUp() {
-  isDragging = false;
+  isDragging1 = false;
 }
 
 lightboxImg.addEventListener('mousedown', handleMouseDown);
