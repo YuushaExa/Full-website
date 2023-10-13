@@ -235,7 +235,7 @@ document.addEventListener('touchend', function(event) {
 });
 
 function handleSwipe(target) {
-  var swipeThreshold = 50; // Adjust this value as needed
+  var swipeThreshold = 300; // Adjust this value as needed
   var deltaX = touchEndX - touchStartX;
   var deltaY = touchEndY - touchStartY;
 
@@ -249,11 +249,24 @@ function handleSwipe(target) {
   } else if (deltaY < -swipeThreshold) {
     closeLightbox();
   }
-
   if (deltaX > swipeThreshold) {
+   moveImage('right');
     prevSlide();
   } else if (deltaX < -swipeThreshold) {
+       moveImage('left');
     nextSlide();
+  }
+}
+function moveImage(direction) {
+  var image = document.getElementById('your-image-id'); // Replace 'your-image-id' with the actual ID of your image element
+  var step = 100; // Adjust this value as needed
+
+  if (direction === 'left') {
+    // Move the image to the left
+    image.style.transform = `translateX(-${step}px)`;
+  } else if (direction === 'right') {
+    // Move the image to the right
+    image.style.transform = `translateX(${step}px)`;
   }
 }
 
