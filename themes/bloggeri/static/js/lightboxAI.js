@@ -178,7 +178,7 @@ const maxScale = 3.0; // Maximum allowed scale value
 
 function increaseScale() {
   if (scale < maxScale) {
-    scale += 0.5;
+    scale += 1.0;
     lightboxImage.style.transform = `scale(${scale})`;
   }
 }
