@@ -14,11 +14,36 @@
         </span>
    </div>
 
-       <div class="lightbox">
-    <div class="slider">
-    </div>
+        <div id="lightbox" class="hidden">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+          <div id="image-info">
+                                      <div id="image-counter">
+            <span id="opened-image-counter"></span> / <span id="total-image-counter"></span> </div>   
+<div id="lightbox-info">
+  <button id="openSliderButton" onclick="toggleSlider()">Open Slider</button>
+    <button id="myDiv" onclick="toggleButtons()">
+  <span id="toggleText">Toggle Open</span>
+  <button id="fullimagebtn" class="hidden">Button 1</button>
+  <button id="button2" class="hidden">Button 2</button>
+</button>   
+          <button id="pixelatedButton" onclick="togglePixelated()">Toggle Pixelated</button>
+              <button id="saturatedButton" onclick="toggleSaturated()">Toggle Saturation</button>
+</div>  
+              <div id="sliderContainer" class="hidden">
+    <input type="range" id="scaleSlider" min="2" max="11" step="1" value="5" onchange="updateScale(this.value)">
+    <label for="scaleSlider" id="scaleLabel">1.0</label>
+    <button id="resetButton" onclick="resetScale()">Reset</button>
   </div>
-
+            <button class="prev" onclick="prevSlide()">&#8249;</button>
+  <button class="next" onclick="nextSlide()">&#8250;</button>
+             <div class="lightbox-content">
+  <img src="" alt="Lightbox Image" id="lightbox-img">
+                     <p id="loading-text" class="spinner"></p>
+             </div>       
+</div>
+           <div class="thumbnails-container">
+</div>
+        </div>
         
         <div class="link-pre"></div>
     </body>  
