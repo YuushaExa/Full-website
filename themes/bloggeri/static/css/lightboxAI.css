@@ -15,7 +15,7 @@
 }
 
 .thumbnails-container {
-  display: flex;
+  display: none;
   background-color: #000000a8;
   bottom: 0;
   position: absolute;
