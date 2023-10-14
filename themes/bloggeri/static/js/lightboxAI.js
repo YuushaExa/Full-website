@@ -169,44 +169,27 @@ document.addEventListener('wheel', function(event) {
 
 let pixelated = false;
 let saturated = false;
-let scale = 1.0;
 const lightboxImage = document.getElementById('lightbox-img');
-const scaleSlider = document.getElementById('scaleSlider');
-const scaleLabel = document.getElementById('scaleLabel');
-const sliderContainer = document.getElementById('sliderContainer');
-const openSliderButton = document.getElementById('openSliderButton');
+const increaseScaleButton = document.getElementById('increaseScaleButton');
+const resetScaleButton = document.getElementById('resetScaleButton');
 
-function updateScale(value) {
-  scale = value * 0.2;
-  lightboxImage.style.transform = `scale(${scale})`;
-  scaleLabel.textContent = scale.toFixed(1);
+let scale = 1.0;
+const maxScale = 3.0; // Maximum allowed scale value
+
+function increaseScale() {
+  if (scale < maxScale) {
+    scale += 0.5;
+    lightboxImage.style.transform = `scale(${scale})`;
+  }
 }
 
 function resetScale() {
   scale = 1.0;
-  scaleSlider.value = 5;
   lightboxImage.style.transform = `scale(${scale})`;
-  scaleLabel.textContent = scale.toFixed(1);
-}
-function openSlider() {
-  sliderContainer.classList.toggle('hidden');
 }
 
-scaleSlider.addEventListener('input', function() {
-  updateScale(scaleSlider.value);
-});
-
-function toggleSlider() {
-   const openSliderButton = document.getElementById('openSliderButton');
-  openSliderButton.classList.toggle('active');
-  sliderContainer.classList.toggle('hidden');
-  
-  if (sliderContainer.classList.contains('hidden')) {
-    openSliderButton.textContent = 'Open Slider';
-  } else {
-    openSliderButton.textContent = 'Close Slider';
-  }
-}
+increaseScaleButton.addEventListener('click', increaseScale);
+resetScaleButton.addEventListener('click', resetScale);
 
 function togglePixelated() {
   pixelated = !pixelated;
