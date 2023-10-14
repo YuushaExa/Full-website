@@ -325,3 +325,25 @@ function toggleButtons() {
 
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
+
+        const isThumbnailsVisible = localStorage.getItem('thumbnailsVisible') === 'true';
+
+        // Function to toggle the display of the thumbnails container
+        function toggleThumbnails() {
+            const thumbnailsContainer = document.querySelector('.thumbnails-container');
+            const isVisible = thumbnailsContainer.style.display !== 'none';
+            thumbnailsContainer.style.display = isVisible ? 'none' : 'flex';
+            
+            // Save the state in storage
+            localStorage.setItem('thumbnailsVisible', !isVisible);
+        }
+
+        // Add event listener to the toggle button
+        const toggleBtn = document.getElementById('toggleBtn');
+        toggleBtn.addEventListener('click', toggleThumbnails);
+
+        // Set the initial state based on storage
+        if (isThumbnailsVisible) {
+            const thumbnailsContainer = document.querySelector('.thumbnails-container');
+            thumbnailsContainer.style.display = 'flex';
+        }
