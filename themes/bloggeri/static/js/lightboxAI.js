@@ -90,6 +90,12 @@ var loadingText = document.getElementById('loading-text');
 document.body.classList.add('lightbox-open');
   document.documentElement.style.overflow = 'hidden';
   updateCounters();
+
+   preloadTimeout = setTimeout(function() {
+    var nextIndex = (currentIndex + 1) % lightboxImages.length;
+    var nextImage = new Image();
+    nextImage.src = lightboxImages[nextIndex].href;
+  }, 1000);
 }
  
 function nextSlide() {
@@ -97,7 +103,7 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
- 
+  clearTimeout(preloadTimeout); 
     lightboxImg.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
