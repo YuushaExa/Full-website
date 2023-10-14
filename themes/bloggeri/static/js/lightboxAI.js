@@ -6,22 +6,8 @@ var totalImageCounter = document.getElementById('total-image-counter');
 updateCounters();
  
 function updateCounters() {
-  // Update the total number of images
-  totalImages = galleryImages.length;
-  // Set the maximum value of the slider
-  slider.max = totalImages - 1;
-  // Update the value of the slider to the current index
-  slider.value = currentIndex;
-  // Update the counter text
-  counter.textContent = (currentIndex + 1) + ' / ' + totalImages;
-}
-slider.addEventListener('input', function() {
-  showSlide(parseInt(this.value, 10));
-});
-function showSlide(index) {
-  currentIndex = index;
-  // ... existing code to display the slide ...
-  updateCounters();
+  openedImageCounter.textContent = Math.min(currentIndex + 1, totalImages);
+  totalImageCounter.textContent = totalImages;
 }
  
 galleryImages.forEach(function(image) {
