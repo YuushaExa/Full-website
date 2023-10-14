@@ -1,51 +1,74 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const lightbox = document.querySelector(".lightbox");
-  const slider = document.querySelector(".slider");
-  const images = slider.querySelectorAll("img");
-  let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderContainer = document.querySelector('.slider-container');
+    const slider = sliderContainer.querySelector('.slider');
+    const images = slider.querySelectorAll('img');
+    const imageCount = images.length;
+    let currentIndex = 0;
 
-  function showSlide(index) {
-    images[currentIndex].classList.remove("active");
-    currentIndex = index;
-    images[currentIndex].classList.add("active");
-  }
-
-  function nextSlide() {
-    if (currentIndex === images.length - 1) {
-      showSlide(0);
-    } else {
-      showSlide(currentIndex + 1);
+    function showSlide(index) {
+        slider.style.transform = `translateX(-${index * 100}%)`;
     }
-  }
 
-  function prevSlide() {
-    if (currentIndex === 0) {
-      showSlide(images.length - 1);
-    } else {
-      showSlide(currentIndex - 1);
+    function openLightbox(index) {
+        // Create a lightbox container element
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        
+        // Create an image element for the enlarged image
+        const lightboxImage = document.createElement('img');
+        lightboxImage.src = images[index].src;
+        lightboxImage.alt = images[index].alt;
+        
+        // Append the image to the lightbox container
+        lightbox.appendChild(lightboxImage);
+        
+        // Append the lightbox container to the document body
+        document.body.appendChild(lightbox);
     }
-  }
 
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "ArrowRight") {
-      nextSlide();
-    } else if (e.key === "ArrowLeft") {
-      prevSlide();
+    function closeLightbox() {
+        const lightbox = document.querySelector('.lightbox');
+        if (lightbox) {
+            // Remove the lightbox from the document body
+            document.body.removeChild(lightbox);
+        }
     }
-  });
 
-  lightbox.addEventListener("click", function(e) {
-    if (e.target === lightbox) {
-      lightbox.style.display = "none";
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % imageCount;
+        showSlide(currentIndex);
     }
-  });
 
-  images.forEach(function(image, index) {
-    image.addEventListener("click", function() {
-      showSlide(index);
-      lightbox.style.display = "flex";
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+        showSlide(currentIndex);
+    }
+
+    sliderContainer.addEventListener('click', function(event) {
+        if (event.target.tagName === 'IMG') {
+            const clickedIndex = Array.from(images).indexOf(event.target);
+            openLightbox(clickedIndex);
+        }
     });
-  });
 
-  showSlide(currentIndex);
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('lightbox')) {
+            closeLightbox();
+        }
+    });
+
+    // Optional: Add buttons or other elements to control the slider manually
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.addEventListener('click', nextSlide);
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Previous';
+    prevButton.addEventListener('click', prevSlide);
+
+    const controlsContainer = document.createElement('div');
+    controlsContainer.appendChild(prevButton);
+    controlsContainer.appendChild(nextButton);
+
+    sliderContainer.appendChild(controlsContainer);
 });
