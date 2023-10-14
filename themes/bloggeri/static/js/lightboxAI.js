@@ -103,7 +103,6 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
-  clearTimeout(preloadTimeout); 
     lightboxImg.style.display = 'none'; // Hide the image initially
  
   var loadingTimeout = setTimeout(function() {
