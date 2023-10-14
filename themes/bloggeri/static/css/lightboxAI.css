@@ -50,26 +50,7 @@ button.active {
   color: #fff;
 }
 
-#sliderContainer {
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
 
-#scaleSlider {
--webkit-appearance: slider-vertical;
-    width: 10px;
-    height: 200px;
-    margin: 10px 0;
-    transform: rotate(180deg);
-}
-
-#scaleLabel {
-padding-left: 10px;
-}
 
 #lightbox-info {
      position: absolute;
