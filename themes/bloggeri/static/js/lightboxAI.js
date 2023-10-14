@@ -36,7 +36,9 @@ if (gallery && lightboxContent) {
 
 const links = document.querySelectorAll('.thumbnails-container img');
 links.forEach((link) => {
-  link.classList.replace('lazyloading', 'lazyloaded');
+  const dataSrc = link.getAttribute('data-src');
+  link.setAttribute('src', dataSrc);
+  link.removeAttribute('data-src');
 });
 
 const links1 = document.querySelectorAll('.thumbnails-container a');
