@@ -29,11 +29,8 @@
           <button id="pixelatedButton" onclick="togglePixelated()">Toggle Pixelated</button>
               <button id="saturatedButton" onclick="toggleSaturated()">Toggle Saturation</button>
 </div>  
-              <div id="sliderContainer" class="hidden">
-    <input type="range" id="scaleSlider" min="2" max="11" step="1" value="5" onchange="updateScale(this.value)">
-    <label for="scaleSlider" id="scaleLabel">1.0</label>
-    <button id="resetButton" onclick="resetScale()">Reset</button>
-  </div>
+ <button id="increaseScaleButton">Increase Scale</button>
+  <button id="resetScaleButton">Reset Scale</button>
             <button class="prev" onclick="prevSlide()">&#8249;</button>
   <button class="next" onclick="nextSlide()">&#8250;</button>
              <div class="lightbox-content">
