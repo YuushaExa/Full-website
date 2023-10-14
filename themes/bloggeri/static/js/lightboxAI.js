@@ -326,25 +326,25 @@ function toggleButtons() {
   toggleText.textContent = toggleText.textContent === "Toggle Open" ? "Toggle Close" : "Toggle Open";
 }
 
-       // Check if the state is saved in storage
-const isThumbnailsVisible = localStorage.getItem('thumbnailsVisible') === 'true';
+           // Check if the state is saved in storage
+        const isThumbnailsVisible = localStorage.getItem('thumbnailsVisible') === 'true';
 
-// Function to toggle the display of the thumbnails container
-function toggleThumbnails() {
-    const thumbnailsContainer = document.querySelector('.thumbnails-container');
-    const isVisible = thumbnailsContainer.style.display !== 'none';
-    thumbnailsContainer.style.display = isVisible ? 'none' : 'flex';
+        // Function to toggle the display of the thumbnails container
+        function toggleThumbnails() {
+            const thumbnailsContainer = document.querySelector('.thumbnails-container');
+            const isVisible = thumbnailsContainer.style.display !== 'none';
+            thumbnailsContainer.style.display = isVisible ? 'none' : 'flex';
+            
+            // Save the state in storage
+            localStorage.setItem('thumbnailsVisible', !isVisible);
+        }
 
-    // Save the state in storage
-    localStorage.setItem('thumbnailsVisible', thumbnailsContainer.style.display);
-}
+        // Add event listener to the toggle button
+        const toggleBtn = document.getElementById('toggleBtn');
+        toggleBtn.addEventListener('click', toggleThumbnails);
 
-// Set the initial state based on storage
-if (isThumbnailsVisible) {
-    const thumbnailsContainer = document.querySelector('.thumbnails-container');
-    thumbnailsContainer.style.display = 'flex';
-}
-
-// Add event listener to the toggle button
-const toggleBtn = document.getElementById('toggleBtn');
-toggleBtn.addEventListener('click', toggleThumbnails);
+        // Set the initial state based on storage
+        if (isThumbnailsVisible) {
+            const thumbnailsContainer = document.querySelector('.thumbnails-container');
+            thumbnailsContainer.style.display = 'flex';
+        }
