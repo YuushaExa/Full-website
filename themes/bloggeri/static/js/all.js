@@ -16,6 +16,9 @@ const toggleButtons = document.querySelectorAll('.toggleButton');
 toggleButtons.forEach(toggleButton => {
   const card = toggleButton.closest('.card');
   checkLocalStorage(card, toggleButton);
+
+  // Attach click event listener to the toggle button
+  toggleButton.addEventListener('click', toggleLocalStorage);
 });
 
 // Function to handle the toggle button click event
