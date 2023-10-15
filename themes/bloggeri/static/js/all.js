@@ -3,25 +3,14 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // Function to check if the card is stored in local storage and update the toggle button
 function checkLocalStorage(card, toggleButton) {
 const title = card.querySelector('.title.is-4').textContent;
-  
-  if (localStorage.getItem(title)) {
-    toggleButton.textContent = 'Delete';
-  } else {
-    toggleButton.textContent = 'Save';
-  }
 
-  // Store the title in localStorage
-  localStorage.setItem('currentPageTitle', title);
+if (localStorage.getItem(title)) {
+toggleButton.textContent = 'Delete';
+} else {
+toggleButton.textContent = 'Save';
 }
-
-// Retrieve the title from localStorage when the page loads
-window.addEventListener('load', function() {
-  const currentPageTitle = localStorage.getItem('currentPageTitle');
-  if (currentPageTitle) {
-    const toggleButton = document.querySelector('.toggle-button'); // Replace with your selector
-    toggleButton.textContent = localStorage.getItem(currentPageTitle) ? 'Delete' : 'Save';
-  }
-
+} 
+  
 // Attach the checkLocalStorage function to each toggle button on page load
 const toggleButtons = document.querySelectorAll('.toggleButton');
 toggleButtons.forEach(toggleButton => {
