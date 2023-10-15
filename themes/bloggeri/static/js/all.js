@@ -16,6 +16,21 @@ const toggleButtons = document.querySelectorAll('.toggleButton');
 toggleButtons.forEach(toggleButton => {
   const card = toggleButton.closest('.card');
   checkLocalStorage(card, toggleButton);
+
+  // Attach click event listener to each toggle button
+  toggleButton.addEventListener('click', function(event) {
+    const card = this.closest('.card');
+    const title = card.querySelector('.title.is-4').textContent;
+
+    if (localStorage.getItem(title)) {
+      localStorage.removeItem(title);
+      this.textContent = 'Save';
+    } else {
+      const content = card.innerHTML;
+      localStorage.setItem(title, content);
+      this.textContent = 'Delete';
+    }
+  });
 });
 
 // Function to handle the toggle button click event
