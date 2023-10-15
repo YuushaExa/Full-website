@@ -27,19 +27,54 @@ toggleButtons.forEach((button) => {
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
+
   // Loop through the local storage items
   for (let i = 0; i < localStorage.length; i++) {
     const title = localStorage.key(i); // Get the title (key) of the stored card
     const content = localStorage.getItem(title); // Get the content (value) of the stored card
+
     // Create a new card element
     const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = content;
 
+    // Create a toggle button for the card
+    const toggleButton = document.createElement('button');
+    toggleButton.classList.add('toggleButton');
+    
+    // Check if the content is stored in local storage
+    if (localStorage.getItem(title)) {
+      toggleButton.textContent = 'Delete'; // Set button text to "Delete"
+    } else {
+      toggleButton.textContent = 'Save'; // Set button text to "Save"
+    }
+
+    toggleButton.addEventListener('click', function() {
+      toggleLocalStorage(event); // Call the toggleLocalStorage function to handle the toggle functionality
+      displaySavedCards(); // Re-display the saved cards after the toggle operation
+    });
+
+    // Append the toggle button to the card
+    card.appendChild(toggleButton);
+
+    // Create a delete button for the card
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteButton');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+      // Remove the card from local storage and re-display the saved cards
+      localStorage.removeItem(title);
+      displaySavedCards();
+    });
+
+    // Append the delete button to the card
+    card.appendChild(deleteButton);
+
     // Append the card to the container
     cardContainer.appendChild(card);
   }
 }
+
 // Call the function to display the saved cards when the page loads
 displaySavedCards();
 
