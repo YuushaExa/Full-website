@@ -303,6 +303,19 @@ function drag(event) {
 
 // plugins
 
+    function openImageInNewWindow() {
+      var image = document.querySelector('.lightbox-content img');
+      var src = image.getAttribute('src');
+      var newSrc = src.split('?w=')[0]; // Remove everything after 'w='
+
+      // Open the new window with the modified image URL
+      window.open(newSrc);
+    }
+
+    // Attach click event listener to the button
+    var openButton = document.getElementById('openImageButton');
+    openButton.addEventListener('click', openImageInNewWindow);
+
 $('#fullimagebtn').on('click', function (e) {
     $(".lightbox-content img").each(function () {
         var src = $(this).attr("src");
