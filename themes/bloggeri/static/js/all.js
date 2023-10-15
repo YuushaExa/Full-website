@@ -3,7 +3,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // Function to check if the card is stored in local storage and update the toggle button
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
-  
+
   if (localStorage.getItem(title)) {
     toggleButton.textContent = 'Delete';
   } else {
@@ -16,21 +16,27 @@ const toggleButtons = document.querySelectorAll('.toggleButton');
 toggleButtons.forEach(toggleButton => {
   const card = toggleButton.closest('.card');
   checkLocalStorage(card, toggleButton);
+});
 
-  // Attach click event listener to each toggle button
-  toggleButton.addEventListener('click', function(event) {
-    const card = this.closest('.card');
-    const title = card.querySelector('.title.is-4').textContent;
+// Function to handle the toggle button click event
+function handleToggleButton(event) {
+  const toggleButton = event.target;
+  const card = toggleButton.closest('.card');
+  const title = card.querySelector('.title.is-4').textContent;
 
-    if (localStorage.getItem(title)) {
-      localStorage.removeItem(title);
-      this.textContent = 'Save';
-    } else {
-      const content = card.innerHTML;
-      localStorage.setItem(title, content);
-      this.textContent = 'Delete';
-    }
-  });
+  if (localStorage.getItem(title)) {
+    localStorage.removeItem(title);
+    toggleButton.textContent = 'Save';
+  } else {
+    const content = card.innerHTML;
+    localStorage.setItem(title, content);
+    toggleButton.textContent = 'Delete';
+  }
+}
+
+// Attach click event listener to each toggle button individually
+toggleButtons.forEach(toggleButton => {
+  toggleButton.addEventListener('click', handleToggleButton);
 });
 
 // Function to retrieve and display the saved cards
