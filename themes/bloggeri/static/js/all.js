@@ -16,7 +16,7 @@ function saveToLocalStorage() {
 }
 
 // Attach the click event listener to each button
-const saveButtons = document.getElementById('saveButton');
+const saveButtons = document.querySelectorAll('.saveButton');
 saveButtons.forEach((saveButton) => {
   saveButton.addEventListener('click', saveToLocalStorage);
 });
