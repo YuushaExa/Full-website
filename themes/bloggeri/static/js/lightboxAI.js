@@ -47,7 +47,6 @@ links1.forEach((link1) => {
 });
 
 
-var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 const lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
