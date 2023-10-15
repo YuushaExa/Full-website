@@ -31,6 +31,19 @@ function displaySavedCards() {
     card.classList.add('card');
     card.innerHTML = content;
 
+    // Create a delete button for the card
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteButton');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+      // Remove the card from local storage and re-display the saved cards
+      localStorage.removeItem(title);
+      displaySavedCards();
+    });
+
+    // Append the delete button to the card
+    card.appendChild(deleteButton);
+
     // Append the card to the container
     cardContainer.appendChild(card);
   }
