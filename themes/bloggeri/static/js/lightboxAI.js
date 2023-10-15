@@ -48,13 +48,41 @@ links1.forEach((link1) => {
 
 
 var lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
-
+const lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 // Attach click event listener to each image
 lightboxImages.forEach(function(image, index) {
   image.addEventListener('click', function(event) {
     event.preventDefault();
     currentIndex = index;
     openLightbox(image.href);
+  });
+});
+lightboxImages.forEach(image => {
+  image.addEventListener('load', () => {
+    const maxWidth = window.innerWidth * 0.9; // Calculate 90% of the window width
+    const maxHeight = window.innerHeight * 0.9; // Calculate 90% of the window height
+
+    // Check if the image width or height exceeds the maximum values
+    if (image.width > maxWidth || image.height > maxHeight) {
+      // Calculate the aspect ratio of the image
+      const aspectRatio = image.width / image.height;
+
+      // Calculate the new width and height based on the aspect ratio and maximum values
+      let newWidth, newHeight;
+      if (aspectRatio > maxWidth / maxHeight) {
+        // Width is the limiting factor
+        newWidth = maxWidth;
+        newHeight = newWidth / aspectRatio;
+      } else {
+        // Height is the limiting factor
+        newHeight = maxHeight;
+        newWidth = newHeight * aspectRatio;
+      }
+
+      // Apply the new width and height to the image
+      image.style.maxWidth = `${newWidth}px`;
+      image.style.maxHeight = `${newHeight}px`;
+    }
   });
 });
 
