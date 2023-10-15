@@ -5,14 +5,13 @@ function toggleLocalStorage(event) {
   const card = toggleButton.closest('.card'); // Find the closest parent element with class "card"
   const title = card.querySelector('.title.is-4').textContent; // Get the title
 
-  const content = card.innerHTML; // Get the card's content
-
   // Check if the content is already stored in local storage
   if (localStorage.getItem(title)) {
     // Content exists, so remove it from local storage
     localStorage.removeItem(title);
     toggleButton.textContent = 'Save'; // Update button text
   } else {
+    const content = card.innerHTML; // Get the card's content
     // Store the content in local storage using the title as the key
     localStorage.setItem(title, content);
     toggleButton.textContent = 'Delete'; // Update button text
