@@ -18,9 +18,9 @@ function toggleLocalStorage(event) {
   }
 }
 
-// Attach click event listener to a parent element using event delegation
 document.addEventListener('click', function(event) {
   if (event.target.matches('.toggleButton')) {
+    event.preventDefault(); // Prevent the event from propagating further
     toggleLocalStorage(event);
   }
 });
