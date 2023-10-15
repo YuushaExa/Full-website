@@ -5,23 +5,17 @@ function saveToLocalStorage() {
   // Find all div elements with the class "card"
   const cardDivs = document.querySelectorAll('.card');
 
-  // Initialize an array to store card contents
-  const cardContents = [];
-
   // Iterate over each card div
   cardDivs.forEach((cardDiv) => {
     // Get the HTML content inside the card
     const cardContent = cardDiv.innerHTML;
 
-    // Push the card content to the array
-    cardContents.push(cardContent);
+    // Save the card content to local storage
+    localStorage.setItem('cardContent', cardContent);
   });
 
-  // Save the card contents to local storage
-  localStorage.setItem('cardContents', JSON.stringify(cardContents));
-
   // Optional: Provide feedback to the user
-  alert('Cards saved to local storage!');
+  alert('Card content saved to local storage!');
 }
 
 // Attach the click event listener to the button
