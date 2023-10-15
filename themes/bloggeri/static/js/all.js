@@ -2,25 +2,24 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // Function to handle the button click event
 function saveToLocalStorage() {
-  // Find all div elements with the class "card"
-  const cardDivs = document.querySelectorAll('.card');
+  // Find the div element with the class "card"
+  const cardDiv = document.querySelector('.card');
 
-  // Iterate over each card div
-  cardDivs.forEach((cardDiv, index) => {
-    // Get the HTML content inside the card
-    const cardContent = cardDiv.innerHTML;
+  // Get the HTML content inside the card
+  const cardContent = cardDiv.innerHTML;
 
-    // Save the card content to local storage with a unique key
-    localStorage.setItem(`cardContent${index}`, cardContent);
-  });
+  // Save the card content to local storage
+  localStorage.setItem('cardContent', cardContent);
 
   // Optional: Provide feedback to the user
-  alert('Card contents saved to local storage!');
+  alert('Card content saved to local storage!');
 }
 
-// Attach the click event listener to the button
-const saveButton = document.getElementById('saveButton');
-saveButton.addEventListener('click', saveToLocalStorage);
+// Attach the click event listener to each button
+const saveButtons = document.querySelectorAll('.saveButton');
+saveButtons.forEach((saveButton) => {
+  saveButton.addEventListener('click', saveToLocalStorage);
+});
 
  document.addEventListener('click', async function(event) {
   const target = event.target;
