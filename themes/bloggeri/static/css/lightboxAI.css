@@ -88,9 +88,11 @@ button.active {
 
 
 #lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
-  position: relative;
+position: relative;
+    max-height: 90vh;
+    max-width: 90vw;
+    display: block;
+    margin: auto;
 }
 
 .prev,
