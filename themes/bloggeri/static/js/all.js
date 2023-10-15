@@ -33,29 +33,6 @@ toggleButtons.forEach(toggleButton => {
   });
 });
 
-// Function to handle the toggle button click event
-function toggleLocalStorage(event) {
-  const toggleButton = event.target;
-  const card = toggleButton.closest('.card');
-  const title = card.querySelector('.title.is-4').textContent;
-
-  if (localStorage.getItem(title)) {
-    localStorage.removeItem(title);
-    toggleButton.textContent = 'Save';
-  } else {
-    const content = card.innerHTML;
-    localStorage.setItem(title, content);
-    toggleButton.textContent = 'Delete';
-  }
-}
-
-// Attach click event listener to a parent element using event delegation
-document.addEventListener('click', function(event) {
-  if (event.target.matches('.toggleButton')) {
-    toggleLocalStorage(event);
-  }
-});
-
 // Function to retrieve and display the saved cards
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
