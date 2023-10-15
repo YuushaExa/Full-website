@@ -1,80 +1,47 @@
 let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.supports&&o.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype,i="instantAllowQueryString"in document.body.dataset,r="instantAllowExternalLinks"in document.body.dataset,a="instantWhitelist"in document.body.dataset;let c=65,d=!1,l=!1,u=!1;if("instantIntensity"in document.body.dataset){const t=document.body.dataset.instantIntensity;if("mousedown"==t.substr(0,"mousedown".length))d=!0,"mousedown-only"==t&&(l=!0);else if("viewport"==t.substr(0,"viewport".length))navigator.connection&&(navigator.connection.saveData||navigator.connection.effectiveType.includes("2g"))||("viewport"==t?document.documentElement.clientWidth*document.documentElement.clientHeight<45e4&&(u=!0):"viewport-all"==t&&(u=!0));else{const e=parseInt(t);isNaN(e)||(c=e)}}if(s){const n={capture:!0,passive:!0};if(l||document.addEventListener("touchstart",function(t){e=performance.now();const n=t.target.closest("a");if(!f(n))return;h(n.href)},n),d?document.addEventListener("mousedown",function(t){const e=t.target.closest("a");if(!f(e))return;h(e.href)},n):document.addEventListener("mouseover",function(n){if(performance.now()-e<1100)return;const o=n.target.closest("a");if(!f(o))return;o.addEventListener("mouseout",m,{passive:!0}),t=setTimeout(()=>{h(o.href),t=void 0},c)},n),u){let t;(t=window.requestIdleCallback?t=>{requestIdleCallback(t,{timeout:1500})}:t=>{t()})(()=>{const t=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const n=e.target;t.unobserve(n),h(n.href)}})});document.querySelectorAll("a").forEach(e=>{f(e)&&t.observe(e)})})}}function m(e){e.relatedTarget&&e.target.closest("a")==e.relatedTarget.closest("a")||t&&(clearTimeout(t),t=void 0)}function f(t){if(t&&t.href&&(!a||"instant"in t.dataset)&&(r||t.origin==location.origin||"instant"in t.dataset)&&["http:","https:"].includes(t.protocol)&&("http:"!=t.protocol||"https:"!=location.protocol)&&(i||!t.search||"instant"in t.dataset)&&!(t.hash&&t.pathname+t.search==location.pathname+location.search||"noInstant"in t.dataset))return!0}function h(t){if(n.has(t))return;const e=document.createElement("link");e.rel="prefetch",e.href=t,document.head.appendChild(e),n.add(t)}
 
 function toggleLocalStorage(event) {
-  const card = event.target.closest('.card'); // Find the closest parent element with class "card"
+  const toggleButton = event.target;
+  const card = toggleButton.closest('.card'); // Find the closest parent element with class "card"
   const title = card.querySelector('.title.is-4').textContent; // Get the title
 
   // Check if the content is already stored in local storage
   if (localStorage.getItem(title)) {
     // Content exists, so remove it from local storage
     localStorage.removeItem(title);
-    event.target.textContent = 'Save'; // Update button text
+    toggleButton.textContent = 'Save'; // Update button text
   } else {
     const content = card.innerHTML; // Get the card's content
     // Store the content in local storage using the title as the key
     localStorage.setItem(title, content);
-    event.target.textContent = 'Delete'; // Update button text
+    toggleButton.textContent = 'Delete'; // Update button text
   }
 }
 
-// Add click event listener to each toggle button
-const toggleButtons = document.querySelectorAll('.toggleButton');
-toggleButtons.forEach((button) => {
-  button.addEventListener('click', toggleLocalStorage);
+// Attach click event listener to a parent element using event delegation
+document.addEventListener('click', function(event) {
+  if (event.target.matches('.toggleButton')) {
+    toggleLocalStorage(event);
+  }
 });
 
 // Function to retrieve and display the saved cards
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
-
   // Loop through the local storage items
   for (let i = 0; i < localStorage.length; i++) {
     const title = localStorage.key(i); // Get the title (key) of the stored card
     const content = localStorage.getItem(title); // Get the content (value) of the stored card
-
     // Create a new card element
     const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = content;
 
-    // Create a toggle button for the card
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add('toggleButton');
-    
-    // Check if the content is stored in local storage
-    if (localStorage.getItem(title)) {
-      toggleButton.textContent = 'Delete'; // Set button text to "Delete"
-    } else {
-      toggleButton.textContent = 'Save'; // Set button text to "Save"
-    }
-
-    toggleButton.addEventListener('click', function() {
-      toggleLocalStorage(event); // Call the toggleLocalStorage function to handle the toggle functionality
-      displaySavedCards(); // Re-display the saved cards after the toggle operation
-    });
-
-    // Append the toggle button to the card
-    card.appendChild(toggleButton);
-
-    // Create a delete button for the card
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('deleteButton');
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', function() {
-      // Remove the card from local storage and re-display the saved cards
-      localStorage.removeItem(title);
-      displaySavedCards();
-    });
-
-    // Append the delete button to the card
-    card.appendChild(deleteButton);
-
     // Append the card to the container
     cardContainer.appendChild(card);
   }
 }
-
 // Call the function to display the saved cards when the page loads
 displaySavedCards();
 
