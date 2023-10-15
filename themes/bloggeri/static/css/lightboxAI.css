@@ -105,11 +105,11 @@ button.active {
 }
 
 .prev {
-  left: 10px;
+  left: 0px;
 }
 
 .next {
-  right: 10px;
+  right: 0px;
 }
 .lightbox-content {
  
