@@ -49,13 +49,6 @@ links1.forEach((link1) => {
 
 const lightboxImages = document.querySelectorAll('a[data-fancybox="gallery"]');
 // Attach click event listener to each image
-lightboxImages.forEach(function(image, index) {
-  image.addEventListener('click', function(event) {
-    event.preventDefault();
-    currentIndex = index;
-    openLightbox(image.href);
-  });
-});
 lightboxImages.forEach(image => {
   image.addEventListener('load', () => {
     const maxWidth = window.innerWidth * 0.9; // Calculate 90% of the window width
