@@ -6,16 +6,16 @@ function saveToLocalStorage() {
   const cardDivs = document.querySelectorAll('.card');
 
   // Iterate over each card div
-  cardDivs.forEach((cardDiv) => {
+  cardDivs.forEach((cardDiv, index) => {
     // Get the HTML content inside the card
     const cardContent = cardDiv.innerHTML;
 
-    // Save the card content to local storage
-    localStorage.setItem('cardContent', cardContent);
+    // Save the card content to local storage with a unique key
+    localStorage.setItem(`cardContent${index}`, cardContent);
   });
 
   // Optional: Provide feedback to the user
-  alert('Card content saved to local storage!');
+  alert('Card contents saved to local storage!');
 }
 
 // Attach the click event listener to the button
