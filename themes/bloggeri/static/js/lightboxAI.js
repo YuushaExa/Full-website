@@ -114,11 +114,15 @@ function nextSlide() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
     element123.style.animation = 'slideAnimationBack 0.5s forwards';
-
+  setTimeout(function() {
+lightboxImg.style.display = 'none';
+  }, 510);
+ 
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
+       lightboxImg.style.display = 'block';
   });
 
   // Apply the animation for sliding back after 1 second
