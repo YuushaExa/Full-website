@@ -124,7 +124,7 @@ function nextSlide() {
   // Apply the animation for sliding back after 1 second
   setTimeout(function() {
     element123.style.animation = 'slideAnimation 0.5s forwards';
-  }, 1500);
+  }, 600);
 
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
@@ -133,7 +133,7 @@ function nextSlide() {
    setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-      }, 1000);
+      }, 600);
 }
  
 function prevSlide() {
