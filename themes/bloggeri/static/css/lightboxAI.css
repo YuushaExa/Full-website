@@ -1,27 +1,14 @@
-@keyframes slideAnimationBack {
-  0% {
-        transform: none;
-  }
-  
-  100% {
-        transform: translateX(-70vw);
-  }
-}
-
 @keyframes slideAnimation {
-    0% {
-        transform: none;
-  }
-  
-  100% {
-        transform: translateX(-70vw);
-  }
   0% {
     transform: translateX(70vw);
   }
   
-  100% {
+  50% {
     transform: none;
+  }
+  
+  100% {
+    transform: translateX(-70vw);
   }
 }
 
