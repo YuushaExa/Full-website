@@ -103,7 +103,7 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
-  element123.style.animation = 'slideAnimationBack 1s forwards';
+  element123.style.animation = 'slideAnimationBack 1s backwards';
 
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
