@@ -124,7 +124,7 @@ function nextSlide() {
   // Apply the animation for sliding back after 1 second
   setTimeout(function() {
     element123.style.animation = 'slideAnimation 1s forwards';
-  }, 1000);
+  }, 500);
 
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
