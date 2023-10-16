@@ -9,6 +9,13 @@
 }
 
 @keyframes slideAnimation {
+    0% {
+        transform: none;
+  }
+  
+  100% {
+        transform: translateX(-70vw);
+  }
   0% {
     transform: translateX(70vw);
   }
