@@ -108,7 +108,7 @@ function nextSlide() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
     nextImage.src = lightboxImages[nextIndex].href;
-  }, 500);
+  }, 1000);
 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -124,7 +124,7 @@ function nextSlide() {
   // Apply the animation for sliding back after 1 second
   setTimeout(function() {
     element123.style.animation = 'slideAnimation 0.3s forwards';
-  }, 300);
+  }, 500);
 
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
@@ -135,7 +135,7 @@ function nextSlide() {
   setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-  }, 500);
+  }, 400);
 }
  
 function prevSlide() {
