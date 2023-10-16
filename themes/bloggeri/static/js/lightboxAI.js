@@ -103,7 +103,7 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
  
   var loadingText = document.getElementById('loading-text');
-    lightboxImg.style.display = 'none'; // Hide the image initially
+    lightboxImg.style.transform = 'translateX(-70vw)';
 
    preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
@@ -118,7 +118,6 @@ function nextSlide() {
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
-    lightboxImg.style.display = 'block'; // Show the image
     loadingText.style.display = 'none'; // Hide the loading text
   });
  
