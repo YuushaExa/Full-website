@@ -1,6 +1,3 @@
-#lightbox-img {
-  animation: slideAnimation 1s forwards;
-}
 @keyframes slideAnimation {
   0% {
     transform: translateX(70vw);
