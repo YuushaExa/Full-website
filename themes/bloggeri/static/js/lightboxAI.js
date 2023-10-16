@@ -118,6 +118,7 @@ function nextSlide() {
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
+   lightboxImg.style.transform = 'none';
     loadingText.style.display = 'none'; // Hide the loading text
   });
  
