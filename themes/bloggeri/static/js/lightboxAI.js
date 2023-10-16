@@ -132,6 +132,14 @@ function nextSlide() {
 
   lightboxImg.src = lightboxImages[currentIndex].href;
   updateCounters();
+
+   element123.addEventListener('animationstart', function() {
+    lightboxImg.style.opacity = '0'; // Hide the image at the start of the animation
+  });
+  
+  element123.addEventListener('animationiteration', function() {
+    lightboxImg.style.opacity = '1'; // Show the image on each iteration of the animation
+  });
 }
  
 function prevSlide() {
