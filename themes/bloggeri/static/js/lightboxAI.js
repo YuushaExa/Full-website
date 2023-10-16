@@ -103,6 +103,7 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
+  lightboxImg.style.transform = 'translateX(-70vw)';
 
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
@@ -118,6 +119,7 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
+     lightboxImg.style.transform = 'none';
   });
 
   // Apply the animation only when calling nextSlide()
