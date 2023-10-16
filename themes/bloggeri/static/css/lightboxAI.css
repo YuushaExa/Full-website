@@ -1,10 +1,10 @@
 @keyframes slideAnimationBack {
   0% {
-    transform: translateX(-70vw);
+        transform: none;
   }
   
   100% {
-    transform: none;
+        transform: translateX(-70vw);
   }
 }
 
