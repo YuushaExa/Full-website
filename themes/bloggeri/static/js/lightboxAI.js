@@ -126,16 +126,12 @@ function nextSlide() {
     element123.style.animation = 'slideAnimation 1s forwards';
   }, 1000);
 
-  // Add an animationend event listener
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
   });
 
-  // Set the animation source after the sliding back animation
-  setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-  }, 300);
 }
  
 function prevSlide() {
