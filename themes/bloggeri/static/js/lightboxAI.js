@@ -108,7 +108,7 @@ function nextSlide() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
     nextImage.src = lightboxImages[nextIndex].href;
-  }, 1000);
+  }, 500);
 
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
@@ -135,7 +135,7 @@ function nextSlide() {
   setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-  }, 300);
+  }, 500);
 }
  
 function prevSlide() {
