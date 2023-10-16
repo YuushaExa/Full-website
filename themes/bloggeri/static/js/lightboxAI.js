@@ -101,32 +101,38 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
-  var nextImg = new Image();
+ 
   var loadingText = document.getElementById('loading-text');
-
-  lightboxImg.style.transition = 'transform 0.3s ease';
   lightboxImg.style.transform = 'translateX(-70vw)';
 
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
-    nextImg.src = lightboxImages[nextIndex].href;
+    var nextImage = new Image();
+    nextImage.src = lightboxImages[nextIndex].href;
   }, 1000);
-
+ 
   var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block';
+    loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
-
-  nextImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout);
-    lightboxImg.style.transition = 'none';
-    lightboxImg.style.transform = 'translateX(70vw)';
-    void lightboxImg.offsetWidth;
-    lightboxImg.style.transition = 'transform 0.3s ease';
-    lightboxImg.style.display = 'block';
-    loadingText.style.display = 'none';
+ 
+  // Add a load event listener to the image
+  lightboxImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout); // Cancel the loading text timeout
+    lightboxImg.style.transform = 'none';
+    loadingText.style.display = 'none'; // Hide the loading text
+    
+    // Create a new image element
+    var newImage = document.createElement('img');
+    newImage.style.transform = 'translateX(70vw)'; // Set the transform style
+    newImage.src = lightboxImages[currentIndex].href;
+    newImage.id = 'lightbox-img'; // Set the id for the new image
+    
+    // Replace the existing image with the new image
+    var lightboxContainer = lightboxImg.parentNode;
+    lightboxContainer.replaceChild(newImage, lightboxImg);
   });
-
-  nextImg.src = lightboxImages[currentIndex].href;
+  
+  lightboxImg.src = lightboxImages[currentIndex].href;
   updateCounters();
 }
  
