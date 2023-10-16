@@ -1,3 +1,15 @@
+.next {
+  animation: slideAnimation 1s forwards;
+}
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(70vw);
+  }
+  
+  100% {
+    transform: none;
+  }
+}
 
 .hidden {
   opacity: 0;
