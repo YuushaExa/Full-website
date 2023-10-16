@@ -103,7 +103,7 @@ function nextSlide() {
   var lightboxImg = document.getElementById('lightbox-img');
   var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
-\
+
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
