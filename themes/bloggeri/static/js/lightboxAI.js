@@ -119,6 +119,7 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
    element123.style.animation = 'slideAnimation 1s forwards';
+      element123.style.animation = 'none';
     loadingText.style.display = 'none'; // Hide the loading text
   });
  
