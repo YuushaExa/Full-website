@@ -95,7 +95,7 @@ document.body.classList.add('lightbox-open');
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
     nextImage.src = lightboxImages[nextIndex].href;
-  }, 1000);
+  }, 100);
 }
  
 function nextSlide() {
