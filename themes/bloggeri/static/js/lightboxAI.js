@@ -245,10 +245,7 @@ function handleSwipe(target) {
   var deltaX = touchEndX - touchStartX;
   var deltaY = touchEndY - touchStartY;
 
-  if (target.tagName === 'BUTTON') {
-    // Check if the touch event originated from a button
-    return; // Do nothing and exit the function
-  }
+
 
   if (deltaY > swipeThreshold) {
     closeLightbox();
