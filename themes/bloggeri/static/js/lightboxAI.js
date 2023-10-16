@@ -101,30 +101,33 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
- const element123 = document.querySelector('#lightbox-img');
+  var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
-  lightboxImg.style.transform = 'translateX(-70vw)';
 
-   preloadTimeout = setTimeout(function() {
+  preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
     nextImage.src = lightboxImages[nextIndex].href;
   }, 1000);
- 
+
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
- 
+
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
-   element123.style.animation = 'slideAnimation 1s forwards';
-      element123.style.animation = 'none';
+    element123.style.animation = 'slideAnimation 1s forwards';
     loadingText.style.display = 'none'; // Hide the loading text
   });
- 
+
+  // Add an animationend event listener
+  element123.addEventListener('animationend', function() {
+    element123.style.animation = ''; // Remove the animation property
+  });
+
   lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+  updateCounters();
 }
  
 function prevSlide() {
