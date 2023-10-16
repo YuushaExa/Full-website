@@ -137,7 +137,7 @@ lightboxImg.style.display = 'none';
    setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-      }, 520);
+      }, 5200);
 }
  
 function prevSlide() {
