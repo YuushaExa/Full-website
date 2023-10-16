@@ -1,4 +1,4 @@
-.next {
+#lightbox-img {
   animation: slideAnimation 1s forwards;
 }
 @keyframes slideAnimation {
