@@ -104,6 +104,8 @@ function nextSlide() {
   var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
 
+  element123.style.animation = 'slideAnimationBack 1s forwards';
+ 
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
     var nextImage = new Image();
@@ -119,10 +121,10 @@ function nextSlide() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
   });
-
+ preloadTimeout = setTimeout(function() {
   // Apply the animation only when calling nextSlide()
   element123.style.animation = 'slideAnimation 1s forwards';
-
+ }, 1000);
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
