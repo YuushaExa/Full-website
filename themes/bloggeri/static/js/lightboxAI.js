@@ -117,9 +117,11 @@ function nextSlide() {
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
-    element123.style.animation = 'slideAnimation 1s forwards';
     loadingText.style.display = 'none'; // Hide the loading text
   });
+
+  // Apply the animation only when calling nextSlide()
+  element123.style.animation = 'slideAnimation 1s forwards';
 
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
