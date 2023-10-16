@@ -101,29 +101,33 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
- 
+  var nextImg = new Image();
   var loadingText = document.getElementById('loading-text');
-    lightboxImg.style.transform = 'translateX(-70vw)';
 
-   preloadTimeout = setTimeout(function() {
+  lightboxImg.style.transition = 'transform 0.3s ease';
+  lightboxImg.style.transform = 'translateX(-70vw)';
+
+  preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
-    var nextImage = new Image();
-    nextImage.src = lightboxImages[nextIndex].href;
+    nextImg.src = lightboxImages[nextIndex].href;
   }, 1000);
- 
+
   var loadingTimeout = setTimeout(function() {
-    loadingText.style.display = 'block'; // Show the loading text
+    loadingText.style.display = 'block';
   }, 1000);
- 
-  // Add a load event listener to the image
-  lightboxImg.addEventListener('load', function() {
-    clearTimeout(loadingTimeout); // Cancel the loading text timeout
-   lightboxImg.style.transform = 'none';
-    loadingText.style.display = 'none'; // Hide the loading text
+
+  nextImg.addEventListener('load', function() {
+    clearTimeout(loadingTimeout);
+    lightboxImg.style.transition = 'none';
+    lightboxImg.style.transform = 'translateX(70vw)';
+    void lightboxImg.offsetWidth;
+    lightboxImg.style.transition = 'transform 0.3s ease';
+    lightboxImg.style.display = 'block';
+    loadingText.style.display = 'none';
   });
- 
-  lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+
+  nextImg.src = lightboxImages[currentIndex].href;
+  updateCounters();
 }
  
 function prevSlide() {
