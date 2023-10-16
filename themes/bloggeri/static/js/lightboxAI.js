@@ -113,7 +113,7 @@ function nextSlide() {
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
-    element123.style.animation = 'slideAnimationBack 1s forwards';
+    element123.style.animation = 'slideAnimationBack 0.3s forwards';
 
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
@@ -123,7 +123,7 @@ function nextSlide() {
 
   // Apply the animation for sliding back after 1 second
   setTimeout(function() {
-    element123.style.animation = 'slideAnimation 1s forwards';
+    element123.style.animation = 'slideAnimation 0.3s forwards';
   }, 500);
 
   // Add an animationend event listener
@@ -135,7 +135,7 @@ function nextSlide() {
   setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-  }, 100);
+  }, 500);
 }
  
 function prevSlide() {
