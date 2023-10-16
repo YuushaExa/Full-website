@@ -135,7 +135,7 @@ function nextSlide() {
   setTimeout(function() {
     lightboxImg.src = lightboxImages[currentIndex].href;
     updateCounters();
-  }, 1000);
+  }, 300);
 }
  
 function prevSlide() {
