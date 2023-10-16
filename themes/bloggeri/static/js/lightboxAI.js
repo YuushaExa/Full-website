@@ -101,7 +101,7 @@ document.body.classList.add('lightbox-open');
 function nextSlide() {
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
- 
+ const element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
   lightboxImg.style.transform = 'translateX(-70vw)';
 
@@ -119,6 +119,7 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     lightboxImg.style.transform = 'none'; // Show the image
+   element123.style.animation = 'slideAnimation 1s forwards';
     loadingText.style.display = 'none'; // Hide the loading text
   });
  
