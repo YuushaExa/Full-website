@@ -99,6 +99,7 @@ document.body.classList.add('lightbox-open');
 }
  
 function nextSlide() {
+   element123.style.animation = 'slideAnimationBack 1s forwards';
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   var element123 = document.querySelector('#lightbox-img');
