@@ -99,12 +99,10 @@ document.body.classList.add('lightbox-open');
 }
  
 function nextSlide() {
-   element123.style.animation = 'slideAnimationBack 1s forwards';
   currentIndex = (currentIndex + 1) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   var element123 = document.querySelector('#lightbox-img');
   var loadingText = document.getElementById('loading-text');
-  lightboxImg.style.transform = 'translateX(-70vw)';
 
   preloadTimeout = setTimeout(function() {
     var nextIndex = (currentIndex + 1) % lightboxImages.length;
@@ -120,19 +118,23 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
-     lightboxImg.style.transform = 'none';
   });
 
-  // Apply the animation only when calling nextSlide()
-  element123.style.animation = 'slideAnimation 1s forwards';
+  // Apply the animation for sliding back after 1 second
+  setTimeout(function() {
+    element123.style.animation = 'slideAnimationBack 1s forwards';
+  }, 1000);
 
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
   });
 
-  lightboxImg.src = lightboxImages[currentIndex].href;
-  updateCounters();
+  // Set the animation source after the sliding back animation
+  setTimeout(function() {
+    lightboxImg.src = lightboxImages[currentIndex].href;
+    updateCounters();
+  }, 2000);
 }
  
 function prevSlide() {
