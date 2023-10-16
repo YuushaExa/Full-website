@@ -119,15 +119,15 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
-     lightboxImg.style.transform = 'none';
+    lightboxImg.style.transform = 'none';
+    element123.style.animation = 'slideAnimation 1s forwards'; // Apply animation to the next image
   });
-
-  // Apply the animation only when calling nextSlide()
-  element123.style.animation = 'slideAnimation 1s forwards';
 
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
+    lightboxImg.src = lightboxImages[currentIndex].href; // Load the next image
+    updateCounters();
   });
 
   lightboxImg.src = lightboxImages[currentIndex].href;
