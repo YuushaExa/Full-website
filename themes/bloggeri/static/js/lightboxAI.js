@@ -118,6 +118,7 @@ function nextSlide() {
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
+     lightboxImg.style.transform = 'none';
   });
 
   // Apply the animation only when calling nextSlide()
@@ -126,17 +127,10 @@ function nextSlide() {
   // Add an animationend event listener
   element123.addEventListener('animationend', function() {
     element123.style.animation = ''; // Remove the animation property
-    lightboxImg.src = lightboxImages[currentIndex].href; // Set the src after animation finishes
-    updateCounters();
   });
-  
-  element123.addEventListener('animationstart', function() {
-    lightboxImg.style.opacity = '0'; // Hide the image at the start of the animation
-  });
-  
-  element123.addEventListener('animationiteration', function() {
-    lightboxImg.style.opacity = '1'; // Show the image on each iteration of the animation
-  });
+
+  lightboxImg.src = lightboxImages[currentIndex].href;
+  updateCounters();
 }
  
 function prevSlide() {
