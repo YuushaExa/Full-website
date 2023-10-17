@@ -369,3 +369,9 @@ thumbnailsContainer.style.display = initialState;
 // Add event listener to the toggle button
 const toggleBtn = document.getElementById('toggleBtn');
 toggleBtn.addEventListener('click', toggleThumbnails);
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
