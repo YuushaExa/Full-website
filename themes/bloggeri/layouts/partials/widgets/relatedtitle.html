@@ -1,24 +1,24 @@
 {{- $posts := where .Site.RegularPages "Type" "in" (slice "post") -}}
+{{- $filteredPosts := slice -}}
+{{- $targetWords := slice -}}
 
 {{- range $posts -}}
     {{- $targetWord := index (split .Title " ") 0 -}}
-    {{- $filteredPosts := slice -}}
-    {{- range $posts -}}
-        {{- $postTitle := index (split .Title " ") 0 -}}
-        {{- if eq $postTitle $targetWord -}}
-            {{- $filteredPosts = $filteredPosts | append . -}}
-            {{- if eq (len $filteredPosts) 5 -}}
-                {{- break -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
+    {{- $targetWords = $targetWords | append $targetWord -}}
+    {{- $filteredPosts = $filteredPosts | append . -}}
+{{- end -}}
 
-    <h2>{{ $targetWord }}</h2>
+{{- $targetWords = $targetWords | uniq -}}
 
-    {{- range $filteredPosts -}}
+{{- range $targetWords -}}
+    {{- $currentWord := . -}}
+    <h2>{{ $currentWord }}</h2>
+
+    {{- $currentPosts := where $filteredPosts "Title" (printf "^%s" $currentWord) -}}
+    {{- range $currentPosts -}}
         <div>
             <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
             <p>{{ .Summary }}</p>
         </div>
     {{- end -}}
-{{- end -}}
+{{- end -}
