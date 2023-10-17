@@ -1,15 +1,15 @@
-{{ $firstWord := index (split .Title " ") 0 }}
-{{ $relatedPosts := where .Site.RegularPages "Type" "post" }}
-{{ $relatedPosts = $relatedPosts | where (printf "Params.firstWord == %q" $firstWord) }}
-{{ $relatedPosts = first 5 $relatedPosts }}
+{{ $firstWord := (split .Title " " | first) }}
+{{ $relatedPosts := (where .Site.RegularPages "Type" "post" | where (printf "HasPrefix .Title \"%s \"" $firstWord)) }}
 
-{{ if $relatedPosts }}
-  <div class="first-word-widget">
+{{ if eq (len $relatedPosts) 0 }}
+    <!-- No related posts found -->
+{{ else }}
     <h3>Related Posts</h3>
     <ul>
-      {{ range $relatedPosts }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
+        {{ range first 5 $relatedPosts }}
+            {{ if eq (split .Title " " | first) $firstWord }}
+                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        {{ end }}
     </ul>
-  </div>
 {{ end }}
