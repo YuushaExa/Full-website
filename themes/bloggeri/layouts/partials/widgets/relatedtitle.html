@@ -1,7 +1,9 @@
 {{ $firstWord := (split .Title " " | first 1) }}
 {{ $relatedPosts := slice }}
 
-{{ range .Pages }}
+{{ $related := .Site.RegularPages . | first 5 }}
+{{ with $related }}
+{{ range . }}
     {{ if and (eq .Type "post") (eq (split .Title " " | first 1) $firstWord) }}
         {{ $relatedPosts = $relatedPosts | append . }}
     {{ end }}
@@ -16,4 +18,5 @@
             <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
         {{ end }}
     </ul>
+{{ end }}
 {{ end }}
