@@ -1,4 +1,4 @@
-{{ $firstWord := (split .Title " " | first) }}
+{{ $firstWord := (split .Title " " | first 1) }}
 {{ $relatedPosts := (where .Site.RegularPages "Type" "post" | where (printf "HasPrefix .Title \"%s \"" $firstWord)) }}
 
 {{ if eq (len $relatedPosts) 0 }}
@@ -7,7 +7,7 @@
     <h3>Related Posts</h3>
     <ul>
         {{ range first 5 $relatedPosts }}
-            {{ if eq (split .Title " " | first) $firstWord }}
+            {{ if eq (split .Title " " | first 1) $firstWord }}
                 <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
             {{ end }}
         {{ end }}
