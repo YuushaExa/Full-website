@@ -1,24 +1,15 @@
-{{- $posts := where .Site.RegularPages "Type" "in" (slice "post") -}}
-{{- $filteredPosts := slice -}}
-{{- $targetWords := slice -}}
+{{ $currentTitle := .Title }}
+{{ $firstWord := index (split $currentTitle " ") 0 }}
+{{ $relatedPosts := where .Site.RegularPages "and (ne .Title $currentTitle) (hasPrefix (index (split .Title " ") 0) $firstWord)" }}
+{{ $relatedPosts := first 5 $relatedPosts }}
 
-{{- range $posts -}}
-    {{- $targetWord := index (split .Title " ") 0 -}}
-    {{- $targetWords = $targetWords | append $targetWord -}}
-    {{- $filteredPosts = $filteredPosts | append . -}}
-{{- end -}}
-
-{{- $targetWords = $targetWords | uniq -}}
-
-{{- range $targetWords -}}
-    {{- $currentWord := . -}}
-    <h2>{{ $currentWord }}</h2>
-
-    {{- $currentPosts := where $filteredPosts "Title" (printf "^%s" $currentWord) -}}
-    {{- range $currentPosts -}}
-        <div>
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Summary }}</p>
-        </div>
-    {{- end -}}
-{{- end -}
+{{ if $relatedPosts }}
+  <div class="related-posts">
+    <h3>Related Posts</h3>
+    <ul>
+      {{ range $relatedPosts }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
