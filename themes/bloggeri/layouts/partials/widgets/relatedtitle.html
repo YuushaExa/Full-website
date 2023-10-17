@@ -1,13 +1,13 @@
-{{ $currentTitle := .Title }}
-{{ $firstWord := index (split $currentTitle " ") 0 }}
-{{ $relatedPosts1 := where .Site.RegularPages "and (ne .Title $currentTitle) (eq (index (split .Title " ") 0) $firstWord)" }}
-{{ $relatedPosts1 := first 5 $relatedPosts1 }}
+{{ $firstWord := index (split .Title " ") 0 }}
+{{ $relatedPosts := where .Site.RegularPages "Type" "==" "post" }}
+{{ $relatedPosts = where $relatedPosts "and" (where $relatedPosts "Params" "firstWord" "==" $firstWord) }}
+{{ $relatedPosts = first 5 $relatedPosts }}
 
-{{ if gt (len $relatedPosts1) 0 }}
-  <div class="related-posts">
+{{ if $relatedPosts }}
+  <div class="first-word-widget">
     <h3>Related Posts</h3>
     <ul>
-      {{ range $relatedPosts1 }}
+      {{ range $relatedPosts }}
         <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
