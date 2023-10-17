@@ -7,24 +7,22 @@
   <div class="content">
     <div id="cardContainer"></div>
         <script>
-// Function to retrieve and display the saved cards
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
-  cardContainer.innerHTML = ''; // Clear the container before populating it again
-  // Loop through the local storage items
+  cardContainer.innerHTML = '';
   for (let i = 0; i < localStorage.length; i++) {
-    const title = localStorage.key(i); // Get the title (key) of the stored card
-    const content = localStorage.getItem(title); // Get the content (value) of the stored card
-    // Create a new card element
+    const title = localStorage.key(i); 
+    if (title === 'thumbnailsVisible') {
+      continue;
+    }
+    const content = localStorage.getItem(title);
     const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = content;
 
-    // Append the card to the container
     cardContainer.appendChild(card);
   }
 }
-// Call the function to display the saved cards when the page loads
 displaySavedCards();
         </script>
      </div>
