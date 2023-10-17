@@ -1,13 +1,13 @@
 {{ $currentTitle := .Title }}
 {{ $firstWord := index (split $currentTitle " ") 0 }}
-{{ $relatedPosts := where .Site.RegularPages "and (ne .Title $currentTitle) (eq (index (split .Title " ") 0) $firstWord)" }}
-{{ $relatedPosts := first 5 $relatedPosts }}
+{{ $relatedPosts1 := where .Site.RegularPages "and (ne .Title $currentTitle) (eq (index (split .Title " ") 0) $firstWord)" }}
+{{ $relatedPosts1 := first 5 $relatedPosts1 }}
 
-{{ if gt (len $relatedPosts) 0 }}
+{{ if gt (len $relatedPosts1) 0 }}
   <div class="related-posts">
     <h3>Related Posts</h3>
     <ul>
-      {{ range $relatedPosts }}
+      {{ range $relatedPosts1 }}
         <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
