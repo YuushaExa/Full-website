@@ -1,7 +1,7 @@
 {{ $firstWord := (split .Title " " | first 1) }}
 {{ $relatedPosts := slice }}
 
-{{ range $regularPages := $regularPages }}
+{{ range $pages }}
   {{ if and (eq .Type "post") (eq (split .Title " " | first 1) $firstWord) }}
     {{ $relatedPosts = $relatedPosts | append . }}
   {{ end }}
