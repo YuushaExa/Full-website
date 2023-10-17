@@ -43,25 +43,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// Function to retrieve and display the saved cards
-function displaySavedCards() {
-  const cardContainer = document.getElementById('cardContainer');
-  cardContainer.innerHTML = ''; // Clear the container before populating it again
-  // Loop through the local storage items
-  for (let i = 0; i < localStorage.length; i++) {
-    const title = localStorage.key(i); // Get the title (key) of the stored card
-    const content = localStorage.getItem(title); // Get the content (value) of the stored card
-    // Create a new card element
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.innerHTML = content;
 
-    // Append the card to the container
-    cardContainer.appendChild(card);
-  }
-}
-// Call the function to display the saved cards when the page loads
-displaySavedCards();
 
  document.addEventListener('click', async function(event) {
   const target = event.target;
