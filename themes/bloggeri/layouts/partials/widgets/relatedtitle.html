@@ -1,6 +1,6 @@
 {{ $firstWord := index (split .Title " ") 0 }}
-{{ $relatedPosts := where .Site.RegularPages "Type" "==" "post" }}
-{{ $relatedPosts = where $relatedPosts "and" (where $relatedPosts "Params" "firstWord" "==" $firstWord) }}
+{{ $relatedPosts := where .Site.RegularPages "Type" "post" }}
+{{ $relatedPosts = $relatedPosts | where (printf "Params.firstWord == %q" $firstWord) }}
 {{ $relatedPosts = first 5 $relatedPosts }}
 
 {{ if $relatedPosts }}
