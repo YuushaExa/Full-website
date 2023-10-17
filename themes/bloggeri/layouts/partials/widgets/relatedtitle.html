@@ -1,0 +1,22 @@
+{{- $targetWord := "" -}}
+{{- $posts := where .Site.RegularPages "Type" "in" (slice "post") -}}
+{{- $filteredPosts := slice -}}
+{{- range $posts -}}
+    {{- $postTitle := index (split .Title " ") 0 -}}
+    {{- if eq $targetWord "" -}}
+        {{- $targetWord = $postTitle -}}
+    {{- end -}}
+    {{- if eq $postTitle $targetWord -}}
+        {{- $filteredPosts = $filteredPosts | append . -}}
+        {{- if eq (len $filteredPosts) 5 -}}
+            {{- break -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- range $filteredPosts -}}
+    <div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Summary }}</p>
+    </div>
+{{- end -}}
