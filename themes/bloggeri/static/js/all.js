@@ -43,8 +43,6 @@ document.addEventListener('click', function(event) {
   }
 });
 
-
-
  document.addEventListener('click', async function(event) {
   const target = event.target;
   if (target.closest('.card-image')) {
