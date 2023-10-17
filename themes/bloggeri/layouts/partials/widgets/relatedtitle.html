@@ -8,6 +8,7 @@
         {{ $relatedPosts = $relatedPosts | append . }}
     {{ end }}
 {{ end }}
+{{ end }}
 
 {{ if eq (len $relatedPosts) 0 }}
     <!-- No related posts found -->
@@ -18,5 +19,4 @@
             <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
         {{ end }}
     </ul>
-{{ end }}
 {{ end }}
