@@ -1,5 +1,5 @@
 {{ $firstWord := (split .Title " " | first 1) }}
-{{ $relatedPosts := (where .Site.RegularPages "Type" "post" | where (printf "HasPrefix .Title \"%s \"" $firstWord)) }}
+{{ $relatedPosts := (where (toArray .Site.RegularPages) "Type" "post" | where (printf "HasPrefix .Title \"%s \"" $firstWord)) }}
 
 {{ if eq (len $relatedPosts) 0 }}
     <!-- No related posts found -->
