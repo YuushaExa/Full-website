@@ -2,7 +2,7 @@
 {{ $relatedPosts := slice }}
 
 {{ range .Site.RegularPages }}
-    {{ if and (eq .Type "post") (eq (split .Name " " | first 1) $firstWord) }}
+    {{ if and (eq .Type "post") (eq (split .Params.name " " | first 1) $firstWord) }}
         {{ $relatedPosts = $relatedPosts | append . }}
     {{ end }}
 {{ end }}
