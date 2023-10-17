@@ -1,8 +1,8 @@
 {{ $firstWord := (split .Title " " | first 1) }}
 {{ $relatedPosts := slice }}
 
-{{ range .Site.RegularPages }}
-    {{ if and (eq .Type "post") (eq (split .Params.name " " | first 1) $firstWord) }}
+{{ range .Pages }}
+    {{ if and (eq .Type "post") (eq (split .Title " " | first 1) $firstWord) }}
         {{ $relatedPosts = $relatedPosts | append . }}
     {{ end }}
 {{ end }}
@@ -13,7 +13,7 @@
     <h3>Related Posts</h3>
     <ul>
         {{ range first 5 $relatedPosts }}
-            <li><a href="{{ .Permalink }}">{{ .Params.name }}</a></li>
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
         {{ end }}
     </ul>
 {{ end }}
