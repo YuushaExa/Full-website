@@ -1,19 +1,19 @@
 {{ $firstWord := (split .Title " " | first 1) }}
 {{ $relatedPosts := slice }}
 
-{{ range $pages }}
-  {{ if and (eq .Type "post") (eq (split .Title " " | first 1) $firstWord) }}
-    {{ $relatedPosts = $relatedPosts | append . }}
-  {{ end }}
+{{ range Site.RegularPages }}
+    {{ if and (eq .Type "post") (eq (split .Title " " | first 1) $firstWord) }}
+        {{ $relatedPosts = $relatedPosts | append . }}
+    {{ end }}
 {{ end }}
 
 {{ if eq (len $relatedPosts) 0 }}
-  <!-- No related posts found -->
+    <!-- No related posts found -->
 {{ else }}
-  <h3>Related Posts</h3>
-  <ul>
-    {{ range first 5 $relatedPosts }}
-      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-    {{ end }}
-  </ul>
+    <h3>Related Posts</h3>
+    <ul>
+        {{ range first 5 $relatedPosts }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
 {{ end }}
