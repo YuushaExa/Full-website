@@ -7,7 +7,7 @@ function checkLocalStorage(card, toggleButton) {
   if (localStorage.getItem(title)) {
     toggleButton.textContent = 'Delete';
   } else {
-    toggleButton.textContent = 'Save';
+    favoritesvg.setAttribute('fill', 'green');
   };
        }, 1000);
 };
