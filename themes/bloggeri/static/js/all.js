@@ -7,8 +7,8 @@ function checkLocalStorage(card, toggleButton) {
     toggleButton.textContent = 'Delete';
   } else {
     toggleButton.textContent = 'Save';
-  }
-}
+  };
+};
 
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
@@ -16,7 +16,7 @@ function attachToggleListeners() {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
   });
-}
+};
 
 function toggleLocalStorage(event) {
   const toggleButton = event.target;
@@ -30,8 +30,8 @@ function toggleLocalStorage(event) {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
     toggleButton.textContent = 'Delete';
-  }
-}
+  };
+};
 
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
