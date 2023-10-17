@@ -13,7 +13,7 @@
     <h3>Related Posts</h3>
     <ul>
         {{ range first 5 $relatedPosts }}
-            <li><a href="{{ .Permalink }}">{{ .Params.title }}</a></li>
+            <li><a href="{{ .Permalink }}">{{ .Params.name }}</a></li>
         {{ end }}
     </ul>
 {{ end }}
