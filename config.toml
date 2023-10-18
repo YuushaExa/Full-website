@@ -10,7 +10,7 @@ summarylength = 10
 
     [permalinks]
   [permalinks.defaults]
-    pattern = "/:filename/"
+    pattern = "/:slug/"
     
 [markup]
     defaultMarkdownHandler = "goldmark"
