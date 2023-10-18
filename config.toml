@@ -4,9 +4,6 @@ title = "GameLibrary"
 theme = "bloggeri"
 paginate = 50
 summarylength = 10
-uglyURLs = true
-[redirects]
-  "/(.+)/" = "/$1"
 [params]
     description = "Games Library"
     author = "Yuusha"
