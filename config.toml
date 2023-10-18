@@ -7,9 +7,6 @@ summarylength = 10
 [params]
     description = "Games Library"
     author = "Yuusha"
-    [permalinks]
-  [permalinks.section]
-    posts = '/articles/'
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
