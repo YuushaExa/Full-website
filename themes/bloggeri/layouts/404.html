@@ -1,15 +1,16 @@
-{{ define "main" }}
-
-<main>
-
-    <br><br>    
-    <h1>We couldn't find this Page!</h1>
-
-    <p>
-        Please try our search page to look for it or go back 
-        to the <a href="/">home page</a>.
-    </p>
-
-</main>
-
-{{ end }}
+<!DOCTYPE html>
+<html>
+<head>
+     <h1>We couldn't find this Page!</h1>
+  <script>
+    var path = window.location.pathname;
+    if (path.endsWith('/')) {
+      var newUrl = path.slice(0, -1);
+      window.location.replace(newUrl);
+    }
+  </script>
+</head>
+<body>
+  <p>This page has been moved. Redirecting...</p>
+</body>
+</html>
