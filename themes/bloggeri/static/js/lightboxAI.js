@@ -144,6 +144,7 @@ function prevSlide() {
   currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
   var lightboxImg = document.getElementById('lightbox-img');
   var loadingText = document.getElementById('loading-text');
+   var element123 = document.querySelector('#lightbox-img');
  
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
