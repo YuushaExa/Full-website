@@ -127,9 +127,9 @@ function nextSlide() {
     lightboxImg.style.display = 'block';
   });
 
-  requestAnimationFrame(function() {
+  setTimeout(function() {
     element123.style.animation = 'slideAnimation 0.5s forwards';
-  });
+  }, 510);
 
   element123.addEventListener('animationend', function() {
     element123.style.animation = '';
