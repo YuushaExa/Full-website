@@ -148,15 +148,31 @@ function prevSlide() {
   var loadingTimeout = setTimeout(function() {
     loadingText.style.display = 'block'; // Show the loading text
   }, 1000);
+    element123.style.animation = 'slideAnimationBack 0.5s forwards';
+  setTimeout(function() {
+lightboxImg.style.display = 'none';
+  }, 510);
  
   // Add a load event listener to the image
   lightboxImg.addEventListener('load', function() {
     clearTimeout(loadingTimeout); // Cancel the loading text timeout
     loadingText.style.display = 'none'; // Hide the loading text
+       lightboxImg.style.display = 'block';
   });
- 
-  lightboxImg.src = lightboxImages[currentIndex].href;
-   updateCounters();
+
+  // Apply the animation for sliding back after 1 second
+  setTimeout(function() {
+    element123.style.animation = 'slideAnimation 0.5s forwards';
+  }, 510);
+
+  element123.addEventListener('animationend', function() {
+    element123.style.animation = ''; // Remove the animation property
+  });
+
+   setTimeout(function() {
+    lightboxImg.src = lightboxImages[currentIndex].href;
+    updateCounters();
+      }, 600);
 }
  
 function closeLightbox() {
