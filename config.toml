@@ -7,6 +7,11 @@ summarylength = 10
 [params]
     description = "Games Library"
     author = "Yuusha"
+
+    [permalinks]
+  [permalinks.defaults]
+    pattern = "/:filename/"
+    
 [markup]
     defaultMarkdownHandler = "goldmark"
 
