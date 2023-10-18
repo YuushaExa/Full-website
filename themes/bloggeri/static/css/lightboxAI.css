@@ -18,6 +18,26 @@
   }
 }
 
+@keyframes slideAnimationBack1 {
+  0% {
+       transform: translateX(-70vw);
+  }
+  
+  100% {
+      transform: none;       
+  }
+}
+
+@keyframes slideAnimation1 {
+  0% {
+     transform: none;   
+  }
+  
+  100% {
+   transform: translateX(70vw);
+  }
+}
+
 .hidden {
   opacity: 0;
   transition: opacity 0.3s ease;
