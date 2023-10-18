@@ -9,7 +9,7 @@ summarylength = 10
     author = "Yuusha"
 
     [permalinks]
-  [permalinks.defaults]
+  [permalinks.page]
     pattern = "/:slug/"
     
 [markup]
