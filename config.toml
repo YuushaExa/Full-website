@@ -7,14 +7,8 @@ summarylength = 10
 [params]
     description = "Games Library"
     author = "Yuusha"
-
-    [permalinks]
-  [permalinks.page]
-    pattern = "/:slug/"
-    
 [markup]
     defaultMarkdownHandler = "goldmark"
-
     [markup.goldmark]
         [markup.goldmark.renderer]
             unsafe = true
