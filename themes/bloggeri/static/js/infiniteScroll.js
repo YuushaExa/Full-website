@@ -1,54 +1,36 @@
-let currentPageURL = 'https://yuushaexa.github.io/snes/';
-let loadedCards = 0;
+let currentPagePaginationContainer = document.querySelector("main");
+let currentPageNextLink = document.querySelector(".paginator-next-page");
+let nextPage = currentPageNextLink.getAttribute("href");
 
-function fetchData(url) {
-  fetch(url)
+function fetchNextPage() {
+  fetch(nextPage)
     .then(response => response.text())
     .then(data => {
-      // Extract the content you need from the response
-      const parser = new DOMParser();
-      const html = parser.parseFromString(data, 'text/html');
-      const newCards = html.querySelectorAll('.card');
+      // Create a temporary element to hold the fetched content
+      let tempElement = document.createElement("div");
+      tempElement.innerHTML = data;
 
-      // Update the current page URL with the next page URL
-      currentPageURL = html.querySelector('.paginator-next-page')?.getAttribute('href');
+      // Find the next page link in the fetched content
+      let nextPageLink = tempElement.querySelector(".paginator-next-page");
+      nextPage = nextPageLink.getAttribute("href");
 
-      // Append the new cards to your existing content
-      appendCardsToDOM(newCards);
+      // Find the content to append from the fetched content
+      let content = tempElement.querySelector("main").innerHTML;
+
+      // Append the content to the current page's container
+      currentPagePaginationContainer.insertAdjacentHTML("beforeend", content);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error("Error fetching next page:", error);
     });
 }
 
-function appendCardsToDOM(cards) {
-  const contentContainer = document.getElementById('content');
+window.addEventListener("scroll", () => {
+  let scrollPosition = window.scrollY;
+  let windowHeight = window.innerHeight;
+  let documentHeight = document.documentElement.scrollHeight;
 
-  cards.forEach(card => {
-    // Append the card to your existing content in the DOM
-    contentContainer.appendChild(card);
-    loadedCards++;
-
-    // Stop loading if the desired number of cards is reached
-    if (loadedCards === 50) {
-      stopLoading();
-    }
-  });
-}
-
-function stopLoading() {
-  window.removeEventListener('scroll', handleScroll);
-}
-
-function handleScroll() {
-  // Check if the user has scrolled to the bottom of the page
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    // Make a GET request to the current page URL
-    fetchData(currentPageURL);
+  if (scrollPosition + windowHeight >= documentHeight) {
+    fetchNextPage();
   }
-}
-
-window.addEventListener('scroll', handleScroll);
-
-// Initial data fetch
-fetchData(currentPageURL);
+});
