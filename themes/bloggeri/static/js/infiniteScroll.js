@@ -31,6 +31,7 @@ let nextPage = window.location.href; // Set initial page URL
 let loading = false;
 
 window.history.replaceState({ page: nextPage }, document.title, nextPage);
+      })
     .catch(error => {
       console.error(error);
       loading = false;
