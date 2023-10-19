@@ -25,6 +25,25 @@ function loadNextPage() {
       currentPagePaginationContainer.insertAdjacentHTML('beforeend', nextPageContent);
       nextPage = tempContainer.querySelector(".paginator-next-page")?.href || null;
       loading = false;
+
+      /* Update history and next page link */
+      let state = {
+        "status": "pagination: New list items added",
+        "previousPage": window.location.pathname + window.location.search,
+        "currentPage": nextPage
+      };
+      history.pushState(state, "", nextPage);
+      console.log("pagination: New history pushed - ", state);
+
+      let currentPageNextLink = document.querySelector(".paginator-next-page");
+      let newNextLink = tempContainer.querySelector(".paginator-next-page");
+      if (newNextLink) {
+        currentPageNextLink.setAttribute("href", newNextLink.getAttribute("href"));
+        console.log("pagination: Updated next page link!");
+      } else {
+        currentPageNextLink.parentNode?.removeChild(currentPageNextLink);
+        console.log("pagination: Removed next page anchor!");
+      }
     })
     .catch(error => {
       console.error(error);
