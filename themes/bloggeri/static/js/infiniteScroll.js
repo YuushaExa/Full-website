@@ -19,6 +19,9 @@ function fetchNextPage() {
 
       // Append the content to the current page's container
       currentPagePaginationContainer.insertAdjacentHTML("beforeend", content);
+
+      // Update browser history
+      history.pushState({}, "", nextPage);
     })
     .catch(error => {
       console.error("Error fetching next page:", error);
