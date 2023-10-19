@@ -13,6 +13,15 @@ function displaySavedCards() {
 
   let localStorageData = {}; // Object to store local storage data
 
+  // Event delegation: Add a click event listener to the card container
+  cardContainer.addEventListener('click', function(event) {
+    // Check if the clicked element is a card
+    if (event.target.classList.contains('card')) {
+      // Handle card click event here
+      console.log('Clicked card:', event.target);
+    }
+  });
+
   // Loop through the local storage items
   for (let i = 0; i < localStorage.length; i++) {
     const title = localStorage.key(i); // Get the title (key) of the stored card
