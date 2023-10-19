@@ -82,30 +82,7 @@ window.addEventListener('popstate', function(event) {
   }
 });
 
-document.body.addEventListener("click", async function(event) {
-  var target = event.target;
- var closestLink = target.closest(".navbar-start a, .navbar-brand a");
-  if (closestLink) {
-    event.preventDefault();
 
-    try {
-      const response = await fetch(closestLink.href);
-      const html = await response.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      const postTitle = doc.querySelector('main').innerHTML;
-
-      const mainElement = document.querySelector('main');
-      mainElement.innerHTML = postTitle;
-
-      window.history.pushState({}, "", closestLink.href);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-});
 
 $('.btn5').click(function () { 
   $.ajax({
