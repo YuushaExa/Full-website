@@ -10,7 +10,7 @@ function loadMoreContent(url) {
       document.getElementById("loader").style.display = "none";
 
       // Append the new content to the existing content
-      var contentContainer = document.getElementsByClass("content");
+      var contentContainer = document.getElementsByClassName("content");
       contentContainer.innerHTML += data;
 
       // Update the URL using the History API
@@ -23,7 +23,10 @@ function loadMoreContent(url) {
 }
 
 window.addEventListener("scroll", function() {
-  // ...
+  // Get the current scroll position
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var windowHeight = window.innerHeight;
+  var documentHeight = document.documentElement.scrollHeight;
 
   // Check if the user has scrolled to the bottom of the page
   if (scrollTop + windowHeight >= documentHeight) {
