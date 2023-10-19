@@ -1,43 +1,54 @@
-let nextPageUrl = '.paginator-next-page';
-let isLoading = false;
-let page = 1;
+let currentPageURL = 'https://yuushaexa.github.io/snes/';
+let loadedCards = 0;
 
-async function fetchNextPage() {
-  try {
-    const response = await fetch(nextPageUrl);
-    const data = await response.json();
+function fetchData(url) {
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      // Extract the content you need from the response
+      const parser = new DOMParser();
+      const html = parser.parseFromString(data, 'text/html');
+      const newCards = html.querySelectorAll('.card');
 
-    // Update the next page URL
-    nextPageUrl = data.nextPageUrl;
+      // Update the current page URL with the next page URL
+      currentPageURL = html.querySelector('.paginator-next-page')?.getAttribute('href');
 
-    // Render the cards
-    renderCards(data.cards);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  } finally {
-    isLoading = false;
-  }
+      // Append the new cards to your existing content
+      appendCardsToDOM(newCards);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
-function renderCards(cards) {
-  const cardContainer = document.getElementById('card-container');
+function appendCardsToDOM(cards) {
+  const contentContainer = document.getElementById('content');
 
-  cards.forEach((card) => {
-    const cardElement = document.createElement('div');
-    cardElement.classList.add('card');
-    cardElement.textContent = card.title;
+  cards.forEach(card => {
+    // Append the card to your existing content in the DOM
+    contentContainer.appendChild(card);
+    loadedCards++;
 
-    cardContainer.appendChild(cardElement);
+    // Stop loading if the desired number of cards is reached
+    if (loadedCards === 50) {
+      stopLoading();
+    }
   });
 }
 
-window.addEventListener('scroll', () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+function stopLoading() {
+  window.removeEventListener('scroll', handleScroll);
+}
 
-  if (scrollTop + clientHeight >= scrollHeight - 10 && !isLoading) {
-    isLoading = true;
-    fetchNextPage();
+function handleScroll() {
+  // Check if the user has scrolled to the bottom of the page
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    // Make a GET request to the current page URL
+    fetchData(currentPageURL);
   }
-});
+}
 
-fetchNextPage();
+window.addEventListener('scroll', handleScroll);
+
+// Initial data fetch
+fetchData(currentPageURL);
