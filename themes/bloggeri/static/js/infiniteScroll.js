@@ -26,11 +26,11 @@ function loadNextPage() {
       nextPage = tempContainer.querySelector(".paginator-next-page")?.href || null;
       loading = false;
 
-      // Update browser history with the new page URL
-      const nextPageTitle = document.title;
-      const nextPageURL = nextPage || window.location.href;
-      window.history.pushState({ page: nextPageURL }, nextPageTitle, nextPageURL);
-    })
+let currentPagePaginationContainer = document.querySelector("main");
+let nextPage = window.location.href; // Set initial page URL
+let loading = false;
+
+window.history.replaceState({ page: nextPage }, document.title, nextPage);
     .catch(error => {
       console.error(error);
       loading = false;
