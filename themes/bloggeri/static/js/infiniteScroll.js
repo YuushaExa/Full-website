@@ -1,12 +1,14 @@
 let currentPagePaginationContainer = document.querySelector("main");
-let currentPageNextLink = document.querySelector(".paginator-next-page");
-let nextPage = currentPageNextLink ? currentPageNextLink.getAttribute("href") : null;
+let nextPage = document.querySelector(".paginator-next-page")?.href || null;
+let loading = false;
 
 function loadNextPage() {
-  if (!nextPage) {
-    // If there is no next page, return or handle the situation accordingly
+  if (!nextPage || loading) {
+    // If there is no next page or a request is already in progress, return
     return;
   }
+
+  loading = true;
 
   fetch(nextPage)
     .then(response => {
@@ -20,12 +22,13 @@ function loadNextPage() {
       const tempContainer = document.createElement("div");
       tempContainer.innerHTML = html;
       const nextPageContent = tempContainer.querySelector("main").innerHTML;
-      currentPagePaginationContainer.innerHTML += nextPageContent;
-      currentPageNextLink = tempContainer.querySelector(".paginator-next-page");
-      nextPage = currentPageNextLink ? currentPageNextLink.getAttribute("href") : null;
+      currentPagePaginationContainer.insertAdjacentHTML('beforeend', nextPageContent);
+      nextPage = tempContainer.querySelector(".paginator-next-page")?.href || null;
+      loading = false;
     })
     .catch(error => {
       console.error(error);
+      loading = false;
     });
 }
 
@@ -34,7 +37,7 @@ window.addEventListener("scroll", function () {
   const windowSize = window.innerHeight;
   const contentHeight = document.body.offsetHeight;
 
-  if (scrollPosition + windowSize >= contentHeight) {
+  if (scrollPosition + windowSize >= contentHeight * 0.9) {
     loadNextPage();
   }
 });
