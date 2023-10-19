@@ -27,11 +27,23 @@ function loadNextPage() {
       loading = false;
 
       // Update browser history with the new page URL
-      const nextPageTitle = document.title;
-      const nextPageURL = nextPage || window.location.href;
-      const isFirstLoad = performance.navigation.type === 1;
-if (isFirstLoad) {
-  window.history.replaceState({ page: -1 }, document.title, nextPage);
+/* Update the history to the last page loaded */
+let state = { 
+  "status": "pagination: New list items added",
+  "previousPage": window.location.pathname + window.location.search,
+  "currentPage": nextPage };
+history.pushState(state, "", nextPage);
+console.log("pagination: New history pushed - ", state);
+
+/* Update the next page link on the current page */
+let newNextLink = nextPageDom.querySelector(".paginator-next-page");
+if (newNextLink) { // When there is no next page, newNextLink is 'null'
+  currentPageNextLink.setAttribute("href", newNextLink.getAttribute("href"));
+  console.log("pagination: Updated next page link!");
+} else { // When there are no other pages, remove the next page link
+  if (currentPageNextLink.parentNode)
+    currentPageNextLink.parentNode.removeChild(currentPageNextLink);
+  console.log("pagination: Removed next page anchor!");
 }
     })
     .catch(error => {
