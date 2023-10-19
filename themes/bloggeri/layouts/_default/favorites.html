@@ -5,8 +5,10 @@
       <div class="post">
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
+      <button class="toggleButton123"></button>
     <div id="cardContainer"></div>
         <script>
+          $('body').on('click', '.toggleButton123', function() {
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
@@ -72,6 +74,7 @@ function displaySavedCards() {
 
 // Call the function to display the saved cards when the page loads
 displaySavedCards();
+            });
         </script>
      </div>
     </div>     </div>  
