@@ -226,8 +226,8 @@ closeLightbox();
 };
 };
 
-   $('body').on('click', 'a.navbar-item', function() {
- displaySavedCards() {
+$('body').on('click', 'a.navbar-item', function() {
+function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
 
