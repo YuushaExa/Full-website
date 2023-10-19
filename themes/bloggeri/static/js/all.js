@@ -108,62 +108,6 @@ document.body.addEventListener("click", async function(event) {
   }
 });
 
-
-   $('body').on('click', '.navbar-item', function() {
-function displaySavedCards() {
-  const cardContainer = document.getElementById('cardContainer');
-  cardContainer.innerHTML = ''; // Clear the container before populating it again
-
-  let localStorageData = {}; // Object to store local storage data
-  // Loop through the local storage items
-  for (let i = 0; i < localStorage.length; i++) {
-    const title = localStorage.key(i); // Get the title (key) of the stored card
-    // Skip the key "thumbnailsVisible"
-    if (title === 'thumbnailsVisible') {
-      continue;
-    }
-    const content = localStorage.getItem(title); // Get the content (value) of the stored card
-    // Create a new card element
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.innerHTML = content;
-    // Append the card to the container
-    cardContainer.appendChild(card);
-    // Store the title and content in the localStorageData object
-    localStorageData[title] = content;
-  }
-  // Create a download link
-  const downloadLink = document.createElement('a');
-  downloadLink.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localStorageData));
-  downloadLink.download = 'local_storage_data.json';
-  downloadLink.textContent = 'Download Local Storage Data';
-  // Append the download link to the container
-  cardContainer.appendChild(downloadLink);
-  // Create an upload input
-  const uploadInput = document.createElement('input');
-  uploadInput.type = 'file';
-  uploadInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function() {
-      const uploadedData = JSON.parse(reader.result);
-      Object.keys(uploadedData).forEach(function(key) {
-        localStorage.setItem(key, uploadedData[key]);
-      });
-      alert('JSON data has been uploaded and stored in local storage.');
-      // Refresh the displayed cards after uploading
-      displaySavedCards();
-    };
-    reader.readAsText(file);
-  });
-  // Append the upload input to the container
-  cardContainer.appendChild(uploadInput);
-}
-
-// Call the function to display the saved cards when the page loads
-displaySavedCards();
-            });
-
 $('.btn5').click(function () { 
   $.ajax({
     type: "GET",
