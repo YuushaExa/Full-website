@@ -29,7 +29,10 @@ function loadNextPage() {
       // Update browser history with the new page URL
       const nextPageTitle = document.title;
       const nextPageURL = nextPage || window.location.href;
-      window.history.replaceState({ page: nextPageURL }, nextPageTitle, nextPageURL);
+      const isFirstLoad = performance.navigation.type === 1;
+if (isFirstLoad) {
+  window.history.replaceState({ page: -1 }, document.title, nextPage);
+}
     })
     .catch(error => {
       console.error(error);
