@@ -23,6 +23,11 @@ async function loadNextListPage() {
       let nextPageDom = parser.parseFromString(data, "text/html");
       /* console.log("pagination: Data parsed into temporary DOM!"); */
       let newPaginatorItems = nextPageDom.querySelector("main").children;
+      for (i = 0; i < newPaginatorItems.length; i++) {
+        currentPagePaginationContainer.append(newPaginatorItems[i].cloneNode(true));
+      }
+      /* console.log("pagination: New items added!"); */
+
       /* Update the history to the last page loaded */
       let state = { 
         "status": "pagination: New list items added",
