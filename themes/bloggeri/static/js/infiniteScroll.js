@@ -1,31 +1,32 @@
+let currentPagePaginationContainer = document.querySelector("main");
+let currentPageNextLink = document.querySelector(".paginator-next-page");
+let nextPage = currentPageNextLink ? currentPageNextLink.getAttribute("href") : null;
+
 function loadNextPage() {
-  // Create a new XMLHttpRequest object
-  const xhr = new XMLHttpRequest();
+  if (!nextPage) {
+    // If there is no next page, return or handle the situation accordingly
+    return;
+  }
 
-  // Set up the request
-  xhr.open("GET", nextPage, true);
-
-  // Define the onload event handler
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      // Create a temporary container element to hold the response HTML
+  fetch(nextPage)
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw new Error("Error loading next page");
+      }
+    })
+    .then(html => {
       const tempContainer = document.createElement("div");
-      tempContainer.innerHTML = xhr.responseText;
-
-      // Select the content from the response that you want to append to the current page
+      tempContainer.innerHTML = html;
       const nextPageContent = tempContainer.querySelector("main").innerHTML;
-
-      // Append the next page content to the current page
       currentPagePaginationContainer.innerHTML += nextPageContent;
-
-      // Update the variables for the next page link
       currentPageNextLink = tempContainer.querySelector(".paginator-next-page");
-      nextPage = currentPageNextLink.getAttribute("href");
-    }
-  };
-
-  // Send the request
-  xhr.send();
+      nextPage = currentPageNextLink ? currentPageNextLink.getAttribute("href") : null;
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 window.addEventListener("scroll", function () {
@@ -33,9 +34,7 @@ window.addEventListener("scroll", function () {
   const windowSize = window.innerHeight;
   const contentHeight = document.body.offsetHeight;
 
-  // Check if the user has reached the bottom of the page
   if (scrollPosition + windowSize >= contentHeight) {
-    // Load the next page
     loadNextPage();
   }
 });
