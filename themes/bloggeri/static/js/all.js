@@ -224,10 +224,10 @@ modal9.onclick = function(event) {
 if (event.target == modal9) {
 closeLightbox();
 };
-
+};
 
    $('body').on('click', 'a.navbar-item', function() {
-function displaySavedCards() {
+ displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
 
@@ -280,4 +280,4 @@ function displaySavedCards() {
 // Call the function to display the saved cards when the page loads
 displaySavedCards();
             });
-};
+
