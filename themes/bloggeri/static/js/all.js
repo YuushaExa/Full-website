@@ -226,6 +226,45 @@ closeLightbox();
 };
 };
 
+function setupEventListeners() {
+  const cardContainer = document.getElementById('cardContainer');
+  const downloadLink = cardContainer.querySelector('a');
+  const uploadInput = cardContainer.querySelector('input[type="file"]');
+
+  // Add event listener to the card container for delegation
+  cardContainer.addEventListener('click', function(event) {
+    const target = event.target;
+    // Check if the target is the download link
+    if (target === downloadLink) {
+      // Perform the download action
+      return;
+    }
+    // Check if the target is the card container
+    if (target === cardContainer) {
+      // Show the upload input when the container is clicked
+      uploadInput.click();
+      return;
+    }
+    // Handle other click events within the container
+    // ...
+  });
+
+  uploadInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function() {
+      const uploadedData = JSON.parse(reader.result);
+      Object.keys(uploadedData).forEach(function(key) {
+        localStorage.setItem(key, uploadedData[key]);
+      });
+      alert('JSON data has been uploaded and stored in local storage.');
+      // Refresh the displayed cards after uploading
+      displaySavedCards();
+    };
+    reader.readAsText(file);
+  });
+}
+
 function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
@@ -258,22 +297,12 @@ function displaySavedCards() {
   // Create an upload input
   const uploadInput = document.createElement('input');
   uploadInput.type = 'file';
-  uploadInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function() {
-      const uploadedData = JSON.parse(reader.result);
-      Object.keys(uploadedData).forEach(function(key) {
-        localStorage.setItem(key, uploadedData[key]);
-      });
-      alert('JSON data has been uploaded and stored in local storage.');
-      // Refresh the displayed cards after uploading
-      displaySavedCards();
-    };
-    reader.readAsText(file);
-  });
+  uploadInput.style.display = 'none'; // Hide the upload input initially
   // Append the upload input to the container
   cardContainer.appendChild(uploadInput);
+
+  // Call the function to set up the event listeners
+  setupEventListeners();
 }
 
 // Call the function to display the saved cards when the page loads
