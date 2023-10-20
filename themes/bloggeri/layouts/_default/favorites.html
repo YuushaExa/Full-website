@@ -6,11 +6,12 @@
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
     <div id="cardContainer"></div>   
-<script defer src="/js/all.js">
-  displaySavedCards(); // Call the function as a callback
-</script>
+
      </div>
     </div>     </div>  
   </article>    
 </section>
 {{ end }}
+<script>
+  displaySavedCards(); 
+</script>
