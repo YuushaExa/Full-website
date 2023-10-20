@@ -175,6 +175,7 @@ document.body.addEventListener("click", async function(event) {
     // Call the function to display the saved cards
     displaySavedCards();
   }
+      checkLocalStorage();
 
     } catch (error) {
       console.error('Error:', error);
