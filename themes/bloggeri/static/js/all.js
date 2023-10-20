@@ -37,11 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
 });
 
-document.addEventListener('load', function(event) {
-  if (event.target.matches('.toggleButton')) {
-    toggleLocalStorage(event);
-  }
-});
+
 
 document.addEventListener('click', function(event) {
   if (event.target.matches('.toggleButton1')) {
@@ -172,6 +168,11 @@ document.body.addEventListener("click", async function(event) {
       mainElement.innerHTML = postTitle;
 
       window.history.pushState({}, "", closestLink.href);
+
+  if (event.target.matches('.toggleButton')) {
+    toggleLocalStorage(event);
+  }
+      
     } catch (error) {
       console.error('Error:', error);
     }
