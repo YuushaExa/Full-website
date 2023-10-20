@@ -43,67 +43,6 @@ document.addEventListener('click', function(event) {
   }
 });
 
-
- document.addEventListener('click', async function(event) {
-  const target = event.target;
-  if (target.closest('.card-image')) {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(target.closest('.card-image').href);
-      const html = await response.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      const postTitle = doc.querySelector('.post-title a').innerHTML;
-      const postBody = doc.querySelector('.content').innerHTML;
-
-      const mainElement = document.querySelector('#content-front-text');
-      mainElement.innerHTML = postTitle + postBody;
-
-      window.history.pushState({}, "", target.closest('.card-image').href);
-      document.title = postTitle;
-
-      var contentFrontElement = document.querySelector("#content-front");
-      var contentFrontTextElement = document.querySelector("#content-front-text");
-      contentFrontElement.style.zIndex = "1";
-      contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
-      contentFrontTextElement.style.opacity = "1";
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-});
-
-window.addEventListener('popstate', function(event) {
-  const closeElement = document.getElementsByClassName("close-pv")[0];
-  if (closeElement) {
-    closeElement.click();
-  }
-});
-
-
-document.body.addEventListener("click", async function(event) {
-  var target = event.target;
- var closestLink = target.closest(".navbar-start a, .navbar-brand a");
-  if (closestLink) {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(closestLink.href);
-      const html = await response.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      const postTitle = doc.querySelector('main').innerHTML;
-
-      const mainElement = document.querySelector('main');
-      mainElement.innerHTML = postTitle;
-
-      window.history.pushState({}, "", closestLink.href);
-
   function displaySavedCards() {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
@@ -169,6 +108,74 @@ document.body.addEventListener("click", async function(event) {
 
   // Call the function to display the saved cards when the page loads
   displaySavedCards();     
+
+
+ document.addEventListener('click', async function(event) {
+  const target = event.target;
+  if (target.closest('.card-image')) {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(target.closest('.card-image').href);
+      const html = await response.text();
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const postTitle = doc.querySelector('.post-title a').innerHTML;
+      const postBody = doc.querySelector('.content').innerHTML;
+
+      const mainElement = document.querySelector('#content-front-text');
+      mainElement.innerHTML = postTitle + postBody;
+
+      window.history.pushState({}, "", target.closest('.card-image').href);
+      document.title = postTitle;
+
+      var contentFrontElement = document.querySelector("#content-front");
+      var contentFrontTextElement = document.querySelector("#content-front-text");
+      contentFrontElement.style.zIndex = "1";
+      contentFrontElement.style.background = "rgba(0, 0, 0, 0.5)";
+      contentFrontTextElement.style.opacity = "1";
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+});
+
+window.addEventListener('popstate', function(event) {
+  const closeElement = document.getElementsByClassName("close-pv")[0];
+  if (closeElement) {
+    closeElement.click();
+  }
+});
+
+
+document.body.addEventListener("click", async function(event) {
+  var target = event.target;
+ var closestLink = target.closest(".navbar-start a, .navbar-brand a");
+  if (closestLink) {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(closestLink.href);
+      const html = await response.text();
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const postTitle = doc.querySelector('main').innerHTML;
+
+      const mainElement = document.querySelector('main');
+      mainElement.innerHTML = postTitle;
+
+      window.history.pushState({}, "", closestLink.href);
+
+       var cardContainer = document.getElementById('cardContainer');
+  if (cardContainer) {
+    // Call the function to display the saved cards
+    displaySavedCards();
+  }
+
     } catch (error) {
       console.error('Error:', error);
     }
