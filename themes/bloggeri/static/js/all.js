@@ -43,6 +43,12 @@ document.addEventListener('click', function(event) {
   }
 });
 
+document.addEventListener('click', function(event) {
+  if (event.target.matches('.toggleButton1')) {
+  displaySavedCards();
+  }
+});
+
  document.addEventListener('click', async function(event) {
   const target = event.target;
   if (target.closest('.card-image')) {
