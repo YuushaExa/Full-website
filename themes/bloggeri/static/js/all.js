@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
 });
 
-document.addEventListener('click', function(event) {
+document.addEventListener('load', function(event) {
   if (event.target.matches('.toggleButton')) {
     toggleLocalStorage(event);
   }
