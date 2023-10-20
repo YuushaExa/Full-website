@@ -106,9 +106,6 @@ document.addEventListener('click', function(event) {
   cardContainer.appendChild(uploadInput);
 }
 
-  // Call the function to display the saved cards when the page loads
-  displaySavedCards();     
-
 
  document.addEventListener('click', async function(event) {
   const target = event.target;
@@ -176,7 +173,7 @@ document.body.addEventListener("click", async function(event) {
   }
         var LocalStorage = document.getElementsByClassName('toggleButton');
   if (LocalStorage) {
-      checkLocalStorage();
+     checkLocalStorage(card, toggleButton);
   }
 
     } catch (error) {
