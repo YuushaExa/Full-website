@@ -172,10 +172,12 @@ document.body.addEventListener("click", async function(event) {
 
        var cardContainer = document.getElementById('cardContainer');
   if (cardContainer) {
-    // Call the function to display the saved cards
     displaySavedCards();
   }
+        var LocalStorage = document.getElementsByClassName('toggleButton');
+  if (LocalStorage) {
       checkLocalStorage();
+  }
 
     } catch (error) {
       console.error('Error:', error);
