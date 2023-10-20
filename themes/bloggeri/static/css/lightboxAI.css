@@ -80,16 +80,11 @@
 }
 
 button {
-  background-color: #ccc;
-  color: #000;
+background-color: unset;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,1));
+    transition: .3s ease-in-out;
+    border: none;
 }
-
-button.active {
-  background-color: #ff0000;
-  color: #fff;
-}
-
-
 
 #lightbox-info {
      position: absolute;
