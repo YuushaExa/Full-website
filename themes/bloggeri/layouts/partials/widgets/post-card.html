@@ -7,7 +7,7 @@
     </a>
             <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
-                        <button class="toggleButton"></button>
+                        <button class="toggleButton">{{ partial "svgs/favorite.svg" }}</button>
                         <a class="title is-4">{{ .Title }}</a>
     </div>  
 </div>
