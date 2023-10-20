@@ -4,9 +4,9 @@ function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
 
   if (localStorage.getItem(title)) {
-    toggleButton.textContent = 'Delete';
+    toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   } else {
-    toggleButton.textContent = 'Save';
+    toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
   };
 };
 
@@ -25,11 +25,11 @@ function toggleLocalStorage(event) {
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
-    toggleButton.textContent = 'Save';
+ toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-    toggleButton.textContent = 'Delete';
+toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   };
 };
 
