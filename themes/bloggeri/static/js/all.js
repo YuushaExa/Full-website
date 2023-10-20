@@ -7,8 +7,8 @@ function checkLocalStorage(card, toggleButton) {
     toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   } else {
     toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
-  };
-};
+  }
+}
 
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
@@ -16,7 +16,7 @@ function attachToggleListeners() {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
   });
-};
+}
 
 function toggleLocalStorage(event) {
   const toggleButton = event.target;
@@ -25,20 +25,20 @@ function toggleLocalStorage(event) {
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
- toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
+    toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
-  };
-};
+    toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
 });
 
 document.addEventListener('click', function(event) {
-  if (event.target.matches('.toggleButton')) {
+  if (event.target.matches('span.toggleButton')) {
     toggleLocalStorage(event);
   }
 });
