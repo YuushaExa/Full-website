@@ -106,7 +106,7 @@ document.addEventListener('click', function(event) {
   // Append the upload input to the container
   cardContainer.appendChild(uploadInput);
 }
-
+displaySavedCards();
 
  document.addEventListener('click', async function(event) {
   const target = event.target;
