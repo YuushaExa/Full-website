@@ -173,26 +173,9 @@ document.body.addEventListener("click", async function(event) {
     displaySavedCards();
   }
 
-var cardContainer12 = document.querySelectorAll('.toggleButton');
-  if (cardContainer12) {
-      function checkLocalStorage(card, toggleButton) {
-  const title = card.querySelector('.title.is-4').textContent;
-  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
-
-  if (localStorage.getItem(title)) { 
-    toggleButtonSVG.classList.add('active');
-  } else {
-    toggleButtonSVG.classList.remove('active');
-  };
-  }
-
-function attachToggleListeners() {
-  const toggleButtons = document.querySelectorAll('.toggleButton');
-  toggleButtons.forEach(toggleButton => {
-    const card = toggleButton.closest('.card');
-    checkLocalStorage(card, toggleButton);
-  });
-}
+var toggleButton12 = document.querySelectorAll('.toggleButton');
+  if (toggleButton12) {
+    attachToggleListeners();
 }
 
       
