@@ -23,15 +23,15 @@ function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
   const title = card.querySelector('.title.is-4').textContent;
-    const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
+  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
- toggleButtonSVG.classList.add('active');
+    toggleButtonSVG.classList.add('active');
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-   toggleButtonSVG.classList.remove('active');
+    toggleButtonSVG.classList.remove('active');
   }
 }
 
