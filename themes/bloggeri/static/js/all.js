@@ -4,9 +4,9 @@ function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
 
   if (localStorage.getItem(title)) { 
-     toggleButton.textContent = 'Delete';
+    toggleButtonSVG.classList.add('active');
   } else {
-    toggleButton.textContent = 'Save';
+    toggleButtonSVG.classList.remove('active');
   };
   }
 
