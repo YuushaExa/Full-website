@@ -173,8 +173,7 @@ document.body.addEventListener("click", async function(event) {
     displaySavedCards();
   }
 
- const card = $('.card');
-  const toggleButton = $('.toggleButton');
+
   checkLocalStorage(card, toggleButton);
 
     } catch (error) {
