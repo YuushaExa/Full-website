@@ -173,16 +173,9 @@ document.body.addEventListener("click", async function(event) {
     displaySavedCards();
   }
 
-      function checkLocalStorage(card, toggleButton) {
-  const title = card.querySelector('.title.is-4').textContent;
-  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
-
-  if (localStorage.getItem(title)) { 
-    toggleButtonSVG.classList.add('active');
-  } else {
-    toggleButtonSVG.classList.remove('active');
-  };
-  }
+ const card = $('.card');
+  const toggleButton = $('.toggleButton');
+  checkLocalStorage(card, toggleButton);
 
     } catch (error) {
       console.error('Error:', error);
