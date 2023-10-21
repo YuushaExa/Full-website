@@ -11,6 +11,13 @@ function checkLocalStorage(card, toggleButton) {
   };
   }
 
+$(document).ajaxComplete(function() {
+  const card = $('.card');
+  const toggleButton = $('.toggleButton');
+
+  checkLocalStorage(card, toggleButton);
+});
+
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
   toggleButtons.forEach(toggleButton => {
