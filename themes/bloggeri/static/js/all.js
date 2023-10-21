@@ -13,6 +13,7 @@ function checkLocalStorage(card, toggleButton) {
 
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
+    const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
   toggleButtons.forEach(toggleButton => {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
