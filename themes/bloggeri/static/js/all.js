@@ -2,6 +2,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
+  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
 
   if (localStorage.getItem(title)) { 
     toggleButtonSVG.classList.add('active');
@@ -22,6 +23,7 @@ function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
   const title = card.querySelector('.title.is-4').textContent;
+    const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
