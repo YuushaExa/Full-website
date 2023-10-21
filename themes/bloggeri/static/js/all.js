@@ -13,7 +13,6 @@ function checkLocalStorage(card, toggleButton) {
 
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
-    const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
   toggleButtons.forEach(toggleButton => {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
@@ -24,17 +23,17 @@ function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
   const title = card.querySelector('.title.is-4').textContent;
-  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
-    toggleButtonSVG.classList.add('active');
+        toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-    toggleButtonSVG.classList.remove('active');
+    toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
