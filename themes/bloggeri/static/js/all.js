@@ -3,12 +3,11 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
 
-  if (localStorage.getItem(title)) {
-    toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
-    toggleButton.dataset.active = 'true';
-  } else {
+  if (localStorage.getItem(title)) { 
+    toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
+
+  } else {    
     toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
-    toggleButton.dataset.active = 'false';
   }
 }
 
@@ -16,29 +15,23 @@ function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
   const title = card.querySelector('.title.is-4').textContent;
-  const isActive = toggleButton.dataset.active === 'true';
 
-  if (isActive) {
+  if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
-    toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
-    toggleButton.dataset.active = 'false';
+        toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   } else {
+    const content = card.innerHTML;
+    localStorage.setItem(title, content);
     toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
-    toggleButton.dataset.active = 'true';
-    localStorage.setItem(title, 'active');
   }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  const toggleButtons = document.querySelectorAll('.toggleButton');
-  toggleButtons.forEach(toggleButton => {
-    const card = toggleButton.closest('.card');
-    checkLocalStorage(card, toggleButton);
-  });
+  attachToggleListeners();
 });
 
 document.addEventListener('click', function(event) {
-  if (event.target.matches('.toggleButton')) {
+  if (event.target.matches('span.toggleButton')) {
     toggleLocalStorage(event);
   }
 });
