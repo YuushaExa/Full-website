@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('click', function(event) {
   if (event.target.matches('span.toggleButton')) {
     toggleLocalStorage(event);
+    checkLocalStorage(card, toggleButton);
   }
 });
 
