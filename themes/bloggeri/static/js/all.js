@@ -11,13 +11,6 @@ function checkLocalStorage(card, toggleButton) {
   };
   }
 
-$(document).ajaxComplete(function() {
-  const card = $('.card');
-  const toggleButton = $('.toggleButton');
-
-  checkLocalStorage(card, toggleButton);
-});
-
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
   toggleButtons.forEach(toggleButton => {
@@ -178,6 +171,17 @@ document.body.addEventListener("click", async function(event) {
        var cardContainer = document.getElementById('cardContainer');
   if (cardContainer) {
     displaySavedCards();
+  }
+
+      function checkLocalStorage(card, toggleButton) {
+  const title = card.querySelector('.title.is-4').textContent;
+  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
+
+  if (localStorage.getItem(title)) { 
+    toggleButtonSVG.classList.add('active');
+  } else {
+    toggleButtonSVG.classList.remove('active');
+  };
   }
 
     } catch (error) {
