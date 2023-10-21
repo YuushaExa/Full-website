@@ -4,12 +4,11 @@ function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
 
   if (localStorage.getItem(title)) { 
-    toggleButton.style.fill = 'rgb(4 252 14 / 80%);';
-
-  } else {    
-    toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
+     toggleButton.textContent = 'Delete';
+  } else {
+    toggleButton.textContent = 'Save';
+  };
   }
-}
 
 function attachToggleListeners() {
   const toggleButtons = document.querySelectorAll('.toggleButton');
