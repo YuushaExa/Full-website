@@ -24,16 +24,20 @@ function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
   const title = card.querySelector('.title.is-4').textContent;
-  const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
+  const toggleButtonSVG = toggleButton.querySelectorAll('.toggleButtonSVG');
+  
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
-    toggleButtonSVG.classList.remove('active');
+    if (toggleButtonSVG) {
+  toggleButtonSVG.classList.remove('active');
+}
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-        toggleButtonSVG.classList.add('active');
-  }
+if (toggleButtonSVG) {
+  toggleButtonSVG.classList.add('active');
+}  }
 }
 
 
@@ -43,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('click', function(event) {
   if (event.target.matches('span.toggleButton')) {
-      const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
     toggleLocalStorage(event);
   }
 });
