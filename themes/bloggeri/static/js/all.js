@@ -26,11 +26,8 @@ function toggleLocalStorage(event) {
     const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
 
   if (localStorage.getItem(title)) {
-    localStorage.removeItem(title);
         toggleButtonSVG.classList.remove('active');
   } else {
-    const content = card.innerHTML;
-    localStorage.setItem(title, content);
     toggleButtonSVG.classList.add('active');
   }
 }
