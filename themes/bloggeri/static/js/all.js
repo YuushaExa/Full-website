@@ -171,6 +171,7 @@ document.body.addEventListener("click", async function(event) {
        var cardContainer = document.getElementById('cardContainer');
   if (cardContainer) {
     displaySavedCards();
+    FavButtons()
   }
 
 var toggleButton12 = document.querySelectorAll('.toggleButton');
