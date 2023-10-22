@@ -15,6 +15,11 @@
 window.onload = function() {
   displaySavedCards();
   attachToggleListeners();
+
+ var toggleButtons = document.querySelectorAll('.toggleButton path');
+toggleButtons.forEach(function(button) {
+  button.style.fill = 'unset';
+});
 };
 </script>
 {{ end }}
