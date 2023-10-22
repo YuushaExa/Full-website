@@ -38,7 +38,6 @@ function toggleLocalStorage(event) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
   attachToggleListeners();
 });
 
