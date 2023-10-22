@@ -26,11 +26,11 @@ function toggleLocalStorage(event) {
 
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
-        toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
+            toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
   } else {
     const content = card.innerHTML;
     localStorage.setItem(title, content);
-        toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
+        toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
   }
 }
 
