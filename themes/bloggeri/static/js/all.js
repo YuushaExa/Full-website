@@ -171,7 +171,16 @@ document.body.addEventListener("click", async function(event) {
        var cardContainer = document.getElementById('cardContainer');
   if (cardContainer) {
     displaySavedCards();
-    FavButtons()
+   function FavButtons() {
+ var toggleButtons = document.querySelectorAll('.toggleButton path');
+toggleButtons.forEach(function(button) {
+  button.style.fill = 'unset';
+});
+var toggleButtons1 = document.querySelectorAll('.toggleButtonSVG');
+toggleButtons1.forEach(function(button1) {
+  button1.style.fill = 'rgb(4 252 14 / 80%)';
+});
+};
   }
 
 var toggleButton12 = document.querySelectorAll('.toggleButton');
