@@ -14,6 +14,7 @@ function checkLocalStorage(card, toggleButton) {
   } else {
     toggleButtonSVG.classList.remove('active');
   };
+    updateCounter();
   }
 
 function attachToggleListeners() {
@@ -42,6 +43,7 @@ function toggleLocalStorage(event) {
 
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
+    updateCounter();
 });
 
 document.addEventListener('click', function(event) {
