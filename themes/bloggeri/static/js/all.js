@@ -34,16 +34,6 @@ function toggleLocalStorage(event) {
   }
 }
 
-function updateTotalCount(count) {
-  const totalCountElement = document.getElementById('totalCount');
-  totalCountElement.textContent = count;
-}
-
-function countCardsInLocalStorage() {
-  const totalCards = Object.keys(localStorage).length;
-  updateTotalCount(totalCards);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
 });
@@ -319,3 +309,8 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
+
+  if (typeof(Storage) !== "undefined") {
+      var totalItems = localStorage.length;
+      document.getElementById("totalCount").textContent = "Favorites: " + totalItems;
+    };
