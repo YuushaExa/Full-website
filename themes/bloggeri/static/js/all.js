@@ -8,7 +8,7 @@ function updateCounter() {
       totalCount++;
     }
   }
-  document.getElementById("totalCount").textContent = "Favorites: " + totalCount;
+  document.getElementById("totalCount").totalCount;
 };
 
 function checkLocalStorage(card, toggleButton) {
