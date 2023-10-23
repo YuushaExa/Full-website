@@ -19,12 +19,6 @@ function attachToggleListeners() {
   });
 }
 
-
-function countCardsInLocalStorage() {
-  const totalCards = Object.keys(localStorage).length;
-  console.log('Total Cards in Local Storage:', totalCards);
-}
-
 function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
@@ -40,6 +34,15 @@ function toggleLocalStorage(event) {
   }
 }
 
+function updateTotalCount(count) {
+  const totalCountElement = document.getElementById('totalCount');
+  totalCountElement.textContent = count;
+}
+
+function countCardsInLocalStorage() {
+  const totalCards = Object.keys(localStorage).length;
+  updateTotalCount(totalCards);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   attachToggleListeners();
