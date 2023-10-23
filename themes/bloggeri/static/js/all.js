@@ -311,9 +311,9 @@ closeLightbox();
 };
 
     if (typeof(Storage) !== "undefined") {
-      var totalCount = 0;
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
+      let totalCount = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
         if (key !== "thumbnailsVisible") {
           totalCount++;
         }
