@@ -318,5 +318,5 @@ closeLightbox();
           totalCount++;
         }
       }
-      document.getElementById("totalCount").textContent = "Favorites: " + totalItems;
+      document.getElementById("totalCount").textContent = "Favorites: " + totalCount;
     };
