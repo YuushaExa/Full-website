@@ -1,7 +1,7 @@
         <div class="sidebar">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/favorites/">Favorite</a><p id="totalCount"></p></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -10,7 +10,15 @@
         <style>
 
         .sidebar {
-            width: 200px;
-            background-color: #f1f1f1;
+          width: 200px;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    justify-content: space-between;
+    left: 0;
+    position: fixed;
+    top: 0;
+    padding: 15px;
         }
     </style>
