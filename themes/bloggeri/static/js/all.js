@@ -318,13 +318,3 @@ closeLightbox();
 };
 };
 
-    if (typeof(Storage) !== "undefined") {
-      let totalCount = 0;
-      for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        if (key !== "thumbnailsVisible") {
-          totalCount++;
-        }
-      }
-      document.getElementById("totalCount").textContent = "Favorites: " + totalCount;
-    };
