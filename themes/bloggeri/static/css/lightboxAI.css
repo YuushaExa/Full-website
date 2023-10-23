@@ -87,15 +87,13 @@ background-color: unset;
 }
 
 #lightbox-info {
-     position: absolute;
-    top: 15px;
-    right: 50%;
-    line-height: 44px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-      z-index: 2;
-  padding: 15px;
+       position: absolute;
+    top: 0px;
+    z-index: 2;
+    padding: 10px;
+    background-color: #000000a8;
+    width: 100%;
+    color: white;
 }
 #resetButton {
        position: relative;
