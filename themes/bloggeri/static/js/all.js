@@ -8,7 +8,7 @@ function updateCounter() {
       totalCount++;
     }
   }
-  document.getElementsByClassName("totalCount").textContent = "" + totalCount;
+  document.getElementById("totalCount").textContent = "" + totalCount;
 };
 
 function checkLocalStorage(card, toggleButton) {
