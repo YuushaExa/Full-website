@@ -19,6 +19,12 @@ function attachToggleListeners() {
   });
 }
 
+
+function countCardsInLocalStorage() {
+  const totalCards = Object.keys(localStorage).length;
+  console.log('Total Cards in Local Storage:', totalCards);
+}
+
 function toggleLocalStorage(event) {
   const toggleButton = event.target;
   const card = toggleButton.closest('.card');
