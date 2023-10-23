@@ -310,7 +310,13 @@ closeLightbox();
 };
 };
 
-  if (typeof(Storage) !== "undefined") {
-      var totalItems = localStorage.length;
+    if (typeof(Storage) !== "undefined") {
+      var totalCount = 0;
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key !== "thumbnailsVisible") {
+          totalCount++;
+        }
+      }
       document.getElementById("totalCount").textContent = "Favorites: " + totalItems;
     };
