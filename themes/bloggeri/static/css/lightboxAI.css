@@ -87,13 +87,12 @@ background-color: unset;
 }
 
 #lightbox-info {
-       position: absolute;
+  position: absolute;
     top: 0px;
     z-index: 2;
     padding: 10px;
     background-color: #000000a8;
-    width: 100%;
-    color: white;
+    fill: white;
 }
 #resetButton {
        position: relative;
