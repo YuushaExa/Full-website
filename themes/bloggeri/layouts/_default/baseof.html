@@ -7,6 +7,7 @@
         <main>
         {{- block "main" . }}{{- end }}
         </main>
+                {{ partialCached "sidebar-left.html" . }}
         {{ partialCached "footer.html" . }}
          <div id="content-front">
                  <span class="close-pv">X</span>
