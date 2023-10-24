@@ -8,19 +8,8 @@ function updateCounter() {
       totalCount++;
     }
   }
-  
-  const totalCountElement = document.getElementById("totalCount");
-  totalCountElement.textContent = "" + totalCount;
-  totalCountElement.classList.add("count-animation");
-  
-  // Remove the animation class after the animation duration to allow it to run again
-  setTimeout(() => {
-    totalCountElement.classList.remove("count-animation");
-  }, 500);
-}
-
-// Call the updateCounter() function whenever you want to update the counter
-updateCounter();
+  document.getElementById("totalCount").textContent = "" + totalCount;
+};
 
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
@@ -334,4 +323,3 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
-
