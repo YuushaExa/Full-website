@@ -15,7 +15,7 @@ function updateCounter() {
   
   if (currentCount < totalCount) {
     counterElement.textContent = currentCount + increment;
-    setTimeout(updateCounter, 10); // Adjust the delay (in milliseconds) to control the animation speed
+    requestAnimationFrame(updateCounter);
   } else {
     counterElement.textContent = totalCount;
   }
