@@ -7,8 +7,6 @@ Array.from(buttons).forEach(function(button) {
     const tooltip = document.createElement("div");
     tooltip.textContent = button.getAttribute("title");
     tooltip.style.position = "absolute";
-    tooltip.style.top = button.offsetTop + button.offsetHeight + "px";
-    tooltip.style.left = button.offsetLeft + "px";
     tooltip.style.backgroundColor = "#e3e3e3";
     tooltip.style.padding = "5px";
     tooltip.style.border = "#666 2px dotted";
