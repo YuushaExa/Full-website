@@ -11,7 +11,6 @@ favoriteButton.addEventListener('mouseenter', function() {
 });
 
 
-
 function updateCounter() {
   let totalCount = 0;
   for (let i = 0; i < localStorage.length; i++) {
