@@ -15,9 +15,12 @@ Array.from(buttons).forEach(function(button) {
     tooltip.style.zIndex = "100";
     document.body.appendChild(tooltip);
     
-    button.addEventListener("mouseout", function() {
+    function removeTooltip() {
       document.body.removeChild(tooltip);
-    });
+      button.removeEventListener("mouseout", removeTooltip);
+    }
+    
+    button.addEventListener("mouseout", removeTooltip);
   });
 });
 
