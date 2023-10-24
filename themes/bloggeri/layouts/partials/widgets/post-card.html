@@ -7,7 +7,8 @@
     </a>
             <div class="card-content">
 <a class="category" href="/categories/{{ index .Params.categories 0 | urlize}}">{{ index .Params.categories 0 }}</a>
-<span class="toggleButton" aria-label="Favorites" onclick="toggleLocalStorage(event)">{{ partial "svgs/favorite.svg" }}</span>
+<span class="toggleButton" aria-label="Favorites" onmouseover="toggleLocalStorage(event)" onmouseout="hideLabel()">{{ partial "svgs/favorite.svg" }}</span>
+<div id="labelContainer"></div>
                         <a class="title is-4">{{ .Title }}</a>
     </div>  
 </div>
