@@ -10,9 +10,7 @@ favoriteButton.addEventListener('mouseenter', function() {
   labelContainer.textContent = ariaLabel;
 });
 
-favoriteButton.addEventListener('mouseleave', function() {
-  labelContainer.textContent = '';
-});
+
 
 function updateCounter() {
   let totalCount = 0;
