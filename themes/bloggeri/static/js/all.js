@@ -8,20 +8,8 @@ function updateCounter() {
       totalCount++;
     }
   }
-  
-  const counterElement = document.getElementById("totalCount");
-  const currentCount = parseInt(counterElement.textContent);
-  const increment = Math.ceil(totalCount / 100); // Adjust the animation speed by changing the divisor
-  
-  if (currentCount < totalCount) {
-    counterElement.textContent = currentCount + increment;
-    requestAnimationFrame(updateCounter);
-  } else {
-    counterElement.textContent = totalCount;
-  }
-}
-
-updateCounter();
+  document.getElementById("totalCount").textContent = "" + totalCount;
+};
 
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
