@@ -2,8 +2,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
           <li>
-  <a href="/favorites/">Favorites</a><p>Total Count: <span id="totalCount">0</span></p>
-
+  <a href="/favorites/">Favorites</a><p id="totalCount"></p>
 </li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact</a></li>
@@ -24,15 +23,6 @@
     top: 0;
     padding: 15px;
         }
-                @keyframes countAnimation {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#totalCount {
-  display: inline-block;
-  animation: countAnimation 0.5s;
-}
                 .sidebar li {
     display: flex;
 }
