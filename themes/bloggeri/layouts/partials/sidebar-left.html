@@ -23,6 +23,15 @@
     top: 0;
     padding: 15px;
         }
+                @keyframes countAnimation {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#totalCount {
+  display: inline-block;
+  animation: countAnimation 0.5s;
+}
                 .sidebar li {
     display: flex;
 }
