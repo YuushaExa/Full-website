@@ -8,33 +8,8 @@ function updateCounter() {
       totalCount++;
     }
   }
-  
-  const counterElement = document.getElementById("totalCount");
-  const currentCount = parseInt(counterElement.textContent);
-  
-  // Animate the count from the current value to the new value
-  animateCount(currentCount, totalCount, counterElement);
-}
-
-function animateCount(start, end, element) {
-  const duration = 1000; // Animation duration in milliseconds
-  const range = end - start;
-  const increment = range / duration * 10;
-  let current = start;
-  
-  const timer = setInterval(() => {
-    current += increment;
-    element.textContent = Math.round(current);
-    
-    if (current >= end) {
-      clearInterval(timer);
-      element.textContent = end;
-    }
-  }, 10);
-}
-
-// Call the updateCounter function initially and whenever needed
-updateCounter();
+  document.getElementById("totalCount").textContent = "" + totalCount;
+};
 
 function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
