@@ -237,7 +237,7 @@ $('.btn5').click(function () {
 $('.card a').hover(function (event) { 
     event.preventDefault(); 
   var link1 =  $(this).attr('href');
-    $(this).append('<span class="toggleButton" aria-label="Favorites" onclick="toggleLocalStorage(event)">{{ partial "svgs/favorite.svg" }}</span>
+    $(this).append('<span class="toggleButton" aria-label="Favorites" onclick="toggleLocalStorage(event)">Test</span>
 ');
  }, function() {
     $('.toggleButton').remove();
