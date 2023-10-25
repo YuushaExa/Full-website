@@ -46,10 +46,22 @@ function displayRandomItems() {
 
   randomKeys.forEach(key => {
     const item = localStorage.getItem(key);
-    const listItem = document.createElement("div");
-    listItem.textContent = item;
-    container.appendChild(listItem);
+    const card = createCardElement(item);
+    container.appendChild(card);
   });
+}
+
+function createCardElement(item) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const content = document.createElement("div");
+  content.classList.add("card-content");
+  content.textContent = item;
+
+  card.appendChild(content);
+
+  return card;
 }
 
 function getRandomItems(array, count) {
