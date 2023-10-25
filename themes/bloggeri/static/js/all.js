@@ -46,7 +46,7 @@ function displayRandomItems() {
 
   randomKeys.forEach(key => {
     const item = localStorage.getItem(key);
-    const listItem = document.createElement("li");
+    const listItem = document.createElement("div");
     listItem.textContent = item;
     container.appendChild(listItem);
   });
