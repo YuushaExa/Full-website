@@ -8,6 +8,21 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 $('.card a').hover(function (event) { 
     event.preventDefault(); 
     $(this).append('<span class="toggleButton" aria-label="Favorites" onclick="toggleLocalStorage(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24" class="toggleButtonSVG" viewBox="0 -960 960 960" width="24"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></svg></span>');
+}, function() {
+    $('.toggleButton').remove();
+});
+
+function updateCounter() {
+  let totalCount = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key !== "thumbnailsVisible") {
+      totalCount++;
+    }
+  }
+  document.getElementById("totalCount").textContent = "" + totalCount;
+};
+
  function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
   const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
@@ -26,26 +41,7 @@ function attachToggleListeners() {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
   });
- document.addEventListener('DOMContentLoaded', function() {
-  attachToggleListeners();
-    updateCounter();
-});
 }
-}, function() {
-    $('.toggleButton').remove();
-});
-
-function updateCounter() {
-  let totalCount = 0;
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key !== "thumbnailsVisible") {
-      totalCount++;
-    }
-  }
-  document.getElementById("totalCount").textContent = "" + totalCount;
-};
-
 
 function toggleLocalStorage(event) {
   const toggleButton = event.target;
@@ -63,6 +59,10 @@ function toggleLocalStorage(event) {
   updateCounter();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  attachToggleListeners();
+    updateCounter();
+});
 
 document.addEventListener('click', function(event) {
   if (event.target.matches('span.toggleButton')) {
