@@ -36,6 +36,40 @@ function updateCounter() {
   document.getElementById("totalCount").textContent = "" + totalCount;
 };
 
+
+function displayRandomItems() {
+  const localStorageKeys = Object.keys(localStorage).filter(key => key !== "thumbnailsVisible");
+  const randomKeys = getRandomItems(localStorageKeys, 3);
+
+  const container = document.getElementById("randomItemsContainer");
+  container.innerHTML = ""; // Clear previous content
+
+  randomKeys.forEach(key => {
+    const item = localStorage.getItem(key);
+    const listItem = document.createElement("li");
+    listItem.textContent = item;
+    container.appendChild(listItem);
+  });
+}
+
+function getRandomItems(array, count) {
+  const shuffled = array.slice();
+  let i = array.length;
+  const min = i - count;
+  let temp;
+  let index;
+
+  while (i-- > min) {
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
+  }
+
+  return shuffled.slice(min);
+}
+
+
  function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
   const toggleButtonSVG = toggleButton.querySelector('.toggleButtonSVG');
