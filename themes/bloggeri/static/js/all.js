@@ -21,7 +21,7 @@ $(document).on('mouseenter', '.card-content', function(event) {
   $(this).append(toggleButton);
 });
 
-$(document).on('mouseleave', '.card a', function() {
+$(document).on('mouseleave', '.card-content', function() {
   $(this).find('.toggleButton').remove();
 });
 
