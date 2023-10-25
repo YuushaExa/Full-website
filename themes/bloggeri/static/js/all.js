@@ -2,7 +2,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
  tippy('.toggleButton', {
         content: (reference) => reference.getAttribute('aria-label'),
-   delay: 500,
+   delay: [1000, null],
       });
 
 function updateCounter() {
