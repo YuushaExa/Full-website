@@ -26,6 +26,10 @@ function attachToggleListeners() {
     const card = toggleButton.closest('.card');
     checkLocalStorage(card, toggleButton);
   });
+ document.addEventListener('DOMContentLoaded', function() {
+  attachToggleListeners();
+    updateCounter();
+});
 }
 }, function() {
     $('.toggleButton').remove();
@@ -59,10 +63,6 @@ function toggleLocalStorage(event) {
   updateCounter();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  attachToggleListeners();
-    updateCounter();
-});
 
 document.addEventListener('click', function(event) {
   if (event.target.matches('span.toggleButton')) {
