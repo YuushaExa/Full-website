@@ -37,32 +37,29 @@ function updateCounter() {
 };
 
 
-function displayRandomItems() {
-  const localStorageKeys = Object.keys(localStorage).filter(key => key !== "thumbnailsVisible");
-  const randomKeys = getRandomItems(localStorageKeys, 3);
+function displayRandomCards() {
+  const cardContainer = document.getElementById('cardContainer');
+  cardContainer.innerHTML = ''; // Clear the container before populating it again
 
-  const container = document.getElementById("randomItemsContainer");
-  container.innerHTML = ""; // Clear previous content
+  let localStorageData = {}; // Object to store local storage data
+
+  const localStorageKeys = Object.keys(localStorage).filter(key => key !== 'thumbnailsVisible');
+  const randomKeys = getRandomItems(localStorageKeys, 3); // Get 3 random keys
 
   randomKeys.forEach(key => {
-    const item = localStorage.getItem(key);
-    const card = createCardElement(item);
-    container.appendChild(card);
+    const title = key;
+    const content = localStorage.getItem(title);
+
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = content;
+
+    cardContainer.appendChild(card);
+
+    localStorageData[title] = content;
   });
 }
 
-function createCardElement(item) {
-  const card = document.createElement("div");
-  card.classList.add("card");
-
-  const content = document.createElement("div");
-  content.classList.add("card-content");
-  content.textContent = item;
-
-  card.appendChild(content);
-
-  return card;
-}
 
 function getRandomItems(array, count) {
   const shuffled = array.slice();
