@@ -54,19 +54,15 @@ function displayRandomItems() {
 
 function getRandomItems(array, count) {
   const shuffled = array.slice();
-  let i = array.length;
-  const min = i - count;
-  let temp;
-  let index;
+  const randomItems = [];
 
-  while (i-- > min) {
-    index = Math.floor((i + 1) * Math.random());
-    temp = shuffled[index];
-    shuffled[index] = shuffled[i];
-    shuffled[i] = temp;
+  while (randomItems.length < count && shuffled.length) {
+    const index = Math.floor(Math.random() * shuffled.length);
+    const item = shuffled.splice(index, 1)[0];
+    randomItems.push(item);
   }
 
-  return shuffled.slice(min);
+  return randomItems;
 }
 
 
