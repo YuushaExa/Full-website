@@ -38,7 +38,7 @@ function updateCounter() {
 
 
 function displayRandomCards() {
-  const cardContainer = document.getElementById('cardContainer');
+  const cardContainer = document.getElementById('displayRandomCards');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
 
   let localStorageData = {}; // Object to store local storage data
