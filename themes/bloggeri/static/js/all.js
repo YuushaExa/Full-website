@@ -269,6 +269,7 @@ toggleButtons1.forEach(function(button1) {
   var totalCountfav = document.getElementById('totalCount-fav');
   if (totalCountfav) {
 document.getElementById("totalCount-fav").textContent = "" + totalCount;
+   updateCounter();
  }
    
   }
