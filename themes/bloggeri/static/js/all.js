@@ -72,29 +72,7 @@ function replaceUrlParameters(url) {
   return url.replace('&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention', '&output=jpg&maxage=1d&w=50&h=50&fit=cover&a=attention');
 }
 
-// Call displayRandomCards() initially
 displayRandomCards();
-
-// Listen for changes in the local storage
-window.onstorage = function (event) {
-  // Check if a new key was added
-  if (event.key && event.newValue && !event.oldValue) {
-    // Call displayRandomCards() to update the cards
-    displayRandomCards();
-  }
-  
-  // Check if a key was removed
-  if (event.key && !event.newValue && event.oldValue) {
-    // Handle key removal
-    const removedKey = event.key;
-    
-    // Find and remove the corresponding card
-    const cardToRemove = document.querySelector(`[data-key="${removedKey}"]`);
-    if (cardToRemove) {
-      cardToRemove.remove();
-    }
-  }
-};
 
 function getRandomItems(array, count) {
   const shuffled = array.slice();
@@ -119,6 +97,7 @@ function getRandomItems(array, count) {
     toggleButtonSVG.classList.remove('active');
   };
     updateCounter();
+  displayRandomCards();
   }
 
 function attachToggleListeners() {
