@@ -390,3 +390,9 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
+
+
+    var displayRandomCards = document.getElementById('displayRandomCards');
+  if (displayRandomCards) {
+displayRandomCards();
+     }
