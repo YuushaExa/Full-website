@@ -25,10 +25,22 @@ $(document).on('mouseleave', '.card-content', function() {
   $(this).find('.toggleButton').remove();
 });
 
-const updateCounter = document.getElementsByClassName("totalCount");
-for (let i = 0; i < totalCountElements.length; i++) {
-  totalCountElements[i].textContent = "" + totalCount;
+function updateCounter() {
+  let totalCount = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key !== "thumbnailsVisible") {
+      totalCount++;
+    }
+  }
+
+  const totalCountElements = document.getElementsByClassName("totalCount");
+  for (let i = 0; i < totalCountElements.length; i++) {
+    totalCountElements[i].textContent = "" + totalCount;
+  }
 }
+
+updateCounter();
 
 function displayRandomCards() {
   const cardContainer = document.getElementById('cardContainer');
