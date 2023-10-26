@@ -41,8 +41,8 @@ document.getElementById("totalCount-fav").textContent = "" + totalCount;
 };
 
 function displayRandomCards() {
-  const cardContainer = document.getElementById('cardContainer');
-  cardContainer.innerHTML = ''; // Clear the container before populating it again
+  const cardContainer = document.getElementById('cardContainer1');
+  cardContainer1.innerHTML = ''; // Clear the container before populating it again
 
   let localStorageData = {}; // Object to store local storage data
 
