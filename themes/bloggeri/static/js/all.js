@@ -60,7 +60,6 @@ function displayRandomCards() {
   });
 }
 
-
 function getRandomItems(array, count) {
   const shuffled = array.slice();
   const randomItems = [];
