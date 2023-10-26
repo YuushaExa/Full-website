@@ -42,7 +42,7 @@ document.getElementById("totalCount-fav").textContent = "" + totalCount;
 
 function displayRandomCards() {
   const cardContainer = document.getElementById('cardContainer1');
-  cardContainer1.innerHTML = ''; // Clear the container before populating it again
+  cardContainer.innerHTML = ''; // Clear the container before populating it again
 
   let localStorageData = {}; // Object to store local storage data
 
@@ -52,16 +52,22 @@ function displayRandomCards() {
   randomKeys.forEach(key => {
     const title = key;
     const content = localStorage.getItem(title);
+    
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+    const image = doc.querySelector('img');
+    const imageLink = image ? image.getAttribute('src') : '';
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = content;
+    card.innerHTML = `<img src="${imageLink}">`;
 
     cardContainer.appendChild(card);
 
-    localStorageData[title] = content;
+    localStorageData[title] = imageLink;
   });
 }
+
 displayRandomCards();
 
 function getRandomItems(array, count) {
@@ -76,7 +82,6 @@ function getRandomItems(array, count) {
 
   return randomItems;
 }
-
 
  function checkLocalStorage(card, toggleButton) {
   const title = card.querySelector('.title.is-4').textContent;
