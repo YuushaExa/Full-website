@@ -266,6 +266,11 @@ var toggleButtons1 = document.querySelectorAll('.toggleButtonSVG');
 toggleButtons1.forEach(function(button1) {
   button1.style.fill = 'rgb(4 252 14 / 80%)';
 });
+  var totalCountfav = document.getElementById('totalCount-fav');
+  if (totalCountfav) {
+document.getElementById("totalCount-fav").textContent = "" + totalCount;
+ }
+   
   }
 
 var toggleButton12 = document.querySelectorAll('.toggleButton');
