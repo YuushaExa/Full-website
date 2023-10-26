@@ -59,6 +59,7 @@ function displayRandomCards() {
     localStorageData[title] = content;
   });
 }
+displayRandomCards();
 
 function getRandomItems(array, count) {
   const shuffled = array.slice();
