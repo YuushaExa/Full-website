@@ -26,21 +26,19 @@ $(document).on('mouseleave', '.card-content', function() {
 });
 
 function updateCounter() {
-  let totalCount = 0;
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key !== "thumbnailsVisible") {
-      totalCount++;
-    }
-  }
-
-  const totalCountElements = document.getElementsByClassName("totalCount");
-  for (let i = 0; i < totalCountElements.length; i++) {
-    totalCountElements[i].textContent = "" + totalCount;
-  }
+let totalCount = 0;
+for (let i = 0; i < localStorage.length; i++) {
+const key = localStorage.key(i);
+if (key !== "thumbnailsVisible") {
+totalCount++;
 }
-
-updateCounter();
+}
+document.getElementById("totalCount").textContent = "" + totalCount;
+  var totalCountfav = document.getElementById('totalCount-fav');
+  if (totalCountfav) 
+document.getElementById("totalCount-fav").textContent = "" + totalCount;
+ }
+};
 
 function displayRandomCards() {
   const cardContainer = document.getElementById('cardContainer');
