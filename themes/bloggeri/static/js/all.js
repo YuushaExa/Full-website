@@ -35,7 +35,7 @@ totalCount++;
 }
 document.getElementById("totalCount").textContent = "" + totalCount;
   var totalCountfav = document.getElementById('totalCount-fav');
-  if (totalCountfav) 
+  if (totalCountfav) {
 document.getElementById("totalCount-fav").textContent = "" + totalCount;
  }
 };
