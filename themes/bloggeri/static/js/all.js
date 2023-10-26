@@ -56,7 +56,7 @@ function displayRandomCards() {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
     const image = doc.querySelector('img');
-    const imageLink = image ? image.getAttribute('src') : '';
+    const imageLink = image ? replaceUrlParameters(image.getAttribute('src')) : '';
 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -66,6 +66,10 @@ function displayRandomCards() {
 
     localStorageData[title] = imageLink;
   });
+}
+
+function replaceUrlParameters(url) {
+  return url.replace('&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention', '&output=webp&maxage=1d&w=50&h=50&fit=cover&a=attention');
 }
 
 displayRandomCards();
