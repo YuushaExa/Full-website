@@ -69,7 +69,7 @@ function displayRandomCards() {
 }
 
 function replaceUrlParameters(url) {
-  return url.replace('&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention', '&output=jpg&maxage=1d&w=50&h=50&fit=cover&a=attention');
+  return url.replace('&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention', '&output=webp&maxage=1d&w=50&h=50&fit=cover&a=attention');
 }
 
 displayRandomCards();
