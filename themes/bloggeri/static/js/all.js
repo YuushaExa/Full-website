@@ -389,9 +389,3 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
-
-
-    var displayRandomCards = document.getElementById('cardContainer');
-  if (displayRandomCards) {
-displayRandomCards();
-     }
