@@ -97,7 +97,6 @@ function getRandomItems(array, count) {
     toggleButtonSVG.classList.remove('active');
   };
     updateCounter();
-  displayRandomCards();
   }
 
 function attachToggleListeners() {
@@ -116,6 +115,7 @@ function toggleLocalStorage(event) {
   if (localStorage.getItem(title)) {
     localStorage.removeItem(title);
     toggleButton.style.fill = 'rgb(255 255 255 / 80%)';
+      displayRandomCards();
   } else {
     const clonedCard = card.cloneNode(true);
     const clonedToggleButton = clonedCard.querySelector('.toggleButton');
@@ -126,6 +126,7 @@ function toggleLocalStorage(event) {
     const content = clonedCard.innerHTML;
     localStorage.setItem(title, content);
     toggleButton.style.fill = 'rgb(4 252 14 / 80%)';
+      displayRandomCards();
   }
 
   updateCounter();
