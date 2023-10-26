@@ -38,7 +38,7 @@ function updateCounter() {
 
 
 function displayRandomCards() {
-  const cardContainer = document.getElementById('displayRandomCards');
+  const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerHTML = ''; // Clear the container before populating it again
 
   let localStorageData = {}; // Object to store local storage data
@@ -392,7 +392,7 @@ closeLightbox();
 };
 
 
-    var displayRandomCards = document.getElementById('displayRandomCards');
+    var displayRandomCards = document.getElementById('cardContainer');
   if (displayRandomCards) {
 displayRandomCards();
      }
