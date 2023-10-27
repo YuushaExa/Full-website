@@ -2,8 +2,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 
 
-
-const gameName = {{ .Title }};
+var postTitleElement = document.querySelector('.post-title a').textContent;
+const gameName = postTitleElement;
 
 const requestOptions = {
   method: 'POST',
