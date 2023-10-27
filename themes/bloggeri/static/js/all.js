@@ -3,7 +3,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 
 
-const gameName = '{{ .Title }}';
+const gameName = {{ .Title }};
 
 const requestOptions = {
   method: 'POST',
