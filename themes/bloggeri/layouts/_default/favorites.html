@@ -6,10 +6,10 @@
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
     <span>Favorites: <p id="totalCount-fav"></p></span>
-        <input type="text" id="inputTextFavSet" minlength="3" placeholder="Save in Cloud" />
+        <input type="text" id="inputTextFavSet" minlength="8" placeholder="Save in Cloud" />
       <button id="sendDataButton">Send Data to GitHub</button>
     <button id="getDataButton">Get Data</button>
-    <input type="text" id="inputTextFav" minlength="3" placeholder="Get from Cloud" />
+    <input type="text" id="inputTextFav" minlength="8" placeholder="Get from Cloud" />
     <div id="cardContainer"></div>   
      </div>
     </div>     </div>  
@@ -43,7 +43,7 @@ function fetchDataAndStoreInLocalStorage() {
   const inputTextFav = document.getElementById('inputTextFav');
 
   inputTextFav.addEventListener('input', function () {
-    if (inputTextFav.value.length >= 3) {
+    if (inputTextFav.value.length >= 8) {
       getDataButton.disabled = false;
     } else {
       getDataButton.disabled = true;
