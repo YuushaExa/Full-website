@@ -7,6 +7,7 @@
   <div class="content">
     <span>Favorites: <p id="totalCount-fav"></p></span>
       <button id="sendDataButton">Send Data to GitHub</button>
+    <button id="getDataButton">Get Data</button>
     <div id="cardContainer"></div>   
      </div>
     </div>     </div>  
@@ -14,6 +15,39 @@
 </section>
 <script src="https://fav2.pages.dev/new2.js"></script>
 <script>
+document.getElementById('getDataButton').addEventListener('click', getDataFromGitHub);
+
+function getDataFromGitHub() {
+  // GitHub repository information
+  const owner = 'YuushaExa';
+  const repo = 'web';
+  const branch = 'master';
+  const directory = 'dev/json/favfiles';
+  const filename = 'data.json';
+
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const content = data.content;
+      const decodedData = atob(content); // Decode the base64-encoded content
+      const jsonData = JSON.parse(decodedData);
+
+      // Store the JSON data in the local storage
+      for (const key in jsonData) {
+        if (jsonData.hasOwnProperty(key)) {
+          localStorage.setItem(key, jsonData[key]);
+        }
+      }
+
+      console.log('Data retrieved and stored in local storage:', jsonData);
+    })
+    .catch(error => {
+      console.error('Error retrieving data:', error);
+    });
+}
+  
 window.onload = function() {
   displaySavedCards();
   attachToggleListeners();
