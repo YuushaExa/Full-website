@@ -24,14 +24,19 @@
       const branch = 'master';
       const directory = 'dev/json/favfiles';
       const filename = 'data.json';
-      const token = "{{ .Site.Params.fav.key }}";
+  const token = "{{ .Site.Params.fav.key }}";
       const apiUrl = "https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}";
+      // Create the file content object
+      const encoder = new TextEncoder();
+      const dataEncoded = encoder.encode(localStorageData);
+      const base64Data = base64ArrayBuffer(dataEncoded);
 
       const fileContent = {
         message: 'Update data.json from local storage',
-        content: btoa(localStorageData), // Encode the data as base64
+        content: base64Data,
       };
 
+      // Make the API request to create or update the file
       fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -47,6 +52,17 @@
         .catch(error => {
           console.error('Error creating or updating the file:', error);
         });
+    }
+
+    // Function to convert the ArrayBuffer to a base64 string
+    function base64ArrayBuffer(arrayBuffer) {
+      let binary = '';
+      const bytes = new Uint8Array(arrayBuffer);
+      const len = bytes.byteLength;
+      for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binary);
     }
   </script>
 <script>
