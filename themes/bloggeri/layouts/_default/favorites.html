@@ -31,8 +31,22 @@ function getDataFromGitHub() {
     .then(response => response.json())
     .then(data => {
       const content = data.content;
-      const decodedData = atob(content); // Decode the base64-encoded content
-      const jsonData = JSON.parse(decodedData);
+      let decodedData;
+      
+      try {
+        decodedData = atob(content); // Decode the base64-encoded content
+      } catch (error) {
+        console.error('Error decoding base64 content:', error);
+        return;
+      }
+
+      let jsonData;
+      try {
+        jsonData = JSON.parse(decodedData);
+      } catch (error) {
+        console.error('Error parsing JSON data:', error);
+        return;
+      }
 
       // Store the JSON data in the local storage
       for (const key in jsonData) {
