@@ -20,12 +20,15 @@
 </section>
 <script src="https://fav2.pages.dev/new2.js"></script>
 <script>
-    $(document).ready(function() {
-      $(".syncfav").click(function() {
-        var synckey = generateSynckey(8);
-        $("#inputTextFavSet").val(synckey);
-      });
+document.addEventListener("DOMContentLoaded", function() {
+  var syncfavElements = document.getElementsByClassName("syncfav");
+  for (var i = 0; i < syncfavElements.length; i++) {
+    syncfavElements[i].addEventListener("click", function() {
+      var synckey = generateSynckey(8);
+      document.getElementById("inputTextFavSet").value = synckey;
     });
+  }
+});
 
     function generateSynckey(length) {
       var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
