@@ -7,6 +7,8 @@ summarylength = 10
 [params]
     description = "Games Library"
     author = "Yuusha"
+    [params.fav]
+key = "https://fav1.pages.dev/"
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
