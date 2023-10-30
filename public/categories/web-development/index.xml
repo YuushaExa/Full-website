@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Test on GameLibrary</title>
+    <link>https://yuushaexa.github.io/categories/web-development/</link>
+    <description>Recent content in Web Test on GameLibrary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Dec 2021 03:01:59 +0300</lastBuildDate><atom:link href="https://yuushaexa.github.io/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A-Train</title>
+      <link>https://yuushaexa.github.io/famicom/a-train/</link>
+      <pubDate>Sat, 11 Dec 2021 03:01:59 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/a-train/</guid>
+      <description>The first game in the A-Ressha de Ikou («Let’s Take the A-Train») series, which would eventually become known overseas as A-Train.</description>
+    </item>
+    
+    <item>
+      <title>Dead Zone</title>
+      <link>https://yuushaexa.github.io/famicom/dead-zone/</link>
+      <pubDate>Sat, 08 Oct 2016 12:17:42 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/dead-zone/</guid>
+      <description>Dead Zone is a futuristic digital comic and text adventure game by Sunsoft.</description>
+    </item>
+    
+    <item>
+      <title>aaaaaaaLegend</title>
+      <link>https://yuushaexa.github.io/snes/aaaaaaaaa/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/snes/aaaaaaaaa/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros.</description>
+    </item>
+    
+    <item>
+      <title>All Night Nippon Super Mario Bros.</title>
+      <link>https://yuushaexa.github.io/famicom/mh-mk/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/mh-mk/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros.</description>
+    </item>
+    
+    <item>
+      <title>Legend</title>
+      <link>https://yuushaexa.github.io/famicom/hugo-hula-hoop/</link>
+      <pubDate>Tue, 16 Aug 2016 06:18:21 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/hugo-hula-hoop/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros.</description>
+    </item>
+    
+    <item>
+      <title>Deep Dungeon: Madou Senki</title>
+      <link>https://yuushaexa.github.io/famicom/deep-dungeon-madou-senki/</link>
+      <pubDate>Mon, 09 Jun 2014 20:25:19 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/deep-dungeon-madou-senki/</guid>
+      <description>The town of Dorl has an infestation of demons who currently reside in the castles dungeon after a portal to the underworld was opened.</description>
+    </item>
+    
+    <item>
+      <title>Dandy: Zeuon no Fukkatsu</title>
+      <link>https://yuushaexa.github.io/famicom/dandy-zeuon-no-fukkatsu/</link>
+      <pubDate>Wed, 03 Aug 2011 22:47:11 +0300</pubDate>
+      
+      <guid>https://yuushaexa.github.io/famicom/dandy-zeuon-no-fukkatsu/</guid>
+      <description>A conversion port of the Atari 8-Bit computer game Dandy. Though it has been changed quite a bit for it’s Japanese audience and doesn’t resemble the original game very much at all.</description>
+    </item>
+    
+    <item>
+      <title>AAtest</title>
+      <link>https://yuushaexa.github.io/snes/aatest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuushaexa.github.io/snes/aatest/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros.</description>
+    </item>
+    
+    <item>
+      <title>Terranigma</title>
+      <link>https://yuushaexa.github.io/snes/terranigma/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuushaexa.github.io/snes/terranigma/</guid>
+      <description>All Night Nippon Super Mario Bros. is an officially licensed retool of Super Mario Bros.</description>
+    </item>
+    
+  </channel>
+</rss>
