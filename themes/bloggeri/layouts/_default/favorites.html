@@ -27,8 +27,6 @@
 
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}`;
 
-      const wtf = "{{ .Site.Params.fav.key }}";
-
       const fileContent = {
         message: 'Update data.json from local storage',
         content: btoa(localStorageData), // Encode the data as base64
@@ -37,7 +35,7 @@
       fetch(apiUrl, {
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${wtf}`,
+          Authorization: `Bearer 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`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(fileContent),
