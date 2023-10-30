@@ -30,6 +30,11 @@ function getDataFromGitHub() {
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
+      if (!data || !data.content) {
+        console.error('Invalid response format from GitHub API');
+        return;
+      }
+
       const content = data.content;
       let decodedData;
 
@@ -54,6 +59,10 @@ function getDataFromGitHub() {
           localStorage.setItem(title, jsonData[title]);
         }
       }
+
+      // Store the folders in local storage
+      localStorage.setItem('folders', JSON.stringify(jsonData.folders));
+
       console.log('Data retrieved and stored in local storage:', jsonData);
     })
     .catch(error => {
