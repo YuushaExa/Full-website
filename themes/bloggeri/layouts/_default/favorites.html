@@ -40,6 +40,18 @@ function fetchDataAndStoreInLocalStorage() {
 }
 // Button click event handler
 document.getElementById('getDataButton').addEventListener('click', fetchDataAndStoreInLocalStorage);
+
+ function validateInput() {
+    var input = document.getElementById("inputTextFavSet").value;
+    if (input.length < 3) {
+      alert("Please enter a value with a minimum of 3 symbols for trm.");
+      return;
+    }
+
+    // Proceed with further processing or submit the form
+    // ...
+  }
+
   
 window.onload = function() {
   displaySavedCards();
