@@ -71,7 +71,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      key: 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
     runs-on: ubuntu-latest
     needs: build
     steps:
