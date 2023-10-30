@@ -27,7 +27,7 @@
 
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}`;
 
-      const token = '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';
+      const token = {{< param "fav.key" >}};
 
       const fileContent = {
         message: 'Update data.json from local storage',
