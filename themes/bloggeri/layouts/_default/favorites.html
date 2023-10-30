@@ -8,6 +8,7 @@
     <span>Favorites: <p id="totalCount-fav"></p></span>
       <button id="sendDataButton">Send Data to GitHub</button>
     <button id="getDataButton">Get Data</button>
+    <input type="text" id="inputTextFav" placeholder="Enter transfer key" />
     <div id="cardContainer"></div>   
      </div>
     </div>     </div>  
@@ -17,7 +18,9 @@
 <script>
 // Function to fetch JSON data and store in local storage
 function fetchDataAndStoreInLocalStorage() {
-  fetch('https://raw.githubusercontent.com/YuushaExa/web/master/dev/json/favfiles/data.json')
+  var trm = document.getElementById("inputTextFav").value;
+   var url = `https://raw.githubusercontent.com/YuushaExa/web/master/dev/json/favfiles/${trm}.json`;
+  fetch(url)
     .then(response => response.json())
     .then(data => {
       // Iterate over each key-value pair in the JSON data
