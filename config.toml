@@ -8,7 +8,7 @@ summarylength = 10
     description = "Games Library"
     author = "Yuusha"
     [params.fav]
-key = "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"
+key = "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"
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
