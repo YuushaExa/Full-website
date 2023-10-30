@@ -15,23 +15,21 @@
 </section>
 <script src="https://fav2.pages.dev/new2.js"></script>
 <script>
-// Function to fetch data from the URL and store it in local storage
 function fetchDataAndStore() {
   fetch('https://raw.githubusercontent.com/YuushaExa/web/master/dev/json/favfiles/data.json')
-    .then(response => response.json()) // Parse the response as JSON
+    .then(response => response.json())
     .then(data => {
-      // Store the data in local storage
-      localStorage.setItem('data', JSON.stringify(data));
-      console.log('Data stored in local storage:', data);
+      // Store the JSON content in local storage
+      localStorage.setItem('jsonData', JSON.stringify(data));
+      console.log('JSON data stored in local storage.');
     })
     .catch(error => {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching JSON:', error);
     });
 }
 
-// Event listener for the button click
-var button = document.getElementById('getDataButton');
-button.addEventListener('click', fetchDataAndStore);
+// Button click event handler
+document.getElementById('getDataButton').addEventListener('click', fetchDataAndStore);
   
 window.onload = function() {
   displaySavedCards();
