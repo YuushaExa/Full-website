@@ -39,7 +39,18 @@ function fetchDataAndStoreInLocalStorage() {
     });
 }
 // Button click event handler
-document.getElementById('getDataButton').addEventListener('click', fetchDataAndStoreInLocalStorage);
+   const getDataButton = document.getElementById('getDataButton');
+  const inputTextFav = document.getElementById('inputTextFav');
+
+  inputTextFav.addEventListener('input', function () {
+    if (inputTextFav.value.length >= 3) {
+      getDataButton.disabled = false;
+    } else {
+      getDataButton.disabled = true;
+    }
+  });
+
+  getDataButton.addEventListener('click', fetchDataAndStoreInLocalStorage);
 
 window.onload = function() {
   displaySavedCards();
