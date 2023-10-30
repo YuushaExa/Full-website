@@ -25,16 +25,16 @@ function getDataFromGitHub() {
   const directory = 'dev/json/favfiles';
   const filename = 'data.json';
 
-  const apiUrl = "https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}";
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}`;
 
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
       const content = data.content;
       let decodedData;
-      
+
       try {
-        decodedData = atob(content); // Decode the base64-encoded content
+        decodedData = decodeBase64Content(content);
       } catch (error) {
         console.error('Error decoding base64 content:', error);
         return;
@@ -48,18 +48,25 @@ function getDataFromGitHub() {
         return;
       }
 
-      // Store the JSON data in the local storage
-      for (const key in jsonData) {
-        if (jsonData.hasOwnProperty(key)) {
-          localStorage.setItem(key, jsonData[key]);
+      // Store the game titles and their content in local storage
+      for (const title in jsonData) {
+        if (jsonData.hasOwnProperty(title) && title !== 'folders') {
+          localStorage.setItem(title, jsonData[title]);
         }
       }
-
       console.log('Data retrieved and stored in local storage:', jsonData);
     })
     .catch(error => {
       console.error('Error retrieving data:', error);
     });
+}
+
+function decodeBase64Content(content) {
+  const padding = '='.repeat((4 - (content.length % 4)) % 4);
+  const base64 = (content + padding).replace(/-/g, '+').replace(/_/g, '/');
+
+  const decodedData = atob(base64);
+  return decodedData;
 }
   
 window.onload = function() {
