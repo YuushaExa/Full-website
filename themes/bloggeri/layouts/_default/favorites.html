@@ -25,19 +25,15 @@
       const directory = 'dev/json/favfiles';
       const filename = 'data.json';
 
-      // GitHub API endpoint for creating or updating a file
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}`;
 
-      // GitHub personal access token for authentication
       const token = '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';
 
-      // Create the file content object
       const fileContent = {
         message: 'Update data.json from local storage',
         content: btoa(localStorageData), // Encode the data as base64
       };
 
-      // Make the API request to create or update the file
       fetch(apiUrl, {
         method: 'PUT',
         headers: {
