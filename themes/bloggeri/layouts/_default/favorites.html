@@ -25,7 +25,7 @@
       const directory = 'dev/json/favfiles';
       const filename = 'data.json';
       
-  const token = "{{ .Site.Params.fav.key }}";
+  const token = "{{ getenv "HUGO_PARAMS_XXX_KEY" }}";
       
       const apiUrl = "https://api.github.com/repos/YuushaExa/web/contents/dev/json/favfiles/data.json";
       // Create the file content object
