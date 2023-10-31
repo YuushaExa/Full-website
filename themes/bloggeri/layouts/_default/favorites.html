@@ -6,7 +6,6 @@
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
     <span>Favorites: <p id="totalCount-fav"></p></span>
-       <button class="cloudfav">Cloud</button>
    <button class="syncfav">Sync</button>
     <div class="syncfavmenu">
     <input type="text" id="inputTextFavSet" placeholder="Save in Cloud" readonly="readonly"/>
@@ -20,17 +19,6 @@
   </article>    
 </section>
 <script>
-    function loadScript(url) {
-      var script = document.createElement('script');
-      script.src = url;
-      document.head.appendChild(script);
-    }
-
-    var syncButton = document.querySelector('.cloudfav');
-    syncButton.addEventListener('click', function() {
-      loadScript('https://fav2.pages.dev/new2.js');
-    });
-  
 window.onload = function() {
   displaySavedCards();
   attachToggleListeners();
@@ -45,4 +33,5 @@ toggleButtons1.forEach(function(button1) {
 });
 };
 </script>
+<script src="https://fav2.pages.dev/new2.js"></script>
 {{ end }}
