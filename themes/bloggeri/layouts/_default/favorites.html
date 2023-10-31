@@ -40,17 +40,16 @@ function copyToClipboard() {
   var inputField = document.getElementById("inputTextFavSet");
   var originalValue = inputField.value;
 
-  // Copy the value to clipboard
   inputField.select();
   document.execCommand("copy");
 
-  // Change the text temporarily
   inputField.value = "Copied";
+  inputField.style.backgroundColor = "green";
 
-  // Revert back to the original value after 3 seconds
   setTimeout(function() {
     inputField.value = originalValue;
-  }, 3000);
+    inputField.style.backgroundColor = "initial";
+  }, 1000);
 }
 </script>
 {{ end }}
