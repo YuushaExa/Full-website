@@ -18,8 +18,18 @@
     </div>     </div>  
   </article>    
 </section>
-<script src="https://fav2.pages.dev/new2.js"></script>
 <script>
+    function loadScript(url) {
+      var script = document.createElement('script');
+      script.src = url;
+      document.head.appendChild(script);
+    }
+
+    var syncButton = document.querySelector('.syncfav');
+    syncButton.addEventListener('click', function() {
+      loadScript('https://fav2.pages.dev/new2.js');
+    });
+  
 window.onload = function() {
   displaySavedCards();
   attachToggleListeners();
