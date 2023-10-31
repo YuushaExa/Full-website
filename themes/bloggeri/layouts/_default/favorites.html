@@ -32,7 +32,7 @@ fetch(urlsync)
     throw new Error("Error: Failed to fetch the URL");
   })
   .then(syncget => {
-    const token = syncget;
+    var token = 'syncget';
   })
   .catch(error => {
     console.error(error);
