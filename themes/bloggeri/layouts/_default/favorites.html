@@ -32,8 +32,7 @@ fetch(urlsync)
     throw new Error("Error: Failed to fetch the URL");
   })
   .then(syncget => {
-    // Use the token variable for further processing
-    console.log(syncget);
+    const token = syncget;
   })
   .catch(error => {
     console.error(error);
@@ -69,7 +68,7 @@ function sendDataToGitHub() {
   fetch(apiUrl, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${syncget}`,
+      Authorization: `Bearer ${token}`,
     },
   })
     .then(response => response.json())
@@ -87,7 +86,7 @@ function sendDataToGitHub() {
       fetch(apiUrl, {
         method: 'PUT',
         headers: {
-          Authorization: `Bearer ${syncget}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(fileContent),
