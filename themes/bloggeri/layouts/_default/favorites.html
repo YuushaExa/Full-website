@@ -73,11 +73,11 @@ function copyToClipboard() {
   document.execCommand("copy");
 
   inputField.value = "Copied";
-  inputField.style.backgroundColor = "green";
+  inputField.style.backgroundColor = "#21b921";
 
   setTimeout(function() {
     inputField.value = originalValue;
-    inputField.style.backgroundColor = "initial";
+    inputField.style.backgroundColor = "white";
   }, 1000);
 }
 </script>
