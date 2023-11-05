@@ -13,7 +13,15 @@
   <div class="content">
           {{ .Content }} 
         </div>
+<button id="showModalBtn">Open Modal</button>
 
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <div class="modal-content">
+    <!-- Image will be displayed here -->
+  </div>
+</div>
+      
   <div id="related-title" data-pagefind-ignore>
                 {{ partialCached "widgets/relatedtitle.html" . }}
                 </div> 
