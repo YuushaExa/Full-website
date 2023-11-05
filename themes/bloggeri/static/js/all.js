@@ -5,42 +5,6 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
    delay: [1000, null],
       });
 
-const modal = document.getElementById("myModal");
-const closeButton = document.getElementsByClassName("close")[0];
-const showModalButton = document.getElementById("showModalBtn");
-const galleryImages = document.querySelectorAll(".gallery img");
-const modalContent = document.querySelector(".modal-content");
-
-// Open the modal and display the clicked image
-function openModal(imageSrc, altText) {
-  modal.style.display = "block";
-  modalContent.innerHTML = `<img src="${imageSrc}" alt="${altText}">`;
-}
-
-// Close the modal
-function closeModal() {
-  modal.style.display = "none";
-}
-
-// Add click event listeners to each gallery image
-galleryImages.forEach((image) => {
-  image.addEventListener("click", () => {
-    const imageSrc = image.getAttribute("src");
-    const altText = image.getAttribute("alt");
-    openModal(imageSrc, altText);
-  });
-});
-
-// Add click event listener to the close button
-closeButton.addEventListener("click", closeModal);
-
-// Add click event listener to the "Open Modal" button
-showModalButton.addEventListener("click", () => {
-  const firstImage = galleryImages[0];
-  const imageSrc = firstImage.getAttribute("src");
-  const altText = firstImage.getAttribute("alt");
-  openModal(imageSrc, altText);
-});
 
 $(document).on('mouseenter', '.card-content', function(event) {
   event.preventDefault();
