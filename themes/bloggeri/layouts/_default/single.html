@@ -19,7 +19,7 @@
   <button class="tablinks" onclick="openCity(event, 'screenshots')">screenshots</button>
 </div>
 
-        <div class="gallery" class="tabcontent" data-pagefind-ignore>
+        <div id="gallery" class="tabcontent" data-pagefind-ignore>
 {{ range .Params.images }}
 <img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=150&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
  {{ end }}          
