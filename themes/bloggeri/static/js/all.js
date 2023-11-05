@@ -5,6 +5,19 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
    delay: [1000, null],
       });
 
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 
 $(document).on('mouseenter', '.card-content', function(event) {
   event.preventDefault();
