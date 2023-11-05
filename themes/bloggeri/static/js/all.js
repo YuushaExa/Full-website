@@ -4,26 +4,24 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
         content: (reference) => reference.getAttribute('aria-label'),
    delay: [1000, null],
       });
-
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+    // Check if the current tab content is already displayed
+    if (tabcontent[i].style.display === "block" && tabcontent[i].id === cityName) {
+      // If it is, hide the content
+      tabcontent[i].style.display = "none";
+    } else {
+      // Otherwise, hide other tab contents
+      tabcontent[i].style.display = "none";
+    }
   }
-  
   tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  
-  var selectedCity = document.getElementById(cityName);
-  if (selectedCity.style.display === "block") {
-    selectedCity.style.display = "none";
-    return;
-  }
-  
-  selectedCity.style.display = "block";
+  document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 
