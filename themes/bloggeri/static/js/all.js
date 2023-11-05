@@ -6,23 +6,36 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
       });
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    // Check if the current tab content is already displayed
-    if (tabcontent[i].style.display === "block" && tabcontent[i].id === cityName) {
-      // If it is, hide the content
-      tabcontent[i].style.display = "none";
-    } else {
-      // Otherwise, hide other tab contents
+
+  // Get the current active tab
+  var currentActive = document.getElementsByClassName("active")[0];
+
+  // Check if the clicked tab is already active
+  if (currentActive === evt.currentTarget) {
+    // Remove the "active" class from the clicked tab
+    evt.currentTarget.classList.remove("active");
+    
+    // Hide the corresponding content
+    document.getElementById(cityName).style.display = "none";
+  } else {
+    // Deactivate all tab links
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+
+    // Hide all tab content
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
     }
+
+    // Show the clicked tab's content
+    document.getElementById(cityName).style.display = "block";
+
+    // Add the "active" class to the clicked tab
+    evt.currentTarget.classList.add("active");
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
 }
 
 $(document).on('mouseenter', '.card-content', function(event) {
