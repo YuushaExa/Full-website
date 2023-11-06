@@ -15,8 +15,15 @@
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
-    
 
+  <script>
+   $('img').each(function() {
+      var img_link =  $(this).attr('data-src').split('&w')[0];
+      $(this).wrap('<a href='+ img_link +'&w=1920 data-fancybox="gallery"></a>')
+    })
+  </script>
+        
+    
 <script src="/js/fancybox.js"></script>
 <link defer rel="stylesheet" href="/css/fancybox.css"/> 
     
