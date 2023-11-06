@@ -1,5 +1,4 @@
-window.onload = function() {
-var galleryImages = document.querySelectorAll('img');
+var galleryImages = document.querySelectorAll('.cover-front img');
 var currentIndex = 0;
 var totalImages = galleryImages.length;
 var openedImageCounter = document.getElementById('opened-image-counter');
@@ -20,7 +19,7 @@ galleryImages.forEach(function(image) {
   link.appendChild(image);
 });
 
-var gallery = document.querySelector('img');
+var gallery = document.querySelector('.cover-front');
 
 // Get the lightbox-content element
 var lightboxContent = document.querySelector('.thumbnails-container');
@@ -389,4 +388,3 @@ document.addEventListener("keydown", function(event) {
     closeLightbox();
   }
 });
-};
