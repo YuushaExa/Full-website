@@ -16,8 +16,27 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 
-   <script src="/js/lightboxAI.js"></script>
-    <link rel="stylesheet" href="/css/lightboxAI.css"/> 
+    <script defer>
+$(document).ready(function() { 
+  var scriptLoaded = false;
+
+  $('#gallery img').click(function() {
+    var clickedImage = $(this);
+
+    if (!scriptLoaded) {
+      var scriptElement = document.createElement('script');
+      scriptElement.src = '/js/lightboxAI.js';
+      scriptElement.onload = function() {
+        clickedImage.trigger('click');
+      };
+      document.head.appendChild(scriptElement);
+      scriptLoaded = true;
+    }
+  });
+});
+</script>
+    
+<link defer rel="stylesheet" href="/css/lightboxAI.css"/> 
 
     <script>
 window.addEventListener('DOMContentLoaded', (event) => {
