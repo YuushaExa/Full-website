@@ -13,7 +13,7 @@
     <h3>Related Posts</h3>
     <ul>
         {{ range first 5 $relatedPosts }}
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ partial "widgets/post-card.html" . }}
         {{ end }}
     </ul>
 {{ end }}
