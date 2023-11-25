@@ -9,4 +9,10 @@ $('.cover-front').each(function() {
          })
     });
 });
-
+$('html').css({
+            background: 'rgb('+ thisColor +')'
+         });
+var bg = 'rgb('+ thisColor +')'
+var bg_url = document.querySelector("img").src;
+document.querySelector(".cover").style.backgroundImage = "linear-gradient(-180deg,#1b1d1e8c 0," + bg + "," + bg + " 100%),url('" + bg_url + "')";
+});
