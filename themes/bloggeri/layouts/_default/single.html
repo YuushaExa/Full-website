@@ -10,11 +10,9 @@
     </div>
         <div class="cover-wrap">
         <div class="cover"></div></div>
-              <div id="gallery" class="tabcontent" data-pagefind-ignore>
-{{ range .Params.images }}
-<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=150&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
- {{ end }}          
-                </div> 
+                 <div class="cover-front">
+                    <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
+       </div>
   <div class="content">
           {{ .Content }} 
         </div>
@@ -26,16 +24,18 @@
         <div id="screenshots" class="tabcontent" data-pagefind-ignore>
                 {{ partial "widgets/screenshots.html" . }}
                 </div> 
-
+              <div id="gallery" class="tabcontent" data-pagefind-ignore>
+{{ range .Params.images }}
+<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=150&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+ {{ end }}          
+                </div> 
       
     
 <div id="related-title" data-pagefind-ignore>
                 {{ partialCached "widgets/relatedtitle.html" . }}
                 </div> 
       
-           <div class="cover-front">
-                    <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
-       </div>
+
               <div class="game-links" data-pagefind-ignore>
                 {{ partial "widgets/game-links.html" . }}
                 </div> 
