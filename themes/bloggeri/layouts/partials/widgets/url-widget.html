@@ -1,0 +1,5 @@
+{{- $currentURL := .URL -}}
+{{- $parts := split $currentURL "/" -}}
+{{- $modifiedURL := (slice $parts 0 3) | join "/" -}}
+
+<a href="{{ $modifiedURL }}">{{ $modifiedURL }}</a>
