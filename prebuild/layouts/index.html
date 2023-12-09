@@ -3,6 +3,6 @@
 
 {{- /* Call partials. */}}
 {{- range $sections }}
-  {{- $t := printf "partials/platform/%s.html" .  }}
+  {{- $t := printf "partials/%s.html" .  }}
     {{- partial $t . }}
   {{- end }}
