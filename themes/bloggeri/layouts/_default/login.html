@@ -17,6 +17,8 @@
     document.getElementById('deleteButton').addEventListener('click', function() {
       localStorage.removeItem('Account');
       document.getElementById('password').value = '';
+      	  document.getElementById('Login').style.backgroundColor = 'white';
+        document.getElementById('Login').readOnly = false;
     });
   </script>
       </div>  
