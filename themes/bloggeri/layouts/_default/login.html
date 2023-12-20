@@ -12,15 +12,23 @@
     Your ID
     <input type="text" id="password" placeholder="Your ID" readonly="readonly"/>
     </div>    
-        <button id="deleteButton">Delete ID</button>
-  <script>
-    document.getElementById('deleteButton').addEventListener('click', function() {
+<button id="deleteButton">Delete ID</button>
+
+<script>
+  document.getElementById('deleteButton').addEventListener('click', function() {
+    var confirmation = confirm("Are you sure you want to delete the ID?");
+    if (confirmation) {
+      // User clicked "Yes"
       localStorage.removeItem('Account');
       document.getElementById('password').value = '';
-      	  document.getElementById('Login').style.backgroundColor = 'white';
-        document.getElementById('Login').readOnly = false;
-    });
-  </script>
+      document.getElementById('Login').style.backgroundColor = 'white';
+      document.getElementById('Login').readOnly = false;
+    } else {
+      // User clicked "No"
+      // Handle the cancel action or do nothing
+    }
+  });
+</script>
       </div>  
        </div>  
   </article>    
