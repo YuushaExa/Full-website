@@ -6,7 +6,7 @@
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
     Register ID
-   <input type="text" id="Login" placeholder="Enter your login">
+   <input type="text" id="Login" placeholder="Enter your login" oninput="validateLogin(event)">
   <button onclick="Register()">Register</button>
   </br>
     Your ID
@@ -28,6 +28,16 @@
       // Handle the cancel action or do nothing
     }
   });
+
+   function validateLogin(event) {
+    const input = event.target;
+    const value = input.value;
+    const forbiddenChar = '#';
+
+    if (value.includes(forbiddenChar)) {
+      input.value = value.replace(forbiddenChar, '');
+    }
+  }
 </script>
       </div>  
        </div>  
