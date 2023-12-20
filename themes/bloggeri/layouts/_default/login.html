@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="section">
+  <article>      
+    <div class="container">
+      <div class="post">
+        <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+  <div class="content">
+   <input type="text" id="Login" placeholder="Enter your login">
+  <button onclick="createGist()">Create Gist</button>
+    </div>     </div>  
+       </div>  
+  </article>    
+</section>
+<script src="https://log-4di.pages.dev/log.js"></script>
+
+{{ end }}
