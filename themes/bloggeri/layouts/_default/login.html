@@ -16,6 +16,7 @@
   <script>
     document.getElementById('deleteButton').addEventListener('click', function() {
       localStorage.removeItem('Account');
+      document.getElementById('password').value = '';
     });
   </script>
       </div>  
