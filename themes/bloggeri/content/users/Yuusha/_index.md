@@ -2,5 +2,5 @@
 title: "Yuusha"
 sitemap:
   priority : 0.1
-layout: "login"
+layout: "user"
 ---
