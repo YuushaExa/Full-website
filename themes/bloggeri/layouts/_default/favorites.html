@@ -84,5 +84,38 @@ function copyToClipboard() {
     inputField.style.backgroundColor = "white";
   }, 2000);
 }
+
+   // Create a download link
+  const downloadLink = document.createElement('a');
+  downloadLink.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localStorageData));
+  downloadLink.download = 'local_storage_data.json';
+  downloadLink.textContent = 'Download Local Storage Data';
+
+  // Append the download link to the container
+  cardContainer.appendChild(downloadLink);
+
+  // Create an upload input
+  const uploadInput = document.createElement('input');
+  uploadInput.type = 'file';
+  uploadInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      const uploadedData = JSON.parse(reader.result);
+      Object.keys(uploadedData).forEach(function(key) {
+        localStorage.setItem(key, uploadedData[key]);
+      });
+
+      alert('JSON data has been uploaded and stored in local storage.');
+      // Refresh the displayed cards after uploading
+      displaySavedCards();
+    };
+
+    reader.readAsText(file);
+  });
+
+  // Append the upload input to the container
+  cardContainer.appendChild(uploadInput);
 </script>
 {{ end }}
