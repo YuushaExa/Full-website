@@ -20,6 +20,9 @@
       <script src="https://link-968.pages.dev/link.js"></script>
     <div id="cardContainer"></div>   
      </div>
+          <button id="downloadBtn">Download Local Storage as JSON</button>
+  <input type="file" id="uploadInput" />
+  <button id="uploadBtn">Upload JSON to Local Storage</button>
     </div>     </div>  
   </article>    
 </section>
@@ -85,37 +88,34 @@ function copyToClipboard() {
   }, 2000);
 }
 
-   // Create a download link
-  const downloadLink = document.createElement('a');
-  downloadLink.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localStorageData));
-  downloadLink.download = 'local_storage_data.json';
-  downloadLink.textContent = 'Download Local Storage Data';
+function downloadLocalStorage() {
+  const localStorageData = JSON.stringify(localStorage);
+  const blob = new Blob([localStorageData], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'local_storage.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
-  // Append the download link to the container
-  cardContainer.appendChild(downloadLink);
+// Function to upload JSON file and store it in local storage
+function uploadFile(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const content = e.target.result;
+    const data = JSON.parse(content);
+    for (let key in data) {
+      localStorage.setItem(key, data[key]);
+    }
+    alert('JSON file uploaded successfully!');
+  };
+  reader.readAsText(file);
+}
 
-  // Create an upload input
-  const uploadInput = document.createElement('input');
-  uploadInput.type = 'file';
-  uploadInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function() {
-      const uploadedData = JSON.parse(reader.result);
-      Object.keys(uploadedData).forEach(function(key) {
-        localStorage.setItem(key, uploadedData[key]);
-      });
-
-      alert('JSON data has been uploaded and stored in local storage.');
-      // Refresh the displayed cards after uploading
-      displaySavedCards();
-    };
-
-    reader.readAsText(file);
-  });
-
-  // Append the upload input to the container
-  cardContainer.appendChild(uploadInput);
+// Attach event listeners to buttons
+document.getElementById('downloadBtn').addEventListener('click', downloadLocalStorage);
+document.getElementById('uploadInput').addEventListener('change', uploadFile);
 </script>
 {{ end }}
