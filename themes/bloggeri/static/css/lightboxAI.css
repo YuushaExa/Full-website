@@ -79,13 +79,6 @@
         padding: 7px;
 }
 
-button {
-background-color: unset;
-    filter: drop-shadow(0 0 3px rgba(0,0,0,1));
-    transition: .3s ease-in-out;
-    border: none;
-}
-
 #lightbox-info {
   position: absolute;
     top: 0px;
