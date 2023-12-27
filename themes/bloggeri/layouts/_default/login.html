@@ -52,7 +52,9 @@
         fetch(rawURL)
           .then(response => response.json())
           .then(data => {
-            for (let key in data) {
+                    var decompressedData = LZString.decompressFromEncodedURIComponent(data); // Decompress the data using LZ-String
+        var parsedData = JSON.parse(decompressedData); // Parse the decompressed data as JSON
+            for (let key in parsedData) {
               localStorage.setItem(key, data[key]);
             }
             console.log("Done.");
@@ -70,5 +72,6 @@
   </article>    
 </section>
 <script src="https://log-4di.pages.dev/log.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
 
 {{ end }}
