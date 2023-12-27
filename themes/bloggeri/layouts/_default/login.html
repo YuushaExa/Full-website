@@ -46,26 +46,29 @@
       var gistURL = document.getElementById("RestoreID").value;
       var gistID = gistURL.split('/').pop();
 
-      if (gistID) {
-        var rawURL = `https://gist.githubusercontent.com/yuushaexa/${gistID}/raw`;
+  if (gistID) {
+    var rawURL = `https://gist.githubusercontent.com/yuushaexa/${gistID}/raw`;
 
-        fetch(rawURL)
-          .then(response => response.text())
-          .then(data => {
-                    var decompressedData = LZString.decompressFromEncodedURIComponent(data); // Decompress the data using LZ-String
-        var parsedData = JSON.parse(decompressedData); // Parse the decompressed data as JSON
-            for (let key in parsedData) {
-              localStorage.setItem(key, data[key]);
-            }
-            console.log("Done.");
-          })
-          .catch(error => {
-            console.error("Error fetching ID:", error);
-          });
-      } else {
-        console.error("Invalid key.");
-      }
-    }
+    fetch(rawURL)
+      .then(response => response.text())
+      .then(data => {
+        var decompressedData = LZString.decompressFromEncodedURIComponent(data);
+        var parsedData = JSON.parse(decompressedData);
+
+        for (let key in parsedData) {
+          if (parsedData.hasOwnProperty(key)) {
+            localStorage.setItem(key, parsedData[key]);
+          }
+        }
+        console.log("Gist data stored in local storage.");
+      })
+      .catch(error => {
+        console.error("Error fetching Gist:", error);
+      });
+  } else {
+    console.error("Invalid Gist URL.");
+  }
+}
 </script>
       </div>  
        </div>  
