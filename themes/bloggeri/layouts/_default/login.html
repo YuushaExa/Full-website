@@ -50,7 +50,7 @@
         var rawURL = `https://gist.githubusercontent.com/yuushaexa/${gistID}/raw`;
 
         fetch(rawURL)
-          .then(response => response.json())
+          .then(response => response.text())
           .then(data => {
                     var decompressedData = LZString.decompressFromEncodedURIComponent(data); // Decompress the data using LZ-String
         var parsedData = JSON.parse(decompressedData); // Parse the decompressed data as JSON
