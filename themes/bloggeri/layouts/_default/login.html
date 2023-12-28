@@ -27,7 +27,7 @@
     var confirmation = confirm("Are you sure you want to delete the ID?");
     if (confirmation) {
       // User clicked "Yes"
-      localStorage.removeItem('Account');
+      localStorage.removeItem('Account', 'SecretKeyID');
       document.getElementById('password').value = '';
       document.getElementById('Login').style.backgroundColor = 'white';
       document.getElementById('Login').readOnly = false;
