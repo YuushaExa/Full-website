@@ -27,7 +27,8 @@
     var confirmation = confirm("Are you sure you want to delete the Account?");
     if (confirmation) {
       // User clicked "Yes"
-      localStorage.removeItem('Account', 'SecretKeyID');
+      localStorage.removeItem('Account');
+      localStorage.removeItem('SecretKeyID');
       document.getElementById('password').value = '';
       document.getElementById('Login').style.backgroundColor = 'white';
       document.getElementById('Login').readOnly = false;
@@ -87,12 +88,6 @@ function Restore() {
           document.getElementById('RestoreID').style.backgroundColor = 'white';
         }, 2000);
       });
-  } else {
-    console.error("Invalid Gist URL.");
-    document.getElementById('RestoreID').style.backgroundColor = 'red';
-    setTimeout(function() {
-      document.getElementById('RestoreID').style.backgroundColor = 'white';
-    }, 2000);
   }
 }
 
