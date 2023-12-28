@@ -76,6 +76,15 @@ function Restore() {
         }
         console.log("Gist data stored in local storage.");
         localStorage.setItem('SecretKeyID', gistID);
+         document.getElementById('Login').style.backgroundColor = 'gray';
+        document.getElementById('Login').readOnly = true;
+        document.getElementById('createButton').disabled = true;
+        document.getElementById('createButton').style.backgroundColor = 'gray';
+        document.getElementById('createButton').style.cursor = 'not-allowed';
+		document.getElementById('Login').value = '';
+          const AccountValue = localStorage.getItem("Account");
+      const LoginInput = document.getElementById("Login");
+    LoginInput.value = AccountValue;
               const secretKeyValue = localStorage.getItem("SecretKeyID");
       const secretKeyInput = document.getElementById("secretKeyInput");
     secretKeyInput.value = secretKeyValue;
