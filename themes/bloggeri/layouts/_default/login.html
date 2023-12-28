@@ -75,6 +75,7 @@ function Restore() {
           }
         }
         console.log("Gist data stored in local storage.");
+        localStorage.setItem('SecretKeyID', gistID);
         document.getElementById('RestoreID').style.backgroundColor = 'green';
         setTimeout(function() {
           document.getElementById('RestoreID').style.backgroundColor = 'white';
