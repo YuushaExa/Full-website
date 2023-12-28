@@ -13,7 +13,7 @@
     <input type="text" id="password" placeholder="Your ID" readonly="readonly"/>
  </br>
    Secret Key
-      <input type="password" id="secretKeyInput">
+      <form><input type="password" id="secretKeyInput"></form>
       <button onclick="revealPassword()">Show Password</button>
  </br>
     Restore ID
@@ -33,6 +33,7 @@
       document.getElementById('Login').readOnly = false;
       document.getElementById('createButton').style.backgroundColor = '#0d6efd';
       document.getElementById('createButton').style.cursor = 'pointer';
+      document.getElementById('secretKeyInput').value = '';
     } else {
       // User clicked "No"
       // Handle the cancel action or do nothing
