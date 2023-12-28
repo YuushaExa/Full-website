@@ -11,6 +11,11 @@
   </br>
     Your ID
     <input type="text" id="password" placeholder="Your ID" readonly="readonly"/>
+ </br>
+   Secret Key
+      <input type="password" id="secretKeyInput">
+      <button onclick="revealPassword()">Show Password</button>
+ </br>
     Restore ID
       <input type="text" id="RestoreID" placeholder="Enter Secret Key">
     <button onclick="Restore()">Restore</button>
@@ -71,6 +76,22 @@
     console.error("Invalid Gist URL.");
   }
 }
+
+      const secretKeyValue = localStorage.getItem("SecretKeyID");
+  
+    // Set the retrieved value as the input's initial value
+    const secretKeyInput = document.getElementById("secretKeyInput");
+    secretKeyInput.value = secretKeyValue;
+
+   function revealPassword() {
+      const passwordInput = document.getElementById("secretKeyInput");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
 </script>
       </div>  
        </div>  
