@@ -83,7 +83,7 @@ function Restore() {
         document.getElementById('createButton').style.cursor = 'not-allowed';
 		document.getElementById('Login').value = '';
           const AccountValue = localStorage.getItem("Account");
-      const LoginInput = document.getElementById("Login");
+      const LoginInput = document.getElementById("password");
     LoginInput.value = AccountValue;
               const secretKeyValue = localStorage.getItem("SecretKeyID");
       const secretKeyInput = document.getElementById("secretKeyInput");
