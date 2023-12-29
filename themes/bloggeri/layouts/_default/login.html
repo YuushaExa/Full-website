@@ -5,22 +5,22 @@
       <div class="post">
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
-    Register ID
+    Register Account:
    <input type="text" id="Login" placeholder="Enter nickname" oninput="validateLogin(event)">
   <button id="createButton" onclick="Register()">Register</button>
   </br>
-    Nickname
+    Nickname:
     <input type="text" id="nickname" placeholder="Nickname" readonly="readonly"/>
  </br>
-   Secret Key
+   Secret Key:
       <form><input type="password" id="secretKeyInput"></form>
       <button onclick="revealPassword()">Show Password</button>
  </br>
-    Restore ID
+    Restore Account:
       <input type="text" id="RestoreID" placeholder="Enter Secret Key">
-    <button onclick="Restore()">Restore</button>
+    <button onclick="Restore()">Restore Account</button>
     </div>    
-<button id="deleteButton">Delete ID</button>
+<button id="deleteButton">Delete Account</button>
 
 <script>
   document.getElementById('deleteButton').addEventListener('click', function() {
