@@ -119,13 +119,8 @@ function Restore() {
       }
     }
 
-	      const AccountValue = localStorage.getItem("Account");
-      const LoginInput = document.getElementById("nickname");
-    LoginInput.textContent = AccountValue;
-	      
-const IDValue = localStorage.getItem("ID");
-const keyidDiv = document.getElementById("keyid");
-keyidDiv.textContent = IDValue;
+	document.getElementById('nickname').textContent = AccountValue;
+	document.getElementById('keyid').textContent = IDValue;
 </script>
       </div>  
        </div>  
