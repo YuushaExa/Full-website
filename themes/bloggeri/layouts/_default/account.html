@@ -82,14 +82,6 @@ function Restore() {
         document.getElementById('createButton').style.cursor = 'not-allowed';
 		document.getElementById('Login').value = '';
 	      
-          const AccountValue = localStorage.getItem("Account");
-      const LoginInput = document.getElementById("nickname");
-    LoginInput.textContent = AccountValue;
-	      
-const IDValue = localStorage.getItem("ID");
-const keyidDiv = document.getElementById("keyid");
-keyidDiv.textContent = IDValue;
-	      
               const secretKeyValue = localStorage.getItem("SecretKeyID");
       const secretKeyInput = document.getElementById("secretKeyInput");
     secretKeyInput.value = secretKeyValue;
@@ -124,7 +116,14 @@ keyidDiv.textContent = IDValue;
         passwordInput.type = "password";
       }
     }
-	
+
+	      const AccountValue = localStorage.getItem("Account");
+      const LoginInput = document.getElementById("nickname");
+    LoginInput.textContent = AccountValue;
+	      
+const IDValue = localStorage.getItem("ID");
+const keyidDiv = document.getElementById("keyid");
+keyidDiv.textContent = IDValue;
 </script>
       </div>  
        </div>  
