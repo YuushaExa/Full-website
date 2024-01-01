@@ -83,6 +83,10 @@ function Restore() {
         document.getElementById('createButton').style.backgroundColor = 'gray';
         document.getElementById('createButton').style.cursor = 'not-allowed';
 		document.getElementById('Login').value = '';
+	        const AccountValue = localStorage.getItem("Account");
+	document.getElementById('nickname').textContent = AccountValue;
+	const IDValue = localStorage.getItem("ID");
+	document.getElementById('keyid').textContent = IDValue;
 	      
               const secretKeyValue = localStorage.getItem("SecretKeyID");
       const secretKeyInput = document.getElementById("secretKeyInput");
@@ -96,6 +100,8 @@ function Restore() {
         console.error("Error fetching Gist:", error);
         document.getElementById('RestoreID').style.backgroundColor = 'red';
         console.log("Failed to fetch Gist data.");
+         const restoreInput = document.getElementById("RestoreID");
+    restoreInput.value = "Failed to restore, API down or wrong Secret Key";
         setTimeout(function() {
           document.getElementById('RestoreID').style.backgroundColor = 'white';
         }, 2000);
