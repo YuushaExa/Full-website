@@ -10,6 +10,7 @@
    <div class="nickname"><span>Nickname: </span><span id="nickname"></span></div>
    <div class="userid"><span>ID: </span><span id="keyid"></span></div>
   <button id="checkRateLimitButton">Check Rate Limit</button>
+	    <div id="ActionTimes"></div>
    Secret Key:
       <form><input type="password" id="secretKeyInput"></form>
       <button onclick="revealPassword()">Show Secret Key</button>
@@ -143,11 +144,9 @@ function Restore() {
         .then(data => {
           var rateLimit = data.resources.core.limit;
           var remainingLimit = data.resources.core.remaining;
-          var resetTime = new Date(data.resources.core.reset * 1000);
 
-          console.log('Rate Limit:', rateLimit);
-          console.log('Remaining Limit:', remainingLimit);
-          console.log('Reset Time:', resetTime);
+        var actionTimesDiv = document.getElementById('ActionTimes');
+          actionTimesDiv.textContent = 'Rate Limit: ' + rateLimit + '/' + remainingLimit;
         })
         .catch(error => {
           console.log(error);
