@@ -160,17 +160,21 @@ function checkRateLimit() {
       var timeDifference = resetTime - userTime;
 
       // Countdown to 0
-      function countdown() {
-        timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
-        if (timeDifference > 0) {
-          var minutes = Math.floor(timeDifference / 60000);
-          var seconds = Math.floor((timeDifference % 60000) / 1000);
-          actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit + ' ' + minutes + '/' + seconds;
-          setTimeout(countdown, 1000); // Call countdown again after 1 second
-        } else {
-          console.log('Countdown reached 0');
-        }
-      }
+function countdown() {
+  timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
+  if (timeDifference > 0) {
+    if (timeDifference <= 3600000) {
+      var minutes = Math.floor(timeDifference / 60000);
+      var seconds = Math.floor((timeDifference % 60000) / 1000);
+      actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit + ' ' + minutes + '/' + seconds;
+    } else {
+      actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit;
+    }
+    setTimeout(countdown, 1000); // Call countdown again after 1 second
+  } else {
+    console.log('Countdown reached 0');
+  }
+}
 
       countdown(); // Start the countdown
     })
