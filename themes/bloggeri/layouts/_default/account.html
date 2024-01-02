@@ -144,6 +144,7 @@ function Restore() {
         .then(data => {
           var rateLimit = data.resources.core.limit;
           var remainingLimit = data.resources.core.remaining;
+          console.log('Reset Time:', resetTime);
 
         var actionTimesDiv = document.getElementById('ActionTimes');
           actionTimesDiv.textContent = 'Rate Limit: ' + rateLimit + '/' + remainingLimit;
