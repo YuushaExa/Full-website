@@ -5,14 +5,15 @@
       <div class="post">
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
-   <div class="registeracc"><span>Register Account: </span><input type="text" id="Login" placeholder="Enter nickname" oninput="validateLogin(event)"><button id="createButton" onclick="Register()">Register</button>
+   <div class="registeracc"><span>Register Account: </span><input type="text" id="Login" placeholder="Enter nickname" oninput="validateLogin(event)"> 
+	   <button id="createButton" onclick="Register()">Register</button>
 </div>
    <div class="nickname"><span>Nickname: </span><span id="nickname"></span></div>
    <div class="userid"><span>ID: </span><span id="keyid"></span></div>
   <button id="checkRateLimitButton">Check Rate Limit</button>
 	    <div id="ActionTimes"></div>
 	<div class="secretkey"><span>Secret Key: </span>
-      <form><input type="password" id="secretKeyInput"></form>
+      <form><input type="password" id="secretKeyInput" autocomplete="current-password"></form>
       <button onclick="revealPassword()">Show Secret Key</button>
 </div>
      <div class="loginacc"><span>Login: </span>
