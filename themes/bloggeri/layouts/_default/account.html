@@ -156,11 +156,11 @@ function Restore() {
           // Calculate time difference
           var userTime = new Date();
           var timeDifference = resetTime - userTime;
-          var hours = Math.floor(timeDifference / (1000 * 60 * 60));
-          var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
 
-          // Display time difference under ActionTimes element
-          actionTimesDiv.textContent += ', Time Difference: ' + hours + ' hours ' + minutes + ' minutes';
+          var minutes = Math.floor(timeDifference / 60000);
+          var seconds = Math.floor((timeDifference % 60000) / 1000);
+
+          actionTimesDiv.textContent += ', Time Difference: ' + minutes + ' minutes ' + seconds + ' seconds';
 
           // Countdown to 0
           function countdown() {
