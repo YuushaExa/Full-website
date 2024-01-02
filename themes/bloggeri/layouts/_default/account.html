@@ -147,7 +147,7 @@ function Restore() {
           var resetTime = new Date(data.resources.core.reset * 1000);
 
           var actionTimesDiv = document.getElementById('ActionTimes');
-          actionTimesDiv.textContent = 'Rate Limit: ' + rateLimit + ', Remaining Limit: ' + remainingLimit;
+          actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit;
 
           console.log('Rate Limit:', rateLimit);
           console.log('Remaining Limit:', remainingLimit);
@@ -160,7 +160,7 @@ function Restore() {
           var minutes = Math.floor(timeDifference / 60000);
           var seconds = Math.floor((timeDifference % 60000) / 1000);
 
-          actionTimesDiv.textContent += ', Time Difference: ' + minutes + ' minutes ' + seconds + ' seconds';
+          actionTimesDiv.textContent += ', Reset: ' + minutes + ' minutes ' + seconds + ' seconds';
 
           // Countdown to 0
           function countdown() {
