@@ -163,7 +163,7 @@ function checkRateLimit() {
 function countdown() {
   timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
   if (timeDifference > 0) {
-    if (timeDifference <= 3600000) {
+    if (timeDifference <= 3500000) {
       var minutes = Math.floor(timeDifference / 60000);
       var seconds = Math.floor((timeDifference % 60000) / 1000);
       actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit + ' ' + minutes + '/' + seconds;
