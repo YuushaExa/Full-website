@@ -133,53 +133,58 @@ function Restore() {
 </script>
 
   <script>
-    function checkRateLimit() {
-      fetch('https://api.github.com/rate_limit')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Error: ' + response.status);
+function checkRateLimit() {
+  fetch('https://api.github.com/rate_limit')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error: ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      var rateLimit = data.resources.core.limit;
+      var remainingLimit = data.resources.core.remaining;
+      var resetTime = new Date(data.resources.core.reset * 1000);
+
+      var actionTimesDiv = document.getElementById('ActionTimes');
+      actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit;
+
+      console.log('Rate Limit:', rateLimit);
+      console.log('Remaining Limit:', remainingLimit);
+      console.log('Reset Time:', resetTime);
+
+      // Calculate time difference
+      var userTime = new Date();
+      var timeDifference = resetTime - userTime;
+
+      var minutes = Math.floor(timeDifference / 60000);
+      var seconds = Math.floor((timeDifference % 60000) / 1000);
+
+      // Check if time difference is above 60 minutes
+      if (minutes >= 60) {
+        actionTimesDiv.textContent += ' (Time difference above 60 minutes)';
+      } else {
+        actionTimesDiv.textContent += '' + minutes + '/' + seconds + '';
+
+        // Countdown to 0
+        function countdown() {
+          timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
+          if (timeDifference > 0) {
+            setTimeout(countdown, 1000); // Call countdown again after 1 second
+          } else {
+            console.log('Countdown reached 0');
           }
-          return response.json();
-        })
-        .then(data => {
-          var rateLimit = data.resources.core.limit;
-          var remainingLimit = data.resources.core.remaining;
-          var resetTime = new Date(data.resources.core.reset * 1000);
+        }
 
-          var actionTimesDiv = document.getElementById('ActionTimes');
-          actionTimesDiv.textContent = '' + rateLimit + '/' + remainingLimit;
+        countdown(); // Start the countdown
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
-          console.log('Rate Limit:', rateLimit);
-          console.log('Remaining Limit:', remainingLimit);
-          console.log('Reset Time:', resetTime);
-
-          // Calculate time difference
-          var userTime = new Date();
-          var timeDifference = resetTime - userTime;
-
-          var minutes = Math.floor(timeDifference / 60000);
-          var seconds = Math.floor((timeDifference % 60000) / 1000);
-
-          actionTimesDiv.textContent += '' + minutes + '/' + seconds + '';
-
-          // Countdown to 0
-          function countdown() {
-            timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
-            if (timeDifference > 0) {
-              setTimeout(countdown, 1000); // Call countdown again after 1 second
-            } else {
-              console.log('Countdown reached 0');
-            }
-          }
-
-          countdown(); // Start the countdown
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-
-    document.getElementById('checkRateLimitButton').addEventListener('click', checkRateLimit);
+document.getElementById('checkRateLimitButton').addEventListener('click', checkRateLimit);
   </script>
       </div>  
        </div>  
