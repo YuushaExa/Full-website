@@ -129,8 +129,10 @@ function Restore() {
 	document.getElementById('nickname').textContent = AccountValue;
 	const IDValue = localStorage.getItem("ID");
 	document.getElementById('keyid').textContent = IDValue;
+</script>
 
-	    $(document).ready(function() {
+	       <script>
+    $(document).ready(function() {
       $('#checkRateLimitButton').click(function() {
         $.ajax({
           url: 'https://api.github.com/rate_limit',
@@ -150,7 +152,7 @@ function Restore() {
         });
       });
     });
-</script>
+  </script>
       </div>  
        </div>  
   </article>    
