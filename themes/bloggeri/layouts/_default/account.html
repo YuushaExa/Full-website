@@ -160,7 +160,7 @@ function Restore() {
           var minutes = Math.floor(timeDifference / 60000);
           var seconds = Math.floor((timeDifference % 60000) / 1000);
 
-          actionTimesDiv.textContent += ', Reset: ' + minutes + ' minutes ' + seconds + ' seconds';
+          actionTimesDiv.textContent += '' + minutes + '/' + seconds + '';
 
           // Countdown to 0
           function countdown() {
