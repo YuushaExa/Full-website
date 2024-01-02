@@ -144,18 +144,37 @@ function Restore() {
         .then(data => {
           var rateLimit = data.resources.core.limit;
           var remainingLimit = data.resources.core.remaining;
-		          var resetTime = new Date(data.resources.core.reset * 1000);
+          var resetTime = new Date(data.resources.core.reset * 1000);
 
+          var actionTimesDiv = document.getElementById('ActionTimes');
+          actionTimesDiv.textContent = 'Rate Limit: ' + rateLimit + ', Remaining Limit: ' + remainingLimit;
+
+          console.log('Rate Limit:', rateLimit);
+          console.log('Remaining Limit:', remainingLimit);
           console.log('Reset Time:', resetTime);
 
-        var actionTimesDiv = document.getElementById('ActionTimes');
-          actionTimesDiv.textContent = 'Rate Limit: ' + rateLimit + '/' + remainingLimit;
+          // Calculate time difference
+          var userTime = new Date();
+          var timeDifference = resetTime - userTime;
+          console.log('Time Difference (ms):', timeDifference);
+
+          // Countdown to 0
+          function countdown() {
+            timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
+            if (timeDifference > 0) {
+              setTimeout(countdown, 1000); // Call countdown again after 1 second
+            } else {
+              console.log('Countdown reached 0');
+            }
+          }
+
+          countdown(); // Start the countdown
         })
         .catch(error => {
           console.log(error);
         });
     }
-    
+
     document.getElementById('checkRateLimitButton').addEventListener('click', checkRateLimit);
   </script>
       </div>  
