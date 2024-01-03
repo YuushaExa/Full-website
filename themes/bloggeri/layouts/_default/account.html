@@ -135,6 +135,8 @@ function Restore() {
 </script>
 
   <script>
+var countdownStarted = false; // Flag variable to track if countdown has started
+
 function checkRateLimit() {
   fetch('https://api.github.com/rate_limit')
     .then(response => {
@@ -159,7 +161,9 @@ function checkRateLimit() {
       var userTime = new Date();
       var timeDifference = resetTime - userTime;
 
-      if (timeDifference <= (61 * 60 * 1000)) {
+      if (timeDifference <= (61 * 60 * 1000) && !countdownStarted) {
+        countdownStarted = true; // Set the flag to true to indicate countdown has started
+
         // Countdown to 0
         function countdown() {
           timeDifference -= 1000; // Subtract 1 second (1000 milliseconds)
@@ -175,7 +179,7 @@ function checkRateLimit() {
 
         countdown(); // Start the countdown
       } else {
-        console.log('Time difference is above 59 minutes. Countdown not started.');
+        console.log('Time difference is above 59 minutes or countdown already started. Countdown not started.');
       }
     })
     .catch(error => {
