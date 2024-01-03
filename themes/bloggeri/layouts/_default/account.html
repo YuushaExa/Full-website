@@ -161,7 +161,7 @@ function checkRateLimit() {
       var userTime = new Date();
       var timeDifference = resetTime - userTime;
 
-      if (timeDifference <= (61 * 60 * 1000) && !countdownStarted) {
+      if (timeDifference <= (59 * 60 * 1000) && !countdownStarted) {
         countdownStarted = true; // Set the flag to true to indicate countdown has started
 
         // Countdown to 0
