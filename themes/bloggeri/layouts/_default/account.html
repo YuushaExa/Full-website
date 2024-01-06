@@ -21,13 +21,13 @@
     <button onclick="Restore()">Enter</button>
 	     </div>
     </div>    
-<button id="deleteButton">Log Out</button>
+<button id="deleteButton">Logout</button>
 
    
 	      
 <script>
   document.getElementById('deleteButton').addEventListener('click', function() {
-    var confirmation = confirm("Are you sure you want to log out from Account? be sure to save Account Key or else you can't restore Account.");
+    var confirmation = confirm("Are you sure you want to logout from Account? be sure to save Account Key or else you can't restore Account.");
     if (confirmation) {
       // User clicked "Yes"
       localStorage.removeItem('Account');
