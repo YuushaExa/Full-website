@@ -23,6 +23,37 @@
     </div>    
 <button id="deleteButton">Delete Account</button>
 
+  <div>
+    <input type="file" id="uploadInput" />
+    <button onclick="uploadImage()">Upload</button>
+  </div>
+  <div id="uploaded"></div>
+
+<script>
+
+function uploadImage() {
+  var fileInput = document.getElementById('uploadInput');
+  var file = fileInput.files[0];
+  var formData = new FormData();
+  formData.append('file', file);
+
+  var request = new XMLHttpRequest();
+  request.open('POST', 'https://postimages.org/json/rr', true);
+  request.onreadystatechange = function() {
+    if (request.readyState === 4 && request.status === 200) {
+      var response = JSON.parse(request.responseText);
+      var imageUrl = response.url;
+
+      var uploadedDiv = document.getElementById('uploaded');
+      uploadedDiv.innerHTML = '<a href="' + imageUrl + '">' + imageUrl + '</a>';
+    }
+  };
+
+  request.send(formData);
+}
+</script>
+
+	      
 <script>
   document.getElementById('deleteButton').addEventListener('click', function() {
     var confirmation = confirm("Are you sure you want to delete the Account?");
