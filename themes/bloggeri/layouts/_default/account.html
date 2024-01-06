@@ -23,35 +23,41 @@
     </div>    
 <button id="deleteButton">Delete Account</button>
 
-  <div>
-    <input type="file" id="uploadInput" />
-    <button onclick="uploadImage()">Upload</button>
-  </div>
-  <div id="uploaded"></div>
+    <input type="file" id="imageInput" multiple>
+    <button onclick="uploadImages()">Upload</button>
+    
+    <script>
+        function uploadImages() {
+            var files = document.getElementById("imageInput").files;
+            var formData = new FormData();
 
-<script>
+            for (var i = 0; i < files.length; i++) {
+                formData.append("file[]", files[i]);
+            }
 
-function uploadImage() {
-  var fileInput = document.getElementById('uploadInput');
-  var file = fileInput.files[0];
-  var formData = new FormData();
-  formData.append('file', file);
-
-  var request = new XMLHttpRequest();
-  request.open('POST', 'https://postimages.org/json/rr', true);
-  request.onreadystatechange = function() {
-    if (request.readyState === 4 && request.status === 200) {
-      var response = JSON.parse(request.responseText);
-      var imageUrl = response.url;
-
-      var uploadedDiv = document.getElementById('uploaded');
-      uploadedDiv.innerHTML = '<a href="' + imageUrl + '">' + imageUrl + '</a>';
-    }
-  };
-
-  request.send(formData);
-}
-</script>
+            $.ajax({
+                url: "https://postimages.org/json/rr",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status === 200) {
+                        var links = response.data.images;
+                        for (var i = 0; i < links.length; i++) {
+                            console.log("Image URL: " + links[i].direct_link);
+                        }
+                    } else {
+                        console.log("Error uploading images.");
+                    }
+                },
+                error: function() {
+                    console.log("An error occurred during the upload.");
+                }
+            });
+        }
+    </script>
 
 	      
 <script>
