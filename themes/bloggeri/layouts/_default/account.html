@@ -21,48 +21,13 @@
     <button onclick="Restore()">Enter</button>
 	     </div>
     </div>    
-<button id="deleteButton">Delete Account</button>
+<button id="deleteButton">Log Out</button>
 
-    <input type="file" id="imageInput" multiple>
-    <button onclick="uploadImages()">Upload</button>
-    
-    <script>
-        function uploadImages() {
-            var files = document.getElementById("imageInput").files;
-            var formData = new FormData();
-
-            for (var i = 0; i < files.length; i++) {
-                formData.append("file[]", files[i]);
-            }
-
-            $.ajax({
-                url: "https://postimages.org/json/rr",
-                type: "POST",
-                data: formData,
-                dataType: "json",
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status === 200) {
-                        var links = response.data.images;
-                        for (var i = 0; i < links.length; i++) {
-                            console.log("Image URL: " + links[i].direct_link);
-                        }
-                    } else {
-                        console.log("Error uploading images.");
-                    }
-                },
-                error: function() {
-                    console.log("An error occurred during the upload.");
-                }
-            });
-        }
-    </script>
-
+   
 	      
 <script>
   document.getElementById('deleteButton').addEventListener('click', function() {
-    var confirmation = confirm("Are you sure you want to delete the Account?");
+    var confirmation = confirm("Are you sure you want to log out from Account? be sure to save Account Key or else you can't restore Account.");
     if (confirmation) {
       // User clicked "Yes"
       localStorage.removeItem('Account');
