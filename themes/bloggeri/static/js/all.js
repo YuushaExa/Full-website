@@ -2,15 +2,21 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 const saveButton = document.getElementById('saveButton');
 const optionsSelect = document.getElementById('options');
-const cardContent = document.querySelector('.card').innerHTML;
 
 // Add event listener to the button
 saveButton.addEventListener('click', function() {
-  // Get the selected option and card content
+  // Get the selected option
   const selectedOption = optionsSelect.value;
   
-  // Store the data in local storage
-  localStorage.setItem(selectedOption, cardContent);
+  // Get all card elements
+  const cardElements = document.querySelectorAll('.card');
+  
+  // Store the data for each card in local storage
+  cardElements.forEach((card, index) => {
+    const cardContent = card.innerHTML;
+    const key = `${selectedOption}-${index+1}`;
+    localStorage.setItem(key, cardContent);
+  });
 });
 
  tippy('.toggleButton', {
