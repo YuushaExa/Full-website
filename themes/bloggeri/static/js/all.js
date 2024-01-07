@@ -11,7 +11,7 @@ if (saveButton) {
     const selectedOption = optionsSelect.value;
 
     // Get all elements with the specified class
-    const cardElements = document.querySelectorAll('.card');
+    const cardElements = document.querySelector('.card');
 
     // Create an array to store the content of all elements
     const cardContentArray = [];
