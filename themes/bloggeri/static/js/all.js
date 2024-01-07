@@ -8,16 +8,20 @@ const optionsSelect = document.getElementById('options');
 saveButton.addEventListener('click', function() {
   // Get the selected option
   const selectedOption = optionsSelect.value;
-  
-  // Get all card elements
+
+  // Get all elements with the specified class
   const cardElements = document.querySelectorAll('.card');
-  
-  // Store the data for each card in local storage
-  cardElements.forEach((card, index) => {
-    const cardContent = card.innerHTML;
-    const key = `${selectedOption}-${index+1}`;
-    localStorage.setItem(key, cardContent);
+
+  // Create an array to store the content of all elements
+  const cardContentArray = [];
+
+  // Iterate over the card elements and store their content
+  cardElements.forEach(function(element) {
+    cardContentArray.push(element.innerHTML);
   });
+
+  // Store the data in local storage
+  localStorage.setItem(selectedOption, JSON.stringify(cardContentArray));
 });
 
  tippy('.toggleButton', {
