@@ -208,8 +208,8 @@ document.addEventListener('click', function(event) {
   for (let i = 0; i < localStorage.length; i++) {
     const title = localStorage.key(i); // Get the title (key) of the stored card
 
-    // Skip the key "thumbnailsVisible"
-    if (title === 'thumbnailsVisible','History') {
+    // Skip the key "History"
+    if (title === 'History') {
       continue;
     }
 
