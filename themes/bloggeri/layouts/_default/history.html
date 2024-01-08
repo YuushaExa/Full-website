@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="section">
+  <article>      
+    <div class="container">
+      <div class="post">
+        <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+  <div class="content">
+ <div id="history"></div>
+    <script>
+      function displayHistory() {
+  var historyDiv = document.getElementById("history");
+  var historyContent = localStorage.getItem("History");
+  
+  if (historyContent) {
+    historyDiv.innerHTML = historyContent;
+  } else {
+    historyDiv.innerHTML = "No history available.";
+  }
+}
+
+// Call the function to display history when the page loads
+displayHistory();
+    </script>
+     </div>
+    </div>     </div>  
+  </article>    
+</section>
+{{ end }}
