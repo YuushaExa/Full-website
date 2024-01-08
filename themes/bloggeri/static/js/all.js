@@ -2,7 +2,14 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 function saveHistory(element) {
   var historyContent = element.innerHTML;
+  var cardLink = element.querySelector('a');
+  var href = cardLink.getAttribute('href');
   var existingHistory = localStorage.getItem("History");
+
+  if (existingHistory && existingHistory.includes(href)) {
+    alert("Card with the same href already exists in history!");
+    return;
+  }
 
   if (existingHistory) {
     existingHistory += historyContent;
