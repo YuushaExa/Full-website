@@ -21,33 +21,17 @@ function saveHistory(element) {
   localStorage.setItem("History", existingHistory);
   alert("History content saved!");
 }
+// Step 1: Retrieve the "History" value from localStorage
 const historyValue = localStorage.getItem("History");
 
-const historyData = JSON.parse(historyValue);
+// Step 2: Count the occurrences of <div class="card">
+const regex = /<div class="card">/g;
+const matches = historyValue.match(regex);
+const cardCount = matches ? matches.length : 0;
 
-let cardCount = 0;
-
-if (Array.isArray(historyData)) {
-  // If the parsed value is an array
-  for (let i = 0; i < historyData.length; i++) {
-    const item = historyData[i];
-    if (item.includes('<div class="card">')) {
-      cardCount++;
-    }
-  }
-} else if (typeof historyData === "object" && historyData !== null) {
-  // If the parsed value is an object
-  for (const key in historyData) {
-    const item = historyData[key];
-    if (item.includes('<div class="card">')) {
-      cardCount++;
-    }
-  }
-}
-
+// Step 3: Display the count in the "HistoryCount" div
 const historyCountDiv = document.getElementById("HistoryCount");
 historyCountDiv.textContent = "" + cardCount;
-
 
  tippy('.toggleButton', {
         content: (reference) => reference.getAttribute('aria-label'),
