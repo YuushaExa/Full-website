@@ -1,5 +1,5 @@
 {{ $permalink := .Permalink }}
-<div class="card">
+<div class="card" onclick="saveHistory(this)">
             <a class="card-image" href="{{ $permalink }}">  
                           <img data-src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
             </img>
@@ -12,11 +12,4 @@
 
                         <a class="title is-4">{{ .Title }}</a>
     </div>  
-  <select class="optionSelect">
-      <option value="played">Played</option>
-      <option value="playing">Playing</option>
-      <option value="dropped">Dropped</option>
-      <option value="backlog">Backlog</option>
-      <option value="wished">Wished</option>
-    </select>
 </div>
