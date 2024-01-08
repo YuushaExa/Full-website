@@ -7,8 +7,10 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
         
         if (selectedOption) {
           var cardData = card.html();
-          localStorage.setItem(selectedOption, cardData);
-          alert("Option selected: " + selectedOption + "\nCard data: " + cardData);
+          var stackedValue = localStorage.getItem(selectedOption) || '';
+          stackedValue += cardData;
+          localStorage.setItem(selectedOption, stackedValue);
+          alert("Option selected: " + selectedOption + "\nStacked value: " + stackedValue);
         }
       });
     });
