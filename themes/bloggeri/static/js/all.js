@@ -29,9 +29,8 @@ const regex = /<div class="card">/g;
 const matches = historyValue.match(regex);
 const cardCount = matches ? matches.length : 0;
 
-// Step 3: Display the count in the "HistoryCount" div
 const historyCountDiv = document.getElementById("HistoryCount");
-historyCountDiv.textContent = "" + cardCount;
+historyCountDiv.textContent = "Number of <div class='card'> elements in 'History': " + cardCount;
 
  tippy('.toggleButton', {
         content: (reference) => reference.getAttribute('aria-label'),
