@@ -9,7 +9,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
           var card = event.currentTarget;
           var title = card.getElementsByClassName('title')[0].textContent;
           var image = card.getElementsByClassName('card-image')[0].src;
-          var href = card.getElementsByClassName('card-link')[0].href;
+          var href = card.getElementsByClassName('card-image')[0].href;
 
           var data = {
             "title": title,
