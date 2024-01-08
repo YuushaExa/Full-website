@@ -4,12 +4,20 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
       $('.optionSelect').change(function() {
         var card = $(this).closest('.card');
         var selectedOption = $(this).val();
-        
+
         if (selectedOption) {
           var cardData = card.html();
+          var previousValue = localStorage.getItem(selectedOption);
+
+          if (previousValue) {
+            var updatedValue = previousValue.replace(cardData, '');
+            localStorage.setItem(selectedOption, updatedValue);
+          }
+
           var stackedValue = localStorage.getItem(selectedOption) || '';
           stackedValue += cardData;
           localStorage.setItem(selectedOption, stackedValue);
+
           alert("Option selected: " + selectedOption + "\nStacked value: " + stackedValue);
         }
       });
