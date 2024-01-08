@@ -7,8 +7,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
         cards[i].addEventListener('click', function(event) {
           var card = event.currentTarget;
           var title = card.getElementsByClassName('title')[0].textContent;
-          var image = card.getElementsByClassName('image')[0].src;
-          var href = card.getElementsByClassName('link')[0].href;
+          var image = card.getElementsByClassName('card-image')[0].src;
+          var href = card.getElementsByClassName('card-image')[0].href;
 
           var data = {
             "History": {
