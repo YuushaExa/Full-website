@@ -20,7 +20,7 @@ var strippedImage = image.substring(image.indexOf('=') + 1, image.indexOf('?'));
 
       var data = {
         "title": title,
-        "strippedImage": image,
+        "image": strippedImage,
         "href": href
       };
 
