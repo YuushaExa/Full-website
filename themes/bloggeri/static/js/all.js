@@ -40,11 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var cardData = JSON.parse(storedData);
     var count = cardData.length;
 
-    count = Math.max(0, count - 1);
-
-    historyCountContainer.textContent = count;
-  } else {
-    historyCountContainer.textContent = "-1";
+  historyCountContainer.textContent = count;
   }
 });
 
