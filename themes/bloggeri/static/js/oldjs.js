@@ -1,3 +1,13 @@
+window.addEventListener('popstate', function(event) {
+  const closeElement = document.getElementsByClassName("close-pv")[0];
+  if (closeElement) {
+    closeElement.click();
+  }
+});
+
+
+
+
 $('.game-media img').each(function(){
   var $this = $(this); 
   $this.attr('data-src',$this.attr('data-src') + "&w=260"); 
