@@ -282,14 +282,6 @@ document.addEventListener('click', function(event) {
   }
 });
 
-window.addEventListener('popstate', function(event) {
-  const closeElement = document.getElementsByClassName("close-pv")[0];
-  if (closeElement) {
-    closeElement.click();
-  }
-});
-
-
 
 $('.btn5').click(function () { 
   $.ajax({
