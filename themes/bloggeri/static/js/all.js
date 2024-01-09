@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var cardsContainer = document.querySelector('.content');
   var cardData = [];
 
+  // Retrieve previously stored data from local storage
+  var storedData = localStorage.getItem('History');
+  if (storedData) {
+    cardData = JSON.parse(storedData);
+  }
+
   cardsContainer.addEventListener('click', function(event) {
     var card = event.target.closest('.card');
     if (card) {
