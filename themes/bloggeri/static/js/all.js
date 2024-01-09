@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (card) {
       var title = card.querySelector('.title').textContent;
 var image = card.querySelector('.card-image img').src;
-var strippedImage = image.substring(image.indexOf('=') + 1, image.indexOf('&'));
+var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('?')));
       var href = card.querySelector('.card-image').href;
 
       var data = {
