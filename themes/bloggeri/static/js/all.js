@@ -14,15 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var card = event.target.closest('.card');
     if (card) {
       var title = card.querySelector('.title').textContent;
-      var imageURL = card.querySelector('.card-image img').src;
-var startIndex = imageURL.indexOf('=');
-var endIndex = imageURL.indexOf('?');
-var strippedImageURL = imageURL.slice(startIndex + 1, endIndex);
+var image = card.querySelector('.card-image img').src;
+var strippedImage = image.substring(image.indexOf('=') + 1, image.indexOf('?'));
       var href = card.querySelector('.card-image').href;
 
       var data = {
         "title": title,
-        "image": image,
+        "strippedImage": image,
         "href": href
       };
 
