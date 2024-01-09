@@ -8,19 +8,47 @@
         <div class="columns is-multiline">
  <div id="history"></div></div>
     <script>
-      function displayHistory() {
-  var historyDiv = document.getElementById("history");
-  var historyContent = localStorage.getItem("History");
-  
-  if (historyContent) {
-    historyDiv.innerHTML = historyContent;
-  } else {
-    historyDiv.innerHTML = "No history available.";
-  }
-}
+document.addEventListener('DOMContentLoaded', function() {
+  var historyContainer = document.getElementById('history');
 
-// Call the function to display history when the page loads
-displayHistory();
+  // Retrieve previously stored data from local storage
+  var storedData = localStorage.getItem('History');
+
+  if (storedData) {
+    var cardData = JSON.parse(storedData);
+
+    cardData.forEach(function(data) {
+      var card = document.createElement('div');
+      card.classList.add('card');
+
+      var cardImageLink = document.createElement('a');
+      cardImageLink.classList.add('card-image');
+      cardImageLink.href = data.href;
+
+      var cardImage = document.createElement('img');
+      cardImage.src = data.image;
+      cardImage.alt = '';
+      cardImage.crossOrigin = 'anonymous';
+      cardImage.classList.add('lazyload');
+      cardImage.setAttribute('data-src', data.image);
+
+      cardImageLink.appendChild(cardImage);
+      card.appendChild(cardImageLink);
+
+      var cardContent = document.createElement('div');
+      cardContent.classList.add('card-content');
+
+      var titleLink = document.createElement('a');
+      titleLink.classList.add('title', 'is-4');
+      titleLink.textContent = data.title;
+
+      cardContent.appendChild(titleLink);
+      card.appendChild(cardContent);
+
+      historyContainer.appendChild(card);
+    });
+  }
+});
     </script>
      </div>
     </div>     </div>  
