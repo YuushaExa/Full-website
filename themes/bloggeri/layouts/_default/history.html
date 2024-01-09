@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cardImage.alt = '';
       cardImage.crossOrigin = 'anonymous';
       cardImage.classList.add('lazyload');
-      cardImage.setAttribute('data-src', data.image);
+      cardImage.setAttribute('data-src', data.wrappedImageURL);
 
       cardImageLink.appendChild(cardImage);
       card.appendChild(cardImageLink);
