@@ -34,14 +34,17 @@ var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, i
 document.addEventListener('DOMContentLoaded', function() {
   var historyCountContainer = document.getElementById('HistoryCount');
 
-  // Retrieve previously stored data from local storage
   var storedData = localStorage.getItem('History');
 
   if (storedData) {
     var cardData = JSON.parse(storedData);
     var count = cardData.length;
 
+    count = Math.max(0, count - 1);
+
     historyCountContainer.textContent = count;
+  } else {
+    historyCountContainer.textContent = "-1";
   }
 });
 
