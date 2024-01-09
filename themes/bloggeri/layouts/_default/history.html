@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
       cardImageLink.href = data.href;
 
       var cardImage = document.createElement('img');
-      cardImage.src = data.image;
+      var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
+      cardImage.src = wrappedImageURL;
       cardImage.alt = '';
       cardImage.crossOrigin = 'anonymous';
       cardImage.classList.add('lazyload');
