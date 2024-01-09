@@ -31,6 +31,20 @@ var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, i
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var historyCountContainer = document.getElementById('HistoryCount');
+
+  // Retrieve previously stored data from local storage
+  var storedData = localStorage.getItem('History');
+
+  if (storedData) {
+    var cardData = JSON.parse(storedData);
+    var count = cardData.length;
+
+    historyCountContainer.textContent = count;
+  }
+});
+
  tippy('.toggleButton', {
         content: (reference) => reference.getAttribute('aria-label'),
    delay: [1000, null],
