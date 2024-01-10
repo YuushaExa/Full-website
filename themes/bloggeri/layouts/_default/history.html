@@ -7,111 +7,117 @@
   <div class="content">
         <div class="columns is-multiline">
  <div id="history"></div></div>
+    <span>Your last 30 days History</span><div id="HistoryCount"></div>
+    <button id="toggleButton">Stop Clearing History after 30 days</button>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var historyContainer = document.getElementById('history');
+var removeOldData = true;
 
-  // Retrieve previously stored data from local storage
-  var storedData = localStorage.getItem('History');
-
-  if (storedData) {
-    var cardData = JSON.parse(storedData);
-    
-    // Retrieve the current date
-    var currentDate = new Date();
-
-    // Check if the "StopRemovingOldCards" key is present in local storage
-    var stopRemovingOldCards = localStorage.getItem('StopRemovingOldCards');
-
-    if (!stopRemovingOldCards) {
-      // Filter out cards that are older than 30 days
-      cardData = cardData.filter(function(card) {
-        var cardDate = new Date(card.dateAdded);
-        var timeDiff = currentDate.getTime() - cardDate.getTime();
-        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-        // Keep the card if it's within the last 30 days
-        return daysDiff <= 30;
-      });
-
-      // Update local storage with the filtered card data
-      var updatedData = JSON.stringify(cardData);
-      localStorage.setItem('History', updatedData);
-    }
-
-    cardData.sort(function(a, b) {
-      return new Date(b.dateAdded) - new Date(a.dateAdded);
-    });
-
-    // Group cards by dateAdded
-    var groupedData = groupBy(cardData, 'dateAdded');
-
-    // Iterate over groupedData
-    Object.keys(groupedData).forEach(function(dateAdded) {
-      // Create a dateAdded element
-      var dateAddedElement = document.createElement('div');
-      dateAddedElement.classList.add('date-added');
-      dateAddedElement.textContent = formatDate(dateAdded); // Format the date if needed
-
-      // Append the dateAdded element to the historyContainer
-      historyContainer.appendChild(dateAddedElement);
-
-      // Iterate over the cards for the current dateAdded
-      groupedData[dateAdded].forEach(function(data) {
-        var card = document.createElement('div');
-        card.classList.add('card');
-
-        var cardImageLink = document.createElement('a');
-        cardImageLink.classList.add('card-image');
-        cardImageLink.href = data.href;
-
-        var cardImage = document.createElement('img');
-        var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
-        cardImage.src = wrappedImageURL;
-        cardImage.alt = '';
-        cardImage.crossOrigin = 'anonymous';
-        cardImage.classList.add('lazyload');
-        cardImage.setAttribute('data-src', data.wrappedImageURL);
-
-        cardImageLink.appendChild(cardImage);
-        card.appendChild(cardImageLink);
-
-        var cardContent = document.createElement('div');
-        cardContent.classList.add('card-content');
-
-        var titleLink = document.createElement('a');
-        titleLink.classList.add('title', 'is-4');
-        titleLink.textContent = data.title;
-
-        cardContent.appendChild(titleLink);
-        card.appendChild(cardContent);
-
-        historyContainer.appendChild(card);
-      });
-    });
+// Button click event handler
+document.getElementById('toggleButton').addEventListener('click', function() {
+  removeOldData = !removeOldData; // Toggle the flag value
+  // Perform any additional actions based on the flag value
+  if (removeOldData) {
+    // Flag is true, perform actions when removing old data is enabled
+    console.log('Removing old data is enabled.');
+  } else {
+    // Flag is false, perform actions when removing old data is disabled
+    console.log('Removing old data is disabled.');
   }
+});
+      
+document.addEventListener('DOMContentLoaded', function() {
+var historyContainer = document.getElementById('history');
 
-  var removeOldButton = document.createElement('button');
-  removeOldButton.textContent = 'Stop Removing Old Cards';
-  removeOldButton.addEventListener('click', function() {
-    localStorage.setItem('StopRemovingOldCards', 'true');
+// Retrieve previously stored data from local storage
+var storedData = localStorage.getItem('History');
+
+if (storedData) {
+var cardData = JSON.parse(storedData);
+
+// Retrieve the current date
+var currentDate = new Date();
+
+if (removeOldData) {
+  // Filter out cards that are older than 30 days
+  cardData = cardData.filter(function(card) {
+    var cardDate = new Date(card.dateAdded);
+    var timeDiff = currentDate.getTime() - cardDate.getTime();
+    var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    // Keep the card if it's within the last 30 days
+    return daysDiff <= 30;
   });
 
-  historyContainer.appendChild(removeOldButton);
+  // Update local storage with the filtered card data
+  var updatedData = JSON.stringify(cardData);
+  localStorage.setItem('History', updatedData);
+}
+
+cardData.sort(function(a, b) {
+  return new Date(b.dateAdded) - new Date(a.dateAdded);
+});
+
+// Group cards by dateAdded
+var groupedData = groupBy(cardData, 'dateAdded');
+
+// Iterate over groupedData
+Object.keys(groupedData).forEach(function(dateAdded) {
+  // Create a dateAdded element
+  var dateAddedElement = document.createElement('div');
+  dateAddedElement.classList.add('date-added');
+  dateAddedElement.textContent = formatDate(dateAdded); // Format the date if needed
+
+  // Append the dateAdded element to the historyContainer
+  historyContainer.appendChild(dateAddedElement);
+
+  // Iterate over the cards for the current dateAdded
+  groupedData[dateAdded].forEach(function(data) {
+    var card = document.createElement('div');
+    card.classList.add('card');
+
+    var cardImageLink = document.createElement('a');
+    cardImageLink.classList.add('card-image');
+    cardImageLink.href = data.href;
+
+    var cardImage = document.createElement('img');
+    var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
+    cardImage.src = wrappedImageURL;
+    cardImage.alt = '';
+    cardImage.crossOrigin = 'anonymous';
+    cardImage.classList.add('lazyload');
+    cardImage.setAttribute('data-src', data.wrappedImageURL);
+
+    cardImageLink.appendChild(cardImage);
+    card.appendChild(cardImageLink);
+
+    var cardContent = document.createElement('div');
+    cardContent.classList.add('card-content');
+
+    var titleLink = document.createElement('a');
+    titleLink.classList.add('title', 'is-4');
+    titleLink.textContent = data.title;
+
+    cardContent.appendChild(titleLink);
+    card.appendChild(cardContent);
+
+    historyContainer.appendChild(card);
+  });
+});
+}
 });
 
 // Helper function to group an array of objects by a specific key
 function groupBy(array, key) {
-  return array.reduce(function(result, obj) {
-    (result[obj[key]] = result[obj[key]] || []).push(obj);
-    return result;
-  }, {});
+return array.reduce(function(result, obj) {
+(result[obj[key]] = result[obj[key]] || []).push(obj);
+return result;
+}, {});
 }
 
 // Helper function to format the date if needed
 function formatDate(date) {
-  // Implement date formatting logic here
-  return date;
+// Implement date formatting logic here
+return date;
 }
     </script>
      </div>
