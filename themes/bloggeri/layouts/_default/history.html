@@ -55,6 +55,9 @@ if (removeOldData) {
   // Update local storage with the filtered card data
   var updatedData = JSON.stringify(cardData);
   localStorage.setItem('History', updatedData);
+} else {
+  // Perform actions when removing old data is disabled
+  console.log('Removing old data is disabled.');
 }
 
 cardData.sort(function(a, b) {
