@@ -14,19 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
     var card = event.target.closest('.card');
     if (card) {
       var title = card.querySelector('.title').textContent;
-var image = card.querySelector('.card-image img').src;
-var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+      var image = card.querySelector('.card-image img').src;
+      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
       var href = card.querySelector('.card-image').href;
 
-      var data = {
-        "title": title,
-        "image": strippedImage,
-        "href": href
-      };
+      // Check if the card already exists in cardData
+      var isDuplicate = cardData.some(function(item) {
+        return item.href === href;
+      });
 
-      cardData.push(data);
-      var jsonData = JSON.stringify(cardData);
-      localStorage.setItem('History', jsonData);
+      if (!isDuplicate) {
+        var data = {
+          "title": title,
+          "image": strippedImage,
+          "href": href
+        };
+
+        cardData.push(data);
+        var jsonData = JSON.stringify(cardData);
+        localStorage.setItem('History', jsonData);
+      }
     }
   });
 });
