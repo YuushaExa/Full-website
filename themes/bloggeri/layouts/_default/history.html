@@ -10,7 +10,7 @@
     <span>Your last 30 days History</span><div id="HistoryCount"></div>
     <button id="toggleButton">Stop Clearing History after 30 days</button>
     <script>
-var removeOldData = localStorage.getItem('RemoveOldData') === 'true' || true;
+var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
 
 // Button click event handler
 document.getElementById('toggleButton').addEventListener('click', function() {
