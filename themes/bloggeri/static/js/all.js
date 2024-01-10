@@ -19,7 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
       var image = card.querySelector('.card-image img').src;
       var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
       var href = card.querySelector('.card-image').href;
-      var currentDate = new Date().toISOString();
+      var currentDate = new Date();
+      var year = currentDate.getFullYear();
+      var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      var day = String(currentDate.getDate()).padStart(2, '0');
+      var formattedDate = `${year}-${month}-${day}`;
 
       // Check if the card already exists in cardData
       var isDuplicate = cardData.some(function(item) {
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "title": title,
           "image": strippedImage,
           "href": href,
-          "dateAdded": currentDate
+          "dateAdded": formattedDate
         };
 
         cardData.push(data);
