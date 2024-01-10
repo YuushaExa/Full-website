@@ -20,19 +20,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Retrieve the current date
     var currentDate = new Date();
 
-    // Filter out cards that are older than 30 days
-    cardData = cardData.filter(function(card) {
-      var cardDate = new Date(card.dateAdded);
-      var timeDiff = currentDate.getTime() - cardDate.getTime();
-      var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    // Check if the "StopRemovingOldCards" key is present in local storage
+    var stopRemovingOldCards = localStorage.getItem('StopRemovingOldCards');
 
-      // Keep the card if it's within the last 30 days
-      return daysDiff <= 30;
-    });
+    if (!stopRemovingOldCards) {
+      // Filter out cards that are older than 30 days
+      cardData = cardData.filter(function(card) {
+        var cardDate = new Date(card.dateAdded);
+        var timeDiff = currentDate.getTime() - cardDate.getTime();
+        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    // Update local storage with the filtered card data
-    var updatedData = JSON.stringify(cardData);
-    localStorage.setItem('History', updatedData);
+        // Keep the card if it's within the last 30 days
+        return daysDiff <= 30;
+      });
+
+      // Update local storage with the filtered card data
+      var updatedData = JSON.stringify(cardData);
+      localStorage.setItem('History', updatedData);
+    }
 
     cardData.sort(function(a, b) {
       return new Date(b.dateAdded) - new Date(a.dateAdded);
@@ -85,6 +90,14 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+
+  var removeOldButton = document.createElement('button');
+  removeOldButton.textContent = 'Stop Removing Old Cards';
+  removeOldButton.addEventListener('click', function() {
+    localStorage.setItem('StopRemovingOldCards', 'true');
+  });
+
+  historyContainer.appendChild(removeOldButton);
 });
 
 // Helper function to group an array of objects by a specific key
