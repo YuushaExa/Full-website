@@ -131,6 +131,8 @@ return date;
        function clearHistory() {
       localStorage.removeItem("History");
       document.getElementById("HistoryCount").value = "";
+           var historyElement = document.getElementById("history");
+  historyElement.textContent = "";
     }
     </script>
      </div>
