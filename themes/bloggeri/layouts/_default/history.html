@@ -9,6 +9,7 @@
  <div id="history"></div></div>
     <span>Your last 30 days History</span><div id="HistoryCount"></div>
     <button id="toggleButton">Stop Clearing History after 30 days</button>
+      <button id="ClearHistory" onclick="clearHistory()">Clear History</button>
     <script>
 var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
 
@@ -126,6 +127,11 @@ function formatDate(date) {
 // Implement date formatting logic here
 return date;
 }
+
+       function clearHistory() {
+      localStorage.removeItem("History");
+      document.getElementById("HistoryCount").value = "";
+    }
     </script>
      </div>
     </div>     </div>  
