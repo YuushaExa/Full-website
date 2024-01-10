@@ -17,10 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (storedData) {
     var cardData = JSON.parse(storedData);
 
-    // Sort cardData by dateAdded in ascending order
-    cardData.sort(function(a, b) {
-      return new Date(a.dateAdded) - new Date(b.dateAdded);
-    });
+cardData.sort(function(a, b) {
+  return new Date(b.dateAdded) - new Date(a.dateAdded);
+});
 
     // Group cards by dateAdded
     var groupedData = groupBy(cardData, 'dateAdded');
