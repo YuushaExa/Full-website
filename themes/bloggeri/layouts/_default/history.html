@@ -40,10 +40,31 @@ document.addEventListener('DOMContentLoaded', function() {
         var card = document.createElement('div');
         card.classList.add('card');
 
-        // Create the card elements as before
-        // ...
+        var cardImageLink = document.createElement('a');
+        cardImageLink.classList.add('card-image');
+        cardImageLink.href = data.href;
 
-        // Append the card to the historyContainer
+        var cardImage = document.createElement('img');
+        var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
+        cardImage.src = wrappedImageURL;
+        cardImage.alt = '';
+        cardImage.crossOrigin = 'anonymous';
+        cardImage.classList.add('lazyload');
+        cardImage.setAttribute('data-src', data.wrappedImageURL);
+
+        cardImageLink.appendChild(cardImage);
+        card.appendChild(cardImageLink);
+
+        var cardContent = document.createElement('div');
+        cardContent.classList.add('card-content');
+
+        var titleLink = document.createElement('a');
+        titleLink.classList.add('title', 'is-4');
+        titleLink.textContent = data.title;
+
+        cardContent.appendChild(titleLink);
+        card.appendChild(cardContent);
+
         historyContainer.appendChild(card);
       });
     });
