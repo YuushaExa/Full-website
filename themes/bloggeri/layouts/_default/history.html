@@ -17,39 +17,52 @@ document.addEventListener('DOMContentLoaded', function() {
   if (storedData) {
     var cardData = JSON.parse(storedData);
 
-    cardData.forEach(function(data) {
-      var card = document.createElement('div');
-      card.classList.add('card');
+    // Sort cardData by dateAdded in ascending order
+    cardData.sort(function(a, b) {
+      return new Date(a.dateAdded) - new Date(b.dateAdded);
+    });
 
-      var cardImageLink = document.createElement('a');
-      cardImageLink.classList.add('card-image');
-      cardImageLink.href = data.href;
+    // Group cards by dateAdded
+    var groupedData = groupBy(cardData, 'dateAdded');
 
-      var cardImage = document.createElement('img');
-      var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
-      cardImage.src = wrappedImageURL;
-      cardImage.alt = '';
-      cardImage.crossOrigin = 'anonymous';
-      cardImage.classList.add('lazyload');
-      cardImage.setAttribute('data-src', data.wrappedImageURL);
+    // Iterate over groupedData
+    Object.keys(groupedData).forEach(function(dateAdded) {
+      // Create a dateAdded element
+      var dateAddedElement = document.createElement('div');
+      dateAddedElement.classList.add('date-added');
+      dateAddedElement.textContent = formatDate(dateAdded); // Format the date if needed
 
-      cardImageLink.appendChild(cardImage);
-      card.appendChild(cardImageLink);
+      // Append the dateAdded element to the historyContainer
+      historyContainer.appendChild(dateAddedElement);
 
-      var cardContent = document.createElement('div');
-      cardContent.classList.add('card-content');
+      // Iterate over the cards for the current dateAdded
+      groupedData[dateAdded].forEach(function(data) {
+        var card = document.createElement('div');
+        card.classList.add('card');
 
-      var titleLink = document.createElement('a');
-      titleLink.classList.add('title', 'is-4');
-      titleLink.textContent = data.title;
+        // Create the card elements as before
+        // ...
 
-      cardContent.appendChild(titleLink);
-      card.appendChild(cardContent);
-
-      historyContainer.appendChild(card);
+        // Append the card to the historyContainer
+        historyContainer.appendChild(card);
+      });
     });
   }
 });
+
+// Helper function to group an array of objects by a specific key
+function groupBy(array, key) {
+  return array.reduce(function(result, obj) {
+    (result[obj[key]] = result[obj[key]] || []).push(obj);
+    return result;
+  }, {});
+}
+
+// Helper function to format the date if needed
+function formatDate(date) {
+  // Implement date formatting logic here
+  return date;
+}
     </script>
      </div>
     </div>     </div>  
