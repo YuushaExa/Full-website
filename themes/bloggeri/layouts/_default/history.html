@@ -11,6 +11,8 @@
     <button id="toggleButtonH">Stop Clearing History after 30 days</button>
       <button id="ClearHistory" onclick="clearHistory()">Clear History</button>
     <script>
+var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
+
 // Button click event handler
 var toggleButton = document.getElementById('toggleButtonH');
 toggleButton.addEventListener('click', function() {
