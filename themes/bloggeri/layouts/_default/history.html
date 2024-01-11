@@ -112,12 +112,34 @@ Object.keys(groupedData).forEach(function(dateAdded) {
     card.appendChild(cardContent);
     
   var removeButton = document.createElement('button');
-  removeButton.id = 'removeButton';
+  removeButton.classList.add('removeButton'); // Use class instead of id for multiple remove buttons
   removeButton.textContent = 'Remove';
   card.appendChild(removeButton);
 
   historyContainer.appendChild(card);
+
+  // Event listener for remove button
+  removeButton.addEventListener('click', function() {
+    var cardHref = cardImageLink.href;
+
+    // Search localStorage for matching href
+    var historyItems = JSON.parse(localStorage.getItem('History')) || [];
+    var index = historyItems.findIndex(function(item) {
+      return item.href === cardHref;
+    });
+
+    if (index !== -1) {
+      // Remove item from historyItems array
+      historyItems.splice(index, 1);
+
+      // Update localStorage with the modified array
+      localStorage.setItem('History', JSON.stringify(historyItems));
+    }
+
+    // Remove the card element from the DOM
+    card.remove();
   });
+});
 });
 }
 });
