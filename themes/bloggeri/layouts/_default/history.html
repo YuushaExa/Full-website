@@ -130,7 +130,7 @@ return date;
 
        function clearHistory() {
       localStorage.removeItem("History");
-      document.getElementById("HistoryCount").value = "";
+      document.getElementById("HistoryCount").textContent = "0";
            var historyElement = document.getElementById("history");
   historyElement.textContent = "";
     }
