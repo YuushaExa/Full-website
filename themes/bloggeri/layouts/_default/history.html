@@ -147,7 +147,7 @@ return date;
   // Listen for click events on the remove button
   $('#removeButton').on('click', function() {
     // Get the href value from the card
-    var href = $(this).siblings('a').attr('href');
+    var href = $(this).closest('.card').attr('href');
     
     // Check if the href exists in the local storage history
     if (history && history.includes(href)) {
