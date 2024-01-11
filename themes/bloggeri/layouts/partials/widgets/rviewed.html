@@ -1,47 +1,54 @@
 <script>
-// Assuming historyData is an array containing the historical values
+// Get the "History" values from localStorage
+var historyValues = localStorage.getItem("History");
+if (historyValues) {
+  // Convert the string to an array of objects
+  var historyArray = JSON.parse(historyValues);
 
-// Sort the historyData array in descending order based on timestamp or any other appropriate criteria
-historyData.sort(function(a, b) {
-  return b.timestamp - a.timestamp;
-});
+  // Sort the array by timestamp in descending order
+  historyArray.sort(function(a, b) {
+    return b.dateAdded - a.dateAdded;
+  });
 
-// Get the 5 latest values from historyData
-var latestValues = historyData.slice(0, 5);
+  // Get the 5 latest values or less if there are fewer than 5
+  var latestValues = historyArray.slice(0, 5);
 
-// Get the RecentlyViewed container element
-var recentlyViewedContainer = document.getElementById('RecentlyViewed');
+  // Get the element with the ID "RecentlyViewed"
+  var recentlyViewed = document.getElementById("RecentlyViewed");
 
-// Iterate over the latest values
-latestValues.forEach(function(data) {
-  var card = document.createElement('div');
-  card.classList.add('card');
+  // Iterate through the latest values and create the elements
+  latestValues.forEach(function(data) {
+    var cardImageLink = document.createElement("a");
+    cardImageLink.classList.add("card-image");
+    cardImageLink.href = data.href;
 
-  var cardImageLink = document.createElement('a');
-  cardImageLink.classList.add('card-image');
-  cardImageLink.href = data.href;
+    var cardImage = document.createElement("img");
+    var wrappedImageURL =
+      "https://wsrv.nl/?url=" +
+      encodeURIComponent(data.image) +
+      "&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention";
+    cardImage.src = wrappedImageURL;
+    cardImage.alt = "";
+    cardImage.crossOrigin = "anonymous";
+    cardImage.classList.add("lazyload");
+    cardImage.setAttribute("data-src", data.wrappedImageURL);
 
-  var cardImage = document.createElement('img');
-  var wrappedImageURL = 'https://wsrv.nl/?url=' + encodeURIComponent(data.image) + '&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention';
-  cardImage.src = wrappedImageURL;
-  cardImage.alt = '';
-  cardImage.crossOrigin = 'anonymous';
-  cardImage.classList.add('lazyload');
-  cardImage.setAttribute('data-src', data.wrappedImageURL);
+    cardImageLink.appendChild(cardImage);
 
-  cardImageLink.appendChild(cardImage);
-  card.appendChild(cardImageLink);
+    var cardContent = document.createElement("div");
+    cardContent.classList.add("card-content");
 
-  var cardContent = document.createElement('div');
-  cardContent.classList.add('card-content');
+    var titleLink = document.createElement("a");
+    titleLink.classList.add("title", "is-4");
+    titleLink.textContent = data.title;
 
-  var titleLink = document.createElement('a');
-  titleLink.classList.add('title', 'is-4');
-  titleLink.textContent = data.title;
+    cardContent.appendChild(titleLink);
 
-  cardContent.appendChild(titleLink);
-  card.appendChild(cardContent);
+    var card = document.createElement("div");
+    card.appendChild(cardImageLink);
+    card.appendChild(cardContent);
 
-  recentlyViewedContainer.appendChild(card);
-});
+    recentlyViewed.appendChild(card);
+  });
+}
 </script>
