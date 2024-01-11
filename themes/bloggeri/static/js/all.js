@@ -371,13 +371,17 @@ divElement.parentNode.removeChild(divElement);
   }
 });
 
-var span1 = document.getElementsByClassName("close-pv")[0];
-span1.onclick = function() {
- $("#content-front-text").empty();
+$(document).on('click', '#content-front', function() {
+  var card = $(this);
+  card.find(".close-pv").click(function() {
+    $("#content-front-text").empty();
+    $("#content-front-text").css("opacity", "0");
+    $("#content-front").css("z-index", "-1").css('background', 'unset');
+      var divElement = document.getElementById("content-front");
+divElement.parentNode.removeChild(divElement);
+  });
 
-       $("#content-front-text").css("opacity", "0");
-                              $("#content-front").css("z-index", "-1").css('background','unset');
-}
+});
 
 
 
