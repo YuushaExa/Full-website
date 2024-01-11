@@ -286,6 +286,20 @@ document.addEventListener('click', function(event) {
       window.history.pushState({}, "", target.closest('.card-image').href);
       document.title = postTitle;
 
+var divElement = document.createElement("div");
+divElement.setAttribute("id", "content-front");
+
+var closeButton = document.createElement("span");
+closeButton.setAttribute("class", "close-pv");
+closeButton.innerText = "X";
+
+var textSpan = document.createElement("span");
+textSpan.setAttribute("id", "content-front-text");
+divElement.appendChild(closeButton);
+divElement.appendChild(textSpan);
+
+document.body.appendChild(divElement);
+      
       var contentFrontElement = document.querySelector("#content-front");
       var contentFrontTextElement = document.querySelector("#content-front-text");
       contentFrontElement.style.zIndex = "1";
