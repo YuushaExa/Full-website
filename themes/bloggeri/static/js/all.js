@@ -371,10 +371,9 @@ divElement.parentNode.removeChild(divElement);
   }
 });
 
-$(document).on('click', '#content-front', function() {
+$(document).on('click', '.card', function() {
   var card = $(this);
   card.find(".close-pv").click(function() {
-      event.stopPropagation();
     $("#content-front-text").empty();
     $("#content-front-text").css("opacity", "0");
     $("#content-front").css("z-index", "-1").css('background', 'unset');
