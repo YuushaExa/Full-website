@@ -8,13 +8,13 @@
         <div class="columns is-multiline">
  <div id="history"></div></div>
     <span>Your last 30 days History</span><div id="HistoryCount"></div>
-    <button id="toggleButton"></button>
+    <button id="toggleButtonH">Stop Clearing History after 30 days</button>
       <button id="ClearHistory" onclick="clearHistory()">Clear History</button>
     <script>
 var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
 
 // Button click event handler
-var toggleButton = document.getElementById('toggleButton');
+var toggleButton = document.getElementById('toggleButtonH');
 toggleButton.addEventListener('click', function() {
   removeOldData = !removeOldData; // Toggle the flag value
 
@@ -142,29 +142,6 @@ return date;
            var historyElement = document.getElementById("history");
   historyElement.textContent = "";
     }
-
-      $(document).ready(function() {
-  // Retrieve the value from local storage
-  var history = localStorage.getItem('History');
-  
-  // Listen for click events on the remove button
-  $('#removeButton').on('click', function() {
-    // Get the href value from the card
-    var href = $(this).closest('.card').attr('href');
-    
-    // Check if the href exists in the local storage history
-    if (history && history.includes(href)) {
-      // Remove the href from the history
-      history = history.replace(href, '');
-      
-      // Update the local storage value with the modified history
-      localStorage.setItem('History', history);
-    }
-    
-    // Remove the card from the DOM
-    $(this).closest('.card').remove();
-  });
-});
     </script>
      </div>
     </div>     </div>  
