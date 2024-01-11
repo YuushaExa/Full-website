@@ -360,7 +360,7 @@ $("body").on("mouseover", "#game-preview a", function(event) {
 }, 300)};
 });
 
-$(document).on("click", ".card", function(event) {
+$(document).on("click", "#content-front", function(event) {
   var modal1 = document.getElementById("content-front");
   if (event.target == modal1) {
     $("#content-front-text").empty();
