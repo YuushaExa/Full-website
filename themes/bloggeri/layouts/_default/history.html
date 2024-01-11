@@ -107,8 +107,13 @@ Object.keys(groupedData).forEach(function(dateAdded) {
 
     cardContent.appendChild(titleLink);
     card.appendChild(cardContent);
+    
+  var removeButton = document.createElement('button');
+  removeButton.id = 'removeButton';
+  removeButton.textContent = 'Remove';
+  card.appendChild(removeButton);
 
-    historyContainer.appendChild(card);
+  historyContainer.appendChild(card);
   });
 });
 }
@@ -134,6 +139,29 @@ return date;
            var historyElement = document.getElementById("history");
   historyElement.textContent = "";
     }
+
+      $(document).ready(function() {
+  // Retrieve the value from local storage
+  var history = localStorage.getItem('History');
+  
+  // Listen for click events on the remove button
+  $('#removeButton').on('click', function() {
+    // Get the href value from the card
+    var href = $(this).siblings('a').attr('href');
+    
+    // Check if the href exists in the local storage history
+    if (history && history.includes(href)) {
+      // Remove the href from the history
+      history = history.replace(href, '');
+      
+      // Update the local storage value with the modified history
+      localStorage.setItem('History', history);
+    }
+    
+    // Remove the card from the DOM
+    $(this).closest('.card').remove();
+  });
+});
     </script>
      </div>
     </div>     </div>  
