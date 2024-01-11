@@ -1,4 +1,4 @@
-
+<script>
 historyData.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
 var latestValues = historyData.slice(0, 5);
@@ -37,3 +37,4 @@ latestValues.forEach(function(data) {
   var container = document.getElementById('RecentlyViewed'); // Replace 'container' with the actual ID of your container element
   container.appendChild(card);
 });
+</script>
