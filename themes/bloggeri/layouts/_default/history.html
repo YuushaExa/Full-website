@@ -11,8 +11,6 @@
     <button id="toggleButtonH">Stop Clearing History after 30 days</button>
       <button id="ClearHistory" onclick="clearHistory()">Clear History</button>
     <script>
-var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
-
 // Button click event handler
 var toggleButton = document.getElementById('toggleButtonH');
 toggleButton.addEventListener('click', function() {
@@ -23,11 +21,32 @@ toggleButton.addEventListener('click', function() {
 
   // Perform any additional actions based on the flag value
   if (removeOldData) {
-    // Flag is true, perform actions when removing old data is enabled
     toggleButton.innerText = 'Stop Clearing History after 30 days';
     console.log('Removing old data is enabled.');
   } else {
-    // Flag is false, perform actions when removing old data is disabled
+    toggleButton.innerText = 'Clearing History is Disabled';
+    console.log('Removing old data is disabled.');
+  }
+});
+
+// Load the toggleButton text based on the flag value on page load
+window.addEventListener('load', function() {
+  // Check if the flag value exists in localStorage
+  if (localStorage.getItem('RemoveOldData') !== null) {
+    // Retrieve the flag value from localStorage
+    removeOldData = localStorage.getItem('RemoveOldData') === 'true';
+
+    // Set the toggleButton text based on the flag value
+    if (removeOldData) {
+      toggleButton.innerText = 'Stop Clearing History after 30 days';
+      console.log('Removing old data is enabled.');
+    } else {
+      toggleButton.innerText = 'Clearing History is Disabled';
+      console.log('Removing old data is disabled.');
+    }
+  } else {
+    // Set a default value if the flag is not found in localStorage
+    removeOldData = false;
     toggleButton.innerText = 'Clearing History is Disabled';
     console.log('Removing old data is disabled.');
   }
