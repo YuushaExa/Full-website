@@ -8,13 +8,14 @@
         <div class="columns is-multiline">
  <div id="history"></div></div>
     <span>Your last 30 days History</span><div id="HistoryCount"></div>
-    <button id="toggleButton">Stop Clearing History after 30 days</button>
+    <button id="toggleButton"></button>
       <button id="ClearHistory" onclick="clearHistory()">Clear History</button>
     <script>
 var removeOldData = localStorage.getItem('RemoveOldData') === 'true';
 
 // Button click event handler
-document.getElementById('toggleButton').addEventListener('click', function() {
+var toggleButton = document.getElementById('toggleButton');
+toggleButton.addEventListener('click', function() {
   removeOldData = !removeOldData; // Toggle the flag value
 
   // Store the updated flag value in the localStorage
@@ -23,9 +24,11 @@ document.getElementById('toggleButton').addEventListener('click', function() {
   // Perform any additional actions based on the flag value
   if (removeOldData) {
     // Flag is true, perform actions when removing old data is enabled
+    toggleButton.innerText = 'Stop Clearing History after 30 days';
     console.log('Removing old data is enabled.');
   } else {
     // Flag is false, perform actions when removing old data is disabled
+    toggleButton.innerText = 'Clearing History is Disabled';
     console.log('Removing old data is disabled.');
   }
 });
