@@ -283,6 +283,15 @@ divElement.appendChild(closeButton);
 divElement.appendChild(textSpan);
 
 document.body.appendChild(divElement);
+
+    var span1 = document.getElementsByClassName("close-pv")[0];
+span1.onclick = function() {
+$("#content-front-text").empty();
+   $("#content-front-text").css("opacity", "0");
+                          $("#content-front").css("z-index", "-1").css('background','unset');
+    var divElement = document.getElementById("content-front");
+divElement.parentNode.removeChild(divElement);
+}
     
     try {
       const response = await fetch(target.closest('.card-image').href);
@@ -370,19 +379,6 @@ $(document).on("click", "#content-front", function(event) {
 divElement.parentNode.removeChild(divElement);
   }
 });
-
-$(document).on('click', '.card', function() {
-  var card = $(this);
-  card.find(".close-pv").click(function() {
-    $("#content-front-text").empty();
-    $("#content-front-text").css("opacity", "0");
-    $("#content-front").css("z-index", "-1").css('background', 'unset');
-      var divElement = document.getElementById("content-front");
-divElement.parentNode.removeChild(divElement);
-  });
-
-});
-
 
 
 $("body").on("click", ".tablinks:nth-child(3)", function() {
