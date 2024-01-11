@@ -54,7 +54,7 @@
                 {{ partial "widgets/reviews.html" . }}
                 </div> 
 
-       <div id="RecentlyViewed" data-pagefind-ignore>
+       <div id="RecentlyViewed" data-pagefind-ignore>Recently Viewed
                 {{ partial "widgets/rviewed.html" . }}
                 </div> 
       
@@ -81,9 +81,7 @@
 <section class="section">
     <div class="columns is-centered">
         <div class="column max-800px">
-            <div class="content">
                 <h2>Related content</h2>
-            </div>
             <div class="columns">
 {{ $related := .Site.RegularPages.Related . | first 3 }}
                 {{ range $related }}
