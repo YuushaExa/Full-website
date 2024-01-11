@@ -14,5 +14,7 @@ $('html').css({
          });
 var bg = 'rgb('+ thisColor +')'
 var bg_url = document.querySelector("img").src;
-document.querySelector(".cover").style.backgroundImage = "url('" + bg_url + "')center/cover;";
+document.querySelector(".cover").style.backgroundImage = "url('" + bg_url + "')";
+    document.querySelector(".cover").style.backgroundPosition = "center";
+document.querySelector(".cover").style.backgroundSize = "cover";
 });
