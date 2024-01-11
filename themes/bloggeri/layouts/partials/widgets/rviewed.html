@@ -1,9 +1,18 @@
 <script>
-historyData.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+// Assuming historyData is an array containing the historical values
 
+// Sort the historyData array in descending order based on timestamp or any other appropriate criteria
+historyData.sort(function(a, b) {
+  return b.timestamp - a.timestamp;
+});
+
+// Get the 5 latest values from historyData
 var latestValues = historyData.slice(0, 5);
 
-// Loop through the latest values and create the DOM elements
+// Get the RecentlyViewed container element
+var recentlyViewedContainer = document.getElementById('RecentlyViewed');
+
+// Iterate over the latest values
 latestValues.forEach(function(data) {
   var card = document.createElement('div');
   card.classList.add('card');
@@ -33,8 +42,6 @@ latestValues.forEach(function(data) {
   cardContent.appendChild(titleLink);
   card.appendChild(cardContent);
 
-  // Append the card to the desired container element in your HTML
-  var container = document.getElementById('RecentlyViewed'); // Replace 'container' with the actual ID of your container element
-  container.appendChild(card);
+  recentlyViewedContainer.appendChild(card);
 });
 </script>
