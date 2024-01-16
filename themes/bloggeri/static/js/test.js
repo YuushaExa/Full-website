@@ -13,7 +13,7 @@ $('html').css({
             background: 'rgb('+ thisColor +')'
          });
 var bg = 'rgb('+ thisColor +')'
-var bg1 = 'rgba(' + thisColor + ')';
+var bg1 = '(' + thisColor + ')';
 var bg_url = document.querySelector("img").src;
 document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top, ${bg} 0, rgba(${bg1}, 0.1) 60%), url('${bg_url}')`;
     document.querySelector(".cover").style.backgroundPosition = "center";
