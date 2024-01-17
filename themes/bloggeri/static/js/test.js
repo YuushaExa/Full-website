@@ -5,7 +5,6 @@ $('.cover-front').each(function() {
     thumb.find('img').each(function() {
         thisColor = colorThief.getColor(this);
         thumb.parent().find('.cover').css({
-            background: 'rgb('+ thisColor +')'
          })
     });
 });
