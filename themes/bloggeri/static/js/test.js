@@ -10,7 +10,6 @@ $('.cover-front').each(function() {
     });
 });
 $('html').css({
-            background: 'rgb('+ thisColor +')'
          });
 var bg = 'rgb('+ thisColor +')'
 
