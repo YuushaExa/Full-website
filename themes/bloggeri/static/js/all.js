@@ -19,7 +19,8 @@ var cardsContainer = document.querySelectorAll('.content, .Backlog, .Playing');
     cardData = JSON.parse(storedData);
   }
 
-  cardsContainer.addEventListener('click', function(event) {
+cardsContainer.forEach(function(card) {
+  card.addEventListener('click', function(event) {
     var card = event.target.closest('.card');
     if (card) {
       var title = card.querySelector('.title').textContent;
@@ -50,6 +51,7 @@ var cardsContainer = document.querySelectorAll('.content, .Backlog, .Playing');
     }
   });
 });
+  });
 
 // history count
 
