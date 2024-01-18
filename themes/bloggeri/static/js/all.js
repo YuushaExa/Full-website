@@ -10,7 +10,7 @@ $(document).ready(function() {
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
-  var cardsContainer = document.querySelector('.content','.Backlog','.Playing');
+var cardsContainer = document.querySelectorAll('.content, .Backlog, .Playing');
   var cardData = [];
 
   // Retrieve previously stored data from local storage
