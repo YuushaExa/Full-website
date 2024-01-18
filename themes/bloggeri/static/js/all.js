@@ -3,7 +3,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 $(document).ready(function() {
   $('.AddLists').click(function() {
-    $('#dropdownMenu').toggleClass('hidden');
+    $('.dropdownMenu').toggleClass('hidden');
   });
 });
 
