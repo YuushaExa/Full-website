@@ -11,11 +11,11 @@
 <a class="year" href="/year/{{ index .Params.year 0 | urlize}}">{{ index .Params.year 0 }}</a>
 <button id="AddLists">Add Lists</button>
 <ul id="dropdownMenu" class="hidden">
-  <li>Playing</li>
-  <li>Backlog</li>
-  <li>Holding</li>
-  <li>Dropped</li>
-  <li>Wish List</li>
+  <li class="Playing">Playing</li>
+  <li class="Backlog">Backlog</li>
+  <li class="Holding">Holding</li>
+  <li class="Dropped">Dropped</li>
+  <li class="WishList">Wish List</li>
 </ul>
                         <a class="title is-4">{{ .Title }}</a>
     </div>  
