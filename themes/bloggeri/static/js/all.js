@@ -13,15 +13,14 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // played 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var cardsContainer = document.querySelector('.Backlog');
+  var cardsContainer1 = document.querySelector('.Backlog');
   var cardData = [];
   // Retrieve previously stored data from local storage
   var storedData = localStorage.getItem('Backlog');
   if (storedData) {
     cardData = JSON.parse(storedData);
   }
-var cardsContainer = document.querySelectorAll('.Backlog');
-cardsContainer.addEventListener('click', function(event) {
+cardsContainer1.addEventListener('click', function(event) {
   var card = event.target.closest('.card');
     if (card) {
       var title = card.querySelector('.title').textContent;
