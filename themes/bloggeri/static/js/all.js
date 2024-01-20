@@ -6,7 +6,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
   buttons.forEach(function (button) {
     button.addEventListener("click", function () {
       var list = this.nextElementSibling;
-      list.classList.toggle("hidden");
+      list.classList.toggle("hidden-list");
     });
   });
 
