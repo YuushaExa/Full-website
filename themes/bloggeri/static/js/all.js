@@ -111,7 +111,6 @@ if (!isDuplicate) {
   }
 }
 });
-});
 
 // history
 
