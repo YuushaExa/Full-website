@@ -15,8 +15,12 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.addEventListener('DOMContentLoaded', function() {
 var backlogContainers = document.querySelectorAll('.Backlog');
 var playingContainers = document.querySelectorAll('.Playing');
+  var completedContainers = document.querySelectorAll('.Completed');
+
 var backlogData = [];
 var playingData = [];
+  var completedData = [];
+
 
 // Retrieve previously stored data from local storage for Backlog
 var backlogStoredData = localStorage.getItem('Backlog');
@@ -42,6 +46,18 @@ handleCardClick(event, playingData, 'Playing');
 });
 });
 
+// Retrieve previously stored data from local storage for Completed
+var completedStoredData = localStorage.getItem('Completed');
+if (completedStoredData) {
+completedData = JSON.parse(completedStoredData);
+}
+
+completedContainers.forEach(function(playingContainer) {
+completedContainer.addEventListener('click', function(event) {
+handleCardClick(event, completedData, 'Completed');
+});
+});
+
 function handleCardClick(event, cardData, storageKey) {
 var card = event.target.closest('.card');
 if (card) {
@@ -57,17 +73,30 @@ var formattedDate = currentDate.toLocaleDateString('en-US', options);
     return item.title === title && item.image === strippedImage && item.href === href;
   });
 
-  if (!isDuplicate) {
-    // Remove the card from the other section if it exists there
-    var otherCardData = storageKey === 'Backlog' ? playingData : backlogData;
-    var otherStorageKey = storageKey === 'Backlog' ? 'Playing' : 'Backlog';
-    var otherCardIndex = otherCardData.findIndex(function(item) {
-      return item.title === title && item.image === strippedImage && item.href === href;
-    });
-    if (otherCardIndex !== -1) {
-      otherCardData.splice(otherCardIndex, 1);
-      localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
+if (!isDuplicate) {
+    // Remove the card from the other sections if it exists there
+    var otherCardData, otherStorageKey;
+    
+    if (storageKey === 'Backlog') {
+        otherCardData = playingData;
+        otherStorageKey = 'Playing';
+    } else if (storageKey === 'Playing') {
+        otherCardData = backlogData;
+        otherStorageKey = 'Backlog';
+    } else { // storageKey is 'Completed'
+        otherCardData = playingData.concat(backlogData);
+        otherStorageKey = storageKey === 'Playing' ? 'Backlog' : 'Playing';
     }
+    
+    var otherCardIndex = otherCardData.findIndex(function(item) {
+        return item.title === title && item.image === strippedImage && item.href === href;
+    });
+    
+    if (otherCardIndex !== -1) {
+        otherCardData.splice(otherCardIndex, 1);
+        localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
+    }
+}
 
     var data = {
       "title": title,
