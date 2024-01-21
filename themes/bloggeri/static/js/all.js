@@ -110,7 +110,7 @@ if (!isDuplicate) {
     localStorage.setItem(storageKey, jsonData);
   }
 }
-}
+});
 });
 
 // history
