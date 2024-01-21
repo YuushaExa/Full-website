@@ -13,104 +13,46 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // played 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var backlogContainers = document.querySelectorAll('.Backlog');
-  var playingContainers = document.querySelectorAll('.Playing');
-  var completedContainers = document.querySelectorAll('.Completed');
+  var cardsContainers = document.querySelectorAll('.Backlog');
+  var cardData = [];
 
-  var backlogData = [];
-  var playingData = [];
-  var completedData = [];
-
-  // Retrieve previously stored data from local storage for Backlog
-  var backlogStoredData = localStorage.getItem('Backlog');
-  if (backlogStoredData) {
-    backlogData = JSON.parse(backlogStoredData);
+  // Retrieve previously stored data from local storage
+  var storedData = localStorage.getItem('Backlog');
+  if (storedData) {
+    cardData = JSON.parse(storedData);
   }
 
-  backlogContainers.forEach(function(backlogContainer) {
-    backlogContainer.addEventListener('click', function(event) {
-      handleCardClick(event, backlogData, 'Backlog');
-    });
-  });
+  cardsContainers.forEach(function(cardsContainer) {
+    cardsContainer.addEventListener('click', function(event) {
+      var card = event.target.closest('.card');
+      if (card) {
+        var title = card.querySelector('.title').textContent;
+        var image = card.querySelector('.card-image img').src;
+        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+        var href = card.querySelector('.card-image').href;
+        var currentDate = new Date();
+        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+        var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-  // Retrieve previously stored data from local storage for Playing
-  var playingStoredData = localStorage.getItem('Playing');
-  if (playingStoredData) {
-    playingData = JSON.parse(playingStoredData);
-  }
-
-  playingContainers.forEach(function(playingContainer) {
-    playingContainer.addEventListener('click', function(event) {
-      handleCardClick(event, playingData, 'Playing');
-    });
-  });
-
-  // Retrieve previously stored data from local storage for Completed
-  var completedStoredData = localStorage.getItem('Completed');
-  if (completedStoredData) {
-    completedData = JSON.parse(completedStoredData);
-  }
-
-  completedContainers.forEach(function(completedContainer) {
-    completedContainer.addEventListener('click', function(event) {
-      handleCardClick(event, completedData, 'Completed');
-    });
-  });
-
-  function handleCardClick(event, cardData, storageKey) {
-    var card = event.target.closest('.card');
-    if (card) {
-      var title = card.querySelector('.title').textContent;
-      var image = card.querySelector('.card-image img').src;
-      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-      var href = card.querySelector('.card-image').href;
-      var currentDate = new Date();
-      var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-      var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-      var isDuplicate = cardData.some(function(item) {
-        return item.title === title && item.image === strippedImage && item.href === href;
-      });
-
-      if (!isDuplicate) {
-        // Remove the card from the other sections if it exists there
-        var otherCardData;
-        var otherStorageKeys;
-
-        if (storageKey === 'Backlog') {
-          otherCardData = playingData.concat(completedData);
-          otherStorageKeys = ['Playing', 'Completed'];
-        } else if (storageKey === 'Playing') {
-          otherCardData = backlogData.concat(completedData);
-          otherStorageKeys = ['Backlog', 'Completed'];
-        } else if (storageKey === 'Completed') {
-          otherCardData = backlogData.concat(playingData);
-          otherStorageKeys = ['Backlog', 'Playing'];
-        }
-
-        var otherCardIndex = otherCardData.findIndex(function(item) {
+        var isDuplicate = cardData.some(function(item) {
           return item.title === title && item.image === strippedImage && item.href === href;
         });
 
-        if (otherCardIndex !== -2) {
-          otherCardData.splice(otherCardIndex, 2);
-          otherStorageKeys.forEach(function(key) {
-            localStorage.setItem(key, JSON.stringify(otherCardData));
-          });
+        if (!isDuplicate) {
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem('Backlog', jsonData);
         }
-
-        var data = {
-          "title": title,
-          "image": strippedImage,
-          "href": href,
-          "dateAdded": formattedDate
-        };
-
-        cardData.push(data);
-        localStorage.setItem(storageKey, JSON.stringify(cardData));
       }
-    }
-  }
+    });
+  });
 });
 // history
 
