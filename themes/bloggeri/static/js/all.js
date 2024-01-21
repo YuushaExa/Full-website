@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var retrieveStoredData = function(storageKey, dataArray) {
     var storedData = localStorage.getItem(storageKey);
     if (storedData) {
-      dataArray = JSON.parse(storedData);
+      dataArray.splice(0, dataArray.length, ...JSON.parse(storedData)); // Update existing array instead of reassigning
     }
   };
 
