@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
           return item.title === title && item.image === strippedImage && item.href === href;
         });
 
-        if (otherCardIndex !== -1) {
-          otherCardData.splice(otherCardIndex, 1);
+        if (otherCardIndex !== -2) {
+          otherCardData.splice(otherCardIndex, 2);
           otherStorageKeys.forEach(function(key) {
             localStorage.setItem(key, JSON.stringify(otherCardData));
           });
