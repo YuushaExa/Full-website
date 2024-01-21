@@ -16,89 +16,47 @@ document.addEventListener('DOMContentLoaded', function() {
   var backlogContainers = document.querySelectorAll('.Backlog');
   var playingContainers = document.querySelectorAll('.Playing');
   var completedContainers = document.querySelectorAll('.Completed');
-  var onHoldContainers = document.querySelectorAll('.OnHold');
-  var droppedContainers = document.querySelectorAll('.Dropped');
-  var wishlistContainers = document.querySelectorAll('.Wishlist');
-  
+
   var backlogData = [];
   var playingData = [];
   var completedData = [];
-  var onHoldData = [];
-  var droppedData = [];
-  var wishlistData = [];
-  
+
   // Retrieve previously stored data from local storage for Backlog
   var backlogStoredData = localStorage.getItem('Backlog');
   if (backlogStoredData) {
     backlogData = JSON.parse(backlogStoredData);
   }
-  
+
   backlogContainers.forEach(function(backlogContainer) {
     backlogContainer.addEventListener('click', function(event) {
       handleCardClick(event, backlogData, 'Backlog');
     });
   });
-  
+
   // Retrieve previously stored data from local storage for Playing
   var playingStoredData = localStorage.getItem('Playing');
   if (playingStoredData) {
     playingData = JSON.parse(playingStoredData);
   }
-  
+
   playingContainers.forEach(function(playingContainer) {
     playingContainer.addEventListener('click', function(event) {
       handleCardClick(event, playingData, 'Playing');
     });
   });
-  
+
   // Retrieve previously stored data from local storage for Completed
   var completedStoredData = localStorage.getItem('Completed');
   if (completedStoredData) {
     completedData = JSON.parse(completedStoredData);
   }
-  
+
   completedContainers.forEach(function(completedContainer) {
     completedContainer.addEventListener('click', function(event) {
       handleCardClick(event, completedData, 'Completed');
     });
   });
-  
-  // Retrieve previously stored data from local storage for On Hold
-  var onHoldStoredData = localStorage.getItem('OnHold');
-  if (onHoldStoredData) {
-    onHoldData = JSON.parse(onHoldStoredData);
-  }
-  
-  onHoldContainers.forEach(function(onHoldContainer) {
-    onHoldContainer.addEventListener('click', function(event) {
-      handleCardClick(event, onHoldData, 'OnHold');
-    });
-  });
-  
-  // Retrieve previously stored data from local storage for Dropped
-  var droppedStoredData = localStorage.getItem('Dropped');
-  if (droppedStoredData) {
-    droppedData = JSON.parse(droppedStoredData);
-  }
-  
-  droppedContainers.forEach(function(droppedContainer) {
-    droppedContainer.addEventListener('click', function(event) {
-      handleCardClick(event, droppedData, 'Dropped');
-    });
-  });
-  
-  // Retrieve previously stored data from local storage for Wishlist
-  var wishlistStoredData = localStorage.getItem('Wishlist');
-  if (wishlistStoredData) {
-    wishlistData = JSON.parse(wishlistStoredData);
-  }
-  
-  wishlistContainers.forEach(function(wishlistContainer) {
-    wishlistContainer.addEventListener('click', function(event) {
-      handleCardClick(event, wishlistData, 'Wishlist');
-    });
-  });
-  
+
   function handleCardClick(event, cardData, storageKey) {
     var card = event.target.closest('.card');
     if (card) {
@@ -109,46 +67,51 @@ document.addEventListener('DOMContentLoaded', function() {
       var currentDate = new Date();
       var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
       var formattedDate = currentDate.toLocaleDateString('en-US', options);
-  
+
       var isDuplicate = cardData.some(function(item) {
         return item.title === title && item.image === strippedImage && item.href === href;
       });
-  
+
       if (!isDuplicate) {
         // Remove the card from the other sections if it exists there
-        var otherSections = ['Backlog', 'Playing', 'Completed', 'OnHold', 'Dropped', 'Wishlist'];
-        otherSections = otherSections.filter(function(section) {
-          return section !== storageKey;
+        var otherCardData;
+        var otherStorageKeys;
+
+        if (storageKey === 'Backlog') {
+          otherCardData = playingData.concat(completedData);
+          otherStorageKeys = ['Playing', 'Completed'];
+        } else if (storageKey === 'Playing') {
+          otherCardData = backlogData.concat(completedData);
+          otherStorageKeys = ['Backlog', 'Completed'];
+        } else if (storageKey === 'Completed') {
+          otherCardData = backlogData.concat(playingData);
+          otherStorageKeys = ['Backlog', 'Playing'];
+        }
+
+        var otherCardIndex = otherCardData.findIndex(function(item) {
+          return item.title === title && item.image === strippedImage && item.href === href;
         });
-  
-        otherSections.forEach(function(section) {
-          var otherCardData = eval(section.toLowerCase() + 'Data');
-          var otherStorageKey = section;
-          var otherCardIndex = otherCardData.findIndex(function(item) {
-            return item.title === title && item.image === strippedImage && item.href === href;
+
+        if (otherCardIndex !== -1) {
+          otherCardData.splice(otherCardIndex, 1);
+          otherStorageKeys.forEach(function(key) {
+            localStorage.setItem(key, JSON.stringify(otherCardData));
           });
-  
-          if (otherCardIndex !== -1) {
-            otherCardData.splice(otherCardIndex, 1);
-            localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
-          }
-        });
-  
+        }
+
         var data = {
           "title": title,
           "image": strippedImage,
           "href": href,
           "dateAdded": formattedDate
         };
-  
+
         cardData.push(data);
-        var jsonData = JSON.stringify(cardData);
-        localStorage.setItem(storageKey, jsonData);
+        localStorage.setItem(storageKey, JSON.stringify(cardData));
       }
     }
   }
 });
-
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
