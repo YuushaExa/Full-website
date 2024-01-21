@@ -77,10 +77,10 @@ function handleCardClick(event, cardData, storageKey) {
       var otherStorageKeys;
 
       if (storageKey === 'Backlog') {
-        otherCardData = playingData;
+        otherCardData = playingData || []; // Initialize as an empty array if undefined
         otherStorageKeys = ['Playing'];
       } else if (storageKey === 'Playing') {
-        otherCardData = backlogData;
+        otherCardData = backlogData || []; // Initialize as an empty array if undefined
         otherStorageKeys = ['Backlog'];
       }
 
