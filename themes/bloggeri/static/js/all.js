@@ -15,10 +15,10 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.addEventListener('DOMContentLoaded', function() {
   var backlogContainers = document.querySelectorAll('.Backlog');
   var playingContainers = document.querySelectorAll('.Playing');
-  var completedContainers = document.querySelectorAll('.Completed'); 
-  var onHoldContainers = document.querySelectorAll('.OnHold'); 
-  var droppedContainers = document.querySelectorAll('.Dropped'); 
-  var wishlistContainers = document.querySelectorAll('.Wishlist'); 
+  var completedContainers = document.querySelectorAll('.Completed');
+  var onHoldContainers = document.querySelectorAll('.OnHold');
+  var droppedContainers = document.querySelectorAll('.Dropped');
+  var wishlistContainers = document.querySelectorAll('.Wishlist');
 
   var cardData = [];
 
@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Similar code for .Completed containers
   var completedStoredData = localStorage.getItem('Completed');
   if (completedStoredData) {
     cardData = JSON.parse(completedStoredData);
@@ -56,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Similar code for .OnHold containers
   var onHoldStoredData = localStorage.getItem('OnHold');
   if (onHoldStoredData) {
     cardData = JSON.parse(onHoldStoredData);
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Similar code for .Dropped containers
   var droppedStoredData = localStorage.getItem('Dropped');
   if (droppedStoredData) {
     cardData = JSON.parse(droppedStoredData);
@@ -80,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Similar code for .Wishlist containers
   var wishlistStoredData = localStorage.getItem('Wishlist');
   if (wishlistStoredData) {
     cardData = JSON.parse(wishlistStoredData);
@@ -93,9 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function handleCardClick(event, cardData, storageKey) {
-      var card = event.target.closest('.card');
+    var card = event.target.closest('.card');
     if (card) {
-      // Extract card data
       var title = card.querySelector('.title').textContent;
       var image = card.querySelector('.card-image img').src;
       var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
@@ -104,12 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
       var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-      // Check if the card data is a duplicate
+      // Remove the item from other containers if it exists
+      removeItemFromOtherContainers(cardData, title, href);
+
       var isDuplicate = cardData.some(function(item) {
         return item.title === title && item.image === strippedImage && item.href === href;
       });
 
-      // If not a duplicate, add the card data to the array and store in local storage
       if (!isDuplicate) {
         var data = {
           "title": title,
@@ -124,7 +120,26 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
+
+  function removeItemFromOtherContainers(cardData, title, href) {
+    var containers = ['Backlog', 'Playing', 'Completed', 'OnHold', 'Dropped', 'Wishlist'];
+    containers.forEach(function(container) {
+      var storedData = localStorage.getItem(container);
+      if (storedData) {
+        var containerData = JSON.parse(storedData);
+        var index = containerData.findIndex(function(item) {
+          return item.title === title && item.href === href;
+        });
+        if (index !== -1) {
+          containerData.splice(index, 1);
+          var jsonData = JSON.stringify(containerData);
+          localStorage.setItem(container, jsonData);
+        }
+      }
+    });
+  }
 });
+
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
