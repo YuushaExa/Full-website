@@ -15,32 +15,46 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.addEventListener('DOMContentLoaded', function() {
   var backlogContainers = document.querySelectorAll('.Backlog');
   var playingContainers = document.querySelectorAll('.Playing');
+  var completedContainers = document.querySelectorAll('.Completed');
+  var onHoldContainers = document.querySelectorAll('.OnHold');
+  var droppedContainers = document.querySelectorAll('.Dropped');
+  var wishlistContainers = document.querySelectorAll('.Wishlist');
+  
   var backlogData = [];
   var playingData = [];
+  var completedData = [];
+  var onHoldData = [];
+  var droppedData = [];
+  var wishlistData = [];
 
-  // Retrieve previously stored data from local storage for Backlog
-  var backlogStoredData = localStorage.getItem('Backlog');
-  if (backlogStoredData) {
-    backlogData = JSON.parse(backlogStoredData);
-  }
+  var retrieveStoredData = function(storageKey, dataArray) {
+    var storedData = localStorage.getItem(storageKey);
+    if (storedData) {
+      dataArray = JSON.parse(storedData);
+    }
+  };
 
-  backlogContainers.forEach(function(backlogContainer) {
-    backlogContainer.addEventListener('click', function(event) {
-      handleCardClick(event, backlogData, 'Backlog');
+  retrieveStoredData('Backlog', backlogData);
+  retrieveStoredData('Playing', playingData);
+  retrieveStoredData('Completed', completedData);
+  retrieveStoredData('OnHold', onHoldData);
+  retrieveStoredData('Dropped', droppedData);
+  retrieveStoredData('Wishlist', wishlistData);
+
+  var addClickListener = function(containers, data, storageKey) {
+    containers.forEach(function(container) {
+      container.addEventListener('click', function(event) {
+        handleCardClick(event, data, storageKey);
+      });
     });
-  });
+  };
 
-  // Retrieve previously stored data from local storage for Playing
-  var playingStoredData = localStorage.getItem('Playing');
-  if (playingStoredData) {
-    playingData = JSON.parse(playingStoredData);
-  }
-
-  playingContainers.forEach(function(playingContainer) {
-    playingContainer.addEventListener('click', function(event) {
-      handleCardClick(event, playingData, 'Playing');
-    });
-  });
+  addClickListener(backlogContainers, backlogData, 'Backlog');
+  addClickListener(playingContainers, playingData, 'Playing');
+  addClickListener(completedContainers, completedData, 'Completed');
+  addClickListener(onHoldContainers, onHoldData, 'OnHold');
+  addClickListener(droppedContainers, droppedData, 'Dropped');
+  addClickListener(wishlistContainers, wishlistData, 'Wishlist');
 
   function handleCardClick(event, cardData, storageKey) {
     var card = event.target.closest('.card');
@@ -58,16 +72,25 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (!isDuplicate) {
-        // Remove the card from the other section if it exists there
-        var otherCardData = storageKey === 'Backlog' ? playingData : backlogData;
-        var otherStorageKey = storageKey === 'Backlog' ? 'Playing' : 'Backlog';
-        var otherCardIndex = otherCardData.findIndex(function(item) {
-          return item.title === title && item.image === strippedImage && item.href === href;
+        var otherCardData = [];
+        var otherStorageKeys = ['Backlog', 'Playing', 'Completed', 'OnHold', 'Dropped', 'Wishlist'];
+        var indexToRemove;
+
+        otherStorageKeys.forEach(function(otherStorageKey) {
+          if (otherStorageKey !== storageKey) {
+            var otherStoredData = localStorage.getItem(otherStorageKey);
+            if (otherStoredData) {
+              otherCardData = JSON.parse(otherStoredData);
+              indexToRemove = otherCardData.findIndex(function(item) {
+                return item.title === title && item.image === strippedImage && item.href === href;
+              });
+              if (indexToRemove !== -1) {
+                otherCardData.splice(indexToRemove, 1);
+                localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
+              }
+            }
+          }
         });
-        if (otherCardIndex !== -1) {
-          otherCardData.splice(otherCardIndex, 1);
-          localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
-        }
 
         var data = {
           "title": title,
@@ -77,8 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         cardData.push(data);
-        var jsonData = JSON.stringify(cardData);
-        localStorage.setItem(storageKey, jsonData);
+        localStorage.setItem(storageKey, JSON.stringify(cardData));
       }
     }
   }
