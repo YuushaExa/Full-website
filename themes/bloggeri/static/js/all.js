@@ -13,46 +13,117 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // played 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var cardsContainers = document.querySelectorAll('.Backlog');
+  var backlogContainers = document.querySelectorAll('.Backlog');
+  var playingContainers = document.querySelectorAll('.Playing');
+  var completedContainers = document.querySelectorAll('.Completed'); 
+  var onHoldContainers = document.querySelectorAll('.OnHold'); 
+  var droppedContainers = document.querySelectorAll('.Dropped'); 
+  var wishlistContainers = document.querySelectorAll('.Wishlist'); 
+
   var cardData = [];
 
-  // Retrieve previously stored data from local storage
-  var storedData = localStorage.getItem('Backlog');
-  if (storedData) {
-    cardData = JSON.parse(storedData);
+  var backlogStoredData = localStorage.getItem('Backlog');
+  if (backlogStoredData) {
+    cardData = JSON.parse(backlogStoredData);
   }
 
-  cardsContainers.forEach(function(cardsContainer) {
-    cardsContainer.addEventListener('click', function(event) {
-      var card = event.target.closest('.card');
-      if (card) {
-        var title = card.querySelector('.title').textContent;
-        var image = card.querySelector('.card-image img').src;
-        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-        var href = card.querySelector('.card-image').href;
-        var currentDate = new Date();
-        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-        var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-        var isDuplicate = cardData.some(function(item) {
-          return item.title === title && item.image === strippedImage && item.href === href;
-        });
-
-        if (!isDuplicate) {
-          var data = {
-            "title": title,
-            "image": strippedImage,
-            "href": href,
-            "dateAdded": formattedDate
-          };
-
-          cardData.push(data);
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem('Backlog', jsonData);
-        }
-      }
+  backlogContainers.forEach(function(backlogContainer) {
+    backlogContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'Backlog');
     });
   });
+
+  var playingStoredData = localStorage.getItem('Playing');
+  if (playingStoredData) {
+    cardData = JSON.parse(playingStoredData);
+  }
+
+  playingContainers.forEach(function(playingContainer) {
+    playingContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'Playing');
+    });
+  });
+
+  // Similar code for .Completed containers
+  var completedStoredData = localStorage.getItem('Completed');
+  if (completedStoredData) {
+    cardData = JSON.parse(completedStoredData);
+  }
+
+  completedContainers.forEach(function(completedContainer) {
+    completedContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'Completed');
+    });
+  });
+
+  // Similar code for .OnHold containers
+  var onHoldStoredData = localStorage.getItem('OnHold');
+  if (onHoldStoredData) {
+    cardData = JSON.parse(onHoldStoredData);
+  }
+
+  onHoldContainers.forEach(function(onHoldContainer) {
+    onHoldContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'OnHold');
+    });
+  });
+
+  // Similar code for .Dropped containers
+  var droppedStoredData = localStorage.getItem('Dropped');
+  if (droppedStoredData) {
+    cardData = JSON.parse(droppedStoredData);
+  }
+
+  droppedContainers.forEach(function(droppedContainer) {
+    droppedContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'Dropped');
+    });
+  });
+
+  // Similar code for .Wishlist containers
+  var wishlistStoredData = localStorage.getItem('Wishlist');
+  if (wishlistStoredData) {
+    cardData = JSON.parse(wishlistStoredData);
+  }
+
+  wishlistContainers.forEach(function(wishlistContainer) {
+    wishlistContainer.addEventListener('click', function(event) {
+      handleCardClick(event, cardData, 'Wishlist');
+    });
+  });
+
+  function handleCardClick(event, cardData, storageKey) {
+      var card = event.target.closest('.card');
+    if (card) {
+      // Extract card data
+      var title = card.querySelector('.title').textContent;
+      var image = card.querySelector('.card-image img').src;
+      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+      var href = card.querySelector('.card-image').href;
+      var currentDate = new Date();
+      var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+      var formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+      // Check if the card data is a duplicate
+      var isDuplicate = cardData.some(function(item) {
+        return item.title === title && item.image === strippedImage && item.href === href;
+      });
+
+      // If not a duplicate, add the card data to the array and store in local storage
+      if (!isDuplicate) {
+        var data = {
+          "title": title,
+          "image": strippedImage,
+          "href": href,
+          "dateAdded": formattedDate
+        };
+
+        cardData.push(data);
+        var jsonData = JSON.stringify(cardData);
+        localStorage.setItem(storageKey, jsonData);
+      }
+    }
+  }
 });
 // history
 
