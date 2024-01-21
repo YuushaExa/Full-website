@@ -57,56 +57,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-function handleCardClick(event, cardData, storageKey) {
-  var card = event.target.closest('.card');
-  if (card) {
-    var title = card.querySelector('.title').textContent;
-    var image = card.querySelector('.card-image img').src;
-    var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-    var href = card.querySelector('.card-image').href;
-    var currentDate = new Date();
-    var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-    var formattedDate = currentDate.toLocaleDateString('en-US', options);
+  function handleCardClick(event, cardData, storageKey) {
+    var card = event.target.closest('.card');
+    if (card) {
+      var title = card.querySelector('.title').textContent;
+      var image = card.querySelector('.card-image img').src;
+      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+      var href = card.querySelector('.card-image').href;
+      var currentDate = new Date();
+      var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+      var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-    var isDuplicate = cardData.some(function(item) {
-      return item.title === title && item.image === strippedImage && item.href === href;
-    });
-
-    if (!isDuplicate) {
-      var otherCardData;
-      var otherStorageKeys;
-
-      if (storageKey === 'Backlog') {
-        otherCardData = playingData || []; // Initialize as an empty array if undefined
-        otherStorageKeys = ['Playing'];
-      } else if (storageKey === 'Playing') {
-        otherCardData = backlogData || []; // Initialize as an empty array if undefined
-        otherStorageKeys = ['Backlog'];
-      }
-
-      var otherCardIndex = otherCardData.findIndex(function(item) {
+      var isDuplicate = cardData.some(function(item) {
         return item.title === title && item.image === strippedImage && item.href === href;
       });
 
-      if (otherCardIndex !== -1) {
-        otherCardData.splice(otherCardIndex, 1);
-        otherStorageKeys.forEach(function(key) {
-          localStorage.setItem(key, JSON.stringify(otherCardData));
+      if (!isDuplicate) {
+        // Remove the card from the other sections if it exists there
+        var otherCardData;
+        var otherStorageKeys;
+
+        if (storageKey === 'Backlog') {
+          otherCardData = playingData.concat(completedData);
+          otherStorageKeys = ['Playing', 'Completed'];
+        } else if (storageKey === 'Playing') {
+          otherCardData = backlogData.concat(completedData);
+          otherStorageKeys = ['Backlog', 'Completed'];
+        } else if (storageKey === 'Completed') {
+          otherCardData = backlogData.concat(playingData);
+          otherStorageKeys = ['Backlog', 'Playing'];
+        }
+
+        var otherCardIndex = otherCardData.findIndex(function(item) {
+          return item.title === title && item.image === strippedImage && item.href === href;
         });
+
+        if (otherCardIndex !== -1) {
+          otherCardData.splice(otherCardIndex, 1);
+          otherStorageKeys.forEach(function(key) {
+            localStorage.setItem(key, JSON.stringify(otherCardData));
+          });
+        }
+
+        var data = {
+          "title": title,
+          "image": strippedImage,
+          "href": href,
+          "dateAdded": formattedDate
+        };
+
+        cardData.push(data);
+        localStorage.setItem(storageKey, JSON.stringify(cardData));
       }
-
-      var data = {
-        "title": title,
-        "image": strippedImage,
-        "href": href,
-        "dateAdded": formattedDate
-      };
-
-      cardData.push(data);
-      localStorage.setItem(storageKey, JSON.stringify(cardData));
     }
   }
-}
 });
 // history
 
