@@ -12,6 +12,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
+  var sectionClasses = ['.Playing', '.Backlog', '.Completed', '.OnHold', '.Dropped', '.Wishlist'];
+
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var storedData = localStorage.getItem(storageKey);
@@ -46,6 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
           cardData.push(data);
           var jsonData = JSON.stringify(cardData);
+
+          sectionClasses.forEach(function(section) {
+            if (section !== sectionClass) {
+              localStorage.removeItem(section);
+            }
+          });
+
           localStorage.setItem(storageKey, jsonData);
         }
       });
@@ -53,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   handleCardClick('.Playing', 'Playing');
-  handleCardClick('.Backlog', 'Backlog');
-  handleCardClick('.Completed', 'Completed');
-  handleCardClick('.OnHold', 'OnHold');
-  handleCardClick('.Dropped', 'Dropped');
-  handleCardClick('.Wishlist', 'Wishlist');
+  handleCardClick('.Backlog', 'Playing');
+  handleCardClick('.Completed', 'Playing');
+  handleCardClick('.OnHold', 'Playing');
+  handleCardClick('.Dropped', 'Playing');
+  handleCardClick('.Wishlist', 'Playing');
 });
 // history
 
