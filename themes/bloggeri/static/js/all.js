@@ -11,7 +11,6 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
   });
 
 // played 
-
 document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
@@ -35,14 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          var existingCardIndex = cardData.findIndex(function(item) {
-            return item.title === title && item.image === strippedImage && item.href === href;
+          // Remove existing card from all sections
+          cardData = cardData.filter(function(item) {
+            return item.title !== title && item.image !== strippedImage && item.href !== href;
           });
-
-          if (existingCardIndex !== -1) {
-            // Remove existing card from the array
-            cardData.splice(existingCardIndex, 1);
-          }
 
           var data = {
             "title": title,
@@ -63,8 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
   handleCardClick('.Completed', 'Completed');
   handleCardClick('.Playing', 'Playing');
 });
-
-//
 
 // history
 
