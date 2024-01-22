@@ -11,71 +11,68 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
   });
 
 // played 
-document.addEventListener('DOMContentLoaded', function() {
-  function handleCardClick(sectionClass, storageKey) {
-    var cardsContainers = document.querySelectorAll(sectionClass);
-    var cardData = [];
+function handleCardClick(sectionClass, storageKey) {
+  var cardsContainers = document.querySelectorAll(sectionClass);
+  var cardData = [];
 
-    var storedData = localStorage.getItem(storageKey);
-    if (storedData) {
-      cardData = JSON.parse(storedData);
-    }
-
-    cardsContainers.forEach(function(cardsContainer) {
-      cardsContainer.addEventListener('click', function(event) {
-        var card = event.target.closest('.card');
-        if (card) {
-          var title = card.querySelector('.title').textContent;
-          var image = card.querySelector('.card-image img').src;
-          var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-          var href = card.querySelector('.card-image').href;
-          var currentDate = new Date();
-          var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-          var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-          var isDuplicate = cardData.some(function(item) {
-            return item.title === title && item.image === strippedImage && item.href === href;
-          });
-
-          if (!isDuplicate) {
-            // Remove card from other keys
-            Object.keys(localStorage).forEach(function(key) {
-              if (key !== storageKey) {
-                var storedData = localStorage.getItem(key);
-                if (storedData) {
-                  var otherCardData = JSON.parse(storedData);
-                  var index = otherCardData.findIndex(function(item) {
-                    return item.title === title && item.image === strippedImage && item.href === href;
-                  });
-                  if (index !== -1) {
-                    otherCardData.splice(index, 1);
-                    var jsonData = JSON.stringify(otherCardData);
-                    localStorage.setItem(key, jsonData);
-                  }
-                }
-              }
-            });
-
-            var data = {
-              "title": title,
-              "image": strippedImage,
-              "href": href,
-              "dateAdded": formattedDate
-            };
-
-            cardData.push(data);
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
-          }
-        }
-      });
-    });
+  var storedData = localStorage.getItem(storageKey);
+  if (storedData) {
+    cardData = JSON.parse(storedData);
   }
 
-  handleCardClick('.Backlog', 'Backlog');
-  handleCardClick('.Completed', 'Completed');
-  handleCardClick('.Playing', 'Playing');
-});
+  cardsContainers.forEach(function (cardsContainer) {
+    cardsContainer.addEventListener('click', function (event) {
+      var card = event.target.closest('.card');
+      if (card) {
+        var title = card.querySelector('.title').textContent;
+        var image = card.querySelector('.card-image img').src;
+        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+        var href = card.querySelector('.card-image').href;
+        var currentDate = new Date();
+        var options = {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        };
+        var formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+        var isDuplicate = cardData.some(function (item) {
+          return item.title === title && item.image === strippedImage && item.href === href;
+        });
+
+        if (!isDuplicate) {
+          // Remove the card from other storageKey arrays
+          var storageKeys = ['Backlog', 'Completed', 'Playing'];
+          storageKeys.forEach(function (key) {
+            if (key !== storageKey) {
+              var storedData = localStorage.getItem(key);
+              if (storedData) {
+                var otherCardData = JSON.parse(storedData);
+                otherCardData = otherCardData.filter(function (item) {
+                  return !(item.title === title && item.image === strippedImage && item.href === href);
+                });
+                var jsonData = JSON.stringify(otherCardData);
+                localStorage.setItem(key, jsonData);
+              }
+            }
+          });
+
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem(storageKey, jsonData);
+        }
+      }
+    });
+  });
+}
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
