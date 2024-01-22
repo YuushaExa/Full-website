@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
-
+ 
     // Retrieve previously stored data from local storage
     var storedData = localStorage.getItem(storageKey);
     if (storedData) {
       cardData = JSON.parse(storedData);
     }
-
+ 
     cardsContainers.forEach(function(cardsContainer) {
       cardsContainer.addEventListener('click', function(event) {
         var card = event.target.closest('.card');
@@ -33,34 +33,42 @@ document.addEventListener('DOMContentLoaded', function() {
           var currentDate = new Date();
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-          var isDuplicate = cardData.some(function(item, index) {
-            if (item.title === title && item.image === strippedImage && item.href === href) {
-              // Remove the item if it is a duplicate
-              cardData.splice(index, 1);
-              return true;
-            }
-            return false;
+ 
+          var isDuplicate = cardData.some(function(item) {
+            return item.title === title && item.image === strippedImage && item.href === href;
           });
-
+ 
           if (!isDuplicate) {
+            // Remove the card from other sections if it exists
+            var otherSections = document.querySelectorAll('.card-container:not(' + sectionClass + ')');
+            otherSections.forEach(function(section) {
+              var index = cardData.findIndex(function(item) {
+                return item.title === title && item.image === strippedImage && item.href === href;
+              });
+              if (index !== -1) {
+                cardData.splice(index, 1);
+                // Update local storage for the other section
+                var jsonData = JSON.stringify(cardData);
+                localStorage.setItem(section.dataset.storageKey, jsonData);
+              }
+            });
+            
             var data = {
               "title": title,
               "image": strippedImage,
               "href": href,
               "dateAdded": formattedDate
             };
-
+ 
             cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
           }
-
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
   }
-
+ 
   handleCardClick('.Backlog', 'Backlog');
   handleCardClick('.Completed', 'Completed');
   handleCardClick('.Playing', 'Playing');
