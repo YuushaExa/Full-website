@@ -13,11 +13,10 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // played 
 document.addEventListener('DOMContentLoaded', function() {
   var sectionClasses = ['.Playing', '.Backlog', '.Completed', '.OnHold', '.Dropped', '.Wishlist'];
+  var cardData = [];
 
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
-    var storedData = localStorage.getItem(storageKey);
-    var cardData = storedData ? JSON.parse(storedData) : [];
 
     cardsContainers.forEach(function(cardsContainer) {
       cardsContainer.addEventListener('click', function(event) {
@@ -31,42 +30,51 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          var index = cardData.findIndex(function(item) {
+          var isDuplicate = cardData.some(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
 
-          if (index !== -1) {
-            cardData.splice(index, 1);
+          if (!isDuplicate) {
+            var data = {
+              "title": title,
+              "image": strippedImage,
+              "href": href,
+              "dateAdded": formattedDate
+            };
+
+            cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+
+            // Check and remove duplicates
+            sectionClasses.forEach(function(section) {
+              if (section !== sectionClass) {
+                var storedData = localStorage.getItem(section);
+                if (storedData) {
+                  var sectionData = JSON.parse(storedData);
+                  var duplicateIndex = sectionData.findIndex(function(item) {
+                    return item.title === title && item.image === strippedImage && item.href === href;
+                  });
+                  if (duplicateIndex !== -1) {
+                    sectionData.splice(duplicateIndex, 1);
+                    var sectionJsonData = JSON.stringify(sectionData);
+                    localStorage.setItem(section, sectionJsonData);
+                  }
+                }
+              }
+            });
           }
-
-          var data = {
-            "title": title,
-            "image": strippedImage,
-            "href": href,
-            "dateAdded": formattedDate
-          };
-
-          cardData.push(data);
-          var jsonData = JSON.stringify(cardData);
-
-          sectionClasses.forEach(function(section) {
-            if (section !== sectionClass) {
-              localStorage.removeItem(section);
-            }
-          });
-
-          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
   }
 
   handleCardClick('.Playing', 'Playing');
-  handleCardClick('.Backlog', 'Playing');
-  handleCardClick('.Completed', 'Playing');
-  handleCardClick('.OnHold', 'Playing');
-  handleCardClick('.Dropped', 'Playing');
-  handleCardClick('.Wishlist', 'Playing');
+  handleCardClick('.Backlog', 'Backlog');
+  handleCardClick('.Completed', 'Completed');
+  handleCardClick('.OnHold', 'OnHold');
+  handleCardClick('.Dropped', 'Dropped');
+  handleCardClick('.Wishlist', 'Wishlist');
 });
 // history
 
