@@ -38,28 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
           });
 
           if (!isDuplicate) {
-            // Remove the card from other sections if it exists there
-            Object.keys(localStorage).forEach(function(key) {
-              if (key !== storageKey) {
-                var storedData = localStorage.getItem(key);
-                if (storedData) {
-                  var sectionData = JSON.parse(storedData);
-                  var index = -1;
-                  for (var i = 0; i < sectionData.length; i++) {
-                    if (sectionData[i].title === title && sectionData[i].image === strippedImage && sectionData[i].href === href) {
-                      index = i;
-                      break;
-                    }
-                  }
-                  if (index !== -1) {
-                    sectionData.splice(index, 1);
-                    var jsonData = JSON.stringify(sectionData);
-                    localStorage.setItem(key, jsonData);
-                  }
-                }
-              }
-            });
-
             var data = {
               "title": title,
               "image": strippedImage,
