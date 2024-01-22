@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
-
+ 
     var storedData = localStorage.getItem(storageKey);
     if (storedData) {
       cardData = JSON.parse(storedData);
     }
-
+ 
     cardsContainers.forEach(function(cardsContainer) {
       cardsContainer.addEventListener('click', function(event) {
         var card = event.target.closest('.card');
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
           var currentDate = new Date();
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
+ 
           var isDuplicate = cardData.some(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
-
+ 
           if (!isDuplicate) {
             var data = {
               "title": title,
@@ -44,32 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
               "href": href,
               "dateAdded": formattedDate
             };
-
+ 
             cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+          } else {
+            // Remove the duplicate item from cardData array
+            cardData = cardData.filter(function(item) {
+              return !(item.title === title && item.image === strippedImage && item.href === href);
+            });
             var jsonData = JSON.stringify(cardData);
             localStorage.setItem(storageKey, jsonData);
           }
         }
       });
     });
-
-    // Check for duplicates and remove them
-    var uniqueData = [];
-    cardData.forEach(function(item) {
-      var isDuplicate = uniqueData.some(function(uniqueItem) {
-        return uniqueItem.title === item.title && uniqueItem.image === item.image && uniqueItem.href === item.href;
-      });
-
-      if (!isDuplicate) {
-        uniqueData.push(item);
-      }
-    });
-
-    // Update localStorage with unique data
-    var uniqueJsonData = JSON.stringify(uniqueData);
-    localStorage.setItem(storageKey, uniqueJsonData);
   }
-
+ 
   handleCardClick('.Playing', 'Playing');
   handleCardClick('.Backlog', 'Backlog');
   handleCardClick('.Completed', 'Completed');
