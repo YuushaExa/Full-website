@@ -12,7 +12,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
-  var activeStorageKey = '';
+  var currentStorageKey = null; // Track the current storage key
 
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
@@ -52,12 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
             var jsonData = JSON.stringify(cardData);
             localStorage.setItem(storageKey, jsonData);
 
-            // Delete previous data if a new storageKey is selected
-            if (activeStorageKey !== '' && activeStorageKey !== storageKey) {
-              localStorage.removeItem(activeStorageKey);
+            // Check if a previous storage key exists
+            if (currentStorageKey && currentStorageKey !== storageKey) {
+              var previousData = localStorage.getItem(currentStorageKey);
+              if (previousData) {
+                var previousCardData = JSON.parse(previousData);
+                var updatedCardData = previousCardData.filter(function(item) {
+                  return !(item.title === title && item.image === strippedImage && item.href === href);
+                });
+                var updatedJsonData = JSON.stringify(updatedCardData);
+                localStorage.setItem(currentStorageKey, updatedJsonData);
+              }
             }
-            
-            activeStorageKey = storageKey;
+
+            currentStorageKey = storageKey; // Update the current storage key
           }
         }
       });
