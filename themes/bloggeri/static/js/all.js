@@ -35,22 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          var isDuplicate = cardData.some(function(item) {
+          var existingCardIndex = cardData.findIndex(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
 
-          if (!isDuplicate) {
-            var data = {
-              "title": title,
-              "image": strippedImage,
-              "href": href,
-              "dateAdded": formattedDate
-            };
-
-            cardData.push(data);
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
+          if (existingCardIndex !== -1) {
+            // Remove existing card from the array
+            cardData.splice(existingCardIndex, 1);
           }
+
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
