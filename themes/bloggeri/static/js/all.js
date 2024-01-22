@@ -38,6 +38,24 @@ document.addEventListener('DOMContentLoaded', function() {
           });
 
           if (!isDuplicate) {
+            // Remove card from other keys
+            Object.keys(localStorage).forEach(function(key) {
+              if (key !== storageKey) {
+                var storedData = localStorage.getItem(key);
+                if (storedData) {
+                  var otherCardData = JSON.parse(storedData);
+                  var index = otherCardData.findIndex(function(item) {
+                    return item.title === title && item.image === strippedImage && item.href === href;
+                  });
+                  if (index !== -1) {
+                    otherCardData.splice(index, 1);
+                    var jsonData = JSON.stringify(otherCardData);
+                    localStorage.setItem(key, jsonData);
+                  }
+                }
+              }
+            });
+
             var data = {
               "title": title,
               "image": strippedImage,
