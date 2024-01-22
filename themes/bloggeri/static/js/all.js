@@ -14,12 +14,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
-    var cardData = [];
-
     var storedData = localStorage.getItem(storageKey);
-    if (storedData) {
-      cardData = JSON.parse(storedData);
-    }
+    var cardData = storedData ? JSON.parse(storedData) : [];
 
     cardsContainers.forEach(function(cardsContainer) {
       cardsContainer.addEventListener('click', function(event) {
@@ -33,22 +29,24 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          var isDuplicate = cardData.some(function(item) {
+          var index = cardData.findIndex(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
 
-          if (!isDuplicate) {
-            var data = {
-              "title": title,
-              "image": strippedImage,
-              "href": href,
-              "dateAdded": formattedDate
-            };
-
-            cardData.push(data);
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
+          if (index !== -1) {
+            cardData.splice(index, 1);
           }
+
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
