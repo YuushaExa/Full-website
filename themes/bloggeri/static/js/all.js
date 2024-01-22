@@ -24,6 +24,7 @@ function handleCardClick(sectionClass, storageKey) {
     cardsContainer.addEventListener('click', function (event) {
       var card = event.target.closest('.card');
       if (card) {
+        var id = card.getAttribute('data-id');
         var title = card.querySelector('.title').textContent;
         var image = card.querySelector('.card-image img').src;
         var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
@@ -38,7 +39,7 @@ function handleCardClick(sectionClass, storageKey) {
         var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
         var isDuplicate = cardData.some(function (item) {
-          return item.title === title && item.image === strippedImage && item.href === href;
+          return item.id === id;
         });
 
         if (!isDuplicate) {
@@ -50,7 +51,7 @@ function handleCardClick(sectionClass, storageKey) {
               if (storedData) {
                 var otherCardData = JSON.parse(storedData);
                 otherCardData = otherCardData.filter(function (item) {
-                  return !(item.title === title && item.image === strippedImage && item.href === href);
+                  return item.id !== id;
                 });
                 var jsonData = JSON.stringify(otherCardData);
                 localStorage.setItem(key, jsonData);
@@ -59,6 +60,7 @@ function handleCardClick(sectionClass, storageKey) {
           });
 
           var data = {
+            "id": id,
             "title": title,
             "image": strippedImage,
             "href": href,
