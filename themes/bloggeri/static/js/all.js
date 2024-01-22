@@ -12,6 +12,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
+  var activeStorageKey = '';
+
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
@@ -34,21 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          // Remove existing card from all sections
-          cardData = cardData.filter(function(item) {
-            return item.title !== title && item.image !== strippedImage && item.href !== href;
+          var isDuplicate = cardData.some(function(item) {
+            return item.title === title && item.image === strippedImage && item.href === href;
           });
 
-          var data = {
-            "title": title,
-            "image": strippedImage,
-            "href": href,
-            "dateAdded": formattedDate
-          };
+          if (!isDuplicate) {
+            var data = {
+              "title": title,
+              "image": strippedImage,
+              "href": href,
+              "dateAdded": formattedDate
+            };
 
-          cardData.push(data);
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem(storageKey, jsonData);
+            cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+
+            // Delete previous data if a new storageKey is selected
+            if (activeStorageKey !== '' && activeStorageKey !== storageKey) {
+              localStorage.removeItem(activeStorageKey);
+            }
+            
+            activeStorageKey = storageKey;
+          }
         }
       });
     });
@@ -58,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
   handleCardClick('.Completed', 'Completed');
   handleCardClick('.Playing', 'Playing');
 });
-
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
