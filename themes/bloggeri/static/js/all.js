@@ -16,9 +16,6 @@ function handleCardClick(sectionClass, storageKey) {
 var cardsContainers = document.querySelectorAll(sectionClass);
 var cardData = [];
 
-ini
-Copy
-// Retrieve previously stored data from local storage
 var storedData = localStorage.getItem(storageKey);
 if (storedData) {
   cardData = JSON.parse(storedData);
