@@ -12,8 +12,6 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
-  var currentStorageKey = null; // Track the current storage key
-
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
@@ -36,37 +34,24 @@ document.addEventListener('DOMContentLoaded', function() {
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
 
-          var isDuplicate = cardData.some(function(item) {
+          var duplicateIndex = cardData.findIndex(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
 
-          if (!isDuplicate) {
-            var data = {
-              "title": title,
-              "image": strippedImage,
-              "href": href,
-              "dateAdded": formattedDate
-            };
-
-            cardData.push(data);
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
-
-            // Check if a previous storage key exists
-            if (currentStorageKey && currentStorageKey !== storageKey) {
-              var previousData = localStorage.getItem(currentStorageKey);
-              if (previousData) {
-                var previousCardData = JSON.parse(previousData);
-                var updatedCardData = previousCardData.filter(function(item) {
-                  return !(item.title === title && item.image === strippedImage && item.href === href);
-                });
-                var updatedJsonData = JSON.stringify(updatedCardData);
-                localStorage.setItem(currentStorageKey, updatedJsonData);
-              }
-            }
-
-            currentStorageKey = storageKey; // Update the current storage key
+          if (duplicateIndex !== -1) {
+            cardData.splice(duplicateIndex, 1); // Remove the original duplicate
           }
+
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
