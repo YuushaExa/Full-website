@@ -48,17 +48,26 @@ document.addEventListener('DOMContentLoaded', function() {
             cardData.push(data);
             var jsonData = JSON.stringify(cardData);
             localStorage.setItem(storageKey, jsonData);
-          } else {
-            // Remove the duplicate item from cardData array
-            cardData = cardData.filter(function(item) {
-              return !(item.title === title && item.image === strippedImage && item.href === href);
-            });
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
           }
         }
       });
     });
+
+    // Check for duplicates and remove them
+    var uniqueData = [];
+    cardData.forEach(function(item) {
+      var isDuplicate = uniqueData.some(function(uniqueItem) {
+        return uniqueItem.title === item.title && uniqueItem.image === item.image && uniqueItem.href === item.href;
+      });
+
+      if (!isDuplicate) {
+        uniqueData.push(item);
+      }
+    });
+
+    // Update localStorage with unique data
+    var uniqueJsonData = JSON.stringify(uniqueData);
+    localStorage.setItem(storageKey, uniqueJsonData);
   }
 
   handleCardClick('.Playing', 'Playing');
