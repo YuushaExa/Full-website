@@ -44,9 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 var storedData = localStorage.getItem(key);
                 if (storedData) {
                   var sectionData = JSON.parse(storedData);
-                  var index = sectionData.findIndex(function(item) {
-                    return item.title === title && item.image === strippedImage && item.href === href;
-                  });
+                  var index = -1;
+                  for (var i = 0; i < sectionData.length; i++) {
+                    if (sectionData[i].title === title && sectionData[i].image === strippedImage && sectionData[i].href === href) {
+                      index = i;
+                      break;
+                    }
+                  }
                   if (index !== -1) {
                     sectionData.splice(index, 1);
                     var jsonData = JSON.stringify(sectionData);
