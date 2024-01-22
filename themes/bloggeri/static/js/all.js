@@ -11,68 +11,68 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
   });
 
 // played 
-document.addEventListener('DOMContentLoaded', function() {
-  function handleCardClick(sectionClass, storageKey) {
-    var cardsContainers = document.querySelectorAll(sectionClass);
-    var cardData = [];
- 
-    // Retrieve previously stored data from local storage
-    var storedData = localStorage.getItem(storageKey);
-    if (storedData) {
-      cardData = JSON.parse(storedData);
-    }
- 
-    cardsContainers.forEach(function(cardsContainer) {
-      cardsContainer.addEventListener('click', function(event) {
-        var card = event.target.closest('.card');
-        if (card) {
-          var title = card.querySelector('.title').textContent;
-          var image = card.querySelector('.card-image img').src;
-          var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-          var href = card.querySelector('.card-image').href;
-          var currentDate = new Date();
-          var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-          var formattedDate = currentDate.toLocaleDateString('en-US', options);
- 
-          var isDuplicate = cardData.some(function(item) {
-            return item.title === title && item.image === strippedImage && item.href === href;
-          });
- 
-          if (!isDuplicate) {
-            // Remove the card from other sections if it exists
-            var otherSections = document.querySelectorAll('.card-container:not(' + sectionClass + ')');
-            otherSections.forEach(function(section) {
-              var index = cardData.findIndex(function(item) {
-                return item.title === title && item.image === strippedImage && item.href === href;
-              });
-              if (index !== -1) {
-                cardData.splice(index, 1);
-                // Update local storage for the other section
-                var jsonData = JSON.stringify(cardData);
-                localStorage.setItem(section.dataset.storageKey, jsonData);
-              }
-            });
-            
-            var data = {
-              "title": title,
-              "image": strippedImage,
-              "href": href,
-              "dateAdded": formattedDate
-            };
- 
-            cardData.push(data);
-            var jsonData = JSON.stringify(cardData);
-            localStorage.setItem(storageKey, jsonData);
-          }
-        }
-      });
-    });
+function handleCardClick(sectionClass, storageKey) {
+  var cardsContainers = document.querySelectorAll(sectionClass);
+  var cardData = [];
+
+  // Retrieve previously stored data from local storage
+  var storedData = localStorage.getItem(storageKey);
+  if (storedData) {
+    cardData = JSON.parse(storedData);
   }
- 
-  handleCardClick('.Backlog', 'Backlog');
-  handleCardClick('.Completed', 'Completed');
-  handleCardClick('.Playing', 'Playing');
-});
+
+  // Function to check for duplicates and remove them
+  function removeDuplicates() {
+    var uniqueData = [];
+    var duplicates = {};
+
+    cardData.forEach(function(item) {
+      var key = item.title + item.image + item.href;
+      if (!duplicates[key]) {
+        duplicates[key] = true;
+        uniqueData.push(item);
+      }
+    });
+
+    cardData = uniqueData;
+    var jsonData = JSON.stringify(cardData);
+    localStorage.setItem(storageKey, jsonData);
+  }
+
+  removeDuplicates(); // Check and remove duplicates before adding new item
+
+  cardsContainers.forEach(function(cardsContainer) {
+    cardsContainer.addEventListener('click', function(event) {
+      var card = event.target.closest('.card');
+      if (card) {
+        var title = card.querySelector('.title').textContent;
+        var image = card.querySelector('.card-image img').src;
+        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+        var href = card.querySelector('.card-image').href;
+        var currentDate = new Date();
+        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+        var formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+        var isDuplicate = cardData.some(function(item) {
+          return item.title === title && item.image === strippedImage && item.href === href;
+        });
+
+        if (!isDuplicate) {
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem(storageKey, jsonData);
+        }
+      }
+    });
+  });
+}
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
