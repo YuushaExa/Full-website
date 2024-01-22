@@ -12,75 +12,44 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
-  var backlogContainers = document.querySelectorAll('.Backlog');
-  var playingContainers = document.querySelectorAll('.Playing');
-  var backlogData = [];
-  var playingData = [];
+  function handleCardClick(sectionClass, storageKey) {
+    var cardsContainers = document.querySelectorAll(sectionClass);
+    var cardData = [];
 
-  // Retrieve previously stored data from local storage for Backlog
-  var backlogStoredData = localStorage.getItem('Backlog');
-  if (backlogStoredData) {
-    backlogData = JSON.parse(backlogStoredData);
-  }
-
-  backlogContainers.forEach(function(backlogContainer) {
-    backlogContainer.addEventListener('click', function(event) {
-      handleCardClick(event, backlogData, 'Backlog');
-    });
-  });
-
-  // Retrieve previously stored data from local storage for Playing
-  var playingStoredData = localStorage.getItem('Playing');
-  if (playingStoredData) {
-    playingData = JSON.parse(playingStoredData);
-  }
-
-  playingContainers.forEach(function(playingContainer) {
-    playingContainer.addEventListener('click', function(event) {
-      handleCardClick(event, playingData, 'Playing');
-    });
-  });
-
-  function handleCardClick(event, cardData, storageKey) {
-    var card = event.target.closest('.card');
-    if (card) {
-      var title = card.querySelector('.title').textContent;
-      var image = card.querySelector('.card-image img').src;
-      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-      var href = card.querySelector('.card-image').href;
-      var currentDate = new Date();
-      var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-      var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-      var isDuplicate = cardData.some(function(item) {
-        return item.title === title && item.image === strippedImage && item.href === href;
-      });
-
-      if (!isDuplicate) {
-        // Remove the card from the other section if it exists there
-        var otherCardData = storageKey === 'Backlog' ? playingData : backlogData;
-        var otherStorageKey = storageKey === 'Backlog' ? 'Playing' : 'Backlog';
-        var otherCardIndex = otherCardData.findIndex(function(item) {
-          return item.title === title && item.image === strippedImage && item.href === href;
-        });
-        if (otherCardIndex !== -1) {
-          otherCardData.splice(otherCardIndex, 1);
-          localStorage.setItem(otherStorageKey, JSON.stringify(otherCardData));
-        }
-
-        var data = {
-          "title": title,
-          "image": strippedImage,
-          "href": href,
-          "dateAdded": formattedDate
-        };
-
-        cardData.push(data);
-        var jsonData = JSON.stringify(cardData);
-        localStorage.setItem(storageKey, jsonData);
-      }
+    var storedData = localStorage.getItem(storageKey);
+    if (storedData) {
+      cardData = JSON.parse(storedData);
     }
+
+    cardsContainers.forEach(function(cardsContainer) {
+      cardsContainer.addEventListener('click', function(event) {
+        var card = event.target.closest('.card');
+        if (card) {
+          var title = card.querySelector('.title').textContent;
+          var image = card.querySelector('.card-image img').src;
+          var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+          var href = card.querySelector('.card-image').href;
+
+          var indexToRemove = -1;
+          cardData.forEach(function(item, index) {
+            if (item.title === title && item.image === strippedImage && item.href === href) {
+              indexToRemove = index;
+            }
+          });
+
+          if (indexToRemove !== -1) {
+            cardData.splice(indexToRemove, 1);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+          }
+        }
+      });
+    });
   }
+
+  handleCardClick('.Backlog', 'Backlog');
+  handleCardClick('.Completed', 'Completed');
+  handleCardClick('.Playing', 'Playing');
 });
 // history
 
