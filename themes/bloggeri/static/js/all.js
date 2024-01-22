@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
-
+ 
     // Retrieve previously stored data from local storage
     var storedData = localStorage.getItem(storageKey);
     if (storedData) {
       cardData = JSON.parse(storedData);
     }
-
+ 
     cardsContainers.forEach(function(cardsContainer) {
       cardsContainer.addEventListener('click', function(event) {
         var card = event.target.closest('.card');
@@ -33,30 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
           var currentDate = new Date();
           var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
           var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-          var duplicateIndex = cardData.findIndex(function(item) {
+ 
+          var isDuplicate = cardData.some(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
           });
-
-          if (duplicateIndex !== -1) {
-            cardData.splice(duplicateIndex, 1); // Remove the original duplicate
+ 
+          if (!isDuplicate) {
+            var data = {
+              "title": title,
+              "image": strippedImage,
+              "href": href,
+              "dateAdded": formattedDate
+            };
+ 
+            cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
           }
-
-          var data = {
-            "title": title,
-            "image": strippedImage,
-            "href": href,
-            "dateAdded": formattedDate
-          };
-
-          cardData.push(data);
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem(storageKey, jsonData);
         }
       });
     });
   }
-
+ 
   handleCardClick('.Backlog', 'Backlog');
   handleCardClick('.Completed', 'Completed');
   handleCardClick('.Playing', 'Playing');
