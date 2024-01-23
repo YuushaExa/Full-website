@@ -41,13 +41,10 @@ addButton.addEventListener("click", function() {
   listMenu.appendChild(wishlistItem);
 
   // Append the created list menu to the center of the page
-  const container = document.createElement("div");
-  container.style.display = "flex";
-  container.style.justifyContent = "center";
-  container.style.alignItems = "center";
-  container.style.height = "100vh";
-  container.appendChild(listMenu);
-  document.body.appendChild(container);
+  const Listcontainer = document.createElement("div");
+  ListcontainerItem.className = "Listcontainer";
+  Listcontainer.appendChild(listMenu);
+  document.body.appendChild(Listcontainer);
 });
 
 // played 
