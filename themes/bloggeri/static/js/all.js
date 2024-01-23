@@ -42,7 +42,7 @@ addButton.addEventListener("click", function() {
 
   // Append the created list menu to the center of the page
   const Listcontainer = document.createElement("div");
-  ListcontainerItem.className = "Listcontainer";
+  Listcontainer.className = "Listcontainer";
   Listcontainer.appendChild(listMenu);
   document.body.appendChild(Listcontainer);
 });
