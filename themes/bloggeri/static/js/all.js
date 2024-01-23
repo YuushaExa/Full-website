@@ -118,12 +118,7 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(listMenu);
     document.body.appendChild(Listcontainer);
 
-handleCardClick('.Playing', 'Playing');
-  handleCardClick('.Backlog', 'Backlog');
-  handleCardClick('.Completed', 'Completed');
-  handleCardClick('.OnHold', 'OnHold');
-  handleCardClick('.Dropped', 'Dropped');
-  handleCardClick('.Wishlist', 'Wishlist');
+handleCardClick();
   });
 });
 // history
