@@ -2,7 +2,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 
 // Get the button element
-const addButton = document.querySelector(".AddList");
+const addButton = document.querySelectorAll(".AddList");
 
 // Add a click event listener to the button
 addButton.addEventListener("click", function() {
