@@ -118,7 +118,7 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(listMenu);
     document.body.appendChild(Listcontainer);
 
-    handleCardClick(sectionClass, storageKey);
+    handleCardClick();
   });
 });
 // history
