@@ -50,7 +50,7 @@ addButtons.forEach(function(addButton) {
   });
 });
 
-$(document).on("click", ".AddList", function(event) {
+$(document).on("click", "#Listcontainer", function(event) {
   var modal2 = document.getElementById("Listcontainer");
   if (event.target == modal2) {
     var divElement = document.getElementById("Listcontainer");
@@ -59,7 +59,7 @@ divElement.parentNode.removeChild(divElement);
 });
 
 // played 
-$(document).on("click", "#Listcontainer", function(event) {
+$(document).on("click", ".AddList", function(event) {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
