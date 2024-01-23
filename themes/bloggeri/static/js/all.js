@@ -5,11 +5,8 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 // Select all buttons with the class "AddList"
 const addButtons = document.querySelectorAll(".AddList");
 
-// Loop through each button
 addButtons.forEach(function(addButton) {
-  // Add a click event listener to the button
   addButton.addEventListener("click", function() {
-    // Create the list menu and its items
     const listMenu = document.createElement("ul");
     listMenu.className = "List-Menu";
 
@@ -43,13 +40,15 @@ addButtons.forEach(function(addButton) {
     wishlistItem.textContent = "Wishlist";
     listMenu.appendChild(wishlistItem);
 
-    // Append the created list menu to the center of the page
     const Listcontainer = document.createElement("div");
     Listcontainer.id = "Listcontainer";
     Listcontainer.appendChild(listMenu);
-    document.body.appendChild(Listcontainer);
 
-     jQuery.getScript("/js/list.js");
+    // Append the Listcontainer to the .AddList element
+    addButton.appendChild(Listcontainer);
+
+    // Load external JavaScript file
+    jQuery.getScript("/js/list.js");
   });
 });
 
