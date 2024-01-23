@@ -2,8 +2,10 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 
 
-// Select all buttons with the class "AddList"
 const addButtons = document.querySelectorAll(".AddList");
+
+const Listcontainer = document.createElement("div");
+Listcontainer.id = "Listcontainer";
 
 addButtons.forEach(function(addButton) {
   addButton.addEventListener("click", function() {
@@ -40,17 +42,19 @@ addButtons.forEach(function(addButton) {
     wishlistItem.textContent = "Wishlist";
     listMenu.appendChild(wishlistItem);
 
-    const Listcontainer = document.createElement("div");
-    Listcontainer.id = "Listcontainer";
-    Listcontainer.appendChild(listMenu);
+    // Clear the existing content before adding the new list menu
+    Listcontainer.innerHTML = "";
 
-    // Append the Listcontainer to the .AddList element
-    addButton.appendChild(Listcontainer);
+    // Append the list menu to the Listcontainer
+    Listcontainer.appendChild(listMenu);
 
     // Load external JavaScript file
     jQuery.getScript("/js/list.js");
   });
 });
+
+// Append the Listcontainer to the body
+document.body.appendChild(Listcontainer);
 
 $(document).on("click", "#Listcontainer", function(event) {
   var modal2 = document.getElementById("Listcontainer");
