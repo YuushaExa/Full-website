@@ -44,10 +44,18 @@ addButtons.forEach(function(addButton) {
 
     // Append the created list menu to the center of the page
     const Listcontainer = document.createElement("div");
-    Listcontainer.className = "Listcontainer";
+    Listcontainer.id = "Listcontainer";
     Listcontainer.appendChild(listMenu);
     document.body.appendChild(Listcontainer);
   });
+});
+
+$(document).on("click", "#content-front", function(event) {
+  var modal2 = document.getElementById("Listcontainer");
+  if (event.target == modal2) {
+    var divElement = document.getElementById("Listcontainer");
+divElement.parentNode.removeChild(divElement);
+  }
 });
 
 // played 
