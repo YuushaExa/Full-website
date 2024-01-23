@@ -46,8 +46,6 @@ const Listcontainer = document.createElement("div");
 Listcontainer.id = "Listcontainer";
 Listcontainer.appendChild(listMenu);
 addButton.appendChild(Listcontainer);
-
- jQuery.getScript("/js/list.js");
 });
 });
 
