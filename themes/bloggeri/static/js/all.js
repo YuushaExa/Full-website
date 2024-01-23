@@ -48,6 +48,8 @@ addButtons.forEach(function(addButton) {
     Listcontainer.id = "Listcontainer";
     Listcontainer.appendChild(listMenu);
     document.body.appendChild(Listcontainer);
+
+     jQuery.getScript("/js/list.js");
   });
 });
 
