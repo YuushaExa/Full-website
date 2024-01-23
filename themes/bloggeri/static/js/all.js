@@ -59,7 +59,7 @@ divElement.parentNode.removeChild(divElement);
 });
 
 // played 
-$(document).on("click", ".List-Menu", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
     var cardData = [];
