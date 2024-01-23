@@ -45,7 +45,7 @@ listMenu.appendChild(wishlistItem);
 const Listcontainer = document.createElement("div");
 Listcontainer.id = "Listcontainer";
 Listcontainer.appendChild(listMenu);
-addButton.appendChild(Listcontainer);
+card.appendChild(Listcontainer);
 });
 });
 
