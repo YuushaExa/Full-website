@@ -50,7 +50,7 @@ addButtons.forEach(function(addButton) {
   });
 });
 
-$(document).on("click", "#Listcontainer", function(event) {
+$(document).on("click", ".AddList", function(event) {
   var modal2 = document.getElementById("Listcontainer");
   if (event.target == modal2) {
     var divElement = document.getElementById("Listcontainer");
