@@ -50,7 +50,7 @@ addButtons.forEach(function(addButton) {
   });
 });
 
-$(document).on("click", "#content-front", function(event) {
+$(document).on("click", ".List-Menu", function(event) {
   var modal2 = document.getElementById("Listcontainer");
   if (event.target == modal2) {
     var divElement = document.getElementById("Listcontainer");
