@@ -3,7 +3,6 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 
 // played 
-    {setTimeout(function(){
 document.addEventListener('DOMContentLoaded', function() {
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
     handleCardClick('.Wishlist', 'Wishlist');
   
 });  
-}, 1000)};
 // test
 
 const addButtons = document.querySelectorAll(".AddList");
@@ -80,10 +78,6 @@ addButtons.forEach(function(addButton) {
     playingItem.className = "Playing";
     playingItem.textContent = "Playing";
     listMenu.appendChild(playingItem);
-
-playingItem.addEventListener("click", function() {
-  handleCardClick('.Playing', 'Playing');
-});
       
     const completedItem = document.createElement("li");
     completedItem.className = "Completed";
