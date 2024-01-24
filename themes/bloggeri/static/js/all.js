@@ -70,13 +70,6 @@ addButtons.forEach(function(addButton) {
   // Add a click event listener to the button
   addButton.addEventListener("click", function() {
 
-        handleCardClick('.Playing', 'Playing');
-    handleCardClick('.Backlog', 'Backlog');
-    handleCardClick('.Completed', 'Completed');
-    handleCardClick('.OnHold', 'OnHold');
-    handleCardClick('.Dropped', 'Dropped');
-    handleCardClick('.Wishlist', 'Wishlist');
-    
     // Create the list menu and its items
     const listMenu = document.createElement("ul");
     listMenu.className = "List-Menu";
@@ -121,6 +114,12 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(card.cloneNode(true));
     document.body.appendChild(Listcontainer);
 
+      handleCardClick('.Playing', 'Playing');
+    handleCardClick('.Backlog', 'Backlog');
+    handleCardClick('.Completed', 'Completed');
+    handleCardClick('.OnHold', 'OnHold');
+    handleCardClick('.Dropped', 'Dropped');
+    handleCardClick('.Wishlist', 'Wishlist');
   });
 });
 
