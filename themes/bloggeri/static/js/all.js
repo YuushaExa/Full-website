@@ -53,6 +53,13 @@ addButtons.forEach(function(addButton) {
   });
 });
 
+$(document).on("click", "#Listcontainer", function(event) {
+  var modal2 = document.getElementById("Listcontainer");
+  if (event.target == modal2) {
+    var divElement = document.getElementById("Listcontainer");
+divElement.parentNode.removeChild(divElement);
+  }
+});
 // played 
 
 $(document).on('click', '.AddList', function(event) {
