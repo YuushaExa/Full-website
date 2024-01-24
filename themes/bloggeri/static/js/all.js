@@ -66,10 +66,9 @@ $(document).on('click', '.AddList', function(event) {
 const addButtons = document.querySelectorAll(".AddList");
 
 // Loop through each button
-addButtons.forEach(function(addButton) {
+addButtons.forEach(function (addButton) {
   // Add a click event listener to the button
-  addButton.addEventListener("click", function() {
-
+  addButton.addEventListener("click", function () {
     // Create the list menu and its items
     const listMenu = document.createElement("ul");
     listMenu.className = "List-Menu";
@@ -78,7 +77,7 @@ addButtons.forEach(function(addButton) {
     playingItem.className = "Playing";
     playingItem.textContent = "Playing";
     listMenu.appendChild(playingItem);
-      
+
     const completedItem = document.createElement("li");
     completedItem.className = "Completed";
     completedItem.textContent = "Completed";
@@ -113,7 +112,6 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(listMenu);
     Listcontainer.appendChild(card.cloneNode(true));
     document.body.appendChild(Listcontainer);
-     
   });
 });
 
