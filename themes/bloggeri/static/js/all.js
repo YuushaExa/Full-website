@@ -50,6 +50,9 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(listMenu);
     Listcontainer.appendChild(card.cloneNode(true));
     document.body.appendChild(Listcontainer);
+
+        jQuery.getScript("/js/list.js");
+
   });
 });
 
