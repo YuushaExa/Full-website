@@ -53,7 +53,7 @@ addButtons.forEach(function(addButton) {
 
 {setTimeout(function(){
     jQuery.getScript("/js/list.js");
-}, 300)};
+}, 3000)};
   });
 });
 
