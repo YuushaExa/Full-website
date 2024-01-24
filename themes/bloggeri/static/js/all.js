@@ -5,56 +5,52 @@ const addButtons = document.querySelectorAll(".AddList");
 
 // Loop through each button
 addButtons.forEach(function(addButton) {
-// Add a click event listener to the button
-addButton.addEventListener("click", function() {
-// Create the list menu and its items
-const listMenu = document.createElement("ul");
-listMenu.className = "List-Menu";
+  // Add a click event listener to the button
+  addButton.addEventListener("click", function() {
+    // Create the list menu and its items
+    const listMenu = document.createElement("ul");
+    listMenu.className = "List-Menu";
 
-const playingItem = document.createElement("li");
-playingItem.className = "Playing";
-playingItem.textContent = "Playing";
-listMenu.appendChild(playingItem);
+    const playingItem = document.createElement("li");
+    playingItem.className = "Playing";
+    playingItem.textContent = "Playing";
+    listMenu.appendChild(playingItem);
 
-const completedItem = document.createElement("li");
-completedItem.className = "Completed";
-completedItem.textContent = "Completed";
-listMenu.appendChild(completedItem);
+    const completedItem = document.createElement("li");
+    completedItem.className = "Completed";
+    completedItem.textContent = "Completed";
+    listMenu.appendChild(completedItem);
 
-const onHoldItem = document.createElement("li");
-onHoldItem.className = "OnHold";
-onHoldItem.textContent = "On Hold";
-listMenu.appendChild(onHoldItem);
+    const onHoldItem = document.createElement("li");
+    onHoldItem.className = "OnHold";
+    onHoldItem.textContent = "On Hold";
+    listMenu.appendChild(onHoldItem);
 
-const droppedItem = document.createElement("li");
-droppedItem.className = "Dropped";
-droppedItem.textContent = "Dropped";
-listMenu.appendChild(droppedItem);
+    const droppedItem = document.createElement("li");
+    droppedItem.className = "Dropped";
+    droppedItem.textContent = "Dropped";
+    listMenu.appendChild(droppedItem);
 
-const backlogItem = document.createElement("li");
-backlogItem.className = "Backlog";
-backlogItem.textContent = "Backlog";
-listMenu.appendChild(backlogItem);
+    const backlogItem = document.createElement("li");
+    backlogItem.className = "Backlog";
+    backlogItem.textContent = "Backlog";
+    listMenu.appendChild(backlogItem);
 
-const wishlistItem = document.createElement("li");
-wishlistItem.className = "Wishlist";
-wishlistItem.textContent = "Wishlist";
-listMenu.appendChild(wishlistItem);
+    const wishlistItem = document.createElement("li");
+    wishlistItem.className = "Wishlist";
+    wishlistItem.textContent = "Wishlist";
+    listMenu.appendChild(wishlistItem);
 
-// Append the created list menu to the center of the page
-const Listcontainer = document.createElement("div");
-Listcontainer.id = "Listcontainer";
-Listcontainer.appendChild(listMenu);
-document.body.appendChild(Listcontainer);
-});
-});
+    // Get the closest '.card' element to the clicked button
+    const card = addButton.closest('.card');
 
-$(document).on("click", "#Listcontainer", function(event) {
-  var modal2 = document.getElementById("Listcontainer");
-  if (event.target == modal2) {
-    var divElement = document.getElementById("Listcontainer");
-divElement.parentNode.removeChild(divElement);
-  }
+    // Append the created list menu and the closest '.card' element to the Listcontainer
+    const Listcontainer = document.createElement("div");
+    Listcontainer.id = "Listcontainer";
+    Listcontainer.appendChild(listMenu);
+    Listcontainer.appendChild(card.cloneNode(true));
+    document.body.appendChild(Listcontainer);
+  });
 });
 
 // played 
