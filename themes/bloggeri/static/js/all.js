@@ -109,8 +109,8 @@ addButtons.forEach(function (addButton) {
     // Append the created list menu and the closest '.card' element to the Listcontainer
     const Listcontainer = document.createElement("div");
     Listcontainer.id = "Listcontainer";
-    Listcontainer.appendChild(listMenu);
     Listcontainer.appendChild(card.cloneNode(true));
+        card.appendChild(listMenu);
     document.body.appendChild(Listcontainer);
   });
 });
