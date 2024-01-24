@@ -81,6 +81,10 @@ addButtons.forEach(function(addButton) {
     playingItem.textContent = "Playing";
     listMenu.appendChild(playingItem);
 
+playingItem.addEventListener("click", function() {
+  handleCardClick('.Playing', 'Playing');
+});
+      
     const completedItem = document.createElement("li");
     completedItem.className = "Completed";
     completedItem.textContent = "Completed";
