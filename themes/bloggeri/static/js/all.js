@@ -63,27 +63,57 @@ document.addEventListener('DOMContentLoaded', function() {
 });  
 // test
 
-document.addEventListener('DOMContentLoaded', function() {
-  var addButtons = document.querySelectorAll('.AddLists');
-  addButtons.forEach(function(addButton) {
-    addButton.addEventListener('click', function() {
-      var Listcontainer = document.createElement('div');
-      Listcontainer.classList.add('Listcontainer');
+const addButtons = document.querySelectorAll(".AddList");
 
-      var dropdownList = document.createElement('ul');
-      dropdownList.classList.add('dropdownMenu');
+// Loop through each button
+addButtons.forEach(function(addButton) {
+  // Add a click event listener to the button
+  addButton.addEventListener("click", function() {
 
-      var listItems = ['Playing', 'On Hold', 'Dropped', 'Backlog', 'Wishlist'];
-      listItems.forEach(function(item) {
-        var listItem = document.createElement('li');
-        listItem.classList.add(item.replace(/\s+/g, ''));
-        listItem.textContent = item;
-        dropdownList.appendChild(listItem);
-      });
+    // Create the list menu and its items
+    const listMenu = document.createElement("ul");
+    listMenu.className = "List-Menu";
 
-      Listcontainer.appendChild(dropdownList);
-      document.body.appendChild(Listcontainer);
-    });
+    const playingItem = document.createElement("li");
+    playingItem.className = "Playing";
+    playingItem.textContent = "Playing";
+    listMenu.appendChild(playingItem);
+      
+    const completedItem = document.createElement("li");
+    completedItem.className = "Completed";
+    completedItem.textContent = "Completed";
+    listMenu.appendChild(completedItem);
+
+    const onHoldItem = document.createElement("li");
+    onHoldItem.className = "OnHold";
+    onHoldItem.textContent = "On Hold";
+    listMenu.appendChild(onHoldItem);
+
+    const droppedItem = document.createElement("li");
+    droppedItem.className = "Dropped";
+    droppedItem.textContent = "Dropped";
+    listMenu.appendChild(droppedItem);
+
+    const backlogItem = document.createElement("li");
+    backlogItem.className = "Backlog";
+    backlogItem.textContent = "Backlog";
+    listMenu.appendChild(backlogItem);
+
+    const wishlistItem = document.createElement("li");
+    wishlistItem.className = "Wishlist";
+    wishlistItem.textContent = "Wishlist";
+    listMenu.appendChild(wishlistItem);
+
+    // Get the closest '.card' element to the clicked button
+    const card = addButton.closest('.card');
+
+    // Append the created list menu and the closest '.card' element to the Listcontainer
+    const Listcontainer = document.createElement("div");
+    Listcontainer.id = "Listcontainer";
+    Listcontainer.appendChild(listMenu);
+    Listcontainer.appendChild(card.cloneNode(true));
+    document.body.appendChild(Listcontainer);
+     
   });
 });
 
