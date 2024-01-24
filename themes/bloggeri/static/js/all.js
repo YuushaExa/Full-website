@@ -114,12 +114,16 @@ addButtons.forEach(function(addButton) {
     Listcontainer.appendChild(card.cloneNode(true));
     document.body.appendChild(Listcontainer);
 
-      handleCardClick('.Playing', 'Playing');
+
+    {setTimeout(function(){
+ handleCardClick('.Playing', 'Playing');
     handleCardClick('.Backlog', 'Backlog');
     handleCardClick('.Completed', 'Completed');
     handleCardClick('.OnHold', 'OnHold');
     handleCardClick('.Dropped', 'Dropped');
     handleCardClick('.Wishlist', 'Wishlist');
+    }, 300)};
+     
   });
 });
 
