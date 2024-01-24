@@ -64,24 +64,26 @@ document.addEventListener('DOMContentLoaded', function() {
 // test
 
 document.addEventListener('DOMContentLoaded', function() {
-  var addButton = document.querySelector('.AddLists');
-  addButton.addEventListener('click', function() {
-    var dropdownContainer = document.createElement('div');
-    dropdownContainer.classList.add('dropdownContainer');
-    
-    var dropdownList = document.createElement('ul');
-    dropdownList.classList.add('dropdownMenu');
-    
-    var listItems = ['Playing', 'On Hold', 'Dropped', 'Backlog', 'Wishlist'];
-    listItems.forEach(function(item) {
-      var listItem = document.createElement('li');
-      listItem.classList.add(item.replace(/\s+/g, ''));
-      listItem.textContent = item;
-      dropdownList.appendChild(listItem);
+  var addButtons = document.querySelectorAll('.AddLists'); // Select all elements with the class "AddLists"
+  addButtons.forEach(function(addButton) { // Iterate over each element
+    addButton.addEventListener('click', function() {
+      var dropdownContainer = document.createElement('div');
+      Listcontainer.classList.add('Listcontainer');
+      
+      var dropdownList = document.createElement('ul');
+      dropdownList.classList.add('dropdownMenu');
+      
+      var listItems = ['Playing', 'On Hold', 'Dropped', 'Backlog', 'Wishlist'];
+      listItems.forEach(function(item) {
+        var listItem = document.createElement('li');
+        listItem.classList.add(item.replace(/\s+/g, ''));
+        listItem.textContent = item;
+        dropdownList.appendChild(listItem);
+      });
+      
+      Listcontainer.appendChild(dropdownList);
+      document.body.appendChild(Listcontainer);
     });
-    
-    dropdownContainer.appendChild(dropdownList);
-    document.body.appendChild(dropdownContainer);
   });
 });
 
