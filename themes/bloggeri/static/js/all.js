@@ -4,109 +4,117 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 // played 
 document.addEventListener('DOMContentLoaded', function() {
-  const addButtons = document.querySelectorAll(".AddList");
-
-  addButtons.forEach(function(addButton) {
-    addButton.addEventListener("click", function() {
-      const listMenu = document.createElement("ul");
-      listMenu.className = "List-Menu";
-
-      const playingItem = document.createElement("li");
-      playingItem.className = "Playing";
-      playingItem.textContent = "Playing";
-      listMenu.appendChild(playingItem);
-
-      const completedItem = document.createElement("li");
-      completedItem.className = "Completed";
-      completedItem.textContent = "Completed";
-      listMenu.appendChild(completedItem);
-
-      const onHoldItem = document.createElement("li");
-      onHoldItem.className = "OnHold";
-      onHoldItem.textContent = "On Hold";
-      listMenu.appendChild(onHoldItem);
-
-      const droppedItem = document.createElement("li");
-      droppedItem.className = "Dropped";
-      droppedItem.textContent = "Dropped";
-      listMenu.appendChild(droppedItem);
-
-      const backlogItem = document.createElement("li");
-      backlogItem.className = "Backlog";
-      backlogItem.textContent = "Backlog";
-      listMenu.appendChild(backlogItem);
-
-      const wishlistItem = document.createElement("li");
-      wishlistItem.className = "Wishlist";
-      wishlistItem.textContent = "Wishlist";
-      listMenu.appendChild(wishlistItem);
-
-      const card = addButton.closest('.card');
-
-      const Listcontainer = document.createElement("div");
-      Listcontainer.id = "Listcontainer";
-      Listcontainer.appendChild(listMenu);
-      Listcontainer.appendChild(card.cloneNode(true));
-      document.body.appendChild(Listcontainer);
-    });
-  });
-
- function handleCardClick(sectionClass, storageKey) {
-  var cardsContainers = document.querySelectorAll(sectionClass);
-  var cardData = [];
-
-  var storedData = localStorage.getItem(storageKey);
-  if (storedData) {
-    cardData = JSON.parse(storedData);
-  }
-
-  cardsContainers.forEach(function(cardsContainer) {
-    cardsContainer.addEventListener('click', function(event) {
-      var card = event.target.closest('.card');
-      if (card) {
-        var title = card.querySelector('.title').textContent;
-        var image = card.querySelector('.card-image img').src;
-        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-        var href = card.querySelector('.card-image').href;
-        var currentDate = new Date();
-        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-        var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-        var isDuplicate = cardData.some(function(item) {
-          return item.title === title && item.image === strippedImage && item.href === href;
-        });
-
-        if (!isDuplicate) {
-          var data = {
-            "title": title,
-            "image": strippedImage,
-            "href": href,
-            "dateAdded": formattedDate
-          };
-
-          cardData.push(data);
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem(storageKey, jsonData);
-        } else {
-          cardData = cardData.filter(function(item) {
-            return !(item.title === title && item.image === strippedImage && item.href === href);
+  function handleCardClick(sectionClass, storageKey) {
+    var cardsContainers = document.querySelectorAll(sectionClass);
+    var cardData = [];
+ 
+    var storedData = localStorage.getItem(storageKey);
+    if (storedData) {
+      cardData = JSON.parse(storedData);
+    }
+ 
+    cardsContainers.forEach(function(cardsContainer) {
+      cardsContainer.addEventListener('click', function(event) {
+        var card = event.target.closest('.card');
+        if (card) {
+          var title = card.querySelector('.title').textContent;
+          var image = card.querySelector('.card-image img').src;
+          var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+          var href = card.querySelector('.card-image').href;
+          var currentDate = new Date();
+          var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+          var formattedDate = currentDate.toLocaleDateString('en-US', options);
+ 
+          var isDuplicate = cardData.some(function(item) {
+            return item.title === title && item.image === strippedImage && item.href === href;
           });
-          var jsonData = JSON.stringify(cardData);
-          localStorage.setItem(storageKey, jsonData);
+ 
+          if (!isDuplicate) {
+            var data = {
+              "title": title,
+              "image": strippedImage,
+              "href": href,
+              "dateAdded": formattedDate
+            };
+ 
+            cardData.push(data);
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+          } else {
+            // Remove the duplicate item from cardData array
+            cardData = cardData.filter(function(item) {
+              return !(item.title === title && item.image === strippedImage && item.href === href);
+            });
+            var jsonData = JSON.stringify(cardData);
+            localStorage.setItem(storageKey, jsonData);
+          }
         }
-      }
+      });
     });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-
+  }
+ 
   handleCardClick('.Playing', 'Playing');
-  handleCardClick('.Backlog', 'Backlog');
-  handleCardClick('.Completed', 'Completed');
-  handleCardClick('.OnHold', 'OnHold');
-  handleCardClick('.Dropped', 'Dropped');
-  handleCardClick('.Wishlist', 'Wishlist');
+    handleCardClick('.Backlog', 'Backlog');
+    handleCardClick('.Completed', 'Completed');
+    handleCardClick('.OnHold', 'OnHold');
+    handleCardClick('.Dropped', 'Dropped');
+    handleCardClick('.Wishlist', 'Wishlist');
+  
+});  
+// test
+
+const addButtons = document.querySelectorAll(".AddList");
+
+// Loop through each button
+addButtons.forEach(function(addButton) {
+  // Add a click event listener to the button
+  addButton.addEventListener("click", function() {
+
+    // Create the list menu and its items
+    const listMenu = document.createElement("ul");
+    listMenu.className = "List-Menu";
+
+    const playingItem = document.createElement("li");
+    playingItem.className = "Playing";
+    playingItem.textContent = "Playing";
+    listMenu.appendChild(playingItem);
+      
+    const completedItem = document.createElement("li");
+    completedItem.className = "Completed";
+    completedItem.textContent = "Completed";
+    listMenu.appendChild(completedItem);
+
+    const onHoldItem = document.createElement("li");
+    onHoldItem.className = "OnHold";
+    onHoldItem.textContent = "On Hold";
+    listMenu.appendChild(onHoldItem);
+
+    const droppedItem = document.createElement("li");
+    droppedItem.className = "Dropped";
+    droppedItem.textContent = "Dropped";
+    listMenu.appendChild(droppedItem);
+
+    const backlogItem = document.createElement("li");
+    backlogItem.className = "Backlog";
+    backlogItem.textContent = "Backlog";
+    listMenu.appendChild(backlogItem);
+
+    const wishlistItem = document.createElement("li");
+    wishlistItem.className = "Wishlist";
+    wishlistItem.textContent = "Wishlist";
+    listMenu.appendChild(wishlistItem);
+
+    // Get the closest '.card' element to the clicked button
+    const card = addButton.closest('.card');
+
+    // Append the created list menu and the closest '.card' element to the Listcontainer
+    const Listcontainer = document.createElement("div");
+    Listcontainer.id = "Listcontainer";
+    Listcontainer.appendChild(listMenu);
+    Listcontainer.appendChild(card.cloneNode(true));
+    document.body.appendChild(Listcontainer);
+     
+  });
 });
 
 $(document).on("click", "#Listcontainer", function(event) {
@@ -531,5 +539,4 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
-
 
