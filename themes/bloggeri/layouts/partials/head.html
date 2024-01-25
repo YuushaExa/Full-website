@@ -35,9 +35,10 @@ html{overflow-y:scroll;
 .star:last-of-type {
     color: #ffffff4d;
 }
-	      .star:last-of-type:hover{
-    color: black;
-}
+	  .star:last-of-type:hover,
+  .star:last-of-type:hover ~ .star {
+     color: rgb(255 255 0 / 50%);
+  }
 .star:not(:last-of-type):hover,
 .star:not(:last-of-type):hover ~ .star {
   color: yellow;
