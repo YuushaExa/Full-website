@@ -32,10 +32,12 @@ html{overflow-y:scroll;
     transition: color 0.3s; 
   }
 
-.star:first-of-type {
+.star:last-of-type {
     color: #ffffff4d;
 }
-	      
+	      .star:last-of-type:hover ~ .star {
+  opacity: 0.5;
+}
  .star:hover,
   .star:hover ~ .star {
     color: yellow; 
