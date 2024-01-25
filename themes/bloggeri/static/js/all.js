@@ -81,18 +81,25 @@ function handleStarClick(event) {
     return item.href === href;
   });
 
-  if (existingRatingIndex !== -1) {
-    // Update the rating if the href value already exists
-    existingRatingData[existingRatingIndex].rating = rating;
+  if (rating === "0") {
+    if (existingRatingIndex !== -1) {
+      // Remove the rating if the href value exists
+      existingRatingData.splice(existingRatingIndex, 1);
+    }
   } else {
-    // Create a new rating data object if the href value doesn't exist
-    var ratingData = {
-      href: href,
-      rating: rating
-    };
-  
-    // Add the new rating data to the existing array
-    existingRatingData.push(ratingData);
+    if (existingRatingIndex !== -1) {
+      // Update the rating if the href value already exists
+      existingRatingData[existingRatingIndex].rating = rating;
+    } else {
+      // Create a new rating data object if the href value doesn't exist
+      var ratingData = {
+        href: href,
+        rating: rating
+      };
+    
+      // Add the new rating data to the existing array
+      existingRatingData.push(ratingData);
+    }
   }
 
   // Convert the updated rating data to JSON
