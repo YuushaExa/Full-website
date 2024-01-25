@@ -150,18 +150,18 @@ var ratingContainer = document.createElement('span');
 
 // Create five <span> elements with class "star" and data-rating attribute
 for (var i = 5; i >= 1; i--) {
-  var span = document.createElement('span');
-  span.className = 'star';
-  span.setAttribute('data-rating', i);
-  span.textContent = '★';
-  ratingContainer.appendChild(span);
+  var rating = document.createElement('span');
+  rating.className = 'star';
+  rating.setAttribute('data-rating', i);
+  rating.textContent = '★';
+  ratingContainer.appendChild(rating);
 }
 
 // Add the ratingContainer to the main <div>
 div.appendChild(ratingContainer);
 
 // Add the <div> element to the document body
-document.body.appendChild(div);
+cardClone.appendChild(div);
     
   });
 });
