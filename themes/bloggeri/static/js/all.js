@@ -59,6 +59,26 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.OnHold', 'OnHold');
     handleCardClick('.Dropped', 'Dropped');
     handleCardClick('.Wishlist', 'Wishlist');
+
+  function handleStarClick(event) {
+  var star = event.target;
+  var rating = star.getAttribute('data-rating');
+  
+  // Find the closest card element
+  var card = event.target.closest('.card');
+  
+  // Get the href value from the card image
+  var href = card.querySelector('.card-image').href;
+  
+  // Store the rating in localStorage
+  localStorage.setItem("Stars", href + ': ' + rating);
+}
+
+// Add event listeners to all the stars
+var stars = document.querySelectorAll('.star');
+stars.forEach(function(star) {
+  star.addEventListener('click', handleStarClick);
+});
   
 });  
 // test
