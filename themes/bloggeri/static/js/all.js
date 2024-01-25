@@ -60,34 +60,42 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.Dropped', 'Dropped');
     handleCardClick('.Wishlist', 'Wishlist');
   
-// Function to handle star click event
+// rating
 function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
-  
+
   // Find the closest card element
   var card = event.target.closest('.card');
-  
+
   // Get the href value from the card image
   var href = card.querySelector('.card-image').href;
-  
-  // Create an object to store the rating data
+
+  // Retrieve existing rating data from localStorage
+  var existingRatingJSON = localStorage.getItem("Stars");
+  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
+  // Create a new rating data object
   var ratingData = {
     href: href,
     rating: rating
   };
-  
-  // Convert the rating data to JSON
-  var ratingJSON = JSON.stringify(ratingData);
-  
-  // Store the rating JSON in localStorage
-  localStorage.setItem("Stars", ratingJSON);
+
+  // Add the new rating data to the existing array
+  existingRatingData.push(ratingData);
+
+  // Convert the updated rating data to JSON
+  var updatedRatingJSON = JSON.stringify(existingRatingData);
+
+  // Store the updated rating JSON in localStorage
+  localStorage.setItem("Stars", updatedRatingJSON);
 }
+
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
 });
-  
+  // rating over
 });  
 // test
 
