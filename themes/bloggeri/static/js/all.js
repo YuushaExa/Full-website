@@ -145,14 +145,20 @@ addButtons.forEach(function (addButton) {
 var div = document.createElement('div');
 div.className = 'rating';
 
+// Create a single <span> element to wrap the stars
+var ratingContainer = document.createElement('span');
+
 // Create five <span> elements with class "star" and data-rating attribute
 for (var i = 5; i >= 1; i--) {
   var span = document.createElement('span');
   span.className = 'star';
   span.setAttribute('data-rating', i);
   span.textContent = '★';
-  cardClone.appendChild(span);
+  ratingContainer.appendChild(span);
 }
+
+// Add the ratingContainer to the main <div>
+div.appendChild(ratingContainer);
 
 // Add the <div> element to the document body
 document.body.appendChild(div);
