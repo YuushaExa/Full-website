@@ -59,7 +59,7 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.OnHold', 'OnHold');
     handleCardClick('.Dropped', 'Dropped');
     handleCardClick('.Wishlist', 'Wishlist');
-
+  
 // Function to handle star click event
 function handleStarClick(event) {
   var star = event.target;
@@ -141,6 +141,22 @@ addButtons.forEach(function (addButton) {
     cardClone.appendChild(listMenu);
     Listcontainer.appendChild(cardClone);
     document.body.appendChild(Listcontainer);
+
+var div = document.createElement('div');
+div.className = 'rating';
+
+// Create five <span> elements with class "star" and data-rating attribute
+for (var i = 5; i >= 1; i--) {
+  var span = document.createElement('span');
+  span.className = 'star';
+  span.setAttribute('data-rating', i);
+  span.textContent = '★';
+  cardClone.appendChild(span);
+}
+
+// Add the <div> element to the document body
+document.body.appendChild(div);
+    
   });
 });
 
