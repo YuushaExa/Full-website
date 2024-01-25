@@ -83,46 +83,10 @@ function handleStarClick(event) {
   // Store the rating JSON in localStorage
   localStorage.setItem("Stars", ratingJSON);
 }
-
-// Add event listeners to all the stars
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
 });
-function handleStarHover(event) {
-  var stars = document.querySelectorAll('.star');
-  var hoveredStar = event.target;
-  
-  // Add hover class to previous and current stars
-  stars.forEach(function(star) {
-    if (star.dataset.rating <= hoveredStar.dataset.rating) {
-      star.classList.add('hover');
-    } else {
-      star.classList.remove('hover');
-    }
-  });
-}
-
-// Function to handle star hover out event
-function handleStarHoverOut() {
-  var stars = document.querySelectorAll('.star');
-  
-  // Remove hover class from all stars
-  stars.forEach(function(star) {
-    star.classList.remove('hover');
-  });
-}
-
-// Add event listeners to stars
-var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('mouseenter', handleStarHover);
-});
-
-// Add event listener to rating container to handle hover out
-var ratingContainer = document.querySelector('.rating');
-ratingContainer.addEventListener('mouseleave', handleStarHoverOut);
-
   
 });  
 // test
