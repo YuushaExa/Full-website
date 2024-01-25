@@ -117,38 +117,34 @@ stars.forEach(function(star) {
   // rating over
 
   //
+var href = card.querySelector('.card-image').href;
 
-function getRatingFromLocalStorage(href) {
-  var existingRatingJSON = localStorage.getItem("Stars");
-  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-  var existingRating = existingRatingData.find(function(item) {
-    return item.href === href;
-  });
-  return existingRating ? existingRating.rating : "0";
-}
+// Retrieve existing rating data from localStorage or initialize an empty array
+var existingRatingJSON = localStorage.getItem("Stars");
+var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
 
-// Function to update the data-rating attribute of the star elements
-function updateStarRatings() {
-  var stars = document.querySelectorAll('.star');
-  stars.forEach(function(star) {
-    var card = star.closest('.card');
-    var href = card.querySelector('.card-image').href;
-    var rating = getRatingFromLocalStorage(href);
-    star.setAttribute('data-rating', rating);
-  });
-}
+// Check if the href value already exists in the existingRatingData array
+var existingRatingIndex = existingRatingData.findIndex(function(item) {
+  return item.href === href;
+});
 
-// Attach the click event listener to each HTML element with the class name "star"
+// Get the stars elements
 var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('click', handleStarClick);
-});
 
-// Update star ratings when the page is loaded
-window.addEventListener('load', function() {
-  updateStarRatings();
-});
+// Iterate over the stars and set the hover effect based on data-rating
+stars.forEach(function(star, index) {
+  // Get the rating value for the current star
+  var ratingValue = Number(star.getAttribute('data-rating'));
 
+  // Check if the rating value matches the existing rating for the href value
+  if (existingRatingIndex !== -1 && existingRatingData[existingRatingIndex].rating === ratingValue) {
+    // Add CSS class to initiate hover effect
+    star.classList.add('hover-effect');
+  } else {
+    // Remove CSS class if it exists
+    star.classList.remove('hover-effect');
+  }
+});
 //
 });  
 // test
