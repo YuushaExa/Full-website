@@ -105,12 +105,38 @@ function handleStarClick(event) {
 }
 
 function handleDocumentClick(event) {
-  // Check if the clicked element or its parent has the class "card"
-  var isCardElement = event.target.closest('.card') !== null;
+  // Find the closest card element
+  var card = event.target.closest('.card');
 
-  if (!isCardElement) {
-    // Remove the "Stars" key from localStorage if clicked outside the card elements
-    localStorage.removeItem("Stars");
+  if (card) {
+    var ratingDiv = card.querySelector('.rating-div');
+    var rect = ratingDiv.getBoundingClientRect();
+
+    // Check if the click occurred outside the rating div (within 10px)
+    if (event.clientX < rect.left - 10 || event.clientX > rect.right + 10 || event.clientY < rect.top - 10 || event.clientY > rect.bottom + 10) {
+      // Get the href value from the card image
+      var href = card.querySelector('.card-image').href;
+
+      // Retrieve existing rating data from localStorage
+      var existingRatingJSON = localStorage.getItem("Stars");
+      var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
+      // Check if the href value exists in the existingRatingData array
+      var existingRatingIndex = existingRatingData.findIndex(function(item) {
+        return item.href === href;
+      });
+
+      if (existingRatingIndex !== -1) {
+        // Remove the rating data for the selected href
+        existingRatingData.splice(existingRatingIndex, 1);
+
+        // Convert the updated rating data to JSON
+        var updatedRatingJSON = JSON.stringify(existingRatingData);
+
+        // Store the updated rating JSON in localStorage
+        localStorage.setItem("Stars", updatedRatingJSON);
+      }
+    }
   }
 }
 
