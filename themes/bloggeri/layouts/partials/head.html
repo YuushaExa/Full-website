@@ -29,11 +29,12 @@ html{overflow-y:scroll;
   flex-direction: column;
 	}
  .star {
-    transition: color 0.3s; /* Transition effect */
+    transition: color 0.3s; 
   }
 
-  .star:hover {
-    color: yellow; /* Color on hover */
+  .star.hover,
+  .star.hover ~ .star {
+    color: yellow; 
   }
  
 #Listcontainer {
