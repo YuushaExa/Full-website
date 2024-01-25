@@ -115,6 +115,41 @@ stars.forEach(function(star) {
 });
   
   // rating over
+
+  //
+
+function getRatingFromLocalStorage(href) {
+  var existingRatingJSON = localStorage.getItem("Stars");
+  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+  var existingRating = existingRatingData.find(function(item) {
+    return item.href === href;
+  });
+  return existingRating ? existingRating.rating : "0";
+}
+
+// Function to update the data-rating attribute of the star elements
+function updateStarRatings() {
+  var stars = document.querySelectorAll('.star');
+  stars.forEach(function(star) {
+    var card = star.closest('.card');
+    var href = card.querySelector('.card-image').href;
+    var rating = getRatingFromLocalStorage(href);
+    star.setAttribute('data-rating', rating);
+  });
+}
+
+// Attach the click event listener to each HTML element with the class name "star"
+var stars = document.querySelectorAll('.star');
+stars.forEach(function(star) {
+  star.addEventListener('click', handleStarClick);
+});
+
+// Update star ratings when the page is loaded
+window.addEventListener('load', function() {
+  updateStarRatings();
+});
+
+//
 });  
 // test
 
@@ -186,40 +221,7 @@ cardClone.appendChild(div);
 });
 
 
-//
 
-function getRatingFromLocalStorage(href) {
-  var existingRatingJSON = localStorage.getItem("Stars");
-  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-  var existingRating = existingRatingData.find(function(item) {
-    return item.href === href;
-  });
-  return existingRating ? existingRating.rating : "0";
-}
-
-// Function to update the data-rating attribute of the star elements
-function updateStarRatings() {
-  var stars = document.querySelectorAll('.star');
-  stars.forEach(function(star) {
-    var card = star.closest('.card');
-    var href = card.querySelector('.card-image').href;
-    var rating = getRatingFromLocalStorage(href);
-    star.setAttribute('data-rating', rating);
-  });
-}
-
-// Attach the click event listener to each HTML element with the class name "star"
-var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('click', handleStarClick);
-});
-
-// Update star ratings when the page is loaded
-window.addEventListener('load', function() {
-  updateStarRatings();
-});
-
-//
 $(document).on("click", "#Listcontainer", function(event) {
   var modal2 = document.getElementById("Listcontainer");
   if (event.target == modal2) {
