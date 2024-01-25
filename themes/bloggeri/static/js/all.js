@@ -61,6 +61,7 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.Wishlist', 'Wishlist');
   
 // rating
+// Function to handle star click event
 function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
@@ -74,6 +75,11 @@ function handleStarClick(event) {
   // Retrieve existing rating data from localStorage
   var existingRatingJSON = localStorage.getItem("Stars");
   var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
+  // Check if existingRatingData is an array
+  if (!Array.isArray(existingRatingData)) {
+    existingRatingData = [];
+  }
 
   // Create a new rating data object
   var ratingData = {
