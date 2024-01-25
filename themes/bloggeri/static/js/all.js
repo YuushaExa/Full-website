@@ -63,8 +63,6 @@ $(document).on('click', '.AddList', function(event) {
 // rating
 // Function to handle star click event
 function handleStarClick(event) {
-  event.stopPropagation(); // Stop event propagation to prevent triggering the document click handler
-
   var star = event.target;
   var rating = star.getAttribute('data-rating');
 
@@ -104,48 +102,10 @@ function handleStarClick(event) {
   localStorage.setItem("Stars", updatedRatingJSON);
 }
 
-function handleDocumentClick(event) {
-  // Find the closest card element
-  var card = event.target.closest('.card');
-
-  if (card) {
-    var ratingDiv = card.querySelector('.rating-div');
-    var rect = ratingDiv.getBoundingClientRect();
-
-    // Check if the click occurred outside the rating div (within 10px)
-    if (event.clientX < rect.left - 10 || event.clientX > rect.right + 10 || event.clientY < rect.top - 10 || event.clientY > rect.bottom + 10) {
-      // Get the href value from the card image
-      var href = card.querySelector('.card-image').href;
-
-      // Retrieve existing rating data from localStorage
-      var existingRatingJSON = localStorage.getItem("Stars");
-      var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-
-      // Check if the href value exists in the existingRatingData array
-      var existingRatingIndex = existingRatingData.findIndex(function(item) {
-        return item.href === href;
-      });
-
-      if (existingRatingIndex !== -1) {
-        // Remove the rating data for the selected href
-        existingRatingData.splice(existingRatingIndex, 1);
-
-        // Convert the updated rating data to JSON
-        var updatedRatingJSON = JSON.stringify(existingRatingData);
-
-        // Store the updated rating JSON in localStorage
-        localStorage.setItem("Stars", updatedRatingJSON);
-      }
-    }
-  }
-}
-
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
 });
-
-document.addEventListener('click', handleDocumentClick);
   
   // rating over
 });  
@@ -205,7 +165,7 @@ addButtons.forEach(function (addButton) {
 var div = document.createElement('div');
 div.className = 'rating';
 
-for (var i = 5; i >= 1; i--) {
+for (var i = 5; i >= 0; i--) {
   var rating = document.createElement('span');
   rating.className = 'star';
   rating.setAttribute('data-rating', i);
