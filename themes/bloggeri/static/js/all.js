@@ -63,6 +63,8 @@ $(document).on('click', '.AddList', function(event) {
 // rating
 // Function to handle star click event
 function handleStarClick(event) {
+  event.stopPropagation(); // Stop event propagation to prevent triggering the document click handler
+
   var star = event.target;
   var rating = star.getAttribute('data-rating');
 
@@ -102,10 +104,23 @@ function handleStarClick(event) {
   localStorage.setItem("Stars", updatedRatingJSON);
 }
 
+function handleDocumentClick(event) {
+  // Check if the clicked element or its parent has the class "card"
+  var isCardElement = event.target.closest('.card') !== null;
+
+  if (!isCardElement) {
+    // Remove the "Stars" key from localStorage if clicked outside the card elements
+    localStorage.removeItem("Stars");
+  }
+}
+
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
 });
+
+document.addEventListener('click', handleDocumentClick);
+  
   // rating over
 });  
 // test
