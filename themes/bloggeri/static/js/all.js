@@ -76,19 +76,24 @@ function handleStarClick(event) {
   var existingRatingJSON = localStorage.getItem("Stars");
   var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
 
-  // Check if existingRatingData is an array
-  if (!Array.isArray(existingRatingData)) {
-    existingRatingData = [];
+  // Check if the href value already exists in the existingRatingData array
+  var existingRatingIndex = existingRatingData.findIndex(function(item) {
+    return item.href === href;
+  });
+
+  if (existingRatingIndex !== -1) {
+    // Update the rating if the href value already exists
+    existingRatingData[existingRatingIndex].rating = rating;
+  } else {
+    // Create a new rating data object if the href value doesn't exist
+    var ratingData = {
+      href: href,
+      rating: rating
+    };
+  
+    // Add the new rating data to the existing array
+    existingRatingData.push(ratingData);
   }
-
-  // Create a new rating data object
-  var ratingData = {
-    href: href,
-    rating: rating
-  };
-
-  // Add the new rating data to the existing array
-  existingRatingData.push(ratingData);
 
   // Convert the updated rating data to JSON
   var updatedRatingJSON = JSON.stringify(existingRatingData);
