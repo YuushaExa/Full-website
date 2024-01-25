@@ -60,7 +60,8 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.Dropped', 'Dropped');
     handleCardClick('.Wishlist', 'Wishlist');
 
-  function handleStarClick(event) {
+// Function to handle star click event
+function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
   
@@ -70,8 +71,17 @@ $(document).on('click', '.AddList', function(event) {
   // Get the href value from the card image
   var href = card.querySelector('.card-image').href;
   
-  // Store the rating in localStorage
-  localStorage.setItem("Stars", href + ': ' + rating);
+  // Create an object to store the rating data
+  var ratingData = {
+    href: href,
+    rating: rating
+  };
+  
+  // Convert the rating data to JSON
+  var ratingJSON = JSON.stringify(ratingData);
+  
+  // Store the rating JSON in localStorage
+  localStorage.setItem("Stars", ratingJSON);
 }
 
 // Add event listeners to all the stars
