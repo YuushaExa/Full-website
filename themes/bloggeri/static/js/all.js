@@ -117,22 +117,7 @@ stars.forEach(function(star) {
   // rating over
 
   //
-var card = star.closest('.card');
-var href = card.querySelector('.card-image').href;
 
-// Check if the href value exists in localStorage
-var starsData = JSON.parse(localStorage.getItem('Stars'));
-if (starsData && starsData[href]) {
-  var ratingValue = starsData[href];
-
-  // Match the data-rating attribute with the rating value
-  var stars = document.querySelectorAll('.star[data-rating="' + ratingValue + '"]');
-
-  // Apply yellow color to matching elements
-  stars.forEach(function(star) {
-    star.style.color = 'yellow';
-  });
-}
 //
 });  
 // test
