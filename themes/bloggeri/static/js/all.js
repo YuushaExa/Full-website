@@ -108,31 +108,6 @@ function handleStarClick(event) {
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
 }
-//
-// Retrieve existing rating data from localStorage
-var existingRatingJSON = localStorage.getItem("Stars");
-var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-
-// Get the href value from the card image
-var href = document.querySelector('.card-image').href;
-
-// Find the rating for the current href
-var currentRating = getRatingForItem(existingRatingData, href);
-
-// Add "Hover" class to star elements matching the rating
-var stars = document.querySelectorAll('.star[data-rating="' + currentRating + '"]');
-stars.forEach(function(star) {
-  star.classList.add('Hover');
-});
-
-// Function to get the rating for a specific item
-function getRatingForItem(ratingData, href) {
-  var item = ratingData.find(function(item) {
-    return item.href === href;
-  });
-
-  return item ? item.rating : null;
-}
   
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
