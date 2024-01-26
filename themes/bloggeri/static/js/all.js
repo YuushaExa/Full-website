@@ -90,6 +90,13 @@ function handleStarClick(event) {
     return item.href === href;
   });
 
+  if (existingRatingIndex !== -1) {
+    var existingRating = existingRatingData[existingRatingIndex].rating;
+    if (existingRating === rating) {
+      star.classList.add('ShowHover');
+    }
+  }
+  
   if (rating === "0") {
     if (existingRatingIndex !== -1) {
       // Remove the rating if the href value exists
