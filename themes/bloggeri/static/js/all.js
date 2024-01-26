@@ -66,6 +66,7 @@ function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
 
+    star.classList.add('ShowRating');
   // Find the closest card element
   var card = event.target.closest('.card');
 
