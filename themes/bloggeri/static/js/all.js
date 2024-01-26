@@ -61,7 +61,6 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.Wishlist', 'Wishlist');
   
 // rating
-// Function to handle star click event
 function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
@@ -107,32 +106,24 @@ function handleStarClick(event) {
 
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
+
+  // Remove yellow color from all stars
+  var allStars = document.querySelectorAll('.star');
+  allStars.forEach(function(star) {
+    star.style.color = '';
+  });
+
+  // Apply yellow color to stars with matching rating
+  var matchingStars = document.querySelectorAll('.star[data-rating="' + rating + '"]');
+  matchingStars.forEach(function(star) {
+    star.style.color = 'yellow';
+  });
 }
 
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
 });
-  
-  // rating over
-
-  //
-var card = star.closest('.card');
-var href = card.querySelector('.card-image').href;
-
-// Check if the href value exists in localStorage
-var starsData = JSON.parse(localStorage.getItem('Stars'));
-if (starsData && starsData[href]) {
-  var ratingValue = starsData[href];
-
-  // Match the data-rating attribute with the rating value
-  var stars = document.querySelectorAll('.star[data-rating="' + ratingValue + '"]');
-
-  // Apply yellow color to matching elements
-  stars.forEach(function(star) {
-    star.style.color = 'yellow';
-  });
-}
 //
 });  
 // test
