@@ -109,6 +109,17 @@ function handleStarClick(event) {
   localStorage.setItem("Stars", updatedRatingJSON);
 }
 
+var existingRatingJSON = localStorage.getItem("Stars");
+var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
+// Add "Hover" class to star elements matching the rating
+existingRatingData.forEach(function(item) {
+  var stars = document.querySelectorAll('.star[data-rating="' + item.rating + '"]');
+  stars.forEach(function(star) {
+    star.classList.add('Hover');
+  });
+});
+  
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
