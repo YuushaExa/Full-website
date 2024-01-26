@@ -119,10 +119,6 @@ var href = document.querySelector('.card-image').href;
 // Find the rating for the current href
 var currentRating = getRatingForItem(existingRatingData, href);
 
-// Display the current rating
-var currentRatingElement = document.getElementById('current-rating');
-currentRatingElement.textContent = currentRating !== null ? currentRating : 'No rating';
-
 // Add "Hover" class to star elements matching the rating
 var stars = document.querySelectorAll('.star[data-rating="' + currentRating + '"]');
 stars.forEach(function(star) {
