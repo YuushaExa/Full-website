@@ -61,19 +61,7 @@ $(document).on('click', '.AddList', function(event) {
     handleCardClick('.Wishlist', 'Wishlist');
   
 // rating
-// Function to update the star elements with the "Hover" class based on the rating
-function updateStarHoverClass(rating) {
-  var stars = document.querySelectorAll('.star');
-  stars.forEach(function(star) {
-    var starRating = star.getAttribute('data-rating');
-    if (starRating === rating) {
-      star.classList.add('Hover');
-    } else {
-      star.classList.remove('Hover');
-    }
-  });
-}
-
+// Function to handle star click event
 function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
@@ -108,7 +96,7 @@ function handleStarClick(event) {
         href: href,
         rating: rating
       };
-
+    
       // Add the new rating data to the existing array
       existingRatingData.push(ratingData);
     }
@@ -119,51 +107,12 @@ function handleStarClick(event) {
 
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
-
-  // Update the star elements with the "Hover" class
-  updateStarHoverClass(rating);
 }
-
-// Function to retrieve the rating for a specific href value
-function getRatingForHref(href) {
-  var existingRatingJSON = localStorage.getItem("Stars");
-  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-
-  var existingRating = existingRatingData.find(function(item) {
-    return item.href === href;
-  });
-
-  if (existingRating) {
-    return existingRating.rating;
-  }
-
-  return "0"; // Default rating if href value is not found
-}
-
-// Function to handle mouseenter event on star elements
-function handleStarMouseEnter(event) {
-  var rating = event.target.getAttribute('data-rating');
-  updateStarHoverClass(rating);
-}
-
-// Function to handle mouseleave event on star elements
-function handleStarMouseLeave() {
-  var href = document.querySelector('.card .card-image').href;
-  var rating = getRatingForHref(href);
-  updateStarHoverClass(rating);
-}
-
+  
 var stars = document.querySelectorAll('.star');
 stars.forEach(function(star) {
   star.addEventListener('click', handleStarClick);
-  star.addEventListener('mouseenter', handleStarMouseEnter);
-  star.addEventListener('mouseleave', handleStarMouseLeave);
 });
-
-// Initial update of the star elements based on the rating for the first card
-var firstCardHref = document.querySelector('.card .card-image').href;
-var firstCardRating = getRatingForHref(firstCardHref);
-updateStarHoverClass(firstCardRating);
   
   // rating over
 
