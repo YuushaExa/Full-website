@@ -66,7 +66,15 @@ function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
 
-    star.classList.add('ShowRating');
+  // Remove the "ShowHover" class from all stars
+  var stars = document.querySelectorAll('.star');
+  stars.forEach(function(star) {
+    star.classList.remove('ShowHover');
+  });
+  
+  // Add the "ShowHover" class to the clicked element
+  star.classList.add('ShowHover');
+  
   // Find the closest card element
   var card = event.target.closest('.card');
 
