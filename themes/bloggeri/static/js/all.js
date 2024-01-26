@@ -117,80 +117,22 @@ stars.forEach(function(star) {
   // rating over
 
   //
-function handleStarClick(event) {
-  // Get the clicked star element
-  var star = event.target;
+var card = star.closest('.card');
+var href = card.querySelector('.card-image').href;
 
-  // Retrieve the rating value from the "data-rating" attribute of the star element
-  var rating = star.getAttribute('data-rating');
+// Check if the href value exists in localStorage
+var starsData = JSON.parse(localStorage.getItem('Stars'));
+if (starsData && starsData[href]) {
+  var ratingValue = starsData[href];
 
-  // Find the closest ancestor element with the class name "card"
-  var card = star.closest('.card');
+  // Match the data-rating attribute with the rating value
+  var stars = document.querySelectorAll('.star[data-rating="' + ratingValue + '"]');
 
-  // Retrieve the href value from the descendant element with the class name "card-image"
-  var href = card.querySelector('.card-image').href;
-
-  // Retrieve existing rating data from localStorage or initialize an empty array
-  var existingRatingJSON = localStorage.getItem("Stars");
-  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-
-  // Check if the href value already exists in the existingRatingData array
-  var existingRatingIndex = existingRatingData.findIndex(function(item) {
-    return item.href === href;
-  });
-
-  // If the rating is "0", remove the rating data if it exists
-  if (rating === "0") {
-    if (existingRatingIndex !== -1) {
-      existingRatingData.splice(existingRatingIndex, 1);
-    }
-  } else {
-    // If a rating other than "0" is selected
-    if (existingRatingIndex !== -1) {
-      // Update the rating if the href value already exists
-      existingRatingData[existingRatingIndex].rating = rating;
-    } else {
-      // Create a new rating data object if the href value doesn't exist
-      var ratingData = {
-        href: href,
-        rating: rating
-      };
-
-      // Add the new rating data to the existing array
-      existingRatingData.push(ratingData);
-    }
-  }
-
-  // Convert the updated rating data to JSON
-  var updatedRatingJSON = JSON.stringify(existingRatingData);
-
-  // Store the updated rating JSON in localStorage
-  localStorage.setItem("Stars", updatedRatingJSON);
-
-  // Get the stars elements
-  var stars = document.querySelectorAll('.star');
-
-  // Iterate over the stars and set the hover effect based on data-rating
-  stars.forEach(function(star, index) {
-    // Get the rating value for the current star
-    var ratingValue = Number(star.getAttribute('data-rating'));
-
-    // Check if the rating value matches the existing rating for the href value
-    if (existingRatingIndex !== -1 && existingRatingData[existingRatingIndex].rating === ratingValue) {
-      // Add CSS class to initiate hover effect
-      star.classList.add('hover-effect');
-    } else {
-      // Remove CSS class if it exists
-      star.classList.remove('hover-effect');
-    }
+  // Apply yellow color to matching elements
+  stars.forEach(function(star) {
+    star.style.color = 'yellow';
   });
 }
-
-// Attach the click event listener to each HTML element with the class name "star"
-var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('click', handleStarClick);
-});
 //
 });  
 // test
