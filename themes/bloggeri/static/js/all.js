@@ -194,14 +194,14 @@ stars.forEach(function(star) {
   // rating over
 
   //
-    var card = event.target.closest('.card');
+var card = event.target.closest('.card');
 var href = card.querySelector('.card-image').href;
 var starsData = JSON.parse(localStorage.getItem('Stars'));
 
 if (starsData && starsData[href]) {
   var rating = starsData[href];
   
-  var stars = document.querySelectorAll('.star');
+  var stars = card.querySelectorAll('.star');
   stars.forEach(function(star) {
     var starRating = star.getAttribute('data-rating');
     if (starRating === rating) {
