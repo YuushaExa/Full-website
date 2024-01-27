@@ -126,21 +126,7 @@ stars.forEach(function(star) {
   // rating over
 
   //
-var card = event.target.closest('.card');
-var href = card.querySelector('.card-image').href;
-var starsData = JSON.parse(localStorage.getItem('Stars'));
 
-if (starsData && starsData[href]) {
-  var rating = starsData[href];
-  
-  var stars = document.querySelectorAll('.star');
-  stars.forEach(function(star) {
-    var starRating = star.getAttribute('data-rating');
-    if (starRating === rating) {
-      star.classList.add('ShowHover');
-    }
-  });
-}
 //
 });  
 // test
@@ -208,7 +194,22 @@ for (var i = 5; i >= 0; i--) {
 }
 
 cardClone.appendChild(div);
-    
+
+    var card = event.target.closest('.card');
+var href = card.querySelector('.card-image').href;
+var starsData = JSON.parse(localStorage.getItem('Stars'));
+
+if (starsData && starsData[href]) {
+  var rating = starsData[href];
+  
+  var stars = document.querySelectorAll('.star');
+  stars.forEach(function(star) {
+    var starRating = star.getAttribute('data-rating');
+    if (starRating === rating) {
+      star.classList.add('ShowHover');
+    }
+  });
+}
   });
 });
 
