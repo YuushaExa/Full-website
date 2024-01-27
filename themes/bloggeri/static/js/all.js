@@ -69,7 +69,7 @@ cardClone.appendChild(div);
 var spanElement = document.createElement("span");
 
 // Set the id attribute of the span element
-spanElement.id = "ratingNumber";
+spanElement.id = "ratingElement";
 
 // Set the content of the span element
 spanElement.innerHTML = "Your rating goes here";
@@ -206,19 +206,23 @@ stars.forEach(function(star) {
   // rating over
 
   //
-// On load, check var card = event.target.closest('.card');
-var card = event.target.closest('.card');
+window.addEventListener('load', function() {
+  var card = event.target.closest('.card');
+  var href = card.querySelector('.card-image').href;
+  var rating = localStorage.getItem('Stars-' + href);
 
-// Get the href value from the card image
-var href = card.querySelector('.card-image').href;
-
-// Get localstorage key "Stars" and get rating number
-var stars = localStorage.getItem('Stars');
-var ratingNumber = stars ? parseInt(stars) : 0;
-
-// Display rating number in HTML
-var ratingElement = document.getElementById('ratingNumber');
-ratingElement.textContent = ratingNumber;
+  // Check if the rating is available in localStorage
+  if (rating) {
+    var ratingElement = document.getElementById('rating');
+    ratingElement.innerText = rating;
+  } else {
+    // If the rating is not available, use the default value from the JSON object
+    var data = {"href":"https://yuushaexa.github.io/snes/family-computer-golf-japan-course/","rating":"3"};
+    var defaultRating = data.rating;
+    var ratingElement = document.getElementById('rating');
+    ratingElement.innerText = defaultRating;
+  }
+});
 //
 });  
 // test
