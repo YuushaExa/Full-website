@@ -206,23 +206,7 @@ stars.forEach(function(star) {
   // rating over
 
   //
-window.addEventListener('load', function() {
-  var card = event.target.closest('.card');
-  var href = card.querySelector('.card-image').href;
-  var rating = localStorage.getItem('Stars-' + href);
 
-  // Check if the rating is available in localStorage
-  if (rating) {
-    var ratingElement = document.getElementById('rating');
-    ratingElement.innerText = rating;
-  } else {
-    // If the rating is not available, use the default value from the JSON object
-    var data = {"href":"https://yuushaexa.github.io/snes/family-computer-golf-japan-course/","rating":"3"};
-    var defaultRating = data.rating;
-    var ratingElement = document.getElementById('rating');
-    ratingElement.innerText = defaultRating;
-  }
-});
 //
 });  
 // test
