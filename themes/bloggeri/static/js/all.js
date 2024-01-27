@@ -72,26 +72,6 @@ cardClone.appendChild(div);
 
 // played 
 $(document).on('click', '.AddList', function(event) {
-
-var card = event.target.closest('.card');
-var href = card.querySelector('.card-image').href;
-var starsData = JSON.parse(localStorage.getItem('Stars'));
-
-if (starsData) {
-  starsData.forEach(function(data) {
-    if (data.href === href) {
-      var rating = data.rating.toString(); // Convert rating to string
-      
-      var stars = card.querySelectorAll('.star');
-      stars.forEach(function(star) {
-        var starRating = star.getAttribute('data-rating');
-        if (starRating === rating) {
-          star.classList.add('ShowHover');
-        }
-      });
-    }
-  });
-}
   
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
@@ -215,7 +195,25 @@ stars.forEach(function(star) {
   // rating over
 
   //
+var card = event.target.closest('.card');
+var href = card.querySelector('.card-image').href;
+var starsData = JSON.parse(localStorage.getItem('Stars'));
 
+if (starsData) {
+  starsData.forEach(function(data) {
+    if (data.href === href) {
+      var rating = data.rating.toString(); // Convert rating to string
+      
+      var stars = card.querySelectorAll('.star');
+      stars.forEach(function(star) {
+        var starRating = star.getAttribute('data-rating');
+        if (starRating === rating) {
+          star.classList.add('ShowHover');
+        }
+      });
+    }
+  });
+}
 //
 });  
 // test
