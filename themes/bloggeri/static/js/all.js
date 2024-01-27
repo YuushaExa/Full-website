@@ -195,25 +195,19 @@ stars.forEach(function(star) {
   // rating over
 
   //
+// On load, check var card = event.target.closest('.card');
 var card = event.target.closest('.card');
-var href = card.querySelector('.card-image').href;
-var starsData = JSON.parse(localStorage.getItem('Stars'));
 
-if (starsData) {
-  starsData.forEach(function(data) {
-    if (data.href === href) {
-      var rating = data.rating;
-      
-      var stars = card.querySelectorAll('.star');
-      stars.forEach(function(star) {
-        var starRating = star.getAttribute('data-rating');
-        if (starRating === rating) {
-          star.classList.add('ShowHover');
-        }
-      });
-    }
-  });
-}
+// Get the href value from the card image
+var href = card.querySelector('.card-image').href;
+
+// Get localstorage key "Stars" and get rating number
+var stars = localStorage.getItem('Stars');
+var ratingNumber = stars ? parseInt(stars) : 0;
+
+// Display rating number in HTML
+var ratingElement = document.getElementById('ratingNumber');
+ratingElement.textContent = ratingNumber;
 //
 });  
 // test
