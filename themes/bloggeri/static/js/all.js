@@ -126,40 +126,21 @@ stars.forEach(function(star) {
   // rating over
 
   //
-window.addEventListener('load', function() {
-  var card = event.target.closest('.card');
+var card = event.target.closest('.card');
+var href = card.querySelector('.card-image').href;
+var starsData = JSON.parse(localStorage.getItem('Stars'));
 
-  // Get the href value from the card image
-  var href = card.querySelector('.card-image').href;
-
-  // Retrieve the rating from localStorage
-  var stars = localStorage.getItem('Stars');
-  var rating = null;
-
-  // Check if the stars variable exists and parse it as JSON
-  if (stars) {
-    stars = JSON.parse(stars);
-
-    // Match the href with the stored data
-    for (var i = 0; i < stars.length; i++) {
-      if (stars[i].href === href) {
-        rating = stars[i].rating;
-        break;
-      }
-    }
-  }
-
-  // Get all stars and compare with the rating
-  var starElements = document.querySelectorAll('.star');
-  for (var j = 0; j < starElements.length; j++) {
-    var star = starElements[j];
+if (starsData && starsData[href]) {
+  var rating = starsData[href];
+  
+  var stars = document.querySelectorAll('.star');
+  stars.forEach(function(star) {
     var starRating = star.getAttribute('data-rating');
-
-    if (rating !== null && starRating === rating) {
+    if (starRating === rating) {
       star.classList.add('ShowHover');
     }
-  }
-});
+  });
+}
 //
 });  
 // test
