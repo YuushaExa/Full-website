@@ -202,7 +202,7 @@ var starsData = JSON.parse(localStorage.getItem('Stars'));
 if (starsData) {
   starsData.forEach(function(data) {
     if (data.href === href) {
-      var rating = data.rating.toString(); // Convert rating to string
+      var rating = data.rating;
       
       var stars = card.querySelectorAll('.star');
       stars.forEach(function(star) {
