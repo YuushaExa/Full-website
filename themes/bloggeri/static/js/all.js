@@ -3,58 +3,27 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 //
 var ratingDisplays = document.getElementsByClassName('rating-menu2');
 
-// Function to update the rating display
-function updateRatingDisplay() {
-  // Retrieve existing rating data from localStorage
-  var existingRatingJSON = localStorage.getItem('Stars');
-  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-  
-  // Loop through each card element
-  var cards = document.getElementsByClassName('card');
-  for (var j = 0; j < cards.length; j++) {
-    var card = cards[j];
-    
-    // Get the href value from the card image
-    var href = card.querySelector('.card-image').href;
-    
-    // Check if the href value already exists in the existingRatingData array
-    var existingRating = existingRatingData.find(function(item) {
-      return item.href === href;
-    });
-    
-    // Update the rating display with the current rating
-    var ratingDisplay = card.querySelector('.rating-menu2');
-    ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
-  }
+// Retrieve existing rating data from localStorage
+var existingRatingJSON = localStorage.getItem('Stars');
+var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
+// Loop through each card element
+var cards = document.getElementsByClassName('card');
+for (var j = 0; j < cards.length; j++) {
+  var card = cards[j];
+
+  // Get the href value from the card image
+  var href = card.querySelector('.card-image').href;
+
+  // Check if the href value already exists in the existingRatingData array
+  var existingRating = existingRatingData.find(function(item) {
+    return item.href === href;
+  });
+
+  // Update the rating display with the current rating
+  var ratingDisplay = card.querySelector('.rating-menu2');
+  ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
 }
-
-// Call the updateRatingDisplay function initially to set the initial ratings
-updateRatingDisplay();
-
-// Add event listener for changes in localStorage
-window.addEventListener('storage', function(event) {
-  if (event.key === 'Stars') {
-    updateRatingDisplay();
-  }
-});
-
-// Example usage: Update rating and trigger storage event
-var existingRatingData = JSON.parse(localStorage.getItem('Stars')) || [];
-var exampleHref = 'example.com'; // Replace with the desired href value
-var exampleRating = 4; // Replace with the desired rating value
-
-var existingRating = existingRatingData.find(function(item) {
-  return item.href === exampleHref;
-});
-
-if (existingRating) {
-  existingRating.rating = exampleRating;
-} else {
-  existingRatingData.push({ href: exampleHref, rating: exampleRating });
-}
-
-localStorage.setItem('Stars', JSON.stringify(existingRatingData));
-
 //
 const addButtons = document.querySelectorAll(".AddList");
 
