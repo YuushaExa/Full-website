@@ -9,8 +9,8 @@ var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [
 
 // Loop through each card element
 var cards = document.getElementsByClassName('card');
-for (var i = 0; i < cards.length; i++) {
-  var card = cards[i];
+for (var j = 0; j < cards.length; j++) {
+  var card = cards[j];
   
   // Get the href value from the card image
   var href = card.querySelector('.card-image').href;
