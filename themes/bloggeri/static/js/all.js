@@ -28,6 +28,7 @@ function updateRatingDisplay() {
   }
 }
 
+// Call the updateRatingDisplay function initially to set the initial ratings
 updateRatingDisplay();
 
 // Add event listener for changes in localStorage
@@ -36,6 +37,23 @@ window.addEventListener('storage', function(event) {
     updateRatingDisplay();
   }
 });
+
+// Example usage: Update rating and trigger storage event
+var existingRatingData = JSON.parse(localStorage.getItem('Stars')) || [];
+var exampleHref = 'example.com'; // Replace with the desired href value
+var exampleRating = 4; // Replace with the desired rating value
+
+var existingRating = existingRatingData.find(function(item) {
+  return item.href === exampleHref;
+});
+
+if (existingRating) {
+  existingRating.rating = exampleRating;
+} else {
+  existingRatingData.push({ href: exampleHref, rating: exampleRating });
+}
+
+localStorage.setItem('Stars', JSON.stringify(existingRatingData));
 
 //
 const addButtons = document.querySelectorAll(".AddList");
