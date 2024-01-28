@@ -198,15 +198,25 @@ function handleStarClick(event) {
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
 
-  var ratingDisplay = document.getElementById('rating1');
+var ratingDisplay = document.getElementById('rating1');
 
-// Calculate the average rating
-var averageRating = existingRatingData.reduce(function(sum, item) {
-  return sum + parseInt(item.rating);
-}, 0) / existingRatingData.length;
+// Retrieve existing rating data from localStorage
+var existingRatingJSON = localStorage.getItem("Stars");
+var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
 
-// Update the rating display
-ratingDisplay.textContent = "Average Rating: " + averageRating.toFixed(1);
+// Find the closest card element
+var card = event.target.closest('.card');
+
+// Get the href value from the card image
+var href = card.querySelector('.card-image').href;
+
+// Check if the href value already exists in the existingRatingData array
+var existingRating = existingRatingData.find(function(item) {
+  return item.href === href;
+});
+
+// Update the rating display with the current rating
+ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
 }
   
 var stars = document.querySelectorAll('.star');
