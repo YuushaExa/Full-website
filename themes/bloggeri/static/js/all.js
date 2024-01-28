@@ -12,14 +12,14 @@ function displayRating(href) {
   });
 
   // Get the element where you want to display the rating
-  var ratingElement = document.querySelector('.rating1');
+  var ratingElement = document.getElementById('rating1');
 
   if (ratingData) {
     // If rating data exists, update the displayed rating
-    ratingElement.textContent = ratingData.rating;
+    ratingElement.textContent = "Rating: " + ratingData.rating;
   } else {
     // If rating data does not exist, display a default value
-    ratingElement.textContent = "N/A";
+    ratingElement.textContent = "Rating: N/A";
   }
 }
 //
