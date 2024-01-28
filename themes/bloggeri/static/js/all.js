@@ -197,7 +197,9 @@ function handleStarClick(event) {
 
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
+  var ratingDisplay = document.getElementById('rating-menu1');
 
+  ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
 }
   
 var stars = document.querySelectorAll('.star');
@@ -207,7 +209,7 @@ stars.forEach(function(star) {
   
   // rating over
   //
-var ratingDisplay = document.getElementById('rating1');
+var ratingDisplay = document.getElementById('rating-menu1');
 
 // Retrieve existing rating data from localStorage
 var existingRatingJSON = localStorage.getItem("Stars");
