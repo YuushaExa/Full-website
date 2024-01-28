@@ -198,6 +198,15 @@ function handleStarClick(event) {
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
 
+}
+  
+var stars = document.querySelectorAll('.star');
+stars.forEach(function(star) {
+  star.addEventListener('click', handleStarClick);
+});
+  
+  // rating over
+  //
 var ratingDisplay = document.getElementById('rating1');
 
 // Retrieve existing rating data from localStorage
@@ -217,16 +226,6 @@ var existingRating = existingRatingData.find(function(item) {
 
 // Update the rating display with the current rating
 ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
-}
-  
-var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('click', handleStarClick);
-});
-  
-  // rating over
-  //
-
 //
 });  
 // test
