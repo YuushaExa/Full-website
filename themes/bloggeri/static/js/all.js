@@ -205,7 +205,7 @@ stars.forEach(function(star) {
 });
   
   // rating over
-var ratingDisplay = document.getElementById('rating');
+var ratingDisplay = document.getElementById('rating1');
 
 // Calculate the average rating
 var averageRating = existingRatingData.reduce(function(sum, item) {
