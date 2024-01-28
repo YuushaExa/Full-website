@@ -67,16 +67,9 @@ for (var i = 5; i >= 0; i--) {
 
 cardClone.appendChild(div);
 
-var spanElement = document.createElement("span");
-
-// Set the id attribute of the span element
-spanElement.id = "ratingElement";
-
-// Set the content of the span element
-spanElement.innerHTML = "Your rating goes here";
-
-// Append the span element to the document body or any other desired element
-cardClone.appendChild(spanElement);
+var rating1 = document.createElement("div");
+rating1.setAttribute("id", "rating-menu1");
+rating.appendChild(rating1);
     
   });
 });
