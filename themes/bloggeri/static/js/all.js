@@ -197,15 +197,8 @@ function handleStarClick(event) {
 
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
-}
-  
-var stars = document.querySelectorAll('.star');
-stars.forEach(function(star) {
-  star.addEventListener('click', handleStarClick);
-});
-  
-  // rating over
-var ratingDisplay = document.getElementById('rating1');
+
+  var ratingDisplay = document.getElementById('rating1');
 
 // Calculate the average rating
 var averageRating = existingRatingData.reduce(function(sum, item) {
@@ -214,6 +207,14 @@ var averageRating = existingRatingData.reduce(function(sum, item) {
 
 // Update the rating display
 ratingDisplay.textContent = "Average Rating: " + averageRating.toFixed(1);
+}
+  
+var stars = document.querySelectorAll('.star');
+stars.forEach(function(star) {
+  star.addEventListener('click', handleStarClick);
+});
+  
+  // rating over
   //
 
 //
