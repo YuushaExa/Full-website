@@ -22,7 +22,7 @@ function updateRatingDisplays() {
 
     // Update the rating display with the current rating
     var ratingDisplay = card.querySelector('.rating-menu2');
-    ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
+    ratingDisplay.textContent = "" + (existingRating ? existingRating.rating : "Not rated");
   }
 }
 
