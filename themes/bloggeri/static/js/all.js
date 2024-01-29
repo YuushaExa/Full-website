@@ -227,8 +227,7 @@ function handleStarClick(event) {
   var ratingDisplay = document.getElementById('rating-menu1');
 
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
-  var ratingDisplay2 = card.querySelector('.rating-menu2');
-ratingDisplay2.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
+updateRatingDisplays()
 }
   
 var stars = document.querySelectorAll('.star');
