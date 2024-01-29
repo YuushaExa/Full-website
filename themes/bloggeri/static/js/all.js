@@ -257,6 +257,18 @@ var existingRating = existingRatingData.find(function(item) {
 // Update the rating display with the current rating
 ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
 //
+
+  const stars = document.querySelectorAll('.star');
+
+stars.forEach(star => {
+  star.addEventListener('mouseover', () => {
+    star.classList.add('hover');
+  });
+
+  star.addEventListener('mouseout', () => {
+    star.classList.remove('hover');
+  });
+});
 });  
 // test
 
