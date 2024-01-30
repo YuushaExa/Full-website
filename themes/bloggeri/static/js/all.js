@@ -11,7 +11,6 @@ function updateRatingDisplays() {
     var ratingDisplay = card.querySelector('.rating-menu2');
 ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
   }
-}
 
 // Call the updateRatingDisplays function initially to set the initial ratings
 updateRatingDisplays();
