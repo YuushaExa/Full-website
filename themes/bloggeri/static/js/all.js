@@ -175,6 +175,7 @@ function handleStarClick(event) {
   
   // Add the "ShowHover" class to the clicked element
   star.classList.add('ShowHover');
+  updateStarColors();
   
   // Find the closest card element
   var card = event.target.closest('.card');
@@ -219,7 +220,7 @@ function handleStarClick(event) {
   localStorage.setItem("Stars", updatedRatingJSON);
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
-updateStarColors();
+updateRatingDisplays()
 }
   
 var stars = document.querySelectorAll('.star');
