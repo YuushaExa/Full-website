@@ -220,7 +220,7 @@ function handleStarClick(event) {
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
-  updateStarColors();
+  updateStarColors()
 }
   
 var stars = document.querySelectorAll('.star');
@@ -258,7 +258,7 @@ var rating = parseInt(ratingMenu.innerText);
     }
   }
 }
-  
+    updateStarColors();
 });  
 // test
 
