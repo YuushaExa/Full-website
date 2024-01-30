@@ -218,9 +218,9 @@ function handleStarClick(event) {
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
   var ratingDisplay = document.getElementById('rating-menu1');
-
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
+updateStarColors();
 }
   
 var stars = document.querySelectorAll('.star');
@@ -232,41 +232,37 @@ stars.forEach(function(star) {
   //
 var ratingDisplay = document.getElementById('rating-menu1');
 
-// Retrieve existing rating data from localStorage
 var existingRatingJSON = localStorage.getItem("Stars");
 var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
 
-// Find the closest card element
 var card = event.target.closest('.card');
-
-// Get the href value from the card image
 var href = card.querySelector('.card-image').href;
 
-// Check if the href value already exists in the existingRatingData array
 var existingRating = existingRatingData.find(function(item) {
   return item.href === href;
 });
 
-// Update the rating display with the current rating
 ratingDisplay.textContent = "" + (existingRating ? existingRating.rating : "Not rated");
 //
 
-// Get the rating value from the div with ID "rating-menu1"
-var ratingMenu = document.getElementById("rating-menu1");
-var rating = parseInt(ratingMenu.innerText);
+function updateStarColors() {
+  var ratingMenu = document.getElementById("rating-menu1");
+  var rating = parseInt(ratingMenu.innerText.trim().split(": ")[1]);
 
-// Select all the star elements
-var stars = document.querySelectorAll(".star");
+  var stars = document.querySelectorAll(".star");
 
-// Iterate through each star and apply the CSS class based on the rating
-for (var i = 0; i < stars.length; i++) {
-  var starRating = parseInt(stars[i].getAttribute("data-rating"));
-  if (starRating <= rating) {
-    stars[i].classList.add("yellow");
-  } else {
-    stars[i].classList.remove("yellow");
+  for (var i = 0; i < stars.length; i++) {
+    var starRating = parseInt(stars[i].getAttribute("data-rating"));
+    if (starRating <= rating) {
+      stars[i].style.color = "yellow";
+    } else {
+      stars[i].style.color = ""; // Reset to default color if needed
+    }
   }
 }
+
+updateStarColors();
+  
 });  
 // test
 
