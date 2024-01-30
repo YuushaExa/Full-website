@@ -12,7 +12,8 @@ function updateRatingDisplays() {
   for (var j = 0; j < cards.length; j++) {
     var card = cards[j];
 
-
+    // Get the href value from the card image
+    var href = card.querySelector('.card-image').href;
 
     // Check if the href value already exists in the existingRatingData array
     var existingRating = existingRatingData.find(function(item) {
@@ -28,13 +29,6 @@ ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "N
 // Call the updateRatingDisplays function initially to set the initial ratings
 updateRatingDisplays();
 
-// Listen for changes to the rating data
-window.addEventListener('storage', function(event) {
-  if (event.key === 'Stars') {
-    // If the 'Stars' key is modified in localStorage, update the rating displays
-    updateRatingDisplays();
-  }
-});
 //
 const addButtons = document.querySelectorAll(".AddList");
 
