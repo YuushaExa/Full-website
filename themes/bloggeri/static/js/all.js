@@ -175,7 +175,6 @@ function handleStarClick(event) {
   
   // Add the "ShowHover" class to the clicked element
   star.classList.add('ShowHover');
-  updateStarColors();
   
   // Find the closest card element
   var card = event.target.closest('.card');
@@ -221,6 +220,7 @@ function handleStarClick(event) {
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
+  updateStarColors();
 }
   
 var stars = document.querySelectorAll('.star');
@@ -258,7 +258,6 @@ var rating = parseInt(ratingMenu.innerText);
     }
   }
 }
-updateStarColors();
   
 });  
 // test
