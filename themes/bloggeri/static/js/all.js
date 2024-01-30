@@ -7,6 +7,19 @@ function updateRatingDisplays() {
   var existingRatingJSON = localStorage.getItem('Stars');
   var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
 
+    // Update the rating display with the current rating
+    var ratingDisplay = card.querySelector('.rating-menu2');
+ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
+  }
+}
+
+// Call the updateRatingDisplays function initially to set the initial ratings
+updateRatingDisplays();
+
+  // Retrieve existing rating data from localStorage
+  var existingRatingJSON = localStorage.getItem('Stars');
+  var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
+
   // Loop through each card element
   var cards = document.getElementsByClassName('card');
   for (var j = 0; j < cards.length; j++) {
@@ -24,10 +37,6 @@ function updateRatingDisplays() {
     var ratingDisplay = card.querySelector('.rating-menu2');
 ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
   }
-}
-
-// Call the updateRatingDisplays function initially to set the initial ratings
-updateRatingDisplays();
 
 //
 const addButtons = document.querySelectorAll(".AddList");
