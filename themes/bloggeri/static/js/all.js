@@ -211,7 +211,7 @@ function handleStarClick(event) {
   // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
   var ratingDisplay = document.getElementById('rating-menu1');
-  ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
+  ratingDisplay.textContent = "" + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
   updateStarColors()
 }
