@@ -221,6 +221,13 @@ function handleStarClick(event) {
 
   ratingDisplay.textContent = "Current Rating: " + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
+
+  var rating = document.getElementById("rating-menu1").innerHTML;
+var cssStar = ".star:nth-child(-n+" + rating + "){ color: yellow;}";
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = cssStar;
+document.getElementsByTagName('head')[0].appendChild(style);
 }
   
 var stars = document.querySelectorAll('.star');
