@@ -251,12 +251,22 @@ var existingRating = existingRatingData.find(function(item) {
 ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
 //
 
-var rating2 = document.getElementById("rating-menu1").innerHTML;
-var cssRule = ".star:nth-child(-n+" + rating2 + ") { color: yellow; }";
-var styleElement = document.createElement("style");
-styleElement.type = "text/css";
-styleElement.appendChild(document.createTextNode(cssRule));
-document.head.appendChild(styleElement);
+// Get the rating value from the div with ID "rating-menu1"
+var ratingMenu = document.getElementById("rating-menu1");
+var rating = parseInt(ratingMenu.innerText);
+
+// Select all the star elements
+var stars = document.querySelectorAll(".star");
+
+// Iterate through each star and apply the CSS class based on the rating
+for (var i = 0; i < stars.length; i++) {
+  var starRating = parseInt(stars[i].getAttribute("data-rating"));
+  if (starRating <= rating) {
+    stars[i].classList.add("yellow");
+  } else {
+    stars[i].classList.remove("yellow");
+  }
+}
 });  
 // test
 
