@@ -12,8 +12,7 @@ function updateRatingDisplays() {
   for (var j = 0; j < cards.length; j++) {
     var card = cards[j];
 
-    // Get the href value from the card image
-    var href = card.querySelector('.card-image').href;
+
 
     // Check if the href value already exists in the existingRatingData array
     var existingRating = existingRatingData.find(function(item) {
