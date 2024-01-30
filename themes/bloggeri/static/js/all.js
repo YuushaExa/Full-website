@@ -251,23 +251,11 @@ var existingRating = existingRatingData.find(function(item) {
 ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
 //
 
- // Get the number from the div with ID "rating-menu1"
-var rating = document.getElementById("rating-menu1").innerText;
-
-// Convert the rating to a number
-rating = parseInt(rating);
-
-// Create the CSS rule dynamically
-var cssRule = ".star:nth-child(-n+" + rating + ") { color: yellow; }";
-
-// Create a style element to hold the CSS rule
+var rating2 = document.getElementById("rating-menu1").innerHTML;
+var cssRule = ".star:nth-child(-n+" + rating2 + ") { color: yellow; }";
 var styleElement = document.createElement("style");
 styleElement.type = "text/css";
-
-// Add the CSS rule to the style element
 styleElement.appendChild(document.createTextNode(cssRule));
-
-// Add the style element to the document's head
 document.head.appendChild(styleElement);
 });  
 // test
