@@ -247,7 +247,7 @@ ratingDisplay.textContent = "" + (existingRating ? existingRating.rating : "Not 
 
 function updateStarColors() {
   var ratingMenu = document.getElementById("rating-menu1");
-  var rating = parseInt(ratingMenu.innerText.trim().split(": ")[1]);
+var rating = parseInt(ratingMenu.innerText);
   var stars = document.querySelectorAll(".star");
   for (var i = 0; i < stars.length; i++) {
     var starRating = parseInt(stars[i].getAttribute("data-rating"));
