@@ -84,7 +84,7 @@ addButtons.forEach(function (addButton) {
 var div = document.createElement('div');
 div.className = 'rating';
 
-for (var i = 5; i >= 0; i--) {
+for (var i = 5; i >= 1; i--) {
   var rating = document.createElement('span');
   rating.className = 'star';
   rating.setAttribute('data-rating', i);
