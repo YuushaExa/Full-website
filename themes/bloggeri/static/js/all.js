@@ -248,7 +248,7 @@ var existingRating = existingRatingData.find(function(item) {
 });
 
 // Update the rating display with the current rating
-ratingDisplay.textContent = "Current Rating: " + (existingRating ? existingRating.rating : "Not rated");
+ratingDisplay.textContent = "" + (existingRating ? existingRating.rating : "Not rated");
 //
 
 // Get the rating value from the div with ID "rating-menu1"
