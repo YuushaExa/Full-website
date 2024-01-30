@@ -12,8 +12,7 @@ function updateRatingDisplays() {
 ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
   }
 
-// Call the updateRatingDisplays function initially to set the initial ratings
-updateRatingDisplays();
+
 
   // Retrieve existing rating data from localStorage
   var existingRatingJSON = localStorage.getItem('Stars');
