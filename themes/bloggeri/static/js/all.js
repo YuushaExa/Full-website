@@ -242,32 +242,13 @@ function updateStarColors() {
   var ratingMenu = document.getElementById("rating-menu1");
   var rating = parseInt(ratingMenu.innerText);
   var stars = document.querySelectorAll(".star");
-
-  // Remove all existing color classes
   for (var i = 0; i < stars.length; i++) {
     stars[i].classList.remove("yellow");
-    stars[i].classList.remove("green");
-    stars[i].classList.remove("blue");
-    stars[i].classList.remove("purple");
-    stars[i].classList.remove("red");
   }
-
-  // Apply color classes based on rating
   for (var i = 0; i < stars.length; i++) {
     var starRating = parseInt(stars[i].getAttribute("data-rating"));
-
     if (starRating <= rating) {
-      if (rating <= 2) {
-        stars[i].classList.add("red");
-      } else if (rating <= 4) {
-        stars[i].classList.add("yellow");
-      } else if (rating <= 6) {
-        stars[i].classList.add("blue");
-      } else if (rating <= 8) {
-        stars[i].classList.add("green");
-      } else {
-        stars[i].classList.add("purple");
-      }
+      stars[i].classList.add("yellow");
     }
   }
 }
