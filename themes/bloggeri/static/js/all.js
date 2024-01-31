@@ -194,24 +194,21 @@ function handleStarClick(event) {
 var stars = document.querySelectorAll('.star');
 
 // Add event listener to each star
-stars.forEach(function(star) {
-  star.addEventListener('click', function() {
+for (var i = 0; i < stars.length; i++) {
+  stars[i].addEventListener('click', function() {
     var clickedRating = parseInt(this.getAttribute('data-rating'));
 
     // Remove yellow class from all stars
-    stars.forEach(function(star) {
-      star.classList.remove('yellow');
-    });
+    for (var j = 0; j < stars.length; j++) {
+      stars[j].classList.remove('yellow');
+    }
 
     // Add yellow class to stars up to the clicked rating
-    for (var i = 1; i <= clickedRating; i++) {
-      var star = document.querySelector('.star[data-rating="' + i + '"]');
-      if (star) {
-        star.classList.add('yellow');
-      }
+    for (var k = 0; k < clickedRating; k++) {
+      stars[k].classList.add('yellow');
     }
   });
-});
+}
 
   updateRatingDisplays()  
 }
