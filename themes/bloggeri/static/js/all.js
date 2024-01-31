@@ -93,7 +93,12 @@ rating.appendChild(rating1);
 
 const Note = document.createElement("div");
 Note.id = "Note"; 
+Note.textContent = "Note";
 cardClone.appendChild(Note);
+    const Notes = document.createElement("div");
+Notes.className = "Notes"; 
+Notes.textContent = "Save";
+    Note.appendChild(Notes);
 
   });
 });
