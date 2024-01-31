@@ -91,14 +91,20 @@ var rating1 = document.createElement("div");
 rating1.setAttribute("id", "rating-menu1");
 rating.appendChild(rating1);
 
-const Note = document.createElement("div");
-Note.id = "Note"; 
-Note.textContent = "Note";
-cardClone.appendChild(Note);
-    const Notes = document.createElement("div");
-Notes.className = "Notes"; 
-Notes.textContent = "Save";
-    Note.appendChild(Notes);
+const noteDiv = document.createElement("div");
+noteDiv.id = "Note";
+noteDiv.textContent = "Click here to toggle the text window";
+const textWindowDiv = document.createElement("div");
+textWindowDiv.id = "textWindow";
+textWindowDiv.className = "text-window";
+const textarea = document.createElement("textarea");
+const saveButton = document.createElement("button");
+saveButton.className = "SaveNote";
+saveButton.textContent = "Save";
+textWindowDiv.appendChild(textarea);
+textWindowDiv.appendChild(saveButton);
+cardClone.appendChild(noteDiv);
+noteDiv.appendChild(textWindowDiv);
 
   });
 });
@@ -258,6 +264,34 @@ stars[i].classList.remove("yellow");
 }
 }
 updateStarColors();
+  //
+
+  // Notes
+      var textWindow = document.getElementById("textWindow");
+        var note = document.getElementById("Note");
+        var saveButton = document.querySelector(".SaveNote");
+
+        note.addEventListener("click", function() {
+            if (textWindow.style.display === "none") {
+                textWindow.style.display = "block";
+            } else {
+                textWindow.style.display = "none";
+            }
+        });
+
+        saveButton.addEventListener("click", function(event) {
+            var card = event.target.closest('.card');
+            var href = card.querySelector('.card-image').href;
+            var textArea = textWindow.querySelector("textarea");
+            var noteText = textArea.value;
+
+            // Save data to localStorage
+            var notes = JSON.parse(localStorage.getItem("Notes")) || {};
+            notes[href] = noteText;
+            localStorage.setItem("Notes", JSON.stringify(notes));
+        });
+
+  //
 });  
 // test
 
