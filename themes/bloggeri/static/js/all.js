@@ -159,64 +159,38 @@ $(document).on('click', '.AddList', function(event) {
 function handleStarClick(event) {
   var star = event.target;
   var rating = star.getAttribute('data-rating');
-
-  // Remove the "ShowHover" class from all stars
-  var stars = document.querySelectorAll('.star');
-  stars.forEach(function(star) {
-    star.classList.remove('ShowHover');
-  });
-  
-var previousStars = document.querySelectorAll('.star');
-
-// Loop through each star element
-for (var i = 0; i < previousStars.length; i++) {
-  previousStars[i].classList.add('ShowHover');
-}
-  
-  // Find the closest card element
-  var card = event.target.closest('.card');
-
-  // Get the href value from the card image
+    var card = event.target.closest('.card');
   var href = card.querySelector('.card-image').href;
-
-  // Retrieve existing rating data from localStorage
   var existingRatingJSON = localStorage.getItem("Stars");
   var existingRatingData = existingRatingJSON ? JSON.parse(existingRatingJSON) : [];
-
-  // Check if the href value already exists in the existingRatingData array
   var existingRatingIndex = existingRatingData.findIndex(function(item) {
     return item.href === href;
   });
   
   if (rating === "0") {
     if (existingRatingIndex !== -1) {
-      // Remove the rating if the href value exists
       existingRatingData.splice(existingRatingIndex, 1);
     }
   } else {
     if (existingRatingIndex !== -1) {
-      // Update the rating if the href value already exists
       existingRatingData[existingRatingIndex].rating = rating;
     } else {
-      // Create a new rating data object if the href value doesn't exist
       var ratingData = {
         href: href,
         rating: rating
       };
     
-      // Add the new rating data to the existing array
       existingRatingData.push(ratingData);
     }
   }
 
-  // Convert the updated rating data to JSON
   var updatedRatingJSON = JSON.stringify(existingRatingData);
 
-  // Store the updated rating JSON in localStorage
   localStorage.setItem("Stars", updatedRatingJSON);
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "" + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()  
+  updateStarColors();
 }
   
 var stars = document.querySelectorAll('.star');
