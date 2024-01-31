@@ -104,7 +104,7 @@ saveButton.textContent = "Save";
 textWindowDiv.appendChild(textarea);
 textWindowDiv.appendChild(saveButton);
 cardClone.appendChild(noteDiv);
-noteDiv.appendChild(textWindowDiv);
+cardClone.appendChild(textWindowDiv);
 
   });
 });
