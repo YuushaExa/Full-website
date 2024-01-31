@@ -190,7 +190,29 @@ function handleStarClick(event) {
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "" + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()  
-  updateStarColors();
+// Get all the stars
+var stars = document.querySelectorAll('.star');
+
+// Add event listener to each star
+stars.forEach(function(star) {
+  star.addEventListener('click', function() {
+    var clickedRating = parseInt(this.getAttribute('data-rating'));
+
+    // Remove yellow class from all stars
+    stars.forEach(function(star) {
+      star.classList.remove('yellow');
+    });
+
+    // Add yellow class to stars up to the clicked rating
+    for (var i = 1; i <= clickedRating; i++) {
+      var star = document.querySelector('.star[data-rating="' + i + '"]');
+      if (star) {
+        star.classList.add('yellow');
+      }
+    }
+  });
+});
+
 }
   
 var stars = document.querySelectorAll('.star');
