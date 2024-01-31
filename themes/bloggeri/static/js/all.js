@@ -90,7 +90,11 @@ cardClone.appendChild(div);
 var rating1 = document.createElement("div");
 rating1.setAttribute("id", "rating-menu1");
 rating.appendChild(rating1);
-    
+
+const Note = document.createElement("div");
+Note.id = "Note"; 
+cardClone.appendChild(Note);
+
   });
 });
 
