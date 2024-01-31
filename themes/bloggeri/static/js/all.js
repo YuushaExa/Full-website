@@ -213,20 +213,6 @@ function handleStarClick(event) {
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "" + (rating !== "0" ? rating : "Not rated");
 updateRatingDisplays()
-  function updateStarColors() {
-var ratingMenu = document.getElementById("rating-menu1");
-var rating = parseInt(ratingMenu.innerText);
-var stars = document.querySelectorAll(".star");
-for (var i = 0; i < stars.length; i++) {
-var starRating = parseInt(stars[i].getAttribute("data-rating"));
-if (starRating <= rating) {
-stars[i].classList.add("yellow");
-} else {
-stars[i].classList.remove("yellow");
-}
-}
-}
-updateStarColors();
 }
   
 var stars = document.querySelectorAll('.star');
