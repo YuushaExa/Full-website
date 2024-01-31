@@ -238,24 +238,18 @@ ratingDisplay.textContent = "" + (existingRating ? existingRating.rating : "Not 
 //
 
 function updateStarColors() {
-  var ratingMenu = document.getElementById("rating-menu1");
-  var rating = parseInt(ratingMenu.innerText);
-  var stars = document.querySelectorAll(".star");
-
-  // Remove "yellow" class from all stars
-  for (var i = 0; i < stars.length; i++) {
-    stars[i].classList.remove("yellow");
-  }
-
-  // Update star colors based on rating
-  for (var i = 0; i < stars.length; i++) {
-    var starRating = parseInt(stars[i].getAttribute("data-rating"));
-    if (starRating <= rating) {
-      stars[i].classList.add("yellow");
-    }
-  }
+var ratingMenu = document.getElementById("rating-menu1");
+var rating = parseInt(ratingMenu.innerText);
+var stars = document.querySelectorAll(".star");
+for (var i = 0; i < stars.length; i++) {
+var starRating = parseInt(stars[i].getAttribute("data-rating"));
+if (starRating <= rating) {
+stars[i].classList.add("yellow");
+} else {
+stars[i].classList.remove("yellow");
 }
-
+}
+}
 updateStarColors();
 });  
 // test
