@@ -97,6 +97,26 @@ rating.appendChild(rating1);
 
 // played 
 $(document).on('click', '.AddList', function(event) {
+  var stars = document.querySelectorAll('.star');
+
+stars.forEach(function(star) {
+star.addEventListener('click', function() {
+var clickedRating = parseInt(this.getAttribute('data-rating'));
+
+// Remove yellow class from all stars
+stars.forEach(function(star) {
+  star.classList.remove('yellow');
+});
+
+// Add yellow class to stars up to the clicked rating
+for (var i = 1; i <= clickedRating; i++) {
+  var star = document.querySelector('.star[data-rating="' + i + '"]');
+  if (star) {
+    star.classList.add('yellow');
+  }
+}
+});
+});
   
   function handleCardClick(sectionClass, storageKey) {
     var cardsContainers = document.querySelectorAll(sectionClass);
@@ -189,28 +209,6 @@ function handleStarClick(event) {
   localStorage.setItem("Stars", updatedRatingJSON);
   var ratingDisplay = document.getElementById('rating-menu1');
   ratingDisplay.textContent = "" + (rating !== "0" ? rating : "Not rated");
-
-  // Get all the stars
-var stars = document.querySelectorAll('.star');
-
-stars.forEach(function(star) {
-star.addEventListener('click', function() {
-var clickedRating = parseInt(this.getAttribute('data-rating'));
-
-// Remove yellow class from all stars
-stars.forEach(function(star) {
-  star.classList.remove('yellow');
-});
-
-// Add yellow class to stars up to the clicked rating
-for (var i = 1; i <= clickedRating; i++) {
-  var star = document.querySelector('.star[data-rating="' + i + '"]');
-  if (star) {
-    star.classList.add('yellow');
-  }
-}
-});
-});
 
   updateRatingDisplays()  
 }
