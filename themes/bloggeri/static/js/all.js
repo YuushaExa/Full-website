@@ -4,7 +4,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 var notes = document.getElementsByClassName("Note");
 var showNoteElements = document.getElementsByClassName("ShowNote");
 
-for (var i = 0; i < notes.length; i++) {
+for (var o = 0; o < notes.length; o++) {
   notes[i].addEventListener("click", function(event) {
     var card = event.currentTarget.closest('.card');
     var href = card.querySelector('.card-image').href;
@@ -12,12 +12,12 @@ for (var i = 0; i < notes.length; i++) {
     var storedNotes = JSON.parse(localStorage.getItem("Notes"));
 
     if (storedNotes && storedNotes[href]) {
-      for (var j = 0; j < showNoteElements.length; j++) {
-        showNoteElements[j].textContent = storedNotes[href];
+      for (var p = 0; p < showNoteElements.length; p++) {
+        showNoteElements[p].textContent = storedNotes[href];
       }
     } else {
-      for (var j = 0; j < showNoteElements.length; j++) {
-        showNoteElements[j].textContent = "";
+      for (var p = 0; p < showNoteElements.length; p++) {
+        showNoteElements[p].textContent = "";
       }
     }
   });
