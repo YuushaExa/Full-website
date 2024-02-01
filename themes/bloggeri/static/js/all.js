@@ -2,10 +2,10 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 //
 var notes = document.getElementsByClassName("Note");
-var showNoteElements = document.getElementsByClassName("ShowNote");
+var showNoteElements = document.getElementById("ShowNote");
 
-for (var h = 0; h < notes.length; h++) {
-  notes[h].addEventListener("click", function(event) {
+for (var g = 0; g < notes.length; g++) {
+  notes[g].addEventListener("click", function(event) {
     var card = event.currentTarget.closest('.card');
     var href = card.querySelector('.card-image').href;
 
