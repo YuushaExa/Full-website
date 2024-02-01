@@ -14,9 +14,13 @@ if (storedNotes) {
     if (notesData[href]) {
       var notesReadDiv = document.createElement('div');
       notesReadDiv.className = 'NotesRead';
-      notesReadDiv.textContent = notesData[href];
+      notesReadDiv.textContent = 'read';
 
       card.appendChild(notesReadDiv);
+       var notesReadOpenDiv = document.createElement('div');
+      notesReadOpenDiv.className = 'NotesReadOpen';
+      notesReadOpenDiv.textContent = notesData[href];
+            NotesReadOpen.appendChild(notesReadOpenDiv);
     }
   });
 }
