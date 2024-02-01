@@ -22,7 +22,7 @@ if (storedNotes) {
       notesReadOpenDiv.className = 'NotesReadOpen';
       notesReadOpenDiv.textContent = notesData[href];
 
-      NotesReadOpen.appendChild(notesReadOpenDiv);
+      NotesRead.appendChild(notesReadOpenDiv);
     }
   });
 }
