@@ -30,15 +30,13 @@ document.addEventListener('click', function(event) {
       var notesData = JSON.parse(storedNotes);
       var cards = document.querySelectorAll('.card');
       
-      cards.forEach(function(card) {
         var href = card.querySelector('.card-image').href;
         if (notesData[href]) {
           var notesReadOpenDiv = document.createElement('div');
           notesReadOpenDiv.id = 'NotesReadOpen';
           notesReadOpenDiv.textContent = notesData[href];
-          card.appendChild(notesReadOpenDiv);
+          document.body.appendChild(notesReadOpenDiv);
         }
-      });
     }
   }
 });
