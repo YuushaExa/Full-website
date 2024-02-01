@@ -4,27 +4,25 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 var storedNotes = localStorage.getItem("Notes");
 
 if (storedNotes) {
-  var notesData = JSON.parse(storedNotes);
-  var cards = document.querySelectorAll('.card');
+var notesData = JSON.parse(storedNotes);
 
-  cards.forEach(function(card) {
-    var href = card.querySelector('.card-image').href;
+var cards = document.querySelectorAll('.card');
 
-    if (notesData[href]) {
-      var notesReadDiv = document.createElement('div');
-      notesReadDiv.className = 'NotesRead';
-      notesReadDiv.textContent = 'read';
+cards.forEach(function(card) {
+var href = card.querySelector('.card-image').href;
 
-      card.appendChild(notesReadDiv);
+if (notesData[href]) {
+  var notesReadDiv = document.createElement('div');
+  notesReadDiv.className = 'NotesRead';
+  notesReadDiv.textContent = 'read';
 
-      var NotesReadOpen = document.getElementById('NotesReadOpen');
-      var notesReadOpenDiv = document.createElement('div');
-      notesReadOpenDiv.className = 'NotesReadOpen';
-      notesReadOpenDiv.textContent = notesData[href];
-
-      NotesRead.appendChild(notesReadOpenDiv);
-    }
-  });
+  card.appendChild(notesReadDiv);
+   var notesReadOpenDiv = document.createElement('div');
+  notesReadOpenDiv.className = 'NotesReadOpen';
+  notesReadOpenDiv.textContent = notesData[href];
+        NotesRead.appendChild(notesReadOpenDiv);
+}
+});
 }
 //
 //
