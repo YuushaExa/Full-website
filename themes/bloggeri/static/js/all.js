@@ -2,22 +2,26 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 //
 var notes = document.getElementsByClassName("Note");
-var showNoteElement = document.getElementsByClassName("ShowNote");
+var showNoteElements = document.getElementsByClassName("ShowNote");
 
-Array.from(notes).forEach(function(note) {
-  note.addEventListener("click", function(event) {
-    var card = event.target.closest('.card');
+for (var i = 0; i < notes.length; i++) {
+  notes[i].addEventListener("click", function(event) {
+    var card = event.currentTarget.closest('.card');
     var href = card.querySelector('.card-image').href;
 
-    var notesData = JSON.parse(localStorage.getItem("Notes"));
+    var storedNotes = JSON.parse(localStorage.getItem("Notes"));
 
-    if (notesData && notesData[href]) {
-      showNoteElement.textContent = notesData[href];
+    if (storedNotes && storedNotes[href]) {
+      for (var j = 0; j < showNoteElements.length; j++) {
+        showNoteElements[j].textContent = storedNotes[href];
+      }
     } else {
-      showNoteElement.textContent = "";
+      for (var j = 0; j < showNoteElements.length; j++) {
+        showNoteElements[j].textContent = "";
+      }
     }
   });
-});
+}
 
 //
 //
