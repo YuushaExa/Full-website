@@ -2,7 +2,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 
 //
 var notes = document.getElementsByClassName("Note");
-var showNoteElements = document.getElementById("ShowNote");
+var showNoteElements = document.getElementsByClassName("ShowNote");
 
 for (var g = 0; g < notes.length; g++) {
   notes[g].addEventListener("click", function(event) {
