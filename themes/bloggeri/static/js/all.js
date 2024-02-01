@@ -5,7 +5,6 @@ var storedNotes = localStorage.getItem("Notes");
 
 if (storedNotes) {
   var notesData = JSON.parse(storedNotes);
-
   var cards = document.querySelectorAll('.card');
 
   cards.forEach(function(card) {
@@ -17,10 +16,13 @@ if (storedNotes) {
       notesReadDiv.textContent = 'read';
 
       card.appendChild(notesReadDiv);
-       var notesReadOpenDiv = document.createElement('div');
+
+      var NotesReadOpen = document.getElementById('NotesReadOpen');
+      var notesReadOpenDiv = document.createElement('div');
       notesReadOpenDiv.className = 'NotesReadOpen';
       notesReadOpenDiv.textContent = notesData[href];
-            NotesReadOpen.appendChild(notesReadOpenDiv);
+
+      NotesReadOpen.appendChild(notesReadOpenDiv);
     }
   });
 }
