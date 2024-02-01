@@ -17,10 +17,7 @@ if (notesData[href]) {
   notesReadDiv.textContent = 'read';
 
   card.appendChild(notesReadDiv);
-   var notesReadOpenDiv = document.createElement('div');
-  notesReadOpenDiv.className = 'NotesReadOpen';
-  notesReadOpenDiv.textContent = notesData[href];
-        NotesRead.appendChild(notesReadOpenDiv);
+
 }
 });
 }
