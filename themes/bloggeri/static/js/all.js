@@ -5,7 +5,7 @@ var notes = document.getElementsByClassName("Note");
 var showNoteElements = document.getElementsByClassName("ShowNote");
 
 for (var h = 0; h < notes.length; h++) {
-  notes[i].addEventListener("click", function(event) {
+  notes[h].addEventListener("click", function(event) {
     var card = event.currentTarget.closest('.card');
     var href = card.querySelector('.card-image').href;
 
