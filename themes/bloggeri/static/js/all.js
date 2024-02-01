@@ -22,6 +22,28 @@ if (notesData[href]) {
 });
 }
 //
+
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('NotesRead')) {
+    var storedNotes = localStorage.getItem('Notes');
+    if (storedNotes) {
+      var notesData = JSON.parse(storedNotes);
+      var cards = document.querySelectorAll('.card');
+      
+      cards.forEach(function(card) {
+        var href = card.querySelector('.card-image').href;
+        if (notesData[href]) {
+          var notesReadOpenDiv = document.createElement('div');
+          notesReadOpenDiv.id = 'NotesReadOpen';
+          notesReadOpenDiv.textContent = notesData[href];
+          card.appendChild(notesReadOpenDiv);
+        }
+      });
+    }
+  }
+});
+
+//
 //
 function updateRatingDisplays() {
   // Retrieve existing rating data from localStorage
