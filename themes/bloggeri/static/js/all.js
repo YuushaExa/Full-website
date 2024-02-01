@@ -4,7 +4,7 @@ let t,e;const n=new Set,o=document.createElement("link"),s=o.relList&&o.relList.
 var notes = document.getElementsByClassName("Note");
 var showNoteElements = document.getElementsByClassName("ShowNote");
 
-for (var o = 0; o < notes.length; o++) {
+for (var h = 0; h < notes.length; h++) {
   notes[i].addEventListener("click", function(event) {
     var card = event.currentTarget.closest('.card');
     var href = card.querySelector('.card-image').href;
