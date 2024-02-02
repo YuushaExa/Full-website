@@ -36,7 +36,7 @@ document.addEventListener('click', function(event) {
         var notesReadOpenDiv = document.createElement('div');
         notesReadOpenDiv.id = 'NotesReadOpen';
         notesReadOpenDiv.textContent = notesData[href];
-        card.appendChild(notesReadOpenDiv);
+        document.body.appendChild(notesReadOpenDiv);
       }
     }
   }
