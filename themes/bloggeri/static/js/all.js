@@ -28,7 +28,7 @@ document.addEventListener('click', function(event) {
     var storedNotes = localStorage.getItem('Notes');
     if (storedNotes) {
       var notesData = JSON.parse(storedNotes);
-      var card = document.querySelectorAll('.card');
+      var card = document.querySelector('.card');
               var href = card.querySelector('.card-image').href;
         if (notesData[href]) {
           var notesReadOpenDiv = document.createElement('div');
