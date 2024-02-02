@@ -14,7 +14,6 @@ var href = card.querySelector('.card-image').href;
 if (notesData[href]) {
   var notesReadDiv = document.createElement('div');
   notesReadDiv.className = 'NotesRead';
-  notesReadDiv.textContent = 'read';
 
   card.appendChild(notesReadDiv);
 
