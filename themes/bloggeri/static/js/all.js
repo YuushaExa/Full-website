@@ -28,14 +28,16 @@ document.addEventListener('click', function(event) {
     var storedNotes = localStorage.getItem('Notes');
     if (storedNotes) {
       var notesData = JSON.parse(storedNotes);
-      var card = document.querySelector('.card');
-              var href = card.querySelector('.card-image').href;
-        if (notesData[href]) {
-          var notesReadOpenDiv = document.createElement('div');
-          notesReadOpenDiv.id = 'NotesReadOpen';
-          notesReadOpenDiv.textContent = notesData[href];
-          document.body.appendChild(notesReadOpenDiv);
-        }
+      
+      var card = event.target.closest('.card');
+      var href = card.querySelector('.card-image').href;
+      
+      if (notesData[href]) {
+        var notesReadOpenDiv = document.createElement('div');
+        notesReadOpenDiv.id = 'NotesReadOpen';
+        notesReadOpenDiv.textContent = notesData[href];
+        card.appendChild(notesReadOpenDiv);
+      }
     }
   }
 });
