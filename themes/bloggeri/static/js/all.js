@@ -343,6 +343,7 @@ textArea.value = savedNoteText || "";
   card.appendChild(notesReadDiv);
 
 }); 
+}
         });
 
   //
