@@ -19,6 +19,8 @@ if (notesData[href]) {
 });
 }
 }
+
+processStoredNotes()
 //
 
 document.addEventListener('click', function(event) {
@@ -336,8 +338,7 @@ textArea.value = savedNoteText || "";
             var notes = JSON.parse(localStorage.getItem("Notes")) || {};
             notes[href] = noteText;
             localStorage.setItem("Notes", JSON.stringify(notes));
-        processStoredNotes();
-
+processStoredNotes();
         });
 
   //
