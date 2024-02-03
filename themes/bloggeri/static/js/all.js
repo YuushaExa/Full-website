@@ -338,9 +338,22 @@ textArea.value = savedNoteText || "";
             notes[href] = noteText;
             localStorage.setItem("Notes", JSON.stringify(notes));
 
+          var storedNotes = localStorage.getItem("Notes");
+if (storedNotes) {
+var notesData = JSON.parse(storedNotes);
+
+var cards = document.querySelectorAll('.card');
+
+cards.forEach(function(card) {
+var href = card.querySelector('.card-image').href;
+
+if (notesData[href]) {
   var notesReadDiv = document.createElement('div');
   notesReadDiv.className = 'NotesRead';
   card.appendChild(notesReadDiv);
+}
+});
+}
 
         });
 
