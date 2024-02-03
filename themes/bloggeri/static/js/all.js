@@ -313,6 +313,11 @@ updateStarColors();
         var note = document.getElementById("Note");
         var saveButton = document.querySelector(".SaveNote");
 
+var savedNotes = JSON.parse(localStorage.getItem("Notes"));
+var currentCardHref = card.querySelector('.card-image').href;
+var savedNoteText = savedNotes[currentCardHref];
+textArea.value = savedNoteText;
+  
         note.addEventListener("click", function() {
             if (textWindow.style.display === "none") {
                 textWindow.style.display = "block";
