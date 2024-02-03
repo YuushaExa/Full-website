@@ -342,8 +342,6 @@ textArea.value = savedNoteText || "";
   notesReadDiv.className = 'NotesRead';
   card.appendChild(notesReadDiv);
 
-}
-});
 }         
         });
 
