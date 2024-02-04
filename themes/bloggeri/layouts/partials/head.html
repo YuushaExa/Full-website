@@ -29,6 +29,30 @@ html{overflow-y:scroll;
   flex-direction: column;
 	}
 
+	     #notesROL {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    overflow: auto;
+    transition: opacity .3s;
+    background: rgba(0, 0, 0, 0.5);
+	     }
+	      #NotesReadOpen {
+    position: relative;
+    width: 300px;
+    height: fit-content;
+    font-size: 13px;
+    border-radius: 10px;
+    transition: opacity .3s;
+    background-color: hsl(0deg 0% 0%/50%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 50%;
+	      }
 
 .NotesRead {
  width: 20px;
