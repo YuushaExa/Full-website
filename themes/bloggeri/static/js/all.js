@@ -40,6 +40,11 @@ document.addEventListener('click', function(event) {
         notesReadOpenDiv.id = 'NotesReadOpen';
         notesReadOpenDiv.textContent = notesData[href];
         notesReadOpenLetterDiv.appendChild(notesReadOpenDiv);
+
+          var notesCloseDiv = document.createElement('div');
+        notesCloseDiv.id = 'notesCloseDiv';
+        notesCloseDiv.textContent = 'Close';
+        notesReadOpenLetterDiv.appendChild(notesCloseDiv);
       }
     }
   }
