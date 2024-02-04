@@ -32,10 +32,14 @@ document.addEventListener('click', function(event) {
       var href = card.querySelector('.card-image').href;
       
       if (notesData[href]) {
+        var notesReadOpenLetterDiv = document.createElement('div');
+        notesReadOpenLetterDiv.id = 'notesROL';
+        document.body.appendChild(notesReadOpenLetterDiv);
+        
         var notesReadOpenDiv = document.createElement('div');
         notesReadOpenDiv.id = 'NotesReadOpen';
         notesReadOpenDiv.textContent = notesData[href];
-        document.body.appendChild(notesReadOpenDiv);
+        notesReadOpenLetterDiv.appendChild(notesReadOpenDiv);
       }
     }
   }
