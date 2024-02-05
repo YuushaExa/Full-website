@@ -772,6 +772,12 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
           $("#content-front-text").css("opacity", "1");   
 });
 
+
+   var span2 = document.getElementById("notesCloseDiv")[0];
+span2.onclick = function() {
+    var divElement = document.getElementById("notesROL");
+divElement.parentNode.removeChild(divElement);
+}
 var modal9 = document.getElementById("lightbox");
 modal9.onclick = function(event) {
 if (event.target == modal9) {
