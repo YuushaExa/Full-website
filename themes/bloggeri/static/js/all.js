@@ -776,6 +776,13 @@ $("body").on("click", "#notesCloseDiv", function() {
     var divElement2 = document.getElementById("notesROL");
 divElement2.parentNode.removeChild(divElement2);
 });
+$(document).on("click", "#notesROL", function(event) {
+  var modal4 = document.getElementById("notesROL");
+  if (event.target == modal4) {
+    var divElement = document.getElementById("notesROL");
+divElement.parentNode.removeChild(divElement);
+  }
+});
 
 var modal9 = document.getElementById("lightbox");
 modal9.onclick = function(event) {
