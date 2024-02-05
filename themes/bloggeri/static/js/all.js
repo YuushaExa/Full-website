@@ -773,7 +773,7 @@ $("body").on("mouseover", "#game-preview1 a", function(event) {
 });
 
 
-   var span2 = document.getElementById("notesCloseDiv")[0];
+   var span2 = document.getElementById("notesCloseDiv");
 span2.onclick = function() {
     var divElement = document.getElementById("notesROL");
 divElement.parentNode.removeChild(divElement);
