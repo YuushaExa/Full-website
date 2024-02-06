@@ -66,9 +66,10 @@
             if (doc.exists) {
               var data = doc.data();
               for (var field in data) {
-                if (data.hasOwnProperty(field)) {
-                  localStorage.setItem(field, JSON.stringify(data[field]));
-                }
+        if (data.hasOwnProperty(field)) {
+            var parsedValue = JSON.parse(data[field]);
+            localStorage.setItem(field, JSON.stringify(parsedValue));
+          }
               }
               console.log("Data retrieved and stored in localStorage.");
             } else {
