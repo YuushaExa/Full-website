@@ -5,6 +5,13 @@
       <div class="post">
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
+
+<button id="transferDataButton">Transfer Data</button>
+<script>
+  var transferDataButton = document.getElementById("transferDataButton");
+  transferDataButton.addEventListener("click", transferDataToFirestore);
+</script>
+    
     <span>Favorites: <p id="totalCount-fav"></p></span>
    <button class="syncfav">Sync</button>
     <div class="syncfavmenu">
@@ -117,5 +124,52 @@ function uploadFile(event) {
 // Attach event listeners to buttons
 document.getElementById('downloadBtn').addEventListener('click', downloadLocalStorage);
 document.getElementById('uploadInput').addEventListener('change', uploadFile);
+</script>
+
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script>
+  // Replace with your Firebase configuration
+  var firebaseConfig = {
+  apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    projectId: "gamedb-95862",
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Get a reference to the Firestore database
+  var db = firebase.firestore();
+</script>
+<script>
+function getLocalStorageData() {
+  var localStorageData = {};
+
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    localStorageData[key] = value;
+  }
+
+  return localStorageData;
+}
+  
+function transferDataToFirestore() {
+  var localStorageData = getLocalStorageData();
+
+  db.collection("users")
+    .add(localStorageData)
+    .then(function (docRef) {
+      console.log("Data transferred successfully with ID: ", docRef.id);
+      // Optionally, you can clear the localStorage after successful transfer
+      localStorage.clear();
+    })
+    .catch(function (error) {
+      console.error("Error transferring data: ", error);
+    });
+}
+  
 </script>
 {{ end }}
