@@ -10,6 +10,8 @@
 
     
    <button id="transferDataButton">Transfer Data</button>
+      <input type="text" id="userIdInput" placeholder="Enter User ID">
+  <button id="getDataButton">Get Data</button>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -49,8 +51,6 @@
           .add(localStorageData)
           .then(function (docRef) {
             console.log("Data transferred successfully with ID: ", docRef.id);
-            // Optionally, you can clear the localStorage after successful transfer
-            localStorage.clear();
           })
           .catch(function (error) {
             console.error("Error transferring data: ", error);
@@ -59,6 +59,29 @@
 
       var transferDataButton = document.getElementById("transferDataButton");
       transferDataButton.addEventListener("click", transferDataToFirestore);
+
+       function getDataAndStoreInLocalStorage(userId) {
+        db.collection("users").doc(userId).get()
+          .then(function(doc) {
+            if (doc.exists) {
+              var data = doc.data();
+              localStorage.setItem("userData", JSON.stringify(data));
+              console.log("Data retrieved and stored in localStorage.");
+            } else {
+              console.log("No data available for the provided user ID.");
+            }
+          })
+          .catch(function(error) {
+            console.error("Error retrieving data: ", error);
+          });
+      }
+
+      var getDataButton = document.getElementById("getDataButton");
+      getDataButton.addEventListener("click", function() {
+        var userId = document.getElementById("userIdInput").value;
+        getDataAndStoreInLocalStorage(userId);
+      });
+      
     });
   </script>
 
