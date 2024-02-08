@@ -133,6 +133,16 @@
         console.error('User not logged in.');
       }
     });
+
+  firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is logged in
+    console.log('User logged in:', user);
+  } else {
+    // User is logged out
+    console.log('User logged out.');
+  }
+});
 </script>
           
           
