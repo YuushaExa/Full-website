@@ -25,8 +25,12 @@
     <button type="submit">Login</button>
   </form>
 
+            <button id="cloudsave">Save to Firebase Storage</button>
+
+          
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 <script>
   var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
@@ -94,6 +98,40 @@
           console.error('Login failed:', errorCode, errorMessage);
           // Display an error message to the user or handle the error appropriately
         });
+    });
+
+  // cloud save
+
+   // Get the cloudsave button element
+    const cloudSaveButton = document.getElementById('cloudsave');
+
+    // Add an event listener to the cloudsave button
+    cloudSaveButton.addEventListener('click', () => {
+      // Get the current user
+      const user = firebase.auth().currentUser;
+
+      if (user) {
+        // Generate a unique file name using the user's UID
+        const fileName = user.uid + '.json';
+
+        // Convert localStorage data to JSON
+        const localStorageData = JSON.stringify(localStorage);
+
+        // Create a reference to the Firebase Storage folder
+        const storageRef = firebase.storage().ref('data');
+
+        // Create a child reference with the file name and upload the data
+        const fileRef = storageRef.child(fileName);
+        fileRef.putString(localStorageData, 'raw')
+          .then(() => {
+            console.log('Data saved to Firebase Storage successfully.');
+          })
+          .catch((error) => {
+            console.error('Data upload to Firebase Storage failed:', error);
+          });
+      } else {
+        console.error('User not logged in.');
+      }
     });
 </script>
           
