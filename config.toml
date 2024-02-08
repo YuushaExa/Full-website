@@ -52,6 +52,10 @@ home = [ "HTML", "RSS", "JSON" ]
     name = "Favorites"
     url = "/favorites/"
 
+    [[menu.main]]
+    name = "register"
+    url = "/register/"
+
   [[menu.footer]]
   name = "About"
   url = "/about/"
