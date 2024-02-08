@@ -159,8 +159,8 @@ cloudSaveButton.addEventListener('click', () => {
             console.log('Retrieved data:', data);
             
             // Store the retrieved data in localStorage
-       localStorage.setItem(JSON.stringify(data));
-
+const timestamp = Date.now().toString();
+localStorage.setItem(timestamp, JSON.stringify(data));
             // Do something with the retrieved data if needed
 
           })
