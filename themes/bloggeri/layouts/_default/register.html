@@ -6,7 +6,58 @@
         <h1 data-pagefind-ignore class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
   <div class="content">
         <div class="columns is-multiline">
+  <h2>Registration Form</h2>
+  <form id="registrationForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <button type="submit">Register</button>
+  </form>
 
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+<script>
+      var firebaseConfig = {
+     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
+    projectId: "gamedb-95862",
+    storageBucket: "gamedb-95862.appspot.com",
+    messagingSenderId: "788250168154",
+    appId: "1:788250168154:web:b6573c45a909fc09694163"
+      };
+
+  // Get the registration form element
+const registrationForm = document.getElementById('registrationForm');
+
+// Add an event listener to the registration form
+registrationForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
+
+  // Get user input values
+  const email = registrationForm.email.value;
+  const password = registrationForm.password.value;
+
+  // Create a new user with email and password
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Registration successful
+      const user = userCredential.user;
+      console.log('Registration successful:', user);
+      // You can redirect the user to a different page or perform additional actions here
+    })
+    .catch((error) => {
+      // Registration failed
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Registration failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+</script>
+          
+          
      </div>
     </div>     </div>   </div>  
   </article>    
