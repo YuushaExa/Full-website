@@ -26,6 +26,8 @@
   </form>
 
             <button id="cloudsave">Save to Firebase Storage</button>
+          <button id="loadcloudsave">Load Cloud Save</button>
+
 
           
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -128,6 +130,47 @@ cloudSaveButton.addEventListener('click', () => {
       })
       .catch((error) => {
         console.error('Data upload to Firebase Storage failed:', error);
+      });
+  } else {
+    console.error('User not logged in.');
+  }
+});
+
+  // cloud load 
+
+  document.getElementById('loadcloudsave').addEventListener('click', function() {
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    // Generate the file name based on the user's UID
+    const fileName = user.uid + '.json';
+
+    // Create a reference to the Firebase Storage file
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
+
+    // Get the download URL for the file
+    fileRef.getDownloadURL()
+      .then((downloadURL) => {
+        // Use the download URL to retrieve the file data
+        fetch(downloadURL)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Retrieved data:', data);
+            
+            // Store the retrieved data in localStorage
+            localStorage.setItem('storedData', JSON.stringify(data));
+            console.log('Data stored in localStorage.');
+
+            // Do something with the retrieved data if needed
+
+          })
+          .catch((error) => {
+            console.error('Error retrieving data:', error);
+          });
+      })
+      .catch((error) => {
+        console.error('Error getting download URL:', error);
       });
   } else {
     console.error('User not logged in.');
