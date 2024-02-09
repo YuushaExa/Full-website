@@ -150,7 +150,7 @@ deleteAccountButton.addEventListener('click', () => {
       // Delete the associated Firebase Storage folder
       const storage = firebase.storage();
       const storageRef = storage.ref();
-      const folderPath = 'data/' + uid;
+    var folderPath = 'data/' + uid + '/' + uid + '.json';
 
       storageRef.child(folderPath).delete()
         .then(() => {
