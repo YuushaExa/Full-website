@@ -291,30 +291,16 @@ deleteButton.addEventListener('click', function() {
     var uid = user.uid;
     var storage = firebase.storage();
     var storageRef = storage.ref();
-    var folderPath = 'data/' + uid;
+    var folderPath = 'data/' + uid + '/' + uid + '.json';
 
-    storageRef.child(folderPath).listAll()
-      .then(function(result) {
-        // Loop through each file in the folder
-        result.items.forEach(function(fileRef) {
-          // Check if the file matches the desired pattern
-          if (fileRef.name.startsWith(uid)) {
-            // Delete the file
-            fileRef.delete()
-              .then(function() {
-                console.log('File deleted successfully:', fileRef.name);
-                // Perform any additional actions after successful deletion
-              })
-              .catch(function(error) {
-                console.error('Error deleting file:', fileRef.name, error);
-                // Handle any errors that occur during deletion
-              });
-          }
-        });
+    storageRef.child(folderPath).delete()
+      .then(function() {
+        console.log('File deleted successfully:', folderPath);
+        // Perform any additional actions after successful deletion
       })
       .catch(function(error) {
-        console.error('Error listing files:', error);
-        // Handle any errors that occur while listing files
+        console.error('Error deleting file:', folderPath, error);
+        // Handle any errors that occur during deletion
       });
   } else {
     console.log('No user is currently signed in.');
