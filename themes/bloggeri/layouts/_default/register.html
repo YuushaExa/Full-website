@@ -28,7 +28,7 @@
             <button id="cloudsave">Save to Firebase Storage</button>
           <button id="loadcloudsave">Load Cloud Save</button>
 
-
+<button id="logout">Logout</button>
         
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -102,6 +102,27 @@
         });
     });
 
+// log out
+
+  // Get the logout button element
+const logoutButton = document.getElementById('logout');
+
+// Add an event listener to the logout button
+logoutButton.addEventListener('click', () => {
+  // Sign out the user
+  firebase.auth().signOut()
+    .then(() => {
+      // Logout successful
+      console.log('Logout successful');
+      // You can redirect the user to a different page or perform additional actions here
+    })
+    .catch((error) => {
+      // Logout failed
+      console.error('Logout failed:', error);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+  
   // cloud save
 
  const cloudSaveButton = document.getElementById('cloudsave');
