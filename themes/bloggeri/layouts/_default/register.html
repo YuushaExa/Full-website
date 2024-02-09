@@ -145,27 +145,29 @@ deleteAccountButton.addEventListener('click', () => {
   // Re-authenticate the user with the provided credential
   user.reauthenticateWithCredential(credential)
     .then(() => {
-      // User re-authenticated successfully, proceed with account deletion
-
-      // Delete the user's storage folder
-      const storageRef = firebase.storage().ref();
-      const folderRef = storageRef.child(user.uid);
-      folderRef.delete()
-        .then(() => {
-          // Storage folder deletion successful
-          console.log('Storage folder deletion successful');
-        })
-        .catch((error) => {
-          // Storage folder deletion failed
-          console.error('Storage folder deletion failed:', error);
-        });
+      // Get the user's UID
+      const uid = user.uid;
 
       // Delete the user account
       user.delete()
         .then(() => {
           // Account deletion successful
           console.log('Account deletion successful');
-          // You can redirect the user to a different page or perform additional actions here
+
+          // Delete the associated Firebase Storage folder
+          const storage = firebase.storage();
+          const storageRef = storage.ref();
+          const folderPath = 'data/' + uid;
+
+          storageRef.child(folderPath).delete()
+            .then(() => {
+              console.log('Associated storage folder deleted successfully:', folderPath);
+              // You can redirect the user to a different page or perform additional actions here
+            })
+            .catch((error) => {
+              console.error('Error deleting associated storage folder:', folderPath, error);
+              // Handle any errors that occur during deletion
+            });
         })
         .catch((error) => {
           // Account deletion failed
