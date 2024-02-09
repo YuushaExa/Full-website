@@ -150,12 +150,13 @@ deleteAccountButton.addEventListener('click', () => {
       // Delete the associated Firebase Storage folder
       const storage = firebase.storage();
       const storageRef = storage.ref();
-    var folderPath = 'data/' + uid + '/' + uid + '.json';
+      var folderPath = 'data/' + uid + '/' + uid + '.json';
 
       storageRef.child(folderPath).delete()
         .then(() => {
+          // Successful deletion of associated storage folder
           console.log('Associated storage folder deleted successfully:', folderPath);
-          
+
           // Delete the user account
           user.delete()
             .then(() => {
@@ -173,6 +174,19 @@ deleteAccountButton.addEventListener('click', () => {
           // Error deleting associated storage folder
           console.error('Error deleting associated storage folder:', folderPath, error);
           // Display an error message to the user or handle the error appropriately
+
+          // Continue with account deletion even if storage deletion failed
+          user.delete()
+            .then(() => {
+              // Account deletion successful
+              console.log('Account deletion successful');
+              // You can redirect the user to a different page or perform additional actions here
+            })
+            .catch((error) => {
+              // Account deletion failed
+              console.error('Account deletion failed:', error);
+              // Display an error message to the user or handle the error appropriately
+            });
         });
     })
     .catch((error) => {
