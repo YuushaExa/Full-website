@@ -104,7 +104,6 @@
 
   // cloud save
 
-// Get the cloudsave button element
 const cloudSaveButton = document.getElementById('cloudsave');
 
 // Add an event listener to the cloudsave button
@@ -119,15 +118,15 @@ cloudSaveButton.addEventListener('click', () => {
     // Convert localStorage data to JSON
     const localStorageData = JSON.stringify(localStorage);
 
-    // URL encode the localStorageData
-    const encodedData = encodeURIComponent(localStorageData);
+    // Compress the localStorageData using LZString
+    const compressedData = LZString.compressToEncodedURIComponent(localStorageData);
 
     // Create a reference to the Firebase Storage folder
     const storageRef = firebase.storage().ref();
 
     // Create a child reference with the file path and upload the data
     const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
-    fileRef.putString(encodedData, 'raw')
+    fileRef.putString(compressedData, 'raw')
       .then(() => {
         console.log('Data saved to Firebase Storage successfully.');
       })
