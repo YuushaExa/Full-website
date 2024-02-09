@@ -125,7 +125,7 @@ const cloudSaveButton = document.getElementById('cloudsave');
 
       // Create a child reference with the file path and upload the data
       const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
-      fileRef.putString(compressedData, 'base64')
+      fileRef.putString(compressedData, 'raw')
         .then(() => {
           console.log('Data saved to Firebase Storage successfully.');
         })
