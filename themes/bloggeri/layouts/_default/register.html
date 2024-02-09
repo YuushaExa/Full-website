@@ -128,7 +128,6 @@ logoutButton.addEventListener('click', () => {
 
   // delete
 
-// Get the delete account button element
 const deleteAccountButton = document.getElementById('deleteAccount');
 
 // Add an event listener to the delete account button
@@ -148,30 +147,31 @@ deleteAccountButton.addEventListener('click', () => {
       // Get the user's UID
       const uid = user.uid;
 
-      // Delete the user account
-      user.delete()
+      // Delete the associated Firebase Storage folder
+      const storage = firebase.storage();
+      const storageRef = storage.ref();
+      const folderPath = 'data/' + uid;
+
+      storageRef.child(folderPath).delete()
         .then(() => {
-          // Account deletion successful
-          console.log('Account deletion successful');
-
-          // Delete the associated Firebase Storage folder
-          const storage = firebase.storage();
-          const storageRef = storage.ref();
-          const folderPath = 'data/' + uid;
-
-          storageRef.child(folderPath).delete()
+          console.log('Associated storage folder deleted successfully:', folderPath);
+          
+          // Delete the user account
+          user.delete()
             .then(() => {
-              console.log('Associated storage folder deleted successfully:', folderPath);
+              // Account deletion successful
+              console.log('Account deletion successful');
               // You can redirect the user to a different page or perform additional actions here
             })
             .catch((error) => {
-              console.error('Error deleting associated storage folder:', folderPath, error);
-              // Handle any errors that occur during deletion
+              // Account deletion failed
+              console.error('Account deletion failed:', error);
+              // Display an error message to the user or handle the error appropriately
             });
         })
         .catch((error) => {
-          // Account deletion failed
-          console.error('Account deletion failed:', error);
+          // Error deleting associated storage folder
+          console.error('Error deleting associated storage folder:', folderPath, error);
           // Display an error message to the user or handle the error appropriately
         });
     })
