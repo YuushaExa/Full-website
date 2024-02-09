@@ -113,12 +113,14 @@ const cloudSaveButton = document.getElementById('cloudsave');
     if (user) {
       // Generate a unique file name using the user's UID
       const fileName = user.uid + '.json';
+      
+    const localStorageData = JSON.stringify(localStorage);
 
-      // Convert localStorage data to JSON
-      const localStorageData = JSON.stringify(localStorage);
+   // Remove backslashes from the JSON string
+    const sanitizedData = localStorageData.replace(/\\/g, '');
 
-      // Compress the localStorageData using LZString
-      const compressedData = LZString.compressToBase64(localStorageData);
+    // Compress the sanitizedData using LZString
+    const compressedData = LZString.compressToBase64(sanitizedData);
 
       // Create a reference to the Firebase Storage folder
       const storageRef = firebase.storage().ref();
