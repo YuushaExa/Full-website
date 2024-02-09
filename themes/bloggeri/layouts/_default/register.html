@@ -276,40 +276,49 @@ fileRef.getDownloadURL()
 
   // delete button
 
-  // Assuming you have already initialized Firebase SDK and authenticated the user
-
-// Get a reference to the Firebase Storage bucket
-var storage = firebase.storage();
-var storageRef = storage.ref();
+// Assuming you have already initialized Firebase SDK and authenticated the user
 
 // Get the button element
 var deleteButton = document.getElementById('deletesaved');
 
-// Add a click event listener to the delete button
 deleteButton.addEventListener('click', function() {
   // Get the current user
   var user = firebase.auth().currentUser;
 
+  // Check if a user is available
   if (user) {
-    // Get the UID of the current user
+    // Get the current user's UID
     var uid = user.uid;
-
-    // Define the path to the storage folder using the UID
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
     var folderPath = 'data/' + uid;
 
-    // Delete the storage folder
-    storageRef.child(folderPath).delete()
-      .then(function() {
-        console.log('Storage folder deleted successfully.');
-        // Perform any additional actions after successful deletion
+    storageRef.child(folderPath).listAll()
+      .then(function(result) {
+        // Loop through each file in the folder
+        result.items.forEach(function(fileRef) {
+          // Check if the file matches the desired pattern
+          if (fileRef.name.startsWith(uid)) {
+            // Delete the file
+            fileRef.delete()
+              .then(function() {
+                console.log('File deleted successfully:', fileRef.name);
+                // Perform any additional actions after successful deletion
+              })
+              .catch(function(error) {
+                console.error('Error deleting file:', fileRef.name, error);
+                // Handle any errors that occur during deletion
+              });
+          }
+        });
       })
       .catch(function(error) {
-        console.error('Error deleting storage folder:', error);
-        // Handle any errors that occur during deletion
+        console.error('Error listing files:', error);
+        // Handle any errors that occur while listing files
       });
   } else {
     console.log('No user is currently signed in.');
-    // Handle the case where no user is signed in
+    // Handle the case when no user is signed in
   }
 });
 </script>
