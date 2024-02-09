@@ -105,39 +105,42 @@
   // cloud save
 const cloudSaveButton = document.getElementById('cloudsave');
 
-  // Add an event listener to the cloudsave button
-  cloudSaveButton.addEventListener('click', () => {
-    // Get the current user
-    const user = firebase.auth().currentUser;
+ const cloudSaveButton = document.getElementById('cloudsave');
 
-    if (user) {
-      // Generate a unique file name using the user's UID
-      const fileName = user.uid + '.json';
-      
-    const localStorageData = JSON.stringify(localStorage);
+// Add an event listener to the cloudsave button
+cloudSaveButton.addEventListener('click', () => {
+// Get the current user
+const user = firebase.auth().currentUser;
 
-   // Remove backslashes from the JSON string
-    const sanitizedData = localStorageData.replace(/\\/g, '');
+javascript
+Copy
+if (user) {
+  // Generate a unique file name using the user's UID
+  const fileName = user.uid + '.json';
 
-    // Compress the sanitizedData using LZString
-    const compressedData = LZString.compressToBase64(sanitizedData);
+  // Convert localStorage data to JSON
+  const localStorageData = JSON.stringify(localStorage);
 
-      // Create a reference to the Firebase Storage folder
-      const storageRef = firebase.storage().ref();
+  // Compress the localStorageData using LZString
+  const compressedData = LZString.compressToEncodedURIComponent(localStorageData);
 
-      // Create a child reference with the file path and upload the data
-      const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
-      fileRef.putString(compressedData, 'raw')
-        .then(() => {
-          console.log('Data saved to Firebase Storage successfully.');
-        })
-        .catch((error) => {
-          console.error('Data upload to Firebase Storage failed:', error);
-        });
-    } else {
-      console.error('User not logged in.');
-    }
-  });
+  // Create a reference to the Firebase Storage folder
+  const storageRef = firebase.storage().ref();
+
+  // Create a child reference with the file path and upload the data
+  const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
+  fileRef.putString(compressedData, 'raw')
+    .then(() => {
+      console.log('Data saved to Firebase Storage successfully.');
+    })
+    .catch((error) => {
+      console.error('Data upload to Firebase Storage failed:', error);
+    });
+} else {
+  console.error('User not logged in.');
+}
+});
+  
   // cloud load 
 
  document.getElementById('loadcloudsave').addEventListener('click', function() {
@@ -159,7 +162,7 @@ const cloudSaveButton = document.getElementById('cloudsave');
           .then((response) => response.text())
           .then((compressedData) => {
             // Decompress the compressed data using LZString
-            const localStorageData = LZString.decompressFromBase64(compressedData);
+            const localStorageData = LZString.decompressFromEncodedURIComponent(compressedData);
 
             // Parse the decompressed data as JSON
             const data = JSON.parse(localStorageData);
