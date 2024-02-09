@@ -103,7 +103,6 @@
     });
 
   // cloud save
-const cloudSaveButton = document.getElementById('cloudsave');
 
  const cloudSaveButton = document.getElementById('cloudsave');
 
@@ -112,8 +111,6 @@ cloudSaveButton.addEventListener('click', () => {
 // Get the current user
 const user = firebase.auth().currentUser;
 
-javascript
-Copy
 if (user) {
   // Generate a unique file name using the user's UID
   const fileName = user.uid + '.json';
