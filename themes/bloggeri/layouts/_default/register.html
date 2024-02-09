@@ -127,7 +127,7 @@ logoutButton.addEventListener('click', () => {
 
   // delete
 
-  // Get the delete account button element
+// Get the delete account button element
 const deleteAccountButton = document.getElementById('deleteAccount');
 
 // Add an event listener to the delete account button
@@ -145,6 +145,21 @@ deleteAccountButton.addEventListener('click', () => {
   user.reauthenticateWithCredential(credential)
     .then(() => {
       // User re-authenticated successfully, proceed with account deletion
+
+      // Delete the user's storage folder
+      const storageRef = firebase.storage().ref();
+      const folderRef = storageRef.child(user.uid);
+      folderRef.delete()
+        .then(() => {
+          // Storage folder deletion successful
+          console.log('Storage folder deletion successful');
+        })
+        .catch((error) => {
+          // Storage folder deletion failed
+          console.error('Storage folder deletion failed:', error);
+        });
+
+      // Delete the user account
       user.delete()
         .then(() => {
           // Account deletion successful
