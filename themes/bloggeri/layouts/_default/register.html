@@ -115,7 +115,7 @@ cloudSaveButton.addEventListener('click', () => {
     const fileName = user.uid + '.json';
 
     // Convert localStorage data to JSON
-    const localStorageData = JSON.parse(JSON.stringify(localStorage));
+    const localStorageData = JSON.stringify(localStorage);
 
     // Compress the localStorageData using LZString
     const compressedData = LZString.compressToEncodedURIComponent(localStorageData);
