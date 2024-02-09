@@ -25,13 +25,14 @@
   <button type="submit">Login</button>
 </form>
 
+          <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
           <button id="loadcloudsave">Load Cloud Save</button>
-
 <button id="logout">Logout</button>
-
             <button id="deleteAccount">Delete Account</button>
-
+   <button id="deletesaved">Delete Save Data</button>
+          </div>
+              
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
@@ -270,6 +271,45 @@ fileRef.getDownloadURL()
   } else {
     // User is logged out
     console.log('User logged out.');
+  }
+});
+
+  // delete button
+
+  // Assuming you have already initialized Firebase SDK and authenticated the user
+
+// Get a reference to the Firebase Storage bucket
+var storage = firebase.storage();
+var storageRef = storage.ref();
+
+// Get the button element
+var deleteButton = document.getElementById('deletesaved');
+
+// Add a click event listener to the delete button
+deleteButton.addEventListener('click', function() {
+  // Get the current user
+  var user = firebase.auth().currentUser;
+
+  if (user) {
+    // Get the UID of the current user
+    var uid = user.uid;
+
+    // Define the path to the storage folder using the UID
+    var folderPath = 'data/' + uid;
+
+    // Delete the storage folder
+    storageRef.child(folderPath).delete()
+      .then(function() {
+        console.log('Storage folder deleted successfully.');
+        // Perform any additional actions after successful deletion
+      })
+      .catch(function(error) {
+        console.error('Error deleting storage folder:', error);
+        // Handle any errors that occur during deletion
+      });
+  } else {
+    console.log('No user is currently signed in.');
+    // Handle the case where no user is signed in
   }
 });
 </script>
