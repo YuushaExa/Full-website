@@ -138,7 +138,7 @@ const cloudSaveButton = document.getElementById('cloudsave');
   });
   // cloud load 
 
-  document.getElementById('loadcloudsave').addEventListener('click', function() {
+ document.getElementById('loadcloudsave').addEventListener('click', function() {
   const user = firebase.auth().currentUser;
 
   if (user) {
@@ -154,8 +154,13 @@ const cloudSaveButton = document.getElementById('cloudsave');
       .then((downloadURL) => {
         // Use the download URL to retrieve the file data
         fetch(downloadURL)
-          .then((response) => response.json())
-          .then((data) => {
+          .then((response) => response.text())
+          .then((compressedData) => {
+            // Decompress the compressed data using LZString
+            const localStorageData = LZString.decompressFromBase64(compressedData);
+
+            // Parse the decompressed data as JSON
+            const data = JSON.parse(localStorageData);
             console.log('Retrieved data:', data);
             
             // Store the retrieved data in localStorage
