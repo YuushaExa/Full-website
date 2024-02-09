@@ -29,7 +29,9 @@
           <button id="loadcloudsave">Load Cloud Save</button>
 
 <button id="logout">Logout</button>
-        
+
+            <button id="deleteAccount">Delete Account</button>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
@@ -119,6 +121,45 @@ logoutButton.addEventListener('click', () => {
     .catch((error) => {
       // Logout failed
       console.error('Logout failed:', error);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+
+  // delete
+
+  // Get the delete account button element
+const deleteAccountButton = document.getElementById('deleteAccount');
+
+// Add an event listener to the delete account button
+deleteAccountButton.addEventListener('click', () => {
+  // Get the currently logged-in user
+  const user = firebase.auth().currentUser;
+
+  // Prompt the user for re-authentication (e.g., password confirmation) before deleting the account
+  const password = prompt('Please enter your password to confirm account deletion:');
+
+  // Create a credential with the user's email and password
+  const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
+
+  // Re-authenticate the user with the provided credential
+  user.reauthenticateWithCredential(credential)
+    .then(() => {
+      // User re-authenticated successfully, proceed with account deletion
+      user.delete()
+        .then(() => {
+          // Account deletion successful
+          console.log('Account deletion successful');
+          // You can redirect the user to a different page or perform additional actions here
+        })
+        .catch((error) => {
+          // Account deletion failed
+          console.error('Account deletion failed:', error);
+          // Display an error message to the user or handle the error appropriately
+        });
+    })
+    .catch((error) => {
+      // Re-authentication failed
+      console.error('Re-authentication failed:', error);
       // Display an error message to the user or handle the error appropriately
     });
 });
