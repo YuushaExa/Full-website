@@ -34,12 +34,11 @@
 </form>
 
  <h2>Update Email Address</h2>
-  <form>
-    <label for="newEmail">New Email Address:</label>
-    <input type="email" id="newEmail" required>
-    <br><br>
-    <button type="button" onclick="updateEmail()">Update Email</button>
-  </form>
+<form id="updateEmailForm">
+  <label for="newEmail">New Email Address:</label>
+  <input type="email" id="newEmail" name="newEmail" required>
+  <button type="submit">Update Email</button>
+</form>
           
           <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
@@ -401,28 +400,24 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
   // Update email
 
- function updateEmail() {
-  var user = firebase.auth().currentUser;
+  // Function to update email address
+document.getElementById("updateEmailForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission and page reload
+  
   var newEmail = document.getElementById("newEmail").value;
-
-  user.updateEmail(newEmail).then(function() {
-    // Email address update successful, send verification email
-    sendVerificationEmail(user);
-  }).catch(function(error) {
-    // An error occurred while updating email address
-    alert("Error updating email address: " + error.message);
-  });
-}
-
-function sendVerificationEmail(user) {
-  user.sendEmailVerification().then(function() {
-    // Verification email sent successfully
-    alert("Email address updated! Verification email sent.");
-  }).catch(function(error) {
-    // An error occurred while sending the verification email
-    alert("Error sending verification email: " + error.message);
-  });
-}
+  
+  var user = firebase.auth().currentUser;
+  
+  user.verifyBeforeUpdateEmail(newEmail)
+    .then(function() {
+      // Verification email sent
+      alert("A verification email has been sent to your new email address.");
+    })
+    .catch(function(error) {
+      // Error occurred while sending verification email
+      alert("Error sending verification email: " + error.message);
+    });
+});
 </script>
           
           
