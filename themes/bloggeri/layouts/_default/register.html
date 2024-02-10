@@ -401,7 +401,7 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
   // Update email
 
-function updateEmail() {
+  function updateEmail() {
     const newEmail = document.getElementById('newEmail').value;
 
     // Get the currently authenticated user
@@ -417,6 +417,17 @@ function updateEmail() {
         console.log('Email updated successfully');
         console.log('Previous email:', currentEmail);
         console.log('New email:', newEmail);
+
+        // Send email verification
+        user.sendEmailVerification()
+          .then(() => {
+            // Email verification sent
+            console.log('Email verification sent');
+          })
+          .catch((error) => {
+            // An error occurred while sending the email verification
+            console.log('Error sending email verification:', error);
+          });
       })
       .catch((error) => {
         // An error occurred while updating the email
