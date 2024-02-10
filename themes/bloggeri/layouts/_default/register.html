@@ -41,7 +41,7 @@
 </form>
 
 <div id="googleSignInButton">Google</div>
-
+  <button onclick="handleRelink()">Relink User Account</button>
           
           <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
@@ -443,6 +443,45 @@ function signInWithGoogle() {
 }
 
 googleSignInButton.addEventListener("click", signInWithGoogle);
+
+  // re link to google
+
+  
+    // Function to handle the relinking process
+    function handleRelink() {
+      var email = "user@example.com"; // Replace with the actual email
+      var password = "userPassword"; // Replace with the actual password
+
+      // Step 1: Sign in with email and password
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(emailUserCredential) {
+          // Step 2: Sign out the user
+          return firebase.auth().signOut().then(function() {
+            // Step 3: Sign in with Google account
+            var googleProvider = new firebase.auth.GoogleAuthProvider();
+            return firebase.auth().signInWithPopup(googleProvider);
+          }).then(function(googleUserCredential) {
+            // Step 4: Retrieve email-authenticated user data
+            var emailUser = emailUserCredential.user;
+            var googleUser = googleUserCredential.user;
+
+            // Step 5: Update Google account with email-authenticated user data
+            var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+
+            return googleUser.linkWithCredential(credential);
+          }).then(function(finalUserCredential) {
+            // Relinking successful
+            var finalUser = finalUserCredential.user;
+            console.log("User relinked successfully:", finalUser);
+          }).catch(function(error) {
+            // Error occurred during the process
+            console.error("Error relinking user:", error);
+          });
+        }).catch(function(error) {
+          // Error occurred during email sign-in
+          console.error("Error signing in with email:", error);
+        });
+    }
 </script>
           
           
