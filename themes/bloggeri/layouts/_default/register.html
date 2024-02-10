@@ -401,29 +401,28 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
   // Update email
 
-// Function to update email address
 function updateEmail() {
-  var user = firebase.auth().currentUser;
-  var newEmail = document.getElementById("newEmail").value;
+    const newEmail = document.getElementById('newEmail').value;
 
-  // Send email verification
-  user.sendEmailVerification().then(function() {
-    // Email verification sent successfully
-    alert("Email verification sent! Please check your email and click the verification link before updating your email address.");
+    // Get the currently authenticated user
+    const user = firebase.auth().currentUser;
 
-    // Update email address after email verification
-    user.updateEmail(newEmail).then(function() {
-      // Email address updated successfully
-      alert("Email address updated!");
-    }).catch(function(error) {
-      // An error occurred while updating email address
-      alert("Error updating email address: " + error.message);
-    });
-  }).catch(function(error) {
-    // An error occurred while sending email verification
-    alert("Error sending email verification: " + error.message);
-  });
-}
+    // Get the user's current email address
+    const currentEmail = user.email;
+
+    // Update the user's email address
+    user.updateEmail(newEmail)
+      .then(() => {
+        // Email successfully updated
+        console.log('Email updated successfully');
+        console.log('Previous email:', currentEmail);
+        console.log('New email:', newEmail);
+      })
+      .catch((error) => {
+        // An error occurred while updating the email
+        console.log('Error updating email:', error);
+      });
+  }
 </script>
           
           
