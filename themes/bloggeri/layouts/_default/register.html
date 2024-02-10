@@ -401,14 +401,19 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
   // Update email
 
-    // Function to update email address
-    function updateEmail() {
+   function updateEmail() {
       var user = firebase.auth().currentUser;
       var newEmail = document.getElementById("newEmail").value;
 
+      // Send email verification to the new email address
       user.updateEmail(newEmail).then(function() {
-        // Email address updated successfully
-        alert("Email address updated!");
+        user.sendEmailVerification().then(function() {
+          // Email verification sent successfully
+          alert("Email verification sent to the new email address. Please check your inbox and follow the instructions to complete the update.");
+        }).catch(function(error) {
+          // An error occurred while sending email verification
+          alert("Error sending email verification: " + error.message);
+        });
       }).catch(function(error) {
         // An error occurred while updating email address
         alert("Error updating email address: " + error.message);
