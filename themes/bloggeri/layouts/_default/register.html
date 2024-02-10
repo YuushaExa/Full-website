@@ -39,6 +39,9 @@
   <input type="email" id="newEmail" name="newEmail" required>
   <button type="submit">Update Email</button>
 </form>
+
+<div id="googleSignInButton"></div>
+
           
           <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
@@ -418,6 +421,28 @@ document.getElementById("updateEmailForm").addEventListener("submit", function(e
       alert("Error sending verification email: " + error.message);
     });
 });
+
+  // google sign 
+
+  var googleSignInButton = document.getElementById("googleSignInButton");
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function signInWithGoogle() {
+  firebase.auth().signInWithPopup(provider)
+    .then(function(result) {
+      // Signed-in user info
+      var user = result.user;
+      console.log("Google Sign-In successful:", user);
+      // You can handle the signed-in user or perform additional operations here
+    })
+    .catch(function(error) {
+      // Error occurred during Google Sign-In
+      console.error("Error signing in with Google:", error);
+    });
+}
+
+googleSignInButton.addEventListener("click", signInWithGoogle);
 </script>
           
           
