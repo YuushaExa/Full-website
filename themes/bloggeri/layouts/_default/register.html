@@ -401,36 +401,39 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
   // Update email
 
-  function updateEmail() {
-    const newEmail = document.getElementById('newEmail').value;
+function updateEmail() {
+  const newEmail = document.getElementById('newEmail').value;
 
-    // Get the currently authenticated user
-    const user = firebase.auth().currentUser;
+  // Get the currently authenticated user
+  const user = firebase.auth().currentUser;
 
-    // Get the user's current email address
-    const currentEmail = user.email;
- user.sendEmailVerification()
-          .then(() => {
-user.updateEmail(newEmail)
-      .then(() => {
-        // Email successfully updated
-        console.log('Email updated successfully');
-        console.log('Previous email:', currentEmail);
-        console.log('New email:', newEmail);
+  // Get the user's current email address
+  const currentEmail = user.email;
 
-          .catch((error) => {
-            // An error occurred while sending the email verification
-            console.log('Error sending email verification:', error);
-          });
-      })            console.log('Email verification sent');
-          })
-    
-    
-      .catch((error) => {
-        // An error occurred while updating the email
-        console.log('Error updating email:', error);
-      });
-  }
+  // Send email verification to new email address
+  user.sendEmailVerification()
+    .then(() => {
+      // Email verification sent
+      console.log('Email verification sent');
+
+      // Update user's email address
+      user.updateEmail(newEmail)
+        .then(() => {
+          // Email successfully updated
+          console.log('Email updated successfully');
+          console.log('Previous email:', currentEmail);
+          console.log('New email:', newEmail);
+        })
+        .catch((error) => {
+          // An error occurred while updating the email
+          console.log('Error updating email:', error);
+        });
+    })
+    .catch((error) => {
+      // An error occurred while sending the email verification
+      console.log('Error sending email verification:', error);
+    });
+}
 </script>
           
           
