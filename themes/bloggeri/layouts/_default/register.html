@@ -24,13 +24,14 @@
   <br>
   <button type="submit">Login</button>
 </form>
-
+   
           <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
           <button id="loadcloudsave">Load Cloud Save</button>
 <button id="logout">Logout</button>
             <button id="deleteAccount">Delete Account</button>
    <button id="deletesaved">Delete Save Data</button>
+               <button id="resetpassword">Reset Password</button>
           </div>
               
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -322,6 +323,31 @@ deleteButton.addEventListener('click', function() {
     console.log('No user is currently signed in.');
     // Handle the case when no user is signed in
   }
+});
+
+  // Reset password
+const resetPasswordButton = document.getElementById('resetpassword');
+
+  resetPasswordButton.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent the button from triggering a form submission
+
+  // Get user input value
+  const email = registrationForm.email.value;
+
+  // Send password reset email
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(() => {
+      // Password reset email sent successfully
+      console.log('Password reset email sent successfully');
+      // You can display a success message to the user or perform additional actions here
+    })
+    .catch((error) => {
+      // Password reset email failed
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Password reset email failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
 });
 </script>
           
