@@ -15,6 +15,14 @@
   <button type="submit">Register</button>
 </form>
 
+<form id="registrationFormNick">
+  <label for="nickname">Nickname:</label>
+  <input type="text" id="nickname" name="nickname" required><br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br><br>
+  <button type="submit">Register</button>
+</form>
+          
 <form id="loginForm">
   <label for="loginEmail">Email:</label>
   <input type="email" id="loginEmail" name="email" required>
@@ -49,6 +57,8 @@
   };
   firebase.initializeApp(firebaseConfig);
 
+// Email Registration
+  
   // Get the registration form element
   const registrationForm = document.getElementById('registrationForm');
 
@@ -76,6 +86,30 @@
         // Display an error message to the user or handle the error appropriately
       });
   });
+
+  // Nickname Registration 
+
+  const registrationForm = document.getElementById('registrationFormNick');
+
+registrationForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const nickname = registrationForm.nickname.value;
+  const password = registrationForm.password.value;
+
+  firebase.auth().createUserWithEmailAndPassword(`${nickname}@example.com`, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log('Registration successful:', user);
+      // Additional actions or redirection can be performed here
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Registration failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
 
   // login
 
