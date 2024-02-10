@@ -113,15 +113,22 @@ registrationFormNick.addEventListener('submit', (e) => {
 
   // login
 
- const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('loginForm');
 
 // Add an event listener to the login form
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Prevent the form from submitting
 
   // Get user input values
-  const email = loginForm.email.value || '@example.com'; // Use '@example.com' as default if no email is inputted
+  let email = loginForm.email.value;
   const password = loginForm.password.value;
+
+  // Check if the input is in email format
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(email)) {
+    // Append '@example.com' to the word entered by the user
+    email += '@example.com';
+  }
 
   // Sign in the user with email and password
   firebase.auth().signInWithEmailAndPassword(email, password)
