@@ -409,26 +409,23 @@ const resetPasswordButton = document.getElementById('resetpassword');
 
     // Get the user's current email address
     const currentEmail = user.email;
-
-    // Update the user's email address
-    user.updateEmail(newEmail)
+ user.sendEmailVerification()
+          .then(() => {
+user.updateEmail(newEmail)
       .then(() => {
         // Email successfully updated
         console.log('Email updated successfully');
         console.log('Previous email:', currentEmail);
         console.log('New email:', newEmail);
 
-        // Send email verification
-        user.sendEmailVerification()
-          .then(() => {
-            // Email verification sent
-            console.log('Email verification sent');
-          })
           .catch((error) => {
             // An error occurred while sending the email verification
             console.log('Error sending email verification:', error);
           });
-      })
+      })            console.log('Email verification sent');
+          })
+    
+    
       .catch((error) => {
         // An error occurred while updating the email
         console.log('Error updating email:', error);
