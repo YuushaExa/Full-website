@@ -91,11 +91,11 @@
 
   const registrationForm = document.getElementById('registrationFormNick');
 
-registrationForm.addEventListener('submit', (e) => {
+registrationFormNick.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const nickname = registrationForm.nickname.value;
-  const password = registrationForm.password.value;
+  const nickname = registrationFormNick.nickname.value;
+  const password = registrationFormNick.password.value;
 
   firebase.auth().createUserWithEmailAndPassword(`${nickname}@example.com`, password)
     .then((userCredential) => {
