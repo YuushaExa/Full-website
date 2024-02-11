@@ -311,11 +311,19 @@ fileRef.getDownloadURL()
         const data = JSON.parse(localStorageData);
         console.log('Retrieved data:', data);
 
-        // Store each key-value pair in localStorage
-        for (let key in data) {
-          localStorage.setItem(key, data[key]);
-        }
-
+    // Store each key-value pair in localStorage
+for (let key in data) {
+  if (!localStorage.getItem(key)) {
+    // If the key does not exist in localStorage, set the value directly
+    localStorage.setItem(key, data[key]);
+  } else {
+    // If the key already exists in localStorage, merge the values
+    const existingValue = JSON.parse(localStorage.getItem(key));
+    const retrievedValue = JSON.parse(data[key]);
+    const mergedValue = { ...existingValue, ...retrievedValue };
+    localStorage.setItem(key, JSON.stringify(mergedValue));
+  }
+}
         // Do something with the retrieved data if needed
       })
       .catch((error) => {
