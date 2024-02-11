@@ -485,15 +485,17 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
           <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
   function showErrorToast(message) {
-  Toastify({
-    text: message,
-    duration: 3000, // Display duration in milliseconds
-    close: true, // Show a close button
-    gravity: "top", // Display position (top or bottom)
-    position: "left", // Toast position (left, center, or right)
-    backgroundColor: "#f44336", // Background color
-    stopOnFocus: true, // Stop the timer when the toast is hovered
-  }).showToast();
+Toastify({
+  text: "This is a success message.",
+  duration: 3000,
+  close: true,
+  gravity: "top",
+  position: "left",
+  backgroundColor: "#4caf50",
+  stopOnFocus: true,
+  containerClass: "toastify-container",
+  className: "toastify toastify-success",
+}).showToast();
 }
   
   (function () {
@@ -549,6 +551,88 @@ function showErrorToast(message) {
 }
 
 </script>
+
+          <style>/* Toast container */
+.toastify-container {
+  position: fixed;
+  z-index: 9999;
+  top: 20px;
+  left: 20px;
+}
+
+/* Toast notification */
+.toastify {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Success toast */
+.toastify.toastify-success {
+  background-color: #4caf50;
+}
+
+/* Error toast */
+.toastify.toastify-error {
+  background-color: #f44336;
+}
+
+/* Info toast */
+.toastify.toastify-info {
+  background-color: #2196f3;
+}
+
+/* Toast close button */
+.toastify .toastify-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Toast close icon */
+.toastify .toastify-close::before {
+  content: "\00d7";
+}
+
+/* Toast animation */
+@keyframes toastify-slide-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastify-slide-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Toast animation classes */
+.toastify.toastify-slide-in {
+  animation: toastify-slide-in 0.3s ease-in-out;
+}
+
+.toastify.toastify-slide-out {
+  animation: toastify-slide-out 0.3s ease-in-out;
+}</style>
 
           
      </div>
