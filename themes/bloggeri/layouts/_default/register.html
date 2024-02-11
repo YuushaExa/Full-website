@@ -531,8 +531,8 @@ function showLogToast(message) {
     text: message,
     duration: 3000,
     close: true,
-    gravity: "top",
-    position: "left",
+    gravity: "bottom",
+    position: "right",
     backgroundColor: "#2196f3",
     stopOnFocus: true,
   }).showToast();
@@ -543,11 +543,9 @@ function showErrorToast(message) {
     text: message,
     duration: 3000,
     close: true,
-    gravity: "bottom",
-    position: "right",
-     style: {
-    background: "linear-gradient(to right, #00b09b, #96c93d)",
-  },
+    gravity: "top",
+    position: "left",
+ backgroundColor: "#f44336",
     stopOnFocus: true,
   }).showToast();
 }
