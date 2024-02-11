@@ -482,6 +482,73 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
     }
 </script>
           
+          <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+function showErrorToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000, // Display duration in milliseconds
+    close: true, // Show a close button
+    gravity: "top", // Display position (top or bottom)
+    position: "left", // Toast position (left, center, or right)
+    backgroundColor: "#f44336", // Background color
+    stopOnFocus: true, // Stop the timer when the toast is hovered
+  }).showToast();
+}
+<script>
+  (function () {
+  var originalLog = console.log;
+  var originalError = console.error;
+
+  console.log = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showLogToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+  console.error = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showErrorToast(message);
+    // Call the original console.error function
+    originalError.apply(console, args);
+  };
+})();
+
+// Toast notification functions
+function showLogToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "left",
+    backgroundColor: "#2196f3",
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showErrorToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "left",
+    backgroundColor: "#f44336",
+    stopOnFocus: true,
+  }).showToast();
+}
+
+</script>
+
           
      </div>
     </div>     </div>   </div>  
