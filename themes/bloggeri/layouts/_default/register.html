@@ -483,7 +483,8 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
 </script>
           
           <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-function showErrorToast(message) {
+<script>
+  function showErrorToast(message) {
   Toastify({
     text: message,
     duration: 3000, // Display duration in milliseconds
@@ -494,7 +495,7 @@ function showErrorToast(message) {
     stopOnFocus: true, // Stop the timer when the toast is hovered
   }).showToast();
 }
-<script>
+  
   (function () {
   var originalLog = console.log;
   var originalError = console.error;
