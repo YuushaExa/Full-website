@@ -344,7 +344,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User is logged in
     const displayName = user.displayName || 'Nameless';
-    console.log('Welcome, ', displayName);
+    console.log('Welcome, ' + displayName + '!');
   } else {
     // User is logged out
   }
@@ -539,7 +539,7 @@ Toastify({
 function showLogToast(message) {
   Toastify({
     text: message,
-    duration: 3000,
+    duration: 5000,
     close: true,
     gravity: "bottom",
     position: "right",
