@@ -343,7 +343,7 @@ localStorage.setItem(key, data[key]);
   firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User is logged in
-    console.log('User logged in:', user.email);
+    console.log('User logged in:', user.displayName);
   } else {
     // User is logged out
   }
