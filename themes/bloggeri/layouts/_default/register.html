@@ -358,8 +358,8 @@ firebase.auth().onAuthStateChanged((user) => {
     // User is logged in
     const displayName = user.displayName || 'Nameless';
     const timestamp = new Date().toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
+      weekday: 'long',
+      month: 'long',
       day: 'numeric',
       year: 'numeric'
     });
@@ -370,14 +370,16 @@ firebase.auth().onAuthStateChanged((user) => {
     const randomWelcomeDiv = document.createElement('div');
     randomWelcomeDiv.id = 'randomwelcome';
     
-    // Log the message with the <div> element
-    console.log("Game of the day:");
+    // Set the innerHTML of the <div> element
+    randomWelcomeDiv.innerHTML = "Game of the day";
+    
+    // Log the <div> element
     console.log(randomWelcomeDiv);
   } else {
     // User is logged out
   }
 });
-
+  
   // delete button
 
 // Assuming you have already initialized Firebase SDK and authenticated the user
