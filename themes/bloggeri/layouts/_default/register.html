@@ -365,16 +365,8 @@ firebase.auth().onAuthStateChanged((user) => {
     });
     console.log('Welcome, ' + displayName + '!');
     console.log('Today is ' + timestamp);
-    
-    // Create the <div> element
-    const randomWelcomeDiv = document.createElement('div');
-    randomWelcomeDiv.id = 'randomwelcome';
-    
-    // Set the innerHTML of the <div> element
-    randomWelcomeDiv.innerHTML = "Game of the day";
-    
-    // Log the <div> element
-    console.log(randomWelcomeDiv);
+    const randomWelcomeDiv = document.getElementById('randomwelcome');
+     console.log('Game of the day' + randomWelcomeDiv);
   } else {
     // User is logged out
   }
