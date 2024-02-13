@@ -555,6 +555,17 @@ Toastify({
     // Call the original console.error function
     originalError.apply(console, args);
   };
+
+      console.info = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showInfoToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
 })();
 
 // Toast notification functions
