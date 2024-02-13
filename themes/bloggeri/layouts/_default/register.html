@@ -358,14 +358,21 @@ firebase.auth().onAuthStateChanged((user) => {
     // User is logged in
     const displayName = user.displayName || 'Nameless';
     const timestamp = new Date().toLocaleDateString('en-US', {
-      weekday: 'long',
-      month: 'long',
+      weekday: 'short',
+      month: 'short',
       day: 'numeric',
       year: 'numeric'
     });
     console.log('Welcome, ' + displayName + '!');
     console.log('Today is ' + timestamp);
-    console.log("Game of the day: <div id='randomwelcome'></div>");
+    
+    // Create the <div> element
+    const randomWelcomeDiv = document.createElement('div');
+    randomWelcomeDiv.id = 'randomwelcome';
+    
+    // Log the message with the <div> element
+    console.log("Game of the day:");
+    console.log(randomWelcomeDiv);
   } else {
     // User is logged out
   }
