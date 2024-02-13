@@ -353,7 +353,6 @@ localStorage.setItem(key, data[key]);
   
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    // User is logged in
     const displayName = user.displayName || 'Nameless';
     const timestamp = new Date().toLocaleDateString('en-US', {
       weekday: 'long',
@@ -361,10 +360,24 @@ firebase.auth().onAuthStateChanged((user) => {
       day: 'numeric',
       year: 'numeric'
     });
-    console.log('Welcome, ' + displayName + '!');
-    console.log('Today is ' + timestamp);
+
+    const lastTimestamp = localStorage.getItem('lastTimestamp');
+    const currentTime = new Date().getTime();
+
+    // Check if 20 hours have passed since the last display
+    if (!lastTimestamp || currentTime - lastTimestamp >= 20 * 60 * 60 * 1000) {
+      console.log('Welcome, ' + displayName + '!');
+      console.log('Today is ' + timestamp);
+
+      // Update the stored timestamp
+      localStorage.setItem('lastTimestamp', currentTime);
+    }
+
     const randomWelcomeDiv = document.getElementById('randomwelcome');
-     console.info('Game of the day' + randomWelcomeDiv.innerHTML);
+
+    if (randomWelcomeDiv) {
+      console.info('Game of the day: ' + randomWelcomeDiv.innerHTML);
+    }
   } else {
     // User is logged out
   }
