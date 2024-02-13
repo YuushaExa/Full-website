@@ -71,7 +71,6 @@
   firebase.initializeApp(firebaseConfig);
 
 // Email Registration
-  
 const registrationForm = document.getElementById('registrationForm');
 
 // Add an event listener to the registration form
@@ -90,19 +89,19 @@ registrationForm.addEventListener('submit', (e) => {
         throw new Error('Username already exists');
       } else {
         // Document doesn't exist, proceed with registration
-        return firebase.firestore().collection('users').doc(name).set({
-          uid: user.uid
-        });
+        // Register the user first to get the user object
+        return firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            return firebase.firestore().collection('users').doc(name).set({
+              uid: user.uid
+            });
+          });
       }
     })
     .then(() => {
-      // Firestore operation successful, proceed to user registration
-      return firebase.auth().createUserWithEmailAndPassword(email, password);
-    })
-    .then((userCredential) => {
-      // Registration successful
-      const user = userCredential.user;
-      return user.updateProfile({
+      // Firestore operation and user registration successful
+      return firebase.auth().currentUser.updateProfile({
         displayName: name
       });
     })
@@ -119,7 +118,6 @@ registrationForm.addEventListener('submit', (e) => {
       // Display an error message to the user or handle the error appropriately
     });
 });
-
   // Nickname Registration 
 
   const registrationFormNick = document.getElementById('registrationFormNick');
