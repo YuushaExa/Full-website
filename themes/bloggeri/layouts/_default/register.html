@@ -82,6 +82,7 @@ registrationForm.addEventListener('submit', (e) => {
   const name = registrationForm.name.value;
   const email = registrationForm.email.value;
   const password = registrationForm.password.value;
+      const uid = user.uid;
 
   // Check if the document with the same name exists in Firestore
   return firebase.firestore().collection('users').doc(name).get()
@@ -91,7 +92,7 @@ registrationForm.addEventListener('submit', (e) => {
       } else {
         // Document doesn't exist, proceed with registration
         return firebase.firestore().collection('users').doc(name).set({
-          name: user.uid;
+          name: uid;
         });
       }
     })
