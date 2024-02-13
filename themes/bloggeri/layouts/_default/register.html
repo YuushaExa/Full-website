@@ -89,7 +89,7 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
     // Registration successful
     const user = userCredential.user; 
- return firebase.firestore().collection('userslist').doc(user.displayName).set({
+ return firebase.firestore().collection('userslist').doc(user.name).set({
   name: name
 })
     .then(() => {
