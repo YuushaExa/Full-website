@@ -644,15 +644,7 @@ fetch('https://yuushaexa.github.io/')
   })
   .catch(error => console.error(error));
 
-// Function to display the random card's information in the "randomwelcome" div
-function displayRandomCard(cardData) {
-  const randomWelcomeDiv = document.getElementById('randomwelcome');
-  randomWelcomeDiv.innerHTML = `
-    <h2>Title: ${cardData.title}</h2>
-    <p>Href: ${cardData.href}</p>
-    <img src="${cardData.linkImage}" alt="Link Image">
-  `;
-}
+
 </script>
 
      
