@@ -582,7 +582,73 @@ function showErrorToast(message) {
   }).showToast();
 }
 
+  // Check if the cached data exists and is still valid
+const cachedData = localStorage.getItem('randomCardData');
+if (cachedData) {
+  const { timestamp, data } = JSON.parse(cachedData);
+  const currentTime = new Date().getTime();
+  const twentyHoursInMilliseconds = 20 * 60 * 60 * 1000;
 
+  if (currentTime - timestamp < twentyHoursInMilliseconds) {
+    // Display the cached data
+    displayRandomCard(JSON.parse(data));
+    return;
+  }
+}
+
+// Fetch the data from the URL
+fetch('https://yuushaexa.github.io/')
+  .then(response => response.text())
+  .then(htmlContent => {
+    // Parse the HTML content
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+
+    // Find all the card elements
+    const cards = doc.querySelectorAll('.card');
+
+    if (cards.length > 0) {
+      // Select a random card
+      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+
+      // Get the title of the random card
+      const title = randomCard.querySelector('.title').innerText;
+
+      // Get the href of the random card
+      const href = randomCard.querySelector('a.card-image').getAttribute('href');
+
+      // Get the link image of the random card
+      const linkImage = randomCard.querySelector('img.lazyload').getAttribute('data-src');
+
+      // Create an object with the random card data
+      const randomCardData = {
+        title,
+        href,
+        linkImage
+      };
+
+      // Cache the random card data along with the current timestamp
+      const timestamp = new Date().getTime();
+      const cachedData = JSON.stringify({ timestamp, data: JSON.stringify(randomCardData) });
+      localStorage.setItem('randomCardData', cachedData);
+
+      // Display the random card's information
+      displayRandomCard(randomCardData);
+    } else {
+      console.log('No cards found.');
+    }
+  })
+  .catch(error => console.error(error));
+
+// Function to display the random card's information in the "randomwelcome" div
+function displayRandomCard(cardData) {
+  const randomWelcomeDiv = document.getElementById('randomwelcome');
+  randomWelcomeDiv.innerHTML = `
+    <h2>Title: ${cardData.title}</h2>
+    <p>Href: ${cardData.href}</p>
+    <img src="${cardData.linkImage}" alt="Link Image">
+  `;
+}
 </script>
 
      
