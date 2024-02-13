@@ -366,7 +366,7 @@ firebase.auth().onAuthStateChanged((user) => {
     console.log('Welcome, ' + displayName + '!');
     console.log('Today is ' + timestamp);
     const randomWelcomeDiv = document.getElementById('randomwelcome');
-     console.log('Game of the day' + randomWelcomeDiv);
+     console.log('Game of the day' + randomWelcomeDiv.innerHTML);
   } else {
     // User is logged out
   }
