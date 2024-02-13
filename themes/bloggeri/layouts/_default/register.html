@@ -357,13 +357,10 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User is logged in
     const displayName = user.displayName || 'Nameless';
+    const timestamp = Date.now();
     console.log('Welcome, ' + displayName + '!');
-
-    const timestamp = new Date().toLocaleDateString(); 
-    document.getElementById('randomwelcome').innerHTML = `
-      Today is ${timestamp}<br>
-      Game of the day: <div id="randomwelcome"></div>
-    `;
+    console.log('Today is ' + timestamp);
+    console.log("Game of the day: <div id='randomwelcome'></div>");
   } else {
     // User is logged out
   }
