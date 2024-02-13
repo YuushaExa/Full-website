@@ -88,10 +88,10 @@ registrationForm.addEventListener('submit', (e) => {
 firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
     // Registration successful
-    const user = userCredential.user; // Move this line above the return statement
-    return firebase.firestore().collection('userslist').doc(user.uid).set({
-      name: name
-    })
+    const user = userCredential.user; 
+ return firebase.firestore().collection('userslist').doc(user.displayName).set({
+  name: name
+})
     .then(() => {
       // Update user's display name
       return user.updateProfile({
