@@ -582,7 +582,7 @@ function showErrorToast(message) {
   }).showToast();
 }
 
-  // Check if the cached data exists and is still valid
+// Check if the cached data exists and is still valid
 const cachedData = localStorage.getItem('randomCardData');
 if (cachedData) {
   const { timestamp, data } = JSON.parse(cachedData);
