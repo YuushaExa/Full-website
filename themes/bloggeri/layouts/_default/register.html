@@ -91,7 +91,7 @@ registrationForm.addEventListener('submit', (e) => {
       } else {
         // Document doesn't exist, proceed with registration
         return firebase.firestore().collection('users').doc(name).set({
-          uid: user.uid; 
+          uid: user.uid
         });
       }
     })
