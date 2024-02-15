@@ -366,7 +366,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
     // Check if 20 hours have passed since the last display
     if (!lastTimestamp || currentTime - lastTimestamp >= 20 * 60 * 60 * 1000) {
-      console.log('Welcome, ' + displayName + '!');
+      console.welcome('Welcome, ' + displayName + '!');
       console.log('Today is ' + timestamp);
 
       // Update the stored timestamp
@@ -577,13 +577,24 @@ Toastify({
     // Call the original console.log function
     originalLog.apply(console, args);
   };
+
+            console.welcome = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showwelcomeToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
 })();
 
 // Toast notification functions
 function showLogToast(message) {
   Toastify({
     text: message,
-    duration: 4000,
+    duration: 3000,
     close: true,
     gravity: "top",
     position: "center",
@@ -620,6 +631,21 @@ function showErrorToast(message) {
   }).showToast();
 }
 
+    function showwelcomeToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+         style: {
+         background: #f0fff0,
+         color: #006400,
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+  
 fetch('https://yuushaexa.github.io/')
   .then(response => response.text())
   .then(htmlContent => {
