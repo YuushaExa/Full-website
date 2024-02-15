@@ -364,7 +364,7 @@ firebase.auth().onAuthStateChanged((user) => {
         const lastVisit = doc.exists ? doc.data().lastVisit : null;
 
         // Check if the stored timestamp is different from the current timestamp
-        if (lastTimestamp !== timestamp) {
+        if (lastVisit !== timestamp) {
           console.welcome('Welcome, ' + displayName + '!');
 
           // Update the stored timestamp in Firestore
