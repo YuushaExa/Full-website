@@ -545,8 +545,6 @@ Toastify({
   (function () {
   var originalLog = console.log;
   var originalError = console.error;
-  var originalWelcome = console.welcome;
-  var originalInfo = console.info;
     
   console.log = function () {
     // Convert arguments to an array
@@ -578,7 +576,7 @@ Toastify({
     // Display the toast notification
     showInfoToast(message);
     // Call the original console.log function
-    originalInfo.apply(console, args);
+    originalLog.apply(console, args);
   };
 
             console.welcome = function () {
@@ -589,7 +587,7 @@ Toastify({
     // Display the toast notification
     showWelcomeToast(message);
     // Call the original console.log function
-    originalWelcome.apply(console, args);
+    originalLog.apply(console, args);
   };
 })();
 
