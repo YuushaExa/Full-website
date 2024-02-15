@@ -355,7 +355,10 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     const displayName = user.displayName || 'Nameless';
     const currentDate = new Date();
-    const currentTimestamp = currentDate;
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Months are zero-based
+    const year = currentDate.getFullYear();
+    const formattedDate = `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
 
     const db = firebase.firestore();
     const userRef = db.collection('users').doc(displayName); // Assuming the user's display name is the document ID
@@ -365,12 +368,12 @@ firebase.auth().onAuthStateChanged((user) => {
         const lastTimestamp = doc.exists ? doc.data().lastTimestamp : null;
 
         // Check if the stored timestamp is different from the current date
-        if (lastTimestamp !== currentTimestamp.toString()) {
+        if (lastTimestamp !== formattedDate) {
           console.welcome('Welcome, ' + displayName + '!');
-          console.log('Today is ' + currentDate.toLocaleDateString());
+          console.log('Today is ' + formattedDate);
 
           // Update the stored timestamp in Firestore
-          userRef.set({ lastTimestamp: currentTimestamp.toString() }, { merge: true })
+          userRef.set({ lastTimestamp: formattedDate }, { merge: true })
             .then(() => {
               console.log('Timestamp updated in Firestore.');
             })
