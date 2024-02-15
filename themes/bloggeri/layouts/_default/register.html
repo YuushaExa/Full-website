@@ -357,7 +357,7 @@ firebase.auth().onAuthStateChanged((user) => {
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
     const db = firebase.firestore();
-    const userRef = db.collection('users').doc(displayName); // Assuming the user's display name is the document ID
+    const userRef = db.collection('userstime').doc(user.uid); // Assuming the user's display name is the document ID
 
     userRef.get()
       .then((doc) => {
