@@ -354,7 +354,7 @@ localStorage.setItem(key, data[key]);
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     const displayName = user.displayName || 'Nameless';
-    const currentDate = new Date().toLocaleString();
+    const currentDate = new Date();
     const currentTimestamp = currentDate;
 
     const db = firebase.firestore();
