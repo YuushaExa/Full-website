@@ -361,18 +361,33 @@ firebase.auth().onAuthStateChanged((user) => {
       year: 'numeric'
     });
 
-    const lastTimestamp = localStorage.getItem('lastTimestamp');
-    const currentDate = new Date();
-    const currentTimestamp = currentDate.setHours(0, 0, 0, 0);
+    const db = firebase.firestore();
+    const userRef = db.collection('users').doc(name);
 
-    // Check if the stored timestamp is different from the current date
-    if (lastTimestamp !== currentTimestamp.toString()) {
-      console.welcome('Welcome, ' + displayName + '!');
-      console.log('Today is ' + timestamp);
+    userRef.get()
+      .then((doc) => {
+        const lastTimestamp = doc.exists ? doc.data().lastTimestamp : null;
+        const currentDate = new Date();
+        const currentTimestamp = currentDate.setHours(0, 0, 0, 0);
 
-      // Update the stored timestamp to the current date
-      localStorage.setItem('lastTimestamp', currentTimestamp.toString());
-    }
+        // Check if the stored timestamp is different from the current date
+        if (lastTimestamp !== currentTimestamp.toString()) {
+          console.welcome('Welcome, ' + displayName + '!');
+          console.log('Today is ' + timestamp);
+
+          // Update the stored timestamp in Firestore
+          userRef.update({ lastTimestamp: currentTimestamp })
+            .then(() => {
+              console.log('Timestamp updated in Firestore.');
+            })
+            .catch((error) => {
+              console.error('Failed to update timestamp in Firestore:', error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error('Error getting user document:', error);
+      });
 
     const randomWelcomeDiv = document.getElementById('randomwelcome');
 
