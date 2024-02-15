@@ -585,7 +585,7 @@ Toastify({
     // Join arguments into a single string
     var message = args.join(' ');
     // Display the toast notification
-    showwelcomeToast(message);
+    showWelcomeToast(message);
     // Call the original console.log function
     originalLog.apply(console, args);
   };
@@ -632,7 +632,7 @@ function showErrorToast(message) {
   }).showToast();
 }
 
-    function showwelcomeToast(message) {
+    function showWelcomeToast(message) {
   Toastify({
     text: message,
     duration: 3000,
