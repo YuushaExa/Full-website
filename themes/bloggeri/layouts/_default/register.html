@@ -362,15 +362,16 @@ firebase.auth().onAuthStateChanged((user) => {
     });
 
     const lastTimestamp = localStorage.getItem('lastTimestamp');
-    const currentTime = new Date().getTime();
+    const currentDate = new Date();
+    const currentTimestamp = currentDate.setHours(0, 0, 0, 0);
 
-    // Check if 20 hours have passed since the last display
-    if (!lastTimestamp || currentTime - lastTimestamp >= 20 * 60 * 60 * 1000) {
+    // Check if the stored timestamp is different from the current date
+    if (lastTimestamp !== currentTimestamp.toString()) {
       console.welcome('Welcome, ' + displayName + '!');
       console.log('Today is ' + timestamp);
 
-      // Update the stored timestamp
-      localStorage.setItem('lastTimestamp', currentTime);
+      // Update the stored timestamp to the current date
+      localStorage.setItem('lastTimestamp', currentTimestamp.toString());
     }
 
     const randomWelcomeDiv = document.getElementById('randomwelcome');
