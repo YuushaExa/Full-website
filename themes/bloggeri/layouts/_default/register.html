@@ -379,14 +379,13 @@ firebase.auth().onAuthStateChanged((user) => {
             userRef.set({ lastVisit: timestamp }, { merge: true })
               .then(() => {
                 console.log('Timestamp updated in Firestore.');
-                localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+                localStorage.setItem('lastVisitStamp', today); 
               })
               .catch((error) => {
                 console.error('Failed to update timestamp in Firestore:', error);
               });
           } else {
             console.log('Script already executed today based on Firestore data. Aborting...');
-            localStorage.setItem('lastVisitStamp', today);
           }
         } else {
           console.log('First visit of the user. Welcome, ' + displayName + '!');
@@ -394,7 +393,6 @@ firebase.auth().onAuthStateChanged((user) => {
           userRef.set({ lastVisit: timestamp }, { merge: true })
             .then(() => {
               console.log('Timestamp updated in Firestore.');
-              localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
             })
             .catch((error) => {
               console.error('Failed to update timestamp in Firestore:', error);
