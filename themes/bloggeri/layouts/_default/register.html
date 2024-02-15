@@ -370,8 +370,25 @@ firebase.auth().onAuthStateChanged((user) => {
       .then((doc) => {
         const lastVisit = doc.exists ? doc.data().lastVisit : null;
 
-        if (lastVisit !== timestamp) {
-          console.log('Welcome, ' + displayName + '!');
+        if (lastVisit) {
+          const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
+
+          if (lastVisitDate !== today) {
+            console.log('Welcome, ' + displayName + '!');
+
+            userRef.set({ lastVisit: timestamp }, { merge: true })
+              .then(() => {
+                console.log('Timestamp updated in Firestore.');
+                localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+              })
+              .catch((error) => {
+                console.error('Failed to update timestamp in Firestore:', error);
+              });
+          } else {
+            console.log('Script already executed today based on Firestore data. Aborting...');
+          }
+        } else {
+          console.log('First visit of the user. Welcome, ' + displayName + '!');
 
           userRef.set({ lastVisit: timestamp }, { merge: true })
             .then(() => {
