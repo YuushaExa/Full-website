@@ -362,7 +362,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
 
     const db = firebase.firestore();
-    const userRef = db.collection('users').doc(user.uid);
+    const userRef = db.collection('users').doc(user.name);
 
     userRef.get()
       .then((doc) => {
