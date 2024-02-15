@@ -386,6 +386,7 @@ firebase.auth().onAuthStateChanged((user) => {
               });
           } else {
             console.log('Script already executed today based on Firestore data. Aborting...');
+            localStorage.setItem('lastVisitStamp', today);
           }
         } else {
           console.log('First visit of the user. Welcome, ' + displayName + '!');
