@@ -362,7 +362,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
 
     const db = firebase.firestore();
-    const userRef = db.collection('users').doc(user.name);
+    const userRef = db.collection('users').doc(displayName); // Assuming the user's display name is the document ID
 
     userRef.get()
       .then((doc) => {
@@ -376,7 +376,7 @@ firebase.auth().onAuthStateChanged((user) => {
           console.log('Today is ' + timestamp);
 
           // Update the stored timestamp in Firestore
-          userRef.update({ lastTimestamp: currentTimestamp })
+          userRef.set({ lastTimestamp: currentTimestamp }, { merge: true })
             .then(() => {
               console.log('Timestamp updated in Firestore.');
             })
