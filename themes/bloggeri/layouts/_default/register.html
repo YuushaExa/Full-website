@@ -373,13 +373,13 @@ userRef.get()
 
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
-     localStorage.setItem('qi', qi);
+     localStorage.setItem('Qi', qi);
       if (lastVisitDate !== today) {
         console.log('Welcome, ' + displayName + '!');
 
-        userRef.set({ lastVisit: timestamp, exp: firebase.firestore.FieldValue.increment(1) }, { merge: true })
+        userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1) }, { merge: true })
           .then(() => {
-            console.log('Timestamp and exp updated in Firestore.');
+            console.log('Timestamp and qi updated in Firestore.');
             localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
           })
           .catch((error) => {
@@ -399,7 +399,7 @@ userRef.get()
           console.log('Dantian Unlocked, now you can store Qi energy');
         })
         .catch((error) => {
-          console.error('Failed to update timestamp and exp in Firestore:', error);
+          console.error('Failed to update timestamp and Qi in Firestore:', error);
         });
     }
   })
