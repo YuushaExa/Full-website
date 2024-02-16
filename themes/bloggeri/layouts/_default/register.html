@@ -387,17 +387,7 @@ firebase.auth().onAuthStateChanged((user) => {
           } else {
             console.log('Script already executed today based on Firestore data. Aborting...');
           }
-        } else {
-          console.log('First visit of the user. Welcome, ' + displayName + '!');
-
-          userRef.set({ lastVisit: timestamp }, { merge: true })
-            .then(() => {
-              console.log('Timestamp updated in Firestore.');
-            })
-            .catch((error) => {
-              console.error('Failed to update timestamp in Firestore:', error);
-            });
-        }
+        } 
       })
       .catch((error) => {
         console.error('Error getting user document:', error);
