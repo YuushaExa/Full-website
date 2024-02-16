@@ -351,56 +351,68 @@ localStorage.setItem(key, data[key]);
 
   // auth console
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    const displayName = user.displayName || 'Nameless';
-    const today = new Date().toDateString(); // Get today's date in the format "Day Month Date Year"
+if (user) {
+const displayName = user.displayName || 'Nameless';
+const today = new Date().toDateString(); // Get today's date in the format "Day Month Date Year"
 
-    const lastVisitStamp = localStorage.getItem('lastVisitStamp');
-    if (lastVisitStamp === today) {
-      console.log('Script already executed today. Aborting...');
-      return; // Abort the script if it has already been executed today
+const lastVisitStamp = localStorage.getItem('lastVisitStamp');
+if (lastVisitStamp === today) {
+  console.log('Script already executed today. Aborting...');
+  return; // Abort the script if it has already been executed today
+}
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+const db = firebase.firestore();
+const userRef = db.collection('userstime').doc(user.uid);
+
+userRef.get()
+  .then((doc) => {
+    const lastVisit = doc.exists ? doc.data().lastVisit : null;
+
+    if (lastVisit) {
+      const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
+
+      if (lastVisitDate !== today) {
+        console.log('Welcome, ' + displayName + '!');
+
+        userRef.set({ lastVisit: timestamp }, { merge: true })
+          .then(() => {
+            console.log('Timestamp updated in Firestore.');
+            localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+          })
+          .catch((error) => {
+            console.error('Failed to update timestamp in Firestore:', error);
+          });
+      } else {
+        console.log('Script already executed today based on Firestore data. Aborting...');
+        localStorage.setItem('lastVisitStamp', today);
+      }
+    } else {
+      console.log('First visit of the user. Welcome, ' + displayName + '!');
+
+      userRef.set({ lastVisit: timestamp }, { merge: true })
+        .then(() => {
+          console.log('Timestamp updated in Firestore.');
+          localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+        })
+        .catch((error) => {
+          console.error('Failed to update timestamp in Firestore:', error);
+        });
     }
+  })
+  .catch((error) => {
+    console.error('Error getting user document:', error);
+  });
 
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+const randomWelcomeDiv = document.getElementById('randomwelcome');
 
-    const db = firebase.firestore();
-    const userRef = db.collection('userstime').doc(user.uid);
-
-    userRef.get()
-      .then((doc) => {
-        const lastVisit = doc.exists ? doc.data().lastVisit : null;
-
-        if (lastVisit) {
-          const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
-
-          if (lastVisitDate !== today) {
-            console.log('Welcome, ' + displayName + '!');
-
-            userRef.set({ lastVisit: timestamp }, { merge: true })
-              .then(() => {
-                console.log('Timestamp updated in Firestore.');
-                localStorage.setItem('lastVisitStamp', today); 
-              })
-              .catch((error) => {
-                console.error('Failed to update timestamp in Firestore:', error);
-              });
-          } else {
-            console.log('Script already executed today based on Firestore data. Aborting...');
-          }
-        } 
-      })
-      .catch((error) => {
-        console.error('Error getting user document:', error);
-      });
-
-    const randomWelcomeDiv = document.getElementById('randomwelcome');
-
-    if (randomWelcomeDiv) {
-      console.log('Game of the day: ' + randomWelcomeDiv.innerHTML);
-    }
-  } else {
-    // User is logged out
-  }
+if (randomWelcomeDiv) {
+  console.log('Game of the day: ' + randomWelcomeDiv.innerHTML);
+}
+} else {
+// User is logged out
+}
 });
   
   // delete button
