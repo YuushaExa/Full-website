@@ -376,13 +376,13 @@ userRef.get()
       if (lastVisitDate !== today) {
         console.log('Welcome, ' + displayName + '!');
 
-        userRef.set({ lastVisit: timestamp }, { merge: true })
+        userRef.set({ lastVisit: timestamp, exp: firebase.firestore.FieldValue.increment(1) }, { merge: true })
           .then(() => {
-            console.log('Timestamp updated in Firestore.');
+            console.log('Timestamp and exp updated in Firestore.');
             localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
           })
           .catch((error) => {
-            console.error('Failed to update timestamp in Firestore:', error);
+            console.error('Failed to update timestamp and exp in Firestore:', error);
           });
       } else {
         console.log('Script already executed today based on Firestore data. Aborting...');
@@ -391,13 +391,13 @@ userRef.get()
     } else {
       console.log('First visit of the user. Welcome, ' + displayName + '!');
 
-      userRef.set({ lastVisit: timestamp }, { merge: true })
+      userRef.set({ lastVisit: timestamp, exp: firebase.firestore.FieldValue.increment(1) }, { merge: true })
         .then(() => {
-          console.log('Timestamp updated in Firestore.');
+          console.log('Timestamp and exp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
         })
         .catch((error) => {
-          console.error('Failed to update timestamp in Firestore:', error);
+          console.error('Failed to update timestamp and exp in Firestore:', error);
         });
     }
   })
