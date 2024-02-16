@@ -369,7 +369,7 @@ const userRef = db.collection('userstime').doc(user.uid);
 userRef.get()
   .then((doc) => {
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
-    const exp = doc.exists ? doc.data().exp : null;
+    const exp = doc.exists ? doc.data().exp : 1;
 
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
