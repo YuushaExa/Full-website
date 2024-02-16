@@ -396,6 +396,7 @@ userRef.get()
         .then(() => {
           console.log('Timestamp and exp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+          localStorage.setItem('exp', 1);
         })
         .catch((error) => {
           console.error('Failed to update timestamp and exp in Firestore:', error);
