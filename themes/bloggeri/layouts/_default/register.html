@@ -369,11 +369,11 @@ const userRef = db.collection('userstime').doc(user.uid);
 userRef.get()
   .then((doc) => {
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
-    const exp = doc.exists ? doc.data().exp : 1;
+    const qi = doc.exists ? doc.data().qi : 1;
 
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
-     localStorage.setItem('exp', exp);
+     localStorage.setItem('qi', qi);
       if (lastVisitDate !== today) {
         console.log('Welcome, ' + displayName + '!');
 
@@ -383,7 +383,7 @@ userRef.get()
             localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
           })
           .catch((error) => {
-            console.error('Failed to update timestamp and exp in Firestore:', error);
+            console.error('Failed to update timestamp and qi in Firestore:', error);
           });
       } else {
         console.log('Script already executed today based on Firestore data. Aborting...');
@@ -392,11 +392,11 @@ userRef.get()
     } else {
       console.log('First visit of the user. Welcome, ' + displayName + '!');
 
-      userRef.set({ lastVisit: timestamp, exp: firebase.firestore.FieldValue.increment(1) }, { merge: true })
+      userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1) }, { merge: true })
         .then(() => {
-          console.log('Timestamp and exp updated in Firestore.');
+          console.log('Timestamp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
-          localStorage.setItem('exp', 1);
+          console.log('Dantian Unlocked, now you can store Qi energy');
         })
         .catch((error) => {
           console.error('Failed to update timestamp and exp in Firestore:', error);
