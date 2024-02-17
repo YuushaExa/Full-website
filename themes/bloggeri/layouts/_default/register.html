@@ -56,11 +56,11 @@
           
               <script>
 if ('indexedDB' in window) {
-  const request = indexedDB.open('firebaseLocalStorageDbm');
+  const request = indexedDB.open('firebaseLocalStorageDb');
 
   request.onsuccess = function(event) {
     const db = event.target.result;
-    const transaction = db.transaction('firebaseLocalStorageDb', 'readonly');
+    const transaction = db.transaction('firebaseLocalStorage', 'readonly');
     const objectStore = transaction.objectStore('firebaseLocalStorage');
     const getRequest = objectStore.getAll();
 
