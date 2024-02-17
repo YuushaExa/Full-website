@@ -53,7 +53,7 @@
    <button id="deletesaved">Delete Save Data</button>
                <button id="resetpassword">Reset Password (email only)</button>
           </div>
-              
+              <script>
 if ('indexedDB' in window) {
   const request = indexedDB.open('firebaseLocalStorageDbm');
 
@@ -91,7 +91,8 @@ if ('indexedDB' in window) {
     };
   };
 }
-          
+              </script>
+  
 <script>
   var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
