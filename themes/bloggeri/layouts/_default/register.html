@@ -53,13 +53,14 @@
    <button id="deletesaved">Delete Save Data</button>
                <button id="resetpassword">Reset Password (email only)</button>
           </div>
+          
               <script>
 if ('indexedDB' in window) {
   const request = indexedDB.open('firebaseLocalStorageDbm');
 
   request.onsuccess = function(event) {
     const db = event.target.result;
-    const transaction = db.transaction('firebaseLocalStorage', 'readonly');
+    const transaction = db.transaction('firebaseLocalStorageDb', 'readonly');
     const objectStore = transaction.objectStore('firebaseLocalStorage');
     const getRequest = objectStore.getAll();
 
