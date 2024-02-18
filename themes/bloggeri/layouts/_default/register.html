@@ -371,8 +371,8 @@ userRef.get()
   .then((doc) => {
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
     const qi = doc.exists ? doc.data().qi : 1;
-    const name = doc.exists ? doc.data().name : user.displayName;
-
+    const name = user.displayName;
+    
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); 
       if (lastVisitDate !== today) {
