@@ -54,45 +54,10 @@
                <button id="resetpassword">Reset Password (email only)</button>
           </div>
           
-              <script>
-if ('indexedDB' in window) {
-  const request = indexedDB.open('firebaseLocalStorageDb');
-
-  request.onsuccess = function(event) {
-    const db = event.target.result;
-    const transaction = db.transaction('firebaseLocalStorage', 'readonly');
-    const objectStore = transaction.objectStore('firebaseLocalStorage');
-    const getRequest = objectStore.getAll();
-
-    getRequest.onsuccess = function(event) {
-      const result = event.target.result;
-
-      if (result.length > 0) {
-        // Values exist in IndexedDB, load Firebase JS here
-        const firebaseScript = document.createElement('script');
-        firebaseScript.src = 'https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js';
-        firebaseScript.onload = function() {
-          // Additional Firebase initialization code
-          const authScript = document.createElement('script');
-          authScript.src = 'https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js';
-          document.head.appendChild(authScript);
-
-          const storageScript = document.createElement('script');
-          storageScript.src = 'https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js';
-          document.head.appendChild(storageScript);
-
-          const firestoreScript = document.createElement('script');
-          firestoreScript.src = 'https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js';
-          document.head.appendChild(firestoreScript);
-        };
-        document.head.appendChild(firebaseScript);
-      } else {
-        // No values exist in IndexedDB, do not load Firebase JS
-      }
-    };
-  };
-}
-              </script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   
 <script>
   var firebaseConfig = {
