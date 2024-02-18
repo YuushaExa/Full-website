@@ -399,7 +399,6 @@ userRef.get()
           console.log('Timestamp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
           console.cong('Dantian Unlocked, now you can store Qi energy');
-          localStorage.setItem('name', name);
         })
         .catch((error) => {
           console.error('Failed to update timestamp and Qi in Firestore:', error);
