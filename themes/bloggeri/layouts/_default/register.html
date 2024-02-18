@@ -372,6 +372,8 @@ userRef.get()
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
     const qi = doc.exists ? doc.data().qi : 1;
     const name = user.displayName;
+                localStorage.setItem('name', name);
+            localStorage.setItem('Qi', qi);
     
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); 
@@ -381,8 +383,6 @@ userRef.get()
           .then(() => {
             console.log('Timestamp and qi updated in Firestore.');
             localStorage.setItem('lastVisitStamp', today); 
-            localStorage.setItem('name', name);
-            localStorage.setItem('Qi', qi);
           })
           .catch((error) => {
             console.error('Failed to update timestamp and qi in Firestore:', error);
