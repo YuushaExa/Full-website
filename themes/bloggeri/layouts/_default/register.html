@@ -371,17 +371,18 @@ userRef.get()
   .then((doc) => {
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
     const qi = doc.exists ? doc.data().qi : 1;
+    const name = doc.exists ? doc.data().name : null;
 
     if (lastVisit) {
-      const lastVisitDate = lastVisit.toDate().toDateString(); // Get the last visit date from Firestore
-     localStorage.setItem('Qi', qi);
+      const lastVisitDate = lastVisit.toDate().toDateString(); 
       if (lastVisitDate !== today) {
         console.log('Welcome, ' + displayName + '!');
-
-        userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1) }, { merge: true })
+        userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
           .then(() => {
             console.log('Timestamp and qi updated in Firestore.');
-            localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+            localStorage.setItem('lastVisitStamp', today); 
+            localStorage.setItem('name', name);
+            localStorage.setItem('Qi', qi);
           })
           .catch((error) => {
             console.error('Failed to update timestamp and qi in Firestore:', error);
@@ -393,11 +394,12 @@ userRef.get()
     } else {
       console.log('First visit of the user. Welcome, ' + displayName + '!');
 
-      userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1) }, { merge: true })
+      userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
         .then(() => {
           console.log('Timestamp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
           console.log('Dantian Unlocked, now you can store Qi energy');
+          localStorage.setItem('name', name);
         })
         .catch((error) => {
           console.error('Failed to update timestamp and Qi in Firestore:', error);
