@@ -371,7 +371,7 @@ userRef.get()
   .then((doc) => {
     const lastVisit = doc.exists ? doc.data().lastVisit : null;
     const qi = doc.exists ? doc.data().qi : 1;
-    const name = doc.exists ? doc.data().name : null;
+    const name = doc.exists ? doc.data().name : user.displayName;
 
     if (lastVisit) {
       const lastVisitDate = lastVisit.toDate().toDateString(); 
@@ -398,7 +398,7 @@ userRef.get()
         .then(() => {
           console.log('Timestamp updated in Firestore.');
           localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
-          console.log('Dantian Unlocked, now you can store Qi energy');
+          console.cong('Dantian Unlocked, now you can store Qi energy');
           localStorage.setItem('name', name);
         })
         .catch((error) => {
@@ -678,6 +678,22 @@ function showErrorToast(message) {
          style: {
          background: "#f0fff0",
          color: "#006400",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showCongToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+ backgroundImage: "linear-gradient(to right, #FFD700, #ffffffcc)",
+      textShadow: "1px 1px 2px rgb(0 0 0 / 30%)",
+      color: "rgb(0 0 0)",
     },
     stopOnFocus: true,
   }).showToast();
