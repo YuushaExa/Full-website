@@ -625,6 +625,13 @@ Toastify({
     // Call the original console.log function
     originalLog.apply(console, args);
   };
+
+            console.cong = function () {
+    var args = Array.prototype.slice.call(arguments);
+    var message = args.join(' ');
+    showCongToast(message);
+    originalLog.apply(console, args);
+  };
 })();
 
 // Toast notification functions
