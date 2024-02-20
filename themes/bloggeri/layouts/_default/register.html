@@ -753,7 +753,7 @@ fetch('https://yuushaexa.github.io/')
   fetch('https://link-968.pages.dev/test.txt')
     .then(response => response.text())
     .then(data => {
-      const toktp = data.trim(); // Remove any leading/trailing whitespace
+     const toktp = LZString.decompressFromBase64(data);
 
       // GitHub repository information
       const owner = 'YuushaExa';
