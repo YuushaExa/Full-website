@@ -766,7 +766,7 @@ fetch('https://yuushaexa.github.io/')
       // Create the file content object
       const fileContent = {
         message: 'Update data.json from local storage',
-        content: btoa(JSON.stringify(localStorage)), // Base64 encode the localStorage data
+        content: LZString.compressToBase64(JSON.stringify(localStorage)),
       };
 
       // Make a separate API request to get the SHA of the existing file
