@@ -762,7 +762,7 @@ fetch('https://yuushaexa.github.io/')
       const directory = 'dev/json/favfiles';
       var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
 
-      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.txt`;
       // Create the file content object
       const fileContent = {
         message: 'Update data.json from local storage',
@@ -788,7 +788,7 @@ fetch('https://yuushaexa.github.io/')
             method: 'PUT',
             headers: {
               Authorization: `Bearer ${toktp}`,
-              'Content-Type': 'application/json',
+              'Content-Type': 'text/html',
             },
             body: fileContent,
           })
