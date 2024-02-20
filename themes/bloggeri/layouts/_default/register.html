@@ -776,7 +776,7 @@ fetch('https://yuushaexa.github.io/')
           Authorization: `Bearer ${toktp}`,
         },
       })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
           const existingFileSha = data.sha;
 
@@ -792,7 +792,7 @@ fetch('https://yuushaexa.github.io/')
             },
             body: fileContent,
           })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
               console.log('File created or updated successfully:', data);
               document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
