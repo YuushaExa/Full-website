@@ -790,7 +790,7 @@ fetch('https://yuushaexa.github.io/')
               Authorization: `Bearer ${toktp}`,
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(fileContent),
+            body: fileContent,
           })
             .then(response => response.json())
             .then(data => {
