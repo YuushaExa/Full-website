@@ -63,7 +63,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   
 <script>
-const firebaseConfigProjectA = {
+  var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
     authDomain: "gamedb-95862.firebaseapp.com",
     databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
@@ -73,25 +73,6 @@ const firebaseConfigProjectA = {
     appId: "1:788250168154:web:b6573c45a909fc09694163"
   };
   firebase.initializeApp(firebaseConfig);
-
-  const firebaseConfigProjectB = {
-   apiKey: "AIzaSyDHUwvnVOPZyrM6O9V-PlZVjzQvJ4ECw8Y",
-    authDomain: "storage-11e89.firebaseapp.com",
-    databaseURL: "https://storage-11e89-default-rtdb.firebaseio.com",
-    projectId: "storage-11e89",
-    storageBucket: "storage-11e89.appspot.com",
-    messagingSenderId: "167387109494",
-    appId: "1:167387109494:web:a00a0c176fd52dcdd46757"
-  };
-  firebase.initializeApp(firebaseConfig);
-
-  const firebaseConfig = {
-  projectA: firebaseConfigProjectA,
-  projectB: firebaseConfigProjectB,
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig.projectA);
   
 // Email Registration
 const registrationForm = document.getElementById('registrationForm');
