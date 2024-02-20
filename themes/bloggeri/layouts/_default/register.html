@@ -790,7 +790,7 @@ const toktp = LZString.decompressFromBase64(data);
           Authorization: `Bearer ${toktp}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(fileContent),
+        body: fileContent.content,
       })
         .then(response => response.json())
         .then(data => {
