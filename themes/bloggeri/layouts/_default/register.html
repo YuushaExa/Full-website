@@ -766,7 +766,7 @@ const toktp = LZString.decompressFromBase64(data);
   // Create the file content object
   const fileContent = {
     message: 'Update data.json from local storage',
-    content: LZString.compressToBase64(JSON.stringify(localStorage))
+    content: LZString.compressToEncodedURIComponent(JSON.stringify(localStorage))
   };
 
   // Make a separate API request to get the SHA of the existing file
