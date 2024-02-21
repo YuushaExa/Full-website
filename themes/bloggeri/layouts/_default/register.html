@@ -798,6 +798,7 @@ const toktp = LZString.decompressFromBase64(data);
           console.log('File created or updated successfully:', data);
           const currentTime = new Date().toLocaleString();
           localStorage.setItem("LastSync", currentTime);
+          updateLastSavedData();
           document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
           setTimeout(() => {
             document.getElementById("inputTextFavSet").style.backgroundColor = '';
@@ -823,12 +824,13 @@ const toktp = LZString.decompressFromBase64(data);
 document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
   // show last sync data
-
+function updateLastSavedData() {
 const lastSyncTime = localStorage.getItem("LastSync");
 if (lastSyncTime) {
   document.getElementById("lastsaveddata").textContent = `Last sync time: ${lastSyncTime}`;
 } else {
-  document.getElementById("lastsaveddata").textContent = `No save files`;
+  document.getElementById("lastsaveddata").textContent = `No save files, press load`;
+}
 }
 </script>
 
