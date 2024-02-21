@@ -55,6 +55,7 @@
           </div>
 
 <button id="CloudSave">Cloud Save</button>
+<p id="lastsaveddata"></p>
           
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -795,6 +796,8 @@ const toktp = LZString.decompressFromBase64(data);
         .then(response => response.json())
         .then(data => {
           console.log('File created or updated successfully:', data);
+          const currentTime = new Date().toLocaleString();
+          localStorage.setItem("LastSync", currentTime);
           document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
           setTimeout(() => {
             document.getElementById("inputTextFavSet").style.backgroundColor = '';
@@ -818,6 +821,15 @@ const toktp = LZString.decompressFromBase64(data);
 }
 
 document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
+
+  // show last sync data
+
+const lastSyncTime = localStorage.getItem("LastSync");
+if (lastSyncTime) {
+  document.getElementById("lastsaveddata").textContent = `Last sync time: ${lastSyncTime}`;
+} else {
+  document.getElementById("lastsaveddata").textContent = `No save files`;
+}
 </script>
 
      
