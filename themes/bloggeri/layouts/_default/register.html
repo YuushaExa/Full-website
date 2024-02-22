@@ -844,7 +844,7 @@ if (lastSyncTime) {
   const directory = 'dev/json/favfiles';
   var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
 
-  const apiUrl = `https://github.com/${owner}/${repo}/raw/${directory}/${filename}.json`;
+  const apiUrl = `https://github.com/${owner}/${repo}/raw/main/${directory}/${filename}.json`;
 
   fetch(apiUrl)
     .then(response => response.json())
