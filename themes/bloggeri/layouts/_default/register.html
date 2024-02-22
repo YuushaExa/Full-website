@@ -56,6 +56,7 @@
 
 <button id="CloudSave">Cloud Save</button>
 <p id="lastsaveddata"></p>
+          <button id="LoadCloud">Cloud Save</button>
           
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -833,6 +834,30 @@ if (lastSyncTime) {
 }
 }
  updateLastSavedData();
+
+// load cloud data
+
+  document.getElementById("LoadCloud").addEventListener("click", function() {
+  const owner = 'YuushaExa';
+  const repo = 'v';
+  const branch = 'master';
+  const directory = 'dev/json/favfiles';
+  var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
+
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const compressedData = data.content;
+      const decompressedData = LZString.decompressFromBase64(compressedData);
+      localStorage.setItem("jsonData", decompressedData);
+      console.log("JSON data loaded and stored in local storage.");
+    })
+    .catch(error => {
+      console.error('Error loading JSON data:', error);
+    });
+});
 </script>
 
      
