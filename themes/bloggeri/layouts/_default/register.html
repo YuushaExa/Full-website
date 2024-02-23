@@ -860,8 +860,7 @@ if (lastSyncTime) {
           .then(response => response.json())
           .then(data => {
             const content = data.content;
-            const decodedData = atob(content); // Decode the base64-encoded content
-            const jsonString = LZString.decompressFromBase64(decodedData); // Decompress the JSON string
+            const jsonString = LZString.decompressFromBase64(content); // Decompress the JSON string
             const jsonData = JSON.parse(jsonString); // Parse the JSON data
 
             console.log('JSON data retrieved successfully:', jsonData);
