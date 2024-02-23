@@ -768,7 +768,7 @@ const toktp = LZString.decompressFromBase64(data);
   // Create the file content object
   const fileContent = {
     message: 'Update data.json from local storage',
-    content: btoa(JSON.stringify(localStorage))
+    content: JSON.stringify(localStorage)
   };
 
   // Make a separate API request to get the SHA of the existing file
@@ -860,7 +860,8 @@ if (lastSyncTime) {
           .then(response => response.json())
           .then(data => {
             const content = data.content;
-            localStorage.setItem('jsonData', content);
+                        const decodedData = atob(content);
+            localStorage.setItem('jsonData', decodedData);
      
             console.log('JSON data stored in local storage.');
 
