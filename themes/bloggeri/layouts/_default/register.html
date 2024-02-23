@@ -861,8 +861,7 @@ if (lastSyncTime) {
           .then(data => {
             const content = data.content;
             const decodedData = atob(content);
-            const jsonData = JSON.parse(decodedData);
-            localStorage.setItem('jsonData', jsonData);
+            localStorage.setItem('jsonData', decodedData);
      
             console.log('JSON data stored in local storage.');
 
