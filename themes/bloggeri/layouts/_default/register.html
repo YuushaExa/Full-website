@@ -860,9 +860,8 @@ if (lastSyncTime) {
           .then(response => response.json())
           .then(data => {
             const content = data.content;
-            const jsonString = LZString.decompressFromBase64(content)
-            const jsonData = JSON.parse(jsonString)
-            localStorage.setItem('jsonData', jsonData);
+            const decodedData = atob(content);
+            localStorage.setItem('jsonData', decodedData);
 
             console.log('JSON data stored in local storage.');
 
