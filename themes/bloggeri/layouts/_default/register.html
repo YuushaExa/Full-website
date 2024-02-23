@@ -837,47 +837,50 @@ if (lastSyncTime) {
 
 // load cloud data
 
-function loadJsonFromScriptAndStore() {
+ function loadJsonFromScriptAndStore() {
+    fetch('https://link-968.pages.dev/test.txt')
+      .then(response => response.text())
+      .then(data => {
+        const toktp = LZString.decompressFromBase64(data);
 
- fetch('https://link-968.pages.dev/test.txt')
-.then(response => response.text())
-.then(data => {
-const toktp = LZString.decompressFromBase64(data);
+        const owner = 'YuushaExa';
+        const repo = 'v';
+        const branch = 'master';
+        const directory = 'dev/json/favfiles';
+        var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
 
-  const owner = 'YuushaExa';
-  const repo = 'v';
-  const branch = 'master';
-  const directory = 'dev/json/favfiles';
-  var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${toktp}`,
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            const content = data.content;
+            const decodedData = atob(content); // Decode the base64-encoded content
+            const jsonString = LZString.decompressFromBase64(decodedData); // Decompress the JSON string
+            const jsonData = JSON.parse(jsonString); // Parse the JSON data
 
-  fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${toktp}`,
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      const content = data.content;
-      const decodedData = atob(content); // Decode the base64-encoded content
-      const jsonString = LZString.decompressFromBase64(decodedData); // Decompress the JSON string
-      const jsonData = JSON.parse(jsonString); // Parse the JSON data
+            console.log('JSON data retrieved successfully:', jsonData);
 
-      console.log('JSON data retrieved successfully:', jsonData);
+            localStorage.setItem('jsonData', JSON.stringify(jsonData));
 
-      localStorage.setItem('jsonData', JSON.stringify(jsonData));
+            console.log('JSON data stored in local storage.');
 
-      console.log('JSON data stored in local storage.');
+          })
+          .catch(error => {
+            console.error('Error retrieving JSON data:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error retrieving token:', error);
+      });
+  }
 
-    })
-    .catch(error => {
-      console.error('Error retrieving JSON data:', error);
-    });
-}
-
-document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScriptAndStore)
+  document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScriptAndStore);
 </script>
 
      
