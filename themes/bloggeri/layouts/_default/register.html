@@ -767,7 +767,6 @@ const toktp = LZString.decompressFromBase64(data);
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
   // Create the file content object
   const fileContent = {
-    message: 'Update data.json from local storage',
     content: btoa(JSON.stringify(localStorage))
   };
 
