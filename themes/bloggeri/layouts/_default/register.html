@@ -849,10 +849,18 @@ if (lastSyncTime) {
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-      const compressedData = data.content;
-      const decompressedData = LZString.decompressFromBase64(compressedData);
-      localStorage.setItem("jsonData", decompressedData);
-      console.log("JSON data loaded and stored in local storage.");
+      if (data.content) {
+        const compressedData = data.content;
+        try {
+          const decompressedData = LZString.decompressFromBase64(compressedData);
+          localStorage.setItem("jsonData", decompressedData);
+          console.log("JSON data loaded and stored in local storage.");
+        } catch (error) {
+          console.error("Error decompressing the data:", error);
+        }
+      } else {
+        console.error("Error retrieving JSON data:", data);
+      }
     })
     .catch(error => {
       console.error('Error loading JSON data:', error);
