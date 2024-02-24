@@ -879,6 +879,14 @@ if (lastSyncTime) {
   }
 
   document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScriptAndStore);
+
+  // storage
+
+  window.addEventListener('storage', function(event) {
+  if (event.storageArea === localStorage) {
+    fetchDataAndSendToGitHub();
+  }
+});
 </script>
 
      
