@@ -864,7 +864,7 @@ if (lastSyncTime) {
             const decomp = LZString.decompressFromBase64(decodedData);
 const unescapedString = decomp.replace(/\\"/g, '"');
 
-            localStorage.setItem('jsonData', JSON.stringify(unescapedString));
+            localStorage.setItem('jsonData', JSON.parse(unescapedString));
             console.log('JSON data stored in local storage.');
 
           })
