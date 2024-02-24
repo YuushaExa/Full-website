@@ -768,9 +768,13 @@ const toktp = LZString.decompressFromBase64(data);
   // Create the file content object
   const fileContent = {
     message: 'Update data.json from local storage',
-    content: localStorage
+    content: {}
   };
-
+for (let i = 0; i < localStorage.length; i++) {
+  const key = localStorage.key(i);
+  const value = localStorage.getItem(key);
+  fileContent.content[key] = value;
+}
   // Make a separate API request to get the SHA of the existing file
   fetch(apiUrl, {
     method: 'GET',
