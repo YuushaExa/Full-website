@@ -864,6 +864,12 @@ if (lastSyncTime) {
             const decomp = LZString.decompressFromBase64(decodedData);
             const localStorageObject = JSON.parse(decomp);
 
+for (const key in localStorageObject) {
+  if (localStorageObject.hasOwnProperty(key)) {
+    localStorageObject[key] = localStorageObject[key].replace(/\\"/g, '"');
+  }
+}
+            
      const localStorageString = JSON.stringify(localStorageObject);
 
 
