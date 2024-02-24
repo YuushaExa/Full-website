@@ -862,18 +862,9 @@ if (lastSyncTime) {
             const content = data.content;
             const decodedData = atob(content);
             const decomp = LZString.decompressFromBase64(decodedData);
-            const localStorageObject = JSON.parse(decomp);
+const unescapedString = decomp.replace(/\\"/g, '"');
 
-for (const key in localStorageObject) {
-  if (localStorageObject.hasOwnProperty(key)) {
-    localStorageObject[key] = localStorageObject[key].replace(/\\"/g, '"');
-  }
-}
-            
-     const localStorageString = JSON.stringify(localStorageObject);
-
-
-            localStorage.setItem('jsonData', localStorageString);
+            localStorage.setItem('jsonData', unescapedString);
             console.log('JSON data stored in local storage.');
 
           })
