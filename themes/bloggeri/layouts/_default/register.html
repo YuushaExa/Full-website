@@ -855,6 +855,7 @@ if (lastSyncTime) {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${toktp}`,
+            Accept: 'application/vnd.github.v3.raw',
           },
         })
           .then(response => response.json())
