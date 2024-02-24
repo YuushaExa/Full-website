@@ -863,7 +863,11 @@ if (lastSyncTime) {
             const decodedData = atob(content);
             const decomp = LZString.decompressFromBase64(decodedData);
             const localStorageObject = JSON.parse(decomp);
-            localStorage.setItem('jsonData', localStorageObject);
+
+     const localStorageString = JSON.stringify(localStorageObject);
+
+
+            localStorage.setItem('jsonData', localStorageString);
             console.log('JSON data stored in local storage.');
 
           })
