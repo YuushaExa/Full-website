@@ -30,46 +30,67 @@ html{overflow-y:scroll;
 	}
 
 
-	   .switchbutton {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 24px;
+	.switchbutton {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 24px;
 }
 
-.switchbutton input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switchbutton input {
+opacity: 0;
+width: 0;
+height: 0;
 }
 
 .sliderbutton {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 3px;
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+border-radius: 3px;
 }
 
 .sliderbutton:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 3px;
+position: absolute;
+content: "";
+height: 16px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+border-radius: 3px;
 }
 
-.label-text {
+input:checked + .sliderbutton {
+background-color: #2196F3;
+}
+
+input:focus + .sliderbutton {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .sliderbutton:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+	      .labeloff {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #333;
+}
+.labelon {
   position: absolute;
   top: 50%;
   left: 10px;
@@ -78,25 +99,6 @@ html{overflow-y:scroll;
   color: #333;
 }
 
-input:checked + .sliderbutton {
-  background-color: #2196F3;
-}
-
-input:focus + .sliderbutton {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .sliderbutton:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-input:checked + .sliderbutton + .label-text {
-  left: auto;
-  right: 10px;
-  color: white;
-}
 
 	      #buttonaccount {
     display: flex;
