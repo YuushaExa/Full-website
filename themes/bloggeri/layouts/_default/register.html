@@ -860,6 +860,9 @@ if (lastSyncTime) {
           .then(response => response.json())
           .then(data => {
             const content = data.content;
+              if (content === "") {
+    content = data.download_url;
+  }
             const decodedData = atob(content);
             const decomp = LZString.decompressFromBase64(decodedData);
       const data1 = JSON.parse(decomp);
