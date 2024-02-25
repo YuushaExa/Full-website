@@ -56,7 +56,9 @@
 
 <button id="CloudSave">Cloud Save</button>
 <p id="lastsaveddata"></p>
-          <button id="LoadCloud">Cloud Save</button>
+          <button id="LoadCloud">Cloud Load</button>
+            <button onclick="toggleScriptActivation()">Toggle Auto Save</button>
+
           
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -898,11 +900,28 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
 
   // storage
 
-  window.addEventListener('storage', function(event) {
-  if (event.storageArea === localStorage) {
-    fetchDataAndSendToGitHub();
-  }
-});
+   // Check if the activation state is already stored in localStorage
+    let isScriptActive = localStorage.getItem('isScriptActive') === 'true';
+
+    function handleStorageEvent(event) {
+      if (event.storageArea === localStorage && isScriptActive) {
+        fetchDataAndSendToGitHub();
+      }
+    }
+
+    window.addEventListener('storage', handleStorageEvent);
+
+    function toggleScriptActivation() {
+      isScriptActive = !isScriptActive;
+
+      // Store the activation state in localStorage
+      localStorage.setItem('isScriptActive', isScriptActive.toString());
+    }
+
+    function fetchDataAndSendToGitHub() {
+      // Replace this with your implementation to fetch data and send it to GitHub
+      console.log('Fetching data and sending to GitHub...');
+    }
 </script>
 
      
