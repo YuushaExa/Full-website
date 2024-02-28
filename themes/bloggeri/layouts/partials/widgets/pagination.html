@@ -38,11 +38,7 @@
 {{- if .Paginator.HasNext -}}
   <a class="paginator-next-page" href="{{ .Paginator.Next.URL }}">Next</a>
 {{- end -}}
-{{ $postCount := 0 }}
-{{ range .Data.Pages }}
-    {{ $postCount = add $postCount 1 }}
-{{ end }}
-Total number of posts: {{ $postCount }}
+Total number of posts: {{ len .Site.RegularPages }}
    <script>
    document.getElementById('Go').onclick = function () {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
