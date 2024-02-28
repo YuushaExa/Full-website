@@ -922,23 +922,12 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
 </script>
 
      <script>
-  // Retrieve the total number of posts from Hugo's template variable
   var totalPosts = {{ len .Site.RegularPages }};
-
-  // Save the total number of posts in local storage
   localStorage.setItem('totalPosts', totalPosts);  
-       // Check if the totalPosts key exists in local storage
 if (localStorage.getItem('totalPosts')) {
-  // Retrieve the stored total number of posts
   var storedTotalPosts = parseInt(localStorage.getItem('totalPosts'));
-
-  // Retrieve the current total number of posts from Hugo's template variable
   var currentTotalPosts = {{ len .Site.RegularPages }};
-
-  // Compare the stored total posts with the current count
   if (storedTotalPosts !== currentTotalPosts) {
-    // The total number of posts has changed since the user's last visit
-    // Perform any necessary actions or display a notification to the user
     console.log('Total number of posts has changed.');
   }
 }
