@@ -926,9 +926,8 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
   var totalPosts = {{ len .Site.RegularPages }};
 
   // Save the total number of posts in local storage
-  localStorage.setItem('totalPosts', totalPosts);
-</script>
-          // Check if the totalPosts key exists in local storage
+  localStorage.setItem('totalPosts', totalPosts);  
+       // Check if the totalPosts key exists in local storage
 if (localStorage.getItem('totalPosts')) {
   // Retrieve the stored total number of posts
   var storedTotalPosts = parseInt(localStorage.getItem('totalPosts'));
@@ -944,6 +943,8 @@ if (localStorage.getItem('totalPosts')) {
   }
 }
 
+</script>
+ 
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
      </div>
