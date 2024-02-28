@@ -31,13 +31,18 @@
     <li>
         <a href="{{ .URL }}" class="pagination-link" {{ if not $pag.HasNext }}disabled{{ end }} aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
     </li>
-    {{ end }}
+    {{ end }} 
 </ul>
 </nav>
 {{ end }}
 {{- if .Paginator.HasNext -}}
   <a class="paginator-next-page" href="{{ .Paginator.Next.URL }}">Next</a>
 {{- end -}}
+{{ $numPosts := 0 }}
+{{ range .Data.Pages }}
+    {{ $numPosts = add $numPosts 1 }}
+{{ end }}
+Total number of posts: {{ $numPosts }}
    <script>
    document.getElementById('Go').onclick = function () {
      window.location.href = "https://yuushaexa.github.io/page/" + document.getElementById('inputId').value;
