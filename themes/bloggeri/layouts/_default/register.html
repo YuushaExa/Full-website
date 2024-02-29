@@ -94,7 +94,7 @@ registrationForm.addEventListener('submit', (e) => {
   const email = registrationForm.email.value;
   const password = registrationForm.password.value;
 
-  return firebase.firestore().collection('users').doc(name).get()
+  return firebase.firestore().collection('nickname').doc(name).get()
     .then((doc) => {
       if (doc.exists) {
         throw new Error('Username already exists');
@@ -102,8 +102,9 @@ registrationForm.addEventListener('submit', (e) => {
         return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
   const user = userCredential.user;
-  return firebase.firestore().collection('users').doc(name).set({});
+  return firebase.firestore().collection('nickname').doc(name).set({});
 });
+        dailylogin();
       }
     })
     .then(() => {
@@ -276,87 +277,8 @@ deleteAccountButton.addEventListener('click', () => {
     });
 });
   
-  // cloud save
-
- const cloudSaveButton = document.getElementById('cloudsave');
-
-// Add an event listener to the cloudsave button
-cloudSaveButton.addEventListener('click', () => {
-// Get the current user
-const user = firebase.auth().currentUser;
-
-if (user) {
-  // Generate a unique file name using the user's UID
-  const fileName = user.uid + '.json';
-
-  // Convert localStorage data to JSON
-  const localStorageData = JSON.stringify(localStorage);
-
-  // Compress the localStorageData using LZString
-  const compressedData = LZString.compressToEncodedURIComponent(localStorageData);
-
-  // Create a reference to the Firebase Storage folder
-  const storageRef = firebase.storage().ref();
-
-  // Create a child reference with the file path and upload the data
-  const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
-  fileRef.putString(compressedData, 'raw')
-    .then(() => {
-      console.log('Data saved to Firebase Storage successfully.');
-    })
-    .catch((error) => {
-      console.error('Data upload to Firebase Storage failed:', error);
-    });
-} else {
-  console.error('User not logged in.');
-}
-});
-  
-  // cloud load 
-
- document.getElementById('loadcloudsave').addEventListener('click', function() {
-  const user = firebase.auth().currentUser;
-
-  if (user) {
-    // Generate the file name based on the user's UID
-    const fileName = user.uid + '.json';
-
-    // Create a reference to the Firebase Storage file
-    const storageRef = firebase.storage().ref();
-    const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
-
-    // Get the download URL for the file
-fileRef.getDownloadURL()
-  .then((downloadURL) => {
-    // Use the download URL to retrieve the file data
-    fetch(downloadURL)
-      .then((response) => response.text())
-      .then((compressedData) => {
-        // Decompress the compressed data using LZString
-        const localStorageData = LZString.decompressFromEncodedURIComponent(compressedData);
-
-        // Parse the decompressed data as JSON
-        const data = JSON.parse(localStorageData);
-        console.log('Retrieved data:', data);
-
- for (let key in data) {
-localStorage.setItem(key, data[key]);
-}
-        // Do something with the retrieved data if needed
-      })
-      .catch((error) => {
-        console.error('Error retrieving data:', error);
-      });
-  })
-  .catch((error) => {
-    console.error('Error getting download URL:', error);
-  });
-  } else {
-    console.error('User not logged in.');
-  }
-});
-
   // auth console
+  function dailylogin() {
 firebase.auth().onAuthStateChanged((user) => {
 if (user) {
 const displayName = user.displayName || 'Nameless';
@@ -371,7 +293,7 @@ if (lastVisitStamp === today) {
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
 const db = firebase.firestore();
-const userRef = db.collection('userstime').doc(user.uid);
+const userRef = db.collection('users').doc(user.uid);
 
 userRef.get()
   .then((doc) => {
@@ -424,7 +346,8 @@ if (randomWelcomeDiv) {
 // User is logged out
 }
 });
-  
+  }
+  dailylogin();
   // delete button
 
 // Assuming you have already initialized Firebase SDK and authenticated the user
