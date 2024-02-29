@@ -94,21 +94,14 @@ registrationForm.addEventListener('submit', (e) => {
   const email = registrationForm.email.value;
   const password = registrationForm.password.value;
 
-  // Check if the document with the same name exists in Firestore
   return firebase.firestore().collection('users').doc(name).get()
     .then((doc) => {
       if (doc.exists) {
         throw new Error('Username already exists');
       } else {
-        // Document doesn't exist, proceed with registration
-        // Register the user first to get the user object
+
         return firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            return firebase.firestore().collection('users').doc(name).set({
-              uid: user.uid
-            });
-          });
+
       }
     })
     .then(() => {
