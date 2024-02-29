@@ -922,7 +922,7 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
 </script>
 
      <script>
-  var storedTotalPosts = parseInt(localStorage.getItem('totalPosts'));
+  var storedTotalPosts = parseInt(localStorage.getItem('Games'));
   var currentTotalPosts = {{ len .Site.RegularPages }};
   if (storedTotalPosts !== currentTotalPosts) {
 console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
