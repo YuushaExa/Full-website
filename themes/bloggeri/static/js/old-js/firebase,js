@@ -1,0 +1,79 @@
+  // cloud save
+
+ const cloudSaveButton = document.getElementById('cloudsave');
+
+// Add an event listener to the cloudsave button
+cloudSaveButton.addEventListener('click', () => {
+// Get the current user
+const user = firebase.auth().currentUser;
+
+if (user) {
+  // Generate a unique file name using the user's UID
+  const fileName = user.uid + '.json';
+
+  // Convert localStorage data to JSON
+  const localStorageData = JSON.stringify(localStorage);
+
+  // Compress the localStorageData using LZString
+  const compressedData = LZString.compressToEncodedURIComponent(localStorageData);
+
+  // Create a reference to the Firebase Storage folder
+  const storageRef = firebase.storage().ref();
+
+  // Create a child reference with the file path and upload the data
+  const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
+  fileRef.putString(compressedData, 'raw')
+    .then(() => {
+      console.log('Data saved to Firebase Storage successfully.');
+    })
+    .catch((error) => {
+      console.error('Data upload to Firebase Storage failed:', error);
+    });
+} else {
+  console.error('User not logged in.');
+}
+});
+  
+  // cloud load 
+
+ document.getElementById('loadcloudsave').addEventListener('click', function() {
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    // Generate the file name based on the user's UID
+    const fileName = user.uid + '.json';
+
+    // Create a reference to the Firebase Storage file
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child('data/' + user.uid + '/' + fileName);
+
+    // Get the download URL for the file
+fileRef.getDownloadURL()
+  .then((downloadURL) => {
+    // Use the download URL to retrieve the file data
+    fetch(downloadURL)
+      .then((response) => response.text())
+      .then((compressedData) => {
+        // Decompress the compressed data using LZString
+        const localStorageData = LZString.decompressFromEncodedURIComponent(compressedData);
+
+        // Parse the decompressed data as JSON
+        const data = JSON.parse(localStorageData);
+        console.log('Retrieved data:', data);
+
+ for (let key in data) {
+localStorage.setItem(key, data[key]);
+}
+        // Do something with the retrieved data if needed
+      })
+      .catch((error) => {
+        console.error('Error retrieving data:', error);
+      });
+  })
+  .catch((error) => {
+    console.error('Error getting download URL:', error);
+  });
+  } else {
+    console.error('User not logged in.');
+  }
+});
