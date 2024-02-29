@@ -102,7 +102,7 @@ registrationForm.addEventListener('submit', (e) => {
         return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
   const user = userCredential.user;
-  return firebase.firestore().collection('nicknames').doc(name).set({});
+  return firebase.firestore().collection('nicknames').doc(name).set({}); 
 });
       }
     })
@@ -114,7 +114,8 @@ registrationForm.addEventListener('submit', (e) => {
     })
     .then(() => {
       // Display name updated successfully
-      console.log('Display name updated successfully:', name);
+      console.log('Welcome, ', name);
+      dailylogin();
       // You can redirect the user to a different page or perform additional actions here
     })
     .catch((error) => {
