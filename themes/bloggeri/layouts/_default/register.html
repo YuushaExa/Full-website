@@ -102,9 +102,8 @@ registrationForm.addEventListener('submit', (e) => {
         return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
   const user = userCredential.user;
-  return firebase.firestore().collection('nickname').doc(name).set({});
+  return firebase.firestore().collection('nicknames').doc(name).set({});
 });
-        dailylogin();
       }
     })
     .then(() => {
