@@ -224,49 +224,17 @@ deleteAccountButton.addEventListener('click', () => {
   // Re-authenticate the user with the provided credential
   user.reauthenticateWithCredential(credential)
     .then(() => {
-      // Get the user's UID
-      const uid = user.uid;
-
-      // Delete the associated Firebase Storage folder
-      const storage = firebase.storage();
-      const storageRef = storage.ref();
-      var folderPath = 'data/' + uid + '/' + uid + '.json';
-
-      storageRef.child(folderPath).delete()
+      // Continue with account deletion
+      user.delete()
         .then(() => {
-          // Successful deletion of associated storage folder
-          console.log('Associated storage folder deleted successfully:', folderPath);
-
-          // Delete the user account
-          user.delete()
-            .then(() => {
-              // Account deletion successful
-              console.log('Account deletion successful');
-              // You can redirect the user to a different page or perform additional actions here
-            })
-            .catch((error) => {
-              // Account deletion failed
-              console.error('Account deletion failed:', error);
-              // Display an error message to the user or handle the error appropriately
-            });
+          // Account deletion successful
+          console.log('Account deletion successful');
+          // You can redirect the user to a different page or perform additional actions here
         })
         .catch((error) => {
-          // Error deleting associated storage folder
-          console.error('Error deleting associated storage folder:', folderPath, error);
+          // Account deletion failed
+          console.error('Account deletion failed:', error);
           // Display an error message to the user or handle the error appropriately
-
-          // Continue with account deletion even if storage deletion failed
-          user.delete()
-            .then(() => {
-              // Account deletion successful
-              console.log('Account deletion successful');
-              // You can redirect the user to a different page or perform additional actions here
-            })
-            .catch((error) => {
-              // Account deletion failed
-              console.error('Account deletion failed:', error);
-              // Display an error message to the user or handle the error appropriately
-            });
         });
     })
     .catch((error) => {
