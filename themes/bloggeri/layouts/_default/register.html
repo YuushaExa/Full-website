@@ -922,16 +922,12 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
 </script>
 
      <script>
-  var totalPosts = {{ len .Site.RegularPages }};
-  localStorage.setItem('totalPosts', totalPosts);  
-if (localStorage.getItem('totalPosts')) {
   var storedTotalPosts = parseInt(localStorage.getItem('totalPosts'));
   var currentTotalPosts = {{ len .Site.RegularPages }};
   if (storedTotalPosts !== currentTotalPosts) {
-    console.log('Total number of posts has changed.');
+console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
+  localStorage.setItem('Games', currentTotalPosts);  
   }
-}
-
 </script>
  
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
