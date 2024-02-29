@@ -100,8 +100,11 @@ registrationForm.addEventListener('submit', (e) => {
         throw new Error('Username already exists');
       } else {
 
-        return firebase.auth().createUserWithEmailAndPassword(email, password)
-
+          .then((userCredential) => {
+            const user = userCredential.user;
+            return firebase.firestore().collection('users').doc(name).set({
+            });
+          });
       }
     })
     .then(() => {
