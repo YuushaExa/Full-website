@@ -77,7 +77,7 @@ jobs:
             echo "Pagefind results are cached."
           fi
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-page-artifact@v2
         with:
           name: github-pages
           path: ./public
