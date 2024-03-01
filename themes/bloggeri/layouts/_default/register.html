@@ -782,21 +782,20 @@ console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
   {{ if eq $index 0 }}
     {{ $title := $post.Title }}
     {{ $url := $post.RelPermalink }}
-    {{ $image := $post.Params.image }}
 
     <script>
       const title = "{{ $title }}";
       const url = "{{ $url }}";
-      const image = "{{ $image }}";
 
       const html = `
         <h2>Title: ${title}</h2>
         <p>URL: ${url}</p>
-        <img src="${image}" alt="Post Image">
       `;
 
-      const randomWelcomeDiv = document.getElementById('randomwelcome');
-      randomWelcomeDiv.innerHTML = html;
+      document.addEventListener("DOMContentLoaded", function() {
+        const randomWelcomeDiv = document.getElementById('randomwelcome');
+        randomWelcomeDiv.innerHTML = html;
+      });
     </script>
   {{ end }}
 {{ end }}
