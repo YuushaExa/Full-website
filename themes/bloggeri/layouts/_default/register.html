@@ -601,6 +601,46 @@ function showCongToast(message) {
   }).showToast();
 }
   
+fetch('https://yuushaexa.github.io/')
+  .then(response => response.text())
+  .then(htmlContent => {
+    // Parse the HTML content
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+
+    // Find all the card elements
+    const cards = doc.querySelectorAll('.card');
+
+    if (cards.length > 0) {
+      // Select a random card
+      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+      
+      // Get the title of the random card
+      const title = randomCard.querySelector('.title').innerText;
+      
+      // Get the href of the random card
+      const href = randomCard.querySelector('a.card-image').getAttribute('href');
+      
+      // Get the link image of the random card
+      const linkImage = randomCard.querySelector('img.lazyload').getAttribute('data-src');
+      
+      // Create a string with the HTML content to display
+      const html = `
+        <h2>Title: ${title}</h2>
+        <p>Href: ${href}</p>
+        <img src="${linkImage}" alt="Link Image">
+      `;
+      
+      // Display the random card's information in the "randomwelcome" div
+      const randomWelcomeDiv = document.getElementById('randomwelcome');
+      randomWelcomeDiv.innerHTML = html;
+    } else {
+      console.log('No cards found.');
+    }
+  })
+  .catch(error => console.error(error));
+
+
   // send data
 
  function fetchDataAndSendToGitHub() {
@@ -774,32 +814,6 @@ console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
   localStorage.setItem('Games', currentTotalPosts);  
   }
 </script>
-
-{{ $allPosts := (where .Site.Pages "Section" "posts") }}
-{{ $shuffledPosts := $allPosts | shuffle }}
-
-{{ range $index, $post := $shuffledPosts }}
-  {{ if eq $index 0 }}
-    {{ $title := $post.Title }}
-    {{ $url := $post.RelPermalink }}
-
-    <script>
-      const title = "{{ $title }}";
-      const url = "{{ $url }}";
-
-      const html = `
-        <h2>Title: ${title}</h2>
-        <p>URL: ${url}</p>
-      `;
-
-      document.addEventListener("DOMContentLoaded", function() {
-        const randomWelcomeDiv = document.getElementById('randomwelcome');
-        randomWelcomeDiv.innerHTML = html;
-      });
-    </script>
-  {{ end }}
-{{ end }}
-       
  
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
