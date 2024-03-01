@@ -34,7 +34,7 @@ jobs:
       NODE_VERSION: 20.x
     steps:
       - name: Set up Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Hugo CLI
@@ -67,7 +67,7 @@ jobs:
       - name: Run Pagefind
         run: npm_config_yes=true npx pagefind --source "public"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
          name: github-pages
          path: ./public
