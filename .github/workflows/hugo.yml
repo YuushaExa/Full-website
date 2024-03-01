@@ -64,8 +64,6 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Run Pagefind
-        run: npm_config_yes=true npx pagefind --source "public"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -82,4 +80,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
