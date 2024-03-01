@@ -1,26 +1,33 @@
 name: Deploy Hugo site to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
+# Default to bash
 defaults:
   run:
     shell: bash
 
 jobs:
+  # Build job
   build:
+  
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.114.0
@@ -64,20 +71,27 @@ jobs:
         run: npm ci
 
       - name: Build with Hugo
+
         env:
+          # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo -s prebuild
-          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
-          npx pagefind --source "public"
-
+         hugo \
+            -s prebuild && \
+         hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Run Pagefind
+        run: npm_config_yes=true npx pagefind --source "public"
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: github-pages
-          path: ./public
+         name: github-pages
+         path: ./public
 
+  # Deployment job
   deploy:
     environment:
       name: github-pages
