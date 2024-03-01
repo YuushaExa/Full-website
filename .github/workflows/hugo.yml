@@ -27,26 +27,16 @@ defaults:
 jobs:
   # Build job
   build:
-  
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.114.0
       NODE_VERSION: 20.x
     steps:
-      - name: Cache
-        uses: actions/cache@v4.0.1
-        with:
-          path: |
-            ${{ runner.workspace }}/public
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/lockfiles') }}
-          restore-keys: |
-            ${{ runner.os }}-hugo-
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Hugo CLI
-
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
@@ -58,27 +48,39 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        run: |
+          [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true
       - name: Build with Hugo
-
         env:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-         hugo \
-            -s prebuild && \
-         hugo \
+          hugo -s prebuild && \
+          hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Run Pagefind
-        run: npm_config_yes=true npx pagefind --source "public"
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Cache Pagefind results
+        uses: actions/cache@v2
+        id: cache-pagefind
         with:
-         name: github-pages
-         path: ./public
+          path: ~/.npm
+          key: ${{ runner.os }}-pagefind-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pagefind-
+      - name: Run Pagefind
+        run: |
+          if [[ -z "${{ steps.cache-pagefind.outputs.cache-hit }}" ]]; then
+            npm_config_yes=true npx pagefind --source "public"
+          else
+            echo "Pagefind results are cached."
+          fi
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: github-pages
+          path: ./public
 
   # Deployment job
   deploy:
