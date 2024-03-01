@@ -775,6 +775,27 @@ console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
   }
 </script>
 
+             {{ $allPosts := (where .Site.Pages "Section" "posts") }}
+{{ $randomPost := index $allPosts (random.Seed | int64 | mod (len $allPosts)) }}
+
+{{ $title := $randomPost.Title }}
+{{ $url := $randomPost.RelPermalink }}
+{{ $image := $randomPost.Params.image }}
+
+<script>
+  const title = "{{ $title }}";
+  const url = "{{ $url }}";
+  const image = "{{ $image }}";
+
+  const html = `
+    <h2>Title: ${title}</h2>
+    <p>URL: ${url}</p>
+    <img src="${image}" alt="Post Image">
+  `;
+
+  const randomWelcomeDiv = document.getElementById('randomwelcome');
+  randomWelcomeDiv.innerHTML = html;
+</script>
        
  
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
