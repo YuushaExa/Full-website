@@ -33,43 +33,26 @@ jobs:
       HUGO_VERSION: 0.114.0
       NODE_VERSION: 16.0.0
     steps:
-      - name: Cache Hugo modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/hugo
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.sum') }}
-
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass Embedded
         run: sudo snap install dart-sass-embedded
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
-
       - name: Install Node.js dependencies
-        run: npm ci
-
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
 
         env:
