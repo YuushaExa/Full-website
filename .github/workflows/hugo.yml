@@ -66,7 +66,7 @@ jobs:
       - name: Run Pagefind
         run: npm_config_yes=true npx pagefind --source "public"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
