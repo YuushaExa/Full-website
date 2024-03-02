@@ -7,6 +7,7 @@ summarylength = 10
 [params]
     description = "Games Library"
     author = "Yuusha"
+    ignoreErrors = ["json"]
     [security]
 [security.gotemplates]
 allowActionJSTmpl = true
@@ -80,5 +81,3 @@ home = [ "HTML", "RSS", "JSON" ]
         [[related.indices]]
         name = "genres"
         weight = 20
-
-ignoreErrors = ["json"]
