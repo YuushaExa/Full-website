@@ -82,10 +82,9 @@ home = [ "HTML", "RSS", "JSON" ]
         weight = 20
 
 [module]
-        [[module.mounts]]
 source = 'content/'
 target = 'content/platform'
 
-        [[module.mounts]]
+[module]
 source = 'prebuild/public/'
 target = 'content/platform'
