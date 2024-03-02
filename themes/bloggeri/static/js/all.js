@@ -367,40 +367,42 @@ divElement.parentNode.removeChild(divElement);
 // history
 
 document.addEventListener('DOMContentLoaded', function() {
-  var cardsContainer = document.querySelector('.content');
-  var cardData = [];
-  // Retrieve previously stored data from local storage
-  var storedData = localStorage.getItem('History');
-  if (storedData) {
-    cardData = JSON.parse(storedData);
-  }
-  cardsContainer.addEventListener('click', function(event) {
-    var card = event.target.closest('.card');
-    if (card) {
-      var title = card.querySelector('.title').textContent;
-      var image = card.querySelector('.card-image img').src;
-      var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
-      var href = card.querySelector('.card-image').href;
-      var currentDate = new Date();
-      var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-      var formattedDate = currentDate.toLocaleDateString('en-US', options);
-      // Check if the card already exists in cardData
-      var isDuplicate = cardData.some(function(item) {
-        return item.title === title && item.image === strippedImage && item.href === href;
-      });
-      if (!isDuplicate) {
-        var data = {
-          "title": title,
-          "image": strippedImage,
-          "href": href,
-          "dateAdded": formattedDate
-        };
-        cardData.push(data);
-        var jsonData = JSON.stringify(cardData);
-        localStorage.setItem('History', jsonData);
-      }
+  var cardsContainer = document.querySelector('.card');
+  if (cardsContainer) {
+    var cardData = [];
+    // Retrieve previously stored data from local storage
+    var storedData = localStorage.getItem('History');
+    if (storedData) {
+      cardData = JSON.parse(storedData);
     }
-  });
+    cardsContainer.addEventListener('click', function(event) {
+      var card = event.target.closest('.card');
+      if (card) {
+        var title = card.querySelector('.title').textContent;
+        var image = card.querySelector('.card-image img').src;
+        var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
+        var href = card.querySelector('.card-image').href;
+        var currentDate = new Date();
+        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+        var formattedDate = currentDate.toLocaleDateString('en-US', options);
+        // Check if the card already exists in cardData
+        var isDuplicate = cardData.some(function(item) {
+          return item.title === title && item.image === strippedImage && item.href === href;
+        });
+        if (!isDuplicate) {
+          var data = {
+            "title": title,
+            "image": strippedImage,
+            "href": href,
+            "dateAdded": formattedDate
+          };
+          cardData.push(data);
+          var jsonData = JSON.stringify(cardData);
+          localStorage.setItem('History', jsonData);
+        }
+      }
+    });
+  }
 });
 
 // history count
