@@ -81,6 +81,7 @@ home = [ "HTML", "RSS", "JSON" ]
         name = "genres"
         weight = 20
 
+[module]
         [[module.mounts]]
     source = 'data'
     target = 'data'
