@@ -81,3 +81,5 @@ home = [ "HTML", "RSS", "JSON" ]
         name = "genres"
         weight = 20
 
+disableKinds:
+- json
