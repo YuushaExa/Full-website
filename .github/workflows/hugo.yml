@@ -30,7 +30,7 @@ jobs:
   
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.114.0
+      HUGO_VERSION: 0.123.7
       NODE_VERSION: 20.x
     steps:
       - name: Set up Node.js ${{ env.NODE_VERSION }}
