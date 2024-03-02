@@ -83,5 +83,9 @@ home = [ "HTML", "RSS", "JSON" ]
 
 [module]
         [[module.mounts]]
-    source = 'prebuild/data'
-    target = 'data'
+source = 'content/'
+target = 'content/platform'
+
+        [[module.mounts]]
+source = 'prebuild/public/'
+target = 'content/platform'
