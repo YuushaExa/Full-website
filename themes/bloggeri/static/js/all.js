@@ -407,18 +407,13 @@ updateHistory();
 // history count
 
 function updateHistory() {
-document.addEventListener('DOMContentLoaded', function() {
   var historyCountContainer = document.getElementById('HistoryCount');
-
   var storedData = localStorage.getItem('History');
-
   if (storedData) {
     var cardData = JSON.parse(storedData);
     var count = cardData.length;
-
   historyCountContainer.textContent = count;
   }
-});
 }
 updateHistory();
 
