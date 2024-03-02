@@ -15,7 +15,7 @@ allowActionJSTmpl = true
     [markup.goldmark]
         [markup.goldmark.renderer]
             unsafe = true
-
+uglyURLs = false
             [outputs]
 home = [ "HTML", "RSS", "JSON" ]
             
