@@ -4,6 +4,7 @@ title = "GameLibrary"
 theme = "bloggeri"
 paginate = 50
 summarylength = 10
+uglyURLs = false
 [params]
     description = "Games Library"
     author = "Yuusha"
@@ -15,7 +16,6 @@ allowActionJSTmpl = true
     [markup.goldmark]
         [markup.goldmark.renderer]
             unsafe = true
-uglyURLs = false
             [outputs]
 home = [ "HTML", "RSS", "JSON" ]
             
