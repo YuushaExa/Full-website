@@ -398,7 +398,7 @@ var data = {
 cardData.push(data);
 var jsonData = JSON.stringify(cardData);
 localStorage.setItem('History', jsonData);
-updateRatingDisplays();
+updateHistory();
 }
 }
 });
@@ -406,7 +406,7 @@ updateRatingDisplays();
 
 // history count
 
-function updateRatingDisplays() {
+function updateHistory() {
 document.addEventListener('DOMContentLoaded', function() {
   var historyCountContainer = document.getElementById('HistoryCount');
 
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 }
-updateRatingDisplays();
+updateHistory();
 
 // something else
 
