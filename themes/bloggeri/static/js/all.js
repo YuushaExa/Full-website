@@ -398,6 +398,7 @@ var data = {
 cardData.push(data);
 var jsonData = JSON.stringify(cardData);
 localStorage.setItem('History', jsonData);
+updateRatingDisplays();
 }
 }
 });
@@ -405,6 +406,7 @@ localStorage.setItem('History', jsonData);
 
 // history count
 
+function updateRatingDisplays() {
 document.addEventListener('DOMContentLoaded', function() {
   var historyCountContainer = document.getElementById('HistoryCount');
 
@@ -417,6 +419,10 @@ document.addEventListener('DOMContentLoaded', function() {
   historyCountContainer.textContent = count;
   }
 });
+}
+updateRatingDisplays();
+
+// something else
 
  tippy('.toggleButton', {
         content: (reference) => reference.getAttribute('aria-label'),
