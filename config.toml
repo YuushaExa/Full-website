@@ -80,7 +80,3 @@ home = [ "HTML", "RSS", "JSON" ]
         [[related.indices]]
         name = "genres"
         weight = 20
-
-        [caches]
-  [caches.templates]
-    enableCache = true
