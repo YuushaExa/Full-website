@@ -420,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 }
+updateHistory();
 
 // something else
 
