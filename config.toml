@@ -4,7 +4,7 @@ title = "GameLibrary"
 theme = "bloggeri"
 paginate = 50
 summarylength = 10
-uglyURLs = false
+uglyURLs = true
 [params]
     description = "Games Library"
     author = "Yuusha"
