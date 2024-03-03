@@ -813,7 +813,33 @@ console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
   localStorage.setItem('Games', currentTotalPosts);  
   }
 </script>
- 
+     <script>
+
+          const trackedLocalStorage = {
+  setItem(key, value) {
+    // Log the added or updated key-value pair
+    console.log(`Added/updated key: ${key}, value: ${value}`);
+    
+    // Update the local storage
+    localStorage.setItem(key, value);
+  },
+  removeItem(key) {
+    // Log the deleted key
+    console.log(`Deleted key: ${key}`);
+    
+    // Delete the key from local storage
+    localStorage.removeItem(key);
+  },
+  clear() {
+    // Log the cleared local storage
+    console.log('Cleared local storage');
+    
+    // Clear the local storage
+    localStorage.clear();
+  }
+};
+   </script>
+       
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
      </div>
