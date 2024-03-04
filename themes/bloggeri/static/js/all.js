@@ -185,42 +185,26 @@ for (var i = 1; i <= clickedRating; i++) {
 });
   
 const trackedLocalStorage = {
-  lastAddedValues: {}, // Object to track the last added value for each key
-
   setItem(key, value) {
-    let lastAddedValue = value[value.length - 1]; // Extract the last added value
-
-    // Check if the last added value for the key is different from the current value
-    if (JSON.stringify(this.lastAddedValues[key]) !== JSON.stringify(lastAddedValue)) {
-      // Log the added key-value pair
-      console.log(`Added key: ${key}, value: ${JSON.stringify(lastAddedValue)}`);
-      this.lastAddedValues[key] = lastAddedValue; // Update the last added value for the key
-    }
-
+    // Log the added key-value pair
+    console.log(`Added key: ${key}, value: ${value}`);
+    
     // Update the local storage
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, value);
   },
-
   removeItem(key) {
     // Log the deleted key
     console.log(`Deleted key: ${key}`);
-
+    
     // Delete the key from local storage
     localStorage.removeItem(key);
-
-    // Remove the last added value for the key
-    delete this.lastAddedValues[key];
   },
-
   clear() {
     // Log the cleared local storage
     console.log('Cleared local storage');
-
+    
     // Clear the local storage
     localStorage.clear();
-
-    // Reset the last added values
-    this.lastAddedValues = {};
   }
 };
 
