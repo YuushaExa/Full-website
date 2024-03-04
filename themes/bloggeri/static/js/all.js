@@ -910,3 +910,255 @@ document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendT
       isScriptActive = !isScriptActive;
       localStorage.setItem('isScriptActive', isScriptActive.toString());
     }
+
+// firrebase
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
+    projectId: "gamedb-95862",
+    storageBucket: "gamedb-95862.appspot.com",
+    messagingSenderId: "788250168154",
+    appId: "1:788250168154:web:b6573c45a909fc09694163"
+  };
+  firebase.initializeApp(firebaseConfig);
+  
+// Email Registration
+const registrationForm = document.getElementById('registrationForm');
+
+// Add an event listener to the registration form
+registrationForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
+
+  // Get user input values
+  const name = registrationForm.name.value;
+  const email = registrationForm.email.value;
+  const password = registrationForm.password.value;
+
+  return firebase.firestore().collection('nickname').doc(name).get()
+    .then((doc) => {
+      if (doc.exists) {
+        throw new Error('Username already exists');
+      } else {
+        return firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+  const user = userCredential.user;
+  return firebase.firestore().collection('nicknames').doc(name).set({}); 
+});
+      }
+    })
+    .then(() => {
+      // Firestore operation and user registration successful
+      return firebase.auth().currentUser.updateProfile({
+        displayName: name
+      });
+    })
+    .then(() => {
+      // Display name updated successfully
+      console.log('Welcome, ', name);
+      // You can redirect the user to a different page or perform additional actions here
+    })
+    .catch((error) => {
+      // Registration failed or username already exists
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Registration failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+  // Nickname Registration 
+
+  const registrationFormNick = document.getElementById('registrationFormNick');
+
+registrationFormNick.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const nickname = registrationFormNick.nickname.value;
+  const password = registrationFormNick.password.value;
+
+  firebase.auth().createUserWithEmailAndPassword(`${nickname}@example.com`, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log('Registration successful:', user);
+      // Additional actions or redirection can be performed here
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Registration failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+
+  // login
+
+const loginForm = document.getElementById('loginForm');
+
+// Add an event listener to the login form
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
+
+  // Get user input values
+  let email = loginForm.email.value;
+  const password = loginForm.password.value;
+
+  // Check if the input is in email format
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(email)) {
+    // Append '@example.com' to the word entered by the user
+    email += '@example.com';
+  }
+
+  // Sign in the user with email and password
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Login successful
+      const user = userCredential.user;
+      console.log('Login successful:', user);
+      // You can redirect the user to a different page or perform additional actions here
+    })
+    .catch((error) => {
+      // Login failed
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Login failed:', errorCode, errorMessage);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+  
+// log out
+
+  // Get the logout button element
+const logoutButton = document.getElementById('logout');
+
+// Add an event listener to the logout button
+logoutButton.addEventListener('click', () => {
+  // Sign out the user
+  firebase.auth().signOut()
+    .then(() => {
+      // Logout successful
+      console.log('Logout successful');
+      // You can redirect the user to a different page or perform additional actions here
+    })
+    .catch((error) => {
+      // Logout failed
+      console.error('Logout failed:', error);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+
+  // delete
+
+const deleteAccountButton = document.getElementById('deleteAccount');
+
+// Add an event listener to the delete account button
+deleteAccountButton.addEventListener('click', () => {
+  // Get the currently logged-in user
+  const user = firebase.auth().currentUser;
+
+  // Prompt the user for re-authentication (e.g., password confirmation) before deleting the account
+  const password = prompt('Please enter your password to confirm account deletion:');
+
+  // Create a credential with the user's email and password
+  const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
+
+  // Re-authenticate the user with the provided credential
+  user.reauthenticateWithCredential(credential)
+    .then(() => {
+      // Continue with account deletion
+      user.delete()
+        .then(() => {
+          // Account deletion successful
+          console.log('Account deletion successful');
+          // You can redirect the user to a different page or perform additional actions here
+        })
+        .catch((error) => {
+          // Account deletion failed
+          console.error('Account deletion failed:', error);
+          // Display an error message to the user or handle the error appropriately
+        });
+    })
+    .catch((error) => {
+      // Re-authentication failed
+      console.error('Re-authentication failed:', error);
+      // Display an error message to the user or handle the error appropriately
+    });
+});
+  
+  // auth console
+  function dailylogin() {
+firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+const displayName = user.displayName || 'Nameless';
+const today = new Date().toDateString(); // Get today's date in the format "Day Month Date Year"
+
+const lastVisitStamp = localStorage.getItem('lastVisitStamp');
+if (lastVisitStamp === today) {
+  console.log('Script already executed today. Aborting...');
+  return; // Abort the script if it has already been executed today
+}
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+const db = firebase.firestore();
+const userRef = db.collection('users').doc(user.uid);
+
+userRef.get()
+  .then((doc) => {
+    const lastVisit = doc.exists ? doc.data().lastVisit : null;
+    const qi = doc.exists ? doc.data().qi : 1;
+    const name = user.displayName;
+                localStorage.setItem('name', name);
+            localStorage.setItem('Qi', qi);
+    
+    if (lastVisit) {
+      const lastVisitDate = lastVisit.toDate().toDateString(); 
+      if (lastVisitDate !== today) {
+        console.log('Welcome, ' + displayName + '!');
+        userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
+          .then(() => {
+            console.log('Timestamp and qi updated in Firestore.');
+            localStorage.setItem('lastVisitStamp', today); 
+          })
+          .catch((error) => {
+            console.error('Failed to update timestamp and qi in Firestore:', error);
+          });
+      } else {
+        console.log('Script already executed today based on Firestore data. Aborting...');
+        localStorage.setItem('lastVisitStamp', today);
+      }
+    } else {
+      console.log('First visit of the user. Welcome, ' + displayName + '!');
+
+      userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
+        .then(() => {
+          console.log('Timestamp updated in Firestore.');
+          localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+          console.cong('Dantian Unlocked, now you can store Qi energy');
+        })
+        .catch((error) => {
+          console.error('Failed to update timestamp and Qi in Firestore:', error);
+        });
+    }
+  })
+  .catch((error) => {
+    console.error('Error getting user document:', error);
+  });
+
+const randomWelcomeDiv = document.getElementById('randomwelcome');
+
+if (randomWelcomeDiv) {
+  console.log('Game of the day: ' + randomWelcomeDiv.innerHTML);
+}
+} else {
+// User is logged out
+}
+});
+  }
+  dailylogin();
