@@ -188,15 +188,17 @@ const trackedLocalStorage = {
   lastAddedValues: {}, // Object to track the last added value for each key
 
   setItem(key, value) {
+    let lastAddedValue = value[value.length - 1]; // Extract the last added value
+
     // Check if the last added value for the key is different from the current value
-    if (this.lastAddedValues[key] !== value) {
+    if (JSON.stringify(this.lastAddedValues[key]) !== JSON.stringify(lastAddedValue)) {
       // Log the added key-value pair
-      console.log(`Added key: ${key}, value: ${value}`);
-      this.lastAddedValues[key] = value; // Update the last added value for the key
+      console.log(`Added key: ${key}, value: ${JSON.stringify(lastAddedValue)}`);
+      this.lastAddedValues[key] = lastAddedValue; // Update the last added value for the key
     }
 
     // Update the local storage
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
   },
 
   removeItem(key) {
