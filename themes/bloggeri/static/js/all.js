@@ -189,8 +189,7 @@ for (var i = 1; i <= clickedRating; i++) {
 const trackedLocalStorage = {
   setItem(key, value) {
     localStorage.setItem(key, value);
-    // Retrieve the value associated with the "Wishlist" key
-    const wishlist = JSON.parse(localStorage.getItem("Wishlist"));
+const wishlist = JSON.parse(localStorage.getItem(key));
     // Log the last added item
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
