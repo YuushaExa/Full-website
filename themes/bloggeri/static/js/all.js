@@ -915,7 +915,6 @@ document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendT
 
 
   
-<script>
   var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
     authDomain: "gamedb-95862.firebaseapp.com",
