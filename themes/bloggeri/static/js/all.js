@@ -186,11 +186,17 @@ for (var i = 1; i <= clickedRating; i++) {
   
 const trackedLocalStorage = {
   setItem(key, value) {
-    // Log the added or updated key-value pair
-    console.log(`Added/updated key: ${key}, value: ${value}`);
+   const existingValues = JSON.parse(localStorage.getItem(key)) || [];
+    existingValues.push(value);
+
+    // Get the index of the newly added item
+    const addedIndex = existingValues.length - 1;
+
+    // Log the added key-value pair
+    console.log(`Added/updated key: ${key}, value: `, existingValues[addedIndex]);
     
-    // Update the local storage
-    localStorage.setItem(key, value);
+    // Update the local storage with the modified values array
+    localStorage.setItem(key, JSON.stringify(existingValues));
   },
   removeItem(key) {
     // Log the deleted key
