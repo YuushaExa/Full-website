@@ -1000,3 +1000,211 @@ if (randomWelcomeDiv) {
 });
   }
   dailylogin();
+
+//
+
+<script>
+  function showErrorToast(message) {
+Toastify({
+  text: "This is a success message.",
+  duration: 3000,
+  close: true,
+  gravity: "top",
+  position: "left",
+  backgroundColor: "#4caf50",
+  stopOnFocus: true,
+  containerClass: "toastify-container",
+  className: "toastify toastify-success",
+}).showToast();
+}
+  
+  (function () {
+  var originalLog = console.log;
+  var originalError = console.error;
+    
+  console.log = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showLogToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+  console.error = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showErrorToast(message);
+    // Call the original console.error function
+    originalError.apply(console, args);
+  };
+
+      console.info = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showInfoToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+            console.welcome = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showWelcomeToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+            console.cong = function () {
+    var args = Array.prototype.slice.call(arguments);
+    var message = args.join(' ');
+    showCongToast(message);
+    originalLog.apply(console, args);
+  };
+})();
+
+// Toast notification functions
+function showLogToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    style: {
+      background: "#E6F5FF",
+      color: "#003366",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showErrorToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+      background: "#bb0606e6",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+  function showInfoToast(message) {
+  Toastify({
+    text: message,
+    duration: 4000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+  }).showToast();
+}
+
+    function showWelcomeToast(message) {
+  Toastify({
+    text: message,
+    duration: 2000,
+    close: true,
+    gravity: "top",
+    position: "center",
+         style: {
+         background: "#f0fff0",
+         color: "#006400",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showCongToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+ backgroundImage: "linear-gradient(to right, #FFD700, #ffffffcc)",
+      textShadow: "1px 1px 2px rgb(0 0 0 / 30%)",
+      color: "rgb(0 0 0)",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+  
+fetch('https://yuushaexa.github.io/page/39/')
+  .then(response => response.text())
+  .then(htmlContent => {
+    // Parse the HTML content
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+
+    // Find all the card elements
+    const cards = doc.querySelectorAll('.card');
+
+    if (cards.length > 0) {
+      // Select a random card
+      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+      
+      // Get the title of the random card
+      const title = randomCard.querySelector('.title').innerText;
+      
+      // Get the href of the random card
+      const href = randomCard.querySelector('a.card-image').getAttribute('href');
+      
+      // Get the link image of the random card
+      const linkImage = randomCard.querySelector('img.lazyload').getAttribute('data-src');
+      
+      // Create a string with the HTML content to display
+      const html = `
+        <h2>Title: ${title}</h2>
+        <p>Href: ${href}</p>
+        <img src="${linkImage}" alt="Link Image">
+      `;
+      
+      // Display the random card's information in the "randomwelcome" div
+      const randomWelcomeDiv = document.getElementById('randomwelcome');
+      randomWelcomeDiv.innerHTML = html;
+    } else {
+      console.log('No cards found.');
+    }
+  })
+  .catch(error => console.error(error));
+
+
+  // send data
+
+
+  // show last sync data
+function updateLastSavedData() {
+const lastSyncTime = localStorage.getItem("LastSync");
+if (lastSyncTime) {
+  document.getElementById("lastsaveddata").textContent = `Last sync time: ${lastSyncTime}`;
+} else {
+  document.getElementById("lastsaveddata").textContent = `No save files, press load`;
+}
+}
+ updateLastSavedData();
+
+//
+
+ var storedTotalPosts = parseInt(localStorage.getItem('Games'));
+  var currentTotalPosts = {{ len .Site.RegularPages }};
+  if (storedTotalPosts !== currentTotalPosts) {
+console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
+  localStorage.setItem('Games', currentTotalPosts);  
+  }
