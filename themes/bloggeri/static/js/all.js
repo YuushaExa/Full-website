@@ -183,26 +183,35 @@ for (var i = 1; i <= clickedRating; i++) {
 }
 });
 });
+
+  //
   
 const trackedLocalStorage = {
   setItem(key, value) {
     // Log the added key-value pair
     console.log(`Added key: ${key}, value: ${value}`);
-    
+
     // Update the local storage
     localStorage.setItem(key, value);
+
+    // Retrieve the value associated with the "Wishlist" key
+    const wishlist = JSON.parse(localStorage.getItem("Wishlist"));
+
+    // Log the last added item
+    const lastAddedItem = wishlist[wishlist.length - 1];
+    console.log("Last added item:", lastAddedItem);
   },
   removeItem(key) {
     // Log the deleted key
     console.log(`Deleted key: ${key}`);
-    
+
     // Delete the key from local storage
     localStorage.removeItem(key);
   },
   clear() {
     // Log the cleared local storage
     console.log('Cleared local storage');
-    
+
     // Clear the local storage
     localStorage.clear();
   }
@@ -212,7 +221,7 @@ function handleCardClick(sectionClass, storageKey) {
   var cardsContainers = document.querySelectorAll(sectionClass);
   var cardData = [];
  
-  var storedData = localStorage.getItem(storageKey);
+  var storedData = trackedLocalStorage.getItem(storageKey);
   if (storedData) {
     cardData = JSON.parse(storedData);
   }
