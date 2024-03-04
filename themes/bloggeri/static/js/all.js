@@ -892,7 +892,7 @@ const toktp = LZString.decompressFromBase64(data);
   console.error('Error fetching toktp:', error);
 });
 }
-
+document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
 // storage
 
