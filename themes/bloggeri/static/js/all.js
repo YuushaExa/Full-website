@@ -893,7 +893,6 @@ const toktp = LZString.decompressFromBase64(data);
 });
 }
 
-document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
 // storage
 
