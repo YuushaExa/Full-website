@@ -217,11 +217,12 @@ const trackedLocalStorage = {
   }
 };
 
+
 function handleCardClick(sectionClass, storageKey) {
   var cardsContainers = document.querySelectorAll(sectionClass);
   var cardData = [];
  
-  var storedData = trackedLocalStorage.getItem(storageKey);
+  var storedData = LocalStorage.getItem(storageKey);
   if (storedData) {
     cardData = JSON.parse(storedData);
   }
