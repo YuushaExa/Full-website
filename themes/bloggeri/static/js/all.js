@@ -842,19 +842,20 @@ async function fetchDataAndSendToGitHub() {
     };
 
     const existingFileResponse = await fetch(apiUrl, {
-      method: 'GET',
+      method: 'HEAD',
       headers: {
         Authorization: `Bearer ${toktp}`,
       },
     });
-    const existingFileData = await existingFileResponse.json();
 
-    if (existingFileData.sha === fileContent.sha) {
+    const existingFileSha = existingFileResponse.headers.get('etag');
+
+    if (existingFileSha === fileContent.sha) {
       console.log('File content unchanged. Skipping update.');
       return;
     }
 
-    fileContent.sha = existingFileData.sha;
+    fileContent.sha = existingFileSha;
 
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
