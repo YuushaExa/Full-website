@@ -87,6 +87,13 @@ const handleIntersection = (entries, observer) => {
 const observer = new IntersectionObserver(handleIntersection, options);
 
 lazyImages.forEach(image => observer.observe(image));
+
+      var storedTotalPosts = parseInt(localStorage.getItem('Games'));
+  var currentTotalPosts = {{ len .Site.RegularPages }};
+  if (storedTotalPosts !== currentTotalPosts) {
+console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
+  localStorage.setItem('Games', currentTotalPosts);  
+  }
 </script> 
     <script defer src="/js/all.js"></script>
 </footer>
