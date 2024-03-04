@@ -642,78 +642,6 @@ fetch('https://yuushaexa.github.io/page/39/')
 
   // send data
 
- function fetchDataAndSendToGitHub() {
-fetch('https://link-968.pages.dev/test.txt')
-.then(response => response.text())
-.then(data => {
-const toktp = LZString.decompressFromBase64(data);
-
-  // GitHub repository information
-  const owner = 'YuushaExa';
-  const repo = 'v';
-  const branch = 'master';
-  const directory = 'dev/json/favfiles';
-  var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
-
-  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-  // Create the file content object
-  const fileContent = {
-    message: 'Update data.json from local storage',
-    content: btoa(LZString.compressToBase64(JSON.stringify(localStorage)))
-  };
-
-  // Make a separate API request to get the SHA of the existing file
-  fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${toktp}`,
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      const existingFileSha = data.sha;
-
-      // Update the file content object with the existing file's SHA
-      fileContent.sha = existingFileSha; // Include the SHA of the existing file
-
-      // Make the API request to create or update the file
-      fetch(apiUrl, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${toktp}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(fileContent),
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('File created or updated successfully:', data);
-          const currentTime = new Date().toLocaleString();
-          localStorage.setItem("LastSync", currentTime);
-          updateLastSavedData();
-          document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
-          setTimeout(() => {
-            document.getElementById("inputTextFavSet").style.backgroundColor = '';
-          }, 2000);
-        })
-        .catch(error => {
-          console.error('Error creating or updating the file:', error);
-          // Change inputTextFavSet background color to red
-          document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
-        });
-    })
-    .catch(error => {
-      console.error('Error retrieving existing file information:', error);
-      // Change inputTextFavSet background color to red
-      document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
-    });
-})
-.catch(error => {
-  console.error('Error fetching toktp:', error);
-});
-}
-
-document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
   // show last sync data
 function updateLastSavedData() {
@@ -789,20 +717,7 @@ document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScrip
 
   // storage
 
-   // Check if the activation state is already stored in localStorage
-    let isScriptActive = localStorage.getItem('isScriptActive') === 'true';
-
-    function handleStorageEvent(event) {
-      if (event.storageArea === localStorage && isScriptActive) {
-        fetchDataAndSendToGitHub()
-      }
-    }
-
-    window.addEventListener('storage', handleStorageEvent);
-    function toggleScriptActivation() {
-      isScriptActive = !isScriptActive;
-      localStorage.setItem('isScriptActive', isScriptActive.toString());
-    }
+ 
 </script>
 
      <script>
@@ -813,32 +728,7 @@ console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
   localStorage.setItem('Games', currentTotalPosts);  
   }
 </script>
-     <script>
-
-          const trackedLocalStorage = {
-  setItem(key, value) {
-    // Log the added or updated key-value pair
-    console.log(`Added/updated key: ${key}, value: ${value}`);
     
-    // Update the local storage
-    localStorage.setItem(key, value);
-  },
-  removeItem(key) {
-    // Log the deleted key
-    console.log(`Deleted key: ${key}`);
-    
-    // Delete the key from local storage
-    localStorage.removeItem(key);
-  },
-  clear() {
-    // Log the cleared local storage
-    console.log('Cleared local storage');
-    
-    // Clear the local storage
-    localStorage.clear();
-  }
-};
-   </script>
        
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
