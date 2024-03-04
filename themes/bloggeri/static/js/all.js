@@ -1003,7 +1003,6 @@ if (randomWelcomeDiv) {
 
 //
 
-<script>
   function showErrorToast(message) {
 Toastify({
   text: "This is a success message.",
