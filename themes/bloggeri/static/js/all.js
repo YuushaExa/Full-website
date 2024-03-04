@@ -1201,9 +1201,4 @@ if (lastSyncTime) {
 
 //
 
- var storedTotalPosts = parseInt(localStorage.getItem('Games'));
-  var currentTotalPosts = {{ len .Site.RegularPages }};
-  if (storedTotalPosts !== currentTotalPosts) {
-console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
-  localStorage.setItem('Games', currentTotalPosts);  
-  }
+
