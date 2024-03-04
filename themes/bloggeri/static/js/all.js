@@ -818,3 +818,96 @@ if (event.target == modal9) {
 closeLightbox();
 };
 };
+
+
+// safe data
+
+ function fetchDataAndSendToGitHub() {
+fetch('https://link-968.pages.dev/test.txt')
+.then(response => response.text())
+.then(data => {
+const toktp = LZString.decompressFromBase64(data);
+
+  // GitHub repository information
+  const owner = 'YuushaExa';
+  const repo = 'v';
+  const branch = 'master';
+  const directory = 'dev/json/favfiles';
+  var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
+
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+  // Create the file content object
+  const fileContent = {
+    message: 'Update data.json from local storage',
+    content: btoa(LZString.compressToBase64(JSON.stringify(localStorage)))
+  };
+
+  // Make a separate API request to get the SHA of the existing file
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${toktp}`,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      const existingFileSha = data.sha;
+
+      // Update the file content object with the existing file's SHA
+      fileContent.sha = existingFileSha; // Include the SHA of the existing file
+
+      // Make the API request to create or update the file
+      fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${toktp}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fileContent),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('File created or updated successfully:', data);
+          const currentTime = new Date().toLocaleString();
+          localStorage.setItem("LastSync", currentTime);
+          updateLastSavedData();
+          document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
+          setTimeout(() => {
+            document.getElementById("inputTextFavSet").style.backgroundColor = '';
+          }, 2000);
+        })
+        .catch(error => {
+          console.error('Error creating or updating the file:', error);
+          // Change inputTextFavSet background color to red
+          document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
+        });
+    })
+    .catch(error => {
+      console.error('Error retrieving existing file information:', error);
+      // Change inputTextFavSet background color to red
+      document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
+    });
+})
+.catch(error => {
+  console.error('Error fetching toktp:', error);
+});
+}
+
+document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
+
+// storage
+
+  // Check if the activation state is already stored in localStorage
+    let isScriptActive = localStorage.getItem('isScriptActive') === 'true';
+
+    function handleStorageEvent(event) {
+      if (event.storageArea === localStorage && isScriptActive) {
+        fetchDataAndSendToGitHub()
+      }
+    }
+
+    window.addEventListener('storage', handleStorageEvent);
+    function toggleScriptActivation() {
+      isScriptActive = !isScriptActive;
+      localStorage.setItem('isScriptActive', isScriptActive.toString());
+    }
