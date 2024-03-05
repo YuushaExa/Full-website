@@ -195,10 +195,12 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     // Log the last added item
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
+    const name1 = user.displayName;
   const journalRef = db.collection('Activity').doc('Journal');
   journalRef.update({
     [Date.now()]: {
       item: lastAddedItem,
+      name: name1,
     }
   }).then(() => {
     console.log('Firestore document updated successfully.');
