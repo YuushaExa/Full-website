@@ -196,9 +196,8 @@ for (var i = 1; i <= clickedRating; i++) {
     messagingSenderId: "788250168154",
     appId: "1:788250168154:web:b6573c45a909fc09694163"
   };
-  firebase.initializeApp(firebaseConfig);
-
-  const db = firebase.firestore();
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 const trackedLocalStorage = {
   setItem(key, value) {
