@@ -919,7 +919,17 @@ document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendT
     }
 
 
-
+ var firebaseConfig1 = {
+    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
+    projectId: "gamedb-95862",
+    storageBucket: "gamedb-95862.appspot.com",
+    messagingSenderId: "788250168154",
+    appId: "1:788250168154:web:b6573c45a909fc09694163"
+  };
+firebase.initializeApp(firebaseConfig1);
+const db1 = firebase.firestore();
   
   // auth console
   function dailylogin() {
@@ -935,7 +945,7 @@ if (lastVisitStamp === today) {
 }
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-const userRef = db.collection('users').doc(user.uid);
+const userRef = db1.collection('users').doc(user.uid);
 
 userRef.get()
   .then((doc) => {
