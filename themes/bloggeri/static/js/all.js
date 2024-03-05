@@ -851,6 +851,7 @@ async function fetchDataAndSendToGitHub() {
       headers: {
         Authorization: `Bearer ${toktp}`,
         'Content-Type': 'application/json',
+        'sha': sha
       },
       body: JSON.stringify(fileContent),
     });
