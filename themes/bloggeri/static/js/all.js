@@ -187,17 +187,6 @@ for (var i = 1; i <= clickedRating; i++) {
   //
   // firrebase
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
-    authDomain: "gamedb-95862.firebaseapp.com",
-    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
-    projectId: "gamedb-95862",
-    storageBucket: "gamedb-95862.appspot.com",
-    messagingSenderId: "788250168154",
-    appId: "1:788250168154:web:b6573c45a909fc09694163"
-  };
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
 
 const trackedLocalStorage = {
   setItem(key, value) {
@@ -915,8 +904,19 @@ document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendT
       isScriptActive = !isScriptActive;
       localStorage.setItem('isScriptActive', isScriptActive.toString());
     }
+//
 
-
+    var firebaseConfig = {
+    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
+    projectId: "gamedb-95862",
+    storageBucket: "gamedb-95862.appspot.com",
+    messagingSenderId: "788250168154",
+    appId: "1:788250168154:web:b6573c45a909fc09694163"
+  };
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
   
   // auth console
   function dailylogin() {
