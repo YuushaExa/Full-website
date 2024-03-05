@@ -836,25 +836,20 @@ async function fetchDataAndSendToGitHub() {
 
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
+    const existingFileResponse = await fetch(apiUrl);
+    const existingFileData = await existingFileResponse.json();
+    const sha = existingFileData.sha;
+
     const fileContent = {
       message: 'Update data.json from local storage',
       content: btoa(LZString.compressToBase64(JSON.stringify(localStorage))),
+      sha: sha
     };
-
-    const existingFileResponse = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${toktp}`,
-      },
-    });
-    const existingFileData = await existingFileResponse.json();
 
     if (existingFileData.sha === fileContent.sha) {
       console.log('File content unchanged. Skipping update.');
       return;
     }
-
-    fileContent.sha = existingFileData.sha;
 
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
