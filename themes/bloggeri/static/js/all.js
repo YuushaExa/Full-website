@@ -185,6 +185,21 @@ for (var i = 1; i <= clickedRating; i++) {
 });
 
   //
+  // firrebase
+
+
+  
+  var firebaseConfig = {
+    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
+    authDomain: "gamedb-95862.firebaseapp.com",
+    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
+    projectId: "gamedb-95862",
+    storageBucket: "gamedb-95862.appspot.com",
+    messagingSenderId: "788250168154",
+    appId: "1:788250168154:web:b6573c45a909fc09694163"
+  };
+  firebase.initializeApp(firebaseConfig);
+  //
 
   const db = firebase.firestore();
 
@@ -195,11 +210,12 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     // Log the last added item
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
+    const Name1 = user.displayName;
   const journalRef = db.collection('Activity').doc('Journal');
   journalRef.update({
     [Date.now()]: {
       item: lastAddedItem,
-      displayName: user.displayName
+      Name: Name1
     }
   }).then(() => {
     console.log('Firestore document updated successfully.');
@@ -906,21 +922,6 @@ document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendT
       localStorage.setItem('isScriptActive', isScriptActive.toString());
     }
 
-// firrebase
-
-
-  
-  var firebaseConfig = {
-    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
-    authDomain: "gamedb-95862.firebaseapp.com",
-    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
-    projectId: "gamedb-95862",
-    storageBucket: "gamedb-95862.appspot.com",
-    messagingSenderId: "788250168154",
-    appId: "1:788250168154:web:b6573c45a909fc09694163"
-  };
-  firebase.initializeApp(firebaseConfig);
-  
 
 
   
