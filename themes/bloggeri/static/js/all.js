@@ -820,56 +820,61 @@ closeLightbox();
 };
 
 
-// safe data
-
+// save data
 async function fetchDataAndSendToGitHub() {
-  try {
-    const response = await fetch('https://link-968.pages.dev/test.txt');
-    const data = await response.text();
-    const toktp = LZString.decompressFromBase64(data);
+try {
+const response = await fetch('https://link-968.pages.dev/test.txt');
+const data = await response.text();
+const toktp = LZString.decompressFromBase64(data);
 
-    const owner = 'YuushaExa';
-    const repo = 'v';
-    const branch = 'master';
-    const directory = 'dev/json/favfiles';
-    const filename = firebase.auth().currentUser.uid;
+ini
+Copy
+const owner = 'YuushaExa';
+const repo = 'v';
+const branch = 'master';
+const directory = 'dev/json/favfiles';
+const filename = firebase.auth().currentUser.uid;
 
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-    const existingFileResponse = await fetch(apiUrl);
-    const existingFileData = await existingFileResponse.json();
-    const sha = existingFileData.sha;
+const fileContent = {
+  message: 'Update data.json from local storage',
+  content: btoa(LZString.compressToBase64(JSON.stringify(localStorage))),
+};
 
-    const fileContent = {
-      message: 'Update data.json from local storage',
-      content: btoa(LZString.compressToBase64(JSON.stringify(localStorage))),
-      sha: sha
-    };
+const existingFileResponse = await fetch(apiUrl, {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${toktp}`,
+  },
+});
+const existingFileData = await existingFileResponse.json();
 
-    const updateResponse = await fetch(apiUrl, {
-      method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${toktp}`,
-        'Content-Type': 'application/json',
-        'sha': sha
-      },
-      body: JSON.stringify(fileContent),
-    });
-    const updateData = await updateResponse.json();
+fileContent.sha = existingFileData.sha;
 
-    console.log('File created or updated successfully:', updateData);
+const updateResponse = await fetch(apiUrl, {
+  method: 'PUT',
+  headers: {
+    Authorization: `Bearer ${toktp}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(fileContent),
+});
+const updateData = await updateResponse.json();
 
-    const currentTime = new Date().toLocaleString();
-    localStorage.setItem('LastSync', currentTime);
-    updateLastSavedData();
-    document.getElementById('inputTextFavSet').style.backgroundColor = '#21b921';
-    setTimeout(() => {
-      document.getElementById('inputTextFavSet').style.backgroundColor = '';
-    }, 2000);
-  } catch (error) {
-    console.error('Error occurred:', error);
-    document.getElementById('inputTextFavSet').style.backgroundColor = 'red';
-  }
+console.log('File created or updated successfully:', updateData);
+
+const currentTime = new Date().toLocaleString();
+localStorage.setItem('LastSync', currentTime);
+updateLastSavedData();
+document.getElementById('inputTextFavSet').style.backgroundColor = '#21b921';
+setTimeout(() => {
+  document.getElementById('inputTextFavSet').style.backgroundColor = '';
+}, 2000);
+} catch (error) {
+console.error('Error occurred:', error);
+document.getElementById('inputTextFavSet').style.backgroundColor = 'red';
+}
 }
 document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
