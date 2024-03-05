@@ -827,8 +827,6 @@ const response = await fetch('https://link-968.pages.dev/test.txt');
 const data = await response.text();
 const toktp = LZString.decompressFromBase64(data);
 
-ini
-Copy
 const owner = 'YuushaExa';
 const repo = 'v';
 const branch = 'master';
