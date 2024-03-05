@@ -185,7 +185,9 @@ for (var i = 1; i <= clickedRating; i++) {
 });
 
   //
-  
+
+  const db = firebase.firestore();
+
 const trackedLocalStorage = {
   setItem(key, value) {
     localStorage.setItem(key, value);
@@ -933,8 +935,6 @@ if (lastVisitStamp === today) {
 }
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-
-const db = firebase.firestore();
 const userRef = db.collection('users').doc(user.uid);
 
 userRef.get()
