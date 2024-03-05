@@ -199,7 +199,7 @@ const wishlist = JSON.parse(localStorage.getItem(key));
   journalRef.update({
     [Date.now()]: {
       item: lastAddedItem,
-      displayName: displayName
+      displayName: user.displayName
     }
   }).then(() => {
     console.log('Firestore document updated successfully.');
