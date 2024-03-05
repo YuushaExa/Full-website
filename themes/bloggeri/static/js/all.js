@@ -187,8 +187,6 @@ for (var i = 1; i <= clickedRating; i++) {
   //
   // firrebase
 
-
-  
   var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
     authDomain: "gamedb-95862.firebaseapp.com",
@@ -199,7 +197,6 @@ for (var i = 1; i <= clickedRating; i++) {
     appId: "1:788250168154:web:b6573c45a909fc09694163"
   };
   firebase.initializeApp(firebaseConfig);
-  //
 
   const db = firebase.firestore();
 
