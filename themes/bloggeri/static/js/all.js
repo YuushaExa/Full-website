@@ -196,8 +196,12 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
   const journalRef = db.collection('Activity').doc('Journal');
- journalRef.update({
-    [Date.now()]: lastAddedItem}).then(() => {
+  journalRef.update({
+    [Date.now()]: {
+      item: lastAddedItem,
+      displayName: displayName
+    }
+  }).then(() => {
     console.log('Firestore document updated successfully.');
   }).catch((error) => {
     console.error('Error updating Firestore document:', error);
