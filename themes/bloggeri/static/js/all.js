@@ -1192,3 +1192,19 @@ if (lastSyncTime) {
 //
 
 
+const journalRef = db.collection('Activity').doc('Journal');
+const activityDiv = document.getElementById('Activity');
+
+journalRef.get()
+  .then((doc) => {
+    if (doc.exists) {
+      const data = doc.data();
+      activityDiv.innerHTML = JSON.stringify(data);
+    } else {
+      activityDiv.innerHTML = 'Document does not exist';
+    }
+  })
+  .catch((error) => {
+    console.log('Error getting document:', error);
+    activityDiv.innerHTML = 'Error retrieving document';
+  });
