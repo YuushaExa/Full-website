@@ -1199,7 +1199,37 @@ journalRef.get()
   .then((doc) => {
     if (doc.exists) {
       const data = doc.data();
-      activityDiv.innerHTML = JSON.stringify(data);
+      activityDiv.innerHTML = ''; // Clear the div
+
+      // Create a container for the data
+      const container = document.createElement('div');
+
+      // Iterate over the properties of the data object
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const entry = data[key];
+
+          // Create a div for each entry
+          const entryDiv = document.createElement('div');
+          entryDiv.classList.add('entry');
+
+          // Display the entry data
+          const title = document.createElement('h3');
+          title.textContent = entry.title;
+          entryDiv.appendChild(title);
+
+          const href = document.createElement('a');
+          href.href = entry.href;
+          href.textContent = entry.href;
+          entryDiv.appendChild(href);
+
+          // Add the entry div to the container
+          container.appendChild(entryDiv);
+        }
+      }
+
+      // Append the container to the activityDiv
+      activityDiv.appendChild(container);
     } else {
       activityDiv.innerHTML = 'Document does not exist';
     }
