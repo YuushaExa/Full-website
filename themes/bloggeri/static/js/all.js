@@ -846,11 +846,6 @@ async function fetchDataAndSendToGitHub() {
       sha: sha
     };
 
-    if (existingFileData.sha === fileContent.sha) {
-      console.log('File content unchanged. Skipping update.');
-      return;
-    }
-
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
       headers: {
