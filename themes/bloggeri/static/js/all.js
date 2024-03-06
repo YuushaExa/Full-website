@@ -196,7 +196,7 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
 
- async function updateFile() {
+async function updateFile() {
   const owner = 'YuushaExa';
   const repo = 'v';
   const branch = 'master';
@@ -257,6 +257,28 @@ const wishlist = JSON.parse(localStorage.getItem(key));
       } else {
         console.log('Error creating file:', response.status);
       }
+    }
+  } else if (checkFileResponse.status === 404) {
+    // File doesn't exist, create it
+    const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+    const response = await fetch(createFileUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Create new file',
+        content: btoa(JSON.stringify(lastAddedItem)),
+        branch: branch
+      })
+    });
+
+    if (response.ok) {
+      console.log('File created successfully.');
+    } else {
+      console.log('Error creating file:', response.status);
     }
   } else {
     console.log('Error checking file existence:', checkFileResponse.status);
