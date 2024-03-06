@@ -220,12 +220,15 @@ async function lastActivity() {
 
     const fileContent = {
       message: 'Update data.json from local storage',
-      content: existingFileData.content,
+      content: btoa(JSON.stringify(lastAddedItem)),
     };
 
-    fileContent.content = btoa(JSON.stringify(lastAddedItem));
-
-    fileContent.sha = existingFileData.sha;
+    if (existingFileResponse.ok) {
+      const existingContent = JSON.parse(atob(existingFileData.content));
+      const updatedContent = [...existingContent, lastAddedItem];
+      fileContent.content = btoa(JSON.stringify(updatedContent));
+      fileContent.sha = existingFileData.sha;
+    }
 
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
@@ -236,7 +239,7 @@ async function lastActivity() {
       body: JSON.stringify(fileContent),
     });
     const updateData = await updateResponse.json();
-    console.log('File updated successfully:', updateData);
+    console.log('File created or updated successfully:', updateData);
   } catch (error) {
     console.error('Error occurred:', error);
   }
