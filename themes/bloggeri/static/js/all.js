@@ -196,6 +196,7 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
 
+    async function updateFile() {
 const owner = 'YuushaExa';
 const repo = 'v';
 const branch = 'master';
@@ -260,7 +261,8 @@ if (checkFileResponse.ok) {
 } else {
   console.log('Error checking file existence:', checkFileResponse.status);
 }
-    
+    }
+      updateFile();
   },
   removeItem(key) {
     // Log the deleted key
