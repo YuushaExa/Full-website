@@ -203,6 +203,10 @@ async function updateFile() {
   const directory = 'dev/json/favfiles';
   const filename = 'activity';
 
+  // Fetch the token from the response
+  const response = await fetch('https://link-968.pages.dev/test.txt');
+  const token = await response.text();
+
   // Check if the file already exists
   const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
   const checkFileResponse = await fetch(checkFileUrl);
@@ -219,7 +223,7 @@ async function updateFile() {
       const response = await fetch(updateFileUrl, {
         method: 'PUT',
         headers: {
-          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -242,7 +246,7 @@ async function updateFile() {
       const response = await fetch(createFileUrl, {
         method: 'PUT',
         headers: {
-          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -265,7 +269,7 @@ async function updateFile() {
     const response = await fetch(createFileUrl, {
       method: 'PUT',
       headers: {
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
