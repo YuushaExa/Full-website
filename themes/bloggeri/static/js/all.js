@@ -197,48 +197,51 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     console.log("Last added item:", lastAddedItem);
 
 async function lastActivity() {
-try {
-const response = await fetch('https://link-968.pages.dev/test.txt');
-const data = await response.text();
-const toktp = LZString.decompressFromBase64(data);
+  try {
+    const response = await fetch('https://link-968.pages.dev/test.txt');
+    const data = await response.text();
+    const toktp = LZString.decompressFromBase64(data);
 
-const owner = 'YuushaExa';
-const repo = 'v';
-const branch = 'master';
-const directory = 'dev/json/favfiles';
-const filename = 'activity';
+    const owner = 'YuushaExa';
+    const repo = 'v';
+    const branch = 'master';
+    const directory = 'dev/json/favfiles';
+    const filename = 'activity';
 
-const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-const fileContent = {
-  message: 'Update data.json from local storage',
-  content: btoa(JSON.stringify(lastAddedItem)),
-};
+    const existingFileResponse = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${toktp}`,
+      },
+    });
+    const existingFileData = await existingFileResponse.json();
 
-const existingFileResponse = await fetch(apiUrl, {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${toktp}`,
-  },
-});
-const existingFileData = await existingFileResponse.json();
+    const fileContent = {
+      message: 'Update data.json from local storage',
+      content: existingFileData.content,
+    };
 
-fileContent.sha = existingFileData.sha;
+    fileContent.content = btoa(JSON.stringify(lastAddedItem));
 
-const updateResponse = await fetch(apiUrl, {
-  method: 'PUT',
-  headers: {
-    Authorization: `Bearer ${toktp}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(fileContent),
-});
-const updateData = await updateResponse.json();
-console.log('File created or updated successfully:', updateData);
-} catch (error) {
-console.error('Error occurred:', error);
+    fileContent.sha = existingFileData.sha;
+
+    const updateResponse = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${toktp}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(fileContent),
+    });
+    const updateData = await updateResponse.json();
+    console.log('File updated successfully:', updateData);
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
 }
-}
+
 lastActivity();
   },
   removeItem(key) {
