@@ -281,9 +281,7 @@ function handleCardClick(sectionClass, storageKey) {
           var image = card.querySelector('.card-image img').src;
           var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
           var href = card.querySelector('.card-image').href;
-          var currentDate = new Date();
-          var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
-          var formattedDate = currentDate.toLocaleDateString('en-US', options);
+          var Date = Math.round(Date.now() / 1000);
  
           var isDuplicate = cardData.some(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
@@ -294,7 +292,7 @@ function handleCardClick(sectionClass, storageKey) {
               "title": title,
               "image": strippedImage,
               "href": href,
-              "dateAdded": formattedDate
+              "date": Date
             };
  
             cardData.push(data);
