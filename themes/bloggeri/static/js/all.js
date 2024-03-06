@@ -196,73 +196,75 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
 
-    async function updateFile() {
-const owner = 'YuushaExa';
-const repo = 'v';
-const branch = 'master';
-const directory = 'dev/json/favfiles';
-const filename = 'activity';
+ async function updateFile() {
+  const owner = 'YuushaExa';
+  const repo = 'v';
+  const branch = 'master';
+  const directory = 'dev/json/favfiles';
+  const filename = 'activity';
 
-// Check if the file already exists
-const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+  // Check if the file already exists
+  const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+  const checkFileResponse = await fetch(checkFileUrl);
 
-const checkFileResponse = await fetch(checkFileUrl);
-const checkFileData = await checkFileResponse.json();
+  if (checkFileResponse.ok) {
+    const checkFileData = await checkFileResponse.json();
 
-if (checkFileResponse.ok) {
-  if (checkFileData.length > 0) {
-    // File exists, update it
-    const fileSha = checkFileData[0].sha;
+    if (checkFileData.length > 0) {
+      // File exists, update it
+      const fileSha = checkFileData[0].sha;
 
-    const updateFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+      const updateFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-    const response = await fetch(updateFileUrl, {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'Update existing file',
-        content: btoa(JSON.stringify(lastAddedItem)),
-        branch: branch,
-        sha: fileSha
-      })
-    });
+      const response = await fetch(updateFileUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Update existing file',
+          content: btoa(JSON.stringify(lastAddedItem)),
+          branch: branch,
+          sha: fileSha
+        })
+      });
 
-    if (response.ok) {
-      console.log('File updated successfully.');
+      if (response.ok) {
+        console.log('File updated successfully.');
+      } else {
+        console.log('Error updating file:', response.status);
+      }
     } else {
-      console.log('Error updating file:', response.status);
+      // File doesn't exist, create it
+      const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+      const response = await fetch(createFileUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Create new file',
+          content: btoa(JSON.stringify(lastAddedItem)),
+          branch: branch
+        })
+      });
+
+      if (response.ok) {
+        console.log('File created successfully.');
+      } else {
+        console.log('Error creating file:', response.status);
+      }
     }
   } else {
-    // File doesn't exist, create it
-    const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-
-    const response = await fetch(createFileUrl, {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'Create new file',
-        content: btoa(JSON.stringify(lastAddedItem)),
-        branch: branch
-      })
-    });
-
-    if (response.ok) {
-      console.log('File created successfully.');
-    } else {
-      console.log('Error creating file:', response.status);
-    }
+    console.log('Error checking file existence:', checkFileResponse.status);
   }
-} else {
-  console.log('Error checking file existence:', checkFileResponse.status);
 }
-    }
-      updateFile();
+
+// Call the async function
+updateFile();
   },
   removeItem(key) {
     // Log the deleted key
