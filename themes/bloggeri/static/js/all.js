@@ -1195,7 +1195,8 @@ if (lastSyncTime) {
 const journalRef = db.collection('Activity').doc('Journal');
 const activityDiv = document.getElementById('Activity');
 
-journalRef.get()
+journalRef
+  .get()
   .then((doc) => {
     if (doc.exists) {
       const data = doc.data();
@@ -1217,6 +1218,12 @@ journalRef.get()
           const name = document.createElement('h2');
           name.textContent = entry.name;
           entryDiv.appendChild(name);
+
+          // Display the entry time
+          const time = document.createElement('p');
+          const timestamp = new Date(Number(key));
+          time.textContent = `Time: ${timestamp.toLocaleString()}`;
+          entryDiv.appendChild(time);
 
           // Display the entry data
           const title = document.createElement('h3');
