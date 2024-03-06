@@ -196,99 +196,50 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
 
-async function updateFile() {
-  const owner = 'YuushaExa';
-  const repo = 'v';
-  const branch = 'master';
-  const directory = 'dev/json/favfiles';
-  const filename = 'activity';
+async function lastActivity() {
+try {
+const response = await fetch('https://link-968.pages.dev/test.txt');
+const data = await response.text();
+const toktp = LZString.decompressFromBase64(data);
 
-  const response = await fetch('https://link-968.pages.dev/test.txt');
-  const data = await response.text();
-  const toktp = LZString.decompressFromBase64(data);
+const owner = 'YuushaExa';
+const repo = 'v';
+const branch = 'master';
+const directory = 'dev/json/favfiles';
+const filename = 'activity';
 
-  const wishlist = JSON.parse(localStorage.getItem(key));
-  const lastAddedItem = wishlist[wishlist.length - 1];
+const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-  const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-  const checkFileResponse = await fetch(checkFileUrl);
+const fileContent = {
+  message: 'Update data.json from local storage',
+  content: btoa(LZString.compressToBase64(JSON.stringify(lastAddedItem))),
+};
 
-  if (checkFileResponse.ok) {
-    const checkFileData = await checkFileResponse.json();
+const existingFileResponse = await fetch(apiUrl, {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${toktp}`,
+  },
+});
+const existingFileData = await existingFileResponse.json();
 
-    if (checkFileData.length > 0) {
-      const fileSha = checkFileData[0].sha;
-      const updateFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+fileContent.sha = existingFileData.sha;
 
-      const response = await fetch(updateFileUrl, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${toktp}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Update existing file',
-          content: btoa(JSON.stringify(lastAddedItem)),
-          branch: branch,
-          sha: fileSha
-        })
-      });
-
-      if (response.ok) {
-        console.log('File updated successfully.');
-      } else {
-        console.log('Error updating file:', response.status);
-      }
-    } else {
-      const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-
-      const response = await fetch(createFileUrl, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${toktp}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Create new file',
-          content: btoa(JSON.stringify(lastAddedItem)),
-          branch: branch
-        })
-      });
-
-      if (response.ok) {
-        console.log('File created successfully.');
-      } else {
-        console.log('Error creating file:', response.status);
-      }
-    }
-  } else if (checkFileResponse.status === 404) {
-    const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-
-    const response = await fetch(createFileUrl, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${toktp}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: 'Create new file',
-        content: btoa(JSON.stringify(lastAddedItem)),
-        branch: branch
-      })
-    });
-
-    if (response.ok) {
-      console.log('File created successfully.');
-    } else {
-      console.log('Error creating file:', response.status);
-    }
-  } else {
-    console.log('Error checking file existence:', checkFileResponse.status);
-  }
+const updateResponse = await fetch(apiUrl, {
+  method: 'PUT',
+  headers: {
+    Authorization: `Bearer ${toktp}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(fileContent),
+});
+const updateData = await updateResponse.json();
+console.log('File created or updated successfully:', updateData);
+} catch (error) {
+console.error('Error occurred:', error);
 }
-
-// Call the async function
-updateFile();
+}
+lastActivity();
   },
   removeItem(key) {
     // Log the deleted key
