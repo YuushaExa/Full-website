@@ -195,19 +195,72 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     // Log the last added item
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
-    const user = firebase.auth().currentUser;
-    const name1 = user.displayName;
-  const journalRef = db.collection('Activity').doc('Journal');
-  journalRef.update({
-    [Date.now()]: {
-      item: lastAddedItem,
-      name: name1,
+
+const owner = 'YuushaExa';
+const repo = 'v';
+const branch = 'master';
+const directory = 'dev/json/favfiles';
+const filename = 'activity';
+
+// Check if the file already exists
+const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+const checkFileResponse = await fetch(checkFileUrl);
+const checkFileData = await checkFileResponse.json();
+
+if (checkFileResponse.ok) {
+  if (checkFileData.length > 0) {
+    // File exists, update it
+    const fileSha = checkFileData[0].sha;
+
+    const updateFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+    const response = await fetch(updateFileUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Update existing file',
+        content: btoa(JSON.stringify(lastAddedItem)),
+        branch: branch,
+        sha: fileSha
+      })
+    });
+
+    if (response.ok) {
+      console.log('File updated successfully.');
+    } else {
+      console.log('Error updating file:', response.status);
     }
-  }).then(() => {
-    console.log('Firestore document updated successfully.');
-  }).catch((error) => {
-    console.error('Error updating Firestore document:', error);
-  });
+  } else {
+    // File doesn't exist, create it
+    const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+
+    const response = await fetch(createFileUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Create new file',
+        content: btoa(JSON.stringify(lastAddedItem)),
+        branch: branch
+      })
+    });
+
+    if (response.ok) {
+      console.log('File created successfully.');
+    } else {
+      console.log('Error creating file:', response.status);
+    }
+  }
+} else {
+  console.log('Error checking file existence:', checkFileResponse.status);
+}
+    
   },
   removeItem(key) {
     // Log the deleted key
