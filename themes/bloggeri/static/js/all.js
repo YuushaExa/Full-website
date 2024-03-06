@@ -212,7 +212,7 @@ const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directo
 
 const fileContent = {
   message: 'Update data.json from local storage',
-  content: btoa(LZString.compressToBase64(JSON.stringify(lastAddedItem))),
+  content: btoa(JSON.stringify(lastAddedItem)),
 };
 
 const existingFileResponse = await fetch(apiUrl, {
