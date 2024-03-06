@@ -203,12 +203,13 @@ async function updateFile() {
   const directory = 'dev/json/favfiles';
   const filename = 'activity';
 
-  // Fetch the token from the response
-const response = await fetch('https://link-968.pages.dev/test.txt');
-const data = await response.text();
-const toktp = LZString.decompressFromBase64(data);
+  const response = await fetch('https://link-968.pages.dev/test.txt');
+  const data = await response.text();
+  const toktp = LZString.decompressFromBase64(data);
 
-  // Check if the file already exists
+  const wishlist = JSON.parse(localStorage.getItem(key));
+  const lastAddedItem = wishlist[wishlist.length - 1];
+
   const checkFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
   const checkFileResponse = await fetch(checkFileUrl);
 
@@ -216,9 +217,7 @@ const toktp = LZString.decompressFromBase64(data);
     const checkFileData = await checkFileResponse.json();
 
     if (checkFileData.length > 0) {
-      // File exists, update it
       const fileSha = checkFileData[0].sha;
-
       const updateFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
       const response = await fetch(updateFileUrl, {
@@ -241,7 +240,6 @@ const toktp = LZString.decompressFromBase64(data);
         console.log('Error updating file:', response.status);
       }
     } else {
-      // File doesn't exist, create it
       const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
       const response = await fetch(createFileUrl, {
@@ -264,7 +262,6 @@ const toktp = LZString.decompressFromBase64(data);
       }
     }
   } else if (checkFileResponse.status === 404) {
-    // File doesn't exist, create it
     const createFileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
     const response = await fetch(createFileUrl, {
