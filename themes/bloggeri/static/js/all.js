@@ -225,7 +225,7 @@ async function lastActivity() {
 
     if (existingFileResponse.ok) {
       const existingContent = JSON.parse(atob(existingFileData.content));
-      const updatedContent = [...existingContent, lastAddedItem];
+      const updatedContent = Array.isArray(existingContent) ? [...existingContent, lastAddedItem] : [lastAddedItem];
       fileContent.content = btoa(JSON.stringify(updatedContent));
       fileContent.sha = existingFileData.sha;
     }
