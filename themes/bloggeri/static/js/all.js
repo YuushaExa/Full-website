@@ -1196,15 +1196,54 @@ const journalRef = db.collection('Activity').doc('Journal');
 const activityDiv = document.getElementById('Activity');
 
 journalRef.get()
-.then((doc) => {
-if (doc.exists) {
-const data = doc.data();
-activityDiv.innerHTML = JSON.stringify(data);
-} else {
-activityDiv.innerHTML = 'Document does not exist';
-}
-})
-.catch((error) => {
-console.log('Error getting document:', error);
-activityDiv.innerHTML = 'Error retrieving document';
-});
+  .then((doc) => {
+    if (doc.exists) {
+      const data = doc.data();
+      activityDiv.innerHTML = ''; // Clear the div
+
+      // Create a container for the data
+      const container = document.createElement('div');
+
+      // Iterate over the properties of the data object
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const entry = data[key];
+
+          // Create a div for each entry
+          const entryDiv = document.createElement('div');
+          entryDiv.classList.add('entry');
+
+          // Display the entry name
+          const name = document.createElement('h2');
+          name.textContent = entry.name;
+          entryDiv.appendChild(name);
+
+          // Display the entry data
+          const title = document.createElement('h3');
+          title.textContent = entry.item.title;
+          entryDiv.appendChild(title);
+
+          const image = document.createElement('img');
+          image.src = entry.item.image;
+          entryDiv.appendChild(image);
+
+          const href = document.createElement('a');
+          href.href = entry.item.href;
+          href.textContent = entry.item.href;
+          entryDiv.appendChild(href);
+
+          // Add the entry div to the container
+          container.appendChild(entryDiv);
+        }
+      }
+
+      // Append the container to the activityDiv
+      activityDiv.appendChild(container);
+    } else {
+      activityDiv.innerHTML = 'Document does not exist';
+    }
+  })
+  .catch((error) => {
+    console.log('Error getting document:', error);
+    activityDiv.innerHTML = 'Error retrieving document';
+  });
