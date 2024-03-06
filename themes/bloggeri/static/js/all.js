@@ -281,7 +281,7 @@ function handleCardClick(sectionClass, storageKey) {
           var image = card.querySelector('.card-image img').src;
           var strippedImage = decodeURIComponent(image.substring(image.indexOf('=') + 1, image.indexOf('&')));
           var href = card.querySelector('.card-image').href;
-          var Date = Math.round(Date.now() / 1000);
+          var timestamp = Math.round(Date.now() / 1000);
  
           var isDuplicate = cardData.some(function(item) {
             return item.title === title && item.image === strippedImage && item.href === href;
@@ -292,7 +292,7 @@ function handleCardClick(sectionClass, storageKey) {
               "title": title,
               "image": strippedImage,
               "href": href,
-              "date": Date
+              "time": timestamp
             };
  
             cardData.push(data);
