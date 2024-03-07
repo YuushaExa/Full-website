@@ -1293,7 +1293,7 @@ journalRef
 
 //
 
-  fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
       .then(response => response.json())
       .then(data => {
         // Reverse the array to display the JSON data in reverse order
