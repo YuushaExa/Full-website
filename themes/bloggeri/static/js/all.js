@@ -220,14 +220,22 @@ async function lastActivity() {
 
     const fileContent = {
       message: 'Update data.json from local storage',
-      content: btoa(JSON.stringify(lastAddedItem)),
+      content: '',
     };
 
     if (existingFileResponse.ok) {
       const existingContent = JSON.parse(atob(existingFileData.content));
-      const updatedContent = Array.isArray(existingContent) ? [...existingContent, lastAddedItem] : [lastAddedItem];
+
+      if (existingContent.length >= 5) {
+        const numItemsToRemove = existingContent.length - 4;
+        existingContent.splice(0, numItemsToRemove);
+      }
+
+      const updatedContent = [...existingContent, lastAddedItem];
       fileContent.content = btoa(JSON.stringify(updatedContent));
       fileContent.sha = existingFileData.sha;
+    } else {
+      fileContent.content = btoa(JSON.stringify([lastAddedItem]));
     }
 
     const updateResponse = await fetch(apiUrl, {
