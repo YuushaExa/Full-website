@@ -1293,9 +1293,15 @@ journalRef
 
 //
 
-  fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
-      .then(response => response.json())
-      .then(data => {
+ fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json', {
+  headers: {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  }
+})
+.then(response => response.json())
+.then(data => {
         // Create a string to store the formatted content
         let formattedContent = '';
 
