@@ -1290,3 +1290,25 @@ journalRef
     console.log('Error getting document:', error);
     activityDiv.innerHTML = 'Error retrieving document';
   });
+
+//
+
+  fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
+      .then(response => response.json())
+      .then(data => {
+        // Create a string to store the formatted content
+        let formattedContent = '';
+
+        // Iterate over the data and format each activity
+        data.forEach(activity => {
+          formattedContent += `<p><strong>Title:</strong> ${activity.title}</p>`;
+          formattedContent += `<p><strong>Image:</strong> <img src="${activity.image}" alt="${activity.title}" /></p>`;
+          formattedContent += `<p><strong>Link:</strong> <a href="${activity.href}" target="_blank">${activity.href}</a></p>`;
+          formattedContent += `<p><strong>Time:</strong> ${new Date(activity.time * 1000)}</p>`;
+          formattedContent += '<hr>';
+        });
+
+        // Set the formatted content to the Activity1 div
+        document.getElementById('Activity1').innerHTML = formattedContent;
+      })
+      .catch(error => console.log(error));
