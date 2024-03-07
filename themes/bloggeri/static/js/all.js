@@ -1293,22 +1293,42 @@ journalRef
 
 //
 
- fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
+  fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
       .then(response => response.json())
       .then(data => {
-        // Create a string to store the formatted content
-        let formattedContent = '';
+        // Create elements for each activity and append them to the Activity1 div
+        const activityContainer = document.getElementById('Activity1');
 
-        // Iterate over the data and format each activity
         data.forEach(activity => {
-          formattedContent += `<p><strong>Title:</strong> ${activity.title}</p>`;
-          formattedContent += `<p><strong>Image:</strong> <img src="${activity.image}" alt="${activity.title}" /></p>`;
-          formattedContent += `<p><strong>Link:</strong> <a href="${activity.href}" target="_blank">${activity.href}</a></p>`;
-          formattedContent += `<p><strong>Time:</strong> ${new Date(activity.time * 1000)}</p>`;
-          formattedContent += '<hr>';
-        });
+          // Create a div for the activity
+          const activityDiv = document.createElement('div');
+          activityDiv.className = 'activity';
 
-        // Set the formatted content to the Activity1 div
-        document.getElementById('Activity1').innerHTML = formattedContent;
+          // Create elements for the activity details
+          const titleElement = document.createElement('h3');
+          titleElement.innerText = activity.title;
+
+          const imageElement = document.createElement('img');
+          imageElement.src = activity.image;
+          imageElement.alt = activity.title;
+
+          const linkElement = document.createElement('a');
+          linkElement.href = activity.href;
+          linkElement.target = '_blank';
+          linkElement.innerText = activity.href;
+
+          const timeElement = document.createElement('p');
+          const date = new Date(activity.time * 1000);
+          timeElement.innerText = `Time: ${date}`;
+
+          // Append the elements to the activity div
+          activityDiv.appendChild(titleElement);
+          activityDiv.appendChild(imageElement);
+          activityDiv.appendChild(linkElement);
+          activityDiv.appendChild(timeElement);
+
+          // Append the activity div to the container
+          activityContainer.appendChild(activityDiv);
+        });
       })
       .catch(error => console.log(error));
