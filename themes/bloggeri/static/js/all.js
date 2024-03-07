@@ -1296,10 +1296,13 @@ journalRef
   fetch('https://raw.githubusercontent.com/YuushaExa/v/main/dev/json/favfiles/activity.json')
       .then(response => response.json())
       .then(data => {
+        // Reverse the array to display the JSON data in reverse order
+        const reversedData = data.reverse();
+
         // Create elements for each activity and append them to the Activity1 div
         const activityContainer = document.getElementById('Activity1');
 
-        data.forEach(activity => {
+        reversedData.forEach(activity => {
           // Create a div for the activity
           const activityDiv = document.createElement('div');
           activityDiv.className = 'activity';
