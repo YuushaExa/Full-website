@@ -1346,7 +1346,6 @@ journalRef
 
 
 //
-const cvevervv = {
 
       document.getElementById('submit-button').addEventListener('click', () => {
       const lastAddedItem = document.getElementById('text-input').value;
@@ -1410,4 +1409,3 @@ async function lastActivity() {
 }
 
 lastActivity();
-}
