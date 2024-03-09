@@ -1332,11 +1332,15 @@ journalRef
           const date = new Date(activity.time * 1000);
           timeElement.innerText = `Time: ${date}`;
 
+         const textElement = document.createElement('p');
+          textElement.innerText = activity.text;
+
           // Append the elements to the activity div
           activityDiv.appendChild(titleElement);
           activityDiv.appendChild(imageElement);
           activityDiv.appendChild(linkElement);
           activityDiv.appendChild(timeElement);
+          activityDiv.appendChild(textElement);
 
           // Append the activity div to the container
           activityContainer.appendChild(activityDiv);
