@@ -1386,7 +1386,7 @@ document.getElementById('submit-button').addEventListener('click', async () => {
             existingContent.splice(0, numItemsToRemove);
           }
 
-          const updatedContent = [...existingContent, dataToSend];
+          const updatedContent = [...existingContent, JSON.parse(dataToSend)];
           fileContent.content = btoa(JSON.stringify(updatedContent));
           fileContent.sha = existingFileData.sha;
         } else {
