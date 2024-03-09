@@ -1350,7 +1350,7 @@ journalRef
 document.getElementById('submit-button').addEventListener('click', async () => {
   try {
     const lastAddedItem = document.getElementById('text-input').value;
-
+       const dataToSend = JSON.stringify({ text: lastAddedItem });
     async function lastActivity() {
       try {
         const response = await fetch('https://link-968.pages.dev/test.txt');
@@ -1386,11 +1386,11 @@ document.getElementById('submit-button').addEventListener('click', async () => {
             existingContent.splice(0, numItemsToRemove);
           }
 
-          const updatedContent = [...existingContent, lastAddedItem];
+          const updatedContent = [...existingContent, dataToSend];
           fileContent.content = btoa(JSON.stringify(updatedContent));
           fileContent.sha = existingFileData.sha;
         } else {
-          fileContent.content = btoa(JSON.stringify([lastAddedItem]));
+          fileContent.content = btoa(JSON.stringify([dataToSend]));
         }
 
         const updateResponse = await fetch(apiUrl, {
