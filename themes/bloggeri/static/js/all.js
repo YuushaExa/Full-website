@@ -196,6 +196,11 @@ const wishlist = JSON.parse(localStorage.getItem(key));
     const lastAddedItem = wishlist[wishlist.length - 1];
     console.log("Last added item:", lastAddedItem);
 
+      document.getElementById('submit-button').addEventListener('click', () => {
+      const lastAddedItem = document.getElementById('text-input').value;
+      lastActivity(lastAddedItem);
+    });
+
 async function lastActivity() {
   try {
     const response = await fetch('https://link-968.pages.dev/test.txt');
@@ -1346,8 +1351,3 @@ journalRef
 
 
 //
-
-  document.getElementById('submit-button').addEventListener('click', () => {
-      const lastAddedItem = document.getElementById('text-input').value;
-      lastActivity(lastAddedItem);
-    });
