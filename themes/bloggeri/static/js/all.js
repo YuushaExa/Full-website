@@ -1349,5 +1349,5 @@ journalRef
 
   document.getElementById('submit-button').addEventListener('click', () => {
       const text = document.getElementById('text-input').value;
-      lastActivity(text);
+      lastActivity();
     });
