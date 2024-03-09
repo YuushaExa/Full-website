@@ -1301,7 +1301,7 @@ journalRef
 
 //
 
-  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json')
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
       .then(response => response.json())
       .then(data => {
         // Reverse the array to display the JSON data in reverse order
