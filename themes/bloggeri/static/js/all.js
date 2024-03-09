@@ -198,7 +198,7 @@ const wishlist = JSON.parse(localStorage.getItem(key));
 
       document.getElementById('submit-button').addEventListener('click', () => {
       const lastAddedItem = document.getElementById('text-input').value;
-      lastActivity(lastAddedItem);
+      lastActivity();
     });
 
 async function lastActivity() {
