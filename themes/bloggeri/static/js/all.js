@@ -1320,68 +1320,9 @@ function checkForChanges() {
     .catch(error => console.log(error));
 }
 
-function fetchData() {
-fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json')
-.then(response => response.json())
-.then(data => {
-// Reverse the array to display the JSON data in reverse order
-const reversedData = data.reverse();
-
-  // Create elements for each activity and append them to the Activity1 div
-  const activityContainer = document.getElementById('Activity1');
-
-  // Clear the existing activities
-  activityContainer.innerHTML = '';
-
-  reversedData.forEach(activity => {
-    // Create a div for the activity
-    const activityDiv = document.createElement('div');
-    activityDiv.className = 'activity';
-
-    // Create elements for the activity details if they are defined
-    if (activity.title !== undefined) {
-      const titleElement = document.createElement('h3');
-      titleElement.innerText = activity.title;
-      activityDiv.appendChild(titleElement);
-    }
-
-    if (activity.image !== undefined) {
-      const imageElement = document.createElement('img');
-      imageElement.src = activity.image;
-      imageElement.alt = activity.title;
-      activityDiv.appendChild(imageElement);
-    }
-
-    if (activity.href !== undefined) {
-      const linkElement = document.createElement('a');
-      linkElement.href = activity.href;
-      linkElement.target = '_blank';
-      linkElement.innerText = activity.href;
-      activityDiv.appendChild(linkElement);
-    }
-
-    if (activity.time !== undefined) {
-      const timeElement = document.createElement('p');
-      const date = new Date(activity.time * 1000);
-      timeElement.innerText = `Time: ${date}`;
-      activityDiv.appendChild(timeElement);
-    }
-
-    if (activity.text !== undefined) {
-      const textElement = document.createElement('p');
-      textElement.innerText = activity.text;
-      activityDiv.appendChild(textElement);
-    }
-
-    // Append the activity div to the container
-    activityContainer.appendChild(activityDiv);
-  });
-})
-.catch(error => console.log(error));
-}
-fetchData();
 let intervalId; // Variable to store the interval ID
 let liveUpdatesEnabled = false; // Variable to track the state of live updates
+let previousETag = null; // Variable to store the previous ETag
 
 function toggleLiveUpdates() {
   const toggleButton = document.getElementById('toggleupdate');
@@ -1393,13 +1334,81 @@ function toggleLiveUpdates() {
   } else {
     // Start live updates
     fetchData();
-    intervalId = setInterval(fetchData, 10000);
+    intervalId = setInterval(fetchData, 5000);
     toggleButton.textContent = 'Stop Live Updates';
   }
 
   // Toggle the state of live updates
   liveUpdatesEnabled = !liveUpdatesEnabled;
 }
+
+function fetchData() {
+  // Perform HEAD request to check ETag without fetching the entire response
+  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json', { method: 'HEAD' })
+    .then(response => {
+      const currentETag = response.headers.get('ETag');
+
+      // Abort the fetch if the ETag remains the same
+      if (previousETag === currentETag) {
+        return Promise.reject(new Error('ETag unchanged. Aborting fetch.'));
+      }
+
+      // Update the previous ETag with the current one
+      previousETag = currentETag;
+
+      // Fetch the full JSON response
+      return fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json');
+    })
+    .then(response => response.json())
+    .then(data => {
+      const reversedData = data.reverse();
+      const activityContainer = document.getElementById('Activity1');
+      activityContainer.innerHTML = '';
+
+      reversedData.forEach(activity => {
+        const activityDiv = document.createElement('div');
+        activityDiv.className = 'activity';
+
+        if (activity.title !== undefined) {
+          const titleElement = document.createElement('h3');
+          titleElement.innerText = activity.title;
+          activityDiv.appendChild(titleElement);
+        }
+
+        if (activity.image !== undefined) {
+          const imageElement = document.createElement('img');
+          imageElement.src = activity.image;
+          imageElement.alt = activity.title;
+          activityDiv.appendChild(imageElement);
+        }
+
+        if (activity.href !== undefined) {
+          const linkElement = document.createElement('a');
+          linkElement.href = activity.href;
+          linkElement.target = '_blank';
+          linkElement.innerText = activity.href;
+          activityDiv.appendChild(linkElement);
+        }
+
+        if (activity.time !== undefined) {
+          const timeElement = document.createElement('p');
+          const date = new Date(activity.time * 1000);
+          timeElement.innerText = `Time: ${date}`;
+          activityDiv.appendChild(timeElement);
+        }
+
+        if (activity.text !== undefined) {
+          const textElement = document.createElement('p');
+          textElement.innerText = activity.text;
+          activityDiv.appendChild(textElement);
+        }
+
+        activityContainer.appendChild(activityDiv);
+      });
+    })
+    .catch(error => console.log(error));
+}
+fetchData();
 
 //
 
