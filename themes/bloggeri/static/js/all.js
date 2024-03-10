@@ -1406,7 +1406,7 @@ function toggleLiveUpdates() {
 function checkETagAndFetch() {
   fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json', { method: 'HEAD' })
     .then(response => {
-      const currentETag = response.headers.get('ETag');
+      const currentETag = response.headers.get('etag');
 
       if (currentETag === previousETag) {
         // Same ETag, abort fetching
