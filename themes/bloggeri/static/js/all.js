@@ -1380,8 +1380,10 @@ const reversedData = data.reverse();
 .catch(error => console.log(error));
 }
 fetchData();
+
 let intervalId; // Variable to store the interval ID
 let liveUpdatesEnabled = false; // Variable to track the state of live updates
+let previousETag = null; // Variable to store the previous ETag value
 
 function toggleLiveUpdates() {
   const toggleButton = document.getElementById('toggleupdate');
@@ -1392,13 +1394,34 @@ function toggleLiveUpdates() {
     toggleButton.textContent = 'Start Live Updates';
   } else {
     // Start live updates
-    fetchData();
-    intervalId = setInterval(fetchData, 10000);
+    checkETagAndFetch();
+    intervalId = setInterval(checkETagAndFetch, 10000);
     toggleButton.textContent = 'Stop Live Updates';
   }
 
   // Toggle the state of live updates
   liveUpdatesEnabled = !liveUpdatesEnabled;
+}
+
+function checkETagAndFetch() {
+  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json', { method: 'HEAD' })
+    .then(response => {
+      const currentETag = response.headers.get('ETag');
+
+      if (currentETag === previousETag) {
+        // Same ETag, abort fetching
+        return;
+      }
+
+      previousETag = currentETag;
+
+      // ETag is new, fetch the data using the existing fetchData function
+      fetchData();
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the HEAD request
+      console.error(error);
+    });
 }
 
 //
