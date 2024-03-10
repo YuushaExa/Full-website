@@ -1380,16 +1380,25 @@ const reversedData = data.reverse();
 .catch(error => console.log(error));
 }
 fetchData();
-function startLiveUpdates() {
-  // Disable the button
-  const liveUpdateButton = document.getElementById('liveupdate');
-  liveUpdateButton.disabled = true;
+let intervalId; // Variable to store the interval ID
+let liveUpdatesEnabled = false; // Variable to track the state of live updates
 
-  // Call the fetchData() function immediately
-  fetchData();
+function toggleLiveUpdates() {
+  const toggleButton = document.getElementById('toggleupdate');
 
-  // Set interval to call fetchData() every 5 seconds
-  setInterval(fetchData, 5000);
+  if (liveUpdatesEnabled) {
+    // Stop live updates
+    clearInterval(intervalId);
+    toggleButton.textContent = 'Start Live Updates';
+  } else {
+    // Start live updates
+    fetchData();
+    intervalId = setInterval(fetchData, 5000);
+    toggleButton.textContent = 'Stop Live Updates';
+  }
+
+  // Toggle the state of live updates
+  liveUpdatesEnabled = !liveUpdatesEnabled;
 }
 
 //
