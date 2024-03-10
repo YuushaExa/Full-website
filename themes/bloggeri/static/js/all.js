@@ -1393,7 +1393,7 @@ function toggleLiveUpdates() {
   } else {
     // Start live updates
     fetchData();
-    intervalId = setInterval(fetchData, 5000);
+    intervalId = setInterval(fetchData, 10000);
     toggleButton.textContent = 'Stop Live Updates';
   }
 
