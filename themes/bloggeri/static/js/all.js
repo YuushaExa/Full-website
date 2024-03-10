@@ -1321,71 +1321,76 @@ function checkForChanges() {
 }
 
 function fetchData() {
-  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json')
-    .then(response => response.json())
-    .then(data => {
-      // Reverse the array to display the JSON data in reverse order
-      const reversedData = data.reverse();
+fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json')
+.then(response => response.json())
+.then(data => {
+// Reverse the array to display the JSON data in reverse order
+const reversedData = data.reverse();
 
-      // Create elements for each activity and append them to the Activity1 div
-      const activityContainer = document.getElementById('Activity1');
+  // Create elements for each activity and append them to the Activity1 div
+  const activityContainer = document.getElementById('Activity1');
 
-      // Clear the existing activities
-      activityContainer.innerHTML = '';
+  // Clear the existing activities
+  activityContainer.innerHTML = '';
 
-      reversedData.forEach(activity => {
-        // Create a div for the activity
-        const activityDiv = document.createElement('div');
-        activityDiv.className = 'activity';
+  reversedData.forEach(activity => {
+    // Create a div for the activity
+    const activityDiv = document.createElement('div');
+    activityDiv.className = 'activity';
 
-        // Create elements for the activity details if they are defined
-        if (activity.title !== undefined) {
-          const titleElement = document.createElement('h3');
-          titleElement.innerText = activity.title;
-          activityDiv.appendChild(titleElement);
-        }
+    // Create elements for the activity details if they are defined
+    if (activity.title !== undefined) {
+      const titleElement = document.createElement('h3');
+      titleElement.innerText = activity.title;
+      activityDiv.appendChild(titleElement);
+    }
 
-        if (activity.image !== undefined) {
-          const imageElement = document.createElement('img');
-          imageElement.src = activity.image;
-          imageElement.alt = activity.title;
-          activityDiv.appendChild(imageElement);
-        }
+    if (activity.image !== undefined) {
+      const imageElement = document.createElement('img');
+      imageElement.src = activity.image;
+      imageElement.alt = activity.title;
+      activityDiv.appendChild(imageElement);
+    }
 
-        if (activity.href !== undefined) {
-          const linkElement = document.createElement('a');
-          linkElement.href = activity.href;
-          linkElement.target = '_blank';
-          linkElement.innerText = activity.href;
-          activityDiv.appendChild(linkElement);
-        }
+    if (activity.href !== undefined) {
+      const linkElement = document.createElement('a');
+      linkElement.href = activity.href;
+      linkElement.target = '_blank';
+      linkElement.innerText = activity.href;
+      activityDiv.appendChild(linkElement);
+    }
 
-        if (activity.time !== undefined) {
-          const timeElement = document.createElement('p');
-          const date = new Date(activity.time * 1000);
-          timeElement.innerText = `Time: ${date}`;
-          activityDiv.appendChild(timeElement);
-        }
+    if (activity.time !== undefined) {
+      const timeElement = document.createElement('p');
+      const date = new Date(activity.time * 1000);
+      timeElement.innerText = `Time: ${date}`;
+      activityDiv.appendChild(timeElement);
+    }
 
-        if (activity.text !== undefined) {
-          const textElement = document.createElement('p');
-          textElement.innerText = activity.text;
-          activityDiv.appendChild(textElement);
-        }
+    if (activity.text !== undefined) {
+      const textElement = document.createElement('p');
+      textElement.innerText = activity.text;
+      activityDiv.appendChild(textElement);
+    }
 
-        // Append the activity div to the container
-        activityContainer.appendChild(activityDiv);
-      });
-    })
-    .catch(error => console.log(error));
+    // Append the activity div to the container
+    activityContainer.appendChild(activityDiv);
+  });
+})
+.catch(error => console.log(error));
 }
-
-// Fetch and display the activities immediately
 fetchData();
+function startLiveUpdates() {
+  // Disable the button
+  const liveUpdateButton = document.getElementById('liveupdate');
+  liveUpdateButton.disabled = true;
 
-// Check for changes every 5 seconds
-setInterval(checkForChanges, 5000);
+  // Call the fetchData() function immediately
+  fetchData();
 
+  // Set interval to call fetchData() every 5 seconds
+  setInterval(fetchData, 5000);
+}
 
 //
 
