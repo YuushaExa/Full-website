@@ -76,7 +76,7 @@ registrationForm.addEventListener('submit', async (e) => {
   const password = registrationForm.password.value;
 
   try {
-    const response = await fetch('/register', {
+    const response = await fetch('https://express-hello-world-1cwb.onrender.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
