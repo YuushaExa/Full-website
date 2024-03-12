@@ -66,29 +66,46 @@
 </label>
           
 <script>
+// Get a reference to the registration form element
 const registrationForm = document.getElementById('registrationForm');
 
-registrationForm.addEventListener('submit', async (e) => {
-e.preventDefault();
+// Add a submit event listener to the form
+registrationForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-const name = registrationForm.name.value;
-const email = registrationForm.email.value;
-const password = registrationForm.password.value;
+  // Retrieve the form input values
+  const name = registrationForm.name.value;
+  const email = registrationForm.email.value;
+  const password = registrationForm.password.value;
 
-try {
-const response = await fetch('https://testvercel-gamma-seven.vercel.app/register', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json'
-},
-body: JSON.stringify({ name, email, password })
-});
+  // Create an object with the user data
+  const userData = {
+    username: name,
+    email,
+    password
+  };
 
-const data = await response.json();
-console.log(data.message); // Registration successful message
-} catch (error) {
-console.error(error); // Registration error
-}
+  // Send a POST request to the /register endpoint
+  fetch('https://testvercel-gamma-seven.vercel.app/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('User registered successfully');
+      // Redirect to the desired page
+      window.location.href = '/';
+    } else {
+      throw new Error('Registration failed');
+    }
+  })
+  .catch((error) => {
+    console.error('Registration failed:', error);
+    // Handle the error or display an error message to the user
+  });
 });
 </script>
 
