@@ -8,7 +8,6 @@
         <div class="columns is-multiline">
 
 
-  <h1>User Registration</h1>
   <form id="registrationForm" action="https://testvercel-gamma-seven.vercel.app/register" method="POST">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br><br>
@@ -21,6 +20,9 @@
 
     <input type="submit" value="Register">
   </form>
+
+  <div id="messageContainer"></div>
+          
        <script>document.getElementById("registrationForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent form submission
 
@@ -28,21 +30,26 @@
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
 
-  fetch("https://testvercel-gamma-seven.vercel.app/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ email, username, password })
-  })
-  .then(function(response) {
-    if (response.redirected) {
-      window.location.href = response.url; // Redirect to the home page
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://testvercel-gamma-seven.vercel.app/register", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Registration successful
+        var response = JSON.parse(xhr.responseText);
+        console.log("Registration successful. User ID: " + response.userId);
+        // Perform actions or show success message on the same page
+      } else {
+        console.log("Registration failed. Error: " + xhr.responseText);
+        // Show error message on the same page
+      }
     }
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+  };
+
+  var data = JSON.stringify({ email, username, password });
+  xhr.send(data);
 });</script>
 
      </div>
