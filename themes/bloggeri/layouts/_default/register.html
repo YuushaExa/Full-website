@@ -84,7 +84,6 @@ headers: {
 body: JSON.stringify({ name, email, password })
 });
 
-Copy
 const data = await response.json();
 console.log(data.message); // Registration successful message
 } catch (error) {
