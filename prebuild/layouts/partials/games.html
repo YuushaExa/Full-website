@@ -13,7 +13,9 @@
     "description" .first_release_date
 {{ $title := "" }}
 {{ range .genres }}
-  {{ $title = print "title" .name "\n" }}
+  {{ if eq $title "" }}
+    {{ $title = print "title" .name "\n" }}
+  {{ end }}
 {{ end }}
 
 
