@@ -1,8 +1,1 @@
-{{- /* Initialize constants */}}
-{{- $sections := slice "famicom" }}
-
-{{- /* Call partials. */}}
-{{- range $sections }}
-  {{- $t := printf "partials/%s.html" .  }}
-    {{- partial $t . }}
-  {{- end }}
+.
