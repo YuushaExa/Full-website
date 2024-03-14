@@ -12,10 +12,8 @@
   {{- $frontMatter := dict
     "description" .first_release_date
 {{ $title := "" }}
-{{ range .genres }}
-  {{ if eq $title "" }}
-    {{ $title = print "title" .name "\n" }}
-  {{ end }}
+{{ with first .genres }}
+  {{ $title = print "title" .name "\n" }}
 {{ end }}
 
 
