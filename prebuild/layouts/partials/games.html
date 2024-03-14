@@ -9,9 +9,13 @@
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
+{{- $genres := slice}}
+{{- range $index, $genre := .genres}}
+  {{- $genres = $genres | append (index $.genres $index).name }}
+{{- end}}
   {{- $frontMatter := dict
     "description" .first_release_date
-   "title" (index .genres 0).name
+   "title" $genres
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
