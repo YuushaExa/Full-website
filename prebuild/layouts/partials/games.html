@@ -9,9 +9,10 @@
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
+{{- $genreNames := $genres | map .name -}}
   {{- $frontMatter := dict
     "description" .first_release_date
-    "title" (range .genres | map .name | join "")
+     "title" ($genreNames | join "")
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
