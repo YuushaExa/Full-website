@@ -9,14 +9,11 @@
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
-{{- $genreNames := slice }}
-{{ range .genres }}
-    {{ $genreNames = $genreNames | append .name }}
-{{ end }}
-{{- $frontMatter := dict
+  {{- $frontMatter := dict
     "description" .first_release_date
-    "title" $genreNames
-   -}}
+   "title" .name
+
+  }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
   {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
