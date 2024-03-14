@@ -15,7 +15,7 @@
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
-  {{- $s := printf "%f\n\n%f\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
+  {{- $s := printf "%s\n\n%f\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
 {{- end -}} 
