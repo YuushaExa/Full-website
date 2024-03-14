@@ -1,27 +1,21 @@
+{{- /* Initialize constants. */}}
 {{- $section := . }}
+
+{{- /* Get data. */}}
 {{- $data := site.Data.games }}
 
+{{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := "" -}}
-  {{- range .genres }}
-    {{- $content = printf "%s%s " $content .name -}}
-  {{- end -}}
-
+{{- $content := "" -}}
+{{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
-
-  {{- $genres := slice}}
-  {{- range .genres }}
-    {{- $genres = $genres | append .name }}
-  {{- end }}
-
   {{- $frontMatter := dict
     "description" .first_release_date
-    "title" $genres
+    "title"  {{ range .genres }}{{ .name }}{{ end }}
   }}
-
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
   {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
-{{- end }}
+{{- end -}} 
