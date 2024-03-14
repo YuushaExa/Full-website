@@ -8,9 +8,11 @@
           {{- end }}
                       </div>
             <div class="tags">
-                    {{ range $idx, $tag := .Params.genres }}
-          {{- if ne $idx 0 }}, {{ end }}<a href="{{ "genres/" | relURL }}{{ $tag | urlize }}">#{{ $tag }}</a>
-          {{- end }}
+              {{- $genres := slice -}}
+{{- range $idx, $tag := .Params.genres -}}
+  {{- $genres = append $genres $tag.name -}}
+{{- end -}}
+{{- $genres | join ", " -}}
                       </div>
             <div class="tags">
                     {{ range $idx, $tag := .Params.developer }}
