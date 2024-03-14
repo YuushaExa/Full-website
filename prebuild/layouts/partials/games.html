@@ -11,8 +11,10 @@
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
-"title" ""
-{{- range .genres }}{{- "title" = printf "%s%s " "title" .name -}}{{- end -}}
+{{- "title" := "" }}
+{{- range .genres }}
+    {{- "title" = printf "%s%s " "title" .name }}
+{{- end }}
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
