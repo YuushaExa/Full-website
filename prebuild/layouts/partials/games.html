@@ -8,11 +8,11 @@
 {{- range $data }}
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
-{{- $itle := "" -}}
-{{- range .genres }}{{- $itle = printf "%s%s " $itle .name -}}{{- end -}}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
+     "itle" .genres
+     "title" .name
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
