@@ -22,6 +22,9 @@
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
+    {{ range .Params.releasedates }}
+{{ .region }}
+ {{ end }}  
           {{ .Content }} 
         </div>
 
