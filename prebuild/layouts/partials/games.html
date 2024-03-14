@@ -7,14 +7,13 @@
 {{- /* Write content page. */}}
 {{- range $data }}
  {{- $content := "" -}}
+{{- range .release_dates }}{{- $content = printf "%s%s " $content .region -}}{{- end -}}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
     "title" .release_dates
 {{- $genre := "" -}}
 {{- range .genres }}{{- $genre = printf "%s%s " $genre .name -}}{{- end -}}
-{{- $content := "" -}}
-{{- range .release_dates }}{{- $content = printf "%s%s " $content .region -}}{{- end -}}
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
