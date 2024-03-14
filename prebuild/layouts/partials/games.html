@@ -8,11 +8,12 @@
 {{- range $data }}
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
+{{- $title := "" -}}
+{{- range .genres }}{{- $title = printf "%s%s " $title .name -}}{{- end -}}
   {{- $name := .name }}
-{{- $genreNames := $genres | map .name -}}
   {{- $frontMatter := dict
     "description" .first_release_date
-     "title" ($genreNames | join "")
+
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
