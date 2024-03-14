@@ -6,7 +6,7 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := (printf "%d" .id) }}
+  {{- $content := (printf "%f" .id) }}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" (printf "%d" .first_release_date)
