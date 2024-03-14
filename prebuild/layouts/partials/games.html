@@ -11,11 +11,11 @@
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
-{{ $genresResult := "" }}
+{{ "title" := "" }}
 {{ range .genres }}
-  {{ $genresResult = (print $genresResult .name "\n") }}
+  {{ "title" = (print "title" .name "\n") }}
 {{ end }}
-    "title" {{ $genresResult }}
+
 
 
   }}
