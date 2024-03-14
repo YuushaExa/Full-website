@@ -8,8 +8,8 @@
 {{- range $data }}
 {{- $content := "" -}}
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
-{{- $title := "" -}}
-{{- range .genres }}{{- $title = printf "%s%s " $title .name -}}{{- end -}}
+{{- $itle := "" -}}
+{{- range .genres }}{{- $itle = printf "%s%s " $itle .name -}}{{- end -}}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
