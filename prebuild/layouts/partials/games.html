@@ -2,7 +2,7 @@
 {{- $section := . }}
 
 {{- /* Get data. */}}
-{{- $data := site.Data.data }}
+{{- $data := site.Data.data%20(1) }}
 
 {{- /* Write content page. */}}
 {{- range $data }}
