@@ -6,12 +6,11 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-{{- $content := "" -}}
-{{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
+{{- $content := .name }}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
-     "itle" .genres
+     "genres" .genres
      "title" .name
 
   }}
