@@ -9,8 +9,8 @@
   {{- $content := .name }}
   {{- $name := .name }}
   {{- $frontMatter := dict
-    "first_release_date" .Description
-    "name" .Name
+    "description" .first_release_date
+    "title" .Name
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
