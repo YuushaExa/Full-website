@@ -6,10 +6,10 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := (strconv.FormatFloat .first_release_date 'f' -1 64) }}
+  {{- $content := .first_release_date }}
   {{- $name := .name }}
   {{- $frontMatter := dict
-    "description" (printf "%d" .first_release_date)
+    "description" .first_release_date
     "title" .name
 
   }}
