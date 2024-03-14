@@ -22,9 +22,14 @@
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
-    {{ range .Params.releasedates }}
-{{ .region }}
- {{ end }}  
+{{- $releasedates := .Params.releasedates -}}
+{{- $regions := dict "europe" 1 "north_america" 2 "australia" 3 "new_zealand" 4 "japan" 5 "china" 6 "asia" 7 "worldwide" 8 "korea" 9 "brazil" 10 -}}
+
+{{- range $releasedates -}}
+{{- $region := index $regions .region -}}
+{{- $regionName := index $regions (toString $region) -}}
+{{- $regionName }}: {{ $region }} 
+{{- end -}}
           {{ .Content }} 
         </div>
 
