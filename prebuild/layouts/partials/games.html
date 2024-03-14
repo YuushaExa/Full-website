@@ -6,7 +6,8 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := index .genres 0.name }}
+{{- $content := "" -}}
+{{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
