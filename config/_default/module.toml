@@ -1,1 +1,9 @@
-j
+# Default mount.
+[[mounts]]
+source = 'content/'
+target = 'content/platform'
+
+# Required to create pages from data.
+[[mounts]]
+source = '/'
+target = 'content/platform'
