@@ -11,6 +11,7 @@
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
+    "title" ""
 {{- range .genres }}{{- $content = printf "%s%s " "title" .name -}}{{- end -}}
 
   }}
