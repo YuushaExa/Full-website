@@ -3,7 +3,7 @@
   <article data-pagefind-body>  
     <div class="container">
       <div class="post">
-        <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Params$title }}</a></h1>
+        <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     <div id="tags">
                            {{ partial "widgets/tags.html" . }}
                 </div> 
@@ -19,6 +19,7 @@
                     <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
        </div>
   <div class="content">
+    {{ $itle }}
           {{ .Content }} 
         </div>
 
