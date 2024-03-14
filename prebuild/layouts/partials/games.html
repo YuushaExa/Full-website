@@ -6,11 +6,11 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := .first_release_date }}
+  {{- $content := .genres.name }}
   {{- $name := .name }}
   {{- $frontMatter := dict
     "description" .first_release_date
-    "title" .name
+    "title" .release_dates.region
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
