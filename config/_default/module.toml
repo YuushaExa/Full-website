@@ -1,9 +1,9 @@
 # Default mount.
 [[mounts]]
 source = 'content/'
-target = 'content/platform'
+target = 'content/'
 
 # Required to create pages from data.
 [[mounts]]
-source = '/'
-target = 'content/platform'
+source = 'prebuild/'
+target = 'content/'
