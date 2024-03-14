@@ -6,7 +6,7 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $first_release_date := .Description }}
+  {{- $content := .Description }}
   {{- $name := .Name }}
   {{- $frontMatter := dict
     "first_release_date" .Description
@@ -15,7 +15,7 @@
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
-  {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $first_release_date }}
+  {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
 {{- end -}} 
