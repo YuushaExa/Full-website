@@ -6,16 +6,16 @@
 
 {{- /* Write content page. */}}
 {{- range $data }}
-  {{- $content := .id }}
+  {{- $content := (printf "%d" .id) }}
   {{- $name := .name }}
   {{- $frontMatter := dict
-    "description" .first_release_date
+    "description" (printf "%d" .first_release_date)
     "title" .name
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
   {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
-  {{- $s := printf "%s\n\n%.2f\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
+  {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
   {{- $r := $s | resources.FromString $targetPath }}
   {{- $r.Publish }}
 {{- end -}} 
