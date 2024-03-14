@@ -1,1 +1,8 @@
-.
+{{- /* Initialize constants */}}
+{{- $sections := slice "games" }}
+
+{{- /* Call partials. */}}
+{{- range $sections }}
+  {{- $t := printf "partials/%s.html" .  }}
+    {{- partial $t . }}
+  {{- end }}
