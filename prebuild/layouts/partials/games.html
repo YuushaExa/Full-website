@@ -10,8 +10,8 @@
 {{- range .genres }}{{- $content = printf "%s%s " $content .name -}}{{- end -}}
   {{- $name := .name }}
 {{- $genres := slice}}
-{{- range $index, $genre := .genres}}
-  {{- $genres = $genres | append (index $.genres $index).name }}
+{{- range .genres}}
+  {{- $genres = $genres | append .name }}
 {{- end}}
   {{- $frontMatter := dict
     "description" .first_release_date
