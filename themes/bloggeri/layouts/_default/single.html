@@ -19,6 +19,9 @@
                     <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
        </div>
   <div class="content">
+          <div class="cover1">
+    {{ .Params.cover }}
+                </div>
             <div class="genres1">
     {{ range .Params.genres }}
 {{ .name }}
