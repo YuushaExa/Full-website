@@ -1,3 +1,4 @@
+setTimeout(function () {
 document.addEventListener('DOMContentLoaded', function() {
 var colorThief = new ColorThief();
 $('.cover-front').each(function() {
@@ -17,3 +18,4 @@ document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top
 document.querySelector(".cover").style.backgroundPosition = "center";
 document.querySelector(".cover").style.backgroundSize = "cover";
 });
+}, 1000)
