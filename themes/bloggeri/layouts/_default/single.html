@@ -22,7 +22,7 @@
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
-{{ $regionCodes := getJSON "/themes/bloggeri/data/region-codes.yaml" }}
+{{ $regionCodes := .Site.Params.widget.regionCodes }}
 
 {{ range .Params.releasedates }}
   {{ $regionCode := .region }}
