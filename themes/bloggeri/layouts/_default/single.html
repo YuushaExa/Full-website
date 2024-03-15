@@ -29,6 +29,8 @@
   {{ $regionName := index $regionCodes $regionCode }}
   {{ $regionName }}
 {{ end }}
+    {{ .Params.storyline }}
+    {{ .Params.summary }}
           {{ .Content }} 
         </div>
 
