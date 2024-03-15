@@ -27,7 +27,7 @@
 
 {{- range $releasedates -}}
 Region: {{ .region }}
-Code: {{ index $regions (toString .region) }}
+Code: {{ index $regions .region | printf "%v" }}
 {{- end -}}
           {{ .Content }} 
         </div>
