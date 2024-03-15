@@ -20,8 +20,8 @@
        </div>
   <div class="content">
           <div class="cover1">
-{{ range . }}
-<img src="https://images.igdb.com/igdb/image/upload/t_1080p/{{ .cover.image_id }}.jpg">
+{{ range .Params.cover.image_id }}
+<img src="https://images.igdb.com/igdb/image/upload/t_1080p/{{ . }}.jpg">
 {{ end }}
                 </div>
             <div class="genres1">
