@@ -22,13 +22,7 @@
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
-{{ $regionCodes := .Site.Params.widget.regionCodes }}
-
-{{ range .Params.releasedates }}
-  {{ $regionCode := .region }}
-  {{ $regionName := index $regionCodes $regionCode }}
-  {{ $regionName }}
-{{ end }}
+     {{ partial "widgets/region-codes.html" . }} 
     {{ .Params.storyline }}
     {{ .Params.summary }}
           {{ .Content }} 
