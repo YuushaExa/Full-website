@@ -22,7 +22,7 @@
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
-{{ $regionCodes := readData "region-codes.yaml" }}
+{{ $regionCodes := getJSON "data/region-codes.yaml" }}
 
 {{ range .Params.releasedates }}
   {{ $regionCode := .region }}
