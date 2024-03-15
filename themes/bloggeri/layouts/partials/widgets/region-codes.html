@@ -1,0 +1,7 @@
+{{ $regionCodes := .Site.Params.widget.regionCodes }}
+
+{{ range .Params.releasedates }}
+  {{ $regionCode := .region }}
+  {{ $regionName := index $regionCodes $regionCode }}
+  {{ $regionName }}
+{{ end }}
