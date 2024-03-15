@@ -20,7 +20,7 @@
        </div>
   <div class="content">
           <div class="cover1">
-<img src="https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg">
+<img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                 </div>
             <div class="genres1">
     {{ range .Params.genres }}
@@ -39,7 +39,7 @@
 
   <div class="screenshots1">
     {{ range .Params.screenshots }}
-<img src="https://images.igdb.com/igdb/image/upload/t_1080p/{{ .image_id }}.jpg">
+<img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .image_id }}.jpg&output=webp&maxage=1d&w=400&h=300&fit=cover&a=attention">
  {{ end }}  
             </div>
     
