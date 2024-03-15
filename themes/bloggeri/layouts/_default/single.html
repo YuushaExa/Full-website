@@ -19,12 +19,20 @@
                     <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
        </div>
   <div class="content">
+            <div class="genres1">
     {{ range .Params.genres }}
 {{ .name }}
  {{ end }}  
+            </div>
+                <div class="regions1">
      {{ partial "widgets/region-codes.html" . }} 
+                </div>
+                <div class="story1">
     {{ .Params.storyline }}
+                </div>
+                <div class="summary1">
     {{ .Params.summary }}
+                </div>
           {{ .Content }} 
         </div>
 
