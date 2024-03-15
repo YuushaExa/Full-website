@@ -33,6 +33,13 @@
                 <div class="summary1">
     {{ .Params.summary }}
                 </div>
+
+  <div class="screenshots1">
+    {{ range .Params.screenshots }}
+<img src="https://images.igdb.com/igdb/image/upload/1080p/{{ .image_id }}.jpg">
+ {{ end }}  
+            </div>
+    
           {{ .Content }} 
         </div>
 
