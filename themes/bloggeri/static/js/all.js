@@ -68,7 +68,9 @@ function updateRatingDisplays() {
     });
     // Update the rating display with the current rating
     var ratingDisplay = card.querySelector('.rating-menu2');
-ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
+    if (ratingDisplay) {
+      ratingDisplay.textContent = '★' + (existingRating ? existingRating.rating : "Not rated");
+    }
   }
 }
 // Call the updateRatingDisplays function initially to set the initial ratings
