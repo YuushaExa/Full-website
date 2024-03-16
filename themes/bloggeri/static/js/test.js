@@ -10,7 +10,7 @@ $('.cover-front').each(function() {
 });
 $('html').css({
          });
-var bg = 'rgb('+ thisColor +')'
+// var bg = 'rgb('+ thisColor +')'
 
 var bg_url = document.querySelector("img:eq(2)").src;
 document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top, rgb(22, 24, 28) 0, rgb(22 24 28 / 10%) 60%), url('${bg_url}')`;    
