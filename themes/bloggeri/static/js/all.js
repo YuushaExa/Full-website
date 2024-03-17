@@ -1323,7 +1323,7 @@ function checkForChanges() {
 }
 
 function fetchData() {
-fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json')
+fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
 .then(response => response.json())
 .then(data => {
 // Reverse the array to display the JSON data in reverse order
@@ -1406,7 +1406,7 @@ function toggleLiveUpdates() {
 }
 
 function checkETagAndFetch() {
-  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json', { method: 'HEAD' })
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json', { method: 'HEAD' })
     .then(response => {
       const currentETag = response.headers.get('etag');
 
