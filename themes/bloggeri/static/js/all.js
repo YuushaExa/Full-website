@@ -1504,7 +1504,7 @@ fetch('https://fetch-request.vercel.app/')
   .then(response => response.json())
   .then(data => {
     // Assuming the fetched data is an array of objects with 'videoId' and 'title' properties
-    data.forEach(({ videoId, title }) => {
+    data.forEach(({ videoId, title, publishedTimeText }) => {
       // Construct the YouTube image URL
       const imageUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
 
@@ -1516,10 +1516,15 @@ fetch('https://fetch-request.vercel.app/')
       const titleElement = document.createElement('p');
       titleElement.textContent = title;
 
+      const timeElement = document.createElement('p');
+      timeElement.textContent = publishedTimeText;
+      
+
       // Append the image and title to a container element
       const container = document.getElementById('youtube-news'); // Replace 'container' with the ID of your container element
       container.appendChild(image);
       container.appendChild(titleElement);
+      container.appendChild(timeElement);
     });
   })
   .catch(error => {
