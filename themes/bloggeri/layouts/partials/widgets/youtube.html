@@ -1,12 +1,14 @@
 {{ $t := .Title }}
 
 {{ $yt := site.Data.youtube }}
-{{ range $yt }}
-  {{ if eq .title $t }}
-    <div class="ytitle">
-      {{ .title }}
-    </div>
-    Date: {{ .publishedTimeText }}
-    {{ .videoId }}
+{{ range $key, $value := $yt }}
+  {{ if eq $key $t }}
+    {{ range $value }}
+      <div class="ytitle">
+        {{ .title }}
+      </div>
+      Date: {{ .publishedTimeText }}
+      {{ .videoId }}
+    {{ end }}
   {{ end }}
 {{ end }}
