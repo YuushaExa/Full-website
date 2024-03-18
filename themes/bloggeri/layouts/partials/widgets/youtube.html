@@ -1,0 +1,12 @@
+{{ $t := .Title }}
+
+{{ $yt := site.Data.youtube }}
+{{ range $yt | uniq }}
+ {{ if eq $t }}
+<div class="ytitle">
+{{ .title }}
+</div>
+Date: {{ .publishedTimeText }} 
+{{ .videoId }}
+{{ end }}
+{{ end }}
