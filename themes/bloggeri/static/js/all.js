@@ -1337,6 +1337,7 @@ let cachedETag = '';
 let intervalId = null;
 let liveUpdatesEnabled = false;
 let activityElements = [];
+const activityContainer = document.getElementById('activityContainer'); // Replace 'activityContainer' with the actual ID of the container element
 
 function fetchETag(url) {
   return fetch(url, { method: 'HEAD' })
@@ -1352,15 +1353,15 @@ function fetchData() {
     .then(response => response.json())
     .then(data => {
       const reversedData = data.reverse();
-      
+
       if (reversedData.length < activityElements.length) {
         const removedElements = activityElements.splice(reversedData.length);
         removedElements.forEach(element => element.remove());
       }
-      
+
       reversedData.forEach((activity, index) => {
         let activityDiv;
-        
+
         if (index < activityElements.length) {
           activityDiv = activityElements[index];
           activityDiv.innerHTML = ''; // Clear existing content
@@ -1370,7 +1371,7 @@ function fetchData() {
           activityElements.push(activityDiv);
           activityContainer.appendChild(activityDiv); // Append new element
         }
-        
+
         const { title, image, href, time, text } = activity;
 
         if (title !== undefined) {
