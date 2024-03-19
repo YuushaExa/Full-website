@@ -3,10 +3,10 @@
 {{ $yt := site.Data.youtube }}
 {{ range $key, $value := $yt }}
   {{ if eq $key $t }}
-    {{ with $value.0 }}
+    {{ range $value }}
+{{ with $value.0 }}
       Time: {{ .timestamp }}
     {{ end }}
-    {{ range $value }}
       <div class="ytitle">
         {{ .title }}
       </div>
