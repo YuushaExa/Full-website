@@ -3,13 +3,13 @@
 {{ $yt := site.Data.youtube }}
 {{ range $key, $value := $yt }}
   {{ if eq $key $t }}
+Time: {{ .timestamp }}
     {{ range $value }}
       <div class="ytitle">
         {{ .title }}
       </div>
       Date: {{ .publishedTimeText }}
       <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
-       Time: {{ .timestamp }}
     {{ end }} 
   {{ end }}
 {{ end }}
