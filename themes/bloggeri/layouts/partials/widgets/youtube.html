@@ -7,19 +7,21 @@
 {{ range $value }}
 {{ if eq $timestamp "" }}
 {{ $timestamp = .timestamp }}
-<div class="YTtimestamp">
+<div class="yttimestamp">
 Timestamp: {{ .timestamp }}
   </div>
 {{ else }}
-<div class="YTtitle">
+<div class="video-list">
+<div class="yttitle">
 {{ .title }}
 </div>
-<div class="YTDate">
+<div class="ytdate">
 Date: {{ .publishedTimeText }}
   </div>
-  <div class="YTimage">
+  <div class="ytimage">
 <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
     </div>
+  </div>
 {{ end }}
 {{ end }}
 {{ end }}
