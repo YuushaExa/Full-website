@@ -212,9 +212,6 @@ async function lastActivity() {
 
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-    const lastAddedItem = {}; // Define your lastAddedItem here
-
-    // Extract the SHA from existingFileData
     const existingFileResponse = await fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -222,29 +219,37 @@ async function lastActivity() {
       },
     });
     const existingFileData = await existingFileResponse.json();
-    const existingSHA = existingFileData.sha;
 
     const fileContent = {
       message: 'Update data.json from local storage',
-      content: JSON.stringify([lastAddedItem]),
-      sha: existingSHA, // Include the extracted SHA
+      content: '',
     };
+
+    if (existingFileResponse.ok) {
+      const existingContent = JSON.parse(atob(existingFileData.content));
+
+      if (existingContent.length >= 5) {
+        const numItemsToRemove = existingContent.length - 4;
+        existingContent.splice(0, numItemsToRemove);
+      }
+
+      const updatedContent = [...existingContent, lastAddedItem];
+      fileContent.content = btoa(JSON.stringify(updatedContent));
+      fileContent.sha = existingFileData.sha;
+    } else {
+      fileContent.content = btoa(JSON.stringify([lastAddedItem]));
+    }
 
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${toktp}`,
-        'Content-Type': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(fileContent),
     });
-
-    if (updateResponse.ok) {
-      const updateData = await updateResponse.json();
-      console.log('File created or updated successfully:', updateData);
-    } else {
-      console.error('Error occurred:', updateResponse);
-    }
+    const updateData = await updateResponse.json();
+    console.log('File created or updated successfully:', updateData);
   } catch (error) {
     console.error('Error occurred:', error);
   }
