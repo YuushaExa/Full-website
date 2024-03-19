@@ -212,44 +212,28 @@ async function lastActivity() {
 
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
 
-    const existingFileResponse = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${toktp}`,
-      },
-    });
-    const existingFileData = await existingFileResponse.json();
+    const lastAddedItem = {}; // Define your lastAddedItem here
 
     const fileContent = {
       message: 'Update data.json from local storage',
-      content: '',
+      content: JSON.stringify([lastAddedItem]),
     };
-
-    if (existingFileResponse.ok) {
-      const existingContent = JSON.parse(atob(existingFileData.content));
-
-      if (existingContent.length >= 5) {
-        const numItemsToRemove = existingContent.length - 4;
-        existingContent.splice(0, numItemsToRemove);
-      }
-
-      const updatedContent = [...existingContent, lastAddedItem];
-      fileContent.content = btoa(JSON.stringify(updatedContent));
-      fileContent.sha = existingFileData.sha;
-    } else {
-      fileContent.content = btoa(JSON.stringify([lastAddedItem]));
-    }
 
     const updateResponse = await fetch(apiUrl, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${toktp}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/vnd.github.v3+json',
       },
       body: JSON.stringify(fileContent),
     });
-    const updateData = await updateResponse.json();
-    console.log('File created or updated successfully:', updateData);
+
+    if (updateResponse.ok) {
+      const updateData = await updateResponse.json();
+      console.log('File created or updated successfully:', updateData);
+    } else {
+      console.error('Error occurred:', updateResponse);
+    }
   } catch (error) {
     console.error('Error occurred:', error);
   }
