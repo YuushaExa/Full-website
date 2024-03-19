@@ -1333,128 +1333,127 @@ if (currentURL.includes("/games/")) {
 
 // activity
 
-let cachedETag = '';
-let intervalId = null;
-let liveUpdatesEnabled = false;
-let activityElements = [];
-const activityContainer = document.getElementById('activityContainer'); // Replace 'activityContainer' with the actual ID of the container element
+let cachedETag = null; // Variable to store the cached ETag
 
-function fetchETag(url) {
-  return fetch(url, { method: 'HEAD' })
-    .then(response => response.headers.get('ETag'))
-    .catch(error => {
-      console.error(error);
-      throw error;
-    });
-}
-
-function fetchData() {
-  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
-    .then(response => response.json())
-    .then(data => {
-      const reversedData = data.reverse();
-
-      if (reversedData.length < activityElements.length) {
-        const removedElements = activityElements.splice(reversedData.length);
-        removedElements.forEach(element => element.remove());
+function checkForChanges() {
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json', {
+    method: 'HEAD'
+  })
+    .then(response => {
+      const newETag = response.headers.get('ETag');
+      
+      // Check if the ETag has changed
+      if (newETag !== cachedETag) {
+        // Fetch the full JSON file
+        fetchData();
+        cachedETag = newETag; // Update the cached ETag
       }
-
-      reversedData.forEach((activity, index) => {
-        let activityDiv;
-
-        if (index < activityElements.length) {
-          activityDiv = activityElements[index];
-          activityDiv.innerHTML = ''; // Clear existing content
-        } else {
-          activityDiv = document.createElement('div');
-          activityDiv.className = 'activity';
-          activityElements.push(activityDiv);
-          activityContainer.appendChild(activityDiv); // Append new element
-        }
-
-        const { title, image, href, time, text } = activity;
-
-        if (title !== undefined) {
-          const titleElement = document.createElement('h3');
-          titleElement.innerText = title;
-          activityDiv.appendChild(titleElement);
-        }
-
-        if (image !== undefined) {
-          const imageElement = document.createElement('img');
-          imageElement.src = image;
-          imageElement.alt = title;
-          activityDiv.appendChild(imageElement);
-        }
-
-        if (href !== undefined) {
-          const linkElement = document.createElement('a');
-          linkElement.href = href;
-          linkElement.target = '_blank';
-          linkElement.innerText = href;
-          activityDiv.appendChild(linkElement);
-        }
-
-        if (time !== undefined) {
-          const timeElement = document.createElement('p');
-          const date = new Date(time * 1000);
-          timeElement.innerText = `Time: ${date}`;
-          activityDiv.appendChild(timeElement);
-        }
-
-        if (text !== undefined) {
-          const textElement = document.createElement('p');
-          textElement.innerText = text;
-          activityDiv.appendChild(textElement);
-        }
-      });
     })
     .catch(error => console.log(error));
 }
 
-function checkForChanges() {
-  fetchETag('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
-    .then(newETag => {
-      if (newETag !== cachedETag) {
-        fetchData();
-        cachedETag = newETag;
-      }
-    });
-}
+function fetchData() {
+fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
+.then(response => response.json())
+.then(data => {
+// Reverse the array to display the JSON data in reverse order
+const reversedData = data.reverse();
 
-function checkETagAndFetch() {
-  fetchETag('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json')
-    .then(currentETag => {
-      if (currentETag === cachedETag) {
-        return; // Same ETag, abort fetching
-      }
+  // Create elements for each activity and append them to the Activity1 div
+  const activityContainer = document.getElementById('Activity1');
 
-      cachedETag = currentETag;
-      fetchData();
-    });
-}
+  // Clear the existing activities
+  activityContainer.innerHTML = '';
 
-function debounce(func, delay) {
-  let debounceTimer;
-  return function () {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(func, delay);
-  };
+  reversedData.forEach(activity => {
+    // Create a div for the activity
+    const activityDiv = document.createElement('div');
+    activityDiv.className = 'activity';
+
+    // Create elements for the activity details if they are defined
+    if (activity.title !== undefined) {
+      const titleElement = document.createElement('h3');
+      titleElement.innerText = activity.title;
+      activityDiv.appendChild(titleElement);
+    }
+
+    if (activity.image !== undefined) {
+      const imageElement = document.createElement('img');
+      imageElement.src = activity.image;
+      imageElement.alt = activity.title;
+      activityDiv.appendChild(imageElement);
+    }
+
+    if (activity.href !== undefined) {
+      const linkElement = document.createElement('a');
+      linkElement.href = activity.href;
+      linkElement.target = '_blank';
+      linkElement.innerText = activity.href;
+      activityDiv.appendChild(linkElement);
+    }
+
+    if (activity.time !== undefined) {
+      const timeElement = document.createElement('p');
+      const date = new Date(activity.time * 1000);
+      timeElement.innerText = `Time: ${date}`;
+      activityDiv.appendChild(timeElement);
+    }
+
+    if (activity.text !== undefined) {
+      const textElement = document.createElement('p');
+      textElement.innerText = activity.text;
+      activityDiv.appendChild(textElement);
+    }
+
+    // Append the activity div to the container
+    activityContainer.appendChild(activityDiv);
+  });
+})
+.catch(error => console.log(error));
 }
+fetchData();
+
+let intervalId; // Variable to store the interval ID
+let liveUpdatesEnabled = false; // Variable to track the state of live updates
+let previousETag = null; // Variable to store the previous ETag value
+
+// live activity update
 
 function toggleLiveUpdates() {
   const toggleButton = document.getElementById('toggleupdate');
 
   if (liveUpdatesEnabled) {
+    // Stop live updates
     clearInterval(intervalId);
     toggleButton.textContent = 'Start Live Updates';
   } else {
+    // Start live updates
     checkETagAndFetch();
-    intervalId = setInterval(debounce(checkForChanges, 500), 10000);
+    intervalId = setInterval(checkETagAndFetch, 10000);
     toggleButton.textContent = 'Stop Live Updates';
   }
 
+  // Toggle the state of live updates
   liveUpdatesEnabled = !liveUpdatesEnabled;
 }
 
-fetchData(); // Initial fetch and display of JSON data
+function checkETagAndFetch() {
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json', { method: 'HEAD' })
+    .then(response => {
+      const currentETag = response.headers.get('etag');
+
+      if (currentETag === previousETag) {
+        // Same ETag, abort fetching
+        return;
+      }
+
+      previousETag = currentETag;
+
+      // ETag is new, fetch the data using the existing fetchData function
+      fetchData();
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the HEAD request
+      console.error(error);
+    });
+}
