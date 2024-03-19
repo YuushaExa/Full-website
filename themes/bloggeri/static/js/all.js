@@ -1324,7 +1324,7 @@ if (currentURL.includes("/games/")) {
       .then(data => {
       })
       .catch(error => {
-        console.error(API down);
+        console.error('API Down', error);
       });
   }
 }
