@@ -7,12 +7,7 @@
     {{ range $value }}
       {{ if eq $timestamp "" }}
         {{ $timestamp = .timestamp }}
-        <div class="ytitle">
-          {{ .title }}
-        </div>
-        Date: {{ .publishedTimeText }}
         Timestamp: {{ .timestamp }}
-        <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
       {{ else }}
         <div class="ytitle">
           {{ .title }}
