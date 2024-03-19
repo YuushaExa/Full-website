@@ -3,15 +3,23 @@
 {{ $yt := site.Data.youtube }}
 {{ range $key, $value := $yt }}
   {{ if eq $key $t }}
+    {{ $timestamp := "" }}
     {{ range $value }}
-{{ with $value.0 }}
-      Time: {{ .timestamp }}
+      {{ if eq $timestamp "" }}
+        {{ $timestamp = .timestamp }}
+        <div class="ytitle">
+          {{ .title }}
+        </div>
+        Date: {{ .publishedTimeText }}
+        Timestamp: {{ .timestamp }}
+        <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
+      {{ else }}
+        <div class="ytitle">
+          {{ .title }}
+        </div>
+        Date: {{ .publishedTimeText }}
+        <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
+      {{ end }}
     {{ end }}
-      <div class="ytitle">
-        {{ .title }}
-      </div>
-      Date: {{ .publishedTimeText }}
-      <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
-    {{ end }} 
   {{ end }}
 {{ end }}
