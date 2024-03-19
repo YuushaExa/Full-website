@@ -9,8 +9,9 @@
       </div>
       Date: {{ .publishedTimeText }}
       <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
-      Time: {{ .timestamp }}
-{{ break }}
+{{ range first 1 }}
+       Time: {{ .timestamp }}
+{{ end }}
     {{ end }} 
   {{ end }}
 {{ end }}
