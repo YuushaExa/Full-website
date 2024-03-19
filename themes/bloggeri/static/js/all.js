@@ -1501,26 +1501,23 @@ document.getElementById('submit-button').addEventListener('click', async () => {
 
 
 
-const yttimestampElement = document.querySelector(".yttimestamp");
-
-if (yttimestampElement) {
-  // Extract the timestamp value
-  const timestamp = yttimestampElement.textContent;
-  console.log("Timestamp:", timestamp);
-} else {
-  const titleElement = document.querySelector(".post-title");
-  const title = titleElement.textContent;
-
-  // Fetch data with the title as a query parameter
-  const url = `https://fetch-request.vercel.app/?searchQuery=${encodeURIComponent(title)}`;
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      // Handle the fetched data
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle any errors that occurred during the fetch request
-      console.error(error);
-    });
+const currentURL = window.location.href;
+if (currentURL.includes("/games/")) {
+  const yttimestampElement = document.querySelector(".yttimestamp");
+  if (yttimestampElement) {
+    const timestamp = yttimestampElement.textContent;
+    console.log("Timestamp:", timestamp);
+  } else {
+    const titleElement = document.querySelector(".post-title");
+    const title = titleElement.textContent;
+    const url = `https://fetch-request.vercel.app/yt?searchQuery=${encodeURIComponent(title)}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 }
