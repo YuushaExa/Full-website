@@ -1315,7 +1315,6 @@ if (currentURL.includes("/games/")) {
   const yttimestampElement = document.querySelector(".yttimestamp");
   if (yttimestampElement) {
     const timestamp = yttimestampElement.textContent;
-    console.log("Timestamp:", timestamp);
   } else {
     const titleElement = document.querySelector(".post-title");
     const title = titleElement.textContent;
@@ -1323,10 +1322,9 @@ if (currentURL.includes("/games/")) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
       })
       .catch(error => {
-        console.error(error);
+        console.error(API down);
       });
   }
 }
