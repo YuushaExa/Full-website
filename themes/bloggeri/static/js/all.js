@@ -1237,76 +1237,10 @@ if (lastSyncTime) {
 
 //
 
-
-const journalRef = db.collection('Activity').doc('Journal');
-const activityDiv = document.getElementById('Activity');
-
-journalRef
-  .get()
-  .then((doc) => {
-    if (doc.exists) {
-      const data = doc.data();
-      activityDiv.innerHTML = ''; // Clear the div
-
-      // Create a container for the data
-      const container = document.createElement('div');
-
-      // Iterate over the properties of the data object
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          const entry = data[key];
-
-          // Create a div for each entry
-          const entryDiv = document.createElement('div');
-          entryDiv.classList.add('entry');
-
-          // Display the entry name
-          const name = document.createElement('h2');
-          name.textContent = entry.name;
-          entryDiv.appendChild(name);
-
-          // Display the entry time
-          const time = document.createElement('p');
-          const timestamp = new Date(Number(key));
-          time.textContent = `Time: ${timestamp.toLocaleString()}`;
-          entryDiv.appendChild(time);
-
-          // Display the entry data
-          const title = document.createElement('h3');
-          title.textContent = entry.item.title;
-          entryDiv.appendChild(title);
-
-          const image = document.createElement('img');
-          image.src = entry.item.image;
-          entryDiv.appendChild(image);
-
-          const href = document.createElement('a');
-          href.href = entry.item.href;
-          href.textContent = entry.item.href;
-          entryDiv.appendChild(href);
-
-          // Add the entry div to the container
-          container.appendChild(entryDiv);
-        }
-      }
-
-      // Append the container to the activityDiv
-      activityDiv.appendChild(container);
-    } else {
-      activityDiv.innerHTML = 'Document does not exist';
-    }
-  })
-  .catch((error) => {
-    console.log('Error getting document:', error);
-    activityDiv.innerHTML = 'Error retrieving document';
-  });
-
-//
-
 let cachedETag = null; // Variable to store the cached ETag
 
 function checkForChanges() {
-  fetch('https://v-jade-mu.vercel.app/dev/json/favfiles/activity.json', {
+  fetch('https://yuushaexa.github.io/v/dev/json/favfiles/activity.json', {
     method: 'HEAD'
   })
     .then(response => {
@@ -1387,6 +1321,8 @@ let intervalId; // Variable to store the interval ID
 let liveUpdatesEnabled = false; // Variable to track the state of live updates
 let previousETag = null; // Variable to store the previous ETag value
 
+// live activity update
+
 function toggleLiveUpdates() {
   const toggleButton = document.getElementById('toggleupdate');
 
@@ -1426,7 +1362,7 @@ function checkETagAndFetch() {
     });
 }
 
-//
+//  chatbox on right side
 
 document.getElementById('submit-button').addEventListener('click', async () => {
   try {
