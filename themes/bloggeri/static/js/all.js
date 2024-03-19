@@ -214,9 +214,20 @@ async function lastActivity() {
 
     const lastAddedItem = {}; // Define your lastAddedItem here
 
+    // Extract the SHA from existingFileData
+    const existingFileResponse = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${toktp}`,
+      },
+    });
+    const existingFileData = await existingFileResponse.json();
+    const existingSHA = existingFileData.sha;
+
     const fileContent = {
       message: 'Update data.json from local storage',
       content: JSON.stringify([lastAddedItem]),
+      sha: existingSHA, // Include the extracted SHA
     };
 
     const updateResponse = await fetch(apiUrl, {
