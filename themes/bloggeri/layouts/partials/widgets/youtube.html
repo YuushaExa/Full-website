@@ -2,18 +2,19 @@
 
 {{ $yt := site.Data.youtube }}
 {{ range $key, $value := $yt }}
-  {{ if eq $key $t }}
-    {{ $timestamp := "" }}
-    {{ range $value }}
-      {{ if eq $timestamp "" }}
-        {{ $timestamp = .timestamp }}
-        Timestamp: {{ .timestamp }}
-      {{ end }}
-      <div class="ytitle">
-        {{ .title }}
-      </div>
-      Date: {{ .publishedTimeText }}
-      <img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
-    {{ end }}
-  {{ end }}
+{{ if eq $key $t }}
+{{ $timestamp := "" }}
+{{ range $value }}
+{{ if eq $timestamp "" }}
+{{ $timestamp = .timestamp }}
+Timestamp: {{ .timestamp }}
+{{ else }}
+<div class="ytitle">
+{{ .title }}
+</div>
+Date: {{ .publishedTimeText }}
+<img src="https://i.ytimg.com/vi/{{ .videoId }}/0.jpg"/>
+{{ end }}
+{{ end }}
+{{ end }}
 {{ end }}
