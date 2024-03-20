@@ -27,12 +27,16 @@
                 </div>
                 <div class="platforms1">
                    {{ range .Params.platforms }}
+                     <div class="platform-name">
 {{ .name }}
+                     </div>
  {{ end }}  
                 </div>
             <div class="genres1">
     {{ range .Params.genres }}
+   <div class="genre-name">
 {{ .name }}
+   </div>
  {{ end }}  
             </div>
                 <div class="regions1">
