@@ -1318,8 +1318,6 @@ if (currentURL.includes("/games/")) {
   } else {
     const titleElement = document.querySelector(".post-title");
     const title = titleElement.textContent;
- const platformElement = document.querySelector(".platform-name:first-of-type");
- const platform = platformElement.textContent;
 const url = `https://fetch-request.vercel.app/yt?searchQuery=${encodeURIComponent(title)}`;
     fetch(url)
       .then(response => response.json())
