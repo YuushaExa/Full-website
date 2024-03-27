@@ -1460,12 +1460,13 @@ function checkETagAndFetch() {
 var iframe = document.createElement("iframe");
 
 // Set the source of the iframe
-iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10&mute=1";
+iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10";
 
 // Set the width and height of the iframe
 iframe.width = "1200";
 iframe.height = "550";
 iframe.style.border = "unset";
+iframe.allow = "autoplay";
 
 // Find a container element on your web page (e.g., by using its ID)
 var container = document.getElementsByClassName("cover")[0];
