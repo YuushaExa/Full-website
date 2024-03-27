@@ -1458,18 +1458,30 @@ function checkETagAndFetch() {
 
 // YOUTUBE
 
+// Create a div element with the ID "iframe-div"
+var div = document.createElement("div");
+div.id = "iframe-div";
+
+// Set any desired styles or attributes for the div
+div.style.width = "560px";
+div.style.height = "315px";
+// Add more styles or attributes as needed
+
+// Create the iframe element
 var iframe = document.createElement("iframe");
 
-// Set the source of the iFrame to the YouTube embed URL with the video ID
+// Set the source of the iframe
 iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10";
 
-// Set the width and height of the iFrame (adjust as needed)
+// Set the width and height of the iframe
 iframe.width = "560";
-iframe.height = "315";
+iframe.height = "315%";
 
-// Set the frameborder to 0 for a borderless embed
-iframe.frameborder = "0";
+// Append the iframe to the div
+div.appendChild(iframe);
 
-// Append the iFrame to a container element on your web page
+// Find a container element on your web page (e.g., by using its ID)
 var container = document.getElementsByClassName("cover")[0];
-container.appendChild(iframe);
+
+// Append the div to the container
+container.appendChild(div);
