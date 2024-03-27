@@ -1471,5 +1471,5 @@ iframe.height = "315";
 iframe.frameborder = "0";
 
 // Append the iFrame to a container element on your web page
-var container = document.getElementsByClassName("cover");
+var container = document.getElementsByClassName("cover")[0];
 container.appendChild(iframe);
