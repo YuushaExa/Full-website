@@ -1457,19 +1457,29 @@ function checkETagAndFetch() {
 
 
 // YOUTUBE
-var iframe = document.createElement("iframe");
+// Function to extract the YouTube video ID from the image URL and play the video
+function playVideo() {
+  // Get the first video image URL
+  var videoImage = document.getElementsByClassName("ytimage")[0].getElementsByTagName("img")[0].src;
 
-// Set the source of the iframe
-iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&mute=1&enablejsapi=1";
+  // Extract the video ID from the image URL
+  var regex = /\/vi\/([^\/]+)/;
+  var match = videoImage.match(regex);
+  var videoId = match && match[1] ? match[1] : null;
 
-// Set the width and height of the iframe
-iframe.width = "1200";
-iframe.height = "550";
-iframe.style.border = "unset";
-iframe.allow = "autoplay";
+  // Create the iframe element
+  var iframe = document.createElement("iframe");
+  iframe.src = "https://www.youtube.com/embed/" + videoId + "?start=0&end=1200";
+  iframe.width = "1200";
+  iframe.height = "550";
+  iframe.style.border = "unset";
 
-// Find a container element on your web page (e.g., by using its ID)
-var container = document.getElementsByClassName("cover")[0];
+  // Find the container element on your web page
+  var container = document.getElementsByClassName("cover")[0];
 
-// Append the iframe to the container
-container.appendChild(iframe);
+  // Append the iframe to the container
+  container.appendChild(iframe);
+}
+
+// Add a click event listener to the button with the ID "Play-Video"
+document.getElementById("Play-Video").addEventListener("click", playVideo);
