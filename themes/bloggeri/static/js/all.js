@@ -1469,7 +1469,7 @@ function playVideo() {
 
   // Create the iframe element
   var iframe = document.createElement("iframe");
-  iframe.src = "https://www.youtube.com/embed/" + videoId + "?start=0&end=1200";
+  iframe.src = "https://www.youtube.com/embed/" + videoId + "?start=10&end=30";
   iframe.width = "1200";
   iframe.height = "550";
   iframe.style.border = "unset";
