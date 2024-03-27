@@ -1474,8 +1474,9 @@ var iframe = document.createElement("iframe");
 iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10";
 
 // Set the width and height of the iframe
-iframe.width = "560";
-iframe.height = "315%";
+iframe.width = "1200";
+iframe.height = "550";
+iframe.border = "unset";
 
 // Append the iframe to the div
 div.appendChild(iframe);
