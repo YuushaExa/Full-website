@@ -1459,13 +1459,6 @@ function checkETagAndFetch() {
 // YOUTUBE
 
 // Create a div element with the ID "iframe-div"
-var div = document.createElement("div");
-div.id = "iframe-div";
-
-// Set any desired styles or attributes for the div
-div.style.width = "560px";
-div.style.height = "315px";
-// Add more styles or attributes as needed
 
 // Create the iframe element
 var iframe = document.createElement("iframe");
@@ -1476,13 +1469,9 @@ iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=1
 // Set the width and height of the iframe
 iframe.width = "1200";
 iframe.height = "550";
-iframe.border = "unset";
-
-// Append the iframe to the div
-div.appendChild(iframe);
-
+iframe.frameborder = "0";
 // Find a container element on your web page (e.g., by using its ID)
 var container = document.getElementsByClassName("cover")[0];
 
 // Append the div to the container
-container.appendChild(div);
+container.appendChild(iframe);
