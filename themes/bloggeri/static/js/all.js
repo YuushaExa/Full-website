@@ -1454,3 +1454,22 @@ function checkETagAndFetch() {
       console.error(error);
     });
 }
+
+
+// YOUTUBE
+
+var iframe = document.createElement("iframe");
+
+// Set the source of the iFrame to the YouTube embed URL with the video ID
+iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10";
+
+// Set the width and height of the iFrame (adjust as needed)
+iframe.width = "560";
+iframe.height = "315";
+
+// Set the frameborder to 0 for a borderless embed
+iframe.frameborder = "0";
+
+// Append the iFrame to a container element on your web page
+var container = document.getElementsByClassName("cover");
+container.appendChild(iframe);
