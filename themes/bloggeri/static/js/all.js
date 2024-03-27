@@ -1472,28 +1472,3 @@ var container = document.getElementsByClassName("cover")[0];
 
 // Append the iframe to the container
 container.appendChild(iframe);
-
-// Function to start and restart the video
-function startVideo() {
-  iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-}
-
-// Function to stop the video
-function stopVideo() {
-  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-}
-
-// Start the script after 3 seconds
-setTimeout(function() {
-  startVideo();
-
-  // Listen for the "ended" event of the video
-  iframe.addEventListener("ended", function() {
-    stopVideo();
-
-    // Wait for 2 seconds before starting the video again
-    setTimeout(function() {
-      startVideo();
-    }, 2000);
-  });
-}, 3000);
