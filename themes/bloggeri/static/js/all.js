@@ -1471,7 +1471,7 @@ function playVideo() {
   var iframe = document.createElement("iframe");
   iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&mute=1&start=10&end=30&modestbranding=1&rel=0&fs=0&controls=0&disablekb=1";
   iframe.width = "1200";
-  iframe.height = "550";
+  iframe.height = "700";
   iframe.style.border = "unset";
 
   // Find the container element on your web page
