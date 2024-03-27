@@ -1469,7 +1469,7 @@ function playVideo() {
 
   // Create the iframe element
   var iframe = document.createElement("iframe");
-  iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=1&start=10&end=30";
+  iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&mute=1&start=10&end=30";
   iframe.width = "1200";
   iframe.height = "550";
   iframe.style.border = "unset";
