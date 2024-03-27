@@ -1460,7 +1460,7 @@ function checkETagAndFetch() {
 var iframe = document.createElement("iframe");
 
 // Set the source of the iframe
-iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=10";
+iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&mute=1&enablejsapi=1";
 
 // Set the width and height of the iframe
 iframe.width = "1200";
