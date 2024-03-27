@@ -1457,10 +1457,6 @@ function checkETagAndFetch() {
 
 
 // YOUTUBE
-
-// Create a div element with the ID "iframe-div"
-
-// Create the iframe element
 var iframe = document.createElement("iframe");
 
 // Set the source of the iframe
@@ -1470,8 +1466,34 @@ iframe.src = "https://www.youtube.com/embed/Qt-zZ46VjcI?autoplay=1&start=0&end=1
 iframe.width = "1200";
 iframe.height = "550";
 iframe.style.border = "unset";
+
 // Find a container element on your web page (e.g., by using its ID)
 var container = document.getElementsByClassName("cover")[0];
 
-// Append the div to the container
+// Append the iframe to the container
 container.appendChild(iframe);
+
+// Function to start and restart the video
+function startVideo() {
+  iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+}
+
+// Function to stop the video
+function stopVideo() {
+  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+}
+
+// Start the script after 3 seconds
+setTimeout(function() {
+  startVideo();
+
+  // Listen for the "ended" event of the video
+  iframe.addEventListener("ended", function() {
+    stopVideo();
+
+    // Wait for 2 seconds before starting the video again
+    setTimeout(function() {
+      startVideo();
+    }, 2000);
+  });
+}, 3000);
