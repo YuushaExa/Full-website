@@ -14,6 +14,7 @@ $('html').css({
 
 var images = Array.from(document.querySelectorAll("img"));
 var randomImage, randomImageUrl;
+var bg_url; // Declare bg_url variable
 
 // Check if the image URL returns a 404 error
 function checkImageAvailability(imageUrl) {
