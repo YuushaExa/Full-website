@@ -937,22 +937,7 @@ document.getElementById('inputTextFavSet').style.backgroundColor = 'red';
 }
 document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
 
-// storage
-
-  // Check if the activation state is already stored in localStorage
-    let isScriptActive = localStorage.getItem('isScriptActive') === 'true';
-
-    function handleStorageEvent(event) {
-      if (event.storageArea === localStorage && isScriptActive) {
-        fetchDataAndSendToGitHub()
-      }
-    }
-
-    window.addEventListener('storage', handleStorageEvent);
-    function toggleScriptActivation() {
-      isScriptActive = !isScriptActive;
-      localStorage.setItem('isScriptActive', isScriptActive.toString());
-    }
+ 
 //
 
     var firebaseConfig = {
@@ -1024,9 +1009,6 @@ userRef.get()
   .catch((error) => {
     console.error('Error getting user document:', error);
   });
-  const randomWelcomeDiv = document.getElementById('randomwelcome');
-
-
 } 
 });
   }
