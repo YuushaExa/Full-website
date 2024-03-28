@@ -19,11 +19,7 @@
         </button>
         <div class="cover"></div></div>
                  <div class="cover-front">
-{{ if ne .Params.image "" }}
-    <img src="https://wsrv.nl/?url={{ .Params.image }}&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous">
-{{ else }}
-    <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload">
-{{ end }}
+<img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                  </div>
   <div class="content">
           <div class="cover1">
