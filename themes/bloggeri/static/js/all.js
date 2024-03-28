@@ -1024,6 +1024,10 @@ userRef.get()
   .catch((error) => {
     console.error('Error getting user document:', error);
   });
+  const randomWelcomeDiv = document.getElementById('randomwelcome');
+
+
+} 
 });
   }
   dailylogin();
