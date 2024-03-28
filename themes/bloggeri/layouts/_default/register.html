@@ -34,15 +34,18 @@
   <br>
   <button type="submit">Login</button>
 </form> 
+
  <h2>Set/Update Email Address</h2>
 <form id="updateEmailForm">
   <label for="newEmail">New Email Address:</label>
   <input type="email" id="newEmail" name="newEmail" required>
   <button type="submit">Update Email</button>
 </form>
+
 <div id="googleSignInButton">Google</div>
   <button onclick="handleRelink()">Relink User Account</button>
-          
+
+  
           <div id="buttonaccount">
             <button id="cloudsave">Save to Firebase Storage</button>
           <button id="loadcloudsave">Load Cloud Save</button>
@@ -51,9 +54,12 @@
    <button id="deletesaved">Delete Save Data</button>
                <button id="resetpassword">Reset Password (email only)</button>
           </div>
+
 <button id="CloudSave">Cloud Save</button>
 <p id="lastsaveddata"></p>
           <button id="LoadCloud">Cloud Load</button>
+
+  
             <button onclick="toggleScriptActivation()">Toggle Auto Save</button>
 <label class="switchbutton">
   <input type="checkbox">
@@ -61,390 +67,52 @@
   <span class="labeloff">Off</span>
   <span class="labelon">On</span>
 </label>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
-    authDomain: "gamedb-95862.firebaseapp.com",
-    databaseURL: "https://gamedb-95862-default-rtdb.firebaseio.com",
-    projectId: "gamedb-95862",
-    storageBucket: "gamedb-95862.appspot.com",
-    messagingSenderId: "788250168154",
-    appId: "1:788250168154:web:b6573c45a909fc09694163"
-  };
-  firebase.initializeApp(firebaseConfig);
 
-// Email Registration
+<script>
+// Get a reference to the registration form element
 const registrationForm = document.getElementById('registrationForm');
 
-// Add an event listener to the registration form
+// Add a submit event listener to the form
 registrationForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevent the form from submitting
+  e.preventDefault();
 
-  // Get user input values
+  // Retrieve the form input values
   const name = registrationForm.name.value;
   const email = registrationForm.email.value;
   const password = registrationForm.password.value;
 
-  return firebase.firestore().collection('nickname').doc(name).get()
-    .then((doc) => {
-      if (doc.exists) {
-        throw new Error('Username already exists');
-      } else {
-        return firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-  const user = userCredential.user;
-  return firebase.firestore().collection('nicknames').doc(name).set({}); 
-});
-      }
-    })
-    .then(() => {
-      // Firestore operation and user registration successful
-      return firebase.auth().currentUser.updateProfile({
-        displayName: name
-      });
-    })
-    .then(() => {
-      // Display name updated successfully
-      console.log('Welcome, ', name);
-      // You can redirect the user to a different page or perform additional actions here
-    })
-    .catch((error) => {
-      // Registration failed or username already exists
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Registration failed:', errorCode, errorMessage);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-  // Nickname Registration 
+  // Create an object with the user data
+  const userData = {
+    username: name,
+    email,
+    password
+  };
 
-  const registrationFormNick = document.getElementById('registrationFormNick');
-
-registrationFormNick.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const nickname = registrationFormNick.nickname.value;
-  const password = registrationFormNick.password.value;
-
-  firebase.auth().createUserWithEmailAndPassword(`${nickname}@example.com`, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log('Registration successful:', user);
-      // Additional actions or redirection can be performed here
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Registration failed:', errorCode, errorMessage);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-
-  // login
-
-const loginForm = document.getElementById('loginForm');
-
-// Add an event listener to the login form
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevent the form from submitting
-
-  // Get user input values
-  let email = loginForm.email.value;
-  const password = loginForm.password.value;
-
-  // Check if the input is in email format
-  const emailRegex = /\S+@\S+\.\S+/;
-  if (!emailRegex.test(email)) {
-    // Append '@example.com' to the word entered by the user
-    email += '@example.com';
-  }
-
-  // Sign in the user with email and password
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Login successful
-      const user = userCredential.user;
-      console.log('Login successful:', user);
-      // You can redirect the user to a different page or perform additional actions here
-    })
-    .catch((error) => {
-      // Login failed
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Login failed:', errorCode, errorMessage);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-
-// log out
-
-  // Get the logout button element
-const logoutButton = document.getElementById('logout');
-
-// Add an event listener to the logout button
-logoutButton.addEventListener('click', () => {
-  // Sign out the user
-  firebase.auth().signOut()
-    .then(() => {
-      // Logout successful
-      console.log('Logout successful');
-      // You can redirect the user to a different page or perform additional actions here
-    })
-    .catch((error) => {
-      // Logout failed
-      console.error('Logout failed:', error);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-
-  // delete
-
-const deleteAccountButton = document.getElementById('deleteAccount');
-
-// Add an event listener to the delete account button
-deleteAccountButton.addEventListener('click', () => {
-  // Get the currently logged-in user
-  const user = firebase.auth().currentUser;
-
-  // Prompt the user for re-authentication (e.g., password confirmation) before deleting the account
-  const password = prompt('Please enter your password to confirm account deletion:');
-
-  // Create a credential with the user's email and password
-  const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
-
-  // Re-authenticate the user with the provided credential
-  user.reauthenticateWithCredential(credential)
-    .then(() => {
-      // Continue with account deletion
-      user.delete()
-        .then(() => {
-          // Account deletion successful
-          console.log('Account deletion successful');
-          // You can redirect the user to a different page or perform additional actions here
-        })
-        .catch((error) => {
-          // Account deletion failed
-          console.error('Account deletion failed:', error);
-          // Display an error message to the user or handle the error appropriately
-        });
-    })
-    .catch((error) => {
-      // Re-authentication failed
-      console.error('Re-authentication failed:', error);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-
-
-  // delete button
-
-// Assuming you have already initialized Firebase SDK and authenticated the user
-
-// Get the button element
-var deleteButton = document.getElementById('deletesaved');
-
-deleteButton.addEventListener('click', function() {
-  // Get the current user
-  var user = firebase.auth().currentUser;
-
-  // Check if a user is available
-  if (user) {
-    // Get the current user's UID
-    var uid = user.uid;
-    var storage = firebase.storage();
-    var storageRef = storage.ref();
-    var folderPath = 'data/' + uid + '/' + uid + '.json';
-
-    storageRef.child(folderPath).delete()
-      .then(function() {
-        console.log('File deleted successfully:', folderPath);
-        // Perform any additional actions after successful deletion
-      })
-      .catch(function(error) {
-        console.error('Error deleting file:', folderPath, error);
-        // Handle any errors that occur during deletion
-      });
-  } else {
-    console.log('No user is currently signed in.');
-    // Handle the case when no user is signed in
-  }
-});
-
-  // Reset password
-const resetPasswordButton = document.getElementById('resetpassword');
-
-  resetPasswordButton.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent the button from triggering a form submission
-
-  // Get user input value
-  const email = registrationForm.email.value;
-
-  // Send password reset email
-  firebase.auth().sendPasswordResetEmail(email)
-    .then(() => {
-      // Password reset email sent successfully
-      console.log('Password reset email sent successfully');
-      // You can display a success message to the user or perform additional actions here
-    })
-    .catch((error) => {
-      // Password reset email failed
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Password reset email failed:', errorCode, errorMessage);
-      // Display an error message to the user or handle the error appropriately
-    });
-});
-
-  // Update email
-
-  // Function to update email address
-document.getElementById("updateEmailForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent form submission and page reload
-
-  var newEmail = document.getElementById("newEmail").value;
-
-  var user = firebase.auth().currentUser;
-
-  user.verifyBeforeUpdateEmail(newEmail)
-    .then(function() {
-      // Verification email sent
-      alert("A verification email has been sent to your new email address.");
-    })
-    .catch(function(error) {
-      // Error occurred while sending verification email
-      alert("Error sending verification email: " + error.message);
-    });
-});
-
-  // google sign 
-
-  var googleSignInButton = document.getElementById("googleSignInButton");
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
-function signInWithGoogle() {
-  firebase.auth().signInWithPopup(provider)
-    .then(function(result) {
-      // Signed-in user info
-      var user = result.user;
-      console.log("Google Sign-In successful:", user);
-      // You can handle the signed-in user or perform additional operations here
-    })
-    .catch(function(error) {
-      // Error occurred during Google Sign-In
-      console.error("Error signing in with Google:", error);
-    });
-}
-
-googleSignInButton.addEventListener("click", signInWithGoogle);
-
-  // re link to google
-
-
-    // Function to handle the relinking process
-    function handleRelink() {
-      var email = "user@example.com"; // Replace with the actual email
-      var password = "userPassword"; // Replace with the actual password
-
-      // Step 1: Sign in with email and password
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function(emailUserCredential) {
-          // Step 2: Sign out the user
-          return firebase.auth().signOut().then(function() {
-            // Step 3: Sign in with Google account
-            var googleProvider = new firebase.auth.GoogleAuthProvider();
-            return firebase.auth().signInWithPopup(googleProvider);
-          }).then(function(googleUserCredential) {
-            // Step 4: Retrieve email-authenticated user data
-            var emailUser = emailUserCredential.user;
-            var googleUser = googleUserCredential.user;
-
-            // Step 5: Update Google account with email-authenticated user data
-            var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-
-            return googleUser.linkWithCredential(credential);
-          }).then(function(finalUserCredential) {
-            // Relinking successful
-            var finalUser = finalUserCredential.user;
-            console.log("User relinked successfully:", finalUser);
-          }).catch(function(error) {
-            // Error occurred during the process
-            console.error("Error relinking user:", error);
-          });
-        }).catch(function(error) {
-          // Error occurred during email sign-in
-          console.error("Error signing in with email:", error);
-        });
+  // Send a POST request to the /register endpoint
+  fetch('https://testvercel-gamma-seven.vercel.app/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('User registered successfully');
+      // Redirect to the desired page
+      window.location.href = '/';
+    } else {
+      throw new Error('Registration failed');
     }
-
-// load cloud data
-
- function loadJsonFromScriptAndStore() {
-  fetch('https://link-968.pages.dev/test.txt')
-    .then(response => response.text())
-    .then(data => {
-      const toktp = LZString.decompressFromBase64(data);
-
-      const owner = 'YuushaExa';
-      const repo = 'v';
-      const branch = 'master';
-      const directory = 'dev/json/favfiles';
-      var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
-
-      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${toktp}`,
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          const content = data.content;
-          if (content === "") {
-            fetch(data.download_url)
-              .then(response => response.text())
-              .then(fetchedData => {
-                const decodedData = atob(fetchedData);
-                const decomp = LZString.decompressFromBase64(decodedData);
-                const data1 = JSON.parse(decomp);
-                for (let key in data1) {
-                  localStorage.setItem(key, data1[key]);
-                }
-                console.log('JSON data stored in local storage.');
-              })
-              .catch(error => {
-                console.error('Error retrieving JSON data:', error);
-              });
-          } else {
-            const decodedData = atob(content);
-            const decomp = LZString.decompressFromBase64(decodedData);
-            const data1 = JSON.parse(decomp);
-            for (let key in data1) {
-              localStorage.setItem(key, data1[key]);
-            }
-            console.log('JSON data stored in local storage.');
-          }
-        })
-        .catch(error => {
-          console.error('Error retrieving token:', error);
-        });
-    })
-    .catch(error => {
-      console.error('Error retrieving text data:', error);
-    });
-}
-
-document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScriptAndStore);
+  })
+  .catch((error) => {
+    console.error('Registration failed:', error);
+    // Handle the error or display an error message to the user
+  });
+});
 </script>
-
-
-
-
      </div>
     </div>     </div>   </div>  
-  
   </article>    
 </section>
 {{ end }}
