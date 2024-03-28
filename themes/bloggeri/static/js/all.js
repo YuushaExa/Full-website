@@ -1024,15 +1024,6 @@ userRef.get()
   .catch((error) => {
     console.error('Error getting user document:', error);
   });
-
-const randomWelcomeDiv = document.getElementById('randomwelcome');
-
-if (randomWelcomeDiv) {
-  console.log('Game of the day: ' + randomWelcomeDiv.innerHTML);
-}
-} else {
-// User is logged out
-}
 });
   }
   dailylogin();
@@ -1180,46 +1171,6 @@ function showCongToast(message) {
     stopOnFocus: true,
   }).showToast();
 }
-  
-fetch('https://yuushaexa.github.io/page/39/')
-  .then(response => response.text())
-  .then(htmlContent => {
-    // Parse the HTML content
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlContent, 'text/html');
-
-    // Find all the card elements
-    const cards = doc.querySelectorAll('.card');
-
-    if (cards.length > 0) {
-      // Select a random card
-      const randomCard = cards[Math.floor(Math.random() * cards.length)];
-      
-      // Get the title of the random card
-      const title = randomCard.querySelector('.title').innerText;
-      
-      // Get the href of the random card
-      const href = randomCard.querySelector('a.card-image').getAttribute('href');
-      
-      // Get the link image of the random card
-      const linkImage = randomCard.querySelector('img.lazyload').getAttribute('data-src');
-      
-      // Create a string with the HTML content to display
-      const html = `
-        <h2>Title: ${title}</h2>
-        <p>Href: ${href}</p>
-        <img src="${linkImage}" alt="Link Image">
-      `;
-      
-      // Display the random card's information in the "randomwelcome" div
-      const randomWelcomeDiv = document.getElementById('randomwelcome');
-      randomWelcomeDiv.innerHTML = html;
-    } else {
-      console.log('No cards found.');
-    }
-  })
-  .catch(error => console.error(error));
-
 
   // send data
 
