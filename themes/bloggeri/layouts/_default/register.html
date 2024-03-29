@@ -101,7 +101,7 @@ registrationForm.addEventListener('submit', (e) => {
       console.log('User registered successfully');
       // Redirect to the desired page
     } else {
-      throw new Error('Registration failed');
+      console.error('Username already exists', error);
     }
   })
   .catch((error) => {
