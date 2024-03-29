@@ -96,9 +96,13 @@ registrationForm.addEventListener('submit', (e) => {
     },
     body: JSON.stringify(userData)
   })
-  .then((response) => {
+.then((response) => {
+    if (response.ok) {
       console.log('User registered successfully');
       // Redirect to the desired page
+    } else {
+      throw new Error('Registration failed');
+    }
   })
   .catch((error) => {
     console.error('Registration failed:', error);
