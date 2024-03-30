@@ -61,11 +61,11 @@
   <span class="labeloff">Off</span>
   <span class="labelon">On</span>
 </label>
-
+          
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
+  
 <script>
   var firebaseConfig = {
     apiKey: "AIzaSyCP3lyYIs5GjA6XYS9aSdaz5X6-ru3Fxeo",
@@ -77,19 +77,16 @@
     appId: "1:788250168154:web:b6573c45a909fc09694163"
   };
   firebase.initializeApp(firebaseConfig);
-
+  
 // Email Registration
 const registrationForm = document.getElementById('registrationForm');
-
 // Add an event listener to the registration form
 registrationForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Prevent the form from submitting
-
   // Get user input values
   const name = registrationForm.name.value;
   const email = registrationForm.email.value;
   const password = registrationForm.password.value;
-
   return firebase.firestore().collection('nickname').doc(name).get()
     .then((doc) => {
       if (doc.exists) {
@@ -122,15 +119,11 @@ registrationForm.addEventListener('submit', (e) => {
     });
 });
   // Nickname Registration 
-
   const registrationFormNick = document.getElementById('registrationFormNick');
-
 registrationFormNick.addEventListener('submit', (e) => {
   e.preventDefault();
-
   const nickname = registrationFormNick.nickname.value;
   const password = registrationFormNick.password.value;
-
   firebase.auth().createUserWithEmailAndPassword(`${nickname}@example.com`, password)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -144,26 +137,20 @@ registrationFormNick.addEventListener('submit', (e) => {
       // Display an error message to the user or handle the error appropriately
     });
 });
-
   // login
-
 const loginForm = document.getElementById('loginForm');
-
 // Add an event listener to the login form
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Prevent the form from submitting
-
   // Get user input values
   let email = loginForm.email.value;
   const password = loginForm.password.value;
-
   // Check if the input is in email format
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     // Append '@example.com' to the word entered by the user
     email += '@example.com';
   }
-
   // Sign in the user with email and password
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -180,12 +167,10 @@ loginForm.addEventListener('submit', (e) => {
       // Display an error message to the user or handle the error appropriately
     });
 });
-
+  
 // log out
-
   // Get the logout button element
 const logoutButton = document.getElementById('logout');
-
 // Add an event listener to the logout button
 logoutButton.addEventListener('click', () => {
   // Sign out the user
@@ -201,22 +186,16 @@ logoutButton.addEventListener('click', () => {
       // Display an error message to the user or handle the error appropriately
     });
 });
-
   // delete
-
 const deleteAccountButton = document.getElementById('deleteAccount');
-
 // Add an event listener to the delete account button
 deleteAccountButton.addEventListener('click', () => {
   // Get the currently logged-in user
   const user = firebase.auth().currentUser;
-
   // Prompt the user for re-authentication (e.g., password confirmation) before deleting the account
   const password = prompt('Please enter your password to confirm account deletion:');
-
   // Create a credential with the user's email and password
   const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
-
   // Re-authenticate the user with the provided credential
   user.reauthenticateWithCredential(credential)
     .then(() => {
@@ -239,19 +218,78 @@ deleteAccountButton.addEventListener('click', () => {
       // Display an error message to the user or handle the error appropriately
     });
 });
-
-
+  
+  // auth console
+  function dailylogin() {
+firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+const displayName = user.displayName || 'Nameless';
+const today = new Date().toDateString(); // Get today's date in the format "Day Month Date Year"
+const lastVisitStamp = localStorage.getItem('lastVisitStamp');
+if (lastVisitStamp === today) {
+  console.log('Script already executed today. Aborting...');
+  return; // Abort the script if it has already been executed today
+}
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+const db = firebase.firestore();
+const userRef = db.collection('users').doc(user.uid);
+userRef.get()
+  .then((doc) => {
+    const lastVisit = doc.exists ? doc.data().lastVisit : null;
+    const qi = doc.exists ? doc.data().qi : 1;
+    const name = user.displayName;
+                localStorage.setItem('name', name);
+            localStorage.setItem('Qi', qi);
+    
+    if (lastVisit) {
+      const lastVisitDate = lastVisit.toDate().toDateString(); 
+      if (lastVisitDate !== today) {
+        console.log('Welcome, ' + displayName + '!');
+        userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
+          .then(() => {
+            console.log('Timestamp and qi updated in Firestore.');
+            localStorage.setItem('lastVisitStamp', today); 
+          })
+          .catch((error) => {
+            console.error('Failed to update timestamp and qi in Firestore:', error);
+          });
+      } else {
+        console.log('Script already executed today based on Firestore data. Aborting...');
+        localStorage.setItem('lastVisitStamp', today);
+      }
+    } else {
+      console.log('First visit of the user. Welcome, ' + displayName + '!');
+      userRef.set({ lastVisit: timestamp, qi: firebase.firestore.FieldValue.increment(1), name: user.displayName }, { merge: true })
+        .then(() => {
+          console.log('Timestamp updated in Firestore.');
+          localStorage.setItem('lastVisitStamp', today); // Save today's date in localStorage
+          console.cong('Dantian Unlocked, now you can store Qi energy');
+        })
+        .catch((error) => {
+          console.error('Failed to update timestamp and Qi in Firestore:', error);
+        });
+    }
+  })
+  .catch((error) => {
+    console.error('Error getting user document:', error);
+  });
+const randomWelcomeDiv = document.getElementById('randomwelcome');
+if (randomWelcomeDiv) {
+  console.log('Game of the day: ' + randomWelcomeDiv.innerHTML);
+}
+} else {
+// User is logged out
+}
+});
+  }
+  dailylogin();
   // delete button
-
 // Assuming you have already initialized Firebase SDK and authenticated the user
-
 // Get the button element
 var deleteButton = document.getElementById('deletesaved');
-
 deleteButton.addEventListener('click', function() {
   // Get the current user
   var user = firebase.auth().currentUser;
-
   // Check if a user is available
   if (user) {
     // Get the current user's UID
@@ -259,7 +297,6 @@ deleteButton.addEventListener('click', function() {
     var storage = firebase.storage();
     var storageRef = storage.ref();
     var folderPath = 'data/' + uid + '/' + uid + '.json';
-
     storageRef.child(folderPath).delete()
       .then(function() {
         console.log('File deleted successfully:', folderPath);
@@ -274,16 +311,12 @@ deleteButton.addEventListener('click', function() {
     // Handle the case when no user is signed in
   }
 });
-
   // Reset password
 const resetPasswordButton = document.getElementById('resetpassword');
-
   resetPasswordButton.addEventListener('click', (e) => {
   e.preventDefault(); // Prevent the button from triggering a form submission
-
   // Get user input value
   const email = registrationForm.email.value;
-
   // Send password reset email
   firebase.auth().sendPasswordResetEmail(email)
     .then(() => {
@@ -299,17 +332,15 @@ const resetPasswordButton = document.getElementById('resetpassword');
       // Display an error message to the user or handle the error appropriately
     });
 });
-
   // Update email
-
   // Function to update email address
 document.getElementById("updateEmailForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent form submission and page reload
-
+  
   var newEmail = document.getElementById("newEmail").value;
-
+  
   var user = firebase.auth().currentUser;
-
+  
   user.verifyBeforeUpdateEmail(newEmail)
     .then(function() {
       // Verification email sent
@@ -320,13 +351,9 @@ document.getElementById("updateEmailForm").addEventListener("submit", function(e
       alert("Error sending verification email: " + error.message);
     });
 });
-
   // google sign 
-
   var googleSignInButton = document.getElementById("googleSignInButton");
-
 var provider = new firebase.auth.GoogleAuthProvider();
-
 function signInWithGoogle() {
   firebase.auth().signInWithPopup(provider)
     .then(function(result) {
@@ -340,17 +367,13 @@ function signInWithGoogle() {
       console.error("Error signing in with Google:", error);
     });
 }
-
 googleSignInButton.addEventListener("click", signInWithGoogle);
-
   // re link to google
-
-
+  
     // Function to handle the relinking process
     function handleRelink() {
       var email = "user@example.com"; // Replace with the actual email
       var password = "userPassword"; // Replace with the actual password
-
       // Step 1: Sign in with email and password
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(emailUserCredential) {
@@ -363,10 +386,8 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
             // Step 4: Retrieve email-authenticated user data
             var emailUser = emailUserCredential.user;
             var googleUser = googleUserCredential.user;
-
             // Step 5: Update Google account with email-authenticated user data
             var credential = firebase.auth.EmailAuthProvider.credential(email, password);
-
             return googleUser.linkWithCredential(credential);
           }).then(function(finalUserCredential) {
             // Relinking successful
@@ -382,24 +403,279 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
         });
     }
 </script>
-
+          
+          <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
-// load cloud data
+  function showErrorToast(message) {
+Toastify({
+  text: "This is a success message.",
+  duration: 3000,
+  close: true,
+  gravity: "top",
+  position: "left",
+  backgroundColor: "#4caf50",
+  stopOnFocus: true,
+  containerClass: "toastify-container",
+  className: "toastify toastify-success",
+}).showToast();
+}
+  
+  (function () {
+  var originalLog = console.log;
+  var originalError = console.error;
+    
+  console.log = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showLogToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+  console.error = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showErrorToast(message);
+    // Call the original console.error function
+    originalError.apply(console, args);
+  };
+      console.info = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showInfoToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+            console.welcome = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showWelcomeToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+            console.cong = function () {
+    var args = Array.prototype.slice.call(arguments);
+    var message = args.join(' ');
+    showCongToast(message);
+    originalLog.apply(console, args);
+  };
+})();
+// Toast notification functions
+function showLogToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    style: {
+      background: "#E6F5FF",
+      color: "#003366",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+function showErrorToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+      background: "#bb0606e6",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+  function showInfoToast(message) {
+  Toastify({
+    text: message,
+    duration: 4000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+  }).showToast();
+}
+    function showWelcomeToast(message) {
+  Toastify({
+    text: message,
+    duration: 2000,
+    close: true,
+    gravity: "top",
+    position: "center",
+         style: {
+         background: "#f0fff0",
+         color: "#006400",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+function showCongToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+ backgroundImage: "linear-gradient(to right, #FFD700, #ffffffcc)",
+      textShadow: "1px 1px 2px rgb(0 0 0 / 30%)",
+      color: "rgb(0 0 0)",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+  
+fetch('https://yuushaexa.github.io/page/39/')
+  .then(response => response.text())
+  .then(htmlContent => {
+    // Parse the HTML content
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+    // Find all the card elements
+    const cards = doc.querySelectorAll('.card');
+    if (cards.length > 0) {
+      // Select a random card
+      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+      
+      // Get the title of the random card
+      const title = randomCard.querySelector('.title').innerText;
+      
+      // Get the href of the random card
+      const href = randomCard.querySelector('a.card-image').getAttribute('href');
+      
+      // Get the link image of the random card
+      const linkImage = randomCard.querySelector('img.lazyload').getAttribute('data-src');
+      
+      // Create a string with the HTML content to display
+      const html = `
+        <h2>Title: ${title}</h2>
+        <p>Href: ${href}</p>
+        <img src="${linkImage}" alt="Link Image">
+      `;
+      
+      // Display the random card's information in the "randomwelcome" div
+      const randomWelcomeDiv = document.getElementById('randomwelcome');
+      randomWelcomeDiv.innerHTML = html;
+    } else {
+      console.log('No cards found.');
+    }
+  })
+  .catch(error => console.error(error));
 
+  // send data
+
+ function fetchDataAndSendToGitHub() {
+fetch('https://link-968.pages.dev/test.txt')
+.then(response => response.text())
+.then(data => {
+const toktp = LZString.decompressFromBase64(data);
+
+  // GitHub repository information
+  const owner = 'YuushaExa';
+  const repo = 'v';
+  const branch = 'master';
+  const directory = 'dev/json/favfiles';
+  var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
+
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
+  // Create the file content object
+  const fileContent = {
+    message: 'Update data.json from local storage',
+    content: btoa(LZString.compressToBase64(JSON.stringify(localStorage)))
+  };
+
+  // Make a separate API request to get the SHA of the existing file
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${toktp}`,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      const existingFileSha = data.sha;
+
+      // Update the file content object with the existing file's SHA
+      fileContent.sha = existingFileSha; // Include the SHA of the existing file
+
+      // Make the API request to create or update the file
+      fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${toktp}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fileContent),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('File created or updated successfully:', data);
+          const currentTime = new Date().toLocaleString();
+          localStorage.setItem("LastSync", currentTime);
+          updateLastSavedData();
+          document.getElementById("inputTextFavSet").style.backgroundColor = '#21b921';
+          setTimeout(() => {
+            document.getElementById("inputTextFavSet").style.backgroundColor = '';
+          }, 2000);
+        })
+        .catch(error => {
+          console.error('Error creating or updating the file:', error);
+          // Change inputTextFavSet background color to red
+          document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
+        });
+    })
+    .catch(error => {
+      console.error('Error retrieving existing file information:', error);
+      // Change inputTextFavSet background color to red
+      document.getElementById("inputTextFavSet").style.backgroundColor = 'red';
+    });
+})
+.catch(error => {
+  console.error('Error fetching toktp:', error);
+});
+}
+
+document.getElementById("CloudSave").addEventListener("click", fetchDataAndSendToGitHub);
+
+  // show last sync data
+function updateLastSavedData() {
+
+
+  
+const lastSyncTime = localStorage.getItem("LastSync");
+if (lastSyncTime) {
+  document.getElementById("lastsaveddata").textContent = `Last sync time: ${lastSyncTime}`;
+} else {
+  document.getElementById("lastsaveddata").textContent = `No save files, press load`;
+}
+}
+ updateLastSavedData();
+// load cloud data
  function loadJsonFromScriptAndStore() {
   fetch('https://link-968.pages.dev/test.txt')
     .then(response => response.text())
     .then(data => {
       const toktp = LZString.decompressFromBase64(data);
-
       const owner = 'YuushaExa';
       const repo = 'v';
       const branch = 'master';
       const directory = 'dev/json/favfiles';
       var filename = firebase.auth().currentUser.uid; // Use Firebase Auth user UID as the filename
-
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${directory}/${filename}.json`;
-
       fetch(apiUrl, {
         method: 'GET',
         headers: {
@@ -442,17 +718,33 @@ googleSignInButton.addEventListener("click", signInWithGoogle);
       console.error('Error retrieving text data:', error);
     });
 }
-
 document.getElementById('LoadCloud').addEventListener('click', loadJsonFromScriptAndStore);
-
 
 
 </script>
 
+     <script>
 
+    
+  
+  var storedTotalPosts = parseInt(localStorage.getItem('Games'));
+  var currentTotalPosts = {{ len .Site.RegularPages }};
+  if (storedTotalPosts !== currentTotalPosts) {
+console.log('New games: ' + (currentTotalPosts - storedTotalPosts));
+  localStorage.setItem('Games', currentTotalPosts);  
+  }
+</script>
+
+
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+ 
+    
+  
      </div>
-
     </div>     </div>   </div>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
   </article>    
 </section>
 {{ end }}
