@@ -156,12 +156,32 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
   // nickname
     const nicknameContainer = document.getElementById('nicknameContainer');
 
-    // Create a new paragraph element to display the nickname
-    const nicknameParagraph = document.createElement('p');
-    nicknameParagraph.textContent = `Nickname: ${response.nickname}`;
+    // Make a POST request to the login endpoint
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: 'user@example.com',
+        password: 'password123'
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Retrieve the response object from the server
+      const response = data;
+      
+      // Create a new paragraph element to display the nickname
+      const nicknameParagraph = document.createElement('p');
+      nicknameParagraph.textContent = `Nickname: ${response.nickname}`;
 
-    // Append the nickname paragraph to the nicknameContainer
-    nicknameContainer.appendChild(nicknameParagraph);
+      // Append the nickname paragraph to the nicknameContainer
+      nicknameContainer.appendChild(nicknameParagraph);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 </script>
      </div>
     </div>     </div>   </div>  
