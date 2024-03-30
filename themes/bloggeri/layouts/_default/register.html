@@ -147,16 +147,40 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         });
       }
     })
-      .then((data) => {
-    // Update the username element with the received username
-    const usernameElement = document.getElementById('username');
-    usernameElement.textContent = data.displayName;
-  })
     .catch((error) => {
       // Network error or other exception
       alert(`An error occurred during login: ${error.message}`);
     });
 });
+
+  // nickname
+
+  fetch('https://testvercel-gamma-seven.vercel.app/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(userDataLogin)
+})
+  .then((response) => {
+    if (response.ok) {
+      // Successful login
+      return response.json(); // Extract the response data as JSON
+    } else {
+      // Error occurred during login
+      throw new Error('Login failed');
+    }
+  })
+  .then((data) => {
+    console.log(data); // Log the response data to the console
+    // Update the username element with the received username
+    const usernameElement = document.getElementById('username');
+    usernameElement.textContent = data.displayName;
+  })
+  .catch((error) => {
+    // Handle errors
+    console.error(error);
+  });
 </script>
      </div>
     </div>     </div>   </div>  
