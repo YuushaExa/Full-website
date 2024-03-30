@@ -18,7 +18,7 @@
 </form>
 <h2>Fast Registration</h2>
 <form id="registrationFormNick">
-  <div id="nicknameContainer"></div>
+  <div id="nickname"></div>
   <input type="text" id="nickname" name="nickname" required><br><br>
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" required><br><br>
@@ -139,6 +139,8 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
       if (response.ok) {
         // Successful login
         alert('Login successful');
+          const nicknameElement = document.getElementById('nickname');
+  nicknameElement.textContent = `Nickname: ${nickname}`;
         // Redirect to a new page or perform any additional actions
       } else {
         // Error occurred during login
@@ -154,34 +156,7 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
 });
 
   // nickname
-    const nicknameContainer = document.getElementById('nicknameContainer');
 
-    // Make a POST request to the login endpoint
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: 'user@example.com',
-        password: 'password123'
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      // Retrieve the response object from the server
-      const response = data;
-      
-      // Create a new paragraph element to display the nickname
-      const nicknameParagraph = document.createElement('p');
-      nicknameParagraph.textContent = `Nickname: ${response.nickname}`;
-
-      // Append the nickname paragraph to the nicknameContainer
-      nicknameContainer.appendChild(nicknameParagraph);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
 </script>
      </div>
     </div>     </div>   </div>  
