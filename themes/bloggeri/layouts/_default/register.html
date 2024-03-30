@@ -24,6 +24,8 @@
   <input type="password" id="password" name="password" required><br><br>
   <button type="submit">Register</button>
 </form>
+          <span id="username"></span>
+
           <h2>Login</h2>
 <form id="loginForm">
   <label for="loginEmail">Email/Nickname:</label>
@@ -145,6 +147,11 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         });
       }
     })
+      .then((data) => {
+    // Update the username element with the received username
+    const usernameElement = document.getElementById('username');
+    usernameElement.textContent = data.displayName;
+  })
     .catch((error) => {
       // Network error or other exception
       alert(`An error occurred during login: ${error.message}`);
