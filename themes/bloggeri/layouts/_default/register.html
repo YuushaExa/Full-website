@@ -155,7 +155,7 @@ loginForm.addEventListener('submit', (e) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Login successful
-      const user = userCredential.user;
+      const user = user.displayName;
       console.log('Login successful:', user);
       // You can redirect the user to a different page or perform additional actions here
     })
