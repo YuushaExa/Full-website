@@ -1129,3 +1129,147 @@ function playVideo() {
 
 // Add a click event listener to the button with the ID "Play-Video"
 document.getElementById("Play-Video").addEventListener("click", playVideo);
+
+// CONSOLE LOG
+
+  function showErrorToast(message) {
+Toastify({
+  text: "This is a success message.",
+  duration: 3000,
+  close: true,
+  gravity: "top",
+  position: "left",
+  backgroundColor: "#4caf50",
+  stopOnFocus: true,
+  containerClass: "toastify-container",
+  className: "toastify toastify-success",
+}).showToast();
+}
+  
+  (function () {
+  var originalLog = console.log;
+  var originalError = console.error;
+    
+  console.log = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showLogToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+  console.error = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showErrorToast(message);
+    // Call the original console.error function
+    originalError.apply(console, args);
+  };
+
+      console.info = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showInfoToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+            console.welcome = function () {
+    // Convert arguments to an array
+    var args = Array.prototype.slice.call(arguments);
+    // Join arguments into a single string
+    var message = args.join(' ');
+    // Display the toast notification
+    showWelcomeToast(message);
+    // Call the original console.log function
+    originalLog.apply(console, args);
+  };
+
+            console.cong = function () {
+    var args = Array.prototype.slice.call(arguments);
+    var message = args.join(' ');
+    showCongToast(message);
+    originalLog.apply(console, args);
+  };
+})();
+
+// Toast notification functions
+function showLogToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    style: {
+      background: "#E6F5FF",
+      color: "#003366",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showErrorToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+      background: "#bb0606e6",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+  function showInfoToast(message) {
+  Toastify({
+    text: message,
+    duration: 4000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+  }).showToast();
+}
+
+    function showWelcomeToast(message) {
+  Toastify({
+    text: message,
+    duration: 2000,
+    close: true,
+    gravity: "top",
+    position: "center",
+         style: {
+         background: "#f0fff0",
+         color: "#006400",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
+
+function showCongToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "center",
+      style: {
+ backgroundImage: "linear-gradient(to right, #FFD700, #ffffffcc)",
+      textShadow: "1px 1px 2px rgb(0 0 0 / 30%)",
+      color: "rgb(0 0 0)",
+    },
+    stopOnFocus: true,
+  }).showToast();
+}
