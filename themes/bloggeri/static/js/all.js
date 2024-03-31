@@ -1125,7 +1125,7 @@ function disableButton() {
   // Re-enable the button after a delay (e.g., 2 seconds)
   setTimeout(function() {
     button.disabled = false;
-  }, 2000);
+  }, 20000);
 }
 
 function playVideo() {
