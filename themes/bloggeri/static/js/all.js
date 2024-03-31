@@ -1148,5 +1148,3 @@ function playVideo() {
   container.appendChild(iframe);
 }
 
-// Add a click event listener to the button with the ID "Play-Video"
-document.getElementById("Play-Video").addEventListener("click", playVideo);
