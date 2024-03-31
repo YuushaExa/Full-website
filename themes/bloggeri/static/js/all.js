@@ -1109,26 +1109,22 @@ function checkETagAndFetch() {
 // YOUTUBE
 // Function to extract the YouTube video ID from the image URL and play the video
 function playVideo() {
-// Get the first video image URL
-var videoImage = document.getElementsByClassName("ytimage")[0].getElementsByTagName("img")[0].src;
-
-// Extract the video ID from the image URL
-var regex = //vi/([^/]+)/;
-var match = videoImage.match(regex);
-var videoId = match && match[1] ? match[1] : null;
-
-// Create the iframe element
-var iframe = document.createElement("iframe");
-iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&mute=1&start=10&end=30&modestbranding=1&rel=0&fs=0&controls=0&disablekb=1";
-iframe.width = "1200";
-iframe.height = "675";
-iframe.style.border = "unset";
-
-// Find the container element on your web page
-var container = document.getElementsByClassName("cover")[0];
-
-// Append the iframe to the container
-container.appendChild(iframe);
+  // Get the first video image URL
+  var videoImage = document.getElementsByClassName("ytimage")[0].getElementsByTagName("img")[0].src;
+  // Extract the video ID from the image URL
+  var regex = /\/vi\/([^\/]+)/;
+  var match = videoImage.match(regex);
+  var videoId = match && match[1] ? match[1] : null;
+  // Create the iframe element
+  var iframe = document.createElement("iframe");
+  iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&mute=1&start=10&end=30&modestbranding=1&rel=0&fs=0&controls=0&disablekb=1";
+  iframe.width = "1200";
+  iframe.height = "675";
+  iframe.style.border = "unset";
+  // Find the container element on your web page
+  var container = document.getElementsByClassName("cover")[0];
+  // Append the iframe to the container
+  container.appendChild(iframe);
 }
 
 // Add a click event listener to the button with the ID "Play-Video"
