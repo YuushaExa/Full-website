@@ -1108,6 +1108,27 @@ function checkETagAndFetch() {
 
 // YOUTUBE
 // Function to extract the YouTube video ID from the image URL and play the video
+
+function disableButton() {
+  var button = document.getElementById("Play-Video");
+  
+  // Check if the button is already disabled
+  if (button.disabled) {
+    return; // Do nothing if the button is already disabled
+  }
+  
+  // Disable the button
+  button.disabled = true;
+  
+  // Call the playVideo function
+  playVideo();
+  
+  // Re-enable the button after a delay (e.g., 2 seconds)
+  setTimeout(function() {
+    button.disabled = false;
+  }, 20000);
+}
+
 function playVideo() {
   // Get the first video image URL
   var videoImage = document.getElementsByClassName("ytimage")[0].getElementsByTagName("img")[0].src;
