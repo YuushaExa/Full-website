@@ -7,7 +7,7 @@
     </a>
             <div class="card-content">
 <a class="category" href="/platform/{{ index .Params.platform 0 | urlize}}">{{ index .Params.platform 0 }}</a>
-<a class="genres" href="/genres/{{ range .Params.genres }}{{ .name }}{{ end }}">{{ range .Params.genres }}{{ .name }}{{ end }}</a>                          
+<a class="genres" href="/genres/{{ index .Params.genres 0 }}{{ .name }}{{ end }}">{{ index .Params.genres 0 }}{{ .name }}{{ end }}</a>                          
 <a class="developer" href="/developer/{{ index .Params.developer 0 | urlize}}">{{ index .Params.developer 0 }}</a>
 <a class="year" href="/year/{{ index .Params.year 0 | urlize}}">{{ index .Params.year 0 }}</a>
                         <button class="AddList">Add List</button>
