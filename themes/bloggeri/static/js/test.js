@@ -13,32 +13,44 @@ $('html').css({
 // var bg = 'rgb('+ thisColor +')'
 
 var images = Array.from(document.querySelectorAll("img"));
-
-const screenshots = document.getElementsByClassName("screenshots1");
-
-// Create an array to store the image URLs
-const bg_url = [];
-
-// Loop through each element and extract the image URLs
-for (let i = 0; i < screenshots.length; i++) {
-  const screenshot = screenshots[i];
-
-  // Check if the element is an image
-  if (screenshot.tagName === "IMG") {
-    const imageUrl = screenshot.src;
-    bg_url.push(imageUrl);
-  }
+var randomImage, randomImageUrl;
+var bg_url; // Declare bg_url variable
+// Check if the image URL returns a 404 error
+function checkImageAvailability(imageUrl) {
+  return new Promise(function(resolve, reject) {
+    var img = new Image();
+    img.onload = function() {
+      // Image exists
+      resolve(imageUrl);
+    };
+    img.onerror = function() {
+      // Image doesn't exist
+      reject();
+    };
+    img.src = imageUrl;
+  });
 }
-
-// Function to generate a random index
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+// Select a random image URL that is available
+function getRandomImageUrl() {
+  var randomIndex = Math.floor(Math.random() * images.length);
+  randomImage = images[randomIndex];
+  randomImageUrl = randomImage.src;
+  return checkImageAvailability(randomImageUrl)
+    .then(function(validImageUrl) {
+      bg_url = validImageUrl;
+      // Use the valid random image URL (bg_url) in your code
+    })
+    .catch(function() {
+      // Retry with another random image URL
+      return getRandomImageUrl();
+    });
 }
+// Start the process
+getRandomImageUrl();
 
-// Get a random image URL from bg_url array
-const randomImageUrl = bg_url[getRandomIndex(bg_url)];
-    
-  document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top, rgb(22, 24, 28) 0, rgb(22 24 28 / 10%) 60%), url('${randomImageUrl}')`;
+getRandomImageUrl().then(function() {
+  document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top, rgb(22, 24, 28) 0, rgb(22 24 28 / 10%) 60%), url('${bg_url}')`;
+});
     document.querySelector(".cover").style.backgroundPosition = "center";
 document.querySelector(".cover").style.backgroundSize = "cover";
 }, 1000)
