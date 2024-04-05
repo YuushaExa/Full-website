@@ -33,11 +33,22 @@ function checkImageAvailability(imageUrl) {
   });
 }
 
+// Modify the image URL if necessary
+function modifyImageUrl(imageUrl) {
+  var regex = /https:\/\/wsrv.nl\/\?url=(.*?)&/; // Regular expression to match the format
+  var match = imageUrl.match(regex);
+  if (match && match.length > 1) {
+    return match[1]; // Return the extracted URL
+  }
+  return imageUrl; // Return the original URL if no match found
+}
+
 // Select a random image URL that is available
 function getRandomImageUrl() {
   var randomIndex = Math.floor(Math.random() * images.length);
   var randomImage = images[randomIndex];
   var randomImageUrl = randomImage.src;
+  randomImageUrl = modifyImageUrl(randomImageUrl); // Modify the image URL if necessary
   return checkImageAvailability(randomImageUrl)
     .then(function(validImageUrl) {
       bg_url = validImageUrl;
