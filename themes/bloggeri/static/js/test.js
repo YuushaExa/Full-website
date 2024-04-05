@@ -38,10 +38,9 @@ function getRandomImageUrl() {
   var screenshots1Images = Array.from(screenshots1Elements).map(function(element) {
     var src = element.src;
     // Check if the source URL contains the unwanted part
-    var unwantedPartIndex = src.indexOf("https://wsrv.nl/?url=");
-    if (unwantedPartIndex !== -1) {
+    if (src && src.indexOf("https://wsrv.nl/?url=") !== -1) {
       // Extract the desired part of the URL
-      src = src.substring(unwantedPartIndex + "https://wsrv.nl/?url=".length).split("&amp;")[0];
+      src = src.substring(src.indexOf("https://wsrv.nl/?url=") + "https://wsrv.nl/?url=".length).split("&amp;")[0];
     }
     return src;
   });
@@ -68,7 +67,6 @@ function getRandomImageUrl() {
 
 // Start the process
 getRandomImageUrl();
-    
 getRandomImageUrl().then(function() {
   document.querySelector(".cover").style.backgroundImage = `linear-gradient(to top, rgb(22, 24, 28) 0, rgb(22 24 28 / 10%) 60%), url('${bg_url}')`;
 });
