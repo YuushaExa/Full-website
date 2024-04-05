@@ -12,9 +12,10 @@ $('html').css({
          });
 // var bg = 'rgb('+ thisColor +')'
 
-var images = Array.from(document.querySelectorAll("img"));
+var images = Array.from(document.querySelectorAll(".screenshots1 img"));
 var randomImage, randomImageUrl;
 var bg_url; // Declare bg_url variable
+
 // Check if the image URL returns a 404 error
 function checkImageAvailability(imageUrl) {
   return new Promise(function(resolve, reject) {
@@ -30,6 +31,7 @@ function checkImageAvailability(imageUrl) {
     img.src = imageUrl;
   });
 }
+
 // Select a random image URL that is available
 function getRandomImageUrl() {
   var randomIndex = Math.floor(Math.random() * images.length);
@@ -45,6 +47,7 @@ function getRandomImageUrl() {
       return getRandomImageUrl();
     });
 }
+
 // Start the process
 getRandomImageUrl();
 
