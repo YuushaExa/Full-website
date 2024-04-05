@@ -13,7 +13,6 @@ $('html').css({
 // var bg = 'rgb('+ thisColor +')'
 
 var images = Array.from(document.querySelectorAll("img"));
-var randomImage, randomImageUrl;
 
 const screenshots = document.getElementsByClassName("screenshots1");
 
