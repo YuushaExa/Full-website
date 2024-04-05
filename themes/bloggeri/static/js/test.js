@@ -16,7 +16,6 @@ var images = Array.from(document.querySelectorAll("img"));
 var randomImage, randomImageUrl;
 var bg_url; // Declare bg_url variable
 
-// Check if the image URL returns a 404 error
 function checkImageAvailability(imageUrl) {
   return new Promise(function(resolve, reject) {
     var img = new Image();
@@ -34,19 +33,36 @@ function checkImageAvailability(imageUrl) {
 
 // Select a random image URL that is available
 function getRandomImageUrl() {
-  var randomIndex = Math.floor(Math.random() * images.length);
-  randomImage = images[randomIndex];
-  randomImageUrl = randomImage.src;
+  var screenshots1Elements = document.getElementsByClassName("screenshots1");
 
-  return checkImageAvailability(randomImageUrl)
-    .then(function(validImageUrl) {
-      bg_url = validImageUrl;
-      // Use the valid random image URL (bg_url) in your code
-    })
-    .catch(function() {
-      // Retry with another random image URL
-      return getRandomImageUrl();
-    });
+  var screenshots1Images = Array.from(screenshots1Elements).map(function(element) {
+    var src = element.src;
+    // Check if the source URL contains the unwanted part
+    if (src.includes("https://wsrv.nl/?url=")) {
+      // Extract the desired part of the URL
+      src = src.split("https://wsrv.nl/?url=")[1].split("&amp;")[0];
+    }
+    return src;
+  });
+
+  if (screenshots1Images.length > 0) {
+    var randomIndex = Math.floor(Math.random() * screenshots1Images.length);
+    var randomImageUrl = screenshots1Images[randomIndex];
+
+    return checkImageAvailability(randomImageUrl)
+      .then(function(validImageUrl) {
+        bg_url = validImageUrl;
+        // Use the valid random image URL (bg_url) in your code
+      })
+      .catch(function() {
+        // Retry with another random image URL
+        return getRandomImageUrl();
+      });
+  } else {
+    // No images found in elements with class "screenshots1"
+    // Search for other sources or handle the case accordingly
+    return Promise.reject("No images found");
+  }
 }
 
 // Start the process
