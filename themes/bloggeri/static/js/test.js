@@ -14,7 +14,6 @@ $('html').css({
 
 var images = Array.from(document.querySelectorAll("img"));
 var randomImage, randomImageUrl;
-var bg_url; // Declare bg_url variable
 
 const screenshots = document.getElementsByClassName("screenshots1");
 
