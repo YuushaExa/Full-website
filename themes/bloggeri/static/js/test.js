@@ -37,11 +37,7 @@ function getRandomImageUrl() {
 
   var screenshots1Images = Array.from(screenshots1Elements).map(function(element) {
     var src = element.src;
-    // Check if the source URL contains the unwanted part
-    if (src && src.indexOf("https://wsrv.nl/?url=") !== -1) {
-      // Extract the desired part of the URL
-      src = src.substring(src.indexOf("https://wsrv.nl/?url=") + "https://wsrv.nl/?url=".length).split("&amp;")[0];
-    }
+
     return src;
   });
 
