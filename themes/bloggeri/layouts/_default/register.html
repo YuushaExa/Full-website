@@ -142,37 +142,33 @@ registrationFormNick.addEventListener('submit', (e) => {
 });
   // login
 const loginForm = document.getElementById('loginForm');
-
+// Add an event listener to the login form
 loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  let email = loginForm.email.value;
-  const password = loginForm.password.value;
-
-  const emailRegex = /\S+@\S+\.\S+/;
-  if (!emailRegex.test(email)) {
-    email += '@example.com';
-  }
-
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      const nickname = user.displayName; // Get the user's nickname
-
-      console.log('Login successful:', nickname);
-
-      // Display the nickname in an HTML element with the class 'nickname'
-      const nicknameElement = document.querySelector('.nickname');
-      nicknameElement.textContent = nickname;
-
-      // You can redirect the user to a different page or perform additional actions here
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error('Login failed:', errorCode, errorMessage);
-      // Display an error message to the user or handle the error appropriately
-    });
+e.preventDefault(); // Prevent the form from submitting
+// Get user input values
+let email = loginForm.email.value;
+const password = loginForm.password.value;
+// Check if the input is in email format
+const emailRegex = /\S+@\S+.\S+/;
+if (!emailRegex.test(email)) {
+// Append '@example.com' to the word entered by the user
+email += '@example.com';
+}
+// Sign in the user with email and password
+firebase.auth().signInWithEmailAndPassword(email, password)
+.then((userCredential) => {
+// Login successful
+const user = userCredential.user;
+console.log('Login successful:', user.displayName);
+// You can redirect the user to a different page or perform additional actions here
+})
+.catch((error) => {
+// Login failed
+const errorCode = error.code;
+const errorMessage = error.message;
+console.error('Login failed:', errorCode, errorMessage);
+// Display an error message to the user or handle the error appropriately
+});
 });
   
 // log out
