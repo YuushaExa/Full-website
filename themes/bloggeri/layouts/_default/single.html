@@ -31,7 +31,7 @@
       <div class="cover-collection">
 <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                 </div>
-   {{ .first_release_date | time.Format ":date_medium" }}
+   {{time (div (int .first_release_date) 1000)  | dateFormat "2 Jan 2006"  }}
       {{ end }} 
                      </div>
     {{ end }} 
