@@ -23,9 +23,9 @@
 <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                 </div>
  <div class="collections">
-    {{ range .Params.collections }}
+    {{ range .Params.collections.games }}
    <div class="name-collection">
-{{ .games.name }}
+{{ .name }}
                      </div>
     {{ end }} 
                 </div>
