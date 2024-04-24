@@ -25,7 +25,9 @@
  <div class="collections">
     {{ range .Params.collections }}
    <div class="name-collection">
-{{ .games.name }}
+{{ range .games }}
+     {{ range .name }}
+      {{ end }} 
                      </div>
     {{ end }} 
                 </div>
