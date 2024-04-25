@@ -22,7 +22,7 @@
           <div class="cover1">
 <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                 </div>
-  {{ .Params.franchise }} 
+  <a href="https://yuushaexa.github.io/platform/franchise/{{ .Params.franchise }}/">{{ .Params.franchise }} </a>
     
   {{ dateFormat "2006" (.Params.first_release_date | int) }}
     
