@@ -92,3 +92,11 @@ home = [ "HTML", "RSS", "JSON" ]
   8 = "worldwide"
   9 = "korea"
   10 = "brazil"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[module]
+  [[module.mounts]]
+    source = "prebuild/public/content"
+    target = "content"
