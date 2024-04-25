@@ -97,3 +97,4 @@ home = [ "HTML", "RSS", "JSON" ]
   [[module.mounts]]
     source = "prebuild/public/"
     target = "content"
+# target = 'content/anything' to change url
