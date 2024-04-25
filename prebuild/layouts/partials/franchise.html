@@ -1,0 +1,25 @@
+{{- /* Initialize constants. */}}
+{{- $section := slice "franchise" }}
+
+{{- /* Get data. */}}
+{{- $data := site.Data.franchise }}
+
+{{- /* Write content page. */}}
+{{- range $data }}
+{{- $content := .name }}
+  {{- $name := .name }}
+  {{- $frontMatter := dict
+    "description" .description
+     "genres" .genres
+     "title" .name
+  "cover" .cover
+"platforms" .platforms
+"first_release_date" .first_release_date
+
+  }}
+  {{- $filename := printf "%s.md" (urlize $name) }}
+  {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
+  {{- $s := printf "%s\n\n%s\n" (jsonify (dict "indent" "  ") $frontMatter) $content }}
+  {{- $r := $s | resources.FromString $targetPath }}
+  {{- $r.Publish }}
+{{- end -}} 
