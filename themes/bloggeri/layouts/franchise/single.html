@@ -1,3 +1,158 @@
 {{ define "main" }}
-hello
+<section class="section">
+  <article data-pagefind-body>  
+    <div class="container">
+      <div class="post">
+        <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+    <div id="tags">
+                           {{ partial "widgets/tags.html" . }}
+                </div> 
+    </div>
+           <div class="tags2">
+                    {{ range $idx, $tag := .Params.platform }}
+          {{- if ne $idx 0 }}, {{ end }}<a href="{{ "platform/" | relURL }}{{ $tag | urlize }}">#{{ $tag }}</a>
+          {{- end }}
+                      </div>
+        <div class="cover-wrap"><button id="Play-Video" onclick="disableButton()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+</svg> 10 sec
+        </button>
+        <div class="cover"></div></div>
+  <div class="content">
+          <div class="cover1">
+<img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+                </div>
+  <a href="https://yuushaexa.github.io/platform/franchise/{{ .Params.franchise }}/">{{ .Params.franchise }} </a>
+    
+  {{ dateFormat "2006" (.Params.first_release_date | int) }}
+    
+<div class="collections"> 
+  {{ range .Params.collections }} 
+  {{ range .games }} 
+  <div class="name-collection"> 
+    {{ .name }} 
+  </div> 
+  <div class="cover-collection">
+    <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" > 
+  </div> 
+  {{ dateFormat "2006" (.first_release_date | int) }}
+  {{ end }} 
+{{ end }} 
+            </div>
+     
+
+              <div class="YouTubeList">
+         {{ partial "widgets/youtube.html" . }} 
+                </div>
+                <div class="platforms1">
+                   {{ range .Params.platforms }}
+                     <div class="platform-name">
+{{ .name }}
+                     </div>
+ {{ end }}  
+                </div>
+            <div class="genres1">
+    {{ range .Params.genres }}
+   <div class="genre-name">
+{{ .name }}
+   </div>
+ {{ end }}  
+            </div>
+                <div class="regions1">
+     {{ partial "widgets/region-codes.html" . }} 
+                </div>
+                <div class="story1">
+    {{ .Params.storyline }}
+                </div>
+                <div class="summary1">
+    {{ .Params.summary }}
+                </div>
+
+  <div class="screenshots1">
+    {{ range .Params.screenshots }}
+<img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .image_id }}.jpg&output=webp&maxage=1d&w=400&h=300&fit=cover&a=attention">
+ {{ end }}  
+            </div>
+    
+          {{ .Content }} 
+        </div>
+
+      <div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'gallery')">gallery</button>
+  <button class="tablinks" onclick="openCity(event, 'screenshots')">screenshots</button>
+</div>
+       <div id="screenshots" class="tabcontent" data-pagefind-ignore>
+     {{ partialCached "widgets/screenshots.html" . }} 
+                </div> 
+              <div id="gallery" class="tabcontent" data-pagefind-ignore>
+{{ range .Params.images }}
+<img data-src="https://wsrv.nl/?url={{ . }}&output=webp&maxage=1d&w=200&h=150&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
+ {{ end }}          
+                </div> 
+      
+    
+<div id="related-title" data-pagefind-ignore>
+                {{ partialCached "widgets/relatedtitle.html" . }}
+                </div> 
+      
+
+              <div class="game-links" data-pagefind-ignore>
+                {{ partial "widgets/game-links.html" . }}
+                </div> 
+            <div class="ai" data-pagefind-ignore>
+                {{ partialCached "widgets/ai.html" . }}
+                </div> 
+            <div id="GBinfo" data-pagefind-ignore class="tabcontent">
+                {{ partial "widgets/gameinfo.html" . }}
+                </div> 
+         <div id="ReviewsReddit" data-pagefind-ignore>
+                {{ partial "widgets/reviews.html" . }}
+                </div> 
+
+       <div id="RecentlyViewedCards" data-pagefind-ignore>
+         <h3>Recently Viewed</h3>
+  <div id="RecentlyViewed">
+                {{ partial "widgets/rviewed.html" . }}
+            </div> 
+ </div> 
+         
+    </div>      
+  <div class="columns is-centered">
+    <div class="column max-800px">
+      <div class="columns is-mobile">
+        <div class="column has-text-left">
+          {{ with .PrevInSection }}
+          <p>Previous post</p>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
+        </div>
+        <div class="column has-text-right">
+          {{ with .NextInSection }}
+          <p>Next post</p>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>   
+
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column max-800px">
+                <h3>Related content</h3>
+            <div class="columns">
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+                {{ range $related }}
+                <div class="column is-one-third">
+                    {{ partial "widgets/post-card.html" . }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+ <script defer src="/js/posts.js"></script>
+   <script defer src="/js/test.js"></script>
+</section>
 {{ end }}
