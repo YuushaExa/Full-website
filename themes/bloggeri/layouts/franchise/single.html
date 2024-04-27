@@ -24,7 +24,9 @@
                 </div>
   <a href="https://yuushaexa.github.io/platform/franchise/{{ .Params.franchise }}/">{{ .Params.franchise }} </a>
     
-  {{ dateFormat "2006" (.Params.first_release_date | int) }}
+  {{ if .first_release_date }}
+        {{ dateFormat "2006" (.first_release_date | int) }}
+{{ end }}
     
 <div class="collections"> 
   {{ range .Params.gamelist }} 
