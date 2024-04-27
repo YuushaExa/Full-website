@@ -9,12 +9,12 @@
 {{- $content := .name }}
   {{- $name := .name }}
   {{- $frontMatter := dict
-    "description" .description
-     "genres" .genres
-     "title" .name
-  "cover" .cover
-"platforms" .platforms
-"first_release_date" .first_release_date
+    "description" .description1
+     "genres" .genres1
+     "title" .name1
+  "cover" .cover1
+"platforms" .platforms1
+"first_release_date" .first_release_date1
 
   }}
   {{- $filename := printf "%s.md" (urlize $name) }}
