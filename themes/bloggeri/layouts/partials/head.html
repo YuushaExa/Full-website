@@ -503,17 +503,19 @@ width: 320px;
 }
 
 .card {
-    margin: 5px;
+     margin: 5px;
     position: relative;
     transition: all .3s;
     float: left;
     border-radius: 6px;
-    box-shadow: 0 0 0 1px #09090b1a;
+    box-shadow: 0 0 0 1px #b7b7c11a;
     display: flex;
-	    height: 330px;
+    height: 300px;
     width: 200px;
 }
-	      
+	      .card-image img {
+    border-radius: 6px;
+	      }
 	      
 	      .card-image {
     height: 300px;
@@ -525,21 +527,33 @@ width: 320px;
 
 .card-content {
 position: absolute;
-    bottom: 0px;
-    border-radius: 6px;
-    width: 200px;
-    box-shadow: 0 0 4px #0000001f, 0 2px 4px #0000003d;
-    background: linear-gradient(0deg,#000,#1f1f1f00);
+    bottom: 0;
+    width: 190px;
+    box-shadow: 0 0 4px #2a252538, 1px 1px 4px #ff9800;
+    background: rgb(0 0 0 / 60%);
+    border-radius: 5px;
+    margin: 5px;
 }
 	      a.title.is-4 {
-position: relative;
-    padding: 10px;
+    position: relative;
     font-size: 14px!important;
-    display: inline-block;
-    color: #ffffff;
-    border-bottom: 1px solid #b5b5b5;
-    background: linear-gradient(0deg,rgb(0 0 0 / 50%),#1f1f1f00);
+    display: flex;
+    color: #fff;
 	      }
+
+	.AddList {
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 2px 5px;
+    background: #1d252e;
+    cursor: pointer;
+    margin: 5px;
+    bottom: -19px;
+    position: absolute;
+    right: 0;
+    box-shadow: 0 0 4px #2a252538, 0px 0px 3px #ff9800;
+	}
 	      
 	      
 div#GBinfo {
