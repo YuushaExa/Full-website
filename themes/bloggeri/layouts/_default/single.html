@@ -41,9 +41,7 @@
             </div>
      
 
-              <div class="YouTubeList">
-         {{ partial "widgets/youtube.html" . }} 
-                </div>
+          
                 <div class="platforms1">
                    {{ range .Params.platforms }}
                      <div class="platform-name">
@@ -73,7 +71,9 @@
 <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .image_id }}.jpg&output=webp&maxage=1d&w=400&h=300&fit=cover&a=attention">
  {{ end }}  
             </div>
-    
+        <div class="YouTubeList">
+         {{ partial "widgets/youtube.html" . }} 
+                </div>
           {{ .Content }} 
         </div>
 
