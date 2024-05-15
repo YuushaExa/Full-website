@@ -3,7 +3,6 @@
   <article data-pagefind-body>  
     <div class="container">
       <div class="post">
-        <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
     <div id="tags">
                            {{ partial "widgets/tags.html" . }}
                 </div> 
@@ -19,6 +18,7 @@
         </button>
         <div class="cover"></div></div>
   <div class="content">
+            <h1 data-pagefind-meta="title" class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
           <div class="cover1">
 <img src="https://wsrv.nl/?url=https://images.igdb.com/igdb/image/upload/t_1080p/{{ .Params.cover.image_id }}.jpg&output=webp&maxage=1d&w=200&h=300&fit=cover&a=attention" alt="" crossorigin="anonymous" class="lazyload" >
                 </div>
