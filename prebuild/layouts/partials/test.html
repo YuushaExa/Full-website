@@ -1,0 +1,32 @@
+{{- /* Initialize constants. */}}
+{{- $section := slice "games" }}
+
+{{- /* Fetch remote JSON data. */}}
+{{- $remoteDataURL := "https://www.veriphor.com/shared/data/posts.json" }}
+{{- $remoteData := resources.GetRemote $remoteDataURL | transform.Unmarshal }}
+
+{{- /* Alternatively, using getJSON (if in a supported context) */}}
+{{- /* {{ $remoteData := getJSON $remoteDataURL }} */}}
+
+{{- /* Write content pages. */}}
+{{- range $remoteData }}
+  {{- $name := .title}}
+  {{- $content := .content | default "" }}
+
+  {{- /* Prepare front matter. */}}
+  {{- $frontMatter := dict
+    "description" (.content | default "")
+    "title" (.title | default "")
+  }}
+
+  {{- /* Generate filename and path. */}}
+  {{- $filename := printf "%s.md" (urlize $name) }}
+  {{- $targetPath := path.Join site.LanguagePrefix $section $filename }}
+
+  {{- /* Combine front matter and content. */}}
+  {{- $s := printf "---\n%s\n---\n\n%s" (transform.Remarshal "yaml" $frontMatter) $content }}
+
+  {{- /* Create and publish the resource. */}}
+  {{- $r := $s | resources.FromString $targetPath }}
+  {{- $r.Publish }}
+{{- end }}
